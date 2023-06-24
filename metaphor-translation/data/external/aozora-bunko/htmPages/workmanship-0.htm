@@ -1,0 +1,500 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Instinct of Workmanship and the Irksomeness of Labor / Thorstein Veblen 著</h2><h2>ワークマンシップ(訳注1)の本能と労働の煩わしさ / ソースタイン・ヴェブレン 著 / 永江良一 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/workmanshipe.txt">英語文</a>&<a href="../org/workmanshipj.txt">日本語文</a> / <a href="../manual-alignment/workmanship.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>0 of The Instinct of Workmanship and the Irksomeness of Labor</TITLE>
+<hr>
+prev
+<0>
+<a href="workmanship-1.htm">1</a>
+<a href="workmanship-2.htm">2</a>
+<a href="workmanship-1.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1"><a name="1"><TD id="E1" onclick="javascript:toggleLayer('J1')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Instinct of Workmanship and the Irksomeness of Labor
+American Journal of Sociology, vol. 4 (1898-9)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1" onclick="javascript:toggleLayer('E1')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ワークマンシップ(訳注1)の本能と労働の煩わしさ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2"><a name="2"><TD ID="TAB2" onclick="javascript:toggleLayer('J2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2" onclick="javascript:toggleLayer('E2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="3"><a name="3"><TD id="E3" onclick="javascript:toggleLayer('J3')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is one of the commonplaces of the received economic theory that work is irksome.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3" onclick="javascript:toggleLayer('E3')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一般に受け入れられている経済理論の決まりきった文句の一つに、仕事は煩わしいというのがある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="4"><a name="4"><TD id="E4" onclick="javascript:toggleLayer('J4')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many a discussion proceeds on this axiom that, so far as regards economic matters, men desire above all things to get the goods produced by labor and to avoid the labor by which the goods are produced.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J4" onclick="javascript:toggleLayer('E4')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人はなにはさておき労働によって生産された財貨を得たいと思うが、財貨を生産するための労働は避けたがるというこの公理をめぐっては、多くの議論がなされている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="5"><a name="5"><TD id="E5" onclick="javascript:toggleLayer('J5')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In a general way the common-sense opinion is well in accord with current theory on this head.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J5" onclick="javascript:toggleLayer('E5')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おおむね常識的な意見は、この点についての流布している理論に良く一致している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="6"><a name="6"><TD id="E6" onclick="javascript:toggleLayer('J6')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> According to the common-sense-ideal, the economic beatitude lies in an unrestrained consumption of goods, without work;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J6" onclick="javascript:toggleLayer('E6')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 常識的な理想にしたがえば、経済的な至福は働くことなく気ままに財貨を消費することであるし、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="7"><a name="7"><TD id="E7" onclick="javascript:toggleLayer('J7')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> whereas the perfect economic affliction is unremunerated labor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J7" onclick="javascript:toggleLayer('E7')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方、完璧な経済的不幸とは無報酬の労働である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="8"><a name="8"><TD id="E8" onclick="javascript:toggleLayer('J8')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Man instinctively revolts at effort that goes to supply the means of life.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J8" onclick="javascript:toggleLayer('E8')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人は、生活手段を供給する労働を本能的に嫌悪するのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="9"><a name="9"><TD id="E9" onclick="javascript:toggleLayer('J9')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No one will accept the proposition when stated in this bald fashion, but even as it stands it is scarcely an overstatement of what is implied in the writings of eminent economists.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J9" onclick="javascript:toggleLayer('E9')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こんなあけすけな言い方では、誰もこの命題を受け入れようとはしないだろうが、しかしこのままでさえ、著名な経済学者の著作にほのめかされていることをそれほど誇張しているわけではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="10"><a name="10"><TD id="E10" onclick="javascript:toggleLayer('J10')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If such an aversion to useful effort is an integral part of human nature, then the trail of the Edenic serpent should be plain to all men,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J10" onclick="javascript:toggleLayer('E10')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 有用な労働に対するこのような嫌悪が人間の本性の不可欠な部分であるのならば、エデンの園のヘビのつけた痕は誰の目にも明らかであろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="11"><a name="11"><TD id="E11" onclick="javascript:toggleLayer('J11')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for this is a unique distinction of the human species.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J11" onclick="javascript:toggleLayer('E11')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、これは人類にしかない特徴であるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="12"><a name="12"><TD id="E12" onclick="javascript:toggleLayer('J12')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A consistent aversion to whatever activity goes to maintain the life of the species is assuredly found in no other species of animal.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J12" onclick="javascript:toggleLayer('E12')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 種の生命を維持する活動が何であれ、それに対して首尾一貫して嫌悪することは、確かに他の種の動物には見られないことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="13"><a name="13"><TD id="E13" onclick="javascript:toggleLayer('J13')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Under the selective process through which species are held to have emerged and gained their stability there is no chance for the survival of a species gifted with such an aversion to the furtherance of its own life process.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J13" onclick="javascript:toggleLayer('E13')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 種が出現し持続していく淘汰過程のもとでは、自分たちの生命過程を促進することを嫌悪するような性質を与えられた種が生き残る機会など全くないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="14"><a name="14"><TD id="E14" onclick="javascript:toggleLayer('J14')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If man alone is an exception from the selective norm, then the alien propensity in question must have been intruded into his make-up by some malevolent deus ex machina.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J14" onclick="javascript:toggleLayer('E14')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし人間だけが淘汰の規範から除外されているのだとしたら、問題となっている風変わりな性癖は、何か邪悪な機械仕掛けの神(訳注2)が彼の気質に無理矢理押し込んだものに相違ない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="15"><a name="15"><TD id="E15" onclick="javascript:toggleLayer('J15')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Yet, for all the apparent absurdity of the thing, there is the fact.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J15" onclick="javascript:toggleLayer('E15')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どんなに明らかに不合理な事にも、真実はあるものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="16"><a name="16"><TD id="E16" onclick="javascript:toggleLayer('J16')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> With more or less sincerity, people currently avow an aversion to useful effort.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J16" onclick="javascript:toggleLayer('E16')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多かれ少なかれ率直に、人々は現在のところ有用な労力に対する嫌悪を公言している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="17"><a name="17"><TD id="E17" onclick="javascript:toggleLayer('J17')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The avowal does not cover all effort, but only such as is of some use;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J17" onclick="javascript:toggleLayer('E17')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この公言はすべての労力に及んでいるのではなく、ある使い方の労力にのみに向けられている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="18"><a name="18"><TD id="E18" onclick="javascript:toggleLayer('J18')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it is, more particularly, such effort as is vulgarly recognized to be useful labor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J18" onclick="javascript:toggleLayer('E18')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 特に通俗的に有用な労働と認識されているような労力が嫌悪されているのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="19"><a name="19"><TD id="E19" onclick="javascript:toggleLayer('J19')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Less repugnance is expressed as regards effort which brings gain without giving a product that is of human use, as, for example, the effort that goes into war, politics, or other employments of a similar nature.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J19" onclick="javascript:toggleLayer('E19')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人間の用に供される生産物をもたらすことなく利得をあげるような労力、例えば戦争に行ったり政治家をやったり、その他似たような性質の職業に従事する労力に関しては嫌悪が表明されることは少ない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="20"><a name="20"><TD id="E20" onclick="javascript:toggleLayer('J20')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And there is commonly no avowed aversion to sports or other similar employments that yield neither a pecuniary gain nor a useful product.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J20" onclick="javascript:toggleLayer('E20')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、金銭的利得も有用な生産物も生み出さないスポーツやそれに類した職業については、一般に嫌悪が公言されることは全くないのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="21"><a name="21"><TD id="E21" onclick="javascript:toggleLayer('J21')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Still, the fact that a given line of effort is useless does not of itself save it from being odious,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J21" onclick="javascript:toggleLayer('E21')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでも、ある一連の労力が無駄なものであるという事実が、それが不愉快なものであるということから免れさせてくれるというわけはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="22"><a name="22"><TD id="E22" onclick="javascript:toggleLayer('J22')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as is shown by the case of menial service;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J22" onclick="javascript:toggleLayer('E22')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 例えば、そうしたことは召し使いの奉仕の場合に見られるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="23"><a name="23"><TD id="E23" onclick="javascript:toggleLayer('J23')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> much of this work serves no useful end, but it is none the less repugnant to all people of sensibility.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J23" onclick="javascript:toggleLayer('E23')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした仕事の多くは、何ら役に立たない目的に奉仕するのだが、だからといって感受性のある人々にとっては少しも嫌悪されずにすむものではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="24"><a name="24"><TD ID="TAB24" onclick="javascript:toggleLayer('J24')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB24" onclick="javascript:toggleLayer('E24')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="25"><a name="25"><TD id="E25" onclick="javascript:toggleLayer('J25')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "The economic man," whose lineaments were traced in outline by the classical economists and filled in by their caricaturists, is an anomaly in the animal word;  and yet, to judge by everyday popular expressions of inclination, the portrait is not seriously overdrawn.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J25" onclick="javascript:toggleLayer('E25')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 古典派経済学者がその特徴の輪郭を描き、古典派の風刺家たちがその中身を満たした「経済的人間」とは、動物の世界では(訳注3)異様なものであり、その上、その性向の日常の世間一般的な表れ方から判断すると、その肖像は真面目に描き込まれたものではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="26"><a name="26"><TD id="E26" onclick="javascript:toggleLayer('J26')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But if this economic man is to serve as a lay figure upon which to fit the garment of economic doctrines, it is incumbent upon the science to explain what are his limitations and how he has achieved his emancipation from the law of natural selection.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J26" onclick="javascript:toggleLayer('E26')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、もしこの経済的人間が経済学の教義の装いにぴったり合う人体模型として役に立つのならば、彼の限界は何であり、彼はどのようにして自然淘汰の法則から解放されたのかを説明するのは、科学にとって課せられた義務であろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="27"><a name="27"><TD id="E27" onclick="javascript:toggleLayer('J27')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His emancipation from the law is, indeed, more apparent than substantial.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J27" onclick="javascript:toggleLayer('E27')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人間がこの法則から解放されているのは、実のところは、実質的というより見かけだけのことである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="28"><a name="28"><TD id="E28" onclick="javascript:toggleLayer('J28')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The difference in this respect between man and his sometime competitors in the struggle for survival lies not in a slighter but in a fuller adjustment of his propensities to the purposes of the life of the species.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J28" onclick="javascript:toggleLayer('E28')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この点で人間とその時々の生存闘争の競争相手との間にある差異は、種の生命という目的にたいする彼の性癖をわずかに調整したのではなくて、全面的に調整したことである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="29"><a name="29"><TD id="E29" onclick="javascript:toggleLayer('J29')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He distanced them all in this respect long ago, and by so wide an interval that he is now able, without jeopardy to the life of the species, to play fast and loose with the spiritual basis of its survival.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J29" onclick="javascript:toggleLayer('E29')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はこの点でとうの昔に他の全ての生物を引き離し、その差は大きくひらいたので、今や種の生命を危険にさらすことも無く、その生存の精神的根拠を弄ぶことができるのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="30"><a name="30"><TD ID="TAB30" onclick="javascript:toggleLayer('J30')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB30" onclick="javascript:toggleLayer('E30')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="31"><a name="31"><TD id="E31" onclick="javascript:toggleLayer('J31')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Like other animals, man is an agent that acts in response to stimuli afforded by the environment in which he lives.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J31" onclick="javascript:toggleLayer('E31')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 他の動物と同じように、人間は彼が生きている環境がもたらす刺激に反応して行動する主体である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="32"><a name="32"><TD id="E32" onclick="javascript:toggleLayer('J32')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Like other species, he is a creature of habit and propensity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J32" onclick="javascript:toggleLayer('E32')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 他の種と同じように、人間は習性や性癖をもつ生き物である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="33"><a name="33"><TD id="E33" onclick="javascript:toggleLayer('J33')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But in a higher degree than other species, man mentally digests the content of the habits under whose guidance he acts, and appreciates the trend of these habits and propensities.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J33" onclick="javascript:toggleLayer('E33')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし人間は、彼がそれにしたがって行動している習性を知性で消化し、その習性や性癖の傾向を理解する程度が、他の種よりも高いのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="34"><a name="34"><TD id="E34" onclick="javascript:toggleLayer('J34')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He is in an eminent sense an intelligent agent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J34" onclick="javascript:toggleLayer('E34')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は際だった意味で知的な能動主体なのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="35"><a name="35"><TD id="E35" onclick="javascript:toggleLayer('J35')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> By selective necessity he is endowed with a proclivity for purposeful action.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J35" onclick="javascript:toggleLayer('E35')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 淘汰の必要に迫られて、彼は目的をもった行動に向かう性癖を身につけた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="36"><a name="36"><TD id="E36" onclick="javascript:toggleLayer('J36')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He is possessed of a discriminating sense of purpose, by force of which all futility of life or of action is distasteful to him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J36" onclick="javascript:toggleLayer('E36')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は、生命や行動の無益さが彼にとって不快であることによって、目的のそれ特有の感覚に取り憑かれているのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="37"><a name="37"><TD id="E37" onclick="javascript:toggleLayer('J37')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There may be a wide divergence between individuals as regards the form and the direction in which this impulse expresses itself, but the impulse itself is not a matter of idiosyncrasy, it is a generic feature of human nature.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J37" onclick="javascript:toggleLayer('E37')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この衝動を表わす形式と方向に関しては、個人によって大きなひらきがあるだろうが、しかし衝動そのものは個性の問題ではなくて、人間の本性の一般的な特徴なのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="38"><a name="38"><TD id="E38" onclick="javascript:toggleLayer('J38')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is not a trait that occurs sporadically in a few individuals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J38" onclick="javascript:toggleLayer('E38')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは時おり少数の個人に現われる特徴などではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="39"><a name="39"><TD id="E39" onclick="javascript:toggleLayer('J39')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Cases occur in which this proclivity for purposeful action is wanting or is present in obviously scant measure, but persons endowed in this stepmotherly fashion are classed as "defective subjects."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J39" onclick="javascript:toggleLayer('E39')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この目的をもった行動へ向かう性癖が欠如したり明らかに不足している場合もあるが、しかしこの継母みたいなやり方でわずかしか能力を与えられなかった人は「知能欠陥のある患者」に分類されるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="40"><a name="40"><TD id="E40" onclick="javascript:toggleLayer('J40')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Lines of descent which carry this defective human nature dwindle and decay even under the propitious circumstances of modern life.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J40" onclick="javascript:toggleLayer('E40')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この欠陥のある人間性をもたらす家系は、現代生活の慈悲深い環境においてさえ衰え没落していく。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="41"><a name="41"><TD id="E41" onclick="javascript:toggleLayer('J41')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The history of hereditarily dependent or defective families is evidence to this effect.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J41" onclick="javascript:toggleLayer('E41')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 遺伝的に依存的なあるいは欠陥のある家族の歴史は、この効果の証拠である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="42"><a name="42"><TD ID="TAB42" onclick="javascript:toggleLayer('J42')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB42" onclick="javascript:toggleLayer('E42')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="43"><a name="43"><TD id="E43" onclick="javascript:toggleLayer('J43')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Man's great advantage over other species in the struggle for survival has been his superior facility in turning the forces of the environment to account.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J43" onclick="javascript:toggleLayer('E43')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 生存闘争において、人間が他の種に対してもっている大きな長所は、環境の力を利用する能力である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="44"><a name="44"><TD id="E44" onclick="javascript:toggleLayer('J44')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is to his proclivity for turning the material means of life to account that he owes his position as lord of creation.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J44" onclick="javascript:toggleLayer('E44')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼が生き物の主という地位を得たのは、生活の物質的手段を利用しようとする性癖のおかげである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="45"><a name="45"><TD id="E45" onclick="javascript:toggleLayer('J45')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is not a proclivity to effort, but to achievement- to the compassing of an end.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J45" onclick="javascript:toggleLayer('E45')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 労力へ向かう性癖ではなく、達成－目的の成就へと向かう性癖なのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="46"><a name="46"><TD id="E46" onclick="javascript:toggleLayer('J46')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His primacy is in the last resort an industrial or economic primacy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J46" onclick="javascript:toggleLayer('E46')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の卓越は結局、産業的なあるいは経済的な卓越である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="47"><a name="47"><TD id="E47" onclick="javascript:toggleLayer('J47')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In his economic life man is an agent, not an absorbent;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J47" onclick="javascript:toggleLayer('E47')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 経済生活において人間は能動主体であって、吸収体ではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="48"><a name="48"><TD id="E48" onclick="javascript:toggleLayer('J48')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he is an agent seeking in every act the accomplishment of some concrete, objective, impersonal end.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J48" onclick="javascript:toggleLayer('E48')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち、人間はどの行為においてもなにか具体的、客観的、非人格的な目的の実現を捜し求める能動主体である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="49"><a name="49"><TD id="E49" onclick="javascript:toggleLayer('J49')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As this pervading norm of action guides the life of men in all the use they make of material things, so it must also serve as the point of departure and afford the guiding principle for any science that aims to be a theory of the economic life process.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J49" onclick="javascript:toggleLayer('E49')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この広く浸透した行動規範は、物質的なものの利用全般にわたって人間の生活を導くので、それはまた、経済的生活過程の理論たらんとするこの科学のための出発点ともなり、主導原理を与えるものでなければならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="50"><a name="50"><TD id="E50" onclick="javascript:toggleLayer('J50')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Within the purview of economic theory, the last analysis of any given phenomenon must run back to this ubiquitous human impulse to do the next thing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J50" onclick="javascript:toggleLayer('E50')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 経済理論の範囲内では、ある与えられた現象の最終的な分析は、次のことを行おうとするこの遍在的な人間の衝動へと戻っていかなければならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="51"><a name="51"><TD ID="TAB51" onclick="javascript:toggleLayer('J51')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB51" onclick="javascript:toggleLayer('E51')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="52"><a name="52"><TD id="E52" onclick="javascript:toggleLayer('J52')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All this seems to contradict what has just been said of the conventional aversion to labor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J52" onclick="javascript:toggleLayer('E52')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうしたすべてのことは、労働にたいする常套的な嫌悪について言われてきたこととは矛盾するように思われる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="53"><a name="53"><TD id="E53" onclick="javascript:toggleLayer('J53')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But the contradiction is not so sheer in fact as it appears to be at first sight.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J53" onclick="javascript:toggleLayer('E53')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしこの矛盾は、実際は、一見したとき思われるほど際立ったものではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="54"><a name="54"><TD id="E54" onclick="javascript:toggleLayer('J54')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Its solution lies in the fact that the aversion to labor is in great part a conventional aversion only.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J54" onclick="javascript:toggleLayer('E54')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その解決は、労働への嫌悪は大部分常套的な嫌悪だけであるという事実にある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="55"><a name="55"><TD id="E55" onclick="javascript:toggleLayer('J55')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the intervals of sober reflection, when not harassed with the strain of overwork, men's common sense speaks unequivocally under the guidance of the instinct of workmanship.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J55" onclick="javascript:toggleLayer('E55')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 働きすぎの重圧に悩まされず、冷静な考えでいる間は、人間の常識は紛れようもなくワークマンシップの本能の導きのもとで語るのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="56"><a name="56"><TD id="E56" onclick="javascript:toggleLayer('J56')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They like to see others spend their life to some purpose, and they like to reflect that their own life is of some use.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J56" onclick="javascript:toggleLayer('E56')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人間は他人が何かの目的のために人生を送るのを見るのが好きだし、自分の人生が何かの役に立ってきたと回顧するのが好きなのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="57"><a name="57"><TD id="E57" onclick="javascript:toggleLayer('J57')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All men have this quasi-aesthetic sense of economic or industrial merit, and to this sense of economic merit futility and inefficiency are distasteful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J57" onclick="javascript:toggleLayer('E57')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すべての人間が経済的あるいは産業的なメリットについてのこの準倫理的な感覚を持っており、経済的メリットについてのこの感覚にとっては、無益さや無効果は不快なことなのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="58"><a name="58"><TD id="E58" onclick="javascript:toggleLayer('J58')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In its positive expression it is an impulse or instinct of workmanship; negatively it expresses itself in a deprecation of waste.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J58" onclick="javascript:toggleLayer('E58')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが積極的に表現されれば、ワークマンシップへの衝動や本能になるし、消極的な表現では無駄に対する非難となる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="59"><a name="59"><TD id="E59" onclick="javascript:toggleLayer('J59')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This sense of merit and demerit with respect to the material furtherance or hindrance of life approves, the economically effective act and deprecates economic futility.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J59" onclick="javascript:toggleLayer('E59')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> メリットとデメリットについてのこの感覚は、生活の増進と障害という点に関しては、経済的に効果のある行為を是認し経済的無益さを非難する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="60"><a name="60"><TD id="E60" onclick="javascript:toggleLayer('J60')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is needless to point out in detail the close relation between this norm of economic merit and the ethical norm of conduct, on the one hand, and the aesthetic norm of taste, on the other.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J60" onclick="javascript:toggleLayer('E60')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方では経済的メリットのこの規範と行為の倫理的規範との間の、他方ではそれと味覚の美的規範との間の密接な関係を事細かに指摘する必要はないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="61"><a name="61"><TD id="E61" onclick="javascript:toggleLayer('J61')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is very closely related to both of these, both as regards its biological ground and as regards the scope and method of its award.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J61" onclick="javascript:toggleLayer('E61')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはこの双方に、生物学的な根拠の点でも、その裁定の範囲と方法の点でも、密接に関係しているのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="62"><a name="62"><TD ID="TAB62" onclick="javascript:toggleLayer('J62')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB62" onclick="javascript:toggleLayer('E62')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="63"><a name="63"><TD id="E63" onclick="javascript:toggleLayer('J63')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This instinct of workmanship apparently stands in sheer conflict with the conventional antipathy to useful effort.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J63" onclick="javascript:toggleLayer('E63')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このワークマンシップの本能は、見たところ、有用な労力にたいする常套的な反感と鋭く対立している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="64"><a name="64"><TD id="E64" onclick="javascript:toggleLayer('J64')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The two are found together in full discord in the common run of men;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J64" onclick="javascript:toggleLayer('E64')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この二つは、普通の人々の間に完全に不調和の状態で一緒に見出されるのだが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="65"><a name="65"><TD id="E65" onclick="javascript:toggleLayer('J65')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but whenever a deliberate judgment is passed on conduct or on events, the former asserts its primacy in a pervasive way which suggests that it is altogether the more generic, more abiding trait of human nature.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J65" onclick="javascript:toggleLayer('E65')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、行為や出来事についてよく考え抜いた判断を下すときはいつでも、前者は、それが完全に人間の本性のより包括的でより持続的な特質であることを示唆しているような、広く浸透したやり方で、第一位であることを主張している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="66"><a name="66"><TD id="E66" onclick="javascript:toggleLayer('J66')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There can scarcely be a serious question of precedence between the two.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J66" onclick="javascript:toggleLayer('E66')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この二つの間の優先順位が重大な問題となる事はほとんどない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="67"><a name="67"><TD id="E67" onclick="javascript:toggleLayer('J67')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The former is a human trait necessary to the survival of the species; the latter is a habit of thought possible only in a species which has distanced all competitors, and then it prevails only by sufferance and within limits set by the former.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J67" onclick="javascript:toggleLayer('E67')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 前者は種の存続に必要な人間の特質であるし、後者は他の競争相手を引き離した種においてだけ可能な思考習慣であり、前者が黙認する限りにおいて、前者が設定した範囲内においてだけ広まっているのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="68"><a name="68"><TD id="E68" onclick="javascript:toggleLayer('J68')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The question between them is,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J68" onclick="javascript:toggleLayer('E68')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それらの間には次のような問題がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="69"><a name="69"><TD id="E69" onclick="javascript:toggleLayer('J69')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Is the aversion to labor a derivative of the instinct of workmanship?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J69" onclick="javascript:toggleLayer('E69')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち、労働にたいする嫌悪はワークマンシップの本能からの派生物なのか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="70"><a name="70"><TD id="E70" onclick="javascript:toggleLayer('J70')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, How has it arisen and gained consistency in spite of its being at variance with that instinct?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J70" onclick="javascript:toggleLayer('E70')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ということと、労働にたいする嫌悪はワークマンシップの本能と矛盾したものであるにもかかわらず、どのようにして出現し確固たるものとなったのか？ということである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="71"><a name="71"><TD ID="TAB71" onclick="javascript:toggleLayer('J71')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB71" onclick="javascript:toggleLayer('E71')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="72"><a name="72"><TD id="E72" onclick="javascript:toggleLayer('J72')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Until recently there has been something of a consensus among those who have written on early culture, to the effect that man, as he first emerged upon the properly human plane, was of a contentious disposition, inclined to isolate his own interest and purposes from those of his fellows, and with a penchant for feuds and brawls.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J72" onclick="javascript:toggleLayer('E72')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 近年に至るまで、初期文化について著述する人たちの間には、人間は、はじめて本来の人間らしい水準に達したとき、争い好きな性質であり、自分自身の利害と目的を他人のそれから引き離し、反目と口論にあけくれていたという内容の一致した見解があった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="73"><a name="73"><TD id="E73" onclick="javascript:toggleLayer('J73')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Accordingly, even where the view is met with that men are by native proclivity inclined to action, there is still evident a presumption that this native proclivity to action is a proclivity to action of a destructive kind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J73" onclick="javascript:toggleLayer('E73')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> したがって、人間は生来の性癖によって行動する傾向にあるという見解になるところでさえ、行動へのこの生来の性癖は破壊的な性癖であるという信念が依然として明らかに存在する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="74"><a name="74"><TD id="E74" onclick="javascript:toggleLayer('J74')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is held that men are inclined to fight, not to work - that the end of action in the normal case is damage rather than repair.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J74" onclick="javascript:toggleLayer('E74')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人間は働くことよりも戦おうするものである－通常の場合、行為の目的は修復というより損傷であると考えられている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="75"><a name="75"><TD id="E75" onclick="javascript:toggleLayer('J75')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This view would make the proclivity to purposeful action an impulse to sportsmanship rather than to workmanship.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J75" onclick="javascript:toggleLayer('E75')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この見解からすると、目的をもった行為に向かう性癖は、ワークマンシップへのではなくて、スポーツマンシップ(訳注4)への衝動になる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="76"><a name="76"><TD id="E76" onclick="javascript:toggleLayer('J76')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In any attempt to fit this view into an evolutionary scheme of culture it would carry the implication that in the prehuman or proto-anthropoid phase of its life the race was a predaceous species, and that the initial phase of human culture, as well as the later cultural development, has been substantially of a predatory kind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J76" onclick="javascript:toggleLayer('E76')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この見解を文化の進化図式に適合させようとする試みでは、人類は、前人あるいは原類人猿段階のときには、捕食性の種であったのであり、人間の文化の最初の段階も、後の文化の発展も実質的に略奪的なものであったという含意が支持されることになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="77"><a name="77"><TD ID="TAB77" onclick="javascript:toggleLayer('J77')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB77" onclick="javascript:toggleLayer('E77')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="78"><a name="78"><TD id="E78" onclick="javascript:toggleLayer('J78')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is much to be said for this view.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J78" onclick="javascript:toggleLayer('E78')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この見解に対しては言うべきことがたくさんある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="79"><a name="79"><TD id="E79" onclick="javascript:toggleLayer('J79')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If mankind is by derivation a race not of workmen but of sportsmen, then there is no need of explaining the conventional aversion to work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J79" onclick="javascript:toggleLayer('E79')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし人類がその出自から職人ではなくてスポーツマンであるとしたら、仕事に対する常套的な嫌悪を説明する必要はなくなる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="80"><a name="80"><TD id="E80" onclick="javascript:toggleLayer('J80')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Work is unsportsmanlike and therefore distasteful, and perplexity then arises in explaining how men have in any degree become reconciled to any but a predaceous life.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J80" onclick="javascript:toggleLayer('E80')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 仕事はスポーツマンらしくないし、それゆえ不快であるが、さて、人間がどうやって略奪生活以外の生活にある程度折り合いをつけるようになったかを説明しようとすると当惑する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="81"><a name="81"><TD id="E81" onclick="javascript:toggleLayer('J81')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Apart from the immediate convenience of this view, it is also enforced by much evidence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J81" onclick="javascript:toggleLayer('E81')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この見解の直接的な都合の良さはさておき、それはまた多くの証拠で補強されている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="82"><a name="82"><TD id="E82" onclick="javascript:toggleLayer('J82')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Most peoples at a lower stage of culture than our own are of a more predatory habit than our people.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J82" onclick="javascript:toggleLayer('E82')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 我々よりも低い文化段階のほとんどの人は、我々よりももっと略奪的な習慣をもっている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="83"><a name="83"><TD id="E83" onclick="javascript:toggleLayer('J83')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The history of mankind, as conventionally written, has been a narrative of predatory exploits, and this history is not commonly felt to be one-sided or misinformed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J83" onclick="javascript:toggleLayer('E83')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人類の歴史は、決って書かれているように、略奪的な搾取の物語であり、この歴史は一般には偏ってるとか、誤った情報を伝えるものとは感じられていない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="84"><a name="84"><TD id="E84" onclick="javascript:toggleLayer('J84')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And a sportsmanlike inclination to warfare is also to be found in nearly all modern communities.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J84" onclick="javascript:toggleLayer('E84')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、スポーツマン的に戦争へむかいたがる傾向は、ほとんど全ての近代的な共同体にも見出される。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="85"><a name="85"><TD id="E85" onclick="javascript:toggleLayer('J85')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Similarly, the sense of honor, so-called, whether it is individual or national honor, is also an expression of sportsmanship.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J85" onclick="javascript:toggleLayer('E85')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同様に、いわゆる名誉の感覚も、それが個人的なものであれ民族的な名誉であれ、スポーツマンシップの表現である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="86"><a name="86"><TD id="E86" onclick="javascript:toggleLayer('J86')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The prevalence of notions of honor may, therefore, be taken as evidence going in the same direction.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J86" onclick="javascript:toggleLayer('E86')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 名誉の概念の普及も、それゆえ、同じ傾向へ向かう証拠とされるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="87"><a name="87"><TD id="E87" onclick="javascript:toggleLayer('J87')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And as if to further fortify the claim of sportsmanship to antiquity and prescriptive standing, the sense of honor is also noticeably more vivid in communities of a somewhat more archaic culture than our own.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J87" onclick="javascript:toggleLayer('E87')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> スポーツマンシップが古代からあり、規範的地位にあるという主張をさらに強化するかのように、名誉の感覚はまた、我々よりもいささかなりと古風な文化では、目立つほどにより鮮明なものとなるのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="88"><a name="88"><TD ID="TAB88" onclick="javascript:toggleLayer('J88')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB88" onclick="javascript:toggleLayer('E88')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="89"><a name="89"><TD id="E89" onclick="javascript:toggleLayer('J89')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Yet there is a considerable body of evidence, both from cultural history and from the present-day phenomena of human life, which traverses this conventionally accepted view that makes man generically a sportsman.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J89" onclick="javascript:toggleLayer('E89')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしながら、文化史からも人間の生活の今日の現象からも、人間は一般的にスポーツマンであるとする慣例的に受け入れられているこの見解に反対する、かなりの量の証拠が得られるのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="90"><a name="90"><TD id="E90" onclick="javascript:toggleLayer('J90')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Obscurely but persistently, throughout the history of human culture, the great body of the people have almost everywhere, in their everyday life, been at work to turn things to human use.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J90" onclick="javascript:toggleLayer('E90')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 不明瞭であるが持続的に、人間の文化の歴史全体を通じて、大多数の人々が、ほとんどいたるところで、日常生活のなかで、事物を人間の用をなすものに変えるために仕事をしてきたのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="91"><a name="91"><TD id="E91" onclick="javascript:toggleLayer('J91')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The proximate aim of all industrial improvement has been the better performance of some workmanlike task.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J91" onclick="javascript:toggleLayer('E91')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あらゆる産業上の改善の直接の目的というのは、職人の課業のできばえをよりよくすることにあったのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="92"><a name="92"><TD id="E92" onclick="javascript:toggleLayer('J92')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Necessarily this work has, on the one hand, proceeded on the basis of an appreciative interest in the work to be done;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J92" onclick="javascript:toggleLayer('E92')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 必然的にこの作業は、一方では、なされた仕事へのきちん価値を見極める関心という基礎のうえで進められてきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="93"><a name="93"><TD id="E93" onclick="javascript:toggleLayer('J93')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for there is no other ground on which to obtain anything better than the aimless performance of a task.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J93" onclick="javascript:toggleLayer('E93')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、目的の無い課業の遂行より良いものをなにかしら獲得できる基礎は他にないのだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="94"><a name="94"><TD id="E94" onclick="javascript:toggleLayer('J94')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And necessarily also, on the other hand, the discipline of work has acted to develop a workmanlike attitude.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J94" onclick="javascript:toggleLayer('E94')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また、必然的に、もう一方では、仕事の訓練は職人的な態度を発展させるように作用した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="95"><a name="95"><TD id="E95" onclick="javascript:toggleLayer('J95')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It will not do to say that the work accomplished is entirely due to compulsion under a predatory regime,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J95" onclick="javascript:toggleLayer('E95')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 完成された仕事は専ら略奪的体制のもとでの強制のためであると言うべきではないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="96"><a name="96"><TD id="E96" onclick="javascript:toggleLayer('J96')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the most striking advances in this respect have been wrought where the coercive force of a sportsmanlike exploitation has been least.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J96" onclick="javascript:toggleLayer('E96')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、この点でのもっとも著しい進歩はスポーツマン的な搾取の強制力がもっとも少ないところで成し遂げられたのであるのだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="97"><a name="97"><TD ID="TAB97" onclick="javascript:toggleLayer('J97')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB97" onclick="javascript:toggleLayer('E97')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="98"><a name="98"><TD id="E98" onclick="javascript:toggleLayer('J98')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The same view is borne out by the expressions of common sense.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J98" onclick="javascript:toggleLayer('E98')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同じ見解は常識の表現によっても支持されている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="99"><a name="99"><TD id="E99" onclick="javascript:toggleLayer('J99')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As has already been remarked, whenever they dispassionately take thought and pass a judgment on the value of human conduct, the common run of mature men approve workmanship rather than sportsmanship.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J99" onclick="javascript:toggleLayer('E99')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すでに述べたように、冷静に人間の行為について配慮し、判断するときはいつでも、普通の成熟した人間はスポーツマンシップよりもワークマンシップを是認する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="100"><a name="100"><TD id="E100" onclick="javascript:toggleLayer('J100')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At the best, they take an apologetic attitude toward the latter.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J100" onclick="javascript:toggleLayer('E100')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よくても、スポーツマンシップに対しては弁解じみた態度をとるのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+prev
+<0>
+<a href="workmanship-1.htm">1</a>
+<a href="workmanship-2.htm">2</a>
+<a href="workmanship-1.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/workmanshipe.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/workmanshipj.txt">local copy</a><li><a href="../manual-alignment/workmanship.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

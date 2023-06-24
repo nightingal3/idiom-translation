@@ -1,0 +1,3064 @@
+伽藍とバザール
+The Cathdral and the Bazaar
+
+
+Eric S. Raymond 著
+山形浩生 YAMAGATA Hiroo 訳　　　　リンク、コピーは黙ってどうぞ。くわしくはこちらを見よ。
+プロジェクト杉田玄白　正式参加作品。詳細は http://www.genpaku.org/ を参照のこと。
+
+
+概要
+Abstract
+
+この論文ではまず、大成功したフリーソフト/オープンソースプロジェクト fetchmail を分析する。
+I anatomize a successful open-source project, fetchmail,
+
+このソフトは、Linux の歴史から導かれる、ソフト工学についての意外な理論を試すという意図で実施されたプロジェクトである。
+that was run as a deliberate test of the surprising theories about software engineering suggested by the history of Linux.
+
+本論ではその理論を、二種類の根本的にちがった開発スタイルという形で論じている。
+I discuss these theories in terms of two fundamentally different development styles,
+
+一つは FSF やそのまねっ子たちの「伽藍」モデルで、それに対するのが Linux 界の「バザール」モデルだ。
+the ``cathedral'' model of most of the commercial world versus the ``bazaar'' model of the Linux world.
+
+この2つのモデルが、ソフトのデバッグ作業の性質に関する、正反対の前提からそれぞれ生じていることを示す。
+I show that these models derive from opposing assumptions about the nature of the software-debugging task.
+
+続いて Linux 体験に基づき、「目玉の数さえ十分あれば、どんなバグも深刻ではない」という仮説を支持する議論を展開し、利己的エージェントによる自己修正システムとの有益な対比をしてみる。
+I then make a sustained argument from the Linux experience for the proposition that ``Given enough eyeballs, all bugs are shallow'', suggest productive analogies with other self-correcting systems of selfish agents,
+
+そしてこの洞察がソフトウェアの未来に対して持つ意味について、いくつか考察を行って結論としている。
+and conclude with some exploration of the implications of this insight for the future of software.
+
+
+目次
+Table of Contents
+
+1 伽藍方式とバザール方式 
+  The Cathedral and the Bazaar
+
+2 なにはともあれメールは通せ 
+  The Mail Must Get Through
+
+3. ユーザは大事な財産 
+  The Importance of Having Users
+
+4 はやめのリリース、しょっちゅうリリース 
+  Release Early, Release Often
+
+
+  How Many Eyeballs Tame Complexity
+
+
+5 バラがバラでないのは？ 
+  When Is a Rose Not a Rose?
+
+6 Popclient から Fetchmail へ 
+  Popclient becomes Fetchmail
+
+7 Fetchmail の成長 
+  Fetchmail Grows Up
+
+8 続・Fetchmail の教訓 
+  A Few More Lessons from Fetchmail
+
+9 バザール方式の前提条件とは 
+  Necessary Preconditions for the Bazaar Style
+
+10 フリーソフト/オープンソースの社会的な意義 
+  The Social Context of Open-Source Software
+
+11 マネジメントとマジノ線について 
+  On Management and the Maginot Line
+
+謝辞 
+
+
+もっと考えたい人のための文献リスト 
+
+
+エピローグ：Netscape もバザール方式を受け入れる 
+  Epilog: Netscape Embraces the Bazaar
+
+15 脚注 
+  Notes
+
+バージョンと変更履歴 
+
+
+  Bibliography
+  Acknowledgements
+
+
+1 伽藍方式とバザール方式
+The Cathedral and the Bazaar
+
+Linux は破壊的存在なり。
+Linux is subversive.
+
+インターネットのかぼそい糸だけで結ばれた、地球全体に散らばった数千人の開発者たちが片手間にハッキングするだけで、超一流の OS が魔法みたいに編み出されてしまうなんて、ほんの 5 年前でさえだれも想像すらできなかったんだから。
+Who would have thought even five years ago (1991) that a world-class operating system could coalesce as if by magic out of part-time hacking by several thousand developers scattered all over the planet, connected only by the tenuous strands of the Internet?
+
+ぼくもできなかった。
+Certainly not I.
+
+Linux がぼくのレーダー画面に泳ぎ着いたのは 1993 年の頭だったけれど、その頃ぼくはすでに Unix やフリーソフト開発に 10 年以上も関わってきていた。
+By the time Linux swam onto my radar screen in early 1993, I had already been involved in Unix and open-source development for ten years.
+
+1980 年代半ば、ぼくは最初期の GNU 協力者の一人だったし、
+I was one of the first GNU contributors in the mid-1980s.
+
+ネット上にかなりのフリーソフトもリリースして、いまでも広く使われているようなプログラムをいくつか（nethack、Emacs VC モードと GUD モード、xlife など）単独または共同で開発してきた。
+I had released a good deal of open-source software onto the net, developing or co-developing several programs (nethack, Emacs's VC and GUD modes, xlife, and others) that are still in wide use today.
+
+だから、もうやり方はわかってるもんだと思いこんでいた。
+I thought I knew how it was done.
+
+Linux は、ぼくがわかっているつもりでいたものを、大幅にひっくりかえしてくれた。
+Linux overturned much of what I thought I knew.
+
+それまでだって、小さなツールや高速プロトタイプ作成、進化的プログラミングといったUnix の福音は説き続けてはいた。
+I had been preaching the Unix gospel of small tools, rapid prototyping and evolutionary programming for years. 
+
+でももっと上のレベルでは何かどうしようもない複雑な部分がでてきて、もっと中央集権的で、アプリオリなアプローチが必要になってくるものだとも思っていた。
+But I also believed there was a certain critical complexity above which a more centralized, a priori approach was required.
+
+一番だいじなソフト（OS や、Emacs みたいな本当に大規模なツール）は伽藍のように組み立てられなきゃダメで、一人のウィザードか魔術師の小集団が、まったく孤立して慎重に組み立てあげるべきもので、完成するまでベータ版も出さないようでなくちゃダメだと思っていた。
+I believed that the most important software (operating systems and really large tools like the Emacs programming editor) needed to be built like cathedrals, carefully crafted by individual wizards or small bands of mages working in splendid isolation, with no beta to be released before its time.
+
+だから リーヌス・トーヴァルズの開発スタイル
+Linus Torvalds's style of development&#8212
+
+――はやめにしょっちゅうリリース、任せられるものはなんでも任して、乱交まがいになんでもオープンにする
+;release early and often, delegate everything you can, be open to the point of promiscuity&#8212
+
+――にはまったく驚かされた。
+;came as a surprise.
+
+静かで荘厳な伽藍づくりなんかない
+No quiet, reverent cathedral-building here&#8212
+
+―― Linux コミュニティはむしろ、いろんな作業やアプローチが渦を巻く、でかい騒がしいバザールに似ているみたいだった
+;rather, the Linux community seemed to resemble a great babbling bazaar of differing agendas and approaches
+
+（これをまさに象徴しているのが Linux のアーカイブサイトで、ここはどこのだれからでもソフトを受け入れてしまう）。
+(aptly symbolized by the Linux archive sites, who'd take submissions from anyone)
+
+そしてそこから一貫した安定なシステムが出てくるなんて、奇跡がいくつも続かなければ不可能に思えた。
+out of which a coherent and stable system could seemingly emerge only by a succession of miracles.
+
+このバザール方式がどういうわけかまともに機能するらしく、しかもみごとな結果を生むなんて、衝撃以外の何物でもなかった。
+The fact that this bazaar style seemed to work, and work well, came as a distinct shock.
+
+この世界の様子を学ぶにあたって、ぼくは個別のプロジェクトだけでなく、なぜ Linux 界が混乱のうちに崩壊しないのか、それどころかなぜ、伽藍建設者たちの想像を絶するスピードで、続々と強みを発揮し続けられるのかを理解しようとしてきた。
+As I learned my way around, I worked hard not just at individual projects, but also at trying to understand why the Linux world not only didn't fly apart in confusion but seemed to go from strength to strength at a speed barely imaginable to cathedral-builders.
+
+1996 年半ばには、答がわかりかけてきたような気がした。
+By mid-1996 I thought I was beginning to understand.
+
+そしてその頃まったくの偶然から、自分の理論を試してみる完璧な機会がやってきた。
+Chance handed me a perfect way to test my theory, 
+
+意識的にバザール方式で運営できるようなフリーソフトプロジェクトという形で。
+in the form of an open-source project that I could consciously try to run in the bazaar style.
+
+そこでバザール方式を試してみた
+So I did&#8212
+
+――大成功。
+and it was a significant success.
+
+というわけでこれから、そのプロジェクトの話をしようではないの。
+This is the story of that project.
+
+そしてそれを使って、上手なフリーソフト開発についていくつかアフォリズムを提案してみよう。
+I'll use it to propose some aphorisms about effective open-source development.
+
+全部が全部、Linux の世界で学んだことばかりではないけれど、そういうものでも Linux 界がすごくいい例になってることがわかるはず。
+Not all of these are things I first learned in the Linux world, but we'll see how the Linux world gives them particular point.
+
+ぼくが正しければ、なぜ Linux コミュニティがこんなにいいソフトを続々と生み出せるのか、みんなにもずばりわかるはず
+If I'm correct, they'll help you understand exactly what it is that makes the Linux community such a fountain of good software&#8212
+
+――そしてみんなももっと生産的になれるはずなんだ。
+;and, perhaps, they will help you become more productive yourself.
+
+
+2 なにはともあれメールは通せ
+The Mail Must Get Through 
+
+1993年以来、ぼくはペンシルバニア州ウェストチェスターにある、Chester County InterLink (CCIL) という小さなフリーアクセス ISP の技術面を担当してた 
+Since 1993 I'd been running the technical side of a small free-access Internet service provider called Chester County InterLink (CCIL) in West Chester, Pennsylvania.
+
+(ぼくは CCIL の共同創設者で、ぼくたちが使ってるユニークなマルチユーザ BBS ソフトを書いた。
+I co-founded CCIL and wrote our unique multiuser bulletin-board software
+
+興味があれば、locke.ccil.orgに telnet してみてほしい。
+?you can check it out by telnetting to locke.ccil.org.
+
+いまでは 19 回線で 3,000 人弱のユーザをサポートしてる) 。
+Today it supports almost three thousand users on thirty lines.
+
+この仕事のおかげで、CCIL の 56K 回線を通じて 1 日 24 時間ネットにアクセスし続けられるようになった
+The job allowed me 24-hour-a-day access to the net through CCIL's 56K line
+
+――というより、仕事柄そうせざるをえなかったというのが実状かな！
+?in fact, the job practically demanded it!
+
+そういうわけで、インターネットの電子メールがすぐに手放せなくなった。
+I had gotten quite used to instant Internet email.
+
+なんかややこしい理由で自宅のマシン (snark.thyrsus.com)と CCIL とで SLIP 接続するのに手間取って、それがうまくいくと、
+
+
+今度はしょっちゅうlockeに telnet してメールをチェックするのがえらく面倒になってきた。
+I found having to periodically telnet over to locke to check my mail annoying.
+
+
+メールを snarkに配信してもらって、新しいメールがきたら biff(1) が報せてくれるようにしたかったわけ。
+What I wanted was for my mail to be delivered on snark (my home system) so that I would be notified when it arrived and could handle it using all my local tools.
+
+Sendmail の転送機能は使えない。
+The Internet's native mail forwarding protocol, SMTP (Simple Mail Transfer Protocol), wouldn't suit,
+
+
+because it works best when machines are connected full-time, 
+
+
+snark はネットにつないでないときもあって、IP アドレスも固定されてないからね。
+while my personal machine isn't always on the Internet, and doesn't have a static IP address.
+
+SLIP 接続経由で手をのばして、メールをローカルマシンに引っ張ってきてくれるようなソフトがほしかったわけだ。
+What I needed was a program that would reach out over my intermittent dialup connection and pull across my mail to be delivered locally.
+
+そういうソフトがあるのは知ってたし、そのほとんどが POP (Post Office Protocol) っていう簡単なアプリケーション・プロトコルを使ってるのも知ってた。
+I knew such things existed, and that most of them used a simple application protocol called POP (Post Office Protocol).
+
+
+POP is now widely supported by most common mail clients, but at the time, it wasn't built in to the mail reader I was using.
+
+
+そして、確かに locke の BSD/OS には、ちゃんと POP3 サーバソフトが含まれているではないの。
+
+
+あとは POP3 のクライアントがあればいい。
+I needed a POP3 client.
+
+そこでネットで探してみると、3つか4つ見つかった。
+So I went out on the Internet and found one.
+Actually, I found three or four.
+
+しばらくは pop-perl を使ってたけれど、これには当然あるべき（と思われる）機能が欠けていた。
+I used one of them for a while, but it was missing what seemed an obvious feature,
+
+とってきたメールのアドレスをいじくって、返信がうまくいくようにするのができなかったんだ。
+the ability to hack the addresses on fetched mail so replies would work properly.
+
+つまりこういうことだ。
+The problem was this:
+
+locke 上の「joe」という人が、ぼくにメールを出したとする。
+suppose someone named `joe' on locke sent me mail.
+
+このメールを snark にとってきて、それに返信したら、メールソフトは snark 上の「joe」にそれを送って悦に入っちゃうわけ。
+If I fetched the mail to snark and then tried to reply to it, my mailer would cheerfully try to ship it to a nonexistent `joe' on snark. 
+
+
+そんな人物はいないのに。
+
+
+返信アドレスを手でなおして、@ccil.orgを最後にくっつけてたんだけれど、これはすぐにえらい手間になってきた。
+Hand-editing reply addresses to tack on <@ccil.org> quickly got to be a serious pain.
+
+こんなのどう見ても、コンピュータがやるべきことだよね 
+This was clearly something the computer ought to be doing for me.
+
+
+(実は RFC1123 のセクション 5.2.18 によれば、これは sendmail が処理しなきゃいけないんだけど）。
+
+
+でも、既存の POP クライアントはどれ一つとしてこいつがこなせなかった！　
+But none of the existing POP clients knew how!
+
+というわけで、教訓その1:
+And this brings us to the first lesson:
+
+1. よいソフトはすべて、開発者の個人的な悩み解決から始まる。 
+1. Every good work of software starts by scratching a developer's personal itch.
+
+これは自明のことかもしれない
+Perhaps this should have been obvious
+
+（昔から「必要は発明の母」って言うし）。
+(it's long been proverbial that ``Necessity is the mother of invention'')
+
+でも実際のソフト開発者ってのは、お金で横っ面はられて自分では要りもしないし好きでもないようなソフトを一日中シコシコ書いてることがあまりに多いんだ。
+but too often software developers spend their days grinding away for pay at programs they neither need nor love.
+
+でも、Linux の世界ではちがう
+But not in the Linux world
+
+―― Linux 界出身ソフトの質が、平均してすごく高いのはこのせいかもしれないね。
+?which may explain why the average quality of software originated in the Linux community is so high.
+
+そこでぼくは、既存のものとタメを張るようなまっさらの POP3 クライアントを書き上げるべく、即座にコード書きの渦中へ猛然ととびこんだ――かな？　
+So, did I immediately launch into a furious whirl of coding up a brand-new POP3 client to compete with the existing ones?
+
+ご冗談を！　
+Not on your life!
+
+ぼくはまず、手元にある POP ユーティリティをじっくりながめてこう考えた。
+I looked carefully at the POP utilities I had in hand, asking myself
+
+「ぼくの欲しいものにいちばん近いのはどれかな？」　
+``Which one is closest to what I want?''
+
+というのも：
+Because:
+
+2. 何を書けばいいかわかってるのがよいプログラマ。
+2. Good programmers know what to write.
+
+なにを書き直せば（そして使い回せば）いいかわかってるのが、すごいプログラマ。 
+Great ones know what to rewrite (and reuse).
+
+
+――だからね。
+
+
+すごいプログラマを気取るつもりはないけど、でもそのまねくらいはしたい。
+While I don't claim to be a great programmer, I try to imitate one.
+
+すごいプログラマの大事な特徴の一つが、建設的な面倒くさがりってヤツなんだ。
+An important trait of the great ones is constructive laziness.
+
+評価してもらえるのは結果であって、そのための努力じゃないってのがわかってるってこと。
+They know that you get an A not for effort but for results,
+
+そして白紙から始めるよりは、よくできた部分解からはじめたほうがほぼ絶対に楽。
+and that it's almost always easier to start from a good partial solution than from nothing at all.
+
+たとえば リーヌス・トーヴァルズ（http://www.catb.org/~esr/faqs/linus）は、Linux をゼロから書き始めたわけじゃない。
+Linus Torvalds, for example, didn't actually try to write Linux from scratch.
+
+386 マシン用の、小さな UNIX っぽい OS だった Minix のコードやアイデアを再利用するところから始めてる。
+Instead, he started by reusing code and ideas from Minix, a tiny Unix-like operating system for PC clones.
+
+やがて Minix のコードは全部落とされたか、あるいは完全に書き直された
+Eventually all the Minix code went away or was completely rewritten
+
+――でも最初のうちは、やがて Linux となるべき赤ん坊のための簡単な囲いを提供してくれてたんだ。
+?but while it was there, it provided scaffolding for the infant that would eventually become Linux.
+
+同じ精神から、ぼくは既存の POP ユーティリティを探しに出た。
+In the same spirit, I went looking for an existing POP utility
+
+そこそこ上手にコーディングされてて、開発のベースに使えるようなヤツを。
+that was reasonably well coded, to use as a development base.
+
+Unix 界では、ソース共有の伝統のおかげでコードの再利用が昔からとってもやりやすかった
+The source-sharing tradition of the Unix world has always been friendly to code reuse
+
+（このせいで GNU プロジェクトは、Unix という OSそのものについては、かなり不満を持ってたんだけれど、ベース OS には Unix を選んだ）。
+(this is why the GNU project chose Unix as a base OS, in spite of serious reservations about the OS itself).
+
+Linux 界は、この伝統を技術的な極限にまでつきつめてる。
+The Linux world has taken this tradition nearly to its technological limit;
+
+だれにでも使えるオープンなソースコードが、何テラバイトもある。
+it has terabytes of open sources generally available.
+
+だからだれかほかの人の、ほとんど使いものになりそうなコードを探すのは、Linux の世界ではほかのどこよりもすごくいい結果をうみやすい。
+So spending time looking for some else's almost-good-enough is more likely to give you good results in the Linux world than anywhere else.
+
+ぼくの場合もそうだった。
+And it did for me.
+
+もう一度探しに出た結果、最初に見つけたのとあわせて候補が9個あがってきた
+With those I'd found earlier, my second search made up a total of nine candidatse
+
+―― fetchpop、PopTart、get-mail、 gwpop、pimp、pop-perl、popc、popmail、upop。
+?fetchpop, PopTart, get-mail, gwpop, pimp, pop-perl, popc, popmail and upop.
+
+最初に落ち着いた先は呉承洪（オー・スンホン）の fetchpop だった。
+The one I first settled on was `fetchpop' by Seung-Hong Oh.
+
+ぼくは自前のヘッダ変更機能をそれに加えて、その他いろいろ改良を入れた。
+I put my header-rewrite feature in it, and made various other improvements
+
+作者はそれを受け入れて、1.9 リリースに含めてくれた。
+which the author accepted into his 1.9 release.
+
+でも数週間たって、Carl Harris の popclient のコードに出くわして、困ったなと思った。
+A few weeks later, though, I stumbled across the code for popclient by Carl Harris, and found I had a problem.
+
+fetchpop はなかなかいい独創的なアイデア（たとえば daemon モードとか）が入ってたんだけれど、POP3 しか扱えないし、コードもいささか素人くさかった
+Though fetchpop had some good original ideas in it (such as its background-daemon mode), it could only handle POP3 and was rather amateurishly coded
+
+（スンホンはプログラマとして才能はあるけれどまだ駆け出しで、その両方の特徴が fetchpop には出ていた）。
+(Seung-Hong was at that time a bright but inexperienced programmer, and both traits showed).
+
+Carl のコードのほうが優れていて、プロ級のしっかりしたものだったけれど、大事なのに実装が面倒な fetchpop の機能がいくつか欠けていた
+Carl's code was better, quite professional and solid, but his program lacked several important and rather tricky-to-implement fetchpop features
+
+（ぼくがコーディングした機能も含め）。
+(including those I'd coded myself).
+
+このままいくか、乗り換えるか？　
+Stay or switch?
+
+乗り換えたら、開発ベースはよくなるけれど、かわりにこれまでのコーディングは全部捨てることになる。
+If I switched, I'd be throwing away the coding I'd already done in exchange for a better development base.
+
+実際問題として、乗り換える理由の一つに複数のプロトコルが扱える点があった。
+A practical motive to switch was the presence of multiple-protocol support.
+
+POP3 は post-office サーバプロトコルで一番普及はしているけれど、唯一無二ってわけじゃない。
+POP3 is the most commonly used of the post-office server protocols, but not the only one.
+
+Fetchpop をはじめとする競合ソフトは POP2 も RPOP も APOP も扱えなかったし、ぼくのほうでは IMAP <http://www.imap.org/> (Internet Message Access Protocol、一番最近に設計された、最強の post-office プロトコル) のサポートを入れたらいいかもしれないな、なんてことをすでにおもしろ半分で考え始めていた。
+Fetchpop and the other competition didn't do POP2, RPOP, or APOP, and I was already having vague thoughts of perhaps adding IMAP (Internet Message Access Protocol, the most recently designed and most powerful post-office protocol) just for fun.
+
+でも、乗り換えたほうがいいかもしれない理論的な根拠もあった。
+But I had a more theoretical reason to think switching might be as good an idea as well,
+
+これはぼくが、Linux よりずっと前に学んだことでもある。
+something I learned long before Linux.
+
+こういうことだ：
+
+
+3. 捨てることをあらかじめ予定しておけ。
+3. ``Plan to throw one away;
+
+どうせいやでも捨てることになるんだから
+you will, anyhow.''
+
+（フレッド・ブルックス『人月の神話』第11章） 
+(Fred Brooks, The Mythical Man-Month, Chapter 11)
+
+あるいは言い換えると、1 回とりあえず解決策を実装してみるまでは、問題を完全には理解しきれないってこと。
+Or, to put it another way, you often don't really understand the problem until after the first time you implement a solution.
+
+2 回目くらいになってやっと、正しい解決法がわかるくらいの理解が得られるかもしれない。
+The second time, maybe you know enough to do it right.
+
+だからちゃんとした問題解決をしたいなら、少なくとも 1 回くらいはやりなおす覚悟はしておくこと。[JB]
+So if you want to get it right, be ready to start over at least once [JB].
+
+ま、（と独り言）fetchpop の改良が 1 回目だったわけだ。
+Well (I told myself) the changes to fetchpop had been my first try.
+
+というわけで、ぼくは乗り換えた。
+So I switched.
+
+最初の popclient 用パッチを 1996 年 6 月 25 日に Carl Harris に送ったんだけれど、実はかれはしばらくまえに、popclient に興味をなくしていることがわかった。
+After I sent my first set of popclient patches to Carl Harris on 25 June 1996, I found out that he had basically lost interest in popclient some time before.
+
+コードもほこりをかぶってる状態で、ちょっとしたバグも残ったままだったし。
+The code was a bit dusty, with minor bugs hanging out.
+
+こっちとしては、いろいろ変えたいところもあった。
+I had many changes to make, 
+
+だから、ぼくがこのプログラムを任されるのがいちばん理にかなってるということで、両者はすぐに合意した。
+and we quickly agreed that the logical thing for me to do was take over the program.
+
+自分でも気がつかないうちに、プロジェクトは拡大したわけだ。
+Without my actually noticing, the project had escalated.
+
+もはやぼくは、既存の POP クライアントにちょっとパッチをあてるような話をしてるわけじゃない。
+No longer was I just contemplating minor patches to an existing POP client.
+
+プログラムをまるごとメンテする作業を引き受けてたんだ。
+I took on maintaining an entire one,
+
+そして頭の中ではいろいろアイデアも湧いてきていて、これをやったら大幅な変更が必要になるな、というのもはっきりしてた。
+and there were ideas bubbling in my head that I knew would probably lead to major changes.
+
+コード共有を奨励するソフト文化にあって、これはプロジェクト発展の自然な道筋ではある。
+In a software culture that encourages code-sharing, this is a natural way for a project to evolve.
+
+ぼくは次の原理を実践していたことになる：
+I was acting out this principle:
+
+4. まともな行動をとってれば、おもしろい問題のほうからこっちを見つけだしてくれる。 
+4. If you have the right attitude, interesting problems will find you.
+
+でも Carl Harris の行動のほうがもっと大事だ。
+But Carl Harris's attitude was even more important.
+
+かれが理解していたこと：
+He understood that
+
+5. あるソフトに興味をなくしたら、最後の仕事としてそれを有能な後継者に引き渡すこと。 
+5. When you lose interest in a program, your last duty to it is to hand it off to a competent successor.
+
+なにも相談なんかしなくても、カールもぼくも、自分たちがこの世で最高の問題解決方法を実現するという共通の目標を持っていることがわかっていた。
+Without ever having to discuss it, Carl and I knew we had a common goal of having the best solution out there.
+
+二人にとって唯一の問題は、ぼくがこれを安心して任せられる人物だってことを証明できるかということだけだった。
+The only question for either of us was whether I could establish that I was a safe pair of hands.
+
+それを実証してみせたら、かれはすぐさま優雅なふるまいを見せて、ソフトをゆだねてくれた。
+Once I did that, he acted with grace and dispatch.
+
+ぼくの順番がきたときにも、Carl と同じくらいの鷹揚さを示したいなと思う。
+I hope I will do as well when it comes my turn.
+
+
+3. ユーザは大事な財産
+The Importance of Having Users
+
+というわけで、ぼくは popclient をひきついだ。
+And so I inherited popclient.
+
+そして同じくらい大事なことだけれど、ぼくは popclient のユーザベースもひきついだわけだ。
+Just as importantly, I inherited popclient's user base.
+
+ユーザを持つのはすばらしいことで、それは単に、自分が何かニーズに対応してるんだな、なにか役に立つことをしたんだな、ということを実証してくれるからというだけじゃない。
+Users are wonderful things to have, and not just because they demonstrate that you're serving a need, that you've done something right.
+
+きちんと育てれば、ユーザは共同開発者になってくれるんだ。
+Properly cultivated, they can become co-developers.
+
+これまた Unix の伝統の強みで、これまた Linux がみごとに極限までおしすすめる強みでもあるんだけれど、ユーザの中にもハッカーがたくさんいるわけだ。
+Another strength of the Unix tradition, one that Linux pushes to a happy extreme, is that a lot of users are hackers too.
+
+そしてソースコードが公開されてるから、かれらは同じハッカーでも役に立つハッカーになってくれる。
+Because source code is available, they can be effective hackers.
+
+これはデバッグ時間短縮にはすごく役に立つ。
+This can be tremendously useful for shortening debugging time.
+
+ちょっと励ますだけで、ユーザが問題を診断し、直し方を提案してくれて、一人でやるよりずっとはやくコードを改善できるようにしてくれる。
+Given a bit of encouragement, your users will diagnose problems, suggest fixes, and help improve the code far more quickly than you could unaided.
+
+6. ユーザを共同開発者として扱うのは、コードの高速改良と効率よいデバッグのいちばん楽ちんな方法。 
+6. Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.
+
+この効果の力はすごく見落としがち。
+The power of this effect is easy to underestimate.
+
+はっきり言って、ぼくらフリーソフト界のほとんどだれもが、この効果がユーザの数の増加とともにどれほどすごくなるか、そしてそれがシステムの複雑さに対してどれほど有効に機能するかについて、まったく見えてなかった。
+In fact, pretty well all of us in the open-source world drastically underestimated how well it would scale up with number of users and against system complexity, 
+
+リーヌスが目を開いてくれるまでは。
+until Linus Torvalds showed us differently.
+
+はっきり言って、ぼくは リーヌスのいちばん賢い、影響力あるハッキングというのは、Linux のカーネル構築そのものではないと思う。
+In fact, I think Linus's cleverest and most consequential hack was not the construction of the Linux kernel itself, 
+
+むしろ Linux 開発モデルの発明だと思う。
+but rather his invention of the Linux development model.
+
+本人の前でこの意見を述べてみたら、かれはにっこりして、これまで何度か言ったことを静かに繰り返した。
+When I expressed this opinion in his presence once, he smiled and quietly repeated something he has often said:
+
+「ぼくは基本的に怠け者で、ほかの人のしてくれた作業を自分の仕事だと称するのが好きなんだよ」。
+``I'm basically a very lazy person who likes to get credit for things other people actually do.''
+
+キツネのようなずるがしこい怠けぶり。
+Lazy like a fox.
+
+あるいはロバート・ハインラインが自作の登場人物の一人について書いた有名な表現にならえば、「失敗するには怠惰すぎる」。
+Or, as Robert Heinlein famously wrote of one of his characters, too lazy to fail.
+
+ふりかえってみると、Linux の手法や成功の前例は GNU Emacs の Lisp ライブラリと Lisp コードアーカイブの開発にみることができる。
+In retrospect, one precedent for the methods and success of Linux can be seen in the development of the GNU Emacs Lisp library and Lisp code archives.
+
+Emacs の C のコア部分やその他 FSF ツールみたいな、伽藍建築方式にくらべると、Lisp コードのプールの進化は流動的で、すごくユーザ主導で行われた。
+In contrast to the cathedral-building style of the Emacs C core and most other GNU tools, the evolution of the Lisp code pool was fluid and very user-driven.
+
+アイデアやプロトタイプ・モードは、安定した最終形に落ち着くまで 3 回も 4 回も書き直されるのがしょっちゅうだった。
+Ideas and prototype modes were often rewritten three or four times before reaching a stable final form.
+
+そして Linux と同じく、インターネットが可能にしたゆるい協力体制もしばしばとられていた。
+And loosely-coupled collaborations enabled by the Internet, a la Linux, were frequent.
+
+確かに、ぼく自身でも fetchmail 以前でいちばんうまくいったハッキングは、Emacs の VC モードだと思う。
+Indeed, my own most successful single hack previous to fetchmail was probably Emacs VC (version control) mode,
+
+これは Linux みたいに、電子メールで 3 人と共同作業して開発した。
+a Linux-like collaboration by email with three other people,
+
+今日にいたるまで、その中で実際に顔をあわせたことがあるのは一人（Richard Stallman、Emacsの作者で FSF <http://www.fsf.org/>の創始者）だけだ。
+only one of whom (Richard Stallman, the author of Emacs and founder of the Free Software Foundation) I have met to this day.
+
+これは SCCS、RCS、そして後には CVS となったもののフロントエンドで、「ワンタッチ」のバージョンコントロール機能を Emacs の中から使えるようにするものだった。
+It was a front-end for SCCS, RCS and later CVS from within Emacs that offered ``one-touch'' version control operations.
+
+もとにしたのは、だれかが書いた、いい加減でちっちゃな sccs.el モード。
+It evolved from a tiny, crude sccs.el mode somebody else had written.
+
+そしてVCの開発が成功したのは、Emacs 本体とはちがって、Emacs Lisp のコードはリリース/テスト/改良のサイクルをすごくはやく回せるからだった。
+And the development of VC succeeded because, unlike Emacs itself, Emacs Lisp code could go through release/test/improve generations very quickly.
+
+
+The Emacs story is not unique. 
+There have been other software products with a two-level architecture and a two-tier user community that combined a cathedral-mode core and a bazaar-mode toolbox. 
+One such is MATLAB, a commercial data-analysis and visualization tool. 
+Users of MATLAB and other products with a similar structure invariably report that the action, the ferment, the innovation mostly takes place in the open part of the tool where a large and varied community can tinker with it.
+
+
+4 はやめのリリース、しょっちゅうリリース
+Release Early, Release Often
+
+はやめにしょっちゅうリリースするのは、Linux 開発モデルの重要な部分だ。
+Early and frequent releases are a critical part of the Linux development model.
+
+ほとんどの開発者（含ぼく）は、プロジェクトがちょっとでも大きくなったらこいつはまずいやり方だと考えていた。
+Most developers (including me) used to believe this was bad policy for larger than trivial projects,
+
+初期バージョンはその定義からいってバグだらけだし、ユーザの我慢にも限度があるだろうから。
+because early versions are almost by definition buggy versions and you don't want to wear out the patience of your users.
+
+この信念のおかげで、伽藍建設式の開発への関与も深まった。
+This belief reinforced the general commitment to a cathedral-building style of development.
+
+もし最優先課題が、できるだけ少ないバグしかユーザにお目にかけないということだったら、うん、それならリリースは半年に一度とかにして（あるいはもっと間をおいて）、リリースの間は犬みたいにひたすらバグ取りに専念するだろう。
+If the overriding objective was for users to see as few bugs as possible, why then you'd only release a version every six months (or less often), and work like a dog on debugging between releases.
+
+Emacs の C の核部分はこういう形で開発された。
+The Emacs C core was developed this way.
+
+Lisp ライブラリは、事実上ちがっていた。
+The Lisp library, in effect, was not
+
+FSF のコントロールのきかない活発なLispアーカイブがあって、そこにいけば Emacs のリリースサイクルとはまったく関係ない、新しい開発コードが手に入ったから。[QR]
+?because there were active Lisp archives outside the FSF's control, where you could go to find new and development code versions independently of Emacs's release cycle [QR].
+
+こういうアーカイブのいちばん重要なものの一つは、オハイオ州立大の elisp アーカイブでここは今日の大きな Linux アーカイブの精神や特徴の多くを先取りしたところだった。
+The most important of these, the Ohio State Emacs Lisp archive, anticipated the spirit and many of the features of today's big Linux archives.
+
+でも、自分たちがなにをしているのかしっかり考えてみた者はほとんどいなかったし、このアーカイブの存在自体が、FSF 式の伽藍建設型開発モデルの問題点についてなにを示唆しているのかについてもあまり考えなかった。
+But few of us really thought very hard about what we were doing, or about what the very existence of that archive suggested about problems in the FSF's cathedral-building development model.
+
+1992 年頃、ぼくはオハイオのコードの相当部分を正式に公式 Emacs Lisp ライブラリに組み込もうとして、かなりまじめに取り組んだ。
+I made one serious attempt around 1992 to get a lot of the Ohio code formally merged into the official Emacs Lisp library.
+
+でも政治的な問題にぶちあたって、ほとんどうまくいかなかった。
+I ran into political trouble and was largely unsuccessful.
+
+でもそれから一年たたないうちに、Linux がかなり目に見えて広まってくると、なにかちがった、ずっと健全なことが起こっているのははっきりしてきた。
+But by a year later, as Linux became widely visible, it was clear that something different and much healthier was going on there.
+
+リーヌスのオープンな開発方針は、伽藍建設の正反対のものだった。
+Linus's open development policy was the very opposite of cathedral-building.
+
+Sunsite （現metalab）や tsx-11 のアーカイブははちきれそうで、パッケージもどんどん登場してきた。
+Linux's Internet archives were burgeoning, multiple distributions were being floated.
+
+そしてそのすべてが、前代未聞の頻度でリリースされるコアシステムに動かされていた。
+And all of this was driven by an unheard-of frequency of core system releases.
+
+リーヌスはいちばん効果的なやりかたで、ユーザたちを共同開発者として扱っていたことになる： 
+Linus was treating his users as co-developers in the most effective possible way:
+
+7. はやめのリリース、ひんぱんなリリース。
+7. Release early. Release often.
+
+そして顧客の話をきくこと 
+And listen to your customers.
+
+リーヌスの革新は、これをやったということじゃない
+Linus's innovation wasn't so much in doing quick-turnaround releases incorporating lots of user feedback
+
+（似たようなことは、もうながいこと Unix の世界の伝統になっていた）。
+(something like this had been Unix-world tradition for a long time),
+
+それをスケールアップして、開発しているものの複雑さに見合うだけの集中した取り組みにまでもっていったということだった。
+but in scaling it up to a level of intensity that matched the complexity of what he was developing.
+
+開発初期のあの頃だと、リーヌスが新しいカーネルを一日に何回もリリースすることだって、そんなに珍しくはなかった。
+In those early times (around 1991) it wasn't unknown for him to release a new kernel more than once a day!
+
+そしてかれは、共同開発者の基盤をうまく育てて、インターネットでうまく共同作業をする点で、ほかのだれよりも上をいっていた。
+Because he cultivated his base of co-developers and leveraged the Internet for collaboration harder than anyone else,
+
+それでうまくいったわけだ。
+this worked.
+
+でも、具体的にどういうふうにうまくいってるんだろう。
+But how did it work?
+
+そしてそれはぼくでもまねできるものなんだろうか、それとも リーヌスだけにしかない独特な才能に依存したものなんだろうか？
+And was it something I could duplicate, or did it rely on some unique genius of Linus Torvalds?
+
+そうは思えなかった。
+I didn't think so.
+
+そりゃもちろん、リーヌスはまったく大したハッカーだ
+Granted, Linus is a damn fine hacker.
+
+（完全な製品レベルの OS カーネルをつくりあげられる人間が、ぼくたちのなかでどれだけいるね？）。
+How many of us could engineer an entire production-quality operating system kernel from scratch?
+
+でも、Linux はとんでもないソフトウェア思想上の進歩を取り込んだりはしていない。 
+But Linux didn't represent any awesome conceptual leap forward.
+
+リーヌスは、たとえばリチャード・ストールマンとかジェームズ・ゴスリング（NeWSとJavaで有名）のような、設計面での革新的天才ではないんだ（少なくともいまのところは）。
+Linus is not (or at least, not yet) an innovative genius of design in the way that, say, Richard Stallman or James Gosling (of NeWS and Java) are.
+
+むしろリーヌスはエンジニアリングの天才なんじゃないかと思う。
+Rather, Linus seems to me to be a genius of engineering and implementation,
+
+バグや開発上の袋小路を避ける第六感と、A 地点から B 地点にたどりつく、いちばん楽な道を見つけだす真の直感もある。
+with a sixth sense for avoiding bugs and development dead-ends and a true knack for finding the minimum-effort path from point A to point B.
+
+Linux の設計はすべて、この特徴が息づいているし、リーヌスの本質的に地道で単純化するような設計アプローチが反映されている。
+Indeed, the whole design of Linux breathes this quality and mirrors Linus's essentially conservative and simplifying design approach.
+
+じゃあ、もし急速リリースと、インターネットの徹底的な使い倒しが偶然ではなくて、労力を最小限ですまそうとするリーヌスのエンジニアリング上の天才的洞察の不可欠な部分だったんなら、かれが最大化しているのは何だったんだろう。
+So, if rapid releases and leveraging the Internet medium to the hilt were not accidents but integral parts of Linus's engineering-genius insight into the minimum-effort path, what was he maximizing?
+
+この仕組みからかれがひねりだしているのはなんだったんだろう。
+What was he cranking out of the machinery?
+
+こういう問題のたてかたをすれば、質問自体が答になる。
+Put that way, the question answers itself.
+
+リーヌスは、ハッカー/ユーザたちをたえず刺激して、ごほうびを与え続けたってことだ。
+Linus was keeping his hacker/users constantly stimulated and rewarded
+
+刺激は、全体の動きの中で一員となることでエゴを満足させられるという見込みで、ごほうびは、自分たちの仕事がたえず（まさに毎日のように）進歩している様子だ。
+?stimulated by the prospect of having an ego-satisfying piece of the action, rewarded by the sight of constant (even daily) improvement in their work.
+
+リーヌスは、デバッグと開発に投入される人・時間を最大化することをずばり狙っていたわけだ。
+Linus was directly aiming to maximize the number of person-hours thrown at debugging and development,
+
+コードの安定性が犠牲になったり、なにか深刻なバグがどうしようもなくなったら、ユーザ基盤に見放されるかもしれないという危険をおかしてまでそれをやっていた。
+even at the possible cost of instability in the code and user-base burnout if any serious bug proved intractable.
+
+リーヌスの行動を見ていると、次のような信念を持っていたんじゃないかと思える：
+Linus was behaving as though he believed something like this:
+
+8. ベータテスタと共同開発者の基盤さえ十分大きければ、ほとんどすべての問題はすぐに見つけだされて、その直し方もだれかにはすぐわかるはず。
+8. Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.
+ 
+あるいはもっとくだけた表現だと、
+Or, less formally,
+
+「目玉の数さえ十分あれば、どんなバグも深刻ではない」。
+``Given enough eyeballs, all bugs are shallow.''
+
+これをぼくはリーヌスの法則と呼んでる。
+I dub this: ``Linus's Law''.
+
+はじめにこの法則を書いたときは、どんな問題も「だれかには明白だ」という書き方をしていた。
+My original formulation was that every problem ``will be transparent to somebody''.
+
+リーヌスはこれに異議を唱えて、問題を理解してそれをなおす人物は、必ずしもどころかふつうは、その問題を最初に記述する人間ではないと言った。
+Linus demurred that the person who understands and fixes the problem is not necessarily or even usually the person who first characterizes it.
+
+「だれかが問題を見つける。
+``Somebody finds the problem,'' 
+he says,
+
+そしてそれを理解するのはだれか別の人だよ。
+``and somebody else understands it.
+
+そして問題を見つけることのほうがむずかしいとぼくが述べたことは記録しておいてね」。
+And I'll go on record as saying that finding it is the bigger challenge.''
+
+でも肝心なのは、
+That correction is important;
+
+見つけるのもなおすのも、だいたいすごく短期間で起きるってことだ。
+we'll see how in the next section, when we examine the practice of debugging in more detail.
+But the key point is that both parts of the process (finding and fixing) tend to happen rapidly.
+
+ここに、伽藍建築方式とバザール式のちがいの核心部分があるんだと思う。
+In Linus's Law, I think, lies the core difference underlying the cathedral-builder and bazaar styles.
+
+伽藍建設者的なプログラミングの見方では、バグや開発上の問題はややこしく、潜伏した深い現象だ。
+In the cathedral-builder view of programming, bugs and development problems are tricky, insidious, deep phenomena.
+
+問題を全部ほじくりだしたと確信できるようになるには、少数の人が何ヶ月も専念してチェックしなきゃならない。
+It takes months of scrutiny by a dedicated few to develop confidence that you've winkled them all out.
+
+だからリリースの間隔も開いてくるし、長く待たされたリリースが完璧じゃないときには、どうしても失望も大きくなる。
+Thus the long release intervals, and the inevitable disappointment when long-awaited releases are not perfect.
+
+一方のバザール的見方だと、バグなんてほとんどは深刻な現象じゃないという前提にたつことになる
+In the bazaar view, on the other hand, you assume that bugs are generally shallow phenomena
+
+――少なくとも、リリースを一つ残らず、千人の熱心な共同開発者が叩いてくれるような状況にさらされたら、どんなバグも早々に浮上してくると考える。
+?or, at least, that they turn shallow pretty quickly when exposed to a thousand eager co-developers pounding on every single new release.
+
+よって、たくさんなおしてもらうためにリリースも増やすし、有益な副作用としては、ときどきヘマが出回っちゃっても、あんまり失うものは大きくないってわけ。
+Accordingly you release often in order to get more corrections, and as a beneficial side effect you have less to lose if an occasional botch gets out the door.
+
+そして、これがすべてだ。
+And that's it.
+
+これだけで必要十分。
+That's enough.
+
+もしリーヌスの法則がまちがってるなら、Linux カーネルほど複雑なシステム、Linux カーネルくらいみんながよってたかってハッキングしてるようなシステムは、どこかの時点でまずい相互作用や、発見できない「深い」バグのせいで崩壊してたはずなんだ。
+If ``Linus's Law'' is false, then any system as complex as the Linux kernel, being hacked over by as many hands as the that kernel was, should at some point have collapsed under the weight of unforseen bad interactions and undiscovered ``deep'' bugs.
+
+一方、もしリーヌスの法則が正しければ、これで Linux が相対的にバグが少ないことを十分説明できる。
+If it's true, on the other hand, it is sufficient to explain Linux's relative lack of bugginess 
+
+
+and its continuous uptimes spanning months or even years.
+
+
+そしてこれは、そんなに驚くべきことでもなかったのかもしれない。
+Maybe it shouldn't have been such a surprise, at that.
+
+社会学者たちは何年も前に、同じくらいの専門家（あるいは同じくらい無知な人たち）の意見の平均は、そういう観察者の一人をランダムに選んで意見をきくよりも、予測精度がかなり高いことを発見している。
+Sociologists years ago discovered that the averaged opinion of a mass of equally expert (or equally ignorant) observers is quite a bit more reliable a predictor than the opinion of a single randomly-chosen one of the observers.
+
+これをかれらは「デルファイ効果」と呼んだ。
+They called this the Delphi effect.
+
+どうやらリーヌスが示したのは、これが OS のデバッグにも適用できるってことみたいだ。
+It appears that what Linus has shown is that this applies even to debugging an operating system
+
+つまりデルファイ効果は、OS カーネル級の複雑なものでも、開発上の複雑さをおさめることができるんだ。
+?that the Delphi effect can tame development complexity even at the complexity level of an OS kernel. [CV]
+
+Linux の場合の特別な性格で、デルファイ効果的な形でとても役にたっているのは、どんなプロジェクトでもその貢献者は自薦だということだ。
+One special feature of the Linux situation that clearly helps along the Delphi effect is the fact that the contributors for any given project are self-selected.
+
+初期にコメントをくれた人が指摘してくれたことだけれど、貢献は、ランダムなサンプルから出てくる訳じゃなくて、そのソフトを使うだけの興味を持って、その仕組みを学び、出くわした問題への解決を探そうとして、まあまともそうな解決策を作るだけのことをした人から寄せられる。
+An early respondent pointed out that contributions are received not from a random sample, but from people who are interested enough to use the software, learn about how it works, attempt to find solutions to problems they encounter, and actually produce an apparently reasonable fix.
+
+これだけのフィルタを全部突破してくる人は、貢献できるだけのものは持っている可能性がかなり高い。
+Anyone who passes all these filters is highly likely to have something useful to contribute.
+
+Jeff Dutky <dutky@wam.umd.edu>は、リーヌスの法則は「デバッグは並列処理可能だ」と言い換えることもできると指摘してくれた。
+Linus's Law can be rephrased as ``Debugging is parallelizable''.
+
+感謝したい。
+
+
+Jeff の知見では、デバッグするにはデバッガは開発コーディネータと多少のやりとりは必要だけれど、デバッガ同士では大した調整は必要ない。
+Although debugging requires debuggers to communicate with some coordinating developer, it doesn't require significant coordination between debuggers.
+
+だから、開発者を加えることで発生する、幾何級数的な複雑性と管理コスト増大という問題には直面しないですむというわけだ。
+Thus it doesn't fall prey to the same quadratic complexity and management costs that make adding developers problematic.
+
+実際問題として、デバッガたちの作業重複によって生じる理論的な無駄は、Linux の世界ではほとんど問題にされないようだ。
+In practice, the theoretical loss of efficiency due to duplication of work by debuggers almost never seems to be an issue in the Linux world.
+
+「はやめしょっちゅうのリリース」の効果の一つとして、すでにフィードバック済みのバグフィックスをすばやく広めることでそういう重複をなくせるということがある。[JH]
+One effect of a ``release early and often'' policy is to minimize such duplication by propagating fed-back fixes quickly [JH].
+
+ブルックスは、すでに Jeff の見解に関連したような観察をなにげなく述べてる。
+Brooks (the author of The Mythical Man-Month) even made an off-hand observation related to this:
+
+「広範に使われるプログラムをメンテナンスするコストは、おおむねその開発コストの 40％だ。
+``The total cost of maintaining a widely used program is typically 40 percent or more of the cost of developing it.
+
+驚いたことに、このコストはユーザ数に大きく左右される。
+Surprisingly this cost is strongly affected by the number of users.
+
+ユーザが増えると見つかるバグも増えるのだ」（強調筆者）。
+More users find more bugs.'' [emphasis added].
+
+ユーザが増えると見つかるバグも増えるのは、ユーザを追加することで、プログラムをもっといろんな方法で叩いてみることができるからだ。
+More users find more bugs because adding more users adds more different ways of stressing the program.
+
+この効果は、そのユーザたちが共同開発者でもある場合にはさらに増幅される。
+This effect is amplified when the users are co-developers.
+
+各人が、ちょっとずつちがったものの見方と分析用ツールキットをもって、その任に当たる。
+Each one approaches the task of bug characterization with a slightly different perceptual set and analytical toolkit, a different angle on the problem. 
+
+「デルファイ効果」はまさにこの多様性のためにうまく機能するらしい。
+The ``Delphi effect'' seems to work precisely because of this variation.
+
+デバッグという分野に限った話をすると、この多様性のおかげで試みが重複する機会も減るらしい。
+In the specific context of debugging, the variation also tends to reduce duplication of effort.
+
+だからベータテスタの数を増やしても、開発者側の立場からすれば目下の「一番深い」バグの複雑さが減るわけではないけれど、でもだれかのツールキットがその問題にうまくマッチして、その人にとってはそのバグが深刻ではないという可能性を増してくれるわけだ。
+So adding more beta-testers may not reduce the complexity of the current ``deepest'' bug from the developer's point of view, but it increases the probability that someone's toolkit will be matched to the problem in such a way that the bug is shallow to that person.
+
+リーヌスも、そこらへんは抜け目なくやってる。
+Linus coppers his bets, too.
+
+万が一本当に深刻なバグがあったときのために、Linux カーネルのバージョンのナンバリングには工夫がある。
+In case there are serious bugs, Linux kernel version are numbered 
+
+ユーザ候補は、「安定」とされたカーネル最新版を使うか、最先端にいって、新しい機能を使うかわりにバグの危険をおかすか、という選択ができるようになってる。
+in such a way that potential users can make a choice either to run the last version designated ``stable'' or to ride the cutting edge and risk bugs in order to get new features.
+
+この戦術は、ほかの Linux ハッカーたちはまだ正式に採用していないけれど、でも採用されるべきかもしれない。
+This tactic is not yet systematically imitated by most Linux hackers, but perhaps it should be;
+
+選択肢があるというのは、魅力を増すから。
+the fact that either choice is available makes both more attractive. [HBS] 
+
+
+How Many Eyeballs Tame Complexity
+It's one thing to observe in the large that the bazaar style greatly accelerates debugging and code evolution. 
+It's another to understand exactly how and why it does so at the micro-level of day-to-day developer and tester behavior. 
+In this section (written three years after the original paper, using insights by developers who read it and re-examined their own behavior) we'll take a hard look at the actual mechanisms. 
+Non-technically inclined readers can safely skip to the next section.
+One key to understanding is to realize exactly why it is that the kind of bug report non?source-aware users normally turn in tends not to be very useful. 
+Non?source-aware users tend to report only surface symptoms; 
+they take their environment for granted, so they (a) omit critical background data, and (b) seldom include a reliable recipe for reproducing the bug.
+The underlying problem here is a mismatch between the tester's and the developer's mental models of the program; 
+the tester, on the outside looking in, and the developer on the inside looking out. 
+In closed-source development they're both stuck in these roles, and tend to talk past each other and find each other deeply frustrating.
+Open-source development breaks this bind, making it far easier for tester and developer to develop a shared representation grounded in the actual source code and to communicate effectively about it. 
+Practically, there is a huge difference in leverage for the developer between the kind of bug report that just reports externally-visible symptoms and the kind that hooks directly to the developer's source-code?based mental representation of the program.
+Most bugs, most of the time, are easily nailed given even an incomplete but suggestive characterization of their error conditions at source-code level. 
+When someone among your beta-testers can point out, "there's a boundary problem in line nnn", or even just "under conditions X, Y, and Z, this variable rolls over", a quick look at the offending code often suffices to pin down the exact mode of failure and generate a fix.
+Thus, source-code awareness by both parties greatly enhances both good communication and the synergy between what a beta-tester reports and what the core developer(s) know. 
+In turn, this means that the core developers' time tends to be well conserved, even with many collaborators.
+Another characteristic of the open-source method that conserves developer time is the communication structure of typical open-source projects. 
+Above I used the term "core developer"; 
+this reflects a distinction between the project core (typically quite small; a single core developer is common, and one to three is typical) and the project halo of beta-testers and available contributors (which often numbers in the hundreds).
+The fundamental problem that traditional software-development organization addresses is Brook's Law: 
+``Adding more programmerfs to a late project makes it later.'' 
+More generally, Brooks's Law predicts that the complexity and communication costs of a project rise with the square of the number of developers, while work done only rises linearly.
+Brooks's Law is founded on experience that bugs tend strongly to cluster at the interfaces between code written by different people, and that communications/coordination overhead on a project tends to rise with the number of interfaces between human beings. 
+Thus, problems scale with the number of communications paths between developers, which scales as the square of the humber of developers (more precisely, according to the formula N*(N - 1)/2 where N is the number of developers).
+The Brooks's Law analysis (and the resulting fear of large numbers in development groups) rests on a hidden assummption: 
+that the communications structure of the project is necessarily a complete graph, that everybody talks to everybody else. 
+But on open-source projects, the halo developers work on what are in effect separable parallel subtasks and interact with each other very little; 
+code changes and bug reports stream through the core group, and only within that small core group do we pay the full Brooksian overhead. [SU] 
+There are are still more reasons that source-code?level bug reporting tends to be very efficient. 
+They center around the fact that a single error can often have multiple possible symptoms, manifesting differently depending on details of the user's usage pattern and environment. 
+Such errors tend to be exactly the sort of complex and subtle bugs (such as dynamic-memory-management errors or nondeterministic interrupt-window artifacts) that are hardest to reproduce at will or to pin down by static analysis, and which do the most to create long-term problems in software.
+A tester who sends in a tentative source-code?level characterization of such a multi-symptom bug 
+(e.g. "It looks to me like there's a window in the signal handling near line 1250" or "Where are you zeroing that buffer?") may give a developer, otherwise too close to the code to see it, the critical clue to a half-dozen disparate symptoms. 
+In cases like this, it may be hard or even impossible to know which externally-visible misbehaviour was caused by precisely which bug
+?but with frequent releases, it's unnecessary to know. Other collaborators will be likely to find out quickly whether their bug has been fixed or not. 
+In many cases, source-level bug reports will cause misbehaviours to drop out without ever having been attributed to any specific fix.
+Complex multi-symptom errors also tend to have multiple trace paths from surface symptoms back to the actual bug. 
+Which of the trace paths a given developer or tester can chase may depend on subtleties of that person's environment, and may well change in a not obviously deterministic way over time. 
+In effect, each developer and tester samples a semi-random set of the program's state space when looking for the etiology of a symptom. 
+The more subtle and complex the bug, the less likely that skill will be able to guarantee the relevance of that sample.
+For simple and easily reproducible bugs, then, the accent will be on the "semi" rather than the "random"; 
+debugging skill and intimacy with the code and its architecture will matter a lot. 
+But for complex bugs, the accent will be on the "random". 
+Under these circumstances many people running traces will be much more effective than a few people running traces sequentially
+?even if the few have a much higher average skill level.
+This effect will be greatly amplified if the difficulty of following trace paths from different surface symptoms back to a bug varies significantly in a way that can't be predicted by looking at the symptoms. 
+A single developer sampling those paths sequentially will be as likely to pick a difficult trace path on the first try as an easy one. 
+On the other hand, suppose many people are trying trace paths in parallel while doing rapid releases. 
+Then it is likely one of them will find the easiest path immediately, and nail the bug in a much shorter time. 
+The project maintainer will see that, ship a new release, and the other people running traces on the same bug will be able to stop before having spent too much time on their more difficult traces [RJ].
+
+
+
+5 バラがバラでないのは？
+When Is a Rose Not a Rose?
+
+リーヌスの行動を研究して、それが成功している理由について理論ができたので、この理論を自分の（確かにずっと単純で小規模な）プロジェクトで試してみようとぼくは意識的に決めた。
+Having studied Linus's behavior and formed a theory about why it was successful, I made a conscious decision to test this theory on my new (admittedly much less complex and ambitious) project.
+
+でも、まずやったのは popclient を再構成してすごく単純化することだった。
+But the first thing I did was reorganize and simplify popclient a lot.
+
+Carl Harris の実装はすごくしっかりしていたけれど、C のプログラマにありがちな、無用な複雑さが見られた。
+Carl Harris's implementation was very sound, but exhibited a kind of unnecessary complexity common to many C programmers.
+
+かれはコードを中心に考えていて、データ構造はコードのサポートとして扱っていた。
+He treated the code as central and the data structures as support for the code.
+
+結果として、コードは美しかったけれど、データ構造のデザインはいきあたりばったりで、いささか醜かった
+As a result, the code was beautiful but the data structure design ad-hoc and rather ugly
+
+（少なくともこの老いぼれ LISP ハッカーの高い基準で見れば）。
+(at least by the high standards of this veteran LISP hacker).
+
+でも、書き直しをやったのは、コードやデータ構造の設計を改善する以外にも目的があった。
+I had another purpose for rewriting besides improving the code and the data structure design, however.
+
+それは、このソフトを進歩させて、自分が完全に理解してるものにすることだった。
+That was to evolve it into something I understood completely.
+
+自分でもわかってないプログラムのバグをなおす責任をしょいこむなんて、おもしろくもないからね。
+It's no fun to be responsible for fixing bugs in a program you don't understand.
+
+そして最初の 1 ヶ月かそこらは、単に Carl の基本的な設計の考え方を追いかけてただけだった。
+For the first month or so, then, I was simply following out the implications of Carl's basic design.
+
+ぼくが加えた最初の大きな変更は、IMAP のサポートを加えることだった。
+The first serious change I made was to add IMAP support.
+
+これは、プロトコルマシンを、汎用ドライバとメソッドテーブル 3 つ（POP2、POP3、IMAP 用）に再構成することで実現した。
+I did this by reorganizing the protocol machines into a generic driver and three method tables (for POP2, POP3, and IMAP).
+
+これと、その前の変更は、プログラマとして頭にいれておくといい一般原則を示すものだ。
+This and the previous changes illustrate a general principle that's good for programmers to keep in mind,
+
+特に、ダイナミックなタイプ処理をしない C みたいな言語では：
+especially in languages like C that don't naturally do dynamic typing:
+
+9. 賢いデータ構造と間抜けなコードのほうが、その逆よりずっとまし。 
+9. Smart data structures and dumb code works a lot better than the other way around.
+
+またもやフレッド・ブルックス本の第 11 章から。
+Brooks, Chapter 9:
+
+「コードだけ見せてくれてデータ構造は見せてもらえなかったら、わたしはわけがわからぬままだろう。
+``Show me your flowchart and conceal your tables, and I shall continue to be mystified.
+
+データ構造さえ見せてもらえれば、コードのほうはたぶんいらない。
+Show me your tables, and I won't usually need your flowchart;
+
+見るまでもなく明らかだから」
+it'll be obvious.''
+
+
+ほんとはかれが言ったのは「フローチャート」に「テーブル」だった。
+
+
+でも 30 年にわたる用語面・文化面での推移を考慮すれば、ほとんど同じことを言ってる。
+Allowing for thirty years of terminological/cultural shift, it's the same point.
+
+この時点（1996 年 9 月頭、ゼロ時点から約 6 週間後）で、ぼくはそろそろ名前の変え時かな、と考え出した。
+At this point (early September 1996, about six weeks from zero) I started thinking that a name change might be in order
+
+なんといっても、もう POP クライアントだけじゃなくなってたんだし。
+?after all, it wasn't just a POP client any more.
+
+でも、ためらった。
+But I hesitated,
+
+いまのところ、まだこのソフトにはまったく新しい部分が何もなかったからだ。
+because there was as yet nothing genuinely new in the design.
+
+ぼく版の popclient は、まだ独自のアイデンティティを確立するにいたってなかった。
+My version of popclient had yet to develop an identity of its own.
+
+これが派手に変わったのは、fetchmail がとってきたメールを SMTP ポートに転送する方法を身につけたときだった。
+That changed, radically, when popclient learned how to forward fetched mail to the SMTP port.
+
+この話はまたあとで。
+I'll get to that in a moment.
+
+それよりまず：
+But first:
+
+上で、このプロジェクトを使って、リーヌス・トーヴァルズがうまくやった点についての自分の理論を試すことにした、と書いた。
+I said earlier that I'd decided to use this project to test my theory about what Linus Torvalds had done right.
+
+試すって、どういうふうに？
+（という疑問は当然起こるだろう）。
+How (you may well ask) did I do that?
+
+それは以下の通り：
+In these ways:
+
+はやめしょっちゅうのリリースを心がけた
+I released early and often
+
+（間が 10 日以上開いたことはほとんどない。
+(almost never less often than every ten days;
+
+集中して開発しているときは、1 日 1 回）。 
+during periods of intense development, once a day).
+
+だれかが fetchmail の件で連絡してきたら、その人をベータリストに加えてリストを増やした。 
+I grew my beta list by adding to it everyone who contacted me about fetchmail.
+
+リリースごとに騒々しいアナウンスをベータリストに送りつけて、みんなに参加をうながした。 
+I sent chatty announcements to the beta list whenever I released, encouraging people to participate.
+
+そしてベータテスタたちの言うことをきいて、設計上の判断について意見を求め、パッチやフィードバックを送ってくれたら必ずほめた。
+And I listened to my beta-testers, polling them about design decisions and stroking them whenever they sent in patches and feedback.
+ 
+こういう単純な方法の見返りはすぐにやってきた。
+The payoff from these simple measures was immediate.
+
+プロジェクトの始めから、ぼくは他の開発者なら死んでもいいと思うような質の高いバグレポートをもらったし、しかもそれになかなかいいフィックスまでついてきた。
+From the beginning of the project, I got bug reports of a quality most developers would kill for, often with good fixes attached.
+
+よく考えられたコメントももらったし、ファンレターもきたし、賢い機能の提案ももらった。
+I got thoughtful criticism, I got fan mail, I got intelligent feature suggestions.
+
+これでわかるのが：
+Which leads to:
+
+10. ベータテスタをすごく大事な資源であるかのように扱えば、向こうも実際に大事な資源となることで報いてくれる。 
+10. If you treat your beta-testers as if they're your most valuable resource, they will respond by becoming your most valuable resource.
+
+Fetchmail の成功をはかるおもしろい指標としては、このプロジェクトのベータリスト―― fetchmail 友の会――のサイズを見るといい。
+One interesting measure of fetchmail's success is the sheer size of the project beta list, fetchmail-friends.
+
+執筆時点では 249 人で、毎週2、3人追加されている。
+実は、1997 年 5 月に改訂している時点だと、このリストは人数が減りはじめてる。
+その理由がおもしろい。
+何人かがリストから外してくれといってきたんだけれど、それは fetchmail がかれらにはまったく文句なしに機能しているので、メーリングリストのトラフィックを見る必要がないと言うんだ。
+成熟したバザール形式のライフサイクルでは、これが自然なのかも知れない。
+
+
+At the time of latest revision of this paper (November 2000) it has 287 members and is adding two or three a week.
+Actually, when I revised in late May 1997 I found the list was beginning to lose members from its high of close to 300 for an interesting reason. 
+Several people have asked me to unsubscribe them because fetchmail is working so well for them that they no longer need to see the list traffic! 
+Perhaps this is part of the normal life-cycle of a mature bazaar-style project.
+
+
+
+6 Popclient から Fetchmail へ
+Popclient becomes Fetchmail
+
+このプロジェクトの真のターニングポイントは、Harry Hochheiser がクライアント機の SMTP ポートにメールを転送するための書きかけのコードを送ってきてくれたときだった。
+The real turning point in the project was when Harry Hochheiser sent me his scratch code for forwarding mail to the client machine's SMTP port.
+
+ぼくはほとんど即座に、この機能を信頼できる形で実装できたら、ほかの配信モードはほとんど時代遅れ同然になるなと気がついた。
+I realized almost immediately that a reliable implementation of this feature would make all the other mail delivery modes next to obsolete.
+
+何週間にもわたって、ぼくは fetchmail にいろいろ追加する形でいじってきていた。
+For many weeks I had been tweaking fetchmail rather incrementally 
+
+でもその間、インターフェースのデザインが使えなくはないけれど、ちょっと野暮ったいなと感じだしていた
+while feeling like the interface design was serviceable but grubby
+
+――エレガントじゃないし、貧弱なオプションがそこらじゅうにぶらさがってるし。
+?inelegant and with too many exiguous options hanging out all over.
+
+とってきたメールをメールボックスファイルや標準出力にダンプするオプションがことさら気に入らなかったけれど、その理由が自分でもわからなかった。
+The options to dump fetched mail to a mailbox file or standard output particularly bothered me, but I couldn't figure out why.
+
+
+(If you don't care about the technicalia of Internet mail, the next two paragraphs can be safely skipped.)
+
+
+SMTP 転送について考えてみたときに気がついたのは、popclient はいろいろやろうとしすぎてるということだった。
+What I saw when I thought about SMTP forwarding was that popclient had been trying to do too many things.
+
+これはメール配送エージェント（MTA）とローカル配信エージェント（MDA）の両方をこなすよう設計されていた。
+It had been designed to be both a mail transport agent (MTA) and a local delivery agent (MDA).
+
+SMTP 転送があれば、MDA の仕事からは足を洗って、メールのローカル配信はほかのソフトにまかせればいい。
+With SMTP forwarding, it could get out of the MDA business and be a pure MTA, handing off mail to other programs for local delivery 
+
+ちょうど sendmail がやってるように。
+just as sendmail does.
+
+メール配信エージェントのややこしい設定なんか、しなくたっていいじゃないか。
+Why mess with all the complexity of configuring a mail delivery agent
+
+メールボックスをロックして追加なんて、しなくていいじゃないか。
+or setting up lock-and-append on a mailbox
+
+ポート 25 は、TCP/IP サポートのあるプラットホームなら、まずまちがいなくそこにあるんだから。
+when port 25 is almost guaranteed to be there on any platform with TCP/IP support in the first place?
+
+特にこうすれば、とってきたメールは確実に、ふつうの送り手から送られてきた SMTP メールのように見えるはずなんだ。
+Especially when this means retrieved mail is guaranteed to look like normal sender-initiated SMTP mail,
+
+それがもともとぼくたちの求めているものだろう。
+which is really what we want anyway.
+
+
+(Back to a higher level....)
+Even if you didn't follow the preceding technical jargon, 
+
+ここにはいくつか教訓がある。
+there are several important lessons here.
+
+まず、この SMTP 転送のアイデアは、ぼくがリーヌスのやりかたを意識的に真似ようとした最大の見返りだった。
+First, this SMTP-forwarding concept was the biggest single payoff I got from consciously trying to emulate Linus's methods.
+
+あるユーザがすばらしいアイデアを提供してくれた
+A user gave me this terrific idea
+
+――ぼくは単に、その意義を理解すればよかっただけ。
+?all I had to do was understand the implications.
+
+11. いいアイデアを思いつく次善の策は、ユーザからのいいアイデアを認識することである。
+11. The next best thing to having good ideas is recognizing good ideas from your users.
+
+時にはどっちが次善かわからなかったりする。 
+Sometimes the latter is better.
+
+おもしろいことに、もし自分が他人に負うところがいかに大きいかについて、完全かつ謙虚なくらいに正直でいたら、世の中はその発明が全部あなた自身のもので、単に自分の天才ぶりについて謙遜しているだけだと見なしてくれる。
+Interestingly enough, you will quickly find that if you are completely and self-deprecatingly truthful about how much you owe other people, the world at large will treat you as though you did every bit of the invention yourself and are just being becomingly modest about your innate genius.
+
+これがリーヌスの場合にどんなにうまくいってるか、みんなもごらんの通り！
+We can all see how well this worked for Linus! 
+
+（1997 年 8 月にこの論文を Perl の会議で発表したとき、最前列に Larry Wall がいた。
+(When I gave my talk at the first Perl Conference in August 1997, hacker extraordinaire Larry Wall was in the front row.
+
+ぼくがこの直前のくだりにさしかかるとかれが野次をとばした。
+As I got to the last line above he called out,
+
+キリスト復活論者スタイルで、「そうだそうだ、言ってやれ、兄弟！」と。
+religious-revival style, ``Tell it, tell it, brother!''.
+
+全聴衆が笑った。
+The whole audience laughed,
+
+みんなこれが、Perl 発明者にとってもうまくいったのを知っていたからだ。）
+because they knew this had worked for the inventor of Perl, too.)
+
+そしてその同じ精神でプロジェクトを運営してほんの数週間もしないうちに、ユーザたちからだけでなく、それを伝え聞いたほかの人たちからも、同じような賞賛のメールが届くようになった。
+After a very few weeks of running the project in the same spirit, I began to get similar praise not just from my users but from other people to whom the word leaked out.
+
+そういうメールはいくつかとってある。
+I stashed away some of that email;
+
+いつか、自分の人生なんて何の価値もなかったんじゃないかと思うようになったら、またそれを読みかえそうっと:-)。
+I'll look at it again sometime if I ever start wondering whether my life has been worthwhile :-).
+
+でもここには、もっと本質的で政治的でない教訓があと 2 つある。
+But there are two more fundamental, non-political lessons here
+
+これはあらゆるデザインに一般化して言えることだ。 
+that are general to all kinds of design.
+
+12. 自分の問題のとらえかたがそもそも間違っていたと認識することで、もっとも衝撃的で革新的な解決策が生まれることはよくある。
+12. Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.
+ 
+ぼくは popclient を、MTA/MDA の複合物として開発し、いろんな気の利いたローカル配信モードをくっつけたものにしようとし続けていた。
+I had been trying to solve the wrong problem by continuing to develop popclient as a combined MTA/MDA with all kinds of funky local delivery modes.
+
+
+これは解決すべき問題をまちがえていたんだ。
+
+
+Fetchmail の設計は、純粋なMTAとして最初から考え直す必要があった。
+Fetchmail's design needed to be rethought from the ground up as a pure MTA,
+
+通常の SMTP を話すインターネットメールパスの一部として。
+a part of the normal SMTP-speaking Internet mail path.
+
+開発で壁にぶちあたったとき
+When you hit a wall in development
+
+――次のパッチ以降何をしたらいいか、すごく悩んでしまうとき
+?when you find yourself hard put to think past the next patch
+
+――というのは、自分が最終的な回答にたどりついたのかな、と考えるべきときではなく、むしろ自分が正しい質問をしているのかな、と考え直してみるべきときであることが多い。
+?it's often time to ask not whether you've got the right answer, but whether you're asking the right question.
+
+ひょっとして、問題をとらえなおしてみる必要があるのかもしれない。
+Perhaps the problem needs to be reframed.
+
+というわけで、問題をとらえなおした。
+Well, I had reframed my problem.
+
+明らかに、やるべき正しいことというのは：
+Clearly, the right thing to do was
+
+汎用ドライバに SMTP 転送サポートをハックして入れ込む 
+(1) hack SMTP forwarding support into the generic driver,
+
+それをデフォルトモードにする 
+(2) make it the default mode,
+
+やがてはその他の配信モードをすべてうっちゃる。
+and (3) eventually throw out all the other delivery modes,
+
+特にファイルへの配信と標準出力への配信は始末する ということだった。
+especially the deliver-to-file and deliver-to-standard-output options.
+
+この 3 番目については、しばらくためらった。
+I hesitated over step 3 for some time,
+
+ながいこと popclient を使ってきて、他の配信メカニズムに頼っている古参ユーザたちを怒らせるんじゃないかと思ったからだ。
+fearing to upset long-time popclient users dependent on the alternate delivery mechanisms.
+
+理論的には、かれらは即座に .forward ファイルか、sendmail 以外でもそれに相当する仕組みを使うことで、同じ結果を得ることができる。
+In theory, they could immediately switch to .forward files or their non-sendmail equivalents to get the same effects.
+
+でも実際問題としては、この移行はえらく手間がかかることになるかもしれない。
+In practice the transition might have been messy.
+
+でも実際にやってみたら、利点のほうが大きく出てきた。
+But when I did it, the benefits proved huge.
+
+ドライバのコードのいちばんいやらしい部分が消えた。
+The cruftiest parts of the driver code vanished.
+
+設定もむちゃくちゃに簡単になった
+Configuration got radically simpler
+
+――システム MDA やユーザのメールボックスを探し回ったりして悩むこともなくなったし、下敷きになってる OS がファイルのロッキングをサポートしているか心配する必要もない。
+?no more grovelling around for the system MDA and user's mailbox, no more worries about whether the underlying OS supports file locking.
+
+さらに、メールをなくす唯一の方法も消え失せた。
+Also, the only way to lose mail vanished.
+
+もしファイルへの配信を指定してディスクがいっぱいになったら、メールは消えてしまう。
+If you specified delivery to a file and the disk got full, your mail got lost.
+
+これは SMTP 転送では絶対に起きない。
+This can't happen with SMTP forwarding
+
+SMTP のリスナーは、メッセージが配信できるか、少なくとも後の配信用にスプールできる場合にしか OK を返してよこさないからだ。
+because your SMTP listener won't return OK unless the message can be delivered or at least spooled for later delivery.
+
+さらに、速度も向上
+Also, performance improved
+
+（もっともこれは一回走らせたくらいではわからないけれど）。
+(though not so you'd notice it in a single run).
+
+もうひとつバカにできないメリットとして、man ページがすごくシンプルになった。
+Another not insignificant benefit of this change was that the manual page got a lot simpler.
+
+あとで、ダイナミック SLIP がらみの珍しい状況を処理できるようにするため、ユーザ指定のローカル MDA 経由の配信は復活させなきゃならなかった。
+Later, I had to bring delivery via a user-specified local MDA back in order to allow handling of some obscure situations involving dynamic SLIP.
+
+でも、これももっと簡単にこなす方法を見つけた。
+But I found a much simpler way to do it.
+
+教訓は？　
+The moral?
+
+古びてきた機能は迷わず捨てること
+Don't hesitate to throw away superannuated features
+
+――有効性を下げずに捨てられる場合には。
+when you can do it without loss of effectiveness.
+
+アントワーヌ・サンテグジュペリ（かれは児童書の古典を書いていないときには、飛行家で航空機設計家だった）曰く：
+Antoine de Saint-Exup駻y (who was an aviator and aircraft designer when he wasn't authoring classic children's books) said:
+
+13. 「完成」（デザイン上の）とは、付け加えるものが何もなくなったときではなく、むしろなにも取り去るものがなくなったとき。
+13. ``Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away.''
+ 
+コードがどんどんよくなって、しかも同時に単純になってきたら、それはもう絶対に自分が正しいのがわかる。
+When your code is getting both better and simpler, that is when you know it's right.
+
+そしてこの過程で、fetchmail のデザインは、先祖の popclient とは別の独自のアイデンティティを獲得してきた。
+And in the process, the fetchmail design acquired an identity of its own, different from the ancestral popclient.
+
+そろそろ名前を変える頃だった。
+It was time for the name change.
+
+新しいデザインは、以前の popclient よりずっと sendmail の双子みたいな感じになってきていた。
+The new design looked much more like a dual of sendmail than the old popclient had;
+
+どっちも MTA だけれど、sendmail がプッシュして配信するのに対して、新しい popclient はプルして配信する。
+both are MTAs, but where sendmail pushes then delivers, the new popclient pulls then delivers.
+
+だから引き継いで2ヶ月したところで、ぼくはこれを fetchmail と改名した。
+So, two months off the blocks, I renamed it fetchmail.
+
+SMTP配信が fetchmail になったこのお話には、もっと一般的な教訓がある。
+There is a more general lesson in this story about how SMTP delivery came to fetchmail.
+
+並列処理可能なのは、デバッグだけじゃない。
+It is not only debugging that is parallelizable;
+
+開発と、（かなり驚く規模で）デザイン空間の開拓も並列処理ができるってことだ。
+development and (to a perhaps surprising extent) exploration of design space is, too.
+
+開発モードが高速なやりとりに基づくものになっていると、開発と拡張はデバッグの特殊なケースになってくる
+When your development mode is rapidly iterative, development and enhancement may become special cases of debugging
+
+――つまり、もとのソフトの機能やコンセプトにおける「見過ごしというバグ」をなおすことになるわけ。 
+?fixing `bugs of omission' in the original capabilities or concept of the software.
+
+もっと高次のデザインでも、自分の製品近くのデザイン空間を、多くの共同開発者たちがランダムウォークしつついろいろ考えてくれていると、とても役にたつことが多い。
+Even at a higher level of design, it can be very valuable to have lots of co-developers random-walking through the design space near your product.
+
+水たまりがドブに流れていくやりかたとか、あるいはもっといいのは、アリが食物を見つけるやり方を考えてほしい。
+Consider the way a puddle of water finds a drain, or better yet how ants find food:
+
+基本的には、拡散による探索をして、その後で、スケーラブルな通信メカニズムによって、探索の結果を取り尽くす。
+exploration essentially by diffusion, followed by exploitation mediated by a scalable communication mechanism.
+
+これは実にうまく機能するんだ。
+This works very well;
+
+そして Harry Hochheiser とぼくの場合と同じく、きみの周縁ライダーたちが、近くの巨大な勝利を見つけてくることは十分にありえる。
+as with Harry Hochheiser and me, one of your outriders may well find a huge win nearby that you were just a little too close-focused to see.
+
+
+自分では、近くばかり見過ぎていてちょっと気がつかなかったようなやつをね。 
+
+
+
+7 Fetchmail の成長
+Fetchmail Grows Up
+
+そういうわけで、きれいで革新的なデザインを手に入れ、毎日自分で使ってるから確実に動くのもわかってるコードもできたし、さらにベータリストは拡大する一方。
+There I was with a neat and innovative design, code that I knew worked well because I used it every day, and a burgeoning beta list.
+
+だんだんわかってきたのは、自分がやっているのが、ほんの数人にたまたま便利に使えるような、自分だけのちょっとしたハッキングなんかではなくなってきた、ということだった。
+It gradually dawned on me that I was no longer engaged in a trivial personal hack that might happen to be useful to few other people.
+
+ぼくがいじっているのは、Unix マシンと SLIP/PPP メール接続を持ってるハッカーみんなが本当に必要としているプログラムだったんだ。
+I had my hands on a program that every hacker with a Unix box and a SLIP/PPP mail connection really needs.
+
+SMTP 転送機能のおかげで、このソフトは競合ソフトからぬきんでて、「カテゴリーキラー」になる可能性まで出てきた。
+With the SMTP forwarding feature, it pulled far enough in front of the competition to potentially become a ``category killer'',
+
+カテゴリーキラーというのは、ニッチをあまりに見事に満たしているので、それ以外の選択肢は単に放棄されるどころか、ほとんど忘れ去られてしまうようなソフトのことだ。
+one of those classic programs that fills its niche so competently that the alternatives are not just discarded but almost forgotten.
+
+こういう結果は、狙ってできるものではないし、計画して得られるものでもないと思う。
+I think you can't really aim or plan for a result like this.
+
+ものすごく強力なデザイン上のアイデア、あとから考えると、その結果が当然きわまりなく、自然で、事前に約束されていたようにさえ思えるようなアイデアによって、そういう結果に引き込まれなくてはならないんだと思う。
+You have to get pulled into it by design ideas so powerful that afterward the results just seem inevitable, natural, even foreordained.
+
+そんなアイデアを狙うには、たくさんアイデアを思いつくしかない
+The only way to try for ideas like that is by having lots of ideas
+
+――または、ほかのひとのいいアイデアをもらって、それをもとの発案者が思ってもみなかったところまでつきつめるというエンジニアリング上の判断を持つという方法か。
+?or by having the engineering judgment to take other peoples' good ideas beyond where the originators thought they could go.
+
+Andrew Tanenbaum は、386 用に簡単なネイティブのUnixをつくるというアイデアを最初におもいついた。
+Andy Tanenbaum had the original idea to build a simple native Unix for IBM PCs,
+
+これは教育用ツールとしてだった。
+for use as a teaching tool
+
+
+(he called it Minix).
+
+
+リーヌス・トーヴァルズは Minix のコンセプトを、Andrew が予想もしなかったくらいはるか遠くにまで拡張した
+Linus Torvalds pushed the Minix concept further than Andrew probably thought it could go
+
+――そしてそれが、すばらしいものへと成長した。
+?and it grew into something wonderful.
+
+同じように（もっともスケールは小さいけれど）ぼくは Carl Harris と Harry Hochheiser のアイデアをもとにして、それをつきつめた。
+In the same way (though on a smaller scale), I took some ideas by Carl Harris and Harry Hochheiser and pushed them hard.
+
+ぼくらのいずれも、みんなが天才というものを考えるロマンチックな意味では「独創的」じゃなかった。
+Neither of us was `original' in the romantic way people think is genius.
+
+でも、科学も工学もソフト開発も、ほとんどは独創的な天才の手になるものではないんだ。
+But then, most science and engineering and software development isn't done by original genius,
+
+ハッカー神話がなんと言おうとも。
+hacker mythology to the contrary.
+
+でも結果はそれでもなかなか大した代物だった
+The results were pretty heady stuff all the same
+
+――それどころか、あらゆるハッカーが死んでもいいと思うような大成功！　
+?in fact, just the kind of success every hacker lives for!
+
+そしてこれはつまり、ぼくは自分のねらいをさらに高く設定しなきゃいけないということを意味する。
+And they meant I would have to set my standards even higher.
+
+fetchmail を、いまの自分に見える可能性くらいにまで優れたものにするためには、自分のニーズのためだけにコードを書くのではなく、自分の守備範囲ははずれていても他人が必要としているような機能を加え、サポートしなくてはならなくなった。
+To make fetchmail as good as I now saw it could be, I'd have to write not just for my own needs, but also include and support features necessary to others but outside my orbit.
+
+そして同時に、プログラムをシンプルで堅牢にしておく必要もあった。
+And do that while keeping the program simple and robust.
+
+これを認識してから書いた初の、そして圧倒的にいちばん重要な機能は、マルチドロップのサポートだった。
+The first and overwhelmingly most important feature I wrote after realizing this was multidrop support
+
+これはつまり、複数ユーザ宛のメールが全部たまっているメールボックスからメールをとってきて、それぞれのメールを個別受信者に選り分ける機能だ。
+?the ability to fetch mail from mailboxes that had accumulated all mail for a group of users, and then route each piece of mail to its individual recipients.
+
+マルチドロップのサポートを足すことにしたのは、一つには一部のユーザがしつこくせがんだこともある。
+I decided to add the multidrop support partly because some users were clamoring for it,
+
+でも最大の理由は、アドレッシングを最大限に一般化して対応せざるを得なくなることで、シングルドロップのコードのバグを全部ひねりつぶせるだろうと思ったからだ。
+but mostly because I thought it would shake bugs out of the single-drop code by forcing me to deal with addressing in full generality.
+
+そしてそれは立派に実証された。
+And so it proved.
+
+RFC 822 http://info.internet.isi.edu:80/in-notes/rfc/files/rfc822.txt を解析してきちんと実装するには、えらく長い時間がかかった。
+Getting RFC 822 address parsing right took me a remarkably long time, 
+
+これは個別部分が特にむずかしかったからではなく、相互に依存しあった面倒な細部を山ほど片づけなきゃならなかったからだ。
+not because any individual piece of it is hard but because it involved a pile of interdependent and fussy details.
+
+でもマルチドロップアドレッシングは、ふたをあけてみたらこれまたすばらしい設計上の決定だった。
+But multidrop addressing turned out to be an excellent design decision as well.
+
+なぜそう思ったかというと： 
+Here's how I knew:
+
+14. ツールはすべて期待通りの役にたたなきゃダメだが、すごいツールはまったく予想もしなかったような役にもたってしまう。――からだ。
+14. Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.
+ 
+マルチドロップ fetchmail の予想もしない利用法は、メーリングリストを運用する際に、リストの管理や alias の展開を、SLIP/PPP 接続のクライアント側でできちゃえることだった。
+The unexpected use for multidrop fetchmail is to run mailing lists with the list kept, and alias expansion done, on the client side of the Internet connection.
+
+これはつまり、ISP のアカウント経由で個人マシンを走らせてる人でも、ISP の alias ファイルに絶えずアクセスすることなしにメーリングリストを運用できるってことだ。
+This means someone running a personal machine through an ISP account can manage a mailing list without continuing access to the ISP's alias files.
+
+もう一つ、ベータテスタたちが要求してきた重要な変更は、8 ビット MIME のサポートだった。
+Another important change demanded by my beta-testers was support for 8-bit MIME (Multipurpose Internet Mail Extensions) operation.
+
+これはすごく楽だった。
+This was pretty easy to do,
+
+ぼくは自分のコードを 8 ビットクリーンにするように心がけてきたからだ。
+because I had been careful to keep the code 8-bit clean
+
+(that is, to not press the 8th bit, unused in the ASCII character set, into service to carry information within the program).
+
+これは、こういう機能への要望を予想してたからではない。
+Not because I anticipated the demand for this feature,
+
+こんな別のルールに従ったまでのことだった：
+but rather in obedience to another rule:
+
+15. ゲートウェイソフトを書くときはいかなる場合でも、データストリームへの干渉は最低限におさえるように必死で努力すること。
+15. When writing gateway software of any kind, take pains to disturb the data stream as little as possible
+
+そして受け手がわがどうしてもと言わない限り、絶対に情報を捨てないこと！ 
+?and never throw away information unless the recipient forces you to!
+
+この規則を守っていなかったら、8 ビット MIME サポートはむずかしくてバグだらけになっただろう。
+Had I not obeyed this rule, 8-bit MIME support would have been difficult and buggy.
+
+でも、ぼくは守っていたので、RFC 1652 http://info.internet.isi.edu:80/in-notes/rfc/files/rfc1652.txtを読んで、ほんのちょっとしたヘッダ生成のロジックを加えるだけですんだ。
+As it was, all I had to do is read the MIME standard (RFC 1652) and add a trivial bit of header-generation logic.
+
+ヨーロッパのユーザの一部は、セッションあたりにとってこられるメッセージ数を制限するオプションをつけるようにしつこくせがんだ
+Some European users bugged me into adding an option to limit the number of messages retrieved per session
+
+（電話代が高いので、それを抑えるためだ）。
+(so they can control costs from their expensive phone networks).
+
+ぼくは長いことこれを拒否してきたし、いまでも完全に満足しているとはいいがたい。
+I resisted this for a long time, and I'm still not entirely happy about it.
+
+でも、世界のために書いているんなら、顧客には耳を傾けなきゃ
+But if you're writing for the world, you have to listen to your customers
+
+――かれらがお金で支払ってるんじゃなくても、これは変わらない。
+?this doesn't change just because they're not paying you in money.
+
+8 続・Fetchmail の教訓
+A Few More Lessons from Fetchmail 
+
+一般的なソフトウェア工学の問題に戻る前に、fetchmail の経験からもう少し教訓を引っぱり出して考察しておこう。
+Before we go back to general software-engineering issues, there are a couple more specific lessons from the fetchmail experience to ponder.
+
+
+Nontechnical readers can safely skip this section.
+
+
+rcファイルの構文は、オプションの「ノイズ」キーワードを持っていて、これはパーサーに完全に無視される。
+The rc (control) file syntax includes optional `noise' keywords that are entirely ignored by the parser.
+
+このキーワードのおかげで英語に似た構文が使えるようになるので、それを全部はぎとってできるような、従来の無味乾燥なキーワードと値の対応表よりはずっと読みやすくなっている。
+The English-like syntax they allow is considerably more readable than the traditional terse keyword-value pairs you get when you strip them all out.
+
+これはそもそも、ある晩遅くにちょっと始めた実験が発端だった。
+These started out as a late-night experiment
+
+rc ファイルの宣言が、命令形のミニ言語にずいぶん似てきたのに気がついたのだ
+when I noticed how much the rc file declarations were beginning to resemble an imperative minilanguage.
+
+（そしてこのせいで、もとの popclient のキーワード「サーバ（server）」を「チェックせよ（poll）」に変えた）。
+(This is also why I changed the original popclient ``server'' keyword to ``poll'').
+
+この命令形のミニ言語をもっと英語風にしてみたら、使いやすくなりそうだと思った。
+It seemed to me that trying to make that imperative minilanguage more like English might make it easier to use.
+
+さて、ぼくは Emacs や HTML や各種データベースエンジンに代表される「なんでも言語化せよ」式デザイン派閥の意識的な急進派ではあるけれど、通常は「英語っぽい」構文はふつう、あまり好きじゃない。
+Now, although I'm a convinced partisan of the ``make it a language'' school of design as exemplified by Emacs and HTML and many database engines, I am not normally a big fan of ``English-like'' syntaxes.
+
+伝統的にプログラマは、厳密でコンパクトで冗長性のまったくない制御構文を好む傾向にあった。
+Traditionally programmers have tended to favor control syntaxes that are very precise and compact and have no redundancy at all.
+
+これはコンピュータ資源が高価だった時代の文化的な名残だ。
+This is a cultural legacy from when computing resources were expensive,
+
+当時は構文解析段階は、できる限り安く単純でなきゃならなかったから。
+so parsing stages had to be as cheap and simple as possible.
+
+英語は 50％くらい冗長性を持っているので、当時はすごく不適切なモデルに見えた。
+English, with about 50% redundancy, looked like a very inappropriate model then.
+
+英語っぽい構文を避けるべき理由としてぼくが挙げたいのはこういうことではない。
+This is not my reason for normally avoiding English-like syntaxes;
+
+ここでこれを挙げたのは、単にそれを却下するためだ。
+I mention it here only to demolish it.
+
+サイクルやコアが安くなってきたら、無味乾燥がそれ自体で目的化してはならない。
+With cheap cycles and core, terseness should not be an end in itself.
+
+いまでは、言語はコンピュータにとって安あがりになるよりも、人間にとって便利なほうが大事なのだ。
+Nowadays it's more important for a language to be convenient for humans than to be cheap for the computer.
+
+でも、慎重になるべきまともな理由はある。
+There remain, however, good reasons to be wary.
+
+一つは複雑さと、構文解析段階のコストだ
+One is the complexity cost of the parsing stage
+
+――あんまり複雑にすると、それ自体がバグのもとになったりユーザの混乱を招いたりしかねない。
+?you don't want to raise that to the point where it's a significant source of bugs and user confusion in itself.
+
+別の理由として、言語の構文を英語っぽくしようとすると、しばしばその言語の使う「英語」はとんでもなく歪んだ代物になってしまい、これが高じると、そういうわざとらしい自然言語との類似は伝統的な構文と同じくらい混乱をまねくことになる
+Another is that trying to make a language syntax English-like often demands that the ``English'' it speaks be bent seriously out of shape, so much so that the superficial resemblance to natural language is as confusing as a traditional syntax would have been.
+
+（これはいろんな通称 4GL や商業データベースキュエリー言語で見かける）。
+(You see this bad effect in a lot of so-called ``fourth generation'' and commercial database-query languages.)
+
+Fetchmail の制御構文は、どうやらこういう問題を免れている。
+The fetchmail control syntax seems to avoid these problems 
+
+それは、言語ドメインがすごく制限されているからだ。
+because the language domain is extremely restricted.
+
+汎用言語にはほど遠い。
+It's nowhere near a general-purpose language;
+
+それが表現していることは、とにかく大して複雑ではないので、英語の小さなサブセットと実際の制御言語の間を行き来するのに、精神的な混乱を起こす可能性があまりない。
+the things it says simply are not very complicated, so there's little potential for confusion in moving mentally between a tiny subset of English and the actual control language.
+
+ここにはもっと広い教訓があるかもしれない。
+I think there may be a broader lesson here:
+
+16. 自分の言語がチューリング的完成からほど遠い場合には、構文上の甘さを許すといろいろ楽になるかもね。 
+16. When your language is nowhere near Turing-complete, syntactic sugar can be your friend.
+
+別の教訓は、隠すことでセキュリティを高めるという点についてのものだった。
+Another lesson is about security by obscurity.
+
+Fetchmail ユーザの一部は、ソフトの仕様を変えて、パスワードを暗号化して rc ファイルに保存するようにしてくれと要求してきた。
+Some fetchmail users asked me to change the software to store passwords encrypted in the rc file, 
+
+のぞき屋たちが気軽にそれをのぞいたりできないようにしてほしいから、と言って。
+so snoopers wouldn't be able to casually see them.
+
+これはやらなかった。
+I didn't do it, 
+
+これでは実は、セキュリティはぜんぜん高まらないからだ。
+because this doesn't actually add protection.
+
+rc ファイルを読む許可を与えられている人間なら、だれでも fetchmail をどのみちあなたと同じように好き勝手に動かせてしまうんだから
+Anyone who's acquired permissions to read your rc file will be able to run fetchmail as you anyway
+
+――そしてそいつがあなたのパスワード目当てなら、fetchmail のコードそのものから必要なデコーダをぬきだして、ファイルを解読して盗むことができてしまう。
+?and if it's your password they're after, they'd be able to rip the necessary decoder out of the fetchmail code itself to get it.
+
+だから .fetchmailrc パスワード暗号化なんかしても、ものごとをつきつめて考えない人たちに、セキュリティが高まったかのようなまちがった幻想を与えるだけだ。a
+All .fetchmailrc password encryption would have done is give a false sense of security to people who don't think very hard.
+
+ここでの一般原則は以下の通り：
+The general rule here is:
+
+17. セキュリティシステムのセキュリティは、そこで使われてる秘密の安全性にかかっている。
+17. A security system is only as secure as its secret. 
+
+見かけだけの秘密は要注意。 
+Beware of pseudo-secrets.
+
+
+9 バザール方式の前提条件とは
+Necessary Preconditions for the Bazaar Style
+
+この論文の初期レビューアーや、試験読者たちがたえず返してきた質問というのは、上手なバザール形式の開発に必要な条件は何か、というものだった。
+Early reviewers and test audiences for this essay consistently raised questions about the preconditions for successful bazaar-style development, 
+
+これはプロジェクトリーダーの資質と、共同開発者コミュニティをつくろうとしてコードを公開する時点での、コードの状態についての条件の両方についてのものだった。
+including both the qualifications of the project leader and the state of code at the time one goes public and starts to try to build a co-developer community.
+
+バザール形式で最初からコードを書くのが無理だというのは、まあはっきりしているだろう。[IN] 
+It's fairly clear that one cannot code from the ground up in bazaar style [IN].
+
+バザール形式でテストしたりデバッグしたり改善したりはできるけれど、プロジェクトを最初からバザール式で始めるのはすごくむずかしいだろう。
+One can test, debug and improve in bazaar style, but it would be very hard to originate a project in bazaar mode.
+
+リーヌスはそんなことはしなかったし、
+Linus didn't try it.
+
+ぼくもしなかった。
+I didn't either.
+
+あなたが生み出そうとしてる開発者コミュニティは、いじるために何か動いてテストできるものを必要としているんだ。
+Your nascent developer community needs to have something runnable and testable to play with.
+
+コミュニティ形成を始めるときには、まずなによりも実現できそうな見込みを示せなきゃならない。
+When you start community-building, what you need to be able to present is a plausible promise.
+
+別にそのソフトは特によく書けてなくてもいい。
+Your program doesn't have to work particularly well.
+
+雑で、バグだらけで、不完全で、ドキュメント皆無でもいい。
+It can be crude, buggy, incomplete, and poorly documented.
+
+でも絶対不可欠なのが、開発者候補たちに、それが目に見える将来にはなにか本当に使える代物に発展させられると説得できることだ。
+What it must not fail to do is (a) run, and (b) convince potential co-developers that it can be evolved into something really neat in the foreseeable future.
+
+Linux と fetchmail は、どちらも強力で魅力的な基本デザインをもって公開された。
+Linux and fetchmail both went public with strong, attractive basic designs.
+
+ぼくが提出したバザールモデルについて考えてきた人の多くは、これがきわめて重要だということを正しく認識し、そこからいきなり、だったらプロジェクトリーダーには高度なデザイン上の直感と才能が必要にちがいないという結論に一足飛びにとびついてしまった。
+Many people thinking about the bazaar model as I have presented it have correctly considered this critical, then jumped from that to the conclusion that a high degree of design intuition and cleverness in the project leader is indispensable.
+
+でもリーヌスはデザインを Unix からもらってる。
+But Linus got his design from Unix.
+
+ぼくはもともと先祖の popmail からアイデアを得てる
+I got mine initially from the ancestral popclient
+
+（もっともそれは後に大きく変わった。
+(though it would later change a great deal,
+
+割合から言えば Linux よりはずっと大きな変化だ）。
+much more proportionately speaking than has Linux).
+
+ということは、バザール形式のリーダー/コーディネーターはずばぬけたデザインの才能が本当にいるんだろうか、それとも他人のデザインの才能をうまく生かすだけでやっていけるんだろうか。
+So does the leader/coordinator for a bazaar-style effort really have to have exceptional design talent, or can he get by through leveraging the design talent of others?
+
+コーディネーターが、とてつもないデザイン上のひらめきを自分で得る必要性は必ずしもないと思う。
+I think it is not critical that the coordinator be able to originate designs of exceptional brilliance,
+
+でも、絶対に必要なのは、その人物がほかの人たちのよいデザイン上のアイデアを認識できるということだ。
+but it is absolutely critical that the coordinator be able to recognize good design ideas from others.
+
+Linux も fetchmail も、この証拠を示している。
+Both the Linux and fetchmail projects show evidence of this.
+
+リーヌスは（すでに述べた通り）、驚異的に独創的な設計者ではないけれど、よいデザインを認識してそれを Linux カーネルに組み込む強力な第六感を示した。
+Linus, while not (as previously discussed) a spectacularly original designer, has displayed a powerful knack for recognizing good design and integrating it into the Linux kernel.
+
+そしてすでに述べたように、fetchmail 最大の強力なデザインアイデア（SMTP 転送）は他人にもらったものだった。
+And I have already described how the single most powerful design idea in fetchmail (SMTP forwarding) came from somebody else.
+
+この論文を早い時期に読んだ人たちは、おまえはバザールプロジェクトでのデザイン上の独創性を過小評価している、自分にはいろいろアイデアがあるもんだから、それが当然のことだと思ってるんだろう、と誉めてくれた。
+Early audiences of this essay complimented me by suggesting that I am prone to undervalue design originality in bazaar projects because I have a lot of it myself, and therefore take it for granted.
+
+確かにこれは一理ある。
+There may be some truth to this;
+
+ぼくの最大の強みは確かに、コーディングやデバッグではなく、デザイン能力にある。
+design (as opposed to coding or debugging) is certainly my strongest skill.
+
+でもソフトの設計で、小利口で独創的になることの問題点は、それが習慣になってしまうことだ。
+But the problem with being clever and original in software design is that it gets to be a habit
+
+ソフトは堅牢でシンプルにしておかなきゃダメなのに、反射的にそれを媚びた複雑なものにしてしまいがちになる。
+?you start reflexively making things cute and complicated when you should be keeping them robust and simple.
+
+このまちがいのおかげでつぶれたプロジェクトもいくつかある。
+I have had projects crash on me because I made this mistake,
+
+でも、fetchmail ではそういうことにならずにすんだ。
+but I managed to avoid this with fetchmail.
+
+だから fetchmail プロジェクトが成功したのは、一部はぼくが小利口になりがちな自分の性格を抑えたからだと思う。
+So I believe the fetchmail project succeeded partly because I restrained my tendency to be clever;
+
+これは（少なくとも）バザールプロジェクトの成功にデザイン上の独創性が不可欠という議論の反証になっている。
+this argues (at least) against design originality being essential for successful bazaar projects.
+
+そして Linux もそうだ。
+And consider Linux.
+
+もしリーヌス・トーヴァルズが開発途上で根本的な OS デザインの革新をやってのけようとしていたら、
+Suppose Linus Torvalds had been trying to pull off fundamental innovations in operating system design during the development;
+
+その結果のカーネルがいまのものほど安定してうまくいっていたかどうか？
+does it seem at all likely that the resulting kernel would be as stable and successful as what we have?
+
+一定レベルのデザインとコード書き能力は必要だけれど、でもバザール式のプロジェクトを始めようかと真剣に考えている人なら、ほとんどだれでもそんな最低限以上の能力はあるだろう。
+A certain base level of design and coding skill is required, of course, but I expect almost anybody seriously thinking of launching a bazaar effort will already be above that minimum.
+
+フリーソフト/オープンソースコミュニティ内における評判の市場は、最後まで面倒を見られないような開発プロジェクトを始めないように、みんなに微妙な圧力をかける。
+The open-source community's internal market in reputation exerts subtle pressure on people not to launch development efforts they're not competent to follow through on.
+
+いまのところ、これはなかなかうまく機能してきたようだ。
+So far this seems to have worked pretty well.
+
+別の才能で、ソフト開発とはふつうは関連づけられないけれど、でもバザールプロジェクトではデザイン上の才覚に匹敵するほど
+There is another kind of skill not normally associated with software development which I think is as important as design cleverness to bazaar projects
+
+――あるいはそれ以上
+――重要なものがあると思う。
+?and it may be more important.
+
+バザールプロジェクトは、コーディネータやリーダの対人能力やコミュニケーション能力が優れていないとダメだ。
+A bazaar project coordinator or leader must have good people and communications skills.
+
+これは説明するまでもないだろう。
+This should be obvious.
+
+開発コミュニティをつくるには、人を引きつける必要がある。
+In order to build a development community, you need to attract people, 
+
+自分のやっていることに興味を持たせて、各人のやっている仕事量についてみんなが満足しているように気を配る必要がある。
+interest them in what you're doing, and keep them happy about the amount of work they're doing.
+
+技術的な先進性は、これを実現する役にはおおいに立つけれど、でもそれだけではぜんぜん足りない。
+Technical sizzle will go a long way towards accomplishing this, but it's far from the whole story.
+
+その人が発する個性も大事だ。
+The personality you project matters, too.
+
+リーヌスがナイスガイで、みんなかれを気に入って手伝いたくなってしまうのは、偶然ではない。
+It is not a coincidence that Linus is a nice guy who makes people like him and want to help him.
+
+ぼくがエネルギッシュで外向的で、大人数を動かすのが好きで、コメディアンの話術や本能をちょっと備えているのも偶然じゃない。
+It's not a coincidence that I'm an energetic extrovert who enjoys working a crowd and has some of the delivery and instincts of a stand-up comic.
+
+バザールモデルが機能するためには、人を魅了する能力が少しくらいでもあると、きわめて役に立つのだ。
+To make the bazaar model work, it helps enormously if you have at least a little skill at charming people.
+
+
+10 フリーソフトの社会的な意義
+The Social Context of Open-Source Software
+
+これはもう不動の真実だ。
+It is truly written:
+
+最高のハックは、作者の日常的な問題に対する個人的な解決策として始まる。
+the best hacks start out as personal solutions to the author's everyday problems,
+
+そしてその問題が、実は多数のユーザにも典型的なものであるために広まる。
+and spread because the problem turns out to be typical for a large class of users.
+
+これでルールその 1 の話に戻ってきた。
+This takes us back to the matter of rule 1,
+
+ただしもう少し便利な形で言い直してみよう。
+restated in a perhaps more useful way:
+
+18. おもしろい問題を解決するには、まず自分にとっておもしろい問題を見つけることから始めよう。 
+18. To solve an interesting problem, start by finding a problem that is interesting to you.　
+
+Carl Harris とかれのかつての popclient もそうだったし、ぼくの fetchmail もそうだ。
+So it was with Carl Harris and the ancestral popclient, and so with me and fetchmail.
+
+でもこれは長いこと理解されてきた。
+But this has been understood for a long time.
+
+おもしろい点、つまり Linux と fetchmail の歴史がぼくたちの目をいやでも向ける点は、次の段階だ
+The interesting point, the point that the histories of Linux and fetchmail seem to demand we focus on, is the next stage
+
+――ユーザと共同開発者たちの巨大で活発なコミュニティがある中で、ソフトがどう発展するかという話。
+?the evolution of software in the presence of a large and active community of users and co-developers.
+
+『人月の神話』でフレッド・ブルックスはプログラマの時間が代替不能だと看破している。
+In The Mythical Man-Month, Fred Brooks observed that programmer time is not fungible;
+
+遅れているソフト開発に開発者を加えても、開発はかえって遅れる。
+adding developers to a late software project makes it later.
+
+プロジェクトの複雑さとコミュニケーションコストは、開発者数の 2 乗で増大するのに対し、終わる作業は直線的にしか増加しないというのがかれの議論だった。
+As we've seen previously, he argued that the complexity and communication costs of a project rise with the square of the number of developers, while work done only rises linearly.
+
+この論はそれ以来「ブルックスの法則」と呼ばれるに至り、
+Brooks's Law has been widely regarded as a truism.
+
+真実をついているものとだれもが考えている。
+
+
+But we've examined in this essay an number of ways in which the process of open-source development falsifies the assumptionms behind it
+
+
+でもブルックスの法則が唯一無二の真理なら、Linux はあり得なかっただろう。
+?and, empirically, if Brooks's Law were the whole picture Linux would be impossible.
+
+数年後、ジェラルド・ワインバーグの古典『プログラミングの心理学』が、いまにして思えばブルックスに対する重要な訂正だったものを提供してくれた。
+Gerald Weinberg's classic The Psychology of Computer Programming supplied what, in hindsight, we can see as a vital correction to Brooks.
+
+
+「エゴのないプログラミング」を論じるなかでワインバーグが述べたのは、開発者たちが自分のコードを私物化せず、ほかのみんなにバグを探したり改良点を見つけたりするよう奨励するようなところでは、ソフトの改善がほかよりも劇的にはやく生じる、ということだった。
+In his discussion of ``egoless programming'', Weinberg observed that in shops where developers are not territorial about their code, and encourage other people to look for bugs and potential improvements in it, improvement happens dramatically faster than elsewhere.
+
+
+(Recently, Kent Beck's `extreme programming' technique of deploying coders in pairs looking over one anothers' shoulders might be seen as an attempt to force this effect.)
+
+
+ワインバーグの分析がしかるべき評価を得なかったのは、用語のせいかもしれない
+Weinberg's choice of terminology has perhaps prevented his analysis from gaining the acceptance it deserved
+
+――インターネットのハッカーたちを「エゴがない」と呼ぶなんて、つい笑ってしまうではないの。
+?one has to smile at the thought of describing Internet hackers as ``egoless''.
+
+でも、かれの議論は今やかつてない説得力を持っている。
+But I think his argument looks more compelling today than ever.
+
+
+The bazaar method, by harnessing the full power of the ``egoless programming'' effect, strongly mitigates the effect of Brooks's Law. 
+The principle behind Brooks's Law is not repealed, but given a large developer population and cheap communications its effects can be swamped by competing nonlinearities that are not otherwise visible. 
+This resembles the relationship between Newtonian and Einsteinian physics
+?the older system is still valid at low energies, but if you push mass and velocity high enough you get surprises like nuclear explosions or Linux.
+
+
+Unix の歴史を見れば、Linux から学びつつあるもの（そしてぼくが意図的にリーヌスの手法を真似ることで、実験的に小規模に確認したもの [EGCS]）は見えていたはずなんだ。
+The history of Unix should have prepared us for what we're learning from Linux (and what I've verified experimentally on a smaller scale by deliberately copying Linus's methods [EGCS]).
+
+コーディングは基本的に孤独な活動だけれど、真に偉大なハックはコミュニティ全体の関心と能力を動員することで実現されるってこと。
+That is, while coding remains an essentially solitary activity, the really great hacks come from harnessing the attention and brainpower of entire communities.
+
+閉ざされたプロジェクトの中で、自分の脳味噌だけを使う開発者は、オープンで発展的な文脈をつくりだして、デザイン空間の探索やコードの貢献、バグつぶしなどの改善をもたらすフィードバックが何百人も（あるいは何千人も）から戻ってくるようにできる開発者に負けてしまうんだ。
+The developer who uses only his or her own brain in a closed project is going to fall behind the developer who knows how to create an open, evolutionary context in which feedback exploring the design space, code contributions, bug-spotting, and other improvements come from from hundreds (perhaps thousands) of people.
+
+でも従来の Unix の世界は、このアプローチをとことんまでつきつめることができなかった。
+But the traditional Unix world was prevented from pushing this approach to the ultimate 
+
+要因はいくつかある。
+by several factors.
+
+一つはいろいろなライセンスや商売上の秘密、商業的な利害からくる法律上の制約。
+One was the legal contraints of various licenses, trade secrets, and commercial interests.
+
+そしてもう一つは（いまにして思えば）インターネットがまだ発達しきってなかったことだ。
+Another (in hindsight) was that the Internet wasn't yet good enough.
+
+安いインターネット以前には、いくつかの地理的に集中したコミュニティではワインバーグの「エゴのない」プログラミングが奨励されていた。
+Before cheap Internet, there were some geographically compact communities where the culture encouraged Weinberg's ``egoless'' programming, 
+
+そこでは開発者は、有能なチェック屋や共同開発者を楽にたくさん集めることができた。
+and a developer could easily attract a lot of skilled kibitzers and co-developers.
+
+ベル研、MIT AI 研、UC バークレー
+Bell Labs, the MIT AI and LCS labs, UC Berkeley
+
+――こういうところは伝説的な技術革新を生み出したし、いまでも強力だ。
+?these became the home of innovations that are legendary and still potent.
+
+Linux は、意識的かつ成功裏に全世界を才能プールとして使おうとした最初のプロジェクトだった。
+Linux was the first project for which a conscious and successful effort to use the entire world as its talent pool was made.
+
+Linux 形成期が、World Wide Web の誕生と同時期なのは偶然ではないと思うし、Linux が幼年期を脱したのが 1993-1994 年という、ISP 産業がテイクオフしてインターネットへの一般の関心が爆発的に高まった時期と同じなのも偶然ではないだろう。
+I don't think it's a coincidence that the gestation period of Linux coincided with the birth of the World Wide Web, and that Linux left its infancy during the same period in 1993?1994 that saw the takeoff of the ISP industry and the explosion of mainstream interest in the Internet.
+
+リーヌスは、拡大するインターネットが可能にした新しいルールにしたがって活動する方法を見いだした、最初の人間だったわけだ。
+Linus was the first person who learned how to play by the new rules that pervasive Internet access made possible.
+
+安いインターネットは、Linux モデルの発展にとっての必要条件ではあったけれど、でもそれだけでは十分条件ではなかったと思う。
+While cheap Internet was a necessary condition for the Linux model to evolve, I think it was not by itself a sufficient condition.
+
+もう一つの重要な要素は、開発者が共同開発者を集めて、インターネットというメディアを最大限に活かすためのリーダーシップのスタイルと、協力のための慣行が開発されたことだろう。
+Another vital factor was the development of a leadership style and set of cooperative customs that could allow developers to attract co-developers and get maximum leverage out of the medium.
+
+でもこのリーダーシップのスタイルとはなんで、その慣行ってのはどういうものだったんだろう。
+But what is this leadership style and what are these customs?
+
+これは権力関係に基づくものではあり得ない
+They cannot be based on power relationships
+
+――あり得たとしても、脅しによるリーダーシップは、いまぼくたちが目にするような結果を生み出しはしない。
+?and even if they could be, leadership by coercion would not produce the results we see.
+
+ワインバーグは、19世紀ロシアのアナキストであるクロポトキンの『ある革命家の回想』を引用して、この点についていい議論を展開している。
+Weinberg quotes the autobiography of the 19th-century Russian anarchist Pyotr Alexeyvich Kropotkin's Memoirs of a Revolutionist to good effect on this subject:
+
+「農奴を所有する一家に育ったわたしは、当時の若者たちみんなと同じように、命令したり指令したり、叱りつけたり罰したりといった行動の必要性について、まったく疑うことを知らぬままに成年に達した。
+Having been brought up in a serf-owner's family, I entered active life, like all young men of my time, with a great deal of confidence in the necessity of commanding, ordering, scolding, punishing and the like.
+
+しかしかなりはやい時期に、わたしは大がかりな企業を経営することになり、自由な人々と交渉することになった。
+But when, at an early stage, I had to manage serious enterprises and to deal with [free] men, 
+
+そしてまちがい一つが重大な結果を招くような状況で、わたしは命令と規律という原理にしたがって活動するのと、共通の理解という原理に基づいて行動するのとの差をだんだん理解するに至った。
+and when each mistake would lead at once to heavy consequences, I began to appreciate the difference between acting on the principle of command and discipline and acting on the principle of common understanding.
+
+前者は軍隊のパレードでは見事に機能するが、実生活において、目標が多くの重なり合う意志の真剣な努力によってしか達成できないような状況では何の価値もない」
+The former works admirably in a military parade, but it is worth nothing where real life is concerned, and the aim can be achieved only through the severe effort of many converging wills.
+
+この「多くの重なり合う意志による真剣な努力」は、まさに Linux のようなプロジェクトには必須
+The ``severe effort of many converging wills'' is precisely what a project like Linux requires
+
+――そして「命令という原理」は、ぼくたちがインターネットと呼ぶアナキスト天国のボランティアたちに対しては、実質的に適用不可能だ。
+?and the ``principle of command'' is effectively impossible to apply among volunteers in the anarchist's paradise we call the Internet.
+
+効果的に活動して競争するには、共同プロジェクトを仕切りたいハッカーは、クロポトキンが「理解の原理」で漠然と示唆しているモードを使い、有益なコミュニティをリクルートしてやる気を起こさせる方法を学ばなくてはならない。
+To operate and compete effectively, hackers who want to lead collaborative projects have to learn how to recruit and energize effective communities of interest in the mode vaguely suggested by Kropotkin's ``principle of understanding''.
+
+つまり、リーヌスの法則を学ばなくてはならないんだ。[SP]
+They must learn to use Linus's Law.[SP]
+
+まえにリーヌスの法則の説明として「デルファイ効果」が考えられると述べた。
+Earlier I referred to the ``Delphi effect'' as a possible explanation for Linus's Law.
+
+でも、生物学や経済学に見られる適応型システムも、アナロジーとして強力だし魅力もある。
+But more powerful analogies to adaptive systems in biology and economics also irresistably suggest themselves.
+
+Linux の世界はいろんな意味で、自由市場や生態系のような動きを見せる。
+The Linux world behaves in many respects like a free market or an ecology,
+
+自己中心的なエージェントがそれぞれ効用を最大化しようとして、その過程で自己調整的な自律的秩序を生み出し、それはどんな中央集権計画の何倍も複雑で効率が高くなる。
+a collection of selfish agents attempting to maximize utility which in the process produces a self-correcting spontaneous order more elaborate and efficient than any amount of central planning could have achieved.
+
+だからこここそが「理解の原理」を探すべき場所だ。
+Here, then, is the place to seek the ``principle of understanding''.
+
+Linux ハッカーたちが最大化している「効用関数」は、古典経済的なものではなく、自分のエゴの満足とハッカー社会での評判という無形のものだ
+The ``utility function'' Linux hackers are maximizing is not classically economic, but is the intangible of their own ego satisfaction and reputation among other hackers.
+
+（かれらの動機を「愛他精神」と呼ぶ人もいるけれど、でもそれは、愛他家にとっての愛他活動はそれ自体が一種のエゴの満足だという事実を見落としている）。
+(One may call their motivation ``altruistic'', but this ignores the fact that altruism is itself a form of ego satisfaction for the altruist).
+
+こういう形で機能するボランタリー文化は、実はそんなに珍しいものじゃない。
+Voluntary cultures that work this way are not actually uncommon;
+
+ぼくが長いこと参加してきたもう一つの例は、SF ファンダムで、ここはハッカー界とちがってボランティア活動の基本的な動機をはっきり「エゴブー」（他のファンたちの間で自分の評判を高めること）だと認識している。
+one other in which I have long participated is science fiction fandom, which unlike hackerdom has long explicitly recognized ``egoboo'' (ego-boosting, or the enhancement of one's reputation among other fans) as the basic drive behind volunteer activity.
+
+リーヌスは、開発そのものはほとんど他人にやらせつつ、うまいこと自分はプロジェクトの門番におさまった。
+Linus, by successfully positioning himself as the gatekeeper of a project in which the development is mostly done by others,
+
+そしてプロジェクトへの関心を育てて、それが自立するようにしてきた。
+and nurturing interest in the project until it became self-sustaining,
+
+これはクロポトキンの「共通の理解という原理」の鋭い把握を示している。
+has shown an acute grasp of Kropotkin's ``principle of shared understanding''.
+
+このように Linux の世界を準経済学的に見てやると、その理解がどのように適用されているか見て取れるだろう。
+This quasi-economic view of the Linux world enables us to see how that understanding is applied.
+
+リーヌスのやり方は、「エゴブー」の効率的な市場をつくりだす方法として見るといいかもしれない。
+We may view Linus's method as a way to create an efficient market in ``egoboo''
+
+個々のハッカーたちの利己性を、協力体制を維持しないと実現不可能なむずかしい目標に、できるだけしっかり結びつける方法だ。
+?to connect the selfishness of individual hackers as firmly as possible to difficult ends that can only be achieved by sustained cooperation.
+
+Fetchmail プロジェクトで、ぼくは（もっと小規模にではあるけれど）かれの手法が再現できるものだということを示した。
+With the fetchmail project I have shown (albeit on a smaller scale) that his methods can be duplicated with good results.
+
+ぼくのほうが、リーヌスよりもそれをちょっと意識的かつ体系的に行ったとはいえるかもしれない。
+Perhaps I have even done it a bit more consciously and systematically than he.
+
+多くの人（特に政治的な理由で自由市場を信用しない人たち）は、自己中心的なエゴイストの文化なんか断片的で、領土争いばかりで、無駄が多く、秘密主義的で、攻撃的にちがいないと考える。
+Many people (especially those who politically distrust free markets) would expect a culture of self-directed egoists to be fragmented, territorial, wasteful, secretive, and hostile.
+
+でもこの予想ははっきりと反証できる。
+But this expectation is clearly falsified
+
+数多い例の一つをあげると、Linux 関連文書の驚くべき多様性と品質と詳細さがある。
+by (to give just one example) the stunning variety, quality, and depth of Linux documentation.
+
+プログラマたちはドキュメント作成が大嫌いというのは、ほとんど神聖化された周知の事実とされている。
+It is a hallowed given that programmers hate documenting;
+
+だったら、なぜ Linux ハッカーたちはこんなにもたくさんの文書を生み出すんだろう。
+how is it, then, that Linux hackers generate so much documentation?
+
+明らかに Linux のエゴブー自由市場は、商業ソフト屋さんのものすごい予算をもらった文書作成業者たちよりも、気高さに満ちた他者をいたわる行動を生み出すうえでうまく機能するわけだ。
+Evidently Linux's free market in egoboo works better to produce virtuous, other-directed behavior than the massively-funded documentation shops of commercial software producers.
+
+Fetchmail と Linux カーネルプロジェクトがどちらも示しているのは、ほかの多くのハッカーたちのエゴにきちんとごほうびをあげれば、強力な開発者/コーディネータはインターネットを使って、共同開発者がたくさんいるメリットを享受しつつ、プロジェクトが混乱しきった修羅場に陥って崩壊するのは避けられる、ということだ。
+Both the fetchmail and Linux kernel projects show that by properly rewarding the egos of many other hackers, a strong developer/coordinator can use the Internet to capture the benefits of having lots of co-developers without having a project collapse into a chaotic mess.
+
+というわけで、以下はブルックスの法則に対するぼくの反対提案：
+So to Brooks's Law I counter-propose the following:
+
+19. 開発コーディネーターが、最低でもインターネットくらい使えるメディアを持っていて、圧力なしに先導するやりかたを知っている場合には、頭数は一つよりは多いほうが絶対にいい。
+19: Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.
+
+フリーソフト（オープンソース・ソフト）の未来は、ますますリーヌスのやりかたを身につけた人たちのものになっていくと思う。
+I think the future of open-source software will increasingly belong to people who know how to play Linus's game,
+
+つまり、伽藍を後にしてバザール方式を受け入れる人たちのものだ。
+people who leave behind the cathedral and embrace the bazaar.
+
+これは別に、個人のビジョンと才能がもはやどうでもいいということではない。
+This is not to say that individual vision and brilliance will no longer matter;
+
+むしろ、フリーソフト/オープンソースの最先端は、個人のビジョンと才能を出発点としつつも、それをボランタリーな利害/興味コミュニティの構築によって増幅する人々のものだと思う。
+rather, I think that the cutting edge of open-source software will belong to people who start from individual vision and brilliance, then amplify it through the effective construction of voluntary communities of interest.
+
+そしてこれは、単に「フリー」ソフト（オープンソース・ソフト）だけの未来像ではないのかも知れない。
+Perhaps this is not only the future of open-source software.
+
+問題解決にあたって、Linux コミュニティが動員できるほどの才能プールに太刀打ちできる商業デベロッパは存在しない。
+No closed-source developer can match the pool of talent the Linux community can bring to bear on a problem.
+
+Fetchmail に貢献してくれた 200 人以上を雇える財力を持つようなデベロッパですら、ごくわずかしかいない！
+Very few could afford even to hire the more than 200 (1999: 600, 2000: 800) people who have contributed to fetchmail!
+
+もしかすると、最終的にフリーソフト/オープンソース文化が勝利するのは、協力が道徳的に正しいとかソフト「隠匿」が道徳的にまちがってるとかいう理由のためではなく（ちなみに後者については、リーヌスもぼくもそうは思わない）、単に商業ソフトの世界が、ある問題に有能な人々の時間を幾桁も多くそそぎ込めるフリーソフト/オープンソース界と、進化上の軍事競争で張り合えなくなるからかもしれない。
+Perhaps in the end the open-source culture will triumph not because cooperation is morally right or software ``hoarding'' is morally wrong (assuming you believe the latter, which neither Linus nor I do), but simply because the closed-source world cannot win an evolutionary arms race with open-source communities that can put orders of magnitude more skilled time into a problem.
+
+
+11 マネジメントとマジノ線について
+On Management and the Maginot Line
+
+もともとの「伽藍とバザール」はいまのビジョンで終わっていた
+The original Cathedral and Bazaar paper of 1997 ended with the vision above
+
+――ネットワーク化されたシヤワセな集団プログラマー／アナキストたちが、伝統的な閉鎖ソフトの階級社会を競争でうち負かして圧倒するという。
+?that of happy networked hordes of programmer/anarchists outcompeting and overwhelming the hierarchical world of conventional closed software.
+
+かなりの懐疑論者は、納得しなかった。
+A good many skeptics weren't convinced, however;
+
+そしてかれらの挙げる質問は、まともに相手をするだけの価値がある。
+and the questions they raise deserve a fair engagement.
+
+バザール議論へのほとんどの反論は、バザール支持者たちは従来のマネジメントが持っている生産性倍増効果を過小評価している、という話にいきつく。
+Most of the objections to the bazaar argument come down to the claim that its proponents have underestimated the productivity-multiplying effect of conventional management.
+
+伝統的な考え方のソフト開発マネージャは、オープンソース世界ではいともあっさりプロジェクトグループが生まれ、姿を変えては消え去っていくので、オープンソース・コミュニティーがどのクローズドソースの開発者集団と比べても、数の上で圧倒的な優位性を持っているというメリットの大部分は消えてしまう、と反論することが多い。
+Traditionally-minded software-development managers often object that the casualness with which project groups form and change and dissolve in the open-source world negates a significant part of the apparent advantage of numbers that the open-source community has over any single closed-source developer.
+
+かれらの主張では、ソフト開発で重要なのは長期にわたり開発努力が継続することで、顧客が大事な製品に投資を続けてくれると期待できるようにすることなのだ、何人が鍋に骨を投げ込んでそのまま煮立てておこうと、そんなのは関係ない、ということになる。
+They would observe that in software development it is really sustained effort over time and the degree to which customers can expect continuing investment in the product that matters, not just how many people have thrown a bone in the pot and left it to simmer.　
+
+この議論には、確かに一理ある。
+There is something to this argument, to be sure;
+
+実はぼくも、『魔法のおなべ』で、ソフト生産の鍵となるのは期待将来サービス価値だという考えを展開している。
+in fact, I have developed the idea that expected future service value is the key to the economics of software production in the essay The Magic Cauldron.
+
+でもこの議論にはまた、大きな問題が隠されている。
+But this argument also has a major hidden problem;
+
+それが暗黙に仮定しているのは、オープンソース開発はそういう継続的な努力を提供できないということだ。
+its implicit assumption that open-source development cannot deliver such sustained effort.
+
+ところが実は、従来型のマネジメントが不可欠だと考えるような、インセンティブ構造や組織的なコントロールなんかまったくなしに、きちんと方向性を保って有能な管理者コミュニティをずいぶん長期にわたって維持してきたオープンソースプロジェクトはたくさんある。
+In fact, there have been open-source projects that maintained a coherent direction and an effective maintainer community over quite long periods of time without the kinds of incentive structures or institutional controls that conventional management finds essential.
+
+GNU Emacsエディタの開発は、その極端で示唆的な例だろう。
+The development of the GNU Emacs editor is an extreme and instructive example;
+
+15 年にわたり何百もの貢献者たちの努力を吸収して、統合されたアーキテクチャの方向性を維持してきている。
+it has absorbed the efforts of hundreds of contributors over 15 years into a unified architectural vision,
+
+開発者の入れ替わりは激しくて、しかもその間ずっと活動を続けてきたのは、たった一人（開発者）だけだ。
+despite high turnover and the fact that only one person (its author) has been continuously active during all that time.
+
+クローズドソースのエディタのどれ一つとして、これほどの長寿記録にかなうものはない。
+No closed-source editor has ever matched this longevity record.
+
+ここから出てくるのは、伽藍 VS バザール方式の議論とは独立した、従来型のソフト開発マネジメントのメリットに対する疑問だ。
+This suggests a reason for questioning the advantages of conventionally-managed software development that is independent of the rest of the arguments over cathedral vs. bazaar mode.
+
+もし GNU Emacs が一貫したアーキテクチャのビジョンを 15 年も維持できたり、Linux みたいな OS が同じように 8 年も、ハードやプラットホームの技術が変わり続ける中で維持できたのなら
+If it's possible for GNU Emacs to express a consistent architectural vision over 15 years, or for an operating system like Linux to do the same over 8 years of rapidly changing hardware and platform technology;
+
+――そしてもし、ほかにもきちんとしたアーキテクチャを持ったオープンソースのプロジェクトが、5 年以上も続いている例があるなら
+and if (as is indeed the case) there have been many well-architected open-source projects of more than 5 years duration
+
+――だったらわれわれとしては、そもそも従来型のマネジメント方式の開発というのは、あれだけすさまじいオーバーヘッドをかけて、いったい何を買っているんだろう、というのを当然聞いてみたくなるわけだ。
+-- then we are entitled to wonder what, if anything, the tremendous overhead of conventionally-managed development is actually buying us.
+
+それはまちがいなく、締め切りを信頼できる形で守るということではないし、予算内にきちんとおさめるということでもないし、仕様書をすべて反映させるということでもない。
+Whatever it is certainly doesn't include reliable execution by deadline, or on budget, or to all features of the specification;
+
+こういう目標の一つでも達成できたら、それは珍しくきちんと「マネジメント」されたプロジェクトだと言っていい。
+it's a rare `managed' project that meets even one of these goals, let alone all three.
+
+また、プロジェクトの寿命の中で、技術的・経済的な環境変化にもすばやく適応できているとは思えない。
+It also does not appear to be ability to adapt to changes in technology and economic context during the project lifetime, either;
+
+この点では、オープンソース・コミュニティのほうがはるかに高い能力を見せてきた
+the open-source community has proven far more effective on that score
+
+（これはたとえば、インターネットの 30 年にわたり歴史と、独占ネットワーク技術の短い半減期とを比べてみればすぐに確認できる
+(as one can readily verify, for example, by comparing the 30-year history of the Internet with the short half-lives of proprietary networking technologies
+
+――あるいはマイクロソフト・ウィンドウズの 16 ビットから 32 ビットへの移行がえらく高コストだったのにくらべて、同じ頃に同じことをやった Linux ではほとんど何の苦労もなかったことを考えてみるといい。
+?or the cost of the 16-bit to 32-bit transition in Microsoft Windows with the nearly effortless upward migration of Linux during the same period, 
+
+しかも Linux はインテル専用ではなくて、64 ビットの Alpha チップも含む一ダースものハードウェア・プラットホームでそれを実現したんだぜ）。
+not only along the Intel line of development but to more than a dozen other hardware platforms, including the 64-bit Alpha as well).
+
+伝統的な開発様式で買えるもんだと多くの人が考えているものとしては、プロジェクトがおかしくなったときに、法的に縛って責任をおわせ、可能性としては損害賠償金も得る相手ができる、ということだ。
+One thing many people think the traditional mode buys you is somebody to hold legally liable and potentially recover compensation from if the project goes wrong.
+
+でもこんなのは幻想でしかない。
+But this is an illusion;
+
+ほとんどのソフトライセンスは、このソフトが商品として売り物になることすら保証しないような免責条項が書かれているし、まして性能のことなんかまるっきり保証しない
+most software licenses are written to disclaim even warranty of merchantability, let alone performance?and cases of successful recovery for software nonperformance are vanishingly rare.
+
+
+――そしてソフトが期待性能に達しない場合に、損害賠償を勝ち取れたケースがあるか？
+まったくないといっていいくらい、ほとんどない。
+
+
+そしてそれがそんなに珍しいことでなかったとしても、訴える相手がいるから安心なんていうのは、そもそもがピントはずれだ。
+Even if they were common, feeling comforted by having somebody to sue would be missing the point.
+
+きみは訴訟がしたかったのか？　
+You didn't want to be in a lawsuit;
+
+ちゃんと動くソフトがほしかったんだろうに。
+you wanted working software.
+
+じゃあ、マネジメントのオーバーヘッドをあんなにかけて、いったい何が手に入るんだろう。
+So what is all that management overhead buying?
+
+これを理解するには、ソフトウェアの開発マネージャたちが何をしているつもりなのかを理解しなくてはならない。
+In order to understand that, we need to understand what software development managers believe they do.
+
+ぼくの知り合いで、この仕事がとても上手らしき女性に言わせると、ソフトウェアプロジェクトのマネジメントというのは五つの機能がある。
+A woman I know who seems to be very good at this job says software project management has five functions:
+
+目標を決めて、みんなを同じ方向に向かせておく。 
+To define goals and keep everybody pointed in the same direction
+
+しっかり見張って、大事な細部が見落とされないよう確かめる。 
+To monitor and make sure crucial details don't get skipped
+
+みんなのやる気を出させて、つまらないけれど必要などた作業をやらせる。 
+To motivate people to do boring but necessary drudgework
+
+メンバーの配置を組織化して、最大の生産性をあげるようにする。 
+To organize the deployment of people for best productivity
+
+プロジェクトの維持に必要なリソースをひっぱってくる。 
+To marshal resources needed to sustain the project
+
+一見どれも立派な目標だ。
+Apparently worthy goals,
+
+一つ残らず。
+all of these;
+
+でもオープンソースモデルと、それをとりまく環境の中では、どれも不思議なくらいどうでもよく思えてくる。
+but under the open-source model, and in its surrounding social context, they can begin to seem strangely irrelevant.
+
+ケツのほうから撃退していこうか。
+We'll take them in reverse order.
+
+この友人の報告では、リソース調達のかなりの部分は、実は手持ちの防衛なんだという。
+My friend reports that a lot of resource marshalling is basically defensive;
+
+自分のスタッフとマシンとオフィスを確保したら、同じリソースを求めて競合している同僚のマネージャたちや、限られたプールの最有効利用を目指して配置を考えている上司たちから、それを守らなくてはならない。
+once you have your people and machines and office space, you have to defend them from peer managers competing for the same resources, and from higher-ups trying to allocate the most efficient use of a limited pool.
+
+でもオープンソース開発者たちはボランティアだし、自分のかかわるプロジェクトについて、興味と能力で自薦により貢献することなったわけだ
+But open-source developers are volunteers, self-selected for both interest and ability to contribute to the projects they work on
+
+（そしてこれは、オープンソースのハッキングで給料をもらうようになったときにもおおむねあてはまる）。
+(and this remains generally true even when they are being paid a salary to hack open source.)
+
+ボランティアの精神は、リソース調達の「攻撃」側の面倒をみてくれる。
+The volunteer ethos tends to take care of the `attack' side of resource-marshalling automatically;
+
+みんな自主的に自分のリソースを提供してくれるんだ。
+people bring their own resources to the table.
+
+そして、伝統的な意味でマネージャが「防御」する必要性は、ほとんど、いやまったくない。
+And there is little or no need for a manager to `play defense' in the conventional sense.
+
+どのみち、安い PC や高速インターネット接続の世界では、限られている唯一のリソースというのは、才能ある人々の関心だけだ。
+Anyway, in a world of cheap PCs and fast Internet links, we find pretty consistently that the only really limiting resource is skilled attention.
+
+オープンソースプロジェクトは、つぶれるときにも、別にマシンやリンクやオフィスが足りないからつぶれるんじゃない。
+Open-source projects, when they founder, essentially never do so for want of machines or links or office space;
+
+開発者自身が関心を失ったからという、それだけだ。
+they die only when the developers themselves lose interest.
+
+そういうことなら、オープンソースのハッカーたちが、自薦によって最大の生産性をあげるべく自ら組織化するというのは、二重の意味でだいじになる
+That being the case, it's doubly important that open-source hackers organize themselves for maximum productivity by self-selection
+
+――そしてハッカー界の社会理念によって、有能な者だけが容赦なく選ばれる。
+?and the social milieu selects ruthlessly for competence.
+
+ぼくの友だちは、オープンソース界と巨大閉鎖プロジェクトとの両方を知っていて、オープンソースが成功した理由の一部は、その文化がプログラミング人口のトップ 5% しか受け入れないからだ、と信じている。
+My friend, familiar with both the open-source world and large closed projects, believes that open source has been successful partly because its culture only accepts the most talented 5% or so of the programming population.
+
+彼女は、残り 95% の動員を組織するのに時間を費やしている。
+She spends most of her time organizing the deployment of the other 95%,
+
+そして、最高のプログラマと、単に有能なだけのプログラマとの 100 倍もの生産性のちがいというのを、直接見せつけられているのだ。
+and has thus observed first-hand the well-known variance of a factor of one hundred in productivity between the most able programmers and the merely competent.
+
+この生産性の差は、居心地の悪い質問をずっと投げかけ続けてきた。
+The size of that variance has always raised an awkward question:
+
+ということはだよ、ソフトの個別プロジェクトや、ソフト産業全体として見ても、使えない下半分を切り捨てたほうがずっとよくなるんじゃないだろうか。
+would individual projects, and the field as a whole, be better off without more than 50% of the least able in it?
+
+もし伝統的なソフト管理の唯一の機能が、一番使えないやつらを、せめて損害は出さずにトントンに持っていくくらいだとしたら、そんな仕事は何の価値もないんじゃないかということを、有能なマネージャたちは昔から理解していた。
+Thoughtful managers have understood for a long time that if conventional software management's only function were to convert the least able from a net loss to a marginal win, the game might not be worth the candle.
+
+オープンソース・コミュニティの成功は、この質問をもっともっと尖鋭化する。
+The success of the open-source community sharpens this question considerably,
+
+インターネットで自薦のボランティアをつのったほうが、ほかのことをしていたい人たちをビルいっぱい集めて管理するよりも安くて効率がいいことが多いという、動かしがたい証拠をつきつけているからだ。
+by providing hard evidence that it is often cheaper and more effective to recruit self-selected volunteers from the Internet than it is to manage buildings full of people who would rather be doing something else.
+
+というところで、話は都合よく動機づけのほうにやってきた。
+Which brings us neatly to the question of motivation.
+
+友人の論点と同じことを別の言い方で言っているのをよく聞く。
+An equivalent and often-heard way to state my friend's point is
+
+伝統的な開発マネジメントは、そのままではいい仕事をしてくれない、やる気のないプログラマたちを補うためのものなんだ、と。
+that traditional development management is a necessary compensation for poorly motivated programmers who would not otherwise turn out good work.
+
+この答はまた、オープンソースは「セクシー」で技術的に魅力ある仕事でしかあてにならない、という議論とセットになっていることが多い。
+This answer usually travels with a claim that the open-source community can only be relied on only to do work that is `sexy' or technically sweet;
+
+それ以外のことは、放っておかれるままだ
+anything else will be left undone
+
+（あるいはいい加減にしか処理されない）。
+(or done only poorly)
+
+それをやるには、札束でひっぱたかれて、区画に閉じこめられた日雇いプログラマが、頭上でマネージャのふりまわす鞭の響きをききつつ必死で書くしかない、というわけだ。
+unless it's churned out by money-motivated cubicle peons with managers cracking whips over them.
+
+ぼくは、こういう主張がまゆつばだと思う理由について『ノウアスフィアの開墾』で述べた。
+I address the psychological and social reasons for being skeptical of this claim in Homesteading the Noosphere.
+
+でもこの文の趣旨からして、これを本当として受け入れたらどういうことになるかを指摘するほうが、もっとおもしろいだろう。
+For present purposes, however, I think it's more interesting to point out the implications of accepting it as true.
+
+もし従来型のクローズドソースでマネジメント過大のソフト開発スタイルが、退屈からくる問題でつくったマジノ線によってしか弁護できないのならば、その議論が成立するのは、それぞれのアプリケーション領域で、だれもその問題を本気で面白いとは思わないし、さらに他にだれもその問題の抜け道を見つけない場合に限られる。
+If the conventional, closed-source, heavily-managed style of software development is really defended only by a sort of Maginot Line of problems conducive to boredom, then it's going to remain viable in each individual application area for only so long as nobody finds those problems really interesting and nobody else finds any way to route around them.
+
+「退屈」なソフトにオープンソースの競合がでてきた瞬間に、顧客たちは、その問題自体が面白いから解決してやろうという人物が、それに取り組んでいるんだな、というのがわかるわけだ
+Because the moment there is open-source competition for a `boring' piece of software, customers are going to know that it was finally tackled by someone who chose that problem to solve because of a fascination with the problem itself
+
+――そしておもしろさというのは、ソフトに限らずあらゆるクリエイティブな仕事に言えることだけれど、ただのお金なんかよりもずっとずっと優れたニンジンなんだ。
+?which, in software as in other kinds of creative work, is a far more effective motivator than money alone.
+
+伝統的なマネジメント構造を、みんなの尻を叩くためだけに持っておくというのは、戦術的には優れていても、戦略的にはダメだ。
+Having a conventional management structure solely in order to motivate, then, is probably good tactics but bad strategy;
+
+短期的には成功しても、長期的にはまちがいなく負ける。
+a short-term win, but in the longer term a surer loss.
+
+いまのところ、伝統的な開発マネジメントは 2 つの点（リソースの調達と、組織）で、オープンソースに対して勝ち目がなさそうに見える。
+So far, conventional development management looks like a bad bet now against open source on two points (resource marshalling, organization), 
+
+そして三番目の点（動機づけ）でも、先は短そうだ。
+and like it's living on borrowed time with respect to a third (motivation).
+
+さらにあわれな包囲された伝統的マネージャは、監督面でも点をあげられない。
+And the poor beleaguered conventional manager is not going to get any succour from the monitoring issue;
+
+オープンソースコミュニティを支持する最強の議論が、分散化された同業者レビューシステムが、細部の見落としがないようにするための従来型のあらゆる方式など足下にも及ばないほど優秀だ、ということなんだから。
+the strongest argument the open-source community has is that decentralized peer review trumps all the conventional methods for trying to ensure that details don't get slipped.　
+
+じゃあ、伝統的なソフトプロジェクト管理のオーバーヘッドを正当化するのに、目標設定というのくらいは救ってやれるかな？
+Can we save defining goals as a justification for the overhead of conventional software project management?
+
+かもね。
+Perhaps;
+
+でも、そのためには、マネジメント委員会だの企業のロードマップだのが、オープンソース界で似たような役割を果たすプロジェクトごとの「優しき独裁者」や部族の長老に比べて、価値あるみんなに共有される目標を定義するのが上手だ、と信ずべきまともな理由が必要になる。
+but to do so, we'll need good reason to believe that management committees and corporate roadmaps are more successful at defining worthy and widely shared goals than the project leaders and tribal elders who fill the analogous role in the open-source world.
+
+こいつを正面きって主張するのは、なかなかにむずかしいことだ。
+That is on the face of it a pretty hard case to make.
+
+そしてそれがむずかしいのは、オープンソース側がどうのというわけではない（Emacs の長寿ぶりとか、リーヌス・トーヴァルズが「世界征服」を語って開発者の群を蜂起させられるとか）。
+And it's not so much the open-source side of the balance (the longevity of Emacs, or Linus Torvalds's ability to mobilize hordes of developers with talk of ``world domination'') that makes it tough.
+
+むしろ、ソフトプロジェクトの目標設定にあたって、伝統的な仕組みがそのタコぶりを遺憾なく証明してきてしまったという点が問題なんだ。
+Rather, it's the demonstrated awfulness of conventional mechanisms for defining the goals of software projects.
+
+ソフト工学の、口伝理論でいちばん有名なものとして、伝統的なソフトプロジェクトの 60% から 75% は、結局完成せずに終わるか、あるいはその予定顧客に拒絶される、というものがある。
+One of the best-known folk theorems of software engineering is that 60% to 75% of conventional software projects either are never completed or are rejected by their intended users.
+
+もしこの数字が多少なりとも真実に近いなら（そして多少なりとも経験あるマネージャで、これを否定する人にはお目にかかったことがない）、たぶん半分以上のプロジェクトは、現実的に達成不可能か、あるいは単純にひたすらまちがっている目標を目指してすすんでいるということになる。
+If that range is anywhere near true (and I've never met a manager of any experience who disputes it) then more projects than not are being aimed at goals that are either (a) not realistically attainable, or (b) just plain wrong.
+
+これは、他のどんな問題にも増して、いまのソフト工学界で「マネジメント委員会」ということばがそれを聞いた者の背中に寒気を走らせる理由なのだ。
+This, more than any other problem, is the reason that in today's software engineering world the very phrase ``management committee'' is likely to send chills down the hearer's spine
+
+それを聞いた人が、たとえマネージャであったとしても（いや、マネージャであればこそ、かな）。
+?even (or perhaps especially) if the hearer is a manager.
+
+このパターンについてグチっていたのがプログラマだけだった時代は、とうの昔に過ぎ去っている。
+The days when only programmers griped about this pattern are long past;
+
+「ディルバート」のマンガが、いまでは重役のデスクにだって置かれているのだ。
+Dilbert cartoons hang over executives' desks now.
+
+すると、伝統的なソフト開発マネージャへのわれわれの答は簡単だ
+Our reply, then, to the traditional software development manager, is simple
+
+――もしオープンソース・コミュニティが伝統的なマネジメントの価値を過小評価しているというんなら、なぜあなたたちのそんなに多くが、自分自身のプロセスに対して恐怖や恐れや侮蔑を表明しているのでしょうか？
+?if the open-source community has really underestimated the value of conventional management, why do so many of you display contempt for your own process?
+
+またもや、オープンソース・コミュニティの存在がこの質問をかなり尖鋭にしてしまう
+Once again the example of the open-source community sharpens this question considerably
+
+――ぼくたちは、楽しんでやっているんだもの。
+?because we have fun doing what we do.
+
+ぼくたちの創造的な遊びは、技術面でも、市場シェア面でも、精神的なシェアでも、すさまじい勢いで成功を重ねてきている。
+Our creative play has been racking up technical, market-share, and mind-share successes at an astounding rate.
+
+ぼくたちは、もっといいソフトがつくれることを示しただけじゃない。
+We're proving not only that we can do better software,
+
+よろこびが資産であることを証明してもいるんだ。
+but that joy is an asset.
+
+この論文の最初の論文から二年半たって、ぼくが最後に提供できるいちばんラジカルなアイデアというのは、オープンソースが圧勝した世界のビジョンではない。
+Two and a half years after the first version of this essay, the most radical thought I can offer to close with is no longer a vision of an open-source?dominated software world;
+
+だってそんなものは、いまではスーツ姿のしらふ人間たちにだって、ずいぶん納得のいくものになっているようじゃないか。
+that, after all, looks plausible to a lot of sober people in suits these days.
+
+むしろぼくは、ソフトウェア（そしてあらゆる創造的またはプロフェッショナルな仕事）についての、もっと広い教訓をここで提示してみたい。
+Rather, I want to suggest what may be a wider lesson about software, (and probably about every kind of creative or professional work).
+
+人間は仕事をするとき、それが最適な挑戦ゾーンになっていると、いちばん嬉しい。
+Human beings generally take pleasure in a task when it falls in a sort of optimal-challenge zone;
+
+簡単すぎて退屈でもいけないし、達成不可能なほどむずかしくてもダメだ。
+not so easy as to be boring, not too hard to achieve.
+
+シヤワセなプログラマは、使いこなされていないこともなく、どうしようもない目標や、ストレスだらけのプロセスの摩擦でげんなりしていない。
+A happy programmer is one who is neither underutilized nor weighed down with ill-formulated goals and stressful process friction.
+
+楽しみが能率をあげる。
+Enjoyment predicts efficiency.
+
+自分の仕事のプロセスにびくびくゲロゲロ状態で関わり合う（それがつきはなした皮肉なやりかただったとしても）というのは、それ自体が、そのプロセスの失敗を告げるものととらえるべきだ。
+Relating to your own work process with fear and loathing (even in the displaced, ironic way suggested by hanging up Dilbert cartoons) should therefore be regarded in itself as a sign that the process has failed.
+
+楽しさ、ユーモア、遊び心は、まさに財産だ。
+Joy, humor, and playfulness are indeed assets;
+
+ぼくがさっき、「シヤワセな集団」という表現を使ったのは、別に「シ」の頭韻のためだけじゃないし、Linuxのマスコットがぬくぬくした幼形成熟（ネオテニー）っぽいペンギンなのもただの冗談じゃあない。
+it was not mainly for the alliteration that I wrote of "happy hordes" above, and it is no mere joke that the Linux mascot is a cuddly, neotenous penguin.
+
+オープンソースの成功のいちばんだいじな影響の一つというのは、いちばん頭のいい仕事の仕方は遊ぶことだということを教えてくれることかもしれない。
+It may well turn out that one of the most important effects of open source's success will be to teach us that play is the most economically efficient mode of creative work.
+
+
+謝辞
+Acknowledgements
+
+この論文は、デバッグを手伝ってくれた多数の人々との会話によって改善されてきた。
+This essay was improved by conversations with a large number of people who helped debug it.
+
+とくに感謝したいのが Jeff Dutky <dutky@wam.umd.edu>。
+Particular thanks to Jeff Dutky <dutky@wam.umd.edu>,
+
+かれは「デバッグは並列処理可能である」という言い方を提案して、そこから生まれる分析の形成を助けてくれた。
+who suggested the ``debugging is parallelizable'' formulation, and helped develop the analysis that proceeds from it.
+
+Nancy Lebovitz <nancyl@universe.digex.net>は、クロポトキンを引用してワインバーグをまねしたらどうかと示唆を与えてくれた。
+Also to Nancy Lebovitz <nancyl@universe.digex.net> for her suggestion that I emulate Weinberg by quoting Kropotkin.
+
+ほかに有益なコメントをくれた人としては、General Technics リストの Joan Eslinger <wombat@kilimanjaro.engr.sgi.com> と Marty Franz <marty@net-link.net>。
+Perceptive criticisms also came from Joan Eslinger <wombat@kilimanjaro.engr.sgi.com> and Marty Franz <marty@net-link.net> of the General Technics list.
+
+Glen Vandenburg <glv@vanderburg.org> は貢献者人口の自己選別性が重要だということを指摘してくれたし、多くの開発というのが「見過ごしというバグ」を修正するものだという有益なアイデアをくれた。
+Glen Vandenburg <glv@vanderburg.org> pointeed out the importance of self-selection in contributor populations and suggested the fruitful idea that much development rectifies `bugs of omission';
+
+Daniel Upper <upper@peak.org> は、これについて自然界のアナロジーを提供してくれた。
+Daniel Upper <upper@peak.org> suggested the natural analogies for this.
+
+PLUG（フィラデルフィア Linux ユーザグループ）のメンバーたちにも感謝する。
+I'm grateful to the members of PLUG, the Philadelphia Linux User's group,
+
+かれらはこの論文の初の公開版について、最初のテスト読者になってくれた。
+for providing the first test audience for the first public version of this essay.
+
+Paula Matuszek <matusp00@mh.us.sbphrd.com> はソフトウェア管理の実務についてぼくを啓蒙してくれた。
+Paula Matuszek <matusp00@mh.us.sbphrd.com> enlightened me about the practice of software management.
+
+Phil Hudson <phil.hudson@iname.com> は、ハッカー文化の社会組織構成はそのソフトの構成を反映するものであり、その逆も真だということを思い出させてくれた。
+Phil Hudson <phil.hudson@iname.com> reminded me that the social organization of the hacker culture mirrors the organization of its software, and vice-versa.
+
+
+John Buck <johnbuck@sea.ece.umassd.edu> pointed out that MATLAB makes an instructive parallel to Emacs.
+Russell Johnston <russjj@mail.com> brought me to consciousness about some of the mechanisms discussed in ``How Many Eyeballs Tame Complexity.''
+
+
+最後に、リーヌス・トーヴァルズのコメントは有益だったし、かれがはやいうちから賛同してくれたので、ぼくとしてもやりやすかった。
+Finally, Linus Torvalds's comments were helpful and his early endorsement very encouraging.
+
+
+
+もっと考えたい人のための文献リスト
+Bibliography
+
+Frederick P. Brooks の古典The Mythical Man-Month （邦訳　フレデリック・P・ブルックス『人月の神話――狼人間を撃つ銀の弾はない』アジソン・ウェスレイパブリッシャーズ・ジャパン、1996 年）からはあちこち引用させてもらった。
+I quoted several bits from Frederick P. Brooks's classic The Mythical Man-Month 
+
+というのも、かれの洞察はいろいろな意味で、まだまだそのまま通用するものだからだ。
+because, in many respects, his insights have yet to be improved upon.
+
+Addison-Wesley から出ている刊行25周年記念版 (ISBN 0-201-83595-9）を是非ともお奨めする。
+I heartily recommend the 25th Anniversary edition from Addison-Wesley (ISBN 0-201-83595-9),
+
+これにはかれの 1986 年論文 No Silver Bullet （前掲書第 16 章所収。邦題「銀の弾などない」）も収められている。
+which adds his 1986 ``No Silver Bullet'' paper.
+
+この新版の巻末には、非常に有益なブルックスの20年後の回想記がついていて、このなかでブルックスはもとの文章において結果的にまちがっていた部分について、すなおに認めている。
+The new edition is wrapped up by an invaluable 20-years-later retrospective in which Brooks forthrightly admits to the few judgements in the original text which have not stood the test of time.
+
+ぼくはこの論文をほとんど書き上げたときにこの回想記を読んだのだけれど、ブルックスがバザール式のやり方の例としてマイクロソフトを挙げていたと知ったときにはたまげたね！
+I first read the retrospective after the first public version of this essay was substantially complete, and was surprised to discover that Brooks attributed bazaar-like practices to Microsoft!
+
+（ただし実際には、このかれの例示はまちがっていたことがわかった。
+(In fact, however, this attribution turned out to be mistaken.
+
+1998年に、ぼくらは『ハロウィーン文書』によって、マイクロソフト内部の開発者コミュニティはひどい戦国状態にあることを知った。
+In 1998 we learned from the Halloween Documents that Microsoft's internal developer community is heavily balkanized,
+
+バザールを支えるために必要な、広いソースコードへのアクセスは、実はぜんぜん可能ではないんだ）。
+with the kind of general source access needed to support a bazaar not even truly possible.)
+
+Gerald M. WeinbergのThe Psychology of Computer Programming (New York, Van Nostrand Reinhold 1971)（邦訳　G. M. ワインバーグ『プログラミングの心理学　または、ハイテクノロジーの人間学』木村泉他訳、技術評論社、1994年）は、「エゴのないプログラミング」という考え方を導入していて、これは名前のつけかたがまずかったと思う。
+Gerald M. Weinberg's The Psychology Of Computer Programming (New York, Van Nostrand Reinhold 1971) introduced the rather unfortunately-labeled concept of ``egoless programming''.
+
+「命令主義」の不毛さについて認識したのは、かれが最初でもなんでもないけれど、でもそれを特にソフト開発に結びつけて論じたのはたぶんかれが最初だと思う。
+While he was nowhere near the first person to realize the futility of the ``principle of command'', he was probably the first to recognize and argue the point in particular connection with software development.
+
+Richard P. Gabriel は Linux 以前の時代の Unix 文化を考察し、1989 年の論文 "Lisp: Good News, Bad News, and How To Win Big" のなかで、初期のバザール状モデルの優位性を論じている。
+Richard P. Gabriel, contemplating the Unix culture of the pre-Linux era, reluctantly argued for the superiority of a primitive bazaar-like model in his 1989 paper ``LISP: Good News, Bad News, and How To Win Big''.
+
+古びたところもあるけれど、この文章はいまでも Lispファン（ぼくを含め）の間では当然ながら珍重されている。
+Though dated in some respects, this essay is still rightly celebrated among LISP fans (including me).
+
+ある人がぼくに、この文のなかの「劣るほうが優秀」という章は、まるで Linux を予見しているかのように読めることを指摘してくれた。
+A correspondent reminded me that the section titled ``Worse Is Better'' reads almost as an anticipation of Linux.
+
+この論文は World Wide Web のhttp://www.naggum.no/worse-is-better.htmlで入手可能。
+The paper is accessible on the World Wide Web at http://www.naggum.no/worse-is-better.html.
+
+De Marco と Lister の Peopleware: Productive Projects and Teams (New York; Dorset House, 1987; ISBN 0-932633-05-6) (邦訳『ピープルウェア』日立 SK 訳、日経BP社、1989年) は知られざる名著で、フレッド・ブルックスが回想記の中で触れているのを見たときは嬉しかった。
+De Marco and Lister's Peopleware: Productive Projects and Teams (New York; Dorset House, 1987; ISBN 0-932633-05-6) is an underappreciated gem which I was delighted to see Fred Brooks cite in his retrospective.
+
+著者たちの議論のなかで、直接 Linux やフリーソフト（オープンソース）界に適用できるものはあまりないけれど、創造的な作業に必要な条件に関する著者たちの洞察は正確で、バザールモデルの長所をもっと商業的な場に導入したいと試みる人には一読の価値がある。
+While little of what the authors have to say is directly applicable to the Linux or open-source communities, the authors' insight into the conditions necessary for creative work is acute and worthwhile for anyone attempting to import some of the bazaar model's virtues into a commercial context.
+
+最後に、ぼくはこの論文を寸前まで「伽藍とアゴラ」と呼ぶところだったのを白状しておこう。
+Finally, I must admit that I very nearly called this essay ``The Cathedral and the Agora'',
+
+アゴラというのは、ギリシャ語で自由市場や公共集会場所をさすことばだ。
+the latter term being the Greek for an open market or public meeting place.
+
+Mark Miller と Eric Drexler の先駆的な論文 "The Agoric System"「アゴラ的システム」 は、市場状のコンピュータ生態学にあらわれつつある性質を記述していて、5 年後に Linux がぼくをフリーソフト（オープンソース・ソフト）での類似現象に直面させたときも、これを読んでいたおかげで明確にものを考える準備ができていた。
+The seminal ``agoric systems'' papers by Mark Miller and Eric Drexler, by describing the emergent properties of market-like computational ecologies, helped prepare me to think clearly about analogous phenomena in the open-source culture when Linux rubbed my nose in them five years later.
+
+この論文はWeb上のhttp://www.agorics.com/agorpapers.html で入手可能。
+These papers are available on the Web at http://www.agorics.com/agorpapers.html.
+
+
+エピローグ：Netscapeもバザール方式を受け入れる
+Epilog: Netscape Embraces the Bazaar
+
+自分が歴史の変化に手を貸したと気がつくのは、なんとも奇妙な感じだ……
+It's a strange feeling to realize you're helping make history....
+
+1998年1月22日、ぼくがこの論文を初めて発表してからおよそ 7 ヶ月後、Netscape Communications, Inc. がNetscape Communicator のソースを無料でばらまく計画を発表した。
+On January 22 1998, approximately seven months after I first published The Cathedral and the Bazaar, Netscape Communications, Inc. announced plans to give away the source for Netscape Communicator.
+
+この発表の前日でさえ、こんなことが起こるとはつゆほども知らなかった。
+I had had no clue this was going to happen before the day of the announcement.
+
+Netscape の専務副社長兼技術担当重役の Eric Hahn が、発表のすぐ後にぼくにメールをくれた。
+Eric Hahn, executive vice president and chief technology officer at Netscape, emailed me shortly afterwards
+
+こんな文面だ。
+as follows:
+
+「Netscape 全社員を代表して、そもそもこのポイント把握を助けてくれたことに感謝します。
+``On behalf of everyone at Netscape, I want to thank you for helping us get to this point in the first place.
+
+あなたの考え方と論文が、われわれの決断にあたって根本的なひらめきを与えてくれました」
+Your thinking and writings were fundamental inspirations to our decision.''
+
+翌週、ぼくは Netscape 社の招きでシリコンバレーに飛び、かれらの重役や技術陣との丸一日にわたる戦略会議（1998 年 2 月 4 日）に出席した。
+The following week I flew out to Silicon Valley at Netscape's invitation for a day-long strategy conference (on 4 Feb 1998) with some of their top executives and technical people.
+
+ぼくたちは Netscape のソース公開戦略とライセンスをつくり、
+We designed Netscape's source-release strategy and license together.
+
+
+その他、いずれフリーソフト（オープンソース）コミュニティに重大で前向きな影響をもたらすはずの計画をつくりあげた。
+
+
+この執筆時点では、これ以上の詳しい話はまだできないけれど、でも数週間以内に追って詳細が発表されるはずだ。
+
+
+この数日後に、ぼくは次のように書いた。
+A few days later I wrote the following:
+
+Netscape は大規模な現実世界におけるバザールモデルのテスト機会を提供してくれようとしている。
+Netscape is about to provide us with a large-scale, real-world test of the bazaar model in the commercial world.
+
+フリーソフト/オープンソース文化は、いま一つの危険に直面していることになる。
+The open-source culture now faces a danger;
+
+もし Netscape のやりくちがうまくいかなければ、フリーソフト/オープンソースの考え方自体がダメなせいだと思われてしまい、商業ソフトの世界はまた 10 年ほどは手を出そうとしなくなるかもしれない。
+if Netscape's execution doesn't work, the open-source concept may be so discredited that the commercial world won't touch it again for another decade.
+
+一方、これはまたとてつもないチャンスでもある。
+On the other hand, this is also a spectacular opportunity.
+
+この動きに対するウォール街などでの初期の反応は、慎重ながらも肯定的だった。
+Initial reaction to the move on Wall Street and elsewhere has been cautiously positive.
+
+ぼくたちは自らの力を証明する機会を与えられているのだ。
+We're being given a chance to prove ourselves, too.
+
+この動きを通じて Netscape が再び圧倒的な市場シェアを取り戻せば、それをきっかけにもうとっくに起こっていてしかるべきだったコンピュータ産業の革命が動き出すかも知れない。
+If Netscape regains substantial market share through this move, it just may set off a long-overdue revolution in the software industry.
+
+この先一年は、非常に示唆的でおもしろい時期になるだろう。
+The next year should be a very instructive and interesting time.
+
+そして確かに、実におもしろい一年だった。
+And indeed it was.
+
+1999 年半ば現在では、後に「Mozilla」と名づけられたものの開発はそこそこの成功だとはいえるだろう。
+As I write in mid-2000, the development of what was later named Mozilla has been only a qualified success.
+
+Netscape のもとの目標は達成した。
+It achieved Netscape's original goal,
+
+それは、マイクロソフトにブラウザ市場の独占封じ込めを許さないということだった。
+which was to deny Microsoft a monopoly lock on the browser market.
+
+さらに劇的な成功もあった
+It has also achieved some dramatic successes
+
+（特に次世代レンダリング・エンジンの Gecko のリリース）。
+(notably the release of the next-generation Gecko rendering engine).
+
+しかしながら、Mozilla の創始者たちが願ったような、Netscape 外部からのものすごい開発協力は未だに得られていない。
+However, it has not yet garnered the massive development effort from outside Netscape that the Mozilla founders had originally hoped for.
+
+ここでの問題はどうも、Mozilla が長いこと、バザール方式の基本ルールを破っていたことにあるようだ。
+The problem here seems to be that for a long time the Mozilla distribution actually broke one of the basic rules of the bazaar model;
+
+かれらは、貢献者候補たちがすぐに走らせて動いているのを見られるようなものを出荷しなかった
+it didn't ship with something potential contributors could easily run and see working.
+
+（リリースから1年以上たちまで、Mozilla をビルドするには、独占 Motif ライブラリのライセンスが必要だった）。
+(Until more than a year after release, building Mozilla from source required a license for the proprietary Motif library.)
+
+いちばんのマイナス点（外部世界から見た場合）は、Mozilla グループが未だに商品クラスの高品質ブラウザを出荷していないということだろう
+Most negatively (from the point of view of the outside world) the Mozilla group didn't ship a production-quality browser for two and a half years after the project launch
+
+――そしてプロジェクトの代表者の一人は、マネジメントのまずさと機会喪失について愚痴りつつ辞職することで、いささかの騒動を巻き起こした。
+?and in 1999 one of the project's principals caused a bit of a sensation by resigning, complaining of poor management and missed opportunities.
+
+かれは正しくもこうコメントしている。 
+「オープンソースは、魔法の砂なんかじゃない」
+``Open source,'' 
+he correctly observed, 
+``is not magic pixie dust.''
+
+（『辞職と回顧：mozilla.org 顛末記』と。　
+
+
+そりゃそうだ。
+And indeed it is not.
+
+Mozillaの長期的な見通しは、いま（1999 年 8 月現在）、Jamie Zawinski の辞職願の頃よりもかなり改善されてはいる
+The long-term prognosis for Mozilla looks dramatically better now (in November 2000) than it did at the time of Jamie Zawinski's resignation letter
+
+
+?in the last few weeks the nightly releases have finally passed the critical threshold to production usability.
+
+
+――でも、オープンソースにするだけで、見当ちがいの目標やスパゲッティ・コードや、その他ソフト工学の欠陥に苦しむプロジェクトが救われるわけではない、というかれの指摘は正しい。
+But Jamie was right to point out that going open will not necessarily save an existing project that suffers from ill-defined goals or spaghetti code or any of the software engineering's other chronic ills. 
+
+Mozilla は、オープンソースがいかにして成功するかという例と、いかにして失敗するかという例を同時に示してくれたわけだ。
+Mozilla has managed to provide an example simultaneously of how open source can succeed and how it could fail.
+
+しかし一方では、オープンソースの考え方は、それ以外の場所で成功をおさめ、支持者を見つけてきた。
+In the mean time, however, the open-source idea has scored successes and found backers elsewhere.
+
+1998 年と 1999 年には、オープンソース開発モデルに対する関心が爆発的に高まった。
+Since the Netscape release we've seen a tremendous explosion of interest in the open-source development model,
+
+これは Linux OS の相変わらずの成功に牽引されたものでもあり、それを牽引するものでもある。
+a trend both driven by and driving the continuing success of the Linux operating system.
+
+Mozilla が立ち上げた動きは、ますます加速して前進しつつあるのだ。
+The trend Mozilla touched off is continuing at an accelerating rate.
+
+
+脚注
+Notes
+
+[JB] Programing Pearlsで、有名なコンピュータ科学の警句屋ジョン・ベントレーは、ブルックスの観察についてこうコメントしている。
+[JB] In Programing Pearls, the noted computer-science aphorist Jon Bentley comments on Brooks's observation with 
+
+「もし一つ捨てることを予定して置いたら、二つ捨てる結果になるだろう」。
+``If you plan to throw one away, you will throw away two.''. 
+
+かれはほとんど確実にただしい。
+He is almost certainly right. 
+
+ブルックスの見解と、べントレーのコメントというのは、単に最初の試みはまちがえやすいから覚悟しろ、ということではない。
+The point of Brooks's observation, and Bentley's, isn't merely that you should expect first attempt to be wrong, 
+
+めちゃくちゃになったのを救うよりは、正しいアイデアで一からやり直すほうが、有効な場合が多い、ということを言いたいのだ。
+it's that starting over with the right idea is usually more effective than trying to salvage a mess.
+
+
+[QR] インターネットに先立つ、成功したオープンソースのバザール形式開発で、しかも Unix やインターネットの伝統とは関係ないものも存在している。
+[QR] Examples of successful open-source, bazaar development predating the Internet explosion and unrelated to the Unix and Internet traditions have existed.
+
+1990-92 年のinfo-Zip 圧縮ユーティリティの開発（主に DOS マシン用）はその一例だ。
+The development of the info-Zip compression utility during 1990?x1992, primarily for DOS machines, was one such example.
+
+もう一つあるのが、RBBS BBS ソフトだ（これまた DOS 用）。
+Another was the RBBS bulletin board system (again for DOS),
+
+これは 1983 年に始まって、なかなか強力なコミュニティが形成され、インターネットの電子メールやファイル共有のほうがローカルの BBS よりもずっと技術的なメリットが高くなった今（ 1999 年半ば）にいたるまで、定期的なリリースを繰り返している。
+which began in 1983 and developed a sufficiently strong community that there have been fairly regular releases up to the present (mid-1999) despite the huge technical advantages of Internet mail and file-sharing over local BBSs.
+
+info-ZIP コミュニティはある程度までインターネットの電子メールに頼っていたけれど、RBBS 開発者の文化は、RBBS 自身を使って相当なオンラインコミュニティを擁し、完全に TCP/IP インフラとは独立していた。
+While the info-Zip community relied to some extent on Internet mail, the RBBS developer culture was actually able to base a substantial on-line community on RBBS that was completely independent of the TCP/IP infrastructure.
+
+
+[CV] That transparency and peer review are valuable for taming the complexity of OS development turns out, after all, not to be a new concept. 
+In 1965, very early in the history of time-sharing operating systems, Corbat・and Vyssotsky, co-designers of the Multics operating system, wrote 
+It is expected that the Multics system will be published when it is operating substantially... 
+Such publication is desirable for two reasons: 
+First, the system should withstand public scrutiny and criticism volunteered by interested readers; 
+second, in an age of increasing complexity, it is an obligation to present and future system designers to make the inner operating system as lucid as possible so as to reveal the basic system issues.
+
+
+[JH] John Haslerは、ある作業が重複してやられたところで、オープンソースの開発にとっては差し引きであまり足をひっぱる結果にはならないと示唆してくれた。
+[JH] John Hasler has suggested an interesting explanation for the fact that duplication of effort doesn't seem to be a net drag on open-source development.
+
+かれが提案したものを「ハスラーの法則」と呼ぼう。
+He proposes what I'll dub ``Hasler's Law'':
+
+重複作業のコストは、そのチームのサイズの二乗より少ない
+the costs of duplicated work tend to scale sub-qadratically with team size
+
+――つまり、そういう重複を避けるために必要な、計画やマネジメントのオーバーヘッドに比べて増え方が遅いのだ。
+?that is, more slowly than the planning and management overhead that would be needed to eliminate them.
+
+この主張は、実はブルックスの法則に反するものではない。
+This claim actually does not contradict Brooks's Law.
+
+複雑なオーバーヘッド総額と、バグへの弱さがチームサイズの二乗に比例するのは事実かもしれないけれど、でも重複作業からくるコストは、もっとゆっくりスケールする特殊な例でしかない。
+It may be the case that total complexity overhead and vulnerability to bugs scales with the square of team size, but that the costs from duplicated work are nevertheless a special case that scales more slowly.
+
+これにもっともらしい理由をつけるのは、そんなにむずかしくない。
+It's not hard to develop plausible reasons for this,
+
+まずは、ほとんどのバグの原因となっている、計画外のよからぬ相互作用を防ぐのに比べれば、開発者のコード同士で機能の仕分けについて話あうのはずっと簡単だという、まちがいのない事実からも説明できる。
+starting with the undoubted fact that it is much easier to agree on functional boundaries between different developers' code that will prevent duplication of effort than it is to prevent the kinds of unplanned bad interactions across the whole system that underly most bugs.
+
+リーヌスの法則とハスラーの法則を組み合わせると、ソフトプロジェクトでサイズの段階が3段階くらいあることがわかる。
+The combination of Linus's Law and Hasler's Law suggests that there are actually three critical size regimes in software projects.
+
+小規模なプロジェクトでは（つまり開発者が一人からせいぜい三人くらいだろう）、リーダーとなるプログラマを選ぶ以外には、ややこしいマネジメント構造は必要ない。
+On small projects (I would say one to at most three developers) no management structure more elaborate than picking a lead programmer is needed.
+
+そしてそれを超えた中間くらいのところで、伝統的なマネジメントのコストがそこそこ低くて、作業の重複を避けたり、バグを追跡したり、細かい見落としがないかを調べるためのマネジメントがメリットをもたらすサイズがあるだろう。
+And there is some intermediate range above that in which the cost of traditional management is relatively low, so its benefits from avoiding duplication of effort, bug-tracking, and pushing to see that details are not overlooked actually net out positive.
+
+でもそれを超えるとリーヌスの法則とハスラーの法則が組み合わさって、伝統的なマネジメントのコストと問題が、作業重複からの期待トラブルよりも急速に増えるサイズというのが出てくるだろう。
+Above that, however, the combination of Linus's Law and Hasler's Law suggests there is a large-project range in which the costs and problems of traditional management rise much faster than the expected cost from duplication of effort.
+
+このコストのなかでも無視できないのが、「目玉たくさん効果」を導入できないという構造的な問題だ。
+Not the least of these costs is a structural inability to harness the many-eyeballs effect,
+
+目玉が多いほうが（これまで見てきたように）伝統的なマネジメントよりも、バグの見落としや細部の見落としに対してはずっと効果的なのだ。
+which (as we've seen) seems to do a much better job than traditional management at making sure bugs and details are not overlooked.
+
+だから大規模プロジェクトのケースでは、この 2 法則の組み合わせのおかげで伝統的なマネジメントのメリットは、ゼロにまで下がってしまう。
+Thus, in the large-project case, the combination of these laws effectively drives the net payoff of traditional management to zero.
+
+
+[HBS] The split between Linux's experimental and stable versions has another function related to, but distinct from, hedging risk. 
+The split attacks another problem: the deadliness of deadlines. 
+When programmers are held both to an immutable feature list and a fixed drop-dead date, quality goes out the window and there is likely a colossal mess in the making. 
+I am indebted to Marco Iansiti and Alan MacCormack of the Harvard Business School for showing me me evidence that relaxing either one of these constraints can make scheduling workable.
+One way to do this is to fix the deadline but leave the feature list flexible, allowing features to drop off if not completed by deadline. 
+This is essentially the strategy of the "stable" kernel branch; 
+Alan Cox (the stable-kernel maintainer) puts out releases at fairly regular intervals, but makes no guarantees about when particular bugs will be fixed or what features will beback-ported from the experimental branch.
+The other way to do this is to set a desired feature list and deliver only when it is done. 
+This is essentially the strategy of the "experimental" kernel branch. 
+De Marco and Lister cited research showing that this scheduling policy ("wake me up when it's done") produces not only the highest quality but, on average, shorter delivery times than either "realistic" or "aggressive" scheduling.
+I have come to suspect (as of early 2000) that in earlier versions of this essay I severely underestimated the importance of the "wake me up when it's done" anti-deadline policy to the open-source community's productivity and quality. 
+General experience with the rushed GNOME 1.0 release in 1999 suggests that pressure for a premature release can neutralize many of the quality benefits open source normally confers.
+It may well turn out to be that the process transparency of open source is one of three co-equal drivers of its quality, along with "wake me up when it's done" scheduling and developer self-selection.
+
+
+[SU] It's tempting, and not entirely inaccurate, to see the core-plus-halo organization characteristic of open-source projects as an Internet-enabled spin on Brooks's own recommendation for solving the N-squared complexity problem, the "surgical-team" organization?but the differences are significant. 
+The constellation of specialist roles such as "code librarian" that Brooks envisioned around the team leader doesn't really exist; 
+those roles are executed instead by generalists aided by toolsets quite a bit more powerful than those of Brooks's day. 
+Also, the open-source culture leans heavily on strong Unix traditions of modularity, APIs, and information hiding
+?none of which were elements of Brooks's prescription.
+
+[RJ] The respondent who pointed out to me the effect of widely varying trace path lengths on the difficulty of characterizing a bug speculated that trace-path difficulty for multiple symptoms of the same bug varies "exponentially" 
+(which I take to mean on a Gaussian or Poisson distribution, and agree seems very plausible). 
+If it is experimentally possible to get a handle on the shape of this distribution, that would be extremely valuable data. 
+Large departures from a flat equal-probability distribution of trace difficulty would suggest that even solo developers should emulate the bazaar strategy by bounding the time they spend on tracing a given symptom before they switch to another. 
+Persistence may not always be a virtue...
+
+[IN] バザール方式でゼロからプロジェクトを立ち上げられるかという問題は、バザール方式が真に革新的なものをサポートできるのか、という問題と関係している。
+[IN] An issue related to whether one can start projects from zero in the bazaar style is whether the bazaar style is capable of supporting truly innovative work.
+
+ある人に言わせると、強いリーダーシップのないバザールは、エンジニアリングの最先端にすでに存在しているアイデアをまねしたり、改良したりできるだけで、その最先端を先に進めることはできないそうだ。
+Some claim that, lacking strong leadership, the bazaar can only handle the cloning and improvement of ideas already present at the engineering state of the art, but is unable to push the state of the art.
+
+この議論を提出したいちばん悪名高い例が、ハロウィーン文書（原文、翻訳）だろう。
+This argument was perhaps most infamously made by the Halloween Documents,
+
+オープンソース現象について書かれた、マイクロソフトの恥ずかしい社内メモだ。
+two embarrassing internal Microsoft memoranda written about the open-source phenomenon.
+
+この著者たちは、Linux が Unix に似た OS を開発するのを「テールライトを追いかける」と例えてくれて、「（そのプロジェクトがひとたび技術の最先端の「飽和点」に達してしまえば）、新たなフロンティアに向けてみんなを押し進めるために必要となるマネジメントのレベルはとてつもないものとなる」と論じている。
+The authors compared Linux's development of a Unix-like operating system to ``chasing taillights'', and opined ``(once a project has achieved "parity" with the state-of-the-art), the level of management necessary to push towards new frontiers becomes massive.''
+
+この議論には、深刻な事実関係のまちがいが含まれている。
+There are serious errors of fact implied in this argument.
+
+その一つは、ハロウィーン文書の著者たち自らが次のように洞察しているところではっきり表明されている：
+One is exposed when the Halloween authors themseselves later observe that
+
+「具体的にはこれは、新しい研究上のアイデアはまず Linux上で実装されて入手可能となり、その後でほかのプラットホームで提供されたり組み込まれたりするようになる、ということだ」
+``often [...] new research ideas are first implemented and available on Linux before they are available / incorporated into other platforms.''
+
+ここで Linux を「オープンソース」と読み替えれば、これがまるで目新しい現象でないことはわかるだろう。
+If we read ``open source'' for ``Linux'', we see that this is far from a new phenomenon.
+
+歴史的に、オープンソース・コミュニティが Emacs や World Wide Web やインターネットを発明したのは、テールライトを追っかけたり、とてつもないレベルのマネジメントがあったりしたためではない
+Historically, the open-source community did not invent Emacs or the World Wide Web or the Internet itself by chasing taillights or being massively managed
+
+――そしていまでも、オープンソースではとても多くの独創的な仕事が続いていて、選ぶのに目移りするほどだ。
+?and in the present, there is so much innovative work going on in open source that one is spoiled for choice.
+
+あえて一つ選ぶとすると、GNOME プロジェクトは GUI とオブジェクト技術の最先端を押し広げていて、 Linux とはかけ離れたコンピュータ業界紙からも大いに注目されている。
+The GNOME project (to pick one of many) is pushing the state of the art in GUIs and object technology hard enough to have attracted considerable notice in the computer trade press well outside the Linux community.
+
+その他の例も目白押しで、これはいつでもいいから Freshmeatを訪ねてみればすぐに証明される。
+Other examples are legion, as a visit to Freshmeat on any given day will quickly prove.
+
+でも、伽藍方式が（あるいはバザール方式でも、その他どんなマネジメント方式でもいい）、なにやら技術革新を信頼できるかたちで生じさせられるという、暗黙の仮定にはもっと根本的なまちがいがある。
+But there is a more fundamental error in the implicit assumption that the cathedral model (or the bazaar model, or any other kind of management structure) can somehow make innovation happen reliably.
+
+だって、そんなのナンセンスだからだ。
+This is nonsense.
+
+群衆は、突破口となるような洞察なんか持てない
+Gangs don't have breakthrough insights
+
+――バザール方式のアナキストたちによるボランティア集団でさえ、まともなオリジナリティは発揮できないし、ましてやなにか現状に生存が係っているような人々からなる、企業委員会なんかからそんなものは絶対に出てきやしない。
+?even volunteer groups of bazaar anarchists are usually incapable of genuine originality, let alone corporate committees of people with a survival stake in some status quo ante.
+
+洞察は個人からくる。
+Insight comes from individuals.
+
+それをとりまく社会機構としてせいぜい期待できるのは、その突破口となる思いつきに対して敏感に反応することくらいだ
+The most their surrounding social machinery can ever hope to do is to be responsive to breakthrough insights
+
+――それをつぶすのではなく、ちゃんと育てて報酬を与え、きちんとテストしてやることだ。
+?to nourish and reward and rigorously test them instead of squashing them.
+
+これをロマンチックな見方だと決めつける人もいるだろう。
+Some will characterize this as a romantic view, 
+
+孤独な発明家というステロタイプに逆戻りしている、と。
+a reversion to outmoded lone-inventor stereotypes.
+
+ちがうね。
+Not so;
+
+ぼくは別に、いったん生まれた突破口となる洞察をグループが育てられないなんて言ってるわけではない。
+I am not asserting that groups are incapable of developing breakthrough insights once they have been hatched;
+
+それどころか、ピアレビューのプロセスから学ぶのは、こうした開発グループこそが高品質の結果を生み出すために不可欠だということだ。
+indeed, we learn from the peer-review process that such development groups are essential to producing a high-quality result.
+
+むしろぼくが指摘しているのは、そういうグループ開発もすべて出発点は――つまり、それに火をつけるのは必ず――だれか一人が思いついた、いいアイデア一つなんだ、ということだ。
+Rather I am pointing out that every such group development starts from?is necessarily sparked by?one good idea in one person's head.
+
+伽藍やバザールなんかの社会的な機構は、その火花をつかまえて洗練させることができるけれど、でもその機構が命令して着想を生み出したりはできないんだ。
+Cathedrals and bazaars and other social structures can catch that lightning and refine it, but they cannot make it on demand.
+
+だから、技術革新の根本問題（これはソフトウェアに限らずあらゆるところで）というのは、そのアイデアをどうやってつぶさずにおくか、ということだ
+Therefore the root problem of innovation (in software, or anywhere else) is indeed how not to squash it
+
+――でも、もっと根本的には、そもそも洞察を持てるような人たちをたくさん育てるにはどうしたらいいか、ということだ。
+?but, even more fundamentally, it is how to grow lots of people who can have insights in the first place.
+
+伽藍方式の開発がこいつを実現できて、参入障壁が低い、プロセスの流動的なバザールではこれができないと仮定するのはバカげている。
+To suppose that cathedral-style development could manage this trick but the low entry barriers and process fluidity of the bazaar cannot would be absurd.
+
+もしたった一人のたった一つのアイデアでいいなら、一人の人間がそのいいアイデアで、何百、何千という人々の協力をすぐに集められる社会方式のほうが、クビになる心配なしにそのアイデアに基づく作業ができるようになるために、階級機構に対して政治的な売り込みをしなくてはならないようなシステムに比べて、革新は早いに決まっている。
+If what it takes is one person with one good idea, then a social milieu in which one person can rapidly attract the cooperation of hundreds or thousands of others with that good idea is going inevitably to out-innovate any in which the person has to do a political sales job to a hierarchy before he can work on his idea without risk of getting fired.
+
+そして実際に、伽藍方式を使った組織によるソフトの技術革新の歴史を見てみると、あまり数がないことがすぐにわかる。
+And, indeed, if we look at the history of software innovation by organizations using the cathedral model, we quickly find it is rather rare.
+
+巨大企業は新しいアイデアの源として大学の研究に頼っている
+Large corporations rely on university research for new ideas
+
+（だからこそハロウィーン文書の著者たちは、Linux がその研究成果をずっとはやく取り入れられるということに危機意識を見せている）。
+(thus the Halloween Documents authors' unease about Linux's facility at coopting that research more rapidly).
+
+あるいは、革新者の頭脳を中心に生まれた小企業を買収するだろう。
+Or they buy out small companies built around some innovator's brain.
+
+いずれの場合にも、伽藍文化には技術革新は根付いていない。
+In neither case is the innovation native to the cathedral culture;
+
+それどころか、そうやって輸入された技術革新の多くは、ハロウィーン文書の著者たちがあんなに持ち上げる「とてつもないレベルのマネジメント」によって、静かに窒息させられてしまう結果となる。
+indeed, many innovations so imported end up being quietly suffocated under the "massive level of management" the Halloween Documents' authors so extol.
+
+これはでも、否定的なポイントだ。
+That, however, is a negative point.
+
+読者のみんなは、もっと肯定的な論点のほうが役にたつだろう。
+The reader would be better served by a positive one.
+
+試しに、以下のような実験をしてみたらどうだろう。
+I suggest, as an experiment, the following:
+
+一貫性を持って適用できると思うような、オリジナリティをはかる尺度を選ぶこと。
+Pick a criterion for originality that you believe you can apply consistently.
+
+きみの定義が「オリジナリティなんて見りゃわかる」というものであっても、このテストでは問題にはならない。 
+If your definition is ``I know it when I see it'', that's not a problem for purposes of this test.
+
+Linux と競合しているクローズドソースの OS をどれでもいいから選んで、その OS 上で進行中の開発作業を記述した最高の情報源を選ぶこと。
+Pick any closed-source operating system competing with Linux, and a best source for accounts of current development work on it.
+ 
+その情報源と Freshmeat を一ヶ月眺めること。
+Watch that source and Freshmeat for one month.
+
+毎日、「オリジナル」な仕事だと思われるリリースの発表の数を数えること。
+Every day, count the number of release announcements on Freshmeat that you consider `original' work.
+
+「オリジナル」の定義をその別の OS にも適用して、その数を数える。 
+Apply the same definition of `original' to announcements for that other OS and count them.
+
+30 日たったら、両方の数字をそれぞれ合計。 
+Thirty days later, total up both figures.
+
+これを書いた日だと、Freshmeat はリリースのアナウンス 22 つがあって、そのうち 3 つは何らかの形で最先端をさらに先へ進めるようなものだった。
+The day I wrote this, Freshmeat carried twenty-two release announcements, of which three appear they might push state of the art in some respect,
+
+この日の Freshmeatは低調だったけれど、でもクローズドソースのどんなプロジェクトでも、ものになりそうな技術革新が一月 3 つもあったら驚嘆しちゃうね。
+This was a slow day for Freshmeat, but I will be astonished if any reader reports as many as three likely innovations a month in any closed-source channel.
+
+
+[EGCS] いまや、いくつかの意味で fetchmail よりもバザール方式の実例として好都合なプロジェクトの歴史が手に入った。
+[EGCS] We now have history on a project that, in several ways, may provide a more indicative test of the bazaar premise than fetchmail;
+
+それが EGCS、gcc の高速版である Experimental GNU Compiler System だ。
+EGCS, the Experimental GNU Compiler System.
+
+このプロジェクトは 1997 年半ばに、この「伽藍とバザール」初期公開版に登場したアイデアを意識的に適用してみようという試みとしてはじまった。
+This project was announced in mid-August of 1997 as a conscious attempt to apply the ideas in the early public versions of The Cathedral and the Bazaar.
+
+プロジェクトの創始者たちは、GCC（GNU C コンパイラ）の開発が停滞していると感じていた。
+The project founders felt that the development of GCC, the Gnu C Compiler, had been stagnating.
+
+そしてそれ以降 20 ヶ月にわたり、GCC と EGCS は並行したプロジェクトとして続いていた
+For about twenty months afterwards, GCC and EGCS continued as parallel products
+
+――どちらも同じインターネット開発人口から人材を集め、どちらも同じ GCC のソースべースから出発してるし、どちらもだいたい同じ Unix ツールセットと開発環境から始めている。
+?both drawing from the same Internet developer population, both starting from the same GCC source base, both using pretty much the same Unix toolsets and development environment.
+
+両プロジェクトの唯一のちがいは、EGCS が意識的に、ぼくがこれまでに記述してきたバザール戦術を用い、それに対して GCC のほうは、閉じた開発者グループとめったにないリリースとでもっと伽藍的な開発方式を続けたということだった。
+The projects differed only in that EGCS consciously tried to apply the bazaar tactics I have previously described, while GCC retained a more cathedral-like organization with a closed developer group and infrequent releases.
+
+これは、対照実験にいちばん近いものといっていい。
+This was about as close to a controlled experiment as one could ask for,
+
+そして結果は劇的だった。
+and the results were dramatic.
+
+数ヶ月のうちに、EGCS のバージョンは、機能面ではるかに GCC を引き離した。
+Within months, the EGCS versions had pulled substantially ahead in features;
+
+最適化も向上していて、FORTRAN と C++ のサポートも優れていた。
+better optimization, better support for FORTRAN and C++.
+
+多くの人は、EGCS の開発途上スナップショットのほうが、GCC の最新安定版より信頼性が高いと判断しており、主要Linuxディストリビューションも EGCS に移行しはじめた。
+Many people found the EGCS development snapshots to be more reliable than the most recent stable version of GCC, and major Linux distributions began to switch to EGCS.
+
+1999 年 4 月には、フリーソフト財団（GCC の公式スポンサー）はもとの GCC 開発チームを解散して、プロジェクトのコントロールを公式に EGCS ステアリング・グループに譲りわたした。
+In April of 1999, the Free Software Foundation (the official sponsors of GCC) dissolved the original GCC development group and officially handed control of the project to the the EGCS steering team.
+
+
+[SP] もちろん、クロポトキンの批判とリーヌスの法則は、社会機構のサイバネティクスについてもっと大きな問題を提起している。
+[SP] Of course, Kropotkin's critique and Linus's Law raise some wider issues about the cybernetics of social organizations.
+
+ソフト工学についての別の口伝理論が、その一つを示している。
+Another folk theorem of software engineering suggests one of them;
+
+これはコンウェイの法則と言われる
+Conway's Law
+
+――ふつうの言われ方では、「もしコンパイラをつくるのに 4 つのグループが作業していたら、できあがるのは 4 パスコンパイラになる」となる。
+?commonly stated as ``If you have four groups working on a compiler, you'll get a 4-pass compiler''.
+
+もとの表現はもっと一般的だった。
+The original statement was more general:
+
+「システムを設計する組織は、その組織のコミュニケーション構造の複製であるような設計を生み出すように縛られる」というものだ。
+``Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations.''
+
+これをもっと平たくして「手段が目的を決定する」と言ってもいいだろう。
+We might put it more succinctly as ``The means determine the ends'',
+
+あるいは「プロセスこそが成果物となる」とでも。
+or even ``Process becomes product''.
+
+したがって、オープンソース・コミュニティでは、組織形態と機能がいろんなレベルで一致していることは頭にいれておいていいだろう。
+It is accordingly worth noting that in the open-source community organizational form and function match on many levels. 
+
+ネットワークがすべてで、いたるところにある。
+The network is everything and everywhere:
+
+インターネットだけじゃない。
+not just the Internet,
+
+みんな分散した、ゆるい結びつきの、ピア・ツー・ピアのネットワークで作業を進めて、それがいくつもの冗長性を生んで、退行のしかたもとても緩やかだ。
+but the people doing the work form a distributed, loosely coupled, peer-to-peer network that provides multiple redundancy and degrades very gracefully.
+
+いずれのネットワークでも、各ノードはほかのノードがそれと協力したがる度合いに応じてのみ重要となる。
+In both networks, each node is important only to the extent that other nodes want to cooperate with it.
+
+オープンソース・コミュニティのすさまじい生産性には、このピア・ツー・ピアの部分が本当にだいじだ。
+The peer-to-peer part is essential to the community's astonishing productivity.
+
+クロポトキンが力関係について言おうとしていたことは、「SNAFU 原理」によってさらに展開されている。
+The point Kropotkin was trying to make about power relationships is developed further by the `SNAFU Principle':
+
+その原理とは、
+「真のコミュニケーションは対等な者同士の間でしか成立しない。
+``True communication is possible only between equals,
+
+なぜなら、劣る者は上位者に耳障りのいいウソを語ったほうが、真実を語るよりも報酬を得る見込みが高いからだ。」
+because inferiors are more consistently rewarded for telling their superiors pleasant lies than for telling the truth.''
+
+創造的なチームワークは、まさに真のコミュニケーションに依存していて、だからそこに権力関係が入り込むと、かなり深刻に足を引っ張られる。
+Creative teamwork utterly depends on true communication and is thus very seriously hindered by the presence of power relationships.
+
+オープンソース・コミュニティは、こういう力関係からは実質的に自由で、しかもそういう力関係がバグや機会損失という面でどんなに高いコストを支払うことになるのか、ということを反面教師的に教えてくれているわけだ。
+The open-source community, effectively free of such power relationships, is teaching us by contrast how dreadfully much they cost in bugs, in lowered productivity, and in lost opportunities.
+
+さらに、SNAFU 原理は権威主義的な組織において、意志決定者たちと現実の間がだんだん乖離していくと預言している。
+Further, the SNAFU principle predicts in authoritarian organizations a progressive disconnect between decision-makers and reality,
+
+というのも、意志決定者の耳に入る入力は、ますます耳障りのいいウソばかりになってくるからだ。
+as more and more of the input to those who decide tends to become pleasant lies.
+
+これが従来のソフト開発でどう効いてくるかというのは、すぐにわかる。
+The way this plays out in conventional software development is easy to see;
+
+下位の者たちには、問題を隠し、無視して、過小評価する強いインセンティブがある。
+there are strong incentives for the inferiors to hide, ignore, and minimize problems.
+
+このプロセスが製品となったら、ソフトウェアは悲惨なことになる。
+When this process becomes product, software is a disaster.
+
+
+バージョンと変更履歴
+$Id: cathedral-bazaar.sgml,v 1.40 1998/08/11 20:27:29 esr Exp $
+バージョン1.16: 1997 年 5 月 21 日、Linux Kongress にて発表。
+バージョン1.20: 1997 年 7 月 7 日、文献リストを追加。
+バージョン1.27: 1997 年 11 月 18 日、Perl 会議での逸話を追加。
+バージョン1.29: 1998 年 2 月 9 日、「フリーソフト」を「オープンソース」に変更
+（「オープンソース」という用語はまだ日本語として普及していないと判断して、翻訳では併記している）。
+バージョン1.31: 1998 年 2 月 10 日、「エピローグ：Netscape もバザール方式を受け入れる」の章を追加。
+バージョン1.4: 1998 年 7 月 28 日に RMS から強力な意見をもらったのを受けて、Paul Eggartによる GPL vs バザール方式に関する見解を削除。
+ハロウィーン文書に基づいてブルックスに訂正を加筆。
+バージョン1.44: 1999 年 7 月末に、「マネジメントとマジノ線について」、デザイン空間探求のためのバザールの有用性を追加、エピローグの大幅加筆。
+バージョン1.45: 1999 年 8 月 8 日に、Snafu 原理について、バザール開発（前）史事例、オリジナリティに関する脚注を追加。
+これ以外の変更は、細かい編集上の変更やマークアップの変更を反映したもの。
+（翻訳上のミスについて、高瀬 俊朗<toshiro.takase@toshiba.co.jp>、山根 信二<s-yamane@vacia.is.tohoku.ac.jp>、白田秀彰<hideaki@leo.misc.hit-u.ac.jp>、井上友一<marutomo@jade.dti.ne.jp>の各氏からご指摘をいただいた。
+伏して感謝する――訳者記す）
+

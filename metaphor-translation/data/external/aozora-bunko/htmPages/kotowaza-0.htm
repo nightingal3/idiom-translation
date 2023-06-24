@@ -1,0 +1,611 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>ことわざ / 北尾謙治・北尾S.キャスリーン 著</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/kotowazae.txt">英語文</a>&<a href="../org/kotowazaj.txt">日本語文</a> / <a href="../manual-alignment/kotowaza.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>0 of ことわざ</TITLE>
+<hr>
+prev
+<0>
+<a href="kotowaza-1.htm">1</a>
+<a href="kotowaza-1.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1"><a name="1"><TD ID="TAB1" onclick="javascript:toggleLayer('J1')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1" onclick="javascript:toggleLayer('E1')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ことわざ　　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2"><a name="2"><TD ID="TAB2" onclick="javascript:toggleLayer('J2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2" onclick="javascript:toggleLayer('E2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="3"><a name="3"><TD ID="TAB3" onclick="javascript:toggleLayer('J3')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3" onclick="javascript:toggleLayer('E3')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 北尾　謙治・北尾S.キャスリーン		
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="4"><a name="4"><TD ID="TAB4" onclick="javascript:toggleLayer('J4')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB4" onclick="javascript:toggleLayer('E4')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="5"><a name="5"><TD id="E5" onclick="javascript:toggleLayer('J5')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A bargain is a bargain.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J5" onclick="javascript:toggleLayer('E5')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 武士に二言なし	
+約束は約束。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="6"><a name="6"><TD id="E6" onclick="javascript:toggleLayer('J6')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A bird in the hand is worth two in the bush.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J6" onclick="javascript:toggleLayer('E6')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日の百より明日の五十	
+手中の1羽の鳥は茂み中の二羽の鳥の値打ちがある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="7"><a name="7"><TD id="E7" onclick="javascript:toggleLayer('J7')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A cat has nine lives.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J7" onclick="javascript:toggleLayer('E7')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 猫には九生
+（容易に死なない）	
+猫は九つの命がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="8"><a name="8"><TD id="E8" onclick="javascript:toggleLayer('J8')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A friend in need is a friend in deed.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J8" onclick="javascript:toggleLayer('E8')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 困ったときの友こそ真の友	
+難儀なときに居てくれる友達が本当の友達だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="9"><a name="9"><TD id="E9" onclick="javascript:toggleLayer('J9')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A little learning is a dangerous thing.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J9" onclick="javascript:toggleLayer('E9')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 生兵法は怪我のもと	
+少々の学問は危険なものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="10"><a name="10"><TD id="E10" onclick="javascript:toggleLayer('J10')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A rolling stone gathers no moss.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J10" onclick="javascript:toggleLayer('E10')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 転石苔（コケ）むさず 	
+転がる石には苔は生えない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="11"><a name="11"><TD id="E11" onclick="javascript:toggleLayer('J11')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "A stitch in time saves nine,"	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J11" onclick="javascript:toggleLayer('E11')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日の一針、明日の十針	
+早めに１針縫っておけば、後で９針縫う手間が省ける。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="12"><a name="12"><TD id="E12" onclick="javascript:toggleLayer('J12')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A watched pot never boils.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J12" onclick="javascript:toggleLayer('E12')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 待つ身は長い	
+じっと見ていると鍋は決して煮えない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="13"><a name="13"><TD id="E13" onclick="javascript:toggleLayer('J13')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Accidents will happen.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J13" onclick="javascript:toggleLayer('E13')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 事故は起こるもの	
+事故は起こる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="14"><a name="14"><TD id="E14" onclick="javascript:toggleLayer('J14')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All roads lead to Rome.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J14" onclick="javascript:toggleLayer('E14')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すべての道はローマに通ず	
+すべての道はローマに導く。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="15"><a name="15"><TD id="E15" onclick="javascript:toggleLayer('J15')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All that glitters is not gold.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J15" onclick="javascript:toggleLayer('E15')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 光るもの必ずしも金ならず	
+光るものすべてが金ではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="16"><a name="16"><TD id="E16" onclick="javascript:toggleLayer('J16')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All work and no play makes Jack a dull boy.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J16" onclick="javascript:toggleLayer('E16')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よく学び、よく遊べ	
+勉強ばかりして遊ばないとジャックを馬鹿にする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="17"><a name="17"><TD id="E17" onclick="javascript:toggleLayer('J17')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All's well that ends well.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J17" onclick="javascript:toggleLayer('E17')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 終わりよければすべてよし	
+うまく終れば、すべてよい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="18"><a name="18"><TD id="E18" onclick="javascript:toggleLayer('J18')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An apple a day keeps the doctor away.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J18" onclick="javascript:toggleLayer('E18')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １日につき、りんご１個で医者要らず	
+1日に１個のりんごで医者は不要である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="19"><a name="19"><TD id="E19" onclick="javascript:toggleLayer('J19')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "An eye for an eye, and a tooth for a tooth."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J19" onclick="javascript:toggleLayer('E19')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 目には目を。歯には歯を	
+目には目、歯には歯。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="20"><a name="20"><TD id="E20" onclick="javascript:toggleLayer('J20')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Anything is better than nothing.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J20" onclick="javascript:toggleLayer('E20')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 枯れ木も山のにぎわい	
+何でも全く無いよりはましである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="21"><a name="21"><TD id="E21" onclick="javascript:toggleLayer('J21')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As well be hanged for a sheep as a lamb.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J21" onclick="javascript:toggleLayer('E21')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 毒を食わば皿まで	
+子羊をとって死刑になるなら，羊をとって死刑になる方がまし。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="22"><a name="22"><TD id="E22" onclick="javascript:toggleLayer('J22')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Bad news travels fast.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J22" onclick="javascript:toggleLayer('E22')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 悪事千里を走る	
+悪いニュースは速く伝わる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="23"><a name="23"><TD id="E23" onclick="javascript:toggleLayer('J23')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Beauty is only skin deep.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J23" onclick="javascript:toggleLayer('E23')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 美しいも皮一重	
+美しいことは皮膚の深さ分のことだけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="24"><a name="24"><TD id="E24" onclick="javascript:toggleLayer('J24')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Better late than never	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J24" onclick="javascript:toggleLayer('E24')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 遅くともしないよりはまし	
+すぐ出来るにこしたことはないけど全然やらないよりはましだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="25"><a name="25"><TD id="E25" onclick="javascript:toggleLayer('J25')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Birds of a feather flock together.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J25" onclick="javascript:toggleLayer('E25')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 類は友を呼ぶ	
+同じ羽の鳥は集まるものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="26"><a name="26"><TD id="E26" onclick="javascript:toggleLayer('J26')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Blood is thicker than water.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J26" onclick="javascript:toggleLayer('E26')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 他人よりも身内	
+血は水より濃し。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="27"><a name="27"><TD id="E27" onclick="javascript:toggleLayer('J27')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Boys will be boys.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J27" onclick="javascript:toggleLayer('E27')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 男の子はやっぱり男の子	
+男の子はやっぱり男の子。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="28"><a name="28"><TD id="E28" onclick="javascript:toggleLayer('J28')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Business before pleasure.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J28" onclick="javascript:toggleLayer('E28')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 遊ぶのはまず仕事をしてから	
+楽しみの前に仕事。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="29"><a name="29"><TD id="E29" onclick="javascript:toggleLayer('J29')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Call a spade a spade.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J29" onclick="javascript:toggleLayer('E29')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歯に衣着せぬ。	
+スペードはスペードと呼べ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="30"><a name="30"><TD id="E30" onclick="javascript:toggleLayer('J30')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Charity begins at home.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J30" onclick="javascript:toggleLayer('E30')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 博愛は家庭に始まる	
+愛はまず身内のものから始めよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="31"><a name="31"><TD id="E31" onclick="javascript:toggleLayer('J31')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Clothes make the man.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J31" onclick="javascript:toggleLayer('E31')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 馬子にも衣装	
+衣服が人をつくる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="32"><a name="32"><TD id="E32" onclick="javascript:toggleLayer('J32')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Constant dripping wears away a stone.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J32" onclick="javascript:toggleLayer('E32')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 点滴石をも穿つ。	
+水滴りて石うがつ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="33"><a name="33"><TD id="E33" onclick="javascript:toggleLayer('J33')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Curiosity killed the cat.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J33" onclick="javascript:toggleLayer('E33')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心配は身の毒	
+好奇心は猫をも殺す。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="34"><a name="34"><TD id="E34" onclick="javascript:toggleLayer('J34')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Dead men tell no tales.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J34" onclick="javascript:toggleLayer('E34')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 死人に口なし。	
+死人はどんな話も語らない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="35"><a name="35"><TD id="E35" onclick="javascript:toggleLayer('J35')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Do not put new wine into old bottles.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J35" onclick="javascript:toggleLayer('E35')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新しい葡萄酒は古い皮袋に入れてはならない。	
+新しい葡萄酒は古い皮袋に入れてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="36"><a name="36"><TD id="E36" onclick="javascript:toggleLayer('J36')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Do not throw pearls to swine.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J36" onclick="javascript:toggleLayer('E36')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 豚に真珠。	
+豚に真珠を投げ与えるな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="37"><a name="37"><TD id="E37" onclick="javascript:toggleLayer('J37')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't count your chickens before they are hatched.  	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J37" onclick="javascript:toggleLayer('E37')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 捕らぬ狸の皮算用	
+ひよこが孵（かえ）らないうちに鶏の数をかぞえるな。　　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="38"><a name="38"><TD id="E38" onclick="javascript:toggleLayer('J38')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't cross the bridge until you come to it.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J38" onclick="javascript:toggleLayer('E38')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 取り越し苦労。	
+橋まで来る前に橋を渡るな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="39"><a name="39"><TD id="E39" onclick="javascript:toggleLayer('J39')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't make a mountain out of a molehill.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J39" onclick="javascript:toggleLayer('E39')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 針小棒大	
+もぐら塚から山を作るな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="40"><a name="40"><TD id="E40" onclick="javascript:toggleLayer('J40')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't put off till tomorrow what you can do today.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J40" onclick="javascript:toggleLayer('E40')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日できることは明日に延ばすな。	
+今日できることは明日に延ばすな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="41"><a name="41"><TD id="E41" onclick="javascript:toggleLayer('J41')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Easier said than done.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J41" onclick="javascript:toggleLayer('E41')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 言うは易く、行いは難し。	
+するより言う方がやさしい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="42"><a name="42"><TD id="E42" onclick="javascript:toggleLayer('J42')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Easy come, easy go. "	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J42" onclick="javascript:toggleLayer('E42')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あぶく銭は身に付かず。	
+たやすく手に入れたものは、出て行きやすい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="43"><a name="43"><TD id="E43" onclick="javascript:toggleLayer('J43')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Even Homer sometimes nods.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J43" onclick="javascript:toggleLayer('E43')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 弘法にも筆のあやまり	
+ホーマーでも時に居眠りをする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="44"><a name="44"><TD id="E44" onclick="javascript:toggleLayer('J44')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Everything comes to him who waits.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J44" onclick="javascript:toggleLayer('E44')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 待てば海路の日和あり。	
+待っておれば皆やってくる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="45"><a name="45"><TD id="E45" onclick="javascript:toggleLayer('J45')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Fact is stranger than fiction.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J45" onclick="javascript:toggleLayer('E45')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 事実は小説より奇なり。	
+事実は小説より奇なり。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="46"><a name="46"><TD id="E46" onclick="javascript:toggleLayer('J46')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Faint heart never won fair lady.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J46" onclick="javascript:toggleLayer('E46')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 男は度胸	
+弱気が美人を勝ち得たためしなし。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="47"><a name="47"><TD id="E47" onclick="javascript:toggleLayer('J47')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "First come, first served."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J47" onclick="javascript:toggleLayer('E47')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 早い者勝ち	
+最初に来た者が、最初に食べもものを供せられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="48"><a name="48"><TD id="E48" onclick="javascript:toggleLayer('J48')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Fools rush in where angels fear to tread.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J48" onclick="javascript:toggleLayer('E48')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 飛んで火に入る夏の虫。	
+愚か者は天使が恐れて足を向けない所へ突進する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="49"><a name="49"><TD id="E49" onclick="javascript:toggleLayer('J49')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Forgive and forget.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J49" onclick="javascript:toggleLayer('E49')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 許して忘れよ	
+許して忘れる。
+(恨みなどを水に流す。）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="50"><a name="50"><TD id="E50" onclick="javascript:toggleLayer('J50')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Give him an inch, and he'll take a mile."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J50" onclick="javascript:toggleLayer('E50')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 庇（ひさし）を貸して母屋を取られる	
+1インチ与えれば、1マイル取るだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="51"><a name="51"><TD id="E51" onclick="javascript:toggleLayer('J51')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Haste makes waste.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J51" onclick="javascript:toggleLayer('E51')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 急いてはことを仕損じる	
+あわてるとやり損なう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="52"><a name="52"><TD id="E52" onclick="javascript:toggleLayer('J52')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He who laughs last laughs longest.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J52" onclick="javascript:toggleLayer('E52')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最後に笑うものが一番よく笑う。	
+最後に笑うものが、もっとも長く笑う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="53"><a name="53"><TD id="E53" onclick="javascript:toggleLayer('J53')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> History repeats itself.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J53" onclick="javascript:toggleLayer('E53')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歴史は繰り返す。	
+歴史は繰り返す。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="54"><a name="54"><TD id="E54" onclick="javascript:toggleLayer('J54')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Honesty is the best policy.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J54" onclick="javascript:toggleLayer('E54')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 正直の頭に神宿る。	
+正直は最善の方策。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="55"><a name="55"><TD id="E55" onclick="javascript:toggleLayer('J55')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hungry is the best sauce.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J55" onclick="javascript:toggleLayer('E55')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 空き腹にまずいものなし	
+美味しく食べたければお腹を空かせましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="56"><a name="56"><TD id="E56" onclick="javascript:toggleLayer('J56')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ignorance is bliss.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J56" onclick="javascript:toggleLayer('E56')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 知らぬが仏。	
+知らないことは無常の幸福。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="57"><a name="57"><TD id="E57" onclick="javascript:toggleLayer('J57')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is an ill wind that blows nobody good.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J57" onclick="javascript:toggleLayer('E57')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 泣く者もあれば笑うものもある	
+誰のためにもならないような風は吹かない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="58"><a name="58"><TD id="E58" onclick="javascript:toggleLayer('J58')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is no use crying over spilt milk.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J58" onclick="javascript:toggleLayer('E58')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 覆水盆にかえらず	
+こぼれたミルクをわめいても無駄だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="59"><a name="59"><TD id="E59" onclick="javascript:toggleLayer('J59')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It never rains but it pours.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J59" onclick="javascript:toggleLayer('E59')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 降れば土砂降り	
+雨が降れば、それは土砂降りです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="60"><a name="60"><TD id="E60" onclick="javascript:toggleLayer('J60')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Jack of all trades, master of none."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J60" onclick="javascript:toggleLayer('E60')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多芸は無芸。	
+あらゆる商売をする人は、どの商売でも抜き出ることはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="61"><a name="61"><TD id="E61" onclick="javascript:toggleLayer('J61')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Kill two birds with one stone.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J61" onclick="javascript:toggleLayer('E61')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一石二鳥	
+1つの石で2羽の鳥を殺す。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="62"><a name="62"><TD id="E62" onclick="javascript:toggleLayer('J62')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Knowledge is power.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J62" onclick="javascript:toggleLayer('E62')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 知は力なり。	
+知識は力なり。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="63"><a name="63"><TD id="E63" onclick="javascript:toggleLayer('J63')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Last but not least.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J63" onclick="javascript:toggleLayer('E63')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 残り物には福がある。	
+最後にいま一つ大事を述べるが。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="64"><a name="64"><TD id="E64" onclick="javascript:toggleLayer('J64')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Laughter is the best medicine.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J64" onclick="javascript:toggleLayer('E64')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 笑いは百薬の長	
+笑いは最良の薬である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="65"><a name="65"><TD id="E65" onclick="javascript:toggleLayer('J65')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Less is more.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J65" onclick="javascript:toggleLayer('E65')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 過ぎたるは及ばざるがごとし。	
+少ないほど豊か。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="66"><a name="66"><TD id="E66" onclick="javascript:toggleLayer('J66')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let sleeping dogs lie.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J66" onclick="javascript:toggleLayer('E66')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 触らぬ神に祟りなし。	
+眠っている犬は寝かせておけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="67"><a name="67"><TD id="E67" onclick="javascript:toggleLayer('J67')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Like father, like son."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J67" onclick="javascript:toggleLayer('E67')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この父にしてこの子あり。	
+この父にしてこの子あり。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="68"><a name="68"><TD id="E68" onclick="javascript:toggleLayer('J68')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Look before you leap.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J68" onclick="javascript:toggleLayer('E68')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 石橋をたたいて渡る。
+転ばぬ先の杖	
+跳ぶ前によく見ろ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="69"><a name="69"><TD id="E69" onclick="javascript:toggleLayer('J69')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Love is blind.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J69" onclick="javascript:toggleLayer('E69')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恋は盲目。	
+恋は盲目。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="70"><a name="70"><TD id="E70" onclick="javascript:toggleLayer('J70')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Love me, love my dog."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J70" onclick="javascript:toggleLayer('E70')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 坊主憎くけりゃ袈裟まで憎い。	
+私を愛するなら、私の犬も愛せ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="71"><a name="71"><TD id="E71" onclick="javascript:toggleLayer('J71')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Make hay while the sun shines.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J71" onclick="javascript:toggleLayer('E71')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 好機逃すべからず	
+日の照るうちに干草を作れ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="72"><a name="72"><TD id="E72" onclick="javascript:toggleLayer('J72')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Man shall not live by bread alone.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J72" onclick="javascript:toggleLayer('E72')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人はパンのみにて生きるにあらず。	
+人はパンのみでは生きられない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="73"><a name="73"><TD id="E73" onclick="javascript:toggleLayer('J73')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many a true word is spoken in jest.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J73" onclick="javascript:toggleLayer('E73')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 嘘から出た誠。	
+冗談に事実あること多し。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="74"><a name="74"><TD id="E74" onclick="javascript:toggleLayer('J74')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Might makes right.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J74" onclick="javascript:toggleLayer('E74')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 無理が通れば道理が引っ込む。	
+力は正義なり。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="75"><a name="75"><TD id="E75" onclick="javascript:toggleLayer('J75')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Money makes the mare to go.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J75" onclick="javascript:toggleLayer('E75')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 地獄の沙汰も金次第。	
+お金は雌馬を進ませる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="76"><a name="76"><TD id="E76" onclick="javascript:toggleLayer('J76')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Money talks.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J76" onclick="javascript:toggleLayer('E76')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 金がものを言う。	
+金がものを言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="77"><a name="77"><TD id="E77" onclick="javascript:toggleLayer('J77')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Necessity is the mother of invention.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J77" onclick="javascript:toggleLayer('E77')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 必要は発明の母	
+必要は発明の母である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="78"><a name="78"><TD id="E78" onclick="javascript:toggleLayer('J78')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Never put off till tomorrow what you can do today.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J78" onclick="javascript:toggleLayer('E78')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日出来ることを明日まで延ばすな	
+今日出来ることを明日まで延ばすな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="79"><a name="79"><TD id="E79" onclick="javascript:toggleLayer('J79')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No man can serve two masters.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J79" onclick="javascript:toggleLayer('E79')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夫婦げんかは犬も食わない	
+誰でも2人の主人に仕えることは出来ない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="80"><a name="80"><TD id="E80" onclick="javascript:toggleLayer('J80')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No news is good news.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J80" onclick="javascript:toggleLayer('E80')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 便りのないのはよい便り	
+便りのないのはよい便り。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="81"><a name="81"><TD id="E81" onclick="javascript:toggleLayer('J81')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "No pain, no gain."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J81" onclick="javascript:toggleLayer('E81')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 苦あれば楽あり	
+骨を折らなければ利益はない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="82"><a name="82"><TD id="E82" onclick="javascript:toggleLayer('J82')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nothing ventured nothing gained.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J82" onclick="javascript:toggleLayer('E82')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 虎穴に入らずんば、虎児を得ず	
+何の冒険もしなければ、何も得られない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="83"><a name="83"><TD id="E83" onclick="javascript:toggleLayer('J83')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One good turn deserves another.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J83" onclick="javascript:toggleLayer('E83')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 情けは人のためならず。	
+恩に報いるに、恩を持ってする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="84"><a name="84"><TD id="E84" onclick="javascript:toggleLayer('J84')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One is never too old to learn.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J84" onclick="javascript:toggleLayer('E84')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 八十の手習い。
+学ぶのに年を取りすぎていることはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="85"><a name="85"><TD id="E85" onclick="javascript:toggleLayer('J85')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One man's meat is another man's poison.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J85" onclick="javascript:toggleLayer('E85')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 甲の薬は乙の毒	
+一人の人の肉は、他の人の毒。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="86"><a name="86"><TD id="E86" onclick="javascript:toggleLayer('J86')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One may (or might) as well hanged for a sheep as ( for) a lamb. 	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J86" onclick="javascript:toggleLayer('E86')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 毒を食らわば皿まで	
+子羊として縛り首になるなら、羊として縛り首にされた方がましだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="87"><a name="87"><TD id="E87" onclick="javascript:toggleLayer('J87')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Out of sight,out of mind."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J87" onclick="javascript:toggleLayer('E87')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 去るものは日々に疎し	
+目に見えないものは忘れられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="88"><a name="88"><TD id="E88" onclick="javascript:toggleLayer('J88')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Out of the frying pan, into the fire."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J88" onclick="javascript:toggleLayer('E88')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一難去って又一難。	
+小難を避けて大難に陥る。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="89"><a name="89"><TD id="E89" onclick="javascript:toggleLayer('J89')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> People will talk.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J89" onclick="javascript:toggleLayer('E89')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人の口に戸は立てられぬ	
+人というのはしゃべるものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="90"><a name="90"><TD id="E90" onclick="javascript:toggleLayer('J90')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Physician, heal yourself."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J90" onclick="javascript:toggleLayer('E90')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 医者の不養生	
+医者よ、自分の病気を治療せよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="91"><a name="91"><TD id="E91" onclick="javascript:toggleLayer('J91')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Practice makes perfect.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J91" onclick="javascript:toggleLayer('E91')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 習うより慣れろ	
+実践することで完璧になる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="92"><a name="92"><TD id="E92" onclick="javascript:toggleLayer('J92')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Practice what you preach.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J92" onclick="javascript:toggleLayer('E92')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 論語読みの論語知らず	
+あなたの説法を実行せよ。／
+言行を一致させよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="93"><a name="93"><TD id="E93" onclick="javascript:toggleLayer('J93')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pride goes before a fall.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J93" onclick="javascript:toggleLayer('E93')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おごれるものは久しからず	
+傲慢でいるとやがて没落する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="94"><a name="94"><TD id="E94" onclick="javascript:toggleLayer('J94')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Rome was not built in a day.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J94" onclick="javascript:toggleLayer('E94')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ローマは一日にしてならず	
+ローマは1日で築かれたのではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="95"><a name="95"><TD id="E95" onclick="javascript:toggleLayer('J95')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Saying is one thing and doing another.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J95" onclick="javascript:toggleLayer('E95')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 言うは易く行うは難し	
+言うことと行うことは別のことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="96"><a name="96"><TD id="E96" onclick="javascript:toggleLayer('J96')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Scratch my back and I will scratch yours.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J96" onclick="javascript:toggleLayer('E96')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 魚心あれば水心。	
+私の背中をかいてくれば、あなたの背中をかいてあげましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="97"><a name="97"><TD id="E97" onclick="javascript:toggleLayer('J97')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Seeing is believing.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J97" onclick="javascript:toggleLayer('E97')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 百聞は一見にしかず	
+見ることは信じることである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="98"><a name="98"><TD id="E98" onclick="javascript:toggleLayer('J98')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Silence is golden.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J98" onclick="javascript:toggleLayer('E98')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 沈黙は金	
+沈黙は金。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="99"><a name="99"><TD id="E99" onclick="javascript:toggleLayer('J99')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Slow and steady wins the race.	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J99" onclick="javascript:toggleLayer('E99')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 急がば回れ	
+ゆっくり着実にやれば、必ず競走に勝つ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="100"><a name="100"><TD id="E100" onclick="javascript:toggleLayer('J100')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "So many men, so many minds."	
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J100" onclick="javascript:toggleLayer('E100')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 十人十色。	
+人間の数だけ、精神もある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+prev
+<0>
+<a href="kotowaza-1.htm">1</a>
+<a href="kotowaza-1.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/kotowazae.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/kotowazaj.txt">local copy</a><li><a href="../manual-alignment/kotowaza.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,532 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Homesteading the Noosphere / Eric S. Raymond 著</h2><h2>ノウアスフィアの開墾 / レイモンド、エリック・S 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/homesteadinge.txt">英語文</a>&<a href="../org/homesteadingj.txt">日本語文</a> / <a href="../manual-alignment/homesteading.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>7 of Homesteading the Noosphere</TITLE>
+<hr>
+<a href="homesteading-6.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<7>
+<a href="homesteading-8.htm">8</a>
+<a href="homesteading-9.htm">9</a>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-8.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="701"><a name="701"><TD id="E701" onclick="javascript:toggleLayer('J701')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In this situation, custom places an obligation on the owner/dictator to credit contributors fairly
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J701" onclick="javascript:toggleLayer('E701')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この状況では、慣習は所有者／独裁者が公平に貢献者にクレジットを与えることを義務づける
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="702"><a name="702"><TD id="E702" onclick="javascript:toggleLayer('J702')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (through, for example, appropriate mentions in README or history files).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J702" onclick="javascript:toggleLayer('E702')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （たとえばREADME履歴ファイルの中でのしかるべき記載なんかで）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="703"><a name="703"><TD id="E703" onclick="javascript:toggleLayer('J703')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In terms of the Lockean property model, this means that by contributing to a project you earn part of its reputation return
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J703" onclick="javascript:toggleLayer('E703')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ロック式所有権モデルでいえば、これはつまりプロジェクトへの貢献によってその評判リターンの一部を稼げるということだ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="704"><a name="704"><TD id="E704" onclick="javascript:toggleLayer('J704')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (positive or negative).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J704" onclick="javascript:toggleLayer('E704')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （いいものも悪いものも）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="705"><a name="705"><TD id="E705" onclick="javascript:toggleLayer('J705')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pursuing this logic, we see that a `benevolent dictator' does not in fact own his entire project absolutely.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J705" onclick="javascript:toggleLayer('E705')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この論理をつきつめると、「優しい独裁者」はその全プロジェクトを文句なしに占有しているわけじゃないのがわかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="706"><a name="706"><TD id="E706" onclick="javascript:toggleLayer('J706')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Though he has the right to make binding decisions, he in effect trades away shares of the total reputation return in exchange for others' work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J706" onclick="javascript:toggleLayer('E706')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 方向性を決める決断をする権利を持ってはいるけれど、かれは実際問題として、全体の評判の一部を他人の作業と交換にゆずりわたす。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="707"><a name="707"><TD id="E707" onclick="javascript:toggleLayer('J707')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The analogy with sharecropping on a farm is almost irresistible,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J707" onclick="javascript:toggleLayer('E707')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 農場での分益小作人との対比はほとんど抵抗しがたいものがある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="708"><a name="708"><TD id="E708" onclick="javascript:toggleLayer('J708')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> except that a contributor's name stays in the credits and continues to `earn' to some degree even after that contributor is no longer active.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J708" onclick="javascript:toggleLayer('E708')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ただし、ハッカーの場合、貢献者の名前はクレジットに残り、その貢献者がもはや活発でなくなったときにも、ある程度の「収益」をあげ続ける点はちがうけれど。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="709"><a name="709"><TD id="E709" onclick="javascript:toggleLayer('J709')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As benevolent-dictator projects add more participants, they tend to develop two tiers of contributors;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J709" onclick="javascript:toggleLayer('E709')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 優しい独裁者プロジェクトの参加者が増えるにつれて、参加者は二派にわかれる傾向がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="710"><a name="710"><TD id="E710" onclick="javascript:toggleLayer('J710')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ordinary contributors and co-developers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J710" onclick="javascript:toggleLayer('E710')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 通常の貢献者と共同開発者だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="711"><a name="711"><TD id="E711" onclick="javascript:toggleLayer('J711')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A typical path to becoming a co-developer is taking responsibility for a major subsystem of the project.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J711" onclick="javascript:toggleLayer('E711')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 共同開発者となる典型的な道としては、プロジェクトの主要サブシステムの責任を負うことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="712"><a name="712"><TD id="E712" onclick="javascript:toggleLayer('J712')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Another is to take the role of `lord high fixer', characterizing and fixing many bugs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J712" onclick="javascript:toggleLayer('E712')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう一つは「高等修理卿」の役割を負って、多くのバグを抽出してなおすことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="713"><a name="713"><TD id="E713" onclick="javascript:toggleLayer('J713')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In this way or others, co-developers are the contributors who make a substantial and continuing investment of time in the project.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J713" onclick="javascript:toggleLayer('E713')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういった方法を通じて、共同開発者は貢献者のなかでもプロジェクトに相当量の時間を投資し続ける。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="714"><a name="714"><TD id="E714" onclick="javascript:toggleLayer('J714')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The subsystem-owner role is particularly important for our analysis and deserves further examination. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J714" onclick="javascript:toggleLayer('E714')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> サブシステム所有者の役割は、本論の分析ではときに大事なので、もっと詳しくみるべきだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="715"><a name="715"><TD id="E715" onclick="javascript:toggleLayer('J715')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hackers like to say that `authority follows responsibility'.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J715" onclick="javascript:toggleLayer('E715')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーたちは「権威は責任に伴う」というのが好きだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="716"><a name="716"><TD id="E716" onclick="javascript:toggleLayer('J716')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A co-developer who accepts maintainance responsibility for a given subsystem generally gets to control both the implementation of that subsystem and its interfaces with the rest of the project, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J716" onclick="javascript:toggleLayer('E716')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あるサブシステムのメンテナンス責任を負う共同開発者は、そのサブシステムの実装と、その他プロジェクトとのインターフェース部分との両方をコントロールできるようになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="717"><a name="717"><TD id="E717" onclick="javascript:toggleLayer('J717')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> subject only to correction by the project leader (acting as architect).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J717" onclick="javascript:toggleLayer('E717')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを修正できるのは、アーキテクトとして働くプロジェクトリーダだけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="718"><a name="718"><TD id="E718" onclick="javascript:toggleLayer('J718')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We observe that this rule effectively creates enclosed properties on the Lockean model within a project, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J718" onclick="javascript:toggleLayer('E718')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このルールは、実質的にはプロジェクトのロック・モデル内部に、囲い込まれた所有地をつくりだしているものとみることができる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="719"><a name="719"><TD id="E719" onclick="javascript:toggleLayer('J719')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and has exactly the same conflict-prevention role as other property boundaries.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J719" onclick="javascript:toggleLayer('E719')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからほかの領地境界とまったく同じように、紛争防止の役割を持つことになるわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="720"><a name="720"><TD id="E720" onclick="javascript:toggleLayer('J720')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> By custom, the `dictator' or project leader in a project with co-developers is expected to consult with those co-developers on key decisions.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J720" onclick="javascript:toggleLayer('E720')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 習慣的に、共同開発者のいるプロジェクトの「独裁者」またはプロジェクトリーダは、その共同開発者たちにだいじな判断のときには相談することが期待されている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="721"><a name="721"><TD id="E721" onclick="javascript:toggleLayer('J721')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is especially so if the decision concerns a subsystem that a co-developer `owns' (that is, has invested time in and taken responsibility for).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J721" onclick="javascript:toggleLayer('E721')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは特に、その決断が共同開発者「所有」のサブシステム（つまり、その共同開発者がそれに時間を注いで、責任を負っているサブシステム）にかかわるものであるときにあてはまる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="722"><a name="722"><TD id="E722" onclick="javascript:toggleLayer('J722')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A wise leader, recognizing the function of the project's internal property boundaries, will not lightly interfere with or reverse decisions made by subsystem owners.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J722" onclick="javascript:toggleLayer('E722')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 賢いリーダは、プロジェクト内部の領土境界の機能がわかっているから、サブシステム所有者の決定をじゃましたり、ひっくりかえしたりするようなことは軽々しくしない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="723"><a name="723"><TD id="E723" onclick="javascript:toggleLayer('J723')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some very large projects discard the `benevolent dictator' model entirely.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J723" onclick="javascript:toggleLayer('E723')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一部のすごく大きなプロジェクトは、「やさしい独裁者」モデルを完全に捨てている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="724"><a name="724"><TD id="E724" onclick="javascript:toggleLayer('J724')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One way to do this is turn the co-developers into a voting committee (as with Apache).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J724" onclick="javascript:toggleLayer('E724')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これをやる方法の一つは、共同開発者たちを議決委員会にしてしまうことだ（Apacheがこうしている）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="725"><a name="725"><TD id="E725" onclick="javascript:toggleLayer('J725')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Another is rotating dictatorship,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J725" onclick="javascript:toggleLayer('E725')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 別の方法としては、独裁権を巡回方式にすることだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="726"><a name="726"><TD id="E726" onclick="javascript:toggleLayer('J726')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in which control is occasionally passed from one member to another within a circle of senior co-developers;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J726" onclick="javascript:toggleLayer('E726')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここではコントロール権は、上級共同開発者たちのサークルのなかで次から次へとまわされる
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="727"><a name="727"><TD id="E727" onclick="javascript:toggleLayer('J727')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the Perl developers organize themselves this way.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J727" onclick="javascript:toggleLayer('E727')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （Perl開発者たちはこういう形の組織を採用している）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="728"><a name="728"><TD id="E728" onclick="javascript:toggleLayer('J728')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Such complicated arrangements are widely considered unstable and difficult.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J728" onclick="javascript:toggleLayer('E728')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう複雑な仕組みは、一般には不安定でむずかしいものと思われている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="729"><a name="729"><TD id="E729" onclick="javascript:toggleLayer('J729')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Clearly this perceived difficulty is largely a function of the known hazards of design-by-committee, and of committees themselves;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J729" onclick="javascript:toggleLayer('E729')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 明らかにこのむずかしいという印象は、委員会による設計や委員会そのものの危険性の関数である面が大きい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="730"><a name="730"><TD id="E730" onclick="javascript:toggleLayer('J730')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> these are problems the hacker culture consciously understands.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J730" onclick="javascript:toggleLayer('E730')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう問題について、ハッカー文化ははっきりわかっている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="731"><a name="731"><TD id="E731" onclick="javascript:toggleLayer('J731')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> However, I think some of the visceral discomfort hackers feel about committee or rotating-chair organizations is that they're hard to fit into the unconscious Lockean model hackers use for reasoning about the simpler cases.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J731" onclick="javascript:toggleLayer('E731')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、ハッカーたちが委員会や巡回式組織について生理的に感じている気持ち悪さは、それがもっと簡単な場合についてハッカーたちが理由づけるときに使う、無意識のロック式モデルにおさまりにくいことがあるんだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="732"><a name="732"><TD id="E732" onclick="javascript:toggleLayer('J732')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's problematic, in these complex organizations, to do an accounting of either ownership in the sense of control or ownership of reputation returns. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J732" onclick="javascript:toggleLayer('E732')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう複雑な組織では、コントロールという意味での所有権や、評判の収益の所有権をきちんとつけるのがむずかしいからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="733"><a name="733"><TD id="E733" onclick="javascript:toggleLayer('J733')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's hard to see where the internal boundaries are, and thus hard to avoid conflict unless the group enjoys an exceptionally high level of harmony and trust.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J733" onclick="javascript:toggleLayer('E733')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 内部の境界がどこにあるかは見えにくいので、グループとして例外的に高い調和と信頼関係ができていない限り、紛争を避けるのはむずかしい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="734"><a name="734"><TD ID="TAB734" onclick="javascript:toggleLayer('J734')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB734" onclick="javascript:toggleLayer('E734')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="735"><a name="735"><TD id="E735" onclick="javascript:toggleLayer('J735')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Conflict and Conflict Resolution
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J735" onclick="javascript:toggleLayer('E735')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 17　紛争とその解決
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="736"><a name="736"><TD id="E736" onclick="javascript:toggleLayer('J736')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We've seen that within projects, an increasing complexity of roles is expressed by a distribution of design authority and partial property rights.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J736" onclick="javascript:toggleLayer('E736')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これまで見てきたのは、プロジェクト内部では役割がますます複雑化し、それがデザイン決定権の配分と部分的な所有権によって表現されるということだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="737"><a name="737"><TD id="E737" onclick="javascript:toggleLayer('J737')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While this is an efficient way to distribute incentives, it also dilutes the authority of the project leader
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J737" onclick="javascript:toggleLayer('E737')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはインセンティブを配分する効率のよい方法だけれど、プロジェクトリーダーの権威を弱めるものでもある
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="738"><a name="738"><TD id="E738" onclick="javascript:toggleLayer('J738')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?most importantly, it dilutes the leader's authority to squash potential conflicts.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J738" onclick="javascript:toggleLayer('E738')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――いちばん大事な点として、リーダーが紛争をおさえこむための権威を弱めてしまうんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="739"><a name="739"><TD id="E739" onclick="javascript:toggleLayer('J739')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While technical arguments over design might seem the most obvious risk for internecine conflict, they are seldom a serious cause of strife.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J739" onclick="javascript:toggleLayer('E739')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 設計にかかわる技術的な論争こそが、一見すると血を見るような争いにいたる一番の原因になりそうだと思うかもしれないけれど、でもこれは深刻なもめごとの原因にはめったにならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="740"><a name="740"><TD id="E740" onclick="javascript:toggleLayer('J740')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These are usually relatively easily resolved by the territorial rule that authority follows responsibility.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J740" onclick="javascript:toggleLayer('E740')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうのは、権威は責任に伴うというなわばりのルールによってそこそこ簡単に解決がつく。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="741"><a name="741"><TD id="E741" onclick="javascript:toggleLayer('J741')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Another way of resolving conflicts is by seniority
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J741" onclick="javascript:toggleLayer('E741')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 紛争解決手段としてもう一つあるのは、序列によるものだ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="742"><a name="742"><TD id="E742" onclick="javascript:toggleLayer('J742')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?if two contributors or groups of contributors have a dispute, and the dispute cannot be resolved objectively, and neither owns the territory of the dispute, the side that has put the most work into the project as a whole (that is, the side with the most property rights in the whole project) wins.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J742" onclick="javascript:toggleLayer('E742')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――もし貢献者二人、または貢献者集団二つが争いを始めて、それが客観的に解決できず、どちらもその争いのなわばりを所有はしていないとき、そのプロジェクト全体につぎ込んだ作業量の多いほう（つまり、プロジェクト全体の中で地役権を最大に持つ側）が勝つ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="743"><a name="743"><TD id="E743" onclick="javascript:toggleLayer('J743')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Equivalently, the side with the least invested loses.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J743" onclick="javascript:toggleLayer('E743')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （同じように、投入したものが少ない方が負ける。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="744"><a name="744"><TD id="E744" onclick="javascript:toggleLayer('J744')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Interestingly this happens to be the same heuristic that many relational database engines use to resolve deadlocks.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J744" onclick="javascript:toggleLayer('E744')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おもしろいことに、これは多くのリレーショナルデータベース・エンジンが、デッドロックを解決するヒューリスティクとまったく同じだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="745"><a name="745"><TD id="E745" onclick="javascript:toggleLayer('J745')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When two threads are deadlocked over resources, the side with the least invested in the current transaction is selected as the deadlock victim and is terminated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J745" onclick="javascript:toggleLayer('E745')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二つのスレッドが、あるリソースをめぐってデッドロックになったら、現在のトランザクションに投入したものがいちばん少ないほうが、デッドロックの犠牲者として選ばれて、終了させられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="746"><a name="746"><TD id="E746" onclick="javascript:toggleLayer('J746')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This usually selects the longest running transaction, or the more senior, as the victor.) 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J746" onclick="javascript:toggleLayer('E746')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはつまり通常は、いちばん長く走っているトランザクション、あるいはトランザクションとして上位にあるのが、勝者となるということだ。）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="747"><a name="747"><TD id="E747" onclick="javascript:toggleLayer('J747')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These rules generally suffice to resolve most project disputes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J747" onclick="javascript:toggleLayer('E747')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうルールだけで、ほとんどのプロジェクト上の争いを解決するには十分だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="748"><a name="748"><TD id="E748" onclick="javascript:toggleLayer('J748')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When they do not, fiat of the project leader usually suffices.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J748" onclick="javascript:toggleLayer('E748')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 十分でない場合にも、リーダの采配でだいたいなんとかなる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="749"><a name="749"><TD id="E749" onclick="javascript:toggleLayer('J749')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Disputes that survive both these filters are rare.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J749" onclick="javascript:toggleLayer('E749')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この二重のフィルタを越えるほどの紛争はほとんどない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="750"><a name="750"><TD id="E750" onclick="javascript:toggleLayer('J750')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Conflicts do not, as a rule, become serious unless these two criteria ("authority follows responsibility" and "seniority wins") point in different directions, and the authority of the project leader is weak or absent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J750" onclick="javascript:toggleLayer('E750')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 紛争は原則的に、こうした二つの基準（「権威は責任にともなう」「序列の高いほうが勝つ」）が矛盾する結果を出して、しかもそのプロジェクトリーダの権利が弱かったり不在だったりするときにしか生き延びない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="751"><a name="751"><TD id="E751" onclick="javascript:toggleLayer('J751')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The most obvious case in which this may occur is a succession dispute following the disappearance of the project lead.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J751" onclick="javascript:toggleLayer('E751')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これが起きるいちばんはっきりした例は、プロジェクトのリーダが消えたあとで、その後継をめぐる争いだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="752"><a name="752"><TD id="E752" onclick="javascript:toggleLayer('J752')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have been in one fight of this kind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J752" onclick="javascript:toggleLayer('E752')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくは一度、この種の争いに加わっていたことがある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="753"><a name="753"><TD id="E753" onclick="javascript:toggleLayer('J753')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was ugly, painful, protracted, only resolved when all parties became exhausted enough to hand control to an outside person, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J753" onclick="javascript:toggleLayer('E753')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みにくくて苦痛で、長引いて、最終的に解決されたのも、関係者がみんな疲れ切って、コントロールを外部の人に任せようと決めたから可能になった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="754"><a name="754"><TD id="E754" onclick="javascript:toggleLayer('J754')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I devoutly hope I am never anywhere near anything of the kind again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J754" onclick="javascript:toggleLayer('E754')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう二度とあの種のものには近づかずにすみますように、と心から願わずにはいられない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="755"><a name="755"><TD id="E755" onclick="javascript:toggleLayer('J755')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ultimately, all of these conflict-resolution mechanisms rest on the entire hacker community's willingness to enforce them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J755" onclick="javascript:toggleLayer('E755')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最終的には、こういう紛争解決メカニズムは、ハッカーコミュニティがそれを強制しようという意志をもっているかどうかにかかってくる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="756"><a name="756"><TD id="E756" onclick="javascript:toggleLayer('J756')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The only available enforcement mechanisms are flaming and shunning
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J756" onclick="javascript:toggleLayer('E756')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして唯一の強制メカニズムは、フレーミングと黙殺だ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="757"><a name="757"><TD id="E757" onclick="javascript:toggleLayer('J757')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?public condemnation of those who break custom, and refusal to cooperate with them after they have done so.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J757" onclick="javascript:toggleLayer('E757')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――慣習を破る者たちに対する公開糾弾と、破った者たちとはもう協力しないということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="758"><a name="758"><TD ID="TAB758" onclick="javascript:toggleLayer('J758')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB758" onclick="javascript:toggleLayer('E758')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="759"><a name="759"><TD id="E759" onclick="javascript:toggleLayer('J759')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Acculturation Mechanisms and the Link to Academia
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J759" onclick="javascript:toggleLayer('E759')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 18　文化への順応過程とアカデミズムとの関連
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="760"><a name="760"><TD id="E760" onclick="javascript:toggleLayer('J760')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An early version of this essay posed the following research question:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J760" onclick="javascript:toggleLayer('E760')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この論文の以前のバージョンは、今後の研究テーマとして次の課題を挙げていた：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="761"><a name="761"><TD id="E761" onclick="javascript:toggleLayer('J761')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> how does the community inform and instruct its members as to its customs?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J761" onclick="javascript:toggleLayer('E761')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカー・コミュニティはそのメンバーに、慣習をどうやって伝えて指導するのか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="762"><a name="762"><TD id="E762" onclick="javascript:toggleLayer('J762')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Are the customs self-evident or self-organizing at a semi-conscious level?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J762" onclick="javascript:toggleLayer('E762')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 慣習は自明なものなのか、あるいは無意識のレベルで自己組織的なものなのか、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="763"><a name="763"><TD id="E763" onclick="javascript:toggleLayer('J763')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Are they taught by example?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J763" onclick="javascript:toggleLayer('E763')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 事例によって教えられるのか、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="764"><a name="764"><TD id="E764" onclick="javascript:toggleLayer('J764')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Are they taught by explicit instruction?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J764" onclick="javascript:toggleLayer('E764')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それとも明文化された指示によって教えられるのか？ 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="765"><a name="765"><TD id="E765" onclick="javascript:toggleLayer('J765')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Teaching by explicit instruction is clearly rare,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J765" onclick="javascript:toggleLayer('E765')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 明文化された指示による教育は明らかにほとんどない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="766"><a name="766"><TD id="E766" onclick="javascript:toggleLayer('J766')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if only because few explicit descriptions of the culture's norms have existed for instructional use up to now.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J766" onclick="javascript:toggleLayer('E766')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そもそもこの文化の規範についての明文化された記述は、いままでほとんどなかったから使いようがなかった。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="767"><a name="767"><TD id="E767" onclick="javascript:toggleLayer('J767')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many norms are taught by example.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J767" onclick="javascript:toggleLayer('E767')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くの規範は事例によって教えられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="768"><a name="768"><TD id="E768" onclick="javascript:toggleLayer('J768')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To cite one very simple case, there is a norm that every software distribution should have a file called README or READ.ME that contains first-look instructions for browsing the distribution.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J768" onclick="javascript:toggleLayer('E768')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すごく簡単な例を挙げるなら、あらゆるソフトの配布パッケージは README や READ.ME というファイルを含むべきだという規範がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="769"><a name="769"><TD id="E769" onclick="javascript:toggleLayer('J769')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This convention has been well established since at least the early 1980s;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J769" onclick="javascript:toggleLayer('E769')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この慣習は1980年代初期には確立されていたものだけれど、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="770"><a name="770"><TD id="E770" onclick="javascript:toggleLayer('J770')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it has even, occasionally, been written down.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J770" onclick="javascript:toggleLayer('E770')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもいまのところそれが明文化されたことはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="771"><a name="771"><TD id="E771" onclick="javascript:toggleLayer('J771')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But one normally derives it from looking at many distributions.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J771" onclick="javascript:toggleLayer('E771')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みんな、いろんなパッケージを見た結果としてその規範を知るわけだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="772"><a name="772"><TD id="E772" onclick="javascript:toggleLayer('J772')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> On the other hand, some hacker customs are self-organizing once one has acquired a basic (perhaps unconscious) understanding of the reputation game.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J772" onclick="javascript:toggleLayer('E772')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方で、ハッカー慣習のなかには、評判ゲームについての基本的な（おそらくは無意識の）理解さえ獲得できたら自己組織的に導かれるものもある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="773"><a name="773"><TD id="E773" onclick="javascript:toggleLayer('J773')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Most hackers never have to be taught the three taboos I listed earlier in this essay, or at least would claim if asked that they are self-evident rather than transmitted. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J773" onclick="javascript:toggleLayer('E773')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第3章でぼくが挙げた3つのタブーについて、ハッカーのほとんどはわざわざ教わる必要はないし、そうでなくても、あんなのは教えるまでもなく自明のことだというだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="774"><a name="774"><TD id="E774" onclick="javascript:toggleLayer('J774')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This phenomenon invites closer analysis
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J774" onclick="javascript:toggleLayer('E774')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この現象はもっと詳細な分析が必要だ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="775"><a name="775"><TD id="E775" onclick="javascript:toggleLayer('J775')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?and perhaps we can find its explanation in the process by which hackers acquire knowledge about the culture.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J775" onclick="javascript:toggleLayer('E775')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――そしてその説明は、ハッカーがハッカー文化についての知識をどうやって得るかというプロセスを見ればわかるかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="776"><a name="776"><TD id="E776" onclick="javascript:toggleLayer('J776')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many cultures use hidden clues (more precisely `mysteries' in the religio/mystical sense) as an acculturation mechanism.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J776" onclick="javascript:toggleLayer('E776')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 文化順応メカニズムとして、隠されたヒント（宗教・神秘学的な意味ではもっと厳密な「謎」）を使う文化は多い。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="777"><a name="777"><TD id="E777" onclick="javascript:toggleLayer('J777')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These are secrets that are not revealed to outsiders, but are expected to be discovered or deduced by the aspiring newbie.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J777" onclick="javascript:toggleLayer('E777')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは部外者には明かされない謎だが、熱心なタコ（newbie）なら見つけだしたり演繹したりできると期待されている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="778"><a name="778"><TD id="E778" onclick="javascript:toggleLayer('J778')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To be accepted inside, one must demonstrate that one both understands the mystery and has learned it in a culturally sanctioned way.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J778" onclick="javascript:toggleLayer('E778')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 内部に受け入れられるためには、その謎が理解できていて、しかもそれを文化的に認められた方法で学んだことを示さなくてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="779"><a name="779"><TD id="E779" onclick="javascript:toggleLayer('J779')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The hacker culture makes unusually conscious and extensive use of such clues or tests.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J779" onclick="javascript:toggleLayer('E779')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカー文化は、こういうヒントやテストを異常なほど意識的かつ広く利用している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="780"><a name="780"><TD id="E780" onclick="javascript:toggleLayer('J780')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We can see this process operating at at least three levels:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J780" onclick="javascript:toggleLayer('E780')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このプロセスは、少なくとも三つのレベルで機能していることがわかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="781"><a name="781"><TD id="E781" onclick="javascript:toggleLayer('J781')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Password-like specific mysteries.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J781" onclick="javascript:toggleLayer('E781')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> パスワード風のはっきりした謎。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="782"><a name="782"><TD id="E782" onclick="javascript:toggleLayer('J782')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As one example, there is a Usenet newsgroup called alt.sysadmin.recovery that has a very explicit such secret;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J782" onclick="javascript:toggleLayer('E782')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一例として、USENET には alt.sysadmin.recovery というニュースグループがあって、こういう秘密の例として非常にはっきりしたものを持っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="783"><a name="783"><TD id="E783" onclick="javascript:toggleLayer('J783')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you cannot post without knowing it,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J783" onclick="javascript:toggleLayer('E783')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その秘密を知らないとメッセージをポストできない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="784"><a name="784"><TD id="E784" onclick="javascript:toggleLayer('J784')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and knowing it is considered evidence you are fit to post. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J784" onclick="javascript:toggleLayer('E784')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてその秘密を知っているということが、ポストするのにふさわしい人物だという証拠と見なされる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="785"><a name="785"><TD id="E785" onclick="javascript:toggleLayer('J785')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The regulars have a strong taboo against revealing this secret.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J785" onclick="javascript:toggleLayer('E785')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 常連はこの秘密をばらすことについて、強いタブーを持っている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="786"><a name="786"><TD id="E786" onclick="javascript:toggleLayer('J786')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The requirement of initiation into certain technical mysteries. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J786" onclick="javascript:toggleLayer('E786')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある技術的な謎へのイニシエーションが必要なこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="787"><a name="787"><TD id="E787" onclick="javascript:toggleLayer('J787')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One must absorb a good deal of technical knowledge before one can give valued gifts
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J787" onclick="javascript:toggleLayer('E787')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 価値ある贈り物ができるようになるためには、人は相当量の技術的な知識を吸収しなくてはならない
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="788"><a name="788"><TD id="E788" onclick="javascript:toggleLayer('J788')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (e.g. one must know at least one of the major computer languages).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J788" onclick="javascript:toggleLayer('E788')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （たとえば、主要コンピュータ言語のどれか一つを知らなくてはならない）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="789"><a name="789"><TD id="E789" onclick="javascript:toggleLayer('J789')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This requirement functions in the large in the way hidden clues do in the small, as a filter for qualities (such as capability for abstract thinking, persistence, and mental flexibility) that are necessary to function in the culture.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J789" onclick="javascript:toggleLayer('E789')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この必要条件が大きな場で果たす役割は、小さな集団で隠されたヒントが果たす役割と同じで、この文化の中で活動するのに必要な資質（たとえば抽象思考能力、根気、精神的な柔軟性など）のフィルタとして機能する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="790"><a name="790"><TD id="E790" onclick="javascript:toggleLayer('J790')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Social-context mysteries.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J790" onclick="javascript:toggleLayer('E790')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 社会的な文脈の謎。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="791"><a name="791"><TD id="E791" onclick="javascript:toggleLayer('J791')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One becomes involved in the culture through attaching oneself to specific projects.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J791" onclick="javascript:toggleLayer('E791')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人がハッカー文化に関わりを持つのは、特定のプロジェクトへの参加を通じてだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="792"><a name="792"><TD id="E792" onclick="javascript:toggleLayer('J792')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Each project is a live social context of hackers that the would-be contributor has to investigate and understand socially as well as technically in order to function.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J792" onclick="javascript:toggleLayer('E792')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 各プロジェクトはハッカーたちの生々しい社会的な文脈であり、そこへの参加者になりたい人間が活動するためには、いろいろ調べて技術的な理解とともに社会的な理解を身につけなくてはならない
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="793"><a name="793"><TD id="E793" onclick="javascript:toggleLayer('J793')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Concretely, a common way one does this is by reading the project's web pages and/or email archives.) 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J793" onclick="javascript:toggleLayer('E793')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （具体的には、これをやる一般的な方法はそのプロジェクトのWebページを読んだり、e-mailアーカイブを読んだりすることだ）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="794"><a name="794"><TD id="E794" onclick="javascript:toggleLayer('J794')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is through these project groups that newbies experience the behavioral example of experienced hackers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J794" onclick="javascript:toggleLayer('E794')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうプロジェクト集団を通じて、タコ（newbie）たちは経験豊かなハッカーたちの行動事例を経験する。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="795"><a name="795"><TD id="E795" onclick="javascript:toggleLayer('J795')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the process of acquiring these mysteries, the would-be hacker picks up contextual knowledge that (after a while) does make the three taboos and other customs seem `self-evident'.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J795" onclick="javascript:toggleLayer('E795')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう謎を身につける過程で、ハッカー候補は文脈的な知識を身につけてゆき、（しばらくすれば）そのおかげで確かに三つのタブーやその他の慣習は「あたりまえ」に思えてくるわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="796"><a name="796"><TD id="E796" onclick="javascript:toggleLayer('J796')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One might, incidentally, argue that the structure of the hacker gift culture itself is its own central mystery.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J796" onclick="javascript:toggleLayer('E796')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ついでながら、ハッカー贈与文化の構造そのものが、それ自体中心的な謎だと論じる人もいるかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="797"><a name="797"><TD id="E797" onclick="javascript:toggleLayer('J797')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One is not considered acculturated (concretely: no one will call you a hacker) until one demonstrates a gut-level understanding of the reputation game and its implied customs, taboos, and usages. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J797" onclick="javascript:toggleLayer('E797')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 評判ゲームやそこにこめられた慣習、タブー、利用法について、本能的な理解を実証してみせない限り、文化に順応したとはみなされない
+（具体的にはだれもその人をハッカーとは呼ばない）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="798"><a name="798"><TD id="E798" onclick="javascript:toggleLayer('J798')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But this is trivial; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J798" onclick="javascript:toggleLayer('E798')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもこれは些末なことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="799"><a name="799"><TD id="E799" onclick="javascript:toggleLayer('J799')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> all cultures demand such understanding from would-be joiners. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J799" onclick="javascript:toggleLayer('E799')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あらゆる文化は、参加者候補に対してそういう理解を要求する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="800"><a name="800"><TD id="E800" onclick="javascript:toggleLayer('J800')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Furthermore the hacker culture evinces no desire to have its internal logic and folkways kept secret
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J800" onclick="javascript:toggleLayer('E800')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらにハッカー文化は、内的論理や民俗的な方法を秘密にしておこうなんていう希望はぜんぜん持っていない
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="homesteading-6.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<7>
+<a href="homesteading-8.htm">8</a>
+<a href="homesteading-9.htm">9</a>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-8.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/homesteadinge.txt">local copy</a> / <a href="http://www.catb.org/~esr/writings/homesteading/">http://www.catb.org/~esr/writings/homesteading/</a><li>オリジナルの日本語文: <a href="../org/homesteadingj.txt">local copy</a> / <a href="http://cruel.org/freeware/noosphere.html">http://cruel.org/freeware/noosphere.html</a><li><a href="../manual-alignment/homesteading.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

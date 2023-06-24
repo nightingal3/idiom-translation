@@ -1,0 +1,527 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>RMS lecture at KTH / Richard M. Stallman 著</h2><h2>RMS スウェーデン王立工科大学講演  / リチャード・M・ストールマン 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/rmse.txt">英語文</a>&<a href="../org/rmsj.txt">日本語文</a> / <a href="../manual-alignment/rms.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>3 of RMS lecture at KTH</TITLE>
+<hr>
+<a href="rms-2.htm">prev</a>
+<a href="rms-0.htm">0</a>
+<a href="rms-1.htm">1</a>
+<a href="rms-2.htm">2</a>
+<3>
+<a href="rms-4.htm">4</a>
+<a href="rms-5.htm">5</a>
+<a href="rms-6.htm">6</a>
+<a href="rms-7.htm">7</a>
+<a href="rms-8.htm">8</a>
+<a href="rms-9.htm">9</a>
+<a href="rms-4.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="301"><a name="301"><TD id="E301" onclick="javascript:toggleLayer('J301')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I thought, with a name like that, perhaps I could have it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J301" onclick="javascript:toggleLayer('E301')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こんな名前なら、もらえるのかな、と思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="302"><a name="302"><TD id="E302" onclick="javascript:toggleLayer('J302')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So, I sent a message to the person who had developed it asking if he would give it to the GNU project,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J302" onclick="javascript:toggleLayer('E302')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから開発した人にメールを送って、 GNU プロジェクトにくれないか、ときいてみたら、その人は
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="303"><a name="303"><TD id="E303" onclick="javascript:toggleLayer('J303')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he said ``No, the university might be free, but the software they develop isn't'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J303" onclick="javascript:toggleLayer('E303')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いや、free は大学にかかることばで、そこで開発してるソフトはフリーじゃないんです」と言って、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="304"><a name="304"><TD id="E304" onclick="javascript:toggleLayer('J304')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but he then said that he wanted to have a UNIX compatible system too, and he wanted to write a sort of kernel for it, so why didn't I then write the utilities, and they could both be distributed with his proprietary compiler, to encourage people to buy that compiler.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J304" onclick="javascript:toggleLayer('E304')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれから言うには、かれも UNIX互換システムがほしくて、それ用のカーネルみたいなものも書いてみたいから、そしたらぼくがそれ用にユーティリティを書いて、そしたらその両方ともかれの独占コンパイラといっしょに配布できて、そしたらみんながそのコンパイラを買いたがるようになるだろう、だって。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="305"><a name="305"><TD id="E305" onclick="javascript:toggleLayer('J305')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And I thought that this was despicable and so I told him that my first project would be a compiler.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J305" onclick="javascript:toggleLayer('E305')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでぼくは、ふざけんじゃないよと思って、だからそいつに、ぼくの最初のプロジェクトはコンパイラの開発だ、と言ってやった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="306"><a name="306"><TD id="E306" onclick="javascript:toggleLayer('J306')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I didn't really know much about optimizing compilers at the time,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J306" onclick="javascript:toggleLayer('E306')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その頃は、コンパイラの最適化について実は大して知らなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="307"><a name="307"><TD id="E307" onclick="javascript:toggleLayer('J307')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because I'd never worked on one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J307" onclick="javascript:toggleLayer('E307')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一度もいじったことがなかったから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="308"><a name="308"><TD id="E308" onclick="javascript:toggleLayer('J308')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But I got my hands on a compiler, that I was told at the time was free.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J308" onclick="javascript:toggleLayer('E308')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、その頃フリーだと言われたコンパイラを手に入れられた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="309"><a name="309"><TD id="E309" onclick="javascript:toggleLayer('J309')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was a compiler called PASTEL, which the authors say means ``off-color PASCAL''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J309" onclick="javascript:toggleLayer('E309')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが PASTELっていうコンパイラで、作者たちに言わせると「色の薄いPASCAL」という意味なんだって。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="310"><a name="310"><TD id="E310" onclick="javascript:toggleLayer('J310')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pastel was a very complicated language including features such as parametrized types and explicit type parameters and many complicated things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J310" onclick="javascript:toggleLayer('E310')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pastel はすごく複雑な言語で、パラメータ化された型や明示タイプパラメータ（explicit type parameter）とか、いろいろ複雑なものを含んでた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="311"><a name="311"><TD id="E311" onclick="javascript:toggleLayer('J311')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The compiler was of course written in this language, and had many complicated features to optimize the use of these things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J311" onclick="javascript:toggleLayer('E311')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> コンパイラ自身ももちろんこの言語で書かれてて、こういう機能の利用を最適化するのに、いろいろ複雑な機能を持っていたんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="312"><a name="312"><TD id="E312" onclick="javascript:toggleLayer('J312')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For example: the type ``string'' in that language was a parameterized type;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J312" onclick="javascript:toggleLayer('E312')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえばこの言語では string 型はパラメータ化されていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="313"><a name="313"><TD id="E313" onclick="javascript:toggleLayer('J313')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you could say ``string(n)'' if you wanted a string of a particular length;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J313" onclick="javascript:toggleLayer('E313')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 特定の長さの文字列がほしければ「string(n)」と書ける。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="314"><a name="314"><TD id="E314" onclick="javascript:toggleLayer('J314')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you could also just say ``string'', and the parameter would be determined from the context.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J314" onclick="javascript:toggleLayer('E314')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 単に「string」と書けば、パラメータは文脈から決まってくる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="315"><a name="315"><TD id="E315" onclick="javascript:toggleLayer('J315')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now, strings are very important, and it is necessary for a lot of constructs that use them to run fast, and this means that they had to have a lot of features to detect such things as: when the declared length of a string is an argument that is known to be constant throughout the function, to save to save the value and optimize the code they're going to produce, many complicated things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J315" onclick="javascript:toggleLayer('E315')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> で、文字列ってすごく大事で、それを使ういろんな構造体を高速に走らせるためにも必要で、ということはつまり、各種のことを検出するようないろんな機能が必要ってことだよね、たとえば、宣言されたストリング長が引数で、それが関数の中ではずっと定数であることを検出するとか、値を保存してそれが生み出すコードを最適化するとか、いろいろややこしいこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="316"><a name="316"><TD id="E316" onclick="javascript:toggleLayer('J316')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But I did get to see in this compiler how to do automatic register allocation, and some ideas about how to handle different sorts of machines.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J316" onclick="javascript:toggleLayer('E316')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもこのコンパイラの中では、少なくともレジスタ自動割り当てをどうするかとか、そういうことは読みとれたし、いろいろちがったマシンの扱い方の考え方もわかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="317"><a name="317"><TD id="E317" onclick="javascript:toggleLayer('J317')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Well, since this compiler already compiled PASTEL, what i needed to do was add a front-end for C, which I did, and add a back-end for the 68000 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J317" onclick="javascript:toggleLayer('E317')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さてこのコンパイラはすでに PASTEL をコンパイルできるので、必要なのは C のフロントエンドをつけることで、これをやって、それから 68000 用のバックエンドをつけることだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="318"><a name="318"><TD id="E318" onclick="javascript:toggleLayer('J318')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which I expected to be my first target machine.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J318" onclick="javascript:toggleLayer('E318')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 68000 がぼくの最初のターゲットマシンになるものと思ってたから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="319"><a name="319"><TD id="E319" onclick="javascript:toggleLayer('J319')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But I ran into a serious problem.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J319" onclick="javascript:toggleLayer('E319')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもここで深刻な問題にぶちあたった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="320"><a name="320"><TD id="E320" onclick="javascript:toggleLayer('J320')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because the PASTEL language was defined not to require you to declare something before you used it, the declarations and uses could be in any order, in other words: Pascal's ``forward'' declaration was obsolete, because of this it was necessary to read in an entire program, and keep it in core, and then process it all at once.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J320" onclick="javascript:toggleLayer('E320')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> PASTEL 言語は何かを使う前に宣言しなくていいようになってたので、だから宣言と使用がどんな順序でもよくて、つまりは、Pascal の「forward」宣言は使いものにならなくて、おかげでプログラムをまるごと読み込んで、それをコアにいれといて、一挙に処理するしかなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="321"><a name="321"><TD id="E321" onclick="javascript:toggleLayer('J321')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The result was that the intermediate storage used in the compiler, the size of the memory needed, was proportional to the size of your file.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J321" onclick="javascript:toggleLayer('E321')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 結果としてコンパイラ内部で使われる中間記憶、つまり必要メモリ量は、ファイルの大きさに比例して大きくなるわけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="322"><a name="322"><TD id="E322" onclick="javascript:toggleLayer('J322')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this also included stack-space, you needed gigantic amounts of stack space, and what I found as a result was: that the 68000 system available to me could not run the compiler.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J322" onclick="javascript:toggleLayer('E322')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてここにはスタック領域も含まれてて、ものすごいスタック領域が必要で、だから結果としてわかったこと：ぼくの手もとの 68000 システムではこのコンパイラは走らない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="323"><a name="323"><TD id="E323" onclick="javascript:toggleLayer('J323')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because it was a horrible version of Unix that gave you a limit of something like 16K words of stack, this despite the existence of six megabytes in the machine, you could only have 16Kw of stack or something like that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J323" onclick="javascript:toggleLayer('E323')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはそのシステムが最悪のUNIX で、スタックに 16K ワードとかの上限があって、これってマシン自体にはメモリが 6 メガバイトもあるのにだよ、スタックは 16Kw かそこらしかとれないっての。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="324"><a name="324"><TD id="E324" onclick="javascript:toggleLayer('J324')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And of course to generate its conflict matrix to see which temporary values conflicted, or was alive at the same time as which others, it needed a quadratic matrix of bits, and that for large functions that would get it to hundreds of thousands of bytes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J324" onclick="javascript:toggleLayer('E324')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてもちろん、一時的な変数値がかちあってないかとか、あるいは同時に生きてるのがどれかとかを見るのに、コンフリクト行列を生成するんだけど、これはビット単位で4次元行列とかが必要で、大きな関数になるとそれが何百バイトとか何千バイトにもなる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="325"><a name="325"><TD id="E325" onclick="javascript:toggleLayer('J325')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So i managed to debug the first pass of the ten or so passes of the compiler, cross compiled on to that machine, and then found that the second one could never run.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J325" onclick="javascript:toggleLayer('E325')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからコンパイラは 10 パスくらいかそこらあったんだけど、その最初のパスはなんとかデバッグして、それをそのマシン用にクロスコンパイルして、そしてふたを開けてみたら、二番目のやつはそもそも走らない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="326"><a name="326"><TD ID="TAB326" onclick="javascript:toggleLayer('J326')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB326" onclick="javascript:toggleLayer('E326')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="327"><a name="327"><TD ID="TAB327" onclick="javascript:toggleLayer('J327')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J327" onclick="javascript:toggleLayer('E327')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.2 GNU EMACS
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="328"><a name="328"><TD id="E328" onclick="javascript:toggleLayer('J328')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While I was thinking about what to do about these problems and wondering whether I should try to fix them or write entirely new compiler, in a roundabout fashion I began working on GNU Emacs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J328" onclick="javascript:toggleLayer('E328')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう問題をどうしようか考えて、これをなおそうとするのか、それともまったく新しいコンパイラを書こうか考えているうちに、なんやかんやで GNU EMACS の作業にとりかかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="329"><a name="329"><TD id="E329" onclick="javascript:toggleLayer('J329')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> GNU Emacs is the main distributed portion of the GNU system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J329" onclick="javascript:toggleLayer('E329')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU EMACS は GNU システムの配布分の主要部分。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="330"><a name="330"><TD id="E330" onclick="javascript:toggleLayer('J330')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's an extensible text editor a lot like the original emacs which I developed ten years ago, except that this one uses actual LISP as its extension language.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J330" onclick="javascript:toggleLayer('E330')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 拡張できるテキストエディタで、ぼくが10年前に開発したオリジナルの EMACS とかなり似てるけど、こいつは拡張用言語として本物の LISP を使うんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="331"><a name="331"><TD id="E331" onclick="javascript:toggleLayer('J331')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The editor itself is implemented in C, as is the LISP interpreter, so the LISP interpreter is completely portable, and you don't need a LISP system external to the editor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J331" onclick="javascript:toggleLayer('E331')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エディタ自身は C で実装されてて、LISP インタープリタも同じく C で実装されてるから、LISP インタープリタは完全に可搬性があって、エディタの外部に LISP システムを持たなくていい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="332"><a name="332"><TD id="E332" onclick="javascript:toggleLayer('J332')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The editor contains its own LISP system, and all of the editing commands are written in LISP so that they can provide you with examples to look at for how to write your own editing commands, and things to start with, so you can change them into the editing commands that you really want.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J332" onclick="javascript:toggleLayer('E332')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エディタ自身が自前の LISP システムを持ってて、すべての編集コマンドはLISP で書いてあるから、それをお手本として見て自前の編集コマンドを書いたり、何からはじめるかとか、そういうのを変えて、自分が本当にほしい編集コマンドに変えられるんだよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="333"><a name="333"><TD id="E333" onclick="javascript:toggleLayer('J333')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the summer of that year, about two years ago now, a friend of mine told me that because of his work in early development of Gosling Emacs, he had permission from Gosling in a message he had been sent to distribute his version of that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J333" onclick="javascript:toggleLayer('E333')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その年の夏、いまから 2 年ほど前、ぼくの友だちがゴスリング EMACS の開発初期に手伝ったので、ゴスリングからかれのバージョンのゴスリング EMACS を配布していいよ、という許諾をメールで受け取ったと話してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="334"><a name="334"><TD id="E334" onclick="javascript:toggleLayer('J334')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Gosling originally had set up his Emacs and distributed it free and gotten many people to help develop it, under the expectation based on Gosling's own words in his own manual that he was going to follow the same spirit that I started with the original Emacs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J334" onclick="javascript:toggleLayer('E334')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゴスリングはもともと EMACS を書き上げて、それをフリーで配布して、たくさんの人が開発に協力して、それはゴスリング自身がマニュアルの中で書いたような、ぼくがもとの EMACSを開始したのと同じ精神にしたがうというかれ自身のせりふに基づいた期待があったからなんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="335"><a name="335"><TD id="E335" onclick="javascript:toggleLayer('J335')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then he stabbed everyone in the back by putting copyrights on it, making people promise not to redistribute it and then selling it to a software-house.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J335" onclick="javascript:toggleLayer('E335')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしたらゴスリングはそいつに著作権をつけて、みんなにそれを再配布しないと約束させて、あげくにそれをソフトハウスに売って、みんなを後ろから刺して裏切ったんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="336"><a name="336"><TD id="E336" onclick="javascript:toggleLayer('J336')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> My later dealings with him personally showed that he was every bit as cowardly and despicable as you would expect from that history.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J336" onclick="javascript:toggleLayer('E336')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後ゴスリングと個人的にやりとりしたけど、この歴史を見て予想されるのと寸分の狂いもないくらい、臆病でふざけたやつだったよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="337"><a name="337"><TD id="E337" onclick="javascript:toggleLayer('J337')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But in any case, my friend gave me this program, and my intention was to change the editing commands at the top level to make them compatible with the original Emacs that I was used to.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J337" onclick="javascript:toggleLayer('E337')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まあとにかく、その友たちがこのプログラムをくれて、それでぼくとしてはトップレベルの編集コマンドを変えて、ぼくの慣れ親しんでるオリジナルの EMACS と互換性を持たせたかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="338"><a name="338"><TD id="E338" onclick="javascript:toggleLayer('J338')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And to make them handle all the combinations of numerical arguments and so on that one might expect that they would handle and have all the features that I wanted.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J338" onclick="javascript:toggleLayer('E338')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それと数値引き数の組み合わせとかいろいろ扱えるようにして、ぼくのほしいような機能を全部扱えると期待できるようにするとか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="339"><a name="339"><TD id="E339" onclick="javascript:toggleLayer('J339')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But after a little bit of this, I discovered that the extension language of that editor, which is called MOCKLISP, was not sufficient for the task.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J339" onclick="javascript:toggleLayer('E339')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもしばらくやってるうちに、このエディタの拡張用言語、MOCKLISP っていうんだけど、それがこの作業用には力不足だってのがわかってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="340"><a name="340"><TD id="E340" onclick="javascript:toggleLayer('J340')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I found that that I had to replace it immediately in order to do what I was planning to do.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J340" onclick="javascript:toggleLayer('E340')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 計画してることをやるためには、こいつをすぐにでもすげかえる必要があるってわかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="341"><a name="341"><TD id="E341" onclick="javascript:toggleLayer('J341')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Before I had had the idea of someday perhaps replacing MOCKLISP with real LISP, but what I found out was that it had do be done first.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J341" onclick="javascript:toggleLayer('E341')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 前にもいつかはMOCKLISP を本物の LISP に置き換えようと思ってたんだけど、でも真っ先にそれをやんなきゃっていうのがわかってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="342"><a name="342"><TD id="E342" onclick="javascript:toggleLayer('J342')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now, the reason that MOCKLISP is called MOCK, is that it has no kind of structure datatype:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J342" onclick="javascript:toggleLayer('E342')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで、MOCKLISP がなぜ「MOCK（にせ）」ってついてるかというと、そこに構造体データタイプがないからなの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="343"><a name="343"><TD id="E343" onclick="javascript:toggleLayer('J343')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it does not have LISP lists;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J343" onclick="javascript:toggleLayer('E343')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> LISP リストもない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="344"><a name="344"><TD id="E344" onclick="javascript:toggleLayer('J344')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it does not have any kind of array.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J344" onclick="javascript:toggleLayer('E344')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 配列もぜんぜんない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="345"><a name="345"><TD id="E345" onclick="javascript:toggleLayer('J345')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It also does not have LISP symbols,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J345" onclick="javascript:toggleLayer('E345')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> LISP シンボルもない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="346"><a name="346"><TD id="E346" onclick="javascript:toggleLayer('J346')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which are objects with names:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J346" onclick="javascript:toggleLayer('E346')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは名前つきオブジェクトね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="347"><a name="347"><TD id="E347" onclick="javascript:toggleLayer('J347')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for any particular name, there is only one object, so that you can type in the name and you always get the same object back.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J347" onclick="javascript:toggleLayer('E347')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> MOCKLISP ではある名前に対してオブジェクトは一つしかなくて、だから名前をタイプすると、いつも同じオブジェクトしか戻ってこないの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="348"><a name="348"><TD id="E348" onclick="javascript:toggleLayer('J348')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this tremendously hampers the writing of many kinds of programs, you have to do things by complicated string-manipulation that don't really go that way.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J348" onclick="javascript:toggleLayer('E348')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こいつのおかげでいろんなプログラムを書くのがえっらくやっかいで、ホントはそんなふうに使うんじゃないようなややこしいストリング操作で、あれやこれやを処理しなきゃなんなかったわけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="349"><a name="349"><TD id="E349" onclick="javascript:toggleLayer('J349')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So I wrote a LISP interpreter and put it in in place of MOCKLISP and in the process I found that I had to rewrite many of the editor's internal data structures
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J349" onclick="javascript:toggleLayer('E349')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで LISP インタープリタを書いて、MOCKLISP をすげかえて、その過程で、エディタの内部データ構造を書き直さなきゃならないこともわかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="350"><a name="350"><TD id="E350" onclick="javascript:toggleLayer('J350')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because I wanted them to be LISP objects.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J350" onclick="javascript:toggleLayer('E350')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくはそういうのが LISP オブジェクトになっててほしかったから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="351"><a name="351"><TD id="E351" onclick="javascript:toggleLayer('J351')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I wanted the interface between the LISP and the editor to be clean, which means that objects such as editor buffers, sub-processes, windows and buffer-positions, all have to be LISP objects, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J351" onclick="javascript:toggleLayer('E351')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> LISP とエディタのインターフェースがクリーンであってほしくて、それはつまり、エディタのバッファやサブプロセスやウィンドウやバッファ位置みたいなオブジェクトが、みんな LISP オブジェクトでなきゃだめだってこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="352"><a name="352"><TD id="E352" onclick="javascript:toggleLayer('J352')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that the editor primitives that work on them are actually callable as LISP functions with LISP data.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J352" onclick="javascript:toggleLayer('E352')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうじゃないとそれに作用するエディタのプリミティブは LISP データの LISP 関数としてコールできるようにならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="353"><a name="353"><TD id="E353" onclick="javascript:toggleLayer('J353')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This meant that I had to redesign the data formats of all those objects and rewrite all the functions that worked on them, and the result was that after about six months I had rewritten just about everything in the editor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J353" onclick="javascript:toggleLayer('E353')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ということは、こういうオブジェクトすべてのデータ形式を設計しなおして、それに作用する関数もみんな書き直して、結果として 6 ヶ月後には、ぼくはエディタのほとんどすべてを書き直してたってわけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="354"><a name="354"><TD id="E354" onclick="javascript:toggleLayer('J354')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In addition, because it is so hard to write things in MOCKLISP, all the things that had been written in MOCKLISP were very unclean and by rewriting them to take advantage of the power of real LISP, I could make them much more powerful and much simpler and much faster.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J354" onclick="javascript:toggleLayer('E354')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 加えて、MOCKLISP でなんか書くのはすごく難しいので、MOCKLISP で書かれたものはみんなきたなくて、だから本物の LISP の力を使えるようにそれを書きなおせば、それをみんなもっと強力でもっと単純でもっと高速にできたんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="355"><a name="355"><TD id="E355" onclick="javascript:toggleLayer('J355')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So I did that, and the result was that when I started distributing this program only a small fraction remained from what I had received.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J355" onclick="javascript:toggleLayer('E355')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからそれをやって、結果としてぼくがそれを配布しはじめときには、受け取ったものでそのまま使われてる部分はほとんどなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="356"><a name="356"><TD id="E356" onclick="javascript:toggleLayer('J356')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At this point, the company that Gosling thinks he sold the program to challenged my friend's right to distribute it, and the message was on backup tapes, so he couldn't find it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J356" onclick="javascript:toggleLayer('E356')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この時点で、ゴスリングがプログラムを売ったと思ってる相手の会社が、ぼくの友だちがそれを配布する権利にケチをつけはじめて、メールはバックアップのテープに入ってて見つからなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="357"><a name="357"><TD id="E357" onclick="javascript:toggleLayer('J357')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And Gosling denied having given him permission.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J357" onclick="javascript:toggleLayer('E357')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてゴスリングは、そんな許可は与えてないと否定する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="358"><a name="358"><TD id="E358" onclick="javascript:toggleLayer('J358')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And then a strange thing happened.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J358" onclick="javascript:toggleLayer('E358')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでおかしなことが起きた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="359"><a name="359"><TD id="E359" onclick="javascript:toggleLayer('J359')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was negotiating with this company, and it seemed that the company mainly was concerned with not having anything distributed that resembled what they were distributing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J359" onclick="javascript:toggleLayer('E359')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれはこの会社と交渉してたんだけど、この会社がいちばん気にしてるのは、自分たちが配布してるのと似たようなものが出回っちゃ困るってことだったようなの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="360"><a name="360"><TD id="E360" onclick="javascript:toggleLayer('J360')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> See, he was still distributing, and the company where he worked, which is Megatest, was still distributing the same thing he had given me, which really was an old version of Gosling Emacs with his changes, and so he was going to make an agreement with them where he would stop distributing that, and would switch to using GNU Emacs, and they would then acknowledge that he really had the permission after all, and then supposedly everyone would be happy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J360" onclick="javascript:toggleLayer('E360')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれもまだ配布してたし、かれの職場 ―― Megatest 社ね ―― も、かれがぼくにくれたのと同じものを配布してて、それはかれの変更の入ったゴスリング EMACS で、だからかれは連中とそれを配布するのをやめるという合意をして、GNU EMACS を使うのに切り替えて、それでそしたら連中は、かれが実はやっぱり許諾を得てたんだってことを認めて、そうすればおそらくみんな満足ってことになるはずだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="361"><a name="361"><TD id="E361" onclick="javascript:toggleLayer('J361')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this company was talking to me about wanting to distribute GNU Emacs, free of course, but also sell various sorts of supporting assistance, and they wanted to hire me to help do the work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J361" onclick="javascript:toggleLayer('E361')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこの会社はぼくに相談をもちかけてて、GNU EMACS を配布させろ、もちろんそれはフリーだけど、でもいろんなサポートや補助を売りたいから、その作業の手伝いにぼくを雇いたいって言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="362"><a name="362"><TD id="E362" onclick="javascript:toggleLayer('J362')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So it's sort of strange that they then changed their mind and refused to sign that agreement, and put up a message on the network saying that I wasn't allowed to distribute the program.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J362" onclick="javascript:toggleLayer('E362')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからその後、連中の気が変わってその契約にサインするのを拒否して、ネットワークに、ストールマンにはプログラムを配布する権利はないというメッセージをポストしたってのは、ちょっと変なんだよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="363"><a name="363"><TD id="E363" onclick="javascript:toggleLayer('J363')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They didn't actually say that they would do anything, they just said that it wasn't clear whether they might ever someday do something.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J363" onclick="javascript:toggleLayer('E363')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 別に連中は何かするとか言ったわけじゃなくて、単にいずれいつの日か何か手をうたないかどうかははっきりしないとか言っただけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="364"><a name="364"><TD id="E364" onclick="javascript:toggleLayer('J364')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this was enough to scare people so that no one would use it any more, which is a sad thing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J364" onclick="javascript:toggleLayer('E364')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそれだけでみんなびびっちゃって、もうだれも使わなくなって、これは悲しいことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="365"><a name="365"><TD id="E365" onclick="javascript:toggleLayer('J365')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Sometimes I think that perhaps one of the best things I could do with my life is: find a gigantic pile of proprietary software that was a trade secret, and start handing out copies on a street corner so it wouldn't be a trade secret any more, and perhaps that would be a much more efficient way for me to give people new free software than actually writing it myself; but everyone is too cowardly to even take it.)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J365" onclick="javascript:toggleLayer('E365')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （ときどき、一生かけてやるのに一番いい仕事ってのは、どっかで商売上の機密になってる独占ソフトのでかい山をみつけて、それを街角で配って歩いて、もう機密でもなんでもなくしてしまうことじゃないかと思って、みんなの手に新しいフリーソフトをわたしたいならそのほうが自分で新しいソフトなんかを書くよりも、ぼくとしてはずっと効率のいいやりかたじゃないかと思うんだけれど、みんなそれを受け取るのさえ怖がるほど臆病なんだもんな）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="366"><a name="366"><TD id="E366" onclick="javascript:toggleLayer('J366')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So I was forced to rewrite all the rest that remained, and I did that, it took me about a week and a half.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J366" onclick="javascript:toggleLayer('E366')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というわけで、残り全部を自分で書き直すしかなくて、だからそれをやって、それに一週間半くらいかかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="367"><a name="367"><TD id="E367" onclick="javascript:toggleLayer('J367')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So they won a tremendous victory.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J367" onclick="javascript:toggleLayer('E367')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というわけで、やつらは大勝利をおさめてさぞ満足だろうよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="368"><a name="368"><TD id="E368" onclick="javascript:toggleLayer('J368')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And I certainly wouldn't ever cooperate with them in any fashion after that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J368" onclick="javascript:toggleLayer('E368')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてぼくは、それ以降はどんな形であってもやつらとは協力なんかするもんか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="369"><a name="369"><TD ID="TAB369" onclick="javascript:toggleLayer('J369')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB369" onclick="javascript:toggleLayer('E369')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="370"><a name="370"><TD ID="TAB370" onclick="javascript:toggleLayer('J370')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J370" onclick="javascript:toggleLayer('E370')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.3　GDB デバッガ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="371"><a name="371"><TD id="E371" onclick="javascript:toggleLayer('J371')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then after GNU Emacs was reasonably stable, which took all in all about a year and a half, I started getting back to other parts of the system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J371" onclick="javascript:toggleLayer('E371')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> で、GNU EMACS がそこそこ安定してから、というのはなんだかんだで1年半ほどかかったんだけど、それからシステムのほかの部分に戻った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="372"><a name="372"><TD id="E372" onclick="javascript:toggleLayer('J372')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I developed a debugger which I called GDB which is a symbolic debugger for C code, which recently entered distribution.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J372" onclick="javascript:toggleLayer('E372')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GDB っていうデバッガを開発して、これはCコード用のシンボリック・デバッガで、最近配布に入れるようにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="373"><a name="373"><TD id="E373" onclick="javascript:toggleLayer('J373')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now this debugger is to a large extent in the spirit of DBX, which is a debugger that comes with Berkeley Unix.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J373" onclick="javascript:toggleLayer('E373')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このデバッガは、かなりの部分が DBX の精神にのっとったもので、これはバークレー UNIX についてくるデバッガね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="374"><a name="374"><TD id="E374" onclick="javascript:toggleLayer('J374')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Commands consist of a word that says what you want to do, followed by arguments.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J374" onclick="javascript:toggleLayer('E374')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> コマンドは、何をしたいかを示すことばと、それに続く引き数で構成される。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="375"><a name="375"><TD id="E375" onclick="javascript:toggleLayer('J375')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In this debugger, commands can all be abbreviated, and the common commands have single character abbreviations, but any unique abbreviation is always allowed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J375" onclick="javascript:toggleLayer('E375')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このデバッガでは、コマンドはみんな短縮形が使えて、よく使うコマンドは 1 文字の短縮形になってるんだけど、独自の短縮形も好きなように使える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="376"><a name="376"><TD id="E376" onclick="javascript:toggleLayer('J376')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There are extensible HELP facilities, you can type HELP followed by any command or even subcommands, and get a lengthy description of how to use that command.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J376" onclick="javascript:toggleLayer('E376')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 充実した HELP 機能もあって、HELP のあとになんでもいいけどコマンドやサブコマンドまでタイプすると、そのコマンドの使い方が詳しく説明される。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="377"><a name="377"><TD id="E377" onclick="javascript:toggleLayer('J377')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Of course you can type any expression in C, and it will print the value.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J377" onclick="javascript:toggleLayer('E377')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もちろん C の表現をタイプすれば、どれでもその値を返してくれる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="378"><a name="378"><TD id="E378" onclick="javascript:toggleLayer('J378')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You can also do some things that are not usual in symbolic C debuggers,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J378" onclick="javascript:toggleLayer('E378')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ほかにも、シンボリック C デバッガでは珍しいことができたりする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="379"><a name="379"><TD id="E379" onclick="javascript:toggleLayer('J379')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for example: You can refer to any C datatype at any memory address, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J379" onclick="javascript:toggleLayer('E379')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえば、どのメモリアドレスにあるどの C データ型も参照できるんだよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="380"><a name="380"><TD id="E380" onclick="javascript:toggleLayer('J380')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> either to examine the value, or to assign the value.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J380" onclick="javascript:toggleLayer('E380')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 値を調べたり、値を入れたりできる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="381"><a name="381"><TD id="E381" onclick="javascript:toggleLayer('J381')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So for example if you want to store a floating point value in a word at a certain address,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J381" onclick="javascript:toggleLayer('E381')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからたとえばあるアドレスのワードに浮動小数点の値を入れたければ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="382"><a name="382"><TD id="E382" onclick="javascript:toggleLayer('J382')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you just say: ``Give me the object of type FLOAT or DOUBLE at this address''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J382" onclick="javascript:toggleLayer('E382')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「これこれのアドレスにある FLOAT 型か DOUBLE 型のオブジェクトをよこせ」といって、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="383"><a name="383"><TD id="E383" onclick="javascript:toggleLayer('J383')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and then assign that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J383" onclick="javascript:toggleLayer('E383')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに割り当てればいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="384"><a name="384"><TD id="E384" onclick="javascript:toggleLayer('J384')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Another thing you can do is to examine all the values that have been examined in the past.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J384" onclick="javascript:toggleLayer('E384')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう一つできるのが、これまで調べてみた値を全部調べられんの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="385"><a name="385"><TD id="E385" onclick="javascript:toggleLayer('J385')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Every value examined gets put on the ``value history''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J385" onclick="javascript:toggleLayer('E385')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 調べた値は全部「値ヒストリー」にのっかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="386"><a name="386"><TD id="E386" onclick="javascript:toggleLayer('J386')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You can refer to any element in the history by its numerical position, or you can easily refer to the last element with just dollar-sign.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J386" onclick="javascript:toggleLayer('E386')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このヒストリーのどの要素でも、その番号で参照できるし、ただのドル記号（$）を使えば最後の要素を簡単に呼び出せる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="387"><a name="387"><TD id="E387" onclick="javascript:toggleLayer('J387')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this makes it much easier to trace list structure.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J387" onclick="javascript:toggleLayer('E387')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうすると、リスト構造をトレースするのがすごく楽になる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="388"><a name="388"><TD id="E388" onclick="javascript:toggleLayer('J388')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you have any kind of C structure that contains a pointer to another one, you can do something like ``PRINT *$.next'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J388" onclick="javascript:toggleLayer('E388')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 別の構造体を指すポインタを含むような C 構造体があったとするでしょ、そしたらたとえば PRINT *$.next みたいなことができて、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="389"><a name="389"><TD id="E389" onclick="javascript:toggleLayer('J389')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which says: ``Get the next field out of the last thing you showed me, and then display the structure that points at''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J389" onclick="javascript:toggleLayer('E389')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはつまり「さっきみせてくれたものの次のフィールドをとってきて、それが指してる構造体を表示しろ」ってことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="390"><a name="390"><TD id="E390" onclick="javascript:toggleLayer('J390')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And you can repeat that command, and each time you'll see then next structure in the list.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J390" onclick="javascript:toggleLayer('E390')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこのコマンドは繰り返せて、そのたびごとにリストの次の構造体が見られる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="391"><a name="391"><TD id="E391" onclick="javascript:toggleLayer('J391')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Whereas in every other C debugger that I've seen the only way to do that is to type a longer command each time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J391" onclick="javascript:toggleLayer('E391')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、ぼくがこれまで見た C デバッガだと、毎回もっと長いコマンドをタイプしなきゃなんないんだよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="392"><a name="392"><TD id="E392" onclick="javascript:toggleLayer('J392')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And when this is combined with the feature that just typing carriage-return repeats the last command you issued, it becomes very convenient.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J392" onclick="javascript:toggleLayer('E392')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこの機能と、単に CR を押したら直前のコマンドを繰り返す、という機能と組み合わせると、これはすごく便利。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="393"><a name="393"><TD id="E393" onclick="javascript:toggleLayer('J393')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Just type carriage-return for each element in the list you want to see.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J393" onclick="javascript:toggleLayer('E393')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> リストの中で自分が見たい要素について、どんどん CR を押してけばいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="394"><a name="394"><TD id="E394" onclick="javascript:toggleLayer('J394')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There are also explicitly settable variables in the debugger,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J394" onclick="javascript:toggleLayer('E394')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あとデバッガの中で外部設定できる変数もある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="395"><a name="395"><TD id="E395" onclick="javascript:toggleLayer('J395')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> any number of them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J395" onclick="javascript:toggleLayer('E395')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いくらでも。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="396"><a name="396"><TD id="E396" onclick="javascript:toggleLayer('J396')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You say dollar-sign followed by a name, and that is a variable.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J396" onclick="javascript:toggleLayer('E396')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ドル記号のあとに名前をつければ、それで変数。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="397"><a name="397"><TD id="E397" onclick="javascript:toggleLayer('J397')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You can assign these variables values of any C datatype and then you can examine them later.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J397" onclick="javascript:toggleLayer('E397')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう変数値をどんな C データ型にでもアサインして、あとで検討できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="398"><a name="398"><TD id="E398" onclick="javascript:toggleLayer('J398')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Among the things that these are useful for are: If there's a particular value that you're going to examine, and you know you are going to refer to it a lot, then rather than remember its number in the history you might give it a name.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J398" onclick="javascript:toggleLayer('E398')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これがなんの役にたつかというと、たとえば：もし調べたい値がなんかあったとして、それをたくさん参照するのがわかってたら、ヒストリーの中でその値を覚えとくより、名前をつけちゃったほうがいいかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="399"><a name="399"><TD id="E399" onclick="javascript:toggleLayer('J399')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You might also find use for them when you set conditional breakpoints.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J399" onclick="javascript:toggleLayer('E399')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あるいは、条件ブレークをセットするときにも使えるかも。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="400"><a name="400"><TD id="E400" onclick="javascript:toggleLayer('J400')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Conditional breakpoints are a feature in many symbolic debuggers,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J400" onclick="javascript:toggleLayer('E400')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 条件つきブレークは、シンボリックデバッガにはよくある機能で、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="rms-2.htm">prev</a>
+<a href="rms-0.htm">0</a>
+<a href="rms-1.htm">1</a>
+<a href="rms-2.htm">2</a>
+<3>
+<a href="rms-4.htm">4</a>
+<a href="rms-5.htm">5</a>
+<a href="rms-6.htm">6</a>
+<a href="rms-7.htm">7</a>
+<a href="rms-8.htm">8</a>
+<a href="rms-9.htm">9</a>
+<a href="rms-4.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/rmse.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/rmsj.txt">local copy</a><li><a href="../manual-alignment/rms.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

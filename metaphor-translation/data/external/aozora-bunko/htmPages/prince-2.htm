@@ -1,0 +1,522 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>THE HAPPY PRINCE / Oscar Wilde 著</h2><h2>幸福の王子 / オスカー・ワイルド 著 / 結城浩 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/princee.txt">英語文</a>&<a href="../org/princej.txt">日本語文</a> / <a href="../manual-alignment/prince.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of THE HAPPY PRINCE</TITLE>
+<hr>
+<a href="prince-1.htm">prev</a>
+<a href="prince-0.htm">0</a>
+<a href="prince-1.htm">1</a>
+<2>
+<a href="prince-3.htm">3</a>
+<a href="prince-3.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He is leaning over a desk covered with papers,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は紙であふれた机にもたれている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and in a tumbler by his side there is a bunch of withered violets.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 傍らにあるタンブラーには、枯れたスミレが一束刺してある。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His hair is brown and crisp, and his lips are red as a pomegranate, and he has large and dreamy eyes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の髪は茶色で細かく縮れ、唇はザクロのように赤く、 大きくて夢見るような目をしている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He is trying to finish a play for the Director of the Theatre,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は劇場の支配人のために芝居を完成させようとしている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but he is too cold to write any more.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> けれど、あまりにも寒いのでもう書くことができないのだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is no fire in the grate, and hunger has made him faint."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 暖炉の中には火の気はなく、空腹のために気を失わんばかりになっている」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I will wait with you one night longer,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう一晩、あなたのところに泊まりましょう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="208"><a name="208"><TD id="E208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Swallow, who really had a good heart.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J208" onclick="javascript:toggleLayer('E208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よい心をほんとうに持っているツバメは言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Shall I take him another ruby?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう一つルビーを持っていきましょうか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="210"><a name="210"><TD id="E210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Alas! I have no ruby now," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J210" onclick="javascript:toggleLayer('E210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああ！　もうルビーはないのだよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Prince;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "my eyes are all that I have left. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「残っているのは私の両目だけだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They are made of rare sapphires, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私の両目は珍しいサファイアでできている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which were brought out of India a thousand years ago. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは一千年前にインドから運ばれてきたものだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pluck out one of them and take it to him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私の片目を抜き出して、彼のところまで持っていっておくれ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="216"><a name="216"><TD id="E216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He will sell it to the jeweller, and buy food and firewood, and finish his play."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J216" onclick="javascript:toggleLayer('E216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はそれを宝石屋に売って、食べ物と薪を買って、芝居を完成させることができるだろう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Dear Prince,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「王子様」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Swallow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とツバメは言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I cannot do that";
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私にはできません」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he began to weep.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてツバメは泣き始めました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="221"><a name="221"><TD id="E221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Swallow, Swallow, little Swallow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J221" onclick="javascript:toggleLayer('E221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ツバメさん、ツバメさん、小さなツバメさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD id="E222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD id="E223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "do as I command you."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私が命じたとおりにしておくれ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD id="E224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So the Swallow plucked out the Prince's eye, and flew away to the student's garret.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでツバメは王子の目を取り出して、 屋根裏部屋へ飛んでいきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD id="E225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was easy enough to get in, as there was a hole in the roof.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 屋根に穴があいていたので、入るのは簡単でした。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD id="E226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Through this he darted, and came into the room.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメは穴を通ってさっと飛び込み、部屋の中に入りました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD id="E227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The young man had his head buried in his hands, so he did not hear the flutter of the bird's wings, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その若者は両手の中に顔をうずめるようにしておりましたので、 鳥の羽ばたきは聞こえませんでした。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD id="E228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and when he looked up he found the beautiful sapphire lying on the withered violets.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして若者が顔を上げると、そこには美しいサファイアが枯れたスミレの上に乗っていたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD id="E229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am beginning to be appreciated,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私も世の中に認められ始めたんだ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD id="E230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he cried;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 若者は大声を出しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="231"><a name="231"><TD id="E231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "this is from some great admirer.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J231" onclick="javascript:toggleLayer('E231')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「これは誰か、熱烈なファンからのものだな。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="232"><a name="232"><TD id="E232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now I can finish my play,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J232" onclick="javascript:toggleLayer('E232')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これで芝居が完成できるぞ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="233"><a name="233"><TD id="E233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he looked quite happy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J233" onclick="javascript:toggleLayer('E233')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 若者はとても幸福そうでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="234"><a name="234"><TD id="E234" onclick="javascript:toggleLayer('J234')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The next day the Swallow flew down to the harbour.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J234" onclick="javascript:toggleLayer('E234')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次の日、ツバメは波止場へ行きました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="235"><a name="235"><TD id="E235" onclick="javascript:toggleLayer('J235')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He sat on the mast of a large vessel and watched the sailors hauling big chests out of the hold with ropes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J235" onclick="javascript:toggleLayer('E235')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 大きな船のマストの上にとまり、 水夫たちが大きな箱を船倉からロープで引きずり出すのを見ました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="236"><a name="236"><TD id="E236" onclick="javascript:toggleLayer('J236')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Heave a-hoy!" they shouted as each chest came up.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J236" onclick="javascript:toggleLayer('E236')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 箱が一つ出るたびに「よいこらせ！」と水夫たちは叫びました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="237"><a name="237"><TD id="E237" onclick="javascript:toggleLayer('J237')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am going to Egypt"!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J237" onclick="javascript:toggleLayer('E237')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「僕はエジプトに行くんだよ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="238"><a name="238"><TD id="E238" onclick="javascript:toggleLayer('J238')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried the Swallow, but nobody minded, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J238" onclick="javascript:toggleLayer('E238')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とツバメも大声を出しましたが、誰も気にしませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="239"><a name="239"><TD id="E239" onclick="javascript:toggleLayer('J239')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and when the moon rose he flew back to the Happy Prince.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J239" onclick="javascript:toggleLayer('E239')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 月が出るとツバメは幸福の王子のところに戻りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="240"><a name="240"><TD id="E240" onclick="javascript:toggleLayer('J240')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am come to bid you good-bye,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J240" onclick="javascript:toggleLayer('E240')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おいとまごいにやってきました」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="241"><a name="241"><TD id="E241" onclick="javascript:toggleLayer('J241')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he cried.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J241" onclick="javascript:toggleLayer('E241')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメは声をあげました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="242"><a name="242"><TD id="E242" onclick="javascript:toggleLayer('J242')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Swallow, Swallow, little Swallow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J242" onclick="javascript:toggleLayer('E242')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ツバメさん、ツバメさん、小さなツバメさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="243"><a name="243"><TD id="E243" onclick="javascript:toggleLayer('J243')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J243" onclick="javascript:toggleLayer('E243')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="244"><a name="244"><TD id="E244" onclick="javascript:toggleLayer('J244')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "will you not stay with me one night longer?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J244" onclick="javascript:toggleLayer('E244')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう一晩泊まってくれませんか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="245"><a name="245"><TD id="E245" onclick="javascript:toggleLayer('J245')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It is winter,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J245" onclick="javascript:toggleLayer('E245')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう冬です」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="246"><a name="246"><TD id="E246" onclick="javascript:toggleLayer('J246')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> answered the Swallow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J246" onclick="javascript:toggleLayer('E246')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメは答えました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="247"><a name="247"><TD id="E247" onclick="javascript:toggleLayer('J247')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "and the chill snow will soon be here.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J247" onclick="javascript:toggleLayer('E247')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「冷たい雪がまもなくここにも降るでしょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="248"><a name="248"><TD id="E248" onclick="javascript:toggleLayer('J248')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In Egypt the sun is warm on the green palm-trees, and the crocodiles lie in the mud and look lazily about them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J248" onclick="javascript:toggleLayer('E248')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エジプトでは太陽の光が緑のシュロの木に温かく注ぎ、 ワニたちは泥の中に寝そべってのんびり過ごしています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="249"><a name="249"><TD id="E249" onclick="javascript:toggleLayer('J249')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> My companions are building a nest in the Temple of Baalbec, and the pink and white doves are watching them, and cooing to each other.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J249" onclick="javascript:toggleLayer('E249')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 友人たちは、バールベック寺院の中に巣を作っており、 ピンクと白のハトがそれを見て、クークーと鳴き交わしています。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="250"><a name="250"><TD id="E250" onclick="javascript:toggleLayer('J250')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Dear Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J250" onclick="javascript:toggleLayer('E250')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 王子様。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="251"><a name="251"><TD id="E251" onclick="javascript:toggleLayer('J251')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I must leave you,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J251" onclick="javascript:toggleLayer('E251')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 僕は行かなくちゃなりません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="252"><a name="252"><TD id="E252" onclick="javascript:toggleLayer('J252')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but I will never forget you,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J252" onclick="javascript:toggleLayer('E252')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのことは決して忘れません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="253"><a name="253"><TD id="E253" onclick="javascript:toggleLayer('J253')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and next spring I will bring you back two beautiful jewels in place of those you have given away.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J253" onclick="javascript:toggleLayer('E253')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 来年の春、僕はあなたがあげてしまった宝石二つの代わりに、 美しい宝石を二つ持って帰ってきます。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="254"><a name="254"><TD id="E254" onclick="javascript:toggleLayer('J254')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The ruby shall be redder than a red rose, and the sapphire shall be as blue as the great sea."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J254" onclick="javascript:toggleLayer('E254')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ルビーは赤いバラよりも赤く、 サファイアは大海のように青いものになるでしょう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="255"><a name="255"><TD id="E255" onclick="javascript:toggleLayer('J255')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "In the square below,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J255" onclick="javascript:toggleLayer('E255')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「下のほうに広場がある」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="256"><a name="256"><TD id="E256" onclick="javascript:toggleLayer('J256')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Happy Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J256" onclick="javascript:toggleLayer('E256')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と幸福の王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="257"><a name="257"><TD id="E257" onclick="javascript:toggleLayer('J257')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "there stands a little match-girl.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J257" onclick="javascript:toggleLayer('E257')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そこに小さなマッチ売りの少女がいる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="258"><a name="258"><TD id="E258" onclick="javascript:toggleLayer('J258')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She has let her matches fall in the gutter, and they are all spoiled.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J258" onclick="javascript:toggleLayer('E258')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マッチを溝に落としてしまい、全部駄目になってしまった。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="259"><a name="259"><TD id="E259" onclick="javascript:toggleLayer('J259')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Her father will beat her if she does not bring home some money,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J259" onclick="javascript:toggleLayer('E259')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お金を持って帰れなかったら、お父さんが女の子をぶつだろう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="260"><a name="260"><TD id="E260" onclick="javascript:toggleLayer('J260')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and she is crying.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J260" onclick="javascript:toggleLayer('E260')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから女の子は泣いている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="261"><a name="261"><TD id="E261" onclick="javascript:toggleLayer('J261')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She has no shoes or stockings, and her little head is bare.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J261" onclick="javascript:toggleLayer('E261')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの子は靴も靴下もはいていないし、何も頭にかぶっていない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="262"><a name="262"><TD id="E262" onclick="javascript:toggleLayer('J262')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pluck out my other eye, and give it to her,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J262" onclick="javascript:toggleLayer('E262')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私の残っている目を取り出して、あの子にやってほしい。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="263"><a name="263"><TD id="E263" onclick="javascript:toggleLayer('J263')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and her father will not beat her."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J263" onclick="javascript:toggleLayer('E263')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうすればお父さんからぶたれないだろう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="264"><a name="264"><TD id="E264" onclick="javascript:toggleLayer('J264')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I will stay with you one night longer,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J264" onclick="javascript:toggleLayer('E264')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう一晩、あなたのところに泊まりましょう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="265"><a name="265"><TD id="E265" onclick="javascript:toggleLayer('J265')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Swallow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J265" onclick="javascript:toggleLayer('E265')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメは言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="266"><a name="266"><TD id="E266" onclick="javascript:toggleLayer('J266')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "but I cannot pluck out your eye.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J266" onclick="javascript:toggleLayer('E266')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「でも、あなたの目を取り出すなんてできません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="267"><a name="267"><TD id="E267" onclick="javascript:toggleLayer('J267')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You would be quite blind then."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J267" onclick="javascript:toggleLayer('E267')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そんなことをしたら、あなたは何も見えなくなってしまいます」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="268"><a name="268"><TD id="E268" onclick="javascript:toggleLayer('J268')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Swallow, Swallow, little Swallow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J268" onclick="javascript:toggleLayer('E268')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ツバメさん、ツバメさん、小さなツバメさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="269"><a name="269"><TD id="E269" onclick="javascript:toggleLayer('J269')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J269" onclick="javascript:toggleLayer('E269')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王子は言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="270"><a name="270"><TD id="E270" onclick="javascript:toggleLayer('J270')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "do as I command you."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J270" onclick="javascript:toggleLayer('E270')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私が命じたとおりにしておくれ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="271"><a name="271"><TD id="E271" onclick="javascript:toggleLayer('J271')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So he plucked out the Prince's other eye, and darted down with it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J271" onclick="javascript:toggleLayer('E271')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでツバメは王子のもう片方の目を取り出して、下へ飛んでいきました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="272"><a name="272"><TD id="E272" onclick="javascript:toggleLayer('J272')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He swooped past the match-girl, and slipped the jewel into the palm of her hand.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J272" onclick="javascript:toggleLayer('E272')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメはマッチ売りの少女のところまでさっと降りて、 宝石を手の中に滑り込ませまし
+た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="273"><a name="273"><TD id="E273" onclick="javascript:toggleLayer('J273')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "What a lovely bit of glass,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J273" onclick="javascript:toggleLayer('E273')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「とってもきれいなガラス玉！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="274"><a name="274"><TD id="E274" onclick="javascript:toggleLayer('J274')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried the little girl;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J274" onclick="javascript:toggleLayer('E274')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その少女は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="275"><a name="275"><TD id="E275" onclick="javascript:toggleLayer('J275')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and she ran home, laughing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J275" onclick="javascript:toggleLayer('E275')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして笑いながら走って家に帰りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="276"><a name="276"><TD id="E276" onclick="javascript:toggleLayer('J276')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then the Swallow came back to the Prince.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J276" onclick="javascript:toggleLayer('E276')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それからツバメは王子のところに戻りました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="277"><a name="277"><TD id="E277" onclick="javascript:toggleLayer('J277')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You are blind now,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J277" onclick="javascript:toggleLayer('E277')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あなたはもう何も見えなくなりました」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="278"><a name="278"><TD id="E278" onclick="javascript:toggleLayer('J278')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he said,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J278" onclick="javascript:toggleLayer('E278')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とツバメは言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="279"><a name="279"><TD id="E279" onclick="javascript:toggleLayer('J279')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "so I will stay with you always."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J279" onclick="javascript:toggleLayer('E279')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「だから、ずっとあなたと一緒にいることにします」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="280"><a name="280"><TD id="E280" onclick="javascript:toggleLayer('J280')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "No, little Swallow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J280" onclick="javascript:toggleLayer('E280')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いや、小さなツバメさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="281"><a name="281"><TD id="E281" onclick="javascript:toggleLayer('J281')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the poor Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J281" onclick="javascript:toggleLayer('E281')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とかわいそうな王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="282"><a name="282"><TD id="E282" onclick="javascript:toggleLayer('J282')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "you must go away to Egypt."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J282" onclick="javascript:toggleLayer('E282')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あなたはエジプトに行かなくちゃいけない」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="283"><a name="283"><TD id="E283" onclick="javascript:toggleLayer('J283')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I will stay with you always,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J283" onclick="javascript:toggleLayer('E283')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「僕はずっとあなたと一緒にいます」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="284"><a name="284"><TD id="E284" onclick="javascript:toggleLayer('J284')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Swallow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J284" onclick="javascript:toggleLayer('E284')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメは言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="285"><a name="285"><TD id="E285" onclick="javascript:toggleLayer('J285')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he slept at the Prince's feet.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J285" onclick="javascript:toggleLayer('E285')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして王子の足元で眠りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="286"><a name="286"><TD id="E286" onclick="javascript:toggleLayer('J286')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All the next day he sat on the Prince's shoulder, and told him stories of what he had seen in strange lands.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J286" onclick="javascript:toggleLayer('E286')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次の日一日、ツバメは王子の肩に止まり、珍しい土地で見てきたたくさんの話をしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="287"><a name="287"><TD id="E287" onclick="javascript:toggleLayer('J287')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He told him of the red ibises, who stand in long rows on the banks of the Nile, and catch gold-fish in their beaks;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J287" onclick="javascript:toggleLayer('E287')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ナイル川の岸沿いに長い列をなして立っていて、 くちばしで黄金の魚を捕まえる赤いトキの話。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="288"><a name="288"><TD id="E288" onclick="javascript:toggleLayer('J288')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> of the Sphinx, who is as old as the world itself, and lives in the desert, and knows everything;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J288" onclick="javascript:toggleLayer('E288')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 世界と同じくらい古くからあり、 砂漠の中に住んでいて、何でも知っているスフィンクスの話。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="289"><a name="289"><TD id="E289" onclick="javascript:toggleLayer('J289')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> of the merchants, who walk slowly by the side of their camels, and carry amber beads in their hands;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J289" onclick="javascript:toggleLayer('E289')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 琥珀のロザリオを手にして、ラクダの傍らをゆっくり歩く貿易商人の話。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="290"><a name="290"><TD id="E290" onclick="javascript:toggleLayer('J290')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> of the King of the Mountains of the Moon, who is as black as ebony, and worships a large crystal;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J290" onclick="javascript:toggleLayer('E290')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 黒檀のように黒い肌をしており、大きな水晶を崇拝している月の山の王の話。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="291"><a name="291"><TD id="E291" onclick="javascript:toggleLayer('J291')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> of the great green snake that sleeps in a palm-tree, and has twenty priests to feed it with honey-cakes;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J291" onclick="javascript:toggleLayer('E291')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> シュロの木で眠る緑の大蛇がいて、二十人の僧侶が蜂蜜のお菓子を食べさせている話。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="292"><a name="292"><TD id="E292" onclick="javascript:toggleLayer('J292')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and of the pygmies who sail over a big lake on large flat leaves, and are always at war with the butterflies.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J292" onclick="javascript:toggleLayer('E292')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 広く平らな葉に乗って大きな湖を渡り、蝶といつも戦争しているピグミーの話。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="293"><a name="293"><TD id="E293" onclick="javascript:toggleLayer('J293')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Dear little Swallow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J293" onclick="javascript:toggleLayer('E293')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「可愛い小さなツバメさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="294"><a name="294"><TD id="E294" onclick="javascript:toggleLayer('J294')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Prince,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J294" onclick="javascript:toggleLayer('E294')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 王子は言いました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="295"><a name="295"><TD id="E295" onclick="javascript:toggleLayer('J295')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "you tell me of marvellous things,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J295" onclick="javascript:toggleLayer('E295')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あなたは驚くべきことを聞かせてくれた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="296"><a name="296"><TD id="E296" onclick="javascript:toggleLayer('J296')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but more marvellous than anything is the suffering of men and of women.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J296" onclick="javascript:toggleLayer('E296')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、苦しみを受けている人々の話ほど驚くべきことはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="297"><a name="297"><TD id="E297" onclick="javascript:toggleLayer('J297')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is no Mystery so great as Misery.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J297" onclick="javascript:toggleLayer('E297')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 度しがたい悲しみ以上に解きがたい謎はないのだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="298"><a name="298"><TD id="E298" onclick="javascript:toggleLayer('J298')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Fly over my city, little Swallow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J298" onclick="javascript:toggleLayer('E298')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 小さなツバメさん、町へ行っておくれ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="299"><a name="299"><TD id="E299" onclick="javascript:toggleLayer('J299')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and tell me what you see there."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J299" onclick="javascript:toggleLayer('E299')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてあなたの見たものを私に教えておくれ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="300"><a name="300"><TD id="E300" onclick="javascript:toggleLayer('J300')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So the Swallow flew over the great city, and saw the rich making merry in their beautiful houses, while the beggars were sitting at the gates.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J300" onclick="javascript:toggleLayer('E300')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメはその大きな町の上を飛びまわり、 金持ちが美しい家で幸せに暮らす一方で、 乞食がその家の門の前に座っているのを見ました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="prince-1.htm">prev</a>
+<a href="prince-0.htm">0</a>
+<a href="prince-1.htm">1</a>
+<2>
+<a href="prince-3.htm">3</a>
+<a href="prince-3.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/princee.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/princej.txt">local copy</a><li><a href="../manual-alignment/prince.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,546 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Prince / Nicolo Machiavelli, Translated by W. K. Marriott 著</h2><h2>君主 / ニッコロ・マキャヴェリ 著 / 永江良一 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/natione.txt">英語文</a>&<a href="../org/nationj.txt">日本語文</a> / <a href="../manual-alignment/nation.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>10 of The Prince</TITLE>
+<hr>
+<a href="nation-9.htm">prev</a>
+<a href="nation-0.htm">0</a>
+<a href="nation-1.htm">1</a>
+<a href="nation-2.htm">2</a>
+<a href="nation-3.htm">3</a>
+<a href="nation-4.htm">4</a>
+<a href="nation-5.htm">5</a>
+<a href="nation-6.htm">6</a>
+<a href="nation-7.htm">7</a>
+<a href="nation-8.htm">8</a>
+<a href="nation-9.htm">9</a>
+<10>
+<a href="nation-11.htm">11</a>
+<a href="nation-12.htm">12</a>
+<a href="nation-13.htm">13</a>
+<a href="nation-14.htm">14</a>
+<a href="nation-15.htm">15</a>
+<a href="nation-11.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1001"><a name="1001"><TD id="E1001" onclick="javascript:toggleLayer('J1001')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For this reason a prince ought to have two fears, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1001" onclick="javascript:toggleLayer('E1001')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうわけで、君主は二つのことを懸念しておかなければなりません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1002"><a name="1002"><TD id="E1002" onclick="javascript:toggleLayer('J1002')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> one from within, on account of his subjects, the other from without, on account of external powers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1002" onclick="javascript:toggleLayer('E1002')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一つは、その臣民に関る国の内部からの懸念であり、もう一つは、外国勢力に関る国外からの懸念なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1003"><a name="1003"><TD id="E1003" onclick="javascript:toggleLayer('J1003')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From the latter he is defended by being well armed and having good allies, and if he is well armed he will have good friends, and affairs will always remain quiet within when they are quiet without, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1003" onclick="javascript:toggleLayer('E1003')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 国外からの懸念は、しっかりと武装し良好な同盟関係を結べば防げるもので、またしっかり武装していれば、良い友好国は見つかるものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1004"><a name="1004"><TD id="E1004" onclick="javascript:toggleLayer('J1004')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> unless they should have been already disturbed by conspiracy; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1004" onclick="javascript:toggleLayer('E1004')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 情勢が陰謀でかき乱されているというのでなければ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1005"><a name="1005"><TD id="E1005" onclick="javascript:toggleLayer('J1005')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and even should affairs outside be disturbed, if he has carried out his preparations and has lived as I have said, as long as he does not despair, he will resist every attack, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1005" onclick="javascript:toggleLayer('E1005')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 国外関係が平穏なら、国内はいつも平穏でしょうし、国外情勢が騒然としてる場合でさえ、君主が準備万端整えて、私が述べてきたとおりに生活していれば、自暴自棄とならないかぎり、君主はあらゆる攻撃に耐えていけるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1006"><a name="1006"><TD id="E1006" onclick="javascript:toggleLayer('J1006')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as I said Nabis the Spartan did.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1006" onclick="javascript:toggleLayer('E1006')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはスパルタのナビスの事績について述べたとおりです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1007"><a name="1007"><TD id="E1007" onclick="javascript:toggleLayer('J1007')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But concerning his subjects, when affairs outside are disturbed he has only to fear that they will conspire secretly, from which a prince can easily secure himself by avoiding being hated and despised, and by keeping the people satisfied with him, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1007" onclick="javascript:toggleLayer('E1007')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、その臣下については、国外情勢が騒然としているときは、彼らが秘かに陰謀を企てることだけを懸念すべきですが、そのことからは、君主は憎悪され軽蔑されるのを避け、民衆が彼に満足しているようにしておけば、容易に身を守ることができます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1008"><a name="1008"><TD id="E1008" onclick="javascript:toggleLayer('J1008')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which it is most necessary for him to accomplish, as I said above at length. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1008" onclick="javascript:toggleLayer('E1008')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これまで長々と述べてきたように、このことを達成することが、君主にはもっとも必要なことなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1009"><a name="1009"><TD id="E1009" onclick="javascript:toggleLayer('J1009')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And one of the most efficacious remedies that a prince can have against conspiracies is not to be hated and despised by the people, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1009" onclick="javascript:toggleLayer('E1009')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 君主が陰謀に対抗するもっとも効果的な対策の一つは、民衆から憎悪され軽蔑されないことなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1010"><a name="1010"><TD id="E1010" onclick="javascript:toggleLayer('J1010')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for he who conspires against a prince always expects to please them by his removal;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1010" onclick="javascript:toggleLayer('E1010')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、君主にたいして陰謀を企てる者は、いつでも君主を除くことで民衆が喜ぶと期待するものなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1011"><a name="1011"><TD id="E1011" onclick="javascript:toggleLayer('J1011')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but when the conspirator can only look forward to offending them, he will not have the courage to take such a course, for the difficulties that confront a conspirator are infinite.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1011" onclick="javascript:toggleLayer('E1011')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし陰謀家が民衆を怒らせるだけだとわかれば、彼が直面する困難には際限がないので、そうした計画を実行する勇気は挫けます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1012"><a name="1012"><TD id="E1012" onclick="javascript:toggleLayer('J1012')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And as experience shows, many have been the conspiracies, but few have been successful;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1012" onclick="javascript:toggleLayer('E1012')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 経験が示すとおり、これまで陰謀は多数なされましたが、成功したのはわずかです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1013"><a name="1013"><TD id="E1013" onclick="javascript:toggleLayer('J1013')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because he who conspires cannot act alone, nor can he take a companion except from those whom he believes to be malcontents, and as soon as you have opened your mind to a malcontent you have given him the material with which to content himself,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1013" onclick="javascript:toggleLayer('E1013')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、陰謀家は単独では行動できず、また仲間にひき入れることができるのは、不満を抱いていると思える連中しかなく、不平分子に本心を明かすや、そいつが満足する素材を与えるしかなくなるのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1014"><a name="1014"><TD id="E1014" onclick="javascript:toggleLayer('J1014')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for by denouncing you he can look for every advantage;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1014" onclick="javascript:toggleLayer('E1014')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、陰謀家を告発することでも彼は利益を得られ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1015"><a name="1015"><TD id="E1015" onclick="javascript:toggleLayer('J1015')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that, seeing the gain from this course to be assured, and seeing the other to be doubtful and full of dangers, he must be a very rare friend, or a thoroughly obstinate enemy of the prince, to keep faith with you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1015" onclick="javascript:toggleLayer('E1015')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それだから、この計画から得られる利得が確かなもので、それ以外は不確かで危険に満ちているという点では、陰謀家に誠実であるためには、仲間にするのは無二の親友か、君主の筋金入りの敵しかないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1016"><a name="1016"><TD id="E1016" onclick="javascript:toggleLayer('J1016')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And, to reduce the matter into a small compass, I say that, on the side of the conspirator, there is nothing but fear, jealousy, prospect of punishment to terrify him;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1016" onclick="javascript:toggleLayer('E1016')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、問題を小さな範囲に限定すれば、陰謀家の側には、恐怖や嫉妬や彼をおののかせる刑罰という予想しかないのに、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1017"><a name="1017"><TD id="E1017" onclick="javascript:toggleLayer('J1017')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but on the side of the prince there is the majesty of the principality, the laws, the protection of friends and the state to defend him;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1017" onclick="javascript:toggleLayer('E1017')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 君主の側には、君主権の威光や法律、彼を守る友人や国家の保護があるのだ、と言えましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1018"><a name="1018"><TD id="E1018" onclick="javascript:toggleLayer('J1018')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that, adding to all these things the popular goodwill, it is impossible that any one should be so rash as to conspire.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1018" onclick="javascript:toggleLayer('E1018')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、これらすべてに加えて民衆の好意があれば、向う見ずにも陰謀を企てるのはだれにも不可能でしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1019"><a name="1019"><TD id="E1019" onclick="javascript:toggleLayer('J1019')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For whereas in general the conspirator has to fear before the execution of his plot, in this case he has also to fear the sequel to the crime;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1019" onclick="javascript:toggleLayer('E1019')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一般に陰謀家はその策略の実行の前にはたじろぐものですが、この場合には犯罪の結末にも恐れを抱かざるをえないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1020"><a name="1020"><TD id="E1020" onclick="javascript:toggleLayer('J1020')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because on account of it he has the people for an enemy, and thus cannot hope for any escape.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1020" onclick="javascript:toggleLayer('E1020')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、それに関して、民衆を敵にまわし、そうして逃れる望みを持てないからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1021"><a name="1021"><TD id="E1021" onclick="javascript:toggleLayer('J1021')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Endless examples could be given on this subject, but I will be content with one, brought to pass within the memory of our fathers. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1021" onclick="javascript:toggleLayer('E1021')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この問題については数多くの事例を挙げることができますが、私たちの父の代の記憶に残る一例で満足してきましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1022"><a name="1022"><TD id="E1022" onclick="javascript:toggleLayer('J1022')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Messer Annibale Bentivoglio, who was prince in Bologna (grandfather of the present Annibale), having been murdered by the Canneschi, who had conspired against him, not one of his family survived but Messer Giovanni42, who was in childhood:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1022" onclick="javascript:toggleLayer('E1022')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ボローニャの君主、アンニバーレ・ベンティヴォリオ公(現アンニバーレ公の祖父)は、公への陰謀を企てたカンネスキ家に殺害され、その一族では幼少のジョヴァンニ公[42]だけが生き延びたのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1023"><a name="1023"><TD id="E1023" onclick="javascript:toggleLayer('J1023')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> immediately after his assassination the people rose and murdered all the Canneschi.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1023" onclick="javascript:toggleLayer('E1023')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その暗殺の直後、民衆は蜂起して、カンネスキ家の者を皆殺しにしたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1024"><a name="1024"><TD id="E1024" onclick="javascript:toggleLayer('J1024')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This sprung from the popular goodwill which the house of Bentivoglio enjoyed in those days in Bologna;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1024" onclick="javascript:toggleLayer('E1024')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはその時代、ボローニャでベンティヴォリオ家が受けた民衆の好意から発っしたものでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1025"><a name="1025"><TD id="E1025" onclick="javascript:toggleLayer('J1025')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which was so great that, although none remained there after the death of Annibale who were able to rule the state, the Bolognese, having information that there was one of the Bentivoglio family in Florence, who up to that time had been considered the son of a blacksmith, sent to Florence for him and gave him the government of their city, and it was ruled by him until Messer Giovanni came in due course to the government. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1025" onclick="javascript:toggleLayer('E1025')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この好意はとても大きく、アンニバーレ死後には国家を統治できる者がだれも残っていなかったけれど、ボローニャ人たちは、その頃には鍛冶屋の倅だと思われていたが、ベンティヴォリオ一族の者がフィレンツェにいると聞きつけ、彼をさがしにフィレンツェに使いを出し、その市の統治を彼に委ね、ジョバンニ公がやがて統治できるようになるまで、彼が市を支配したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1026"><a name="1026"><TD id="E1026" onclick="javascript:toggleLayer('J1026')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For this reason I consider that a prince ought to reckon conspiracies of little account when his people hold him in esteem;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1026" onclick="javascript:toggleLayer('E1026')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうわけで、民衆が君主を尊重しているときは、君主は陰謀を気にすることはないと、思います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1027"><a name="1027"><TD id="E1027" onclick="javascript:toggleLayer('J1027')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but when it is hostile to him, and bears hatred towards him, he ought to fear everything and everybody.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1027" onclick="javascript:toggleLayer('E1027')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、民衆が敵対しており、君主に憎悪を抱いているのなら、君主はすべてのこと、すべての者に懸念を抱くべきです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1028"><a name="1028"><TD id="E1028" onclick="javascript:toggleLayer('J1028')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And well-ordered states and wise princes have taken every care not to drive the nobles to desperation, and to keep the people satisfied and contented, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1028" onclick="javascript:toggleLayer('E1028')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> きちんと秩序立った国家と賢明な君主は、なにごとにつけ、貴族がすてばちにならぬよう、民衆が安心立命できるよう図ってきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1029"><a name="1029"><TD id="E1029" onclick="javascript:toggleLayer('J1029')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for this is one of the most important objects a prince can have.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1029" onclick="javascript:toggleLayer('E1029')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、これは君主のもっとも重要な目標の一つだからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1030"><a name="1030"><TD id="E1030" onclick="javascript:toggleLayer('J1030')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Among the best ordered and governed kingdoms of our times is France, and in it are found many good institutions on which depend the liberty and security of the king;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1030" onclick="javascript:toggleLayer('E1030')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 当代のもっともよく秩序だち統治された王国のうちに、フランスがありますが、そこには王の自由と安全が依ってたつ多くのすばらしい制度が見いだされます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1031"><a name="1031"><TD id="E1031" onclick="javascript:toggleLayer('J1031')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> of these the first is the parliament and its authority,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1031" onclick="javascript:toggleLayer('E1031')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その中で第一のものは高等法院とその権威です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1032"><a name="1032"><TD id="E1032" onclick="javascript:toggleLayer('J1032')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because he who founded the kingdom, knowing the ambition of the nobility and their boldness, considered that a bit in their mouths would be necessary to hold them in;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1032" onclick="javascript:toggleLayer('E1032')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、王国の創設者は貴族の野心やその大胆さを知っており、彼らを抑えこむには、その口に轡をくわえさせることが必要だと思っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1033"><a name="1033"><TD id="E1033" onclick="javascript:toggleLayer('J1033')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, on the other side, knowing the hatred of the people, founded in fear, against the nobles, he wished to protect them, yet he was not anxious for this to be the particular care of the king; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1033" onclick="javascript:toggleLayer('E1033')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その一方で、民衆が、恐怖に基づいて、貴族に憎悪を抱いていることも知っていたので、民衆を保護したいと思ったのですが、しかし、このために、王が特別に関心を払いたくはなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1034"><a name="1034"><TD id="E1034" onclick="javascript:toggleLayer('J1034')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> therefore, to take away the reproach which he would be liable to from the nobles for favouring the people, and from the people for favouring the nobles, he set up an arbiter, who should be one who could beat down the great and favour the lesser without reproach to the king. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1034" onclick="javascript:toggleLayer('E1034')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで、貴族から民衆寄りだと非難され、民衆から貴族の味方だと非難されるのを避けるため、王にたいする非難を起こさずに、強者えお挫き弱者に味方する裁定者を設置したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1035"><a name="1035"><TD id="E1035" onclick="javascript:toggleLayer('J1035')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Neither could you have a better or a more prudent arrangement, or a greater source of security to the king and kingdom.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1035" onclick="javascript:toggleLayer('E1035')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これ以上に優れており、しかも細心の注意を払った布置はないでしょうし、王と王国の安全をこれ以上に確保するものもないでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1036"><a name="1036"><TD id="E1036" onclick="javascript:toggleLayer('J1036')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From this one can draw another important conclusion, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1036" onclick="javascript:toggleLayer('E1036')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このことから、もう一つ重要な結論を引き出すことができます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1037"><a name="1037"><TD id="E1037" onclick="javascript:toggleLayer('J1037')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that princes ought to leave affairs of reproach to the management of others, and keep those of grace in their own hands.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1037" onclick="javascript:toggleLayer('E1037')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはつまり、君主は非難を受けるような事柄は他人に手に委せて、自分の手には温情のあるものだけを残しておけばよいということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1038"><a name="1038"><TD id="E1038" onclick="javascript:toggleLayer('J1038')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And further, I consider that a prince ought to cherish the nobles, but not so as to make himself hated by the people.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1038" onclick="javascript:toggleLayer('E1038')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらに言えば、君主は貴族を尊重しながらも、そのことで民衆か憎しみを買わないようにすべきだと思うのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1039"><a name="1039"><TD id="E1039" onclick="javascript:toggleLayer('J1039')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It may appear, perhaps, to some who have examined the lives and deaths of the Roman emperors that many of them would be an example contrary to my opinion, seeing that some of them lived nobly and showed great qualities of soul, nevertheless they have lost their empire or have been killed by subjects who have conspired against them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1039" onclick="javascript:toggleLayer('E1039')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おそらく、ローマ皇帝の生き死にを検証して、その多くが私の意見の反証となっており、そのうちの何人かは高貴に生き、精神の偉大な資質を示しながらも、帝国を失なったり、陰謀を企てた臣民に殺害されたりしていると言う人たちが現われることとでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1040"><a name="1040"><TD id="E1040" onclick="javascript:toggleLayer('J1040')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Wishing, therefore, to answer these objections, I will recall the characters of some of the emperors, and will show that the causes of their ruin were not different to those alleged by me;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1040" onclick="javascript:toggleLayer('E1040')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこで、この反論に答えるために、ローマ皇帝の幾人かの性格を思い起こし、その破滅の原因が私の主張するとこと異らないことを示しておきましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1041"><a name="1041"><TD id="E1041" onclick="javascript:toggleLayer('J1041')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> at the same time I will only submit for consideration those things that are noteworthy to him who studies the affairs of those times.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1041" onclick="javascript:toggleLayer('E1041')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同時に考察にあたり、当時の事情を研究する人には注目に価する事柄について、意見を述べることにします。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1042"><a name="1042"><TD id="E1042" onclick="javascript:toggleLayer('J1042')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It seems to me sufficient to take all those emperors who succeeded to the empire from Marcus the philosopher down to Maximinus; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1042" onclick="javascript:toggleLayer('E1042')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 哲人皇帝マルクスからマクシミヌスまで帝国を継承した皇帝たちを全員取り上げれば十分でしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1043"><a name="1043"><TD id="E1043" onclick="javascript:toggleLayer('J1043')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they were Marcus and his son Commodus, Pertinax, Julian, Severus and his son Antoninus Caracalla, Macrinus, Heliogabalus, Alexander, and Maximinus. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1043" onclick="javascript:toggleLayer('E1043')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは、マルクスとその子コモドゥス、ペリティナクス、ユリアヌス、セウェルス、その子アントニヌス・カラカラ、マクリヌス、ヘリオガバルス、アレクサンデル、マクシミヌスの諸帝です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1044"><a name="1044"><TD id="E1044" onclick="javascript:toggleLayer('J1044')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is first to note that, whereas in other principalities the ambition of the nobles and the insolence of the people only have to be contended with, the Roman emperors had a third difficulty in having to put up with the cruelty and avarice of their soldiers, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1044" onclick="javascript:toggleLayer('E1044')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まず注意してほしいのは、他の君主国では貴族の野心と民衆の不遜と取り組めばよいだけですが、ローマ皇帝は兵士たちの残酷と強欲に耐えるという第三の困難を抱えこんでいたことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1045"><a name="1045"><TD id="E1045" onclick="javascript:toggleLayer('J1045')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a matter so beset with difficulties that it was the ruin of many;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1045" onclick="javascript:toggleLayer('E1045')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは多くの皇帝が身を滅ぼすという、とても厄介な問題でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1046"><a name="1046"><TD id="E1046" onclick="javascript:toggleLayer('J1046')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it was a hard thing to give satisfaction both to soldiers and people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1046" onclick="javascript:toggleLayer('E1046')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは兵士と民衆の両方を満足させるのは難しい事だからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1047"><a name="1047"><TD id="E1047" onclick="javascript:toggleLayer('J1047')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because the people loved peace, and for this reason they loved the unaspiring prince, whilst the soldiers loved the warlike prince who was bold, cruel, and rapacious, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1047" onclick="javascript:toggleLayer('E1047')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、民衆は平和を愛するもので、それだから、彼らは現状満足型の君主を愛するのですが、一方、兵士のほうは、大胆で残忍で強欲な好戦的な君主を愛するのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1048"><a name="1048"><TD id="E1048" onclick="javascript:toggleLayer('J1048')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which qualities they were quite willing he should exercise upon the people, so that they could get double pay and give vent to their greed and cruelty. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1048" onclick="javascript:toggleLayer('E1048')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それにこうした特質を皇帝が民衆にたいして行使することを兵士たちはとても喜んだのですが、そうやって兵士たちは二重に支払いを受け、強欲と残忍さのはけ口を得たのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1049"><a name="1049"><TD id="E1049" onclick="javascript:toggleLayer('J1049')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hence it arose that those emperors were always overthrown who, either by birth or training, had no great authority, and most of them, especially those who came new to the principality, recognizing the difficulty of these two opposing humours, were inclined to give satisfaction to the soldiers, caring little about injuring the people. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1049" onclick="javascript:toggleLayer('E1049')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうして、生れながらか修練によって、大きな権限をもたない皇帝は、いつも打倒され、皇帝の多く、特に新に君主の座に就いた者は、この相反する二つの気性のもつ困難を認めながらも、兵士を満足させる傾向にあり、民衆が傷つけられることにはあまり気を懸けなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1050"><a name="1050"><TD id="E1050" onclick="javascript:toggleLayer('J1050')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Which course was necessary,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1050" onclick="javascript:toggleLayer('E1050')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした成行きはしかたのないことでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1051"><a name="1051"><TD id="E1051" onclick="javascript:toggleLayer('J1051')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because, as princes cannot help being hated by someone, they ought, in the first place, to avoid being hated by every one, and when they cannot compass this, they ought to endeavour with the utmost diligence to avoid the hatred of the most powerful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1051" onclick="javascript:toggleLayer('E1051')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、君主がだれからも憎まれないことはできないことで、まず第一に、君主はだれからも憎まれなように努力すべきですが、それが達成できなければ、もっとも力あるものから憎まれなよう、最大限の努力を払うべきなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1052"><a name="1052"><TD id="E1052" onclick="javascript:toggleLayer('J1052')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore, those emperors who through inexperience had need of special favour adhered more readily to the soldiers than to the people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1052" onclick="javascript:toggleLayer('E1052')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、こうした皇帝は、経験のなさから、民衆よりも兵士のほうにしっかり結びついた特別の愛顧をかける必要があったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1053"><a name="1053"><TD id="E1053" onclick="javascript:toggleLayer('J1053')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore, those emperors who through inexperience had need of special favour adhered more readily to the soldiers than to the people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1053" onclick="javascript:toggleLayer('E1053')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こと成行きが君主の利につながるかどうかは、君主が兵士たちに権威を維持する方法を知っているかどうかによりました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1054"><a name="1054"><TD id="E1054" onclick="javascript:toggleLayer('J1054')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From these causes it arose that Marcus, [Aurelius], Pertinax, and Alexander, being all men of modest life, lovers of justice, enemies to cruelty, humane, and benignant, came to a sad end except Marcus;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1054" onclick="javascript:toggleLayer('E1054')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした理由から、マルクス・アレリウス、ペルティナクス、アレクサンデルはみな質素な生活をし、正義を愛し、残忍を憎み、人情厚く、温和でありましたが、マルクスを除けば、悲惨な最期をとげました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1055"><a name="1055"><TD id="E1055" onclick="javascript:toggleLayer('J1055')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he alone lived and died honoured,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1055" onclick="javascript:toggleLayer('E1055')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マルクスだけは名誉のうちに生きそして死にました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1056"><a name="1056"><TD id="E1056" onclick="javascript:toggleLayer('J1056')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because he had succeeded to the throne by hereditary title, and owed nothing either to the soldiers or the people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1056" onclick="javascript:toggleLayer('E1056')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、彼は玉座を世襲の称号として引き継いだのであり、兵士にも民衆にもなんら負うところがなかったからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1057"><a name="1057"><TD id="E1057" onclick="javascript:toggleLayer('J1057')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and afterwards, being possessed of many virtues which made him respected, he always kept both orders in their places whilst he lived, and was neither hated nor despised. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1057" onclick="javascript:toggleLayer('E1057')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして後には、尊敬を受ける多くの徳を身につけて、生きているうちは両者をしかるべき秩序を保ち、憎悪されることも軽蔑されることもありませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1058"><a name="1058"><TD id="E1058" onclick="javascript:toggleLayer('J1058')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But Pertinax was created emperor against the wishes of the soldiers, who, being accustomed to live licentiously under Commodus, could not endure the honest life to which Pertinax wished to reduce them;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1058" onclick="javascript:toggleLayer('E1058')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしペルティナクスは、兵士の意にさからって帝位についた皇帝であり、兵士たちはコモドゥスの下で放埒に生きるのに慣れていたので、ペルナティクスが彼らに無理強いた質素な生活には耐えられなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1059"><a name="1059"><TD id="E1059" onclick="javascript:toggleLayer('J1059')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> thus, having given cause for hatred, to which hatred there was added contempt for his old age, he was overthrown at the very beginning of his administration.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1059" onclick="javascript:toggleLayer('E1059')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうして憎悪の原因をもたらしたのですが、その上に彼が老齢であったため軽蔑までが加わり、その統治のごく初期のうちに打倒されたのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1060"><a name="1060"><TD id="E1060" onclick="javascript:toggleLayer('J1060')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And here it should be noted that hatred is acquired as much by good works as by bad ones, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1060" onclick="javascript:toggleLayer('E1060')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、ここで注意しておきたいのは、憎悪されるようになるのは、悪い行いによってではなく、良い行いによるほうが多いということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1061"><a name="1061"><TD id="E1061" onclick="javascript:toggleLayer('J1061')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> therefore, as I said before, a prince wishing to keep his state is very often forced to do evil; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1061" onclick="javascript:toggleLayer('E1061')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、以前に言ったように、君主はその国家を保とうするれば、しばしば悪行をせざるをえないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1062"><a name="1062"><TD id="E1062" onclick="javascript:toggleLayer('J1062')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for when that body is corrupt whom you think you have need of to maintain yourself ? it may be either the people or the soldiers or the nobles ? you have to submit to its humours and to gratify them, and then good works will do you harm.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1062" onclick="javascript:toggleLayer('E1062')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、君主が自身を維持するために必要だと考える集団が、それが民衆であれ兵士であれ貴族であれ、堕落しているなら、その気風に合わせ、彼らを喜ばせざるをえず、それで、良い行いが君主を害することにもなるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1063"><a name="1063"><TD id="E1063" onclick="javascript:toggleLayer('J1063')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But let us come to Alexander, who was a man of such great goodness, that among the other praises which are accorded him is this, that in the fourteen years he held the empire no one was ever put to death by him unjudged;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1063" onclick="javascript:toggleLayer('E1063')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さてアレクサンデルに話を移すと、この人は非常に善良で、彼に与えられた賞賛の中でも特に、十四年にわたって判決なしに皇帝により死を賜わった者がいなかったことで称えられています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1064"><a name="1064"><TD id="E1064" onclick="javascript:toggleLayer('J1064')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> nevertheless, being considered effeminate and a man who allowed himself to be governed by his mother, he became despised, the army conspired against him, and murdered him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1064" onclick="javascript:toggleLayer('E1064')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それにもかかわらず、彼はめめしくて、母親に統治を左右さっるような人物とみなされて、軽蔑され、軍隊に背かれて殺害されました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1065"><a name="1065"><TD id="E1065" onclick="javascript:toggleLayer('J1065')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Turning now to the opposite characters of Commodus, Severus, Antoninus Caracalla, and Maximinus, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1065" onclick="javascript:toggleLayer('E1065')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次にコモドゥス、セウェルス、アントニヌス・カラカラ、マクシミヌスという正反対の性格の皇帝に話を移しましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1066"><a name="1066"><TD id="E1066" onclick="javascript:toggleLayer('J1066')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you will find them all cruel and rapacious ? men 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1066" onclick="javascript:toggleLayer('E1066')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すると彼らがみな残忍で強欲なことに気がつきます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1067"><a name="1067"><TD id="E1067" onclick="javascript:toggleLayer('J1067')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who, to satisfy their soldiers, did not hesitate to commit every kind of iniquity against the people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1067" onclick="javascript:toggleLayer('E1067')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らは兵士を満足させるためには、民衆にたいしてあらゆる種類の不正を働くことに躊躇しませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1068"><a name="1068"><TD id="E1068" onclick="javascript:toggleLayer('J1068')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and all, except Severus, came to a bad end;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1068" onclick="javascript:toggleLayer('E1068')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてセウェルスを除けば全員が非業の最期をとげました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1069"><a name="1069"><TD id="E1069" onclick="javascript:toggleLayer('J1069')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but in Severus there was so much valour that, keeping the soldiers friendly, although the people were oppressed by him, he reigned successfully; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1069" onclick="javascript:toggleLayer('E1069')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、セウェルスにあっては、非常に豪胆で、兵士には親しくし、民衆は抑圧したものの、うまく統治したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1070"><a name="1070"><TD id="E1070" onclick="javascript:toggleLayer('J1070')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for his valour made him so much admired in the sight of the soldiers and people that the latter were kept in a way astonished and awed and the former respectful and satisfied. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1070" onclick="javascript:toggleLayer('E1070')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、彼の豪胆さは兵士の目にも民衆の目にもすばらしいものに映り、民衆は驚愕のまま畏怖し、兵士たちは尊敬し満足していたからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1071"><a name="1071"><TD id="E1071" onclick="javascript:toggleLayer('J1071')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And because the actions of this man, as a new prince, were great, I wish to show briefly that he knew well how to counterfeit the fox and the lion, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1071" onclick="javascript:toggleLayer('E1071')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また、この人物の行動は。新君主としては偉大であったので、彼が狐と獅子の真似方を熟知していたことを簡単に示しておきたいと思います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1072"><a name="1072"><TD id="E1072" onclick="javascript:toggleLayer('J1072')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which natures, as I said above, it is necessary for a prince to imitate.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1072" onclick="javascript:toggleLayer('E1072')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この性質は、前に述べたように、君主がぜひとも模倣すべきものなのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1073"><a name="1073"><TD id="E1073" onclick="javascript:toggleLayer('J1073')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Knowing the sloth of the Emperor Julian, he persuaded the army in Sclavonia, of which he was captain, that it would be right to go to Rome and avenge the death of Pertinax, who had been killed by the praetorian soldiers; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1073" onclick="javascript:toggleLayer('E1073')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ユリアヌス帝の怠惰を知ると、ローマに進軍し近衛兵に殺されたペルティナクスの死の仇を討とうと、彼が指揮していたスクラヴォニアの軍隊を説き伏せました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1074"><a name="1074"><TD id="E1074" onclick="javascript:toggleLayer('J1074')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and under this pretext, without appearing to aspire to the throne, he moved the army on Rome, and reached Italy before it was known that he had started.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1074" onclick="javascript:toggleLayer('E1074')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この口実のもとに、帝位への野心はみせず、ローマに軍を進め、発進した知らせが届く前にイタリアに入ったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1075"><a name="1075"><TD id="E1075" onclick="javascript:toggleLayer('J1075')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> On his arrival at Rome, the Senate, through fear, elected him emperor and killed Julian.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1075" onclick="javascript:toggleLayer('E1075')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ローマに到着すると、元老院は恐怖にかられて、彼を皇帝に選び、ユリアヌスを殺害したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1076"><a name="1076"><TD id="E1076" onclick="javascript:toggleLayer('J1076')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After this there remained for Severus, who wished to make himself master of the whole empire, two difficulties;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1076" onclick="javascript:toggleLayer('E1076')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後、全帝国の主人となろうとしていたセウェルスには二つの困難が残っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1077"><a name="1077"><TD id="E1077" onclick="javascript:toggleLayer('J1077')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> one in Asia, where Niger, head of the Asiatic army, had caused himself to be proclaimed emperor;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1077" onclick="javascript:toggleLayer('E1077')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その一つはアジアにあり、アジア方面軍の司令官ニゲルが皇帝を僭称していました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1078"><a name="1078"><TD id="E1078" onclick="javascript:toggleLayer('J1078')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the other in the west where Albinus was, who also aspired to the throne.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1078" onclick="javascript:toggleLayer('E1078')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう一つは西方にあり、アルビヌスも帝位をねらっていたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1079"><a name="1079"><TD id="E1079" onclick="javascript:toggleLayer('J1079')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And as he considered it dangerous to declare himself hostile to both, he decided to attack Niger and to deceive Albinus. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1079" onclick="javascript:toggleLayer('E1079')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして両者を同時に敵だと公言するのは危険だと考え、アルビヌスを欺いてニゲルを攻撃しようと決断しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1080"><a name="1080"><TD id="E1080" onclick="javascript:toggleLayer('J1080')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To the latter he wrote that, being elected emperor by the Senate, he was willing to share that dignity with him and sent him the title of Caesar; 
+and, moreover, that the Senate had made Albinus his colleague;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1080" onclick="javascript:toggleLayer('E1080')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アルビヌスには、自分が元老院に皇帝に選ばれたが、その地位を彼と分ちたいと思い、カエサルの称号を彼に贈る、その上、元老院は彼を自分と同職に選んだと書き送りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1081"><a name="1081"><TD id="E1081" onclick="javascript:toggleLayer('J1081')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which things were accepted by Albinus as true. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1081" onclick="javascript:toggleLayer('E1081')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてアルビヌスはこれを真にうけたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1082"><a name="1082"><TD id="E1082" onclick="javascript:toggleLayer('J1082')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But after Severus had conquered and killed Niger, and settled oriental affairs, he returned to Rome and complained to the Senate that Albinus, little recognizing the benefits that he had received from him, had by treachery sought to murder him, and for this ingratitude he was compelled to punish him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1082" onclick="javascript:toggleLayer('E1082')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、セウェルスはニゲルを打ち破り、彼を殺し、東方情勢を収拾すると、ローマに帰還し、アルビヌスは彼から受けた恩義をほとんど顧みることなく、背信して彼を殺害しようとしており、この忘恩にたいして彼を罰せざるをえないと、元老院に訴えたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1083"><a name="1083"><TD id="E1083" onclick="javascript:toggleLayer('J1083')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Afterwards he sought him out in France, and took from him his government and life.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1083" onclick="javascript:toggleLayer('E1083')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後、彼はアルビヌスをフランスで探し出すと、彼から政権と生命を奪ったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1084"><a name="1084"><TD id="E1084" onclick="javascript:toggleLayer('J1084')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He who will, therefore, carefully examine the actions of this man will find him a most valiant lion and a most cunning fox;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1084" onclick="javascript:toggleLayer('E1084')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、この人物を注意深く検証すると、彼がもっとも獰猛な獅子であるとともに、もっとも狡賢い狐であることがわかります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1085"><a name="1085"><TD id="E1085" onclick="javascript:toggleLayer('J1085')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he will find him feared and respected by every one, and not hated by the army;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1085" onclick="javascript:toggleLayer('E1085')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はだれからも恐れられ尊敬され、軍隊からは憎まれませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1086"><a name="1086"><TD id="E1086" onclick="javascript:toggleLayer('J1086')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it need not be wondered at that he, the new man, well ,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1086" onclick="javascript:toggleLayer('E1086')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、彼が新君主としてうまくやれたことを不思議がる必要はありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1087"><a name="1087"><TD id="E1087" onclick="javascript:toggleLayer('J1087')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because his supreme renown always protected him from that hatred which the people might have conceived against him for his violence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1087" onclick="javascript:toggleLayer('E1087')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、彼の暴力によって民衆が抱く憎悪からは、その優れた名声によって守られていたからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1088"><a name="1088"><TD id="E1088" onclick="javascript:toggleLayer('J1088')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But his son Antoninus was a most eminent man, and had very excellent qualities,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1088" onclick="javascript:toggleLayer('E1088')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さて、彼の息子のアントニヌスも非常に傑出した人物で、極めて優れた性格を持っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1089"><a name="1089"><TD id="E1089" onclick="javascript:toggleLayer('J1089')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which made him admirable in the sight of the people and acceptable to the soldiers,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1089" onclick="javascript:toggleLayer('E1089')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで、民衆の目にもすばらしいものに見え、兵士たちにも受けがよかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1090"><a name="1090"><TD id="E1090" onclick="javascript:toggleLayer('J1090')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for he was a warlike man, most enduring of fatigue, a despiser of all delicate food and other luxuries, which caused him to be beloved by the armies.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1090" onclick="javascript:toggleLayer('E1090')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、彼は好戦的な人物で、どんな労苦にも耐え、美食やその他の贅沢を嫌っていたので、軍隊から敬愛されていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1091"><a name="1091"><TD id="E1091" onclick="javascript:toggleLayer('J1091')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nevertheless, his ferocity and cruelties were so great and so unheard of that, after endless single murders, he killed a large number of the people of Rome and all those of Alexandria.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1091" onclick="javascript:toggleLayer('E1091')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それにもかかわらず、彼の蛮行と残虐さはひどいもので、前代未聞のもので、数えきれないほどの単なる殺人の後、ローマの大多数の民衆とアレキサンドリアの全人口を殺害したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1092"><a name="1092"><TD id="E1092" onclick="javascript:toggleLayer('J1092')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He became hated by the whole world, and also feared by those he had around him, to such an extent that he was murdered in the midst of his army by a centurion. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1092" onclick="javascript:toggleLayer('E1092')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は世界中から憎まれ、取り巻きの連中からも恐れられ、とうとう軍隊のただ中で百人隊長に殺害されたのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1093"><a name="1093"><TD id="E1093" onclick="javascript:toggleLayer('J1093')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And here it must be noted that such-like deaths, which are deliberately inflicted with a resolved and desperate courage, cannot be avoided by princes,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1093" onclick="javascript:toggleLayer('E1093')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここで留意しておくべきは、固く決意した命懸けの意地をもって慎重に加えられたこうした殺意からは、君主といえども逃れる術はないということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1094"><a name="1094"><TD id="E1094" onclick="javascript:toggleLayer('J1094')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because any one who does not fear to die can inflict them;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1094" onclick="javascript:toggleLayer('E1094')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、死を恐れぬ者ならばだれでも、こういう害を加えることができるのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1095"><a name="1095"><TD id="E1095" onclick="javascript:toggleLayer('J1095')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but a prince may fear them the less because they are very rare;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1095" onclick="javascript:toggleLayer('E1095')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、そうしたことは極めてまれだから、君主はそれをさほど恐れる必要はありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1096"><a name="1096"><TD id="E1096" onclick="javascript:toggleLayer('J1096')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he has only to be careful not to do any grave injury to those whom he employs or has around him in the service of the state.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1096" onclick="javascript:toggleLayer('E1096')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし君主は自分が使用したり、国事のために周りに侍らせる者たちには、重大な危害を加えないよう、注意すべきです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1097"><a name="1097"><TD id="E1097" onclick="javascript:toggleLayer('J1097')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Antoninus had not taken this care, but had contumeliously killed a brother of that centurion, whom also he daily threatened, yet retained in his bodyguard; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1097" onclick="javascript:toggleLayer('E1097')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アントニヌスはこの注意を怠り、百人隊長の兄弟を傲慢無礼に殺し、この百人隊長を日々脅威にさらしながら、しかも警護兵に加えていたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1098"><a name="1098"><TD id="E1098" onclick="javascript:toggleLayer('J1098')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which, as it turned out, was a rash thing to do, and proved the emperor's ruin.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1098" onclick="javascript:toggleLayer('E1098')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 起ったとおり、それは無鉄砲な行いであり、結局は皇帝は破滅することになりました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1099"><a name="1099"><TD id="E1099" onclick="javascript:toggleLayer('J1099')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But let us come to Commodus, to whom it should have been very easy to hold the empire, for, being the son of Marcus, he had inherited it,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1099" onclick="javascript:toggleLayer('E1099')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次にコモドゥスを見てみると、彼はマルクスの息子で、帝国を相続したのだから、それを維持するのはとても簡単なことでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1100"><a name="1100"><TD id="E1100" onclick="javascript:toggleLayer('J1100')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he had only to follow in the footsteps of his father to please his people and soldiers;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1100" onclick="javascript:toggleLayer('E1100')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は父親の足跡をたどって、民衆と兵士を満足させていればよかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="nation-9.htm">prev</a>
+<a href="nation-0.htm">0</a>
+<a href="nation-1.htm">1</a>
+<a href="nation-2.htm">2</a>
+<a href="nation-3.htm">3</a>
+<a href="nation-4.htm">4</a>
+<a href="nation-5.htm">5</a>
+<a href="nation-6.htm">6</a>
+<a href="nation-7.htm">7</a>
+<a href="nation-8.htm">8</a>
+<a href="nation-9.htm">9</a>
+<10>
+<a href="nation-11.htm">11</a>
+<a href="nation-12.htm">12</a>
+<a href="nation-13.htm">13</a>
+<a href="nation-14.htm">14</a>
+<a href="nation-15.htm">15</a>
+<a href="nation-11.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/natione.txt">local copy</a> / <a href="http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/index.html">http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/index.html</a><li>オリジナルの日本語文: <a href="../org/nationj.txt">local copy</a> / <a href="http://page.freett.com/rionag/machiavelli/prince.html">http://page.freett.com/rionag/machiavelli/prince.html</a><li><a href="../manual-alignment/nation.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

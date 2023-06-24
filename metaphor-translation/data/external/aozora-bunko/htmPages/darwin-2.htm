@@ -1,0 +1,302 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>THE DARWINIAN HYPOTHESIS / Thomas H. Huxley 著</h2><h2>ダーウィン仮説 / トーマス・ヘンリー・ハクスリー 著 / 永江良一  訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/darwine.txt">英語文</a>&<a href="../org/darwinj.txt">日本語文</a> / <a href="../manual-alignment/darwin.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of THE DARWINIAN HYPOTHESIS</TITLE>
+<hr>
+<a href="darwin-1.htm">prev</a>
+<a href="darwin-0.htm">0</a>
+<a href="darwin-1.htm">1</a>
+<2>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Surrounding conditions remaining unchanged, the new variety (which we may call B)--supposed, for argument's sake, to be the best adapted for these conditions which can be got out of the original stock--will remain unchanged, all accidental deviations from the type becoming at once extinguished, as less fit for their post than B itself.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とりまく環境が不変のままなら、新しい変種（これをＢと呼びましょう）が、議論を進めるうえで、もとの品種から出てきたなかではこの環境に一番適合していると仮定しますと、この型から生じた偶発的な変異は、その地位にはＢそのもより適していないので、たちまち消滅することになり、Ｂは不変のまま残ることになります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The tendency of B to persist will grow with its persistence through successive generations, and it will acquire all the characters of a new species.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Ｂが存続していく傾向は世代を重ねるごとに強まり、やがては新しい種であるというだけの特性をすべてそなえるようになります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But, on the other hand, if the conditions of life change in any degree, however slight, B may no longer be that form which is best adapted to withstand their destructive, and profit by their sustaining, influence;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし一方、生物の環境が、たとえわずかとはいえ変化するなら、Ｂはもはや、その破壊的な、そしてそれに屈っしないことが有利にはたらいていた作用に耐えるのに一番適合した形態ではなくなるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in which case if it should give rise to a more competent variety (C), this will take its place and become a new species;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう場合には、もっと適応のよい変種Ｃが出現し、それがとってかわって新しい種となります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and thus, by 'natural selection', the species B and C will be successively derived from A.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうして「自然淘汰」により、Ａから種Ｂと種Ｃが次々と出現することになるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> That this most ingenious hypothesis enables us to give a reason for many apparent anomalies in the distribution of living beings in time and space, and that it is not contradicted by the main phenomena of life and organization appear to us to be unquestionable;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この非常に巧妙な仮説で私たちは時間的にも空間的にも生物の分布に明らかな例外がたくさんあることの理由を納得できるし、この仮説が生命や有機体の主要な現象とは矛盾していないことは、疑問の余地はないでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and so far it must be admitted to have an immense advantage over any of its predecessors.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに今のところそれ以前のどの仮説よりずっと優れていると認めることができるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="208"><a name="208"><TD id="E208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But it is quite another matter to affirm absolutely either the truth or falsehood of Mr. Darwin's views at the present stage of the inquiry.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J208" onclick="javascript:toggleLayer('E208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし現在の研究段階でダーウィン氏の見解が正しいか間違っているかをはっきりと断言することは、全く問題が違います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Goethe has an excellent aphorism defining that state of mind which he calls 'Thatige Skepsis'a--active doubt.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲーテには、彼が「行動的懐疑」と呼んだ精神状態を定義した優れたアフォリズムがあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="210"><a name="210"><TD id="E210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is doubt which so loves truth that it neither dares rest in doubting, nor extinguish itself by unjustified belief;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J210" onclick="javascript:toggleLayer('E210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは真理を愛するがゆえに、あえて懐疑しつづけることもないが、不確かな信念で自らを消し去ることもしない懐疑なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and we commend this state of mind to students of species, with respect to Mr. Darwin's or any other hypothesis, as to their origin.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして種についての研究者には、種の起源についてのダーウィン氏やそれ以外の人たちの仮説に関して、この精神状態をお薦めしておきましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The combined investigations of another 20 years may, perhaps, enable naturalists to say whether the modifying causes and the selective power, which Mr. Darwin has satisfactorily shown to exist in nature, are competent to produce all the effects he ascribes to them, or whether, on the other hand, he has been led to over-estimate the value of his principle of natural selection, as greatly as Lamarck overestimated his vera causa of modification by exercise.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あと二十年ほど複合的な研究が進めば、博物学者は、ダーウィン氏が自然の中に存在することを満足のいくように示した変化の原因と淘汰の力が、彼がその効果としたもの全てを生じさせうるのかどうか、あるいはまた一方で、ラマルクが訓練による変形という真の原因を過大評価したように、ダーウィン氏もその自然淘汰の原理の価値を過大評価してしまったのかどうかを言うことができるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But there is, at all events, one advantage possessed by the more recent writer over his predecessor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、どちらにしても、最近の著作者にはそれ以前の人たちより有利な点が一つあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Darwin abhors mere speculation as nature abhors a vacuum.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ダーウィン氏は、自然は真空を嫌うというような単なる空論を嫌っています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He is as greedy of cases and precedents as any constitutional lawyer, and all the principles he lays down are capable of being brought to the test of observation and experiment.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は憲法学者と同じくらい事実や前例を貪欲に求めていますし、また彼が主張している原理は全て観察と実験という検証に付すことができるものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="216"><a name="216"><TD id="E216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The path he bids us follow professes to be, not a mere airy track, fabricated of ideal cobwebs, but a solid and broad bridge of facts.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J216" onclick="javascript:toggleLayer('E216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼がつき従うよう言っている道は、観念的な蜘蛛の糸ででっちあげられた、ただのとりとめもない道筋ではなく、事実という確固とした幅の広い橋なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If it be so, it will carry us safely over many a chasm in our knowledge, and lead us to a region free from the snares of those fascinating but barren Virgins, the Final Causes, against whom a high authority has so justly warned us.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうであれば、私たちはその道を通って、私たちの知識にあいた多くのさけ目を越えて、大家が適切にも警告をしている、目的因という魅惑的だが不毛な処女の罠からのがれた領域へと導かれるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "My sons, dig in the vineyard,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「息子たちや、葡萄畑を掘るのじゃ。」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> were the last words of the old man in the fable;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのが寓話の中で老人の遺言でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, though the sons found no treasure, they made their fortunes by the grapes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 息子たちは宝をみつけられませんでしたが、葡萄で財をなしたのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="221"><a name="221"><TD ID="TAB221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB221" onclick="javascript:toggleLayer('E221')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD ID="TAB222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 訳注
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD ID="TAB223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【1】 ヒガンバナ科クリナム属の植物。 ハマユウみたいなものか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD ID="TAB224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【2】 ウィリアム・パーレー William Paley(1743-1805)はイギリスの神学者。自然の精妙さの中に神の存在を見ようとした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD ID="TAB225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【3】 リチャード・オーエン Richard Owen(1804-92)はイギリスの動物学者で比較解剖学者。進化論の反対者としても有名。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD ID="TAB226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【4】 エマーソン・テネント卿 Sir James Emerson Tennent(1804-69)はイギリスの行政官で歴史家。セイロンの植民 地書記官となり、滞在中セイロンの諸事情を収集し、包括的なセイロン誌を著した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD ID="TAB227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【5】 ラマルク Jean Baptiste de Monet Lamarck(1744-1829)はフランスの博物学者。用不用説ともよばれる進化論を唱えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD ID="TAB228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【6】 キュビエ Georges Cuvier (1769-1832)はフランスの動物学者。ラマルクの進化論を否定し、天変地異説を支持した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD ID="TAB229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【7】1844年にチェインバーズ(Robert Chambers)が匿名で出版した『創造の自然史の痕跡』 (Vestiges of the Natural History of Creation)のこと。当時ベストセラーとなった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD ID="TAB230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【8】ニワトリの学名。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="231"><a name="231"><TD ID="TAB231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J231" onclick="javascript:toggleLayer('E231')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【9】セブン・ダイアルズはロンドンの 一地区で１９世紀には貧困地区で犯罪の温床といわれいてたとこらしい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="232"><a name="232"><TD ID="TAB232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB232" onclick="javascript:toggleLayer('E232')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<TR id="233"><a name="233"><TD ID="TAB233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB233" onclick="javascript:toggleLayer('E233')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+</TABLE></span><HR>
+<a href="darwin-1.htm">prev</a>
+<a href="darwin-0.htm">0</a>
+<a href="darwin-1.htm">1</a>
+<2>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/darwine.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/darwinj.txt">local copy</a><li><a href="../manual-alignment/darwin.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

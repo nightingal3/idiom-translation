@@ -1,0 +1,431 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>An Inner Landscape  / Kajii Motojiro 著</h2><h2>ある心の風景 / 梶井基次郎 著 / Tony Gonzalez  訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/landscapee.txt">英語文</a>&<a href="../org/landscapej.txt">日本語文</a> / <a href="../manual-alignment/landscape.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of An Inner Landscape </TITLE>
+<hr>
+<a href="landscape-1.htm">prev</a>
+<a href="landscape-0.htm">0</a>
+<a href="landscape-1.htm">1</a>
+<2>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And then, I'm in pain in the city.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また
+「街では自分は苦しい」
+と思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Foot and vehicle traffic passes by on the road running along the opposite bank. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 川向うの道を徒歩や車が通っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Along it is the public market,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 川添の公設市場。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a shed filled with barrels of tar,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> タールの樽（たる）が積んである小屋。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and people working in an empty lot, perhaps building a house.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 空地では家を建てるのか人びとが働いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Occasionally a wind blows from upriver.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 川上からは時どき風が吹いて来た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> With a rustling it pushes a crumpled page of a newspaper past where he sits.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カサコソと彼の坐っている前を、皺（しわ）になった新聞紙が押されて行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="208"><a name="208"><TD id="E208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Stopped by a small stone, for a time it holds out against the wind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J208" onclick="javascript:toggleLayer('E208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 小石に阻（はば）まれ、一しきり風に堪えていたが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But then with a sudden flip it is carried off again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ガックリ一つ転ると、また運ばれて行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="210"><a name="210"><TD id="E210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Two children and a dog walk upriver.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J210" onclick="javascript:toggleLayer('E210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二人の子供に一匹の犬が川上の方へ歩いて行く。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The dog comes back, gives the newspaper a sniff, and returns to following the children.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 犬は戻って、ちょっとその新聞紙を嗅（か）いで見、また子供のあとへついて行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A zelkova tree thick with leaves stands on his side of the river. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 川のこちら岸には高い欅（けやき）の樹が葉を茂らせている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi is taken by the tips of its branches, waving high in the wind. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬（たかし）は風に戦（そよ）いでいるその高い梢（こずえ）に心は惹（ひ）かれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After gazing at it for a time some part of his soul moves into the treetop, and he feels himself swaying with the small leaves and bending with the green branches among the high air currents.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ややしばらく凝視（みい）っているうちに、彼の心の裡のなにかがその梢に棲（とま）り、高い気流のなかで小さい葉と共に揺れ青い枝と共に撓（たわ）んでいるのが感じられた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ah, this feeling...
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああこの気持」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="216"><a name="216"><TD id="E216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi thinks.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J216" onclick="javascript:toggleLayer('E216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と喬は思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To just look, that's something, too.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「視（み）ること、それはもうなにかなのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I can move part, perhaps all of my soul into a thing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分の魂の一部分あるいは全部がそれに乗り移ることなのだ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi thinks on such things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬はそんなことを思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The lure of the window he sits at every night, how it quells his depression and troubles.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 毎夜のように彼の坐る窓辺、その誘惑――病鬱や生活の苦渋が鎮められ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="221"><a name="221"><TD id="E221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The marvel of becoming some thing that he gazes at from a distance.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J221" onclick="javascript:toggleLayer('E221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある距（へだた）りをおいて眺められるものとなる心の不思議が、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD id="E222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He feels that in the high branches of the zelkova tree as well.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここの高い欅の梢にも感じられるのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD id="E223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I'm in pain in the city.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「街では自分は苦しい」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD id="E224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To the north, red torii dot the Kamo Forest. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 北には加茂の森が赤い鳥居を点じていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD id="E225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Above that the faraway mountains blend together.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その上に遠い山々は累（かさな）って見える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD id="E226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hieizan Mountain forms a backdrop for columns of smoke from the chimneys of spinning mills.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 比叡山――それを背景にして、紡績工場の煙突が煙を立登らせていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD id="E227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Red brick buildings,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 赤煉瓦（れんが）の建物。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD id="E228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a post office.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ポスト。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD id="E229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Bicycles pass over the Aragami Bridge, among parasols and horse-drawn carriages.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 荒神橋には自転車が通り、パラソルや馬力（ばりき）が動いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD id="E230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The shade reaches the riverbed, and a peddler sounds his trumpet.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 日蔭は磧に伸び、物売りのラッパが鳴っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="231"><a name="231"><TD ID="TAB231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB231" onclick="javascript:toggleLayer('E231')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="232"><a name="232"><TD id="E232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> five
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J232" onclick="javascript:toggleLayer('E232')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 五
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="233"><a name="233"><TD id="E233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi sometimes aimlessly walks the streets of the city until late at night.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J233" onclick="javascript:toggleLayer('E233')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬（たかし）は夜更けまで街をほっつき歩くことがあった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="234"><a name="234"><TD id="E234" onclick="javascript:toggleLayer('J234')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There are no people on Shijo Avenue, except for the rare passing drunk. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J234" onclick="javascript:toggleLayer('E234')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人通りの絶えた四条通は稀（まれ）に酔っ払いが通るくらいのもので、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="235"><a name="235"><TD id="E235" onclick="javascript:toggleLayer('J235')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The night fog has settled down onto the asphalt.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J235" onclick="javascript:toggleLayer('E235')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夜霧はアスファルトの上までおりて来ている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="236"><a name="236"><TD id="E236" onclick="javascript:toggleLayer('J236')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Stores on both sides of the street have trash bins pushed out to the pavement, and their doors are locked tight. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J236" onclick="javascript:toggleLayer('E236')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 両側の店はゴミ箱を舗道に出して戸を鎖（とざ）してしまっている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="237"><a name="237"><TD id="E237" onclick="javascript:toggleLayer('J237')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Here and there are puddles of vomit and overturned bins.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J237" onclick="javascript:toggleLayer('E237')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 所どころに嘔吐（へど）がはいてあったり、ゴミ箱が倒されていたりした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="238"><a name="238"><TD id="E238" onclick="javascript:toggleLayer('J238')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi recalls times when he would get so drunk, but now he walks on in silence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J238" onclick="javascript:toggleLayer('E238')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬は自分も酒に酔ったときの経験は頭に上り、今は静かに歩くのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="239"><a name="239"><TD id="E239" onclick="javascript:toggleLayer('J239')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He turns and enters the Shinkyogoku mall, where it is oddly busy for the time. 
+The sound of a woman's clogs comes from between shuttered doors as she carries a metal basin to the bath.
+A shop clerk brings out a pair of roller skates. 
+A man carries a delivery order of udon noodles.
+Youths play tug-of-war with a pole in the middle of traffic.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J239" onclick="javascript:toggleLayer('E239')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新京極に折れると、たてた戸の間から金盥（かなだらい）を持って風呂へ出かけてゆく女の下駄が鳴り、ローラースケートを持ち出す小店員、うどんの出前を運ぶ男、往来の真中で棒押しをしている若者などが、異様な盛り場の夜更けを見せている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="240"><a name="240"><TD id="E240" onclick="javascript:toggleLayer('J240')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is almost as if the existence of these people is buried in the bustle of daytime, but is able to express itself at this hour.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J240" onclick="javascript:toggleLayer('E240')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 昼間は雑閙（ざっとう）のなかに埋れていたこの人びとはこの時刻になって存在を現わして来るのだと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="241"><a name="241"><TD id="E241" onclick="javascript:toggleLayer('J241')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Leaving the mall, the town returns to a true late night.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J241" onclick="javascript:toggleLayer('E241')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新京極を抜けると町はほんとうの夜更けになっている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="242"><a name="242"><TD id="E242" onclick="javascript:toggleLayer('J242')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The sound of his clogs, which he never notices during the daytime, is sharp in his ears.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J242" onclick="javascript:toggleLayer('E242')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 昼間は気のつかない自分の下駄の音が変に耳につく。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="243"><a name="243"><TD id="E243" onclick="javascript:toggleLayer('J243')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The silence of the area makes him feel as if he is walking through it with some strange intent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J243" onclick="javascript:toggleLayer('E243')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてあたりの静寂は、なにか自分が変なたくらみを持って町を歩いているような感じを起こさせる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="244"><a name="244"><TD id="E244" onclick="javascript:toggleLayer('J244')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi hangs a small Korean bell at his waist as he walks through these late nights.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J244" onclick="javascript:toggleLayer('E244')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬は腰に朝鮮の小さい鈴を提（さ）げて、そんな夜更け歩いた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="245"><a name="245"><TD id="E245" onclick="javascript:toggleLayer('J245')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is a gift from a friend, purchased for him at the Korea Pavilion in the Okazaki Park exhibition grounds. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J245" onclick="javascript:toggleLayer('E245')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは岡崎公園にあった博覧会の朝鮮館で友人が買って来たものだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="246"><a name="246"><TD id="E246" onclick="javascript:toggleLayer('J246')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It has blue and red cloisonne work over a silver base, and a beautiful mellow sound.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J246" onclick="javascript:toggleLayer('E246')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 銀の地に青や赤の七宝がおいてあり、美しい枯れた音がした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="247"><a name="247"><TD id="E247" onclick="javascript:toggleLayer('J247')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When among other people it can't be heard, but it begins to ring on late night roads as if an embodiment of his heart.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J247" onclick="javascript:toggleLayer('E247')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人びとのなかでは聞こえなくなり、夜更けの道で鳴り出すそれは、彼の心の象徴のように思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="248"><a name="248"><TD id="E248" onclick="javascript:toggleLayer('J248')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The town he walks through opens up to him, as does the view from his window. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J248" onclick="javascript:toggleLayer('E248')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここでも町は、窓辺から見る風景のように、歩いている彼に展（ひら）けてゆくのであった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="249"><a name="249"><TD id="E249" onclick="javascript:toggleLayer('J249')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These are roads that he has never walked down before,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J249" onclick="javascript:toggleLayer('E249')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 生まれてからまだ一度も踏まなかった道。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="250"><a name="250"><TD id="E250" onclick="javascript:toggleLayer('J250')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but at the same time they produce a feeling of familiarity in him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J250" onclick="javascript:toggleLayer('E250')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして同時に、実に親しい思いを起こさせる道。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="251"><a name="251"><TD id="E251" onclick="javascript:toggleLayer('J251')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These are no longer just the same roads that he has walked down some few times before.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J251" onclick="javascript:toggleLayer('E251')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――それはもう彼が限られた回数通り過ぎたことのあるいつもの道ではなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="252"><a name="252"><TD id="E252" onclick="javascript:toggleLayer('J252')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi would lose track of how long he had been walking, and would feel that he has become an eternal passer-by.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J252" onclick="javascript:toggleLayer('E252')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いつの頃から歩いているのか、喬（たかし）は自分がとことわの過ぎてゆく者であるのを今は感じた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="253"><a name="253"><TD id="E253" onclick="javascript:toggleLayer('J253')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At such times, the ring of the Korean bell causes Takashi's heart to tremble.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J253" onclick="javascript:toggleLayer('E253')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そんな時朝鮮の鈴は、喬の心を顫（ふる）わせて鳴った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="254"><a name="254"><TD id="E254" onclick="javascript:toggleLayer('J254')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At times, Takashi feels as if his shell of a body is left behind on the street and only the sound of the bell passes through the town. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J254" onclick="javascript:toggleLayer('E254')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある時は、喬の現身（うつせみ）は道の上に失われ鈴の音だけが町を過るかと思われた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="255"><a name="255"><TD id="E255" onclick="javascript:toggleLayer('J255')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At other times it feels as if a clear mountain stream flows out from near his waist and into his body.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J255" onclick="javascript:toggleLayer('E255')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> またある時それは腰のあたりに湧（わ）き出して、彼の身体の内部へ流れ入る澄み透った溪流のように思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="256"><a name="256"><TD id="E256" onclick="javascript:toggleLayer('J256')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It flows about within him, and cleanses his sickness-fouled blood.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J256" onclick="javascript:toggleLayer('E256')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは身体を流れめぐって、病気に汚れた彼の血を、洗い清めてくれるのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="257"><a name="257"><TD id="E257" onclick="javascript:toggleLayer('J257')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I'm gradually getting better.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J257" onclick="javascript:toggleLayer('E257')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「俺はだんだん癒（なお）ってゆくぞ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="258"><a name="258"><TD id="E258" onclick="javascript:toggleLayer('J258')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The ringing of his small hope purely vibrates the late-night air.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J258" onclick="javascript:toggleLayer('E258')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> コロコロ、コロコロ、彼の小さな希望は深夜の空気を清らかに顫わせた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="259"><a name="259"><TD ID="TAB259" onclick="javascript:toggleLayer('J259')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB259" onclick="javascript:toggleLayer('E259')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="260"><a name="260"><TD id="E260" onclick="javascript:toggleLayer('J260')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> six
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J260" onclick="javascript:toggleLayer('E260')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 六
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="261"><a name="261"><TD id="E261" onclick="javascript:toggleLayer('J261')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The view from his window is the same every night.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J261" onclick="javascript:toggleLayer('E261')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 窓からの風景はいつの夜も渝（かわ）らなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="262"><a name="262"><TD id="E262" onclick="javascript:toggleLayer('J262')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To Takashi all nights are the same.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J262" onclick="javascript:toggleLayer('E262')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喬にはどの夜もみな一つに思える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="263"><a name="263"><TD id="E263" onclick="javascript:toggleLayer('J263')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But one night Takashi sees a point of blue-white light in a tree in the darkness.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J263" onclick="javascript:toggleLayer('E263')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしある夜、喬は暗（やみ）のなかの木に、一点の蒼白（あおじろ）い光を見出した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="264"><a name="264"><TD id="E264" onclick="javascript:toggleLayer('J264')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It must be some kind of insect, he thinks.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J264" onclick="javascript:toggleLayer('E264')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いずれなにかの虫には違いないと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="265"><a name="265"><TD id="E265" onclick="javascript:toggleLayer('J265')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Takashi sees the light again the following night, and the night after that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J265" onclick="javascript:toggleLayer('E265')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次の夜も、次の夜も、喬はその光を見た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="266"><a name="266"><TD id="E266" onclick="javascript:toggleLayer('J266')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When he leaves the window and lays down on his bed, he feels a dim point of light glowing in the darkness of his room as well.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J266" onclick="javascript:toggleLayer('E266')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして彼が窓辺を去って、寝床の上に横になるとき、彼は部屋のなかの暗にも一点の燐光（りんこう）を感じた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="267"><a name="267"><TD id="E267" onclick="javascript:toggleLayer('J267')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You creature that is ailing me!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J267" onclick="javascript:toggleLayer('E267')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私の病んでいる生き物。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="268"><a name="268"><TD id="E268" onclick="javascript:toggleLayer('J268')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In due course I will disappear into the darkness,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J268" onclick="javascript:toggleLayer('E268')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私は暗闇のなかにやがて消えてしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="269"><a name="269"><TD id="E269" onclick="javascript:toggleLayer('J269')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but I think that you are able to stay awake without sleeping.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J269" onclick="javascript:toggleLayer('E269')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしお前は睡らないでひとりおきているように思える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="270"><a name="270"><TD id="E270" onclick="javascript:toggleLayer('J270')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Like that insect outside, burning its blue light."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J270" onclick="javascript:toggleLayer('E270')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そとの虫のように……青い燐光を燃（もや）しながら……」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="landscape-1.htm">prev</a>
+<a href="landscape-0.htm">0</a>
+<a href="landscape-1.htm">1</a>
+<2>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/landscapee.txt">local copy</a> / <a href="http://tonygonz.blogspot.com/2006/05/inner-landscape-kajii-motojiro.html">http://tonygonz.blogspot.com/2006/05/inner-landscape-kajii-motojiro.html</a><li>オリジナルの日本語文: <a href="../org/landscapej.txt">local copy</a> / <a href="http://www.aozora.gr.jp/cards/000074/files/413_19694.html">http://www.aozora.gr.jp/cards/000074/files/413_19694.html</a><li><a href="../manual-alignment/landscape.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,468 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Linux and GNU - GNU Project  / Richard Stallman 著</h2><h2>Linux と GNU - GNU プロジェクト / Richard Stallman 著 / Omoti 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/linuxe.txt">英語文</a>&<a href="../org/linuxj.txt">日本語文</a> / <a href="../manual-alignment/linux.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>0 of Linux and GNU - GNU Project </TITLE>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1"><a name="1"><TD id="E1" onclick="javascript:toggleLayer('J1')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linux and GNU - GNU Project
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1" onclick="javascript:toggleLayer('E1')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux と GNU - GNU プロジェクト 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2"><a name="2"><TD ID="TAB2" onclick="javascript:toggleLayer('J2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2" onclick="javascript:toggleLayer('E2')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="3"><a name="3"><TD id="E3" onclick="javascript:toggleLayer('J3')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many computer users run a modified version of the GNU system (18k characters)  every day, without realizing it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3" onclick="javascript:toggleLayer('E3')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのコンピュータユーザは、それとは気づかぬまま毎日 GNU システム (18k キャラクタ) の変更されたバージョンを使っていますが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="4"><a name="4"><TD id="E4" onclick="javascript:toggleLayer('J4')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Through a peculiar turn of events, the version of GNU which is widely used today is more often known as ``Linux'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J4" onclick="javascript:toggleLayer('E4')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ひょんなことから今日広く使われている GNU のあるバージョンは「Linux」としてより広く知られています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="5"><a name="5"><TD id="E5" onclick="javascript:toggleLayer('J5')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and many users are not aware of the extent of its connection with the GNU Project. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J5" onclick="javascript:toggleLayer('E5')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、多くのユーザは GNU プロジェクト がどれほど深く Linux とつながっているか気づいていません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="6"><a name="6"><TD id="E6" onclick="javascript:toggleLayer('J6')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There really is a Linux, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J6" onclick="javascript:toggleLayer('E6')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たしかに、Linux というものは存在します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="7"><a name="7"><TD ID="TAB7" onclick="javascript:toggleLayer('J7')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB7" onclick="javascript:toggleLayer('E7')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="8"><a name="8"><TD id="E8" onclick="javascript:toggleLayer('J8')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and these people are using it, but it is not the operating system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB8" onclick="javascript:toggleLayer('E8')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="9"><a name="9"><TD ID="TAB9" onclick="javascript:toggleLayer('J9')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB9" onclick="javascript:toggleLayer('E9')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="10"><a name="10"><TD id="E10" onclick="javascript:toggleLayer('J10')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linux is the kernel:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J10" onclick="javascript:toggleLayer('E10')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはカーネルであり、人びとはそれを使っているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="11"><a name="11"><TD ID="TAB11" onclick="javascript:toggleLayer('J11')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB11" onclick="javascript:toggleLayer('E11')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="12"><a name="12"><TD id="E12" onclick="javascript:toggleLayer('J12')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the program in the system that allocates the machine's resources to the other programs that you run.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB12" onclick="javascript:toggleLayer('E12')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="13"><a name="13"><TD ID="TAB13" onclick="javascript:toggleLayer('J13')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB13" onclick="javascript:toggleLayer('E13')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="14"><a name="14"><TD id="E14" onclick="javascript:toggleLayer('J14')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The kernel is an essential part of an operating system, but useless by itself; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J14" onclick="javascript:toggleLayer('E14')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、カーネルをそのものだけで使うわけにはいきません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="15"><a name="15"><TD id="E15" onclick="javascript:toggleLayer('J15')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it can only function in the context of a complete operating system. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J15" onclick="javascript:toggleLayer('E15')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カーネルはオペレーティングシステム全体の一部として初めて使えるようになります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="16"><a name="16"><TD id="E16" onclick="javascript:toggleLayer('J16')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linux is normally used in a combination with the GNU operating system:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J16" onclick="javascript:toggleLayer('E16')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux は通常 GNU オペレーティングシステムと組み合わせて使われます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="17"><a name="17"><TD id="E17" onclick="javascript:toggleLayer('J17')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the whole system is basically GNU, with Linux functioning as its kernel. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J17" onclick="javascript:toggleLayer('E17')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> システム自体は基本的には GNU で、カーネルとして Linux が機能しているのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="18"><a name="18"><TD id="E18" onclick="javascript:toggleLayer('J18')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many users are not fully aware of the distinction between the kernel, which is Linux, and the whole system, which they also call ``Linux''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J18" onclick="javascript:toggleLayer('E18')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのユーザは、カーネルとしての Linux と、彼らがこちらもまた「Linux」と呼んでいるところのシステム全体との区別がよく分かっていないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="19"><a name="19"><TD id="E19" onclick="javascript:toggleLayer('J19')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The ambiguous use of the name doesn't promote understanding. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J19" onclick="javascript:toggleLayer('E19')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 名称のあいまいな使い方は理解を促進しません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="20"><a name="20"><TD ID="TAB20" onclick="javascript:toggleLayer('J20')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB20" onclick="javascript:toggleLayer('E20')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="21"><a name="21"><TD id="E21" onclick="javascript:toggleLayer('J21')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These users often think that Linus Torvalds developed the whole operating system in 1991, with a bit of help. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB21" onclick="javascript:toggleLayer('E21')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="22"><a name="22"><TD ID="TAB22" onclick="javascript:toggleLayer('J22')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB22" onclick="javascript:toggleLayer('E22')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="23"><a name="23"><TD id="E23" onclick="javascript:toggleLayer('J23')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Programmers generally know that Linux is a kernel.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J23" onclick="javascript:toggleLayer('E23')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ふつう、プログラマたちは Linux はカーネルの一つであると分かっているのですが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="24"><a name="24"><TD id="E24" onclick="javascript:toggleLayer('J24')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But since they have generally heard the whole system called ``Linux'' as well, they often envisage a history that would justify naming the whole system after the kernel.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J24" onclick="javascript:toggleLayer('E24')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らはシステム全体もまた「Linux」と呼ばれていることをよく聞いているので、その名称にふさわしい歴史を思い浮かべてしまうことが多いのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="25"><a name="25"><TD id="E25" onclick="javascript:toggleLayer('J25')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For example, many believe that once Linus Torvalds finished writing Linux, the kernel, its users looked around for other free software to go with it, and found that (for no particular reason) most everything necessary to make a Unix-like system was already available. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J25" onclick="javascript:toggleLayer('E25')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 例えば彼らの多くは、 Linus Torvalds がカーネルを書き上げたのち、彼の友人たちが他のフリーソフトウェアを探し回ってみたところ、どういうわけか Unix ライクなシステムを作るのに必要なものはすでにほぼすべて揃っていた、というようなことを信じています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="26"><a name="26"><TD id="E26" onclick="javascript:toggleLayer('J26')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What they found was no accident
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J26" onclick="javascript:toggleLayer('E26')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らが見つけたのは偶然の産物ではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="27"><a name="27"><TD id="E27" onclick="javascript:toggleLayer('J27')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> --it was the GNU system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J27" onclick="javascript:toggleLayer('E27')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは GNU システムだったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="28"><a name="28"><TD id="E28" onclick="javascript:toggleLayer('J28')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The available free software added up to a complete system because the GNU Project had been working since 1984 to make one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J28" onclick="javascript:toggleLayer('E28')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 当時完全なシステムを構成するのに十分なだけの フリーソフトウェア が入手可能だったのは、 GNU プロジェクトが 1984 年以来そうした完全なシステムを作るべく作業してきたからでした。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="29"><a name="29"><TD id="E29" onclick="javascript:toggleLayer('J29')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The GNU Manifesto (31k characters) had set forth the goal of developing a free Unix-like system, called GNU.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J29" onclick="javascript:toggleLayer('E29')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU 宣言(31k キャラクタ) によって GNU と呼ばれるフリーの Unix ライクなシステムを開発するという目標が打ち出されました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="30"><a name="30"><TD id="E30" onclick="javascript:toggleLayer('J30')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Initial Announcement of the GNU Project also outlines some of the original plans for the GNU system. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J30" onclick="javascript:toggleLayer('E30')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また、GNU プロジェクトの 当初の声明に於いて、 GNU システムの原案の一部が概説されています。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="31"><a name="31"><TD id="E31" onclick="javascript:toggleLayer('J31')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> By the time Linux was written, the system was almost finished. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J31" onclick="javascript:toggleLayer('E31')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux が書かれるまでに、システムはほとんど完成していたのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="32"><a name="32"><TD id="E32" onclick="javascript:toggleLayer('J32')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Most free software projects have the goal of developing a particular program for a particular job.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J32" onclick="javascript:toggleLayer('E32')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのフリーソフトウェアプロジェクトでは、ある特定の目的を持ったある特定のプログラムを開発するというのが目標になっています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="33"><a name="33"><TD id="E33" onclick="javascript:toggleLayer('J33')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For example, Linus Torvalds set out to write a Unix-like kernel (Linux);
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J33" onclick="javascript:toggleLayer('E33')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 例えば、Linus Torvalds は Unix ライクなカーネル(Linux)を書くことを目指していましたし、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="34"><a name="34"><TD id="E34" onclick="javascript:toggleLayer('J34')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Donald Knuth set out to write a text formatter (TeX);
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J34" onclick="javascript:toggleLayer('E34')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Donald Knuth はテキストフォーマッタ(TeX)を書くことを目標にしていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="35"><a name="35"><TD id="E35" onclick="javascript:toggleLayer('J35')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Bob Scheifler set out to develop a window system (the X Window system).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J35" onclick="javascript:toggleLayer('E35')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Bob Scheifler はウィンドウシステム( X Windows) の開発に取り組みました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="36"><a name="36"><TD id="E36" onclick="javascript:toggleLayer('J36')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's natural to measure the contribution of this kind of project by specific programs that came from the project. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J36" onclick="javascript:toggleLayer('E36')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらのプロジェクトからある特定のプログラムがもたらされたということで、この種のプロジェクトが社会にどれだけ貢献したかというのを測るというのはごく自然なことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="37"><a name="37"><TD id="E37" onclick="javascript:toggleLayer('J37')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If we tried to measure the GNU Project's contribution in this way, what would we conclude?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J37" onclick="javascript:toggleLayer('E37')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしもし私たちがこのようなやり方で GNU プロジェクトの貢献を測ろうとすると、どういう結論に至るでしょう? 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="38"><a name="38"><TD id="E38" onclick="javascript:toggleLayer('J38')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One CD-ROM vendor found that in their ``Linux distribution'', GNU software was the largest single contingent, around 28% of the total source code, and this included some of the essential major components without which there could be no system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J38" onclick="javascript:toggleLayer('E38')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある CD-ROM 販売業者によると、彼らの「Linux ディストリビューション」中ではGNU ソフトウェア が全ソースコードの約 28 % という、単一のグループとしては最大の割合を占めており、またその中には、それ無しではシステムが成立しない本質的かつ重要なコンポーネントが含まれています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="39"><a name="39"><TD id="E39" onclick="javascript:toggleLayer('J39')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linux itself was about 3%.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J39" onclick="javascript:toggleLayer('E39')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux 自体は大体 3 % を占めていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="40"><a name="40"><TD id="E40" onclick="javascript:toggleLayer('J40')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So if you were going to pick a name for the system based on who wrote the programs in the system, the most appropriate single choice would be ``GNU''. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J40" onclick="javascript:toggleLayer('E40')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、誰がそのシステム内のプログラムを書いたかという判断基準でそのシステムの名前を一つ選ぶということであれば、もっともふさわしい選択は「GNU」ということになるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="41"><a name="41"><TD id="E41" onclick="javascript:toggleLayer('J41')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But we don't think that is the right way to consider the question.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J41" onclick="javascript:toggleLayer('E41')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、私たちはこの問題をそのように考えるのが正しいとは思いません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="42"><a name="42"><TD id="E42" onclick="javascript:toggleLayer('J42')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The GNU Project was not, is not, a project to develop specific software packages.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J42" onclick="javascript:toggleLayer('E42')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU プロジェクトはなにか特定のソフトウェアパッケージを開発するプロジェクトではありませんでしたし、今もそうではありません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="43"><a name="43"><TD id="E43" onclick="javascript:toggleLayer('J43')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was not a project to develop a C compiler, although we did.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J43" onclick="javascript:toggleLayer('E43')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU プロジェクトは、C コンパイラ を開発しましたが、GNU は C コンパイラを開発するプロジェクトではありませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="44"><a name="44"><TD id="E44" onclick="javascript:toggleLayer('J44')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was not a project to develop a text editor, although we developed one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J44" onclick="javascript:toggleLayer('E44')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同様に、私たちはテキストエディタを開発しましたが、 GNU はテキストエディタを開発するプロジェクトではなかったのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="45"><a name="45"><TD id="E45" onclick="javascript:toggleLayer('J45')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The GNU Project's aim was to develop a complete free Unix-like system: GNU. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J45" onclick="javascript:toggleLayer('E45')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU プロジェクトの目標は、完全なフリーの Unix ライクなシステム を開発することです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="46"><a name="46"><TD id="E46" onclick="javascript:toggleLayer('J46')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many people have made major contributions to the free software in the system, and they all deserve credit.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J46" onclick="javascript:toggleLayer('E46')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くの人々がシステムに含まれるフリーソフトウェアに多大な貢献をしてきましたし、それらはみな称賛に値します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="47"><a name="47"><TD id="E47" onclick="javascript:toggleLayer('J47')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But the reason it is an integrated system--and not just a collection of useful programs--is because the GNU Project set out to make it one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J47" onclick="javascript:toggleLayer('E47')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしそれが単なる有用なプログラムの寄せ集めではなく、システムであるのは、GNU プロジェクトがそれをシステムとしてまとめ上げたからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="48"><a name="48"><TD id="E48" onclick="javascript:toggleLayer('J48')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We made a list of the programs needed to make a complete free system, and we systematically found, wrote, or found people to write everything on the list.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J48" onclick="javascript:toggleLayer('E48')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちはフリーの完全なシステムを構成するのに必要なプログラムのリストを作り、そのリストに載っているものすべてを組織的に探し、書き、あるいは書いてくれる人を探しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="49"><a name="49"><TD id="E49" onclick="javascript:toggleLayer('J49')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We wrote essential but unexciting (1) components 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J49" onclick="javascript:toggleLayer('E49')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちは、アセンブラやリンカといった、不可欠だけれどもあまりエキサイティングであるとは言えない重要なコンポーネントを書きました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="50"><a name="50"><TD id="E50" onclick="javascript:toggleLayer('J50')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because you can't have a system without them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J50" onclick="javascript:toggleLayer('E50')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それら無しではシステムを用意することができないからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="51"><a name="51"><TD ID="TAB51" onclick="javascript:toggleLayer('J51')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB51" onclick="javascript:toggleLayer('E51')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="52"><a name="52"><TD id="E52" onclick="javascript:toggleLayer('J52')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some of our system components, the programming tools, became popular on their own among programmers, but we wrote many components that are not tools (2).
+We even developed a chess game, GNU Chess, because a complete system needs good games too. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB52" onclick="javascript:toggleLayer('E52')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="53"><a name="53"><TD ID="TAB53" onclick="javascript:toggleLayer('J53')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB53" onclick="javascript:toggleLayer('E53')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="54"><a name="54"><TD ID="TAB54" onclick="javascript:toggleLayer('J54')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J54" onclick="javascript:toggleLayer('E54')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また、完全なシステムには単なるプログラミングツール以上のものが必要となります。
+Bourne Again シェル、PostScript インタプリタである Ghostscript、そしてGNU C ライブラリなども同様に重要なのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="55"><a name="55"><TD ID="TAB55" onclick="javascript:toggleLayer('J55')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB55" onclick="javascript:toggleLayer('E55')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="56"><a name="56"><TD id="E56" onclick="javascript:toggleLayer('J56')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> By the early 90s we had put together the whole system aside from the kernel
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J56" onclick="javascript:toggleLayer('E56')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 90 年代初頭までに、私たちはカーネルを除いたシステム全体を組み立てていました
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="57"><a name="57"><TD id="E57" onclick="javascript:toggleLayer('J57')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (and we were also working on a kernel, the GNU Hurd, which runs on top of Mach). 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J57" onclick="javascript:toggleLayer('E57')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> (また、私たちは Mach の上で動く GNU Hurd というカーネルを開発していました)。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="58"><a name="58"><TD id="E58" onclick="javascript:toggleLayer('J58')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Developing this kernel has been a lot harder than we expected; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J58" onclick="javascript:toggleLayer('E58')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このカーネルの開発の困難さは予想をはるかに超えるもので、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="59"><a name="59"><TD ID="TAB59" onclick="javascript:toggleLayer('J59')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB59" onclick="javascript:toggleLayer('E59')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="60"><a name="60"><TD id="E60" onclick="javascript:toggleLayer('J60')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the GNU Hurd started working reliably in 2001. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB60" onclick="javascript:toggleLayer('E60')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="61"><a name="61"><TD ID="TAB61" onclick="javascript:toggleLayer('J61')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB61" onclick="javascript:toggleLayer('E61')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="62"><a name="62"><TD id="E62" onclick="javascript:toggleLayer('J62')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We're now starting to prepare the actual release of the GNU system, with the GNU Hurd. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J62" onclick="javascript:toggleLayer('E62')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちは依然 完成に向け開発中 です。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="63"><a name="63"><TD id="E63" onclick="javascript:toggleLayer('J63')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Fortunately, you didn't have to wait for the Hurd, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J63" onclick="javascript:toggleLayer('E63')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 幸運なことに、あなたは Hurd の完成を待つ必要はありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="64"><a name="64"><TD id="E64" onclick="javascript:toggleLayer('J64')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because Linux was available. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J64" onclick="javascript:toggleLayer('E64')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、Linux が現在動いているからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="65"><a name="65"><TD id="E65" onclick="javascript:toggleLayer('J65')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When Linus Torvalds wrote Linux, he filled the last major gap.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J65" onclick="javascript:toggleLayer('E65')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linus Torvalds が Linux を書いたとき、彼は最後の大きな欠落を埋めました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="66"><a name="66"><TD id="E66" onclick="javascript:toggleLayer('J66')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> People could then put Linux together with the GNU system to make a complete free system:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J66" onclick="javascript:toggleLayer('E66')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして人びとは、Linux を GNU システムと一緒にすることで完全なフリーのシステムを手に入れることができたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="67"><a name="67"><TD id="E67" onclick="javascript:toggleLayer('J67')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a Linux-based version of the GNU system; the GNU/Linux system, for short. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J67" onclick="javascript:toggleLayer('E67')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それこそが、Linux をベースとした GNU システム(短くは GNU/Linux システム) にほかなりません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="68"><a name="68"><TD id="E68" onclick="javascript:toggleLayer('J68')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Putting them together sounds simple, but it was not a trivial job.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J68" onclick="javascript:toggleLayer('E68')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一緒にするというと簡単なことのように聞こえますが、それはなみたいていの仕事ではありません。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="69"><a name="69"><TD id="E69" onclick="javascript:toggleLayer('J69')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some GNU components(3) needed substantial change to work with Linux.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J69" onclick="javascript:toggleLayer('E69')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU C ライブラリ(短く glibc と呼ばれます)には相当な変更が必要となりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="70"><a name="70"><TD id="E70" onclick="javascript:toggleLayer('J70')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Integrating a complete system as a distribution that would work ``out of the box'' was a big job, too.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J70" onclick="javascript:toggleLayer('E70')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 完全なシステムをディストリビューションとして「インストールすればすぐ使える」というレベルにまでするのも大変な作業でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="71"><a name="71"><TD id="E71" onclick="javascript:toggleLayer('J71')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It required addressing the issue of how to install and boot the system
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J71" onclick="javascript:toggleLayer('E71')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どうシステムをインストールし、起動するかという問題を解決しなければならなかったからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="72"><a name="72"><TD id="E72" onclick="javascript:toggleLayer('J72')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> --a problem we had not tackled, because we hadn't yet reached that point. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J72" onclick="javascript:toggleLayer('E72')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux が登場する前は、まだそういう段階には到達していなかったので、私たちはそれまでその種の問題に取り組んだことがありませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="73"><a name="73"><TD id="E73" onclick="javascript:toggleLayer('J73')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The people who developed the various system distributions made a substantial contribution. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J73" onclick="javascript:toggleLayer('E73')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この件に関しては様々なシステムディストリビューションを開発した人々が重要な貢献をしてくれました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="74"><a name="74"><TD id="E74" onclick="javascript:toggleLayer('J74')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Addendum: Aside from GNU, one other project has independently produced a free Unix-like operating system.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J74" onclick="javascript:toggleLayer('E74')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU の他に、Unix ライクなオペレーティングシステムを独立に作り上げてきたプロジェクトがもう一つあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="75"><a name="75"><TD id="E75" onclick="javascript:toggleLayer('J75')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This system is known as BSD, and it was developed at UC Berkeley.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J75" onclick="javascript:toggleLayer('E75')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このシステムは BSDとして知られており、カリフォルニア大学バークリー校に於いて開発されました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="76"><a name="76"><TD id="E76" onclick="javascript:toggleLayer('J76')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The BSD developers were inspired to make their code free software by the example of the GNU Project, and explicit appeals from GNU activists helped persuade them, but the code had little overlap with GNU.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J76" onclick="javascript:toggleLayer('E76')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU プロジェクトにならって BSD の開発者たちは彼らの作品をフリーソフトウェアとし、またしばしば GNU の活動家によって励まされてきましたが、彼らの実際の成果は GNU とほとんど重複するところがありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="77"><a name="77"><TD id="E77" onclick="javascript:toggleLayer('J77')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> BSD systems today use some GNU programs, just as the GNU system and its variants use some BSD programs; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J77" onclick="javascript:toggleLayer('E77')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU システムとその変種が BSD ソフトウェアのいくつかを使っているのと同様、今日の BSD システムも GNU ソフトウェアの一部を使っています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="78"><a name="78"><TD id="E78" onclick="javascript:toggleLayer('J78')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> however, taken as wholes, they are two different systems that evolved separately.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J78" onclick="javascript:toggleLayer('E78')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、全体から見れば、この二つは別々に進化してきた異なったシステムです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="79"><a name="79"><TD ID="TAB79" onclick="javascript:toggleLayer('J79')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB79" onclick="javascript:toggleLayer('E79')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="80"><a name="80"><TD id="E80" onclick="javascript:toggleLayer('J80')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The BSD developers did not write a kernel and add it to the GNU system, and a name like GNU/BSD would not fit the situation. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB80" onclick="javascript:toggleLayer('E80')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="81"><a name="81"><TD ID="TAB81" onclick="javascript:toggleLayer('J81')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB81" onclick="javascript:toggleLayer('E81')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="82"><a name="82"><TD id="E82" onclick="javascript:toggleLayer('J82')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A free operating system that exists today is almost certainly either a variant of the GNU system, or a kind of BSD system. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J82" onclick="javascript:toggleLayer('E82')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日存在するフリーなオペレーティングシステムは GNU システムの変種か、BSD システムの一種と考えてまず間違いありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="83"><a name="83"><TD id="E83" onclick="javascript:toggleLayer('J83')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The GNU Project supports GNU/Linux systems as well as the GNU system--even with funds. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J83" onclick="javascript:toggleLayer('E83')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU プロジェクトは、GNU システムそれ自体 同様 GNU/Linux システム もサポートしており、資金的な援助すらしています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="84"><a name="84"><TD id="E84" onclick="javascript:toggleLayer('J84')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We funded the rewriting of the Linux-related extensions to the GNU C library, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J84" onclick="javascript:toggleLayer('E84')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちは GNU C ライブラリに対する Linux 関係の拡張の書き直しを資金援助しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="85"><a name="85"><TD id="E85" onclick="javascript:toggleLayer('J85')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that now they are well integrated, and the newest GNU/Linux systems use the current library release with no changes. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J85" onclick="javascript:toggleLayer('E85')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 結果として現在それらはうまく統合され、最新の GNU/Linux システムは現在のライブラリをなんら変更することなく使用しています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="86"><a name="86"><TD id="E86" onclick="javascript:toggleLayer('J86')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We also funded an early stage of the development of Debian GNU/Linux. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J86" onclick="javascript:toggleLayer('E86')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちはまた Debian GNU/Linuxに対して、その開発の初期において資金を提供しました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="87"><a name="87"><TD id="E87" onclick="javascript:toggleLayer('J87')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We use Linux-based GNU systems today for most of our work, and we hope you use them too. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J87" onclick="javascript:toggleLayer('E87')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちは今日作業の大半に Linux をベースとする GNU システムを使っており、またみなさんもそうして下さることを望んでいます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="88"><a name="88"><TD id="E88" onclick="javascript:toggleLayer('J88')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But please don't confuse the public by using the name ``Linux'' ambiguously. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J88" onclick="javascript:toggleLayer('E88')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、どうか「Linux」という名称をあいまいに使うことで一般大衆を混乱させないでください。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="89"><a name="89"><TD id="E89" onclick="javascript:toggleLayer('J89')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linux is the kernel, one of the essential major components of the system. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J89" onclick="javascript:toggleLayer('E89')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux はカーネルであり、システムに不可欠の重要な一部分ですが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="90"><a name="90"><TD id="E90" onclick="javascript:toggleLayer('J90')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The system as a whole is more or less the GNU system, with Linux added.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J90" onclick="javascript:toggleLayer('E90')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 全体としてのシステムは多かれ少なかれ GNU システムなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="91"><a name="91"><TD id="E91" onclick="javascript:toggleLayer('J91')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Return to GNU's home page. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J91" onclick="javascript:toggleLayer('E91')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU のホームページに戻る。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="92"><a name="92"><TD id="E92" onclick="javascript:toggleLayer('J92')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Please send FSF &amp; GNU inquiries &amp; questions to gnu@gnu.org.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J92" onclick="javascript:toggleLayer('E92')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> FSF または GNU へのお問い合わせやご質問は gnu@gnu.orgにお送りください。. 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="93"><a name="93"><TD id="E93" onclick="javascript:toggleLayer('J93')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There are also other ways to contact the FSF. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J93" onclick="javascript:toggleLayer('E93')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> FSF と連絡を取るには他の手段もあります。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="94"><a name="94"><TD id="E94" onclick="javascript:toggleLayer('J94')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Please send comments on these web pages to webmasters@www.gnu.org, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J94" onclick="javascript:toggleLayer('E94')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらのウェブページに対するご意見は webmasters@www.gnu.org までお送りください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="95"><a name="95"><TD id="E95" onclick="javascript:toggleLayer('J95')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> send other questions to gnu@gnu.org. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J95" onclick="javascript:toggleLayer('E95')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その他のご質問は gnu@gnu.org までお願いします。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="96"><a name="96"><TD id="E96" onclick="javascript:toggleLayer('J96')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Copyright (C) 1997, 1998, 1999, 2000, 2001, 2002 Richard M. Stallman 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J96" onclick="javascript:toggleLayer('E96')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Copyright 1997, 1998 Richard Stallman 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="97"><a name="97"><TD id="E97" onclick="javascript:toggleLayer('J97')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Verbatim copying and distribution of this entire article is permitted in any medium, provided this notice is preserved. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J97" onclick="javascript:toggleLayer('E97')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 本文に一切の変更を加えず、この著作権表示を残す限り、この文章全体のいかなる媒体における複製および配布も許可する。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="98"><a name="98"><TD id="E98" onclick="javascript:toggleLayer('J98')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Updated: 10 Dec 2000 mhatta 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J98" onclick="javascript:toggleLayer('E98')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Toshiki Minakuchi 氏の訳を元に、八田真行 &lt;mhatta@gnu.org&gt; が修正を加えました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/linuxe.txt">local copy</a> / <a href="http://www.gnu.org/gnu/linux-and-gnu.html">http://www.gnu.org/gnu/linux-and-gnu.html</a><li>オリジナルの日本語文: <a href="../org/linuxj.txt">local copy</a> / <a href="http://www.gnu.org/gnu/linux-and-gnu.ja.html">http://www.gnu.org/gnu/linux-and-gnu.ja.html</a><li><a href="../manual-alignment/linux.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

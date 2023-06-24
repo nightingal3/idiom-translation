@@ -1,0 +1,539 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Prince / Nicolo Machiavelli, Translated by W. K. Marriott 著</h2><h2>君主 / ニッコロ・マキャヴェリ 著 / 永江良一 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/natione.txt">英語文</a>&<a href="../org/nationj.txt">日本語文</a> / <a href="../manual-alignment/nation.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>11 of The Prince</TITLE>
+<hr>
+<a href="nation-10.htm">prev</a>
+<a href="nation-0.htm">0</a>
+<a href="nation-1.htm">1</a>
+<a href="nation-2.htm">2</a>
+<a href="nation-3.htm">3</a>
+<a href="nation-4.htm">4</a>
+<a href="nation-5.htm">5</a>
+<a href="nation-6.htm">6</a>
+<a href="nation-7.htm">7</a>
+<a href="nation-8.htm">8</a>
+<a href="nation-9.htm">9</a>
+<a href="nation-10.htm">10</a>
+<11>
+<a href="nation-12.htm">12</a>
+<a href="nation-13.htm">13</a>
+<a href="nation-14.htm">14</a>
+<a href="nation-15.htm">15</a>
+<a href="nation-12.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1101"><a name="1101"><TD id="E1101" onclick="javascript:toggleLayer('J1101')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but, being by nature cruel and brutal, he gave himself up to amusing the soldiers and corrupting them, so that he might indulge his rapacity upon the people;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1101" onclick="javascript:toggleLayer('E1101')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし生来、残忍で獰猛だったので、軍隊を楽しませ堕落させて、民衆をほしいままに強奪したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1102"><a name="1102"><TD id="E1102" onclick="javascript:toggleLayer('J1102')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> on the other hand, not maintaining his dignity, often descending to the theatre to compete with gladiators, and doing other vile things, little worthy of the imperial majesty, he fell into contempt with the soldiers, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1102" onclick="javascript:toggleLayer('E1102')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その一方で、自分の威厳を保つこともなく、しばしば闘技場に降りては、剣闘士たちと闘い、皇帝の尊厳にはそぐわない、その他の破廉恥行為を行ない、兵士から軽蔑されるようになりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1103"><a name="1103"><TD id="E1103" onclick="javascript:toggleLayer('J1103')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and being hated by one party and despised by the other, he was conspired against and killed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1103" onclick="javascript:toggleLayer('E1103')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方からは憎悪され、もう一方からは軽蔑されて、陰謀を図られて、殺害されたのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1104"><a name="1104"><TD id="E1104" onclick="javascript:toggleLayer('J1104')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It remains to discuss the character of Maximinus.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1104" onclick="javascript:toggleLayer('E1104')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 後に残るは、マクシミヌスの性格についてですが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1105"><a name="1105"><TD id="E1105" onclick="javascript:toggleLayer('J1105')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was a very warlike man, and the armies, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1105" onclick="javascript:toggleLayer('E1105')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この人は非常に好戦的な人物でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1106"><a name="1106"><TD id="E1106" onclick="javascript:toggleLayer('J1106')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> being disgusted with the effeminacy of Alexander, of whom I have already spoken, killed him and elected Maximinus to the throne. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1106" onclick="javascript:toggleLayer('E1106')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もうすでに述べた、アレクサンデルの軟弱さに愛想をつかした軍隊が、アレクサンデルを殺害して、マクシミヌスを皇帝に選んだのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1107"><a name="1107"><TD id="E1107" onclick="javascript:toggleLayer('J1107')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This he did not possess for long,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1107" onclick="javascript:toggleLayer('E1107')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この地位を彼はそう長くは保つことができませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1108"><a name="1108"><TD id="E1108" onclick="javascript:toggleLayer('J1108')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for two things made him hated and despised;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1108" onclick="javascript:toggleLayer('E1108')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは二つの事から彼は憎悪させ軽蔑されたからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1109"><a name="1109"><TD id="E1109" onclick="javascript:toggleLayer('J1109')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the one, his having kept sheep in Thrace, which brought him into contempt
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1109" onclick="javascript:toggleLayer('E1109')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一つは、彼がトラキアで羊飼いをしていたことで、それで彼は軽蔑されたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1110"><a name="1110"><TD id="E1110" onclick="javascript:toggleLayer('J1110')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (it being well known to all, and considered a great indignity by every one),
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1110" onclick="javascript:toggleLayer('E1110')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> (このことは皆によく知られていて、だれからも非常に辱かしいことだと思われたのです。)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1111"><a name="1111"><TD id="E1111" onclick="javascript:toggleLayer('J1111')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and the other, his having at the accession to his dominions deferred going to Rome and taking possession of the imperial seat; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1111" onclick="javascript:toggleLayer('E1111')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう一つは、彼が支配権を得たとき、ローマに行き、皇帝の座につくのに出遅れたことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1112"><a name="1112"><TD id="E1112" onclick="javascript:toggleLayer('J1112')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he had also gained a reputation for the utmost ferocity by having, through his prefects in Rome and elsewhere in the empire, practised many cruelties,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1112" onclick="javascript:toggleLayer('E1112')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それにまた、自分の属州長官にローマやその他帝国各地で残虐行為を行なわせ、それで極めて残忍だという悪評を得たのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1113"><a name="1113"><TD id="E1113" onclick="javascript:toggleLayer('J1113')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that the whole world was moved to anger at the meanness of his birth and to fear at his barbarity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1113" onclick="javascript:toggleLayer('E1113')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで全世界が彼の生れの卑賤さに怒り、その野蛮さを恐れるようになりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1114"><a name="1114"><TD id="E1114" onclick="javascript:toggleLayer('J1114')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> First Africa rebelled, then the Senate with all the people of Rome, and all Italy conspired against him, to which may be added his own army:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1114" onclick="javascript:toggleLayer('E1114')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まずアフリカが反乱を起し、次に元老院とローマの民衆が背き、全イタリアが彼に陰謀を企て、それに彼の軍隊まで加わりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1115"><a name="1115"><TD id="E1115" onclick="javascript:toggleLayer('J1115')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> this latter, besieging Aquileia and meeting with difficulties in taking it, were disgusted with his cruelties, and fearing him less when they found so many against him, murdered him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1115" onclick="javascript:toggleLayer('E1115')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の軍隊はアキレイアを包囲しながら、それをなかなか落せずにいましたが、彼の残忍さに嫌気がさし、あまりに敵が多いので彼を恐れなくなり、彼を殺害したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1116"><a name="1116"><TD id="E1116" onclick="javascript:toggleLayer('J1116')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I do not wish to discuss Heliogabalus, Macrinus, or Julian, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1116" onclick="javascript:toggleLayer('E1116')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘリオガバルスやマクリヌス、ユリアヌスについては、論じようとは思いません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1117"><a name="1117"><TD id="E1117" onclick="javascript:toggleLayer('J1117')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who, being thoroughly contemptible, were quickly wiped out;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1117" onclick="javascript:toggleLayer('E1117')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らは、まるで見下げはてた輩で、たちまち一掃されました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1118"><a name="1118"><TD id="E1118" onclick="javascript:toggleLayer('J1118')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but I will bring this discourse to a conclusion by saying 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1118" onclick="javascript:toggleLayer('E1118')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでは、この論述び結論として、次のように言っておきましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1119"><a name="1119"><TD id="E1119" onclick="javascript:toggleLayer('J1119')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that princes in our times have this difficulty of giving inordinate satisfaction to their soldiers in a far less degree, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1119" onclick="javascript:toggleLayer('E1119')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 当代の君主たちは、その兵士の法外な満足を与えるという困難は、さほどではなくなっています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1120"><a name="1120"><TD id="E1120" onclick="javascript:toggleLayer('J1120')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because, notwithstanding one has to give them some indulgence, that is soon done; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1120" onclick="javascript:toggleLayer('E1120')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、兵士になにほどかの恩恵を施さなくてはならないにしても、それはすぐに実行できます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1121"><a name="1121"><TD id="E1121" onclick="javascript:toggleLayer('J1121')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> none of these princes have armies that are veterans in the governance and administration of provinces, as were the armies of the Roman Empire;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1121" onclick="javascript:toggleLayer('E1121')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした君主のだれ一人として、ローマ帝国のように、属州の統治や行政におけるような年季のはいった軍隊など持っていないのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1122"><a name="1122"><TD id="E1122" onclick="javascript:toggleLayer('J1122')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and whereas it was then more necessary to give satisfaction to the soldiers than to the people, it is now more necessary to all princes, except the Turk and the Soldan, to satisfy the people rather than the soldiers, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1122" onclick="javascript:toggleLayer('E1122')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに当時は民衆よりも兵士を満足させることが必要でしたが、現在では、トルコとエジプトを除けば、どの君主にとっても、兵士よりも民衆を満足させることが必要となっているからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1123"><a name="1123"><TD id="E1123" onclick="javascript:toggleLayer('J1123')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because the people are the more powerful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1123" onclick="javascript:toggleLayer('E1123')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、民衆のほうがずっと強力になっているのですから。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1124"><a name="1124"><TD id="E1124" onclick="javascript:toggleLayer('J1124')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From the above I have excepted the Turk, who always keeps round him twelve infantry and fifteen thousand cavalry on which depend the security and strength of the kingdom, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1124" onclick="javascript:toggleLayer('E1124')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 上に述べたことからトルコを除きましたが、トルコはいつも十二師団の歩兵隊と十五万騎の騎兵を擁し、王国の安全と強大さはこれに依っています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1125"><a name="1125"><TD id="E1125" onclick="javascript:toggleLayer('J1125')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it is necessary that, putting aside every consideration for the people, he should keep them his friends. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1125" onclick="javascript:toggleLayer('E1125')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで、民衆への配慮を後回しにしても、軍隊を味方につける必要があるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1126"><a name="1126"><TD id="E1126" onclick="javascript:toggleLayer('J1126')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The kingdom of the Soldan is similar;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1126" onclick="javascript:toggleLayer('E1126')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エジプト王国も同様です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1127"><a name="1127"><TD id="E1127" onclick="javascript:toggleLayer('J1127')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP>  being entirely in the hands of soldiers, follows again that, without regard to the people, he must keep them his friends.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1127" onclick="javascript:toggleLayer('E1127')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すべてが兵士の手中にあるため、民衆を無視しても、兵士たちを味方にしなければならないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1128"><a name="1128"><TD id="E1128" onclick="javascript:toggleLayer('J1128')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But you must note that the state of the Soldan is unlike all other principalities,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1128" onclick="javascript:toggleLayer('E1128')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしエジプトは他の君主国とは異なっていることに注意すべきです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1129"><a name="1129"><TD id="E1129" onclick="javascript:toggleLayer('J1129')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the reason that it is like the Christian pontificate, which cannot be called either an hereditary or a newly formed principality; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1129" onclick="javascript:toggleLayer('E1129')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはキリスト教の教皇制に似ているので、世襲の君主国とも新興の君主国とも呼ぶことができないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1130"><a name="1130"><TD id="E1130" onclick="javascript:toggleLayer('J1130')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because the sons of the old prince not the heirs, but he who is elected to that position by those who have authority, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1130" onclick="javascript:toggleLayer('E1130')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、老君主の子息が跡継ぎとなるのではなく、権限えお持つ人たちに選出された者がその地位につくのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1131"><a name="1131"><TD id="E1131" onclick="javascript:toggleLayer('J1131')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and the sons remain only noblemen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1131" onclick="javascript:toggleLayer('E1131')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 子息はただ貴族であるにすぎないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1132"><a name="1132"><TD id="E1132" onclick="javascript:toggleLayer('J1132')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this being an ancient custom, it cannot be called a new principality, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1132" onclick="javascript:toggleLayer('E1132')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに、これは古くからの慣行であって、新興の君主国と呼ぶこともできないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1133"><a name="1133"><TD id="E1133" onclick="javascript:toggleLayer('J1133')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because there are none of those difficulties in it that are met with in new ones;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1133" onclick="javascript:toggleLayer('E1133')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、新君主が遭遇するような困難は、そこにはなに一つないのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1134"><a name="1134"><TD id="E1134" onclick="javascript:toggleLayer('J1134')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for although the prince is new, the constitution of the state is old, and it is framed so as to receive him as if he were its hereditary lord.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1134" onclick="javascript:toggleLayer('E1134')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、君主は新しくても、国家の体制は古く、それはまるで世襲の君主であるかのように、彼を受入れればよいだけのものに作られているからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1135"><a name="1135"><TD id="E1135" onclick="javascript:toggleLayer('J1135')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But returning to the subject of our discourse, I say that whoever will consider it will acknowledge that either hatred or contempt has been fatal to the above-named emperors, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1135" onclick="javascript:toggleLayer('E1135')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さて、私たちの論議の主題にたち返ると、それをよく考えてみると、名を挙げた皇帝たちに致命的であったのは、憎悪か軽蔑のいずれかであったことがわかるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1136"><a name="1136"><TD id="E1136" onclick="javascript:toggleLayer('J1136')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it will be recognized also how it happened that, a number of them acting in one way and a number in another, only one in each way came to a happy end and the rest to unhappy ones.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1136" onclick="javascript:toggleLayer('E1136')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、ある人たちはあるやり方で、別の人たちは別のやり方で振舞い、そのうち、どちらか一方だけが幸福に終り、他の者は不幸に終ったということが、どのように生じたかも分ります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1137"><a name="1137"><TD id="E1137" onclick="javascript:toggleLayer('J1137')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because it would have been useless and dangerous for Pertinax and Alexander, being new princes, to imitate Marcus, who was heir to the principality;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1137" onclick="javascript:toggleLayer('E1137')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、ペルティナクスとアレクサンデルは新君主であるから、帝国を世襲したマルクスの真似をするのは無用で危険なことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1138"><a name="1138"><TD id="E1138" onclick="javascript:toggleLayer('J1138')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and likewise it would have been utterly destructive to Caracalla, Commodus, and Maximinus to have imitated Severus, they not having sufficient valour to enable them to tread in his footsteps.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1138" onclick="javascript:toggleLayer('E1138')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同じように、カラカラやコモドゥスやマクシムヌスがセウェルスの真似をするのは、その足跡を辿っていけるほど豪胆ではないのだから、極めて破滅的なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1139"><a name="1139"><TD id="E1139" onclick="javascript:toggleLayer('J1139')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore a prince, new to the principality, cannot imitate the actions of Marcus, nor, again, is it necessary to follow those of Severus, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1139" onclick="javascript:toggleLayer('E1139')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、君主国には新参の君主が、マルクスの行動を真似ることはできないし、またセウェルスの行動に従う必要もないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1140"><a name="1140"><TD id="E1140" onclick="javascript:toggleLayer('J1140')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but he ought to take from Severus those parts which are necessary to found his state, and from Marcus those which are proper and glorious to keep a state that may already be stable and firm. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1140" onclick="javascript:toggleLayer('E1140')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、セウェルスからは、国家の基礎を固めるのに必要な部分を得て、マルクスからは、すでに安定し確固とした国家を維持するのに適切ですばらしい方策を得なければなりません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1141"><a name="1141"><TD ID="TAB1141" onclick="javascript:toggleLayer('J1141')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1141" onclick="javascript:toggleLayer('E1141')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1142"><a name="1142"><TD ID="TAB1142" onclick="javascript:toggleLayer('J1142')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1142" onclick="javascript:toggleLayer('E1142')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 英訳の注
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1143"><a name="1143"><TD ID="TAB1143" onclick="javascript:toggleLayer('J1143')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1143" onclick="javascript:toggleLayer('E1143')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1144"><a name="1144"><TD id="E1144" onclick="javascript:toggleLayer('J1144')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [42] 
+42 Giovanni Bentivogli, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1144" onclick="javascript:toggleLayer('E1144')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ジョヴァンニ・ベンティヴォリオ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1145"><a name="1145"><TD id="E1145" onclick="javascript:toggleLayer('J1145')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> born in Bologna 1438, died at Milan 1508. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1145" onclick="javascript:toggleLayer('E1145')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 1438年ボローニャで生まれ、1508年ミラノで死去。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1146"><a name="1146"><TD id="E1146" onclick="javascript:toggleLayer('J1146')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He ruled Bologna from 1462 to 1506. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1146" onclick="javascript:toggleLayer('E1146')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は1462年から1506年までボローニャを支配した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1147"><a name="1147"><TD id="E1147" onclick="javascript:toggleLayer('J1147')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Machiavelli's strong condemnation of conspiracies may get its edge from his own very recent experience (February 1513), 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1147" onclick="javascript:toggleLayer('E1147')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マキャヴェリの陰謀たいする強い非難は、彼自身のごく最近の体験(1513年2月)から激しさを増している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1148"><a name="1148"><TD id="E1148" onclick="javascript:toggleLayer('J1148')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> when he had been arrested and tortured for his alleged complicity in the Boscoli conspiracy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1148" onclick="javascript:toggleLayer('E1148')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その時、マキャヴェリはボスコーリ家の陰謀に加担したと申し立てられ、逮捕され拷問を受けた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1149"><a name="1149"><TD ID="TAB1149" onclick="javascript:toggleLayer('J1149')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1149" onclick="javascript:toggleLayer('E1149')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1150"><a name="1150"><TD id="E1150" onclick="javascript:toggleLayer('J1150')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> CHAPTER XX
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1150" onclick="javascript:toggleLayer('E1150')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第２０章
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1151"><a name="1151"><TD id="E1151" onclick="javascript:toggleLayer('J1151')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ARE FORTRESSES, AND MANY OTHER THINGS TO WHICH PRINCES OFTEN RESORT, ADVANTAGEOUS OR HURTFUL?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1151" onclick="javascript:toggleLayer('E1151')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 君主がしばしば頼りにする要塞やその他のものは役に立つか、それとも有害か
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1152"><a name="1152"><TD id="E1152" onclick="javascript:toggleLayer('J1152')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 1. SOME princes, so as to hold securely the state, have disarmed their subjects;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1152" onclick="javascript:toggleLayer('E1152')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １．ある君主は、国家を安全に保持するために、臣民から武器を取り上げ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1153"><a name="1153"><TD id="E1153" onclick="javascript:toggleLayer('J1153')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> others have kept their subject towns by factions;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1153" onclick="javascript:toggleLayer('E1153')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> べつの君主は、支配下の町を派閥争いによって維持しようとします。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1154"><a name="1154"><TD id="E1154" onclick="javascript:toggleLayer('J1154')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> others have fostered enmities against themselves;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1154" onclick="javascript:toggleLayer('E1154')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 互いの敵意を助長する君主もいれば、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1155"><a name="1155"><TD id="E1155" onclick="javascript:toggleLayer('J1155')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> others have laid themselves out to gain over those whom they distrusted in the beginning of their governments;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1155" onclick="javascript:toggleLayer('E1155')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 統治の始めに信頼を寄せなかった連中を味方につけるために力を尽くす君主もいます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1156"><a name="1156"><TD id="E1156" onclick="javascript:toggleLayer('J1156')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> some have built fortresses;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1156" onclick="javascript:toggleLayer('E1156')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある君主が要塞を築くと思えば、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1157"><a name="1157"><TD id="E1157" onclick="javascript:toggleLayer('J1157')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> some have overthrown and destroyed them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1157" onclick="javascript:toggleLayer('E1157')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある君主はそれを打ち倒して破壊します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1158"><a name="1158"><TD id="E1158" onclick="javascript:toggleLayer('J1158')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And although one cannot give a final judgment on all one of these things unless one possesses the particulars of those states in which a decision has to be made, nevertheless I will speak as comprehensively as the matter of itself will admit. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1158" onclick="javascript:toggleLayer('E1158')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その決断がなされた状況の詳細がわからないと、こうしたことのどれ一つにも最終的な判断を下すことはできないのですが、事態の許すかぎり包括的に、論じてみましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1159"><a name="1159"><TD id="E1159" onclick="javascript:toggleLayer('J1159')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2. There never was a new prince who has disarmed his subjects; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1159" onclick="javascript:toggleLayer('E1159')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２．新興の君主で、臣民から武器を取り上げた人は一人としていませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1160"><a name="1160"><TD id="E1160" onclick="javascript:toggleLayer('J1160')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> rather when he has found them disarmed he has always armed them,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1160" onclick="javascript:toggleLayer('E1160')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> むしろ、臣民が武装していなければ、武装させるのが常でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1161"><a name="1161"><TD id="E1161" onclick="javascript:toggleLayer('J1161')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because, by arming them, those arms become yours, those men who were distrusted become faithful, and those who were faithful are kept so, and your subjects become your adherents. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1161" onclick="javascript:toggleLayer('E1161')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、臣民を武装させることで、その武器は君主の武器となり、不信を抱いていた連中は忠実になり、忠実だった臣民は忠誠を守り、こうしてその臣民は支持者となるからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1162"><a name="1162"><TD id="E1162" onclick="javascript:toggleLayer('J1162')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And whereas all subjects cannot be armed, yet when those whom you do arm are benefited, the others can be handled more freely, and this difference in their treatment, which they quite understand, makes the former your dependants, and the latter, considering it to be necessary that those who have the most danger and service should have the most reward, excuse you. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1162" onclick="javascript:toggleLayer('E1162')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに、すべての臣民に武装させることができないにしても、武装させた者には恩恵を施すと、他の者はもっと思うがままにあつかえるし、この処遇の差は、まったくそのとおりだと了解されて、それによって武装している者は君主に依存するようになり、また武装していない者は、危険が大きく、服務も重い者がそれだけ報酬が大きいのも当然と思い、君主を大目に見るのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1163"><a name="1163"><TD id="E1163" onclick="javascript:toggleLayer('J1163')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But when you disarm them, you at once offend them by showing that you distrust them, either for cowardice or for want of loyalty, and either of these opinions breeds hatred against you. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1163" onclick="javascript:toggleLayer('E1163')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、彼らの武器を取り上げると、臆病のせいか忠誠心が欠けているせいで彼らを信頼しないと示すことになり、すぐに不興をかうでしょうし、どちらの見解も君主にたいする憎しみを生み出します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1164"><a name="1164"><TD id="E1164" onclick="javascript:toggleLayer('J1164')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And because you cannot remain unarmed, it follows that you turn to mercenaries, which are of the character already shown;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1164" onclick="javascript:toggleLayer('E1164')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 武装しないではおれないので、君主は傭兵に頼るようになるのですが、その性格はすでに示しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1165"><a name="1165"><TD id="E1165" onclick="javascript:toggleLayer('J1165')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> even if they should be good they would not be sufficient to defend you against powerful enemies and distrusted subjects. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1165" onclick="javascript:toggleLayer('E1165')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 傭兵は優れていたとしても、強大な敵や不信を抱いた臣民から、君主を守るには十分ではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1166"><a name="1166"><TD id="E1166" onclick="javascript:toggleLayer('J1166')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore, as I have said, a new prince in a new principality has always distributed arms.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1166" onclick="javascript:toggleLayer('E1166')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、言ってきたように、新興の君主国の新興の君主は武器を配布するのが常なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1167"><a name="1167"><TD id="E1167" onclick="javascript:toggleLayer('J1167')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Histories are full of examples.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1167" onclick="javascript:toggleLayer('E1167')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歴史にはこうした事例がたくさんあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1168"><a name="1168"><TD id="E1168" onclick="javascript:toggleLayer('J1168')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But when a prince acquires a new state, which he adds as a province to his old one, then it is necessary to disarm the men of that state, except those who have been his adherents in acquiring it;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1168" onclick="javascript:toggleLayer('E1168')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、君主が新しい国家を獲得して、元からの国に属領として付け加えるときは、その国を獲得するときに自分の味方となった者以外は、その国の人々から武器を取り上げることが必要です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1169"><a name="1169"><TD id="E1169" onclick="javascript:toggleLayer('J1169')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and these again, with time and opportunity, should be rendered soft and effeminate; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1169" onclick="javascript:toggleLayer('E1169')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのうえで、時間をかけ機会をみはからっては、その人々を温和で軟弱にしていかなくてはなりません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1170"><a name="1170"><TD id="E1170" onclick="javascript:toggleLayer('J1170')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and matters should be managed in such a way that all the armed men in the state shall be your own soldiers who in your old state were living near you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1170" onclick="javascript:toggleLayer('E1170')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このようにして、国内の武装した人間は元の国の自分の側にはべる自軍の兵士だけとなるよう、事態を扱っていかなければならないのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1171"><a name="1171"><TD id="E1171" onclick="javascript:toggleLayer('J1171')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3. Our forefathers, and those who were reckoned wise, were accustomed to say that it was necessary to hold Pistoia by factions and Pisa by fortresses; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1171" onclick="javascript:toggleLayer('E1171')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ３．私たちの父祖で、しかも賢者と言われる人たちは、ピストイアを保持するには派閥闘争が要るが、ピサを保持するには要塞が要る、と言うのが常でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1172"><a name="1172"><TD id="E1172" onclick="javascript:toggleLayer('J1172')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and with this idea they fostered quarrels in some of their tributary towns so as to keep possession of them the more easily. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1172" onclick="javascript:toggleLayer('E1172')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この考えにしたがって、自分たちに服属する町を容易に領有するために、そのいくつかではもめ事を助長してきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1173"><a name="1173"><TD id="E1173" onclick="javascript:toggleLayer('J1173')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This may have been well enough in those times when Italy was in a way balanced, but I do not believe that it can be accepted as a precept for to-day,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1173" onclick="javascript:toggleLayer('E1173')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうしたことは、イタリアが均衡を保っていた時代には十分効果があったのでしょうが、今日では指針として受け入れがたいと思います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1174"><a name="1174"><TD id="E1174" onclick="javascript:toggleLayer('J1174')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because I do not believe that factions can ever be of use;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1174" onclick="javascript:toggleLayer('E1174')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、派閥闘争がいつまでも有効とは思えず、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1175"><a name="1175"><TD id="E1175" onclick="javascript:toggleLayer('J1175')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> rather it is certain that when the enemy comes upon you in divided cities you are quickly lost, because the weakest party will always assist the outside forces and the other will not be able to resist. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1175" onclick="javascript:toggleLayer('E1175')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> むしろ分裂した都市に敵が襲来すると、最弱の党派は外部の勢力を助けるのが常で、その他の党派は抵抗できなくなるので、たちまちそれを失なうに決っているのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1176"><a name="1176"><TD id="E1176" onclick="javascript:toggleLayer('J1176')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Venetians, moved, as I believe, by the above reasons, fostered the Guelph and Ghibelline factions in their tributary cities; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1176" onclick="javascript:toggleLayer('E1176')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヴェネツィア人は、思うに、こうした理由につき動かされ、服属する都市でグェルフ党とギベリン党との派閥闘争を助長したのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1177"><a name="1177"><TD id="E1177" onclick="javascript:toggleLayer('J1177')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and although they never allowed them to come to bloodshed, yet they nursed these disputes amongst them,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1177" onclick="javascript:toggleLayer('E1177')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 流血沙汰になるのは許さなかったとはいえ、その間の紛争を煽ってきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1178"><a name="1178"><TD id="E1178" onclick="javascript:toggleLayer('J1178')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that the citizens, distracted by their differences, should not unite against them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1178" onclick="javascript:toggleLayer('E1178')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうやって、市民は意見の相違に困惑させ、一致団結してヴェネツィア人に対抗しないようにしたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1179"><a name="1179"><TD id="E1179" onclick="javascript:toggleLayer('J1179')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Which, as we saw, did not afterwards turn out as expected,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1179" onclick="javascript:toggleLayer('E1179')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このことは、見てのとおり、後にはそん思惑通りにはなりませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1180"><a name="1180"><TD id="E1180" onclick="javascript:toggleLayer('J1180')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because, after the rout at Vaila, one party at once took courage and seized the state.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1180" onclick="javascript:toggleLayer('E1180')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、ヴァイラの敗走の後、一つの党派が勇気を奮いたたせて、国家を奪い取ったのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1181"><a name="1181"><TD id="E1181" onclick="javascript:toggleLayer('J1181')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Such methods argue, therefore, weakness in the prince, because these factions will never be permitted in a vigorous principality;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1181" onclick="javascript:toggleLayer('E1181')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 力のある君主国ではこうした派閥闘争を許されるものではないのですから、こうした方法は君主の弱体を示すもです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1182"><a name="1182"><TD id="E1182" onclick="javascript:toggleLayer('J1182')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> such methods for enabling one the more easily to manage subjects are only useful in times of peace, but if war comes this policy proves fallacious. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1182" onclick="javascript:toggleLayer('E1182')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 臣民を御すのを容易にするのにこうした方法を取るのは、平和な時代でこそ役に立つものの、戦争になると、この政策は当てにならないことがわかってしまうのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1183"><a name="1183"><TD id="E1183" onclick="javascript:toggleLayer('J1183')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 4. Without doubt princes become great when they overcome the difficulties and obstacles by which they are confronted,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1183" onclick="javascript:toggleLayer('E1183')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ４．疑いもなく、君主は直面する困難や障害を克服すると、偉大なものとなるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1184"><a name="1184"><TD id="E1184" onclick="javascript:toggleLayer('J1184')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and therefore fortune, especially when she desires to make a new prince great, who has a greater necessity to earn renown than an hereditary one, causes enemies to arise and form designs against him,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1184" onclick="javascript:toggleLayer('E1184')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それだから運命が特に新興の君主を偉大なものにしたいとき、そうした君主は世襲の君主よりも名声を得る必要が大きいので、敵を出現させて彼に対抗するよう目論むのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1185"><a name="1185"><TD id="E1185" onclick="javascript:toggleLayer('J1185')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in order that he may have the opportunity of overcoming them, and by them to mount higher, as by a ladder which his enemies have raised. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1185" onclick="javascript:toggleLayer('E1185')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうやって、それに打ち勝つ機会を与え、敵が立て掛ける梯子を登るようにして、高みに上げるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1186"><a name="1186"><TD id="E1186" onclick="javascript:toggleLayer('J1186')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For this reason many consider that a wise prince, when he has the opportunity, ought with craft to foster some animosity against himself, so that, having crushed it, his renown may rise higher. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1186" onclick="javascript:toggleLayer('E1186')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうわけで、賢い君主は、機会があれば、策を弄して自分への反感を助長し、そうやって、それを粉砕することで自分の名声を高めるのだと、多くの人たちは思っているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1187"><a name="1187"><TD id="E1187" onclick="javascript:toggleLayer('J1187')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 5. Princes, especially new ones, have found more fidelity and assistance in those men who in the beginning of their rule were distrusted than among those who in the beginning were trusted.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1187" onclick="javascript:toggleLayer('E1187')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ５．君主、特に新興の君主は、統治しはじめた頃は信用できなかった者のほうが、信頼していた者よりも、忠誠心があり役に立つとわかることがあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1188"><a name="1188"><TD id="E1188" onclick="javascript:toggleLayer('J1188')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pandolfo Petrucci, Prince of Siena, ruled his state more by those who had been distrusted than by others.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1188" onclick="javascript:toggleLayer('E1188')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> シエナの君主パンドルフ・ペルッチは、他の者よりも、信用しなかった者に国を支配させました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1189"><a name="1189"><TD id="E1189" onclick="javascript:toggleLayer('J1189')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But on this question one cannot speak generally,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1189" onclick="javascript:toggleLayer('E1189')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、この問題については、一概に語ることはできません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1190"><a name="1190"><TD id="E1190" onclick="javascript:toggleLayer('J1190')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it varies so much with the individual;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1190" onclick="javascript:toggleLayer('E1190')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、個々人で様々ですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1191"><a name="1191"><TD id="E1191" onclick="javascript:toggleLayer('J1191')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I will only say this,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1191" onclick="javascript:toggleLayer('E1191')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ただこれだけは言えます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1192"><a name="1192"><TD id="E1192" onclick="javascript:toggleLayer('J1192')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that those men who at the commencement of a princedom have been hostile, if they are of a description to need assistance to support themselves, can always be gained over with the greatest ease,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1192" onclick="javascript:toggleLayer('E1192')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 君主の座についた当初には敵意を抱いた者が、生計を立てるために助けを必要としている連中なら、いとも簡単に味方にすることができるのが常なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1193"><a name="1193"><TD id="E1193" onclick="javascript:toggleLayer('J1193')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and they will be tightly held to serve the prince with fidelity, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1193" onclick="javascript:toggleLayer('E1193')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして連中は、忠誠を込めて君主に一生懸命仕えるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1194"><a name="1194"><TD id="E1194" onclick="javascript:toggleLayer('J1194')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> inasmuch as they know it to be very necessary for them to cancel by deeds the bad impression which he had formed of them; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1194" onclick="javascript:toggleLayer('E1194')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは、一旦与えた悪い印象を行動で打ち消すことが、自分にとってとても必要だということを、連中はよくわかっているからなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1195"><a name="1195"><TD id="E1195" onclick="javascript:toggleLayer('J1195')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and thus the prince always extracts more profit from them than from those who, serving him in too much security, may neglect his affairs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1195" onclick="javascript:toggleLayer('E1195')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから君主は、あまりに安穏と仕えて、自分の立場を弁えない者よりも、この連中からのほうが、より大きな利益を引き出せるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1196"><a name="1196"><TD id="E1196" onclick="javascript:toggleLayer('J1196')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And since the matter demands it, I must not fail to warn a prince, who by means of secret favours has acquired a new state, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1196" onclick="javascript:toggleLayer('E1196')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして事態が求めるので、人目につかない好意によって新な国を手に入れた君主にはぜひとも忠告しておかなければならないことがあります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1197"><a name="1197"><TD id="E1197" onclick="javascript:toggleLayer('J1197')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that he must well consider the reasons which induced those to favour him who did so;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1197" onclick="javascript:toggleLayer('E1197')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは、好意を示した者が、なぜそうしようとしたかの理由を、よくよく熟慮すべきだということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1198"><a name="1198"><TD id="E1198" onclick="javascript:toggleLayer('J1198')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and if it be not a natural affection towards him, but only discontent with their government, then he will only keep them friendly with great trouble and difficulty, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1198" onclick="javascript:toggleLayer('E1198')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが君主にたいする自然な敬愛からではなく、ただ自分たちの政府にたいする不満によるものなら、君主がこの連中と親しくするのは、ただ大きな苦労と困難を背負いこむだけです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1199"><a name="1199"><TD id="E1199" onclick="javascript:toggleLayer('J1199')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it will be impossible to satisfy them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1199" onclick="javascript:toggleLayer('E1199')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも連中を満足させるのは不可能ですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1200"><a name="1200"><TD id="E1200" onclick="javascript:toggleLayer('J1200')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And weighing well the reasons for this in those examples which can be taken from ancient and modern affairs, we shall find that it is easier for the prince to make friends of those men who were contented under the former government, and are therefore his enemies, than of those who, being discontented with it, were favourable to him and encouraged him to seize it. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1200" onclick="javascript:toggleLayer('E1200')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして古代や近代の事件からとられたそういう事例で、このわけをよく考えてみれば、君主は、以前の政府に不満を抱いているので、彼に好意を示し、その国を奪うよう激励した連中よりも、以前の政府のもとで満足しており、それで彼の敵であった者たちのほうと親しくするほうが、ずっと容易いことがわかります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="nation-10.htm">prev</a>
+<a href="nation-0.htm">0</a>
+<a href="nation-1.htm">1</a>
+<a href="nation-2.htm">2</a>
+<a href="nation-3.htm">3</a>
+<a href="nation-4.htm">4</a>
+<a href="nation-5.htm">5</a>
+<a href="nation-6.htm">6</a>
+<a href="nation-7.htm">7</a>
+<a href="nation-8.htm">8</a>
+<a href="nation-9.htm">9</a>
+<a href="nation-10.htm">10</a>
+<11>
+<a href="nation-12.htm">12</a>
+<a href="nation-13.htm">13</a>
+<a href="nation-14.htm">14</a>
+<a href="nation-15.htm">15</a>
+<a href="nation-12.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/natione.txt">local copy</a> / <a href="http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/index.html">http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/index.html</a><li>オリジナルの日本語文: <a href="../org/nationj.txt">local copy</a> / <a href="http://page.freett.com/rionag/machiavelli/prince.html">http://page.freett.com/rionag/machiavelli/prince.html</a><li><a href="../manual-alignment/nation.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

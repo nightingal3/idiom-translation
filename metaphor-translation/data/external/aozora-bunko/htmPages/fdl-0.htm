@@ -1,0 +1,247 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Why you should use the GNU FDL / Richard Stallman 著</h2><h2>なぜGNUフリー文書利用許諾契約書を使うべきか / リチャード・ストールマン 著 / 結城 浩 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/fdle.txt">英語文</a>&<a href="../org/fdlj.txt">日本語文</a> / <a href="../manual-alignment/fdl.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>0 of Why you should use the GNU FDL</TITLE>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1"><a name="1"><TD id="E1" onclick="javascript:toggleLayer('J1')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Why you should use the GNU FDL
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1" onclick="javascript:toggleLayer('E1')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜGNUフリー文書利用許諾契約書を使うべきか
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2"><a name="2"><TD id="E2" onclick="javascript:toggleLayer('J2')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Richard Stallman
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2" onclick="javascript:toggleLayer('E2')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> リチャード・ストールマン
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3"><a name="3"><TD id="E3" onclick="javascript:toggleLayer('J3')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This article was written in March 2000.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3" onclick="javascript:toggleLayer('E3')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この記事は2000年3月に書かれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="4"><a name="4"><TD ID="TAB4" onclick="javascript:toggleLayer('J4')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB4" onclick="javascript:toggleLayer('E4')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="5"><a name="5"><TD id="E5" onclick="javascript:toggleLayer('J5')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Can technical writers earn money by writing free documentation for free software?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J5" onclick="javascript:toggleLayer('E5')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 技術文書を書くライターは、 フリーソフトウェアのためのフリーな文書を書いてお金を稼ぐことができるのか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="6"><a name="6"><TD id="E6" onclick="javascript:toggleLayer('J6')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We seriously hope so,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J6" onclick="javascript:toggleLayer('E6')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> われわれは切にそれを望む。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="7"><a name="7"><TD id="E7" onclick="javascript:toggleLayer('J7')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that is the reason for the GNU Free Documentation License.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J7" onclick="javascript:toggleLayer('E7')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそれが、GNUフリー文書利用許諾契約書(GNU Free Documentation License)の存在理由である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="8"><a name="8"><TD id="E8" onclick="javascript:toggleLayer('J8')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The GFDL is meant as a way to enlist commercial publishers in funding free documentation without surrendering any vital liberty.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J8" onclick="javascript:toggleLayer('E8')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GFDLは、フリー文書に出資する商業出版社の協力を得ながらも、 生きた自由を何一つ放棄せずにすむ1つの道を示している。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="9"><a name="9"><TD id="E9" onclick="javascript:toggleLayer('J9')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The "cover text" feature, and certain other aspects of the license that deal with covers, title page, history, and endorsements, are included to make the license appealing to commercial publishers for books whose authors are paid.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J9" onclick="javascript:toggleLayer('E9')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このライセンスの中に、 特徴的な「カバーテキスト(cover text)」という部分、 またその他に、 カバー(cover)、タイトルページ(title page)、 履歴(history)、 それから推薦の辞(endorsements)を取り扱っている部分を含めたのは、 著者に料金を支払っている本を商業的に出版している人たちにこのライセンスをアピールするためである。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="10"><a name="10"><TD id="E10" onclick="javascript:toggleLayer('J10')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To improve the appeal, I consulted specifically with staff of publishing companies, as well as lawyers, free documentation writers, and the community at large, in writing the GFDL.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J10" onclick="javascript:toggleLayer('E10')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このアピールを改善するため、私は、 出版社のスタッフ、弁護士、フリー文書の著者、 そしてコミュニティー全体に特別に意見を求めて、 GFDLを書いた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="11"><a name="11"><TD id="E11" onclick="javascript:toggleLayer('J11')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At least two commercial publishers of software manuals have told me they are interested in using this license.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J11" onclick="javascript:toggleLayer('E11')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ソフトウェアマニュアルの商業出版社のうち少なくとも2社は、 このライセンスを使うことに興味を持っている、と私に言ってくれた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="12"><a name="12"><TD id="E12" onclick="javascript:toggleLayer('J12')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The future is never a sure thing,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J12" onclick="javascript:toggleLayer('E12')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 未来は決して確実なものではない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="13"><a name="13"><TD id="E13" onclick="javascript:toggleLayer('J13')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but the GFDL looks like it has a good chance to succeed
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J13" onclick="javascript:toggleLayer('E13')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、GFDLは次のような社会システムの形成に成功するチャンスを持っているようだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="14"><a name="14"><TD id="E14" onclick="javascript:toggleLayer('J14')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in shaping a social system where commercial publishers pay people to write commercial free manuals for free software.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J14" onclick="javascript:toggleLayer('E14')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち、フリーソフトウェアの商業的なフリー文書を書くため、商業出版社が人に料金を支払うような社会システムの形成に。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/fdle.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/fdlj.txt">local copy</a><li><a href="../manual-alignment/fdl.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

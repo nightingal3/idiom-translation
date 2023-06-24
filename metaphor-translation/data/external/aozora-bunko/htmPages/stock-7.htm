@@ -1,0 +1,260 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Stock-Broker's Clerk / Conan Doyle 著</h2><h2>株式仲買店々員 / コナンドイル 著 / 三上於莵吉 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/stocke.txt">英語文</a>&<a href="../org/stockj.txt">日本語文</a> / <a href="../manual-alignment/stock.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>7 of The Stock-Broker's Clerk</TITLE>
+<hr>
+<a href="stock-6.htm">prev</a>
+<a href="stock-0.htm">0</a>
+<a href="stock-1.htm">1</a>
+<a href="stock-2.htm">2</a>
+<a href="stock-3.htm">3</a>
+<a href="stock-4.htm">4</a>
+<a href="stock-5.htm">5</a>
+<a href="stock-6.htm">6</a>
+<7>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="701"><a name="701"><TD id="E701" onclick="javascript:toggleLayer('J701')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``Human nature is a strange mixture, Watson. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J701" onclick="javascript:toggleLayer('E701')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「人間の性質と云うものは不思議に入り組んだものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="702"><a name="702"><TD id="E702" onclick="javascript:toggleLayer('J702')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You see that even a villain and murderer can inspire such affection that his brother turns to suicide when he learns that his neck is forfeited. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J702" onclick="javascript:toggleLayer('E702')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 君は、強盗や人殺しでさえも、彼の兄弟の首に縄がかかったと云うことを知って、自殺する気になるほどな肉親の愛情を起こすものであることが、分かったろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="703"><a name="703"><TD id="E703" onclick="javascript:toggleLayer('J703')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> However, we have no choice as to our action. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J703" onclick="javascript:toggleLayer('E703')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしもう私たちは私たちの行動について躊躇しなくてもよい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="704"><a name="704"><TD id="E704" onclick="javascript:toggleLayer('J704')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The doctor and I will remain on guard, Mr. Pycroft, if you will have the kindness to step out for the police.'' 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J704" onclick="javascript:toggleLayer('E704')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私とワトソンとはこの男の番をしてますから、ピイクロフトさん、あなたはどうか警察へこのことを知らせにいって下さいませんか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="705"><a name="705"><TD ID="TAB705" onclick="javascript:toggleLayer('J705')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB705" onclick="javascript:toggleLayer('E705')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="706"><a name="706"><TD ID="TAB706" onclick="javascript:toggleLayer('J706')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J706" onclick="javascript:toggleLayer('E706')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 底本：「世界探偵小説全集　第三卷　シヤーロツク・ホームズの記憶」平凡社 
+　　　1930（昭和5）年2月5日発行
+※「旧字、旧仮名で書かれた作品を、現代表記にあらためる際の作業指針」に基づいて、底本の表記をあらためました。
+その際、以下の置き換えをおこないました。
+「彼奴→あいつ　貴方→あなた　或→ある　如何→いか　一旦→いったん　於て→おいて　於ける→おける　位→くらい　極→ごく　而して→しかして　随分→ずいぶん　即ち→すなわち　それ所か→それどころか　大分→だいぶ　沢山→たくさん　只今→ただいま　多分→たぶん　給え→たまえ　丁度→ちょうど　て戴→ていただ　て見→てみ　て貰→てもら　所が→ところが　所で→ところで　尚→なお　乍ら→ながら　成程・なる程→なるほど　憎い→にくい　程→ほど　殆ど→ほとんど　亦→また　迄→まで　寧ろ→むしろ　勿論→もちろん　漸く→ようやく　余程→よほど　僅か→わずか」
+※底本は、物を数える際や地名などに用いる「ヶ」（区点番号5-86）を、大振りにつくっています。
+※底本は総ルビですが、一部を省きました。
+入力：京都大学電子テクスト研究会入力班（荒木恵一）
+校正：京都大学電子テクスト研究会校正班（大久保ゆう）
+2004年9月21日作成
+青空文庫作成ファイル：
+このファイルは、インターネットの図書館、青空文庫（http://www.aozora.gr.jp/）で作られました。入力、校正、制作にあたったのは、ボランティアの皆さんです。
+●表記について
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="707"><a name="707"><TD ID="TAB707" onclick="javascript:toggleLayer('J707')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J707" onclick="javascript:toggleLayer('E707')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible">   このファイルは W3C 勧告 XHTML1.1 にそった形式で作成されています。 
+  ［＃…］は、入力者による注を表す記号です。 
+  傍点や圏点、傍線の付いた文字は、強調表示にしました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="stock-6.htm">prev</a>
+<a href="stock-0.htm">0</a>
+<a href="stock-1.htm">1</a>
+<a href="stock-2.htm">2</a>
+<a href="stock-3.htm">3</a>
+<a href="stock-4.htm">4</a>
+<a href="stock-5.htm">5</a>
+<a href="stock-6.htm">6</a>
+<7>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/stocke.txt">local copy</a> / <a href="http://www.hti.umich.edu/cgi/p/pd-modeng/pd-modeng-idx?type=HTML&rgn=DIV0&byte=22590284">http://www.hti.umich.edu/cgi/p/pd-modeng/pd-modeng-idx?type=HTML&rgn=DIV0&byte=22590284</a><li>オリジナルの日本語文: <a href="../org/stockj.txt">local copy</a> / <a href="http://www.aozora.gr.jp/cards/000009/files/43497_16596.html">http://www.aozora.gr.jp/cards/000009/files/43497_16596.html</a><li><a href="../manual-alignment/stock.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

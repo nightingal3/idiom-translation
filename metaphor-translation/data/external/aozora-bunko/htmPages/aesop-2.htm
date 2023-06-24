@@ -1,0 +1,551 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Aesop's Fables / Aesop 著 / George Fyler Townsend 訳</h2><h2>イソップ寓話集 / イソップ 著 / hanama 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/aesope.txt">英語文</a>&<a href="../org/aesopj.txt">日本語文</a> / <a href="../manual-alignment/aesop.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of Aesop's Fables</TITLE>
+<hr>
+<a href="aesop-1.htm">prev</a>
+<a href="aesop-0.htm">0</a>
+<a href="aesop-1.htm">1</a>
+<2>
+<a href="aesop-3.htm">3</a>
+<a href="aesop-4.htm">4</a>
+<a href="aesop-5.htm">5</a>
+<a href="aesop-6.htm">6</a>
+<a href="aesop-7.htm">7</a>
+<a href="aesop-8.htm">8</a>
+<a href="aesop-9.htm">9</a>
+<a href="aesop-10.htm">10</a>
+<a href="aesop-11.htm">11</a>
+<a href="aesop-12.htm">12</a>
+<a href="aesop-13.htm">13</a>
+<a href="aesop-14.htm">14</a>
+<a href="aesop-15.htm">15</a>
+<a href="aesop-16.htm">16</a>
+<a href="aesop-17.htm">17</a>
+<a href="aesop-18.htm">18</a>
+<a href="aesop-19.htm">19</a>
+<a href="aesop-20.htm">20</a>
+<a href="aesop-21.htm">21</a>
+<a href="aesop-22.htm">22</a>
+<a href="aesop-23.htm">23</a>
+<a href="aesop-24.htm">24</a>
+<a href="aesop-25.htm">25</a>
+<a href="aesop-26.htm">26</a>
+<a href="aesop-27.htm">27</a>
+<a href="aesop-28.htm">28</a>
+<a href="aesop-29.htm">29</a>
+<a href="aesop-30.htm">30</a>
+<a href="aesop-31.htm">31</a>
+<a href="aesop-32.htm">32</a>
+<a href="aesop-33.htm">33</a>
+<a href="aesop-3.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Hare, believing her assertion to be simply impossible, assented to the proposal;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ウサギはそんなことは、無理に決まっていると思い、カメの挑戦を受けることにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and they agreed that the Fox should choose the course and fix the goal.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> キツネがコースとゴールの位置を決めることになり、両者はそれに同意した。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> On the day appointed for the race
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 競争の日が来た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the two started together.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二人は同時にスタートした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Tortoise never for a moment stopped, but went on with a slow but steady pace straight to the end of the course. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カメは、遅かったが、一瞬たりとも止まらずに一歩一歩着実にゴールへと向かった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Hare, lying down by the wayside, fell fast asleep. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ウサギは、道端でごろりと横になると、眠りこんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At last waking up, and moving as fast as he could, he saw the Tortoise had reached the goal, and was comfortably dozing after her fatigue.   
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しまった！と思って、目を覚ましたウサギは、あらん限りのスピードで走ったが、カメはすでに、ゴールインして、気持ちよさそうに寝息を立てていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="208"><a name="208"><TD ID="TAB208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB208" onclick="javascript:toggleLayer('E208')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Slow but steady wins the race.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゆっくりでも、着実な者が勝つ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="210"><a name="210"><TD ID="TAB210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB210" onclick="javascript:toggleLayer('E210')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Pomegranate, Apple-Tree, and Bramble  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １９．ザクロとリンゴとイバラ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> THE POMEGRANATE and Apple-Tree disputed as to which was the most beautiful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ザクロの木とリンゴの木が、どちらが美しいかということで言い争っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When their strife was at its height, a Bramble from the neighboring hedge lifted up its voice, and said in a boastful tone:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 両者の議論が最高潮に達した時、近くの垣根から、イバラがしゃしゃり出た。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Pray, my dear friends,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ねえ、お友達のザクロさんにリンゴさん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in my presence at least cease from such vain disputings."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> せめて、私のいる前では、そんな無益な議論はおやめ遊ばせ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="216"><a name="216"><TD ID="TAB216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB216" onclick="javascript:toggleLayer('E216')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Farmer and the Stork 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２０．農夫とコウノトリ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A FARMER placed nets on his newly-sown plowlands and caught a number of Cranes, which came to pick up his seed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある農夫が、種蒔きを終えたばかりの畑に網を仕掛け、種を食べに来たツルの群を一網打尽にした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> With them he trapped a Stork that had fractured his leg in the net
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> するとツルの群と一緒に、コウノトリが一匹捕らえられていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and was earnestly beseeching the Farmer to spare his life. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 網に足が絡まり傷ついたコウノトリは、農夫に泣きついた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="221"><a name="221"><TD id="E221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Pray save me, Master," 
+he said, 
+"and let me go free this once.
+My broken limb should excite your pity. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J221" onclick="javascript:toggleLayer('E221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私は骨を折っているのです、どうか私を哀れんで今回は見逃して下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD id="E222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Besides, I am no Crane, I am a Stork, a bird of excellent character;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それに、私は下世話なツルではなく、コウノトリなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD id="E223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and see how I love and slave for my father and mother. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私が、父や母をどんなに慈しみお世話するか、あなたもご存じでしょう？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD id="E224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Look too, at my feathers
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私の羽を見て下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD id="E225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> --they are not the least like those of a Crane."   
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツルの羽とは違うでしょう」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD id="E226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Farmer laughed aloud and said,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すると農夫は、大きな声で笑った。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD id="E227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It may be all as you say,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「言いたいことは全部言ったか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD id="E228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I only know this:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> では、俺の番だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD id="E229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have taken you with these robbers, the Cranes,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お前は、あの盗人どもと一緒に捕まった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD id="E230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and you must die in their company."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よってお前は奴らと一緒に死なねばならぬ。」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="231"><a name="231"><TD ID="TAB231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB231" onclick="javascript:toggleLayer('E231')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="232"><a name="232"><TD id="E232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Birds of a feather flock together.   
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J232" onclick="javascript:toggleLayer('E232')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同じ穴の狢
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="233"><a name="233"><TD ID="TAB233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB233" onclick="javascript:toggleLayer('E233')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="234"><a name="234"><TD id="E234" onclick="javascript:toggleLayer('J234')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Farmer and the Snake 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J234" onclick="javascript:toggleLayer('E234')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２１．農夫とヘビ 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="235"><a name="235"><TD id="E235" onclick="javascript:toggleLayer('J235')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ONE WINTER a Farmer found a Snake stiff and frozen with cold. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J235" onclick="javascript:toggleLayer('E235')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある冬の日のこと、農夫は、寒さに凍えて今にも死にそうになったヘビを見つけた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="236"><a name="236"><TD id="E236" onclick="javascript:toggleLayer('J236')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He had compassion on it, and taking it up, placed it in his bosom.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J236" onclick="javascript:toggleLayer('E236')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は可哀想に思い、ヘビを拾い上げると自分の懐に入れてやった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="237"><a name="237"><TD id="E237" onclick="javascript:toggleLayer('J237')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Snake was quickly revived by the warmth, and resuming its natural instincts, bit its benefactor,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J237" onclick="javascript:toggleLayer('E237')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘビは暖まると、元気を取り戻し、本性を顕わにして命の恩人に噛みついた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="238"><a name="238"><TD id="E238" onclick="javascript:toggleLayer('J238')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> inflicting on him a mortal wound.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J238" onclick="javascript:toggleLayer('E238')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 農夫は今際の際にこう叫んだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="239"><a name="239"><TD id="E239" onclick="javascript:toggleLayer('J239')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oh," 
+cried the Farmer with his last breath, 
+"I am rightly served for pitying a scoundrel."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J239" onclick="javascript:toggleLayer('E239')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おお、これも、悪党に哀れみを与えた、当然の報いだ！」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="240"><a name="240"><TD ID="TAB240" onclick="javascript:toggleLayer('J240')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB240" onclick="javascript:toggleLayer('E240')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="241"><a name="241"><TD id="E241" onclick="javascript:toggleLayer('J241')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The greatest kindness will not bind the ungrateful.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J241" onclick="javascript:toggleLayer('E241')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 悪党には親切にしないのが、一番の親切。  
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="242"><a name="242"><TD ID="TAB242" onclick="javascript:toggleLayer('J242')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB242" onclick="javascript:toggleLayer('E242')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="243"><a name="243"><TD id="E243" onclick="javascript:toggleLayer('J243')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Fawn and His Mother  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J243" onclick="javascript:toggleLayer('E243')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２２．仔ジカと彼の母親
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="244"><a name="244"><TD ID="TAB244" onclick="javascript:toggleLayer('J244')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J244" onclick="javascript:toggleLayer('E244')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> むかし昔のことである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="245"><a name="245"><TD ID="TAB245" onclick="javascript:toggleLayer('J245')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB245" onclick="javascript:toggleLayer('E245')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="246"><a name="246"><TD id="E246" onclick="javascript:toggleLayer('J246')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A YOUNG FAWN once said to his Mother,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J246" onclick="javascript:toggleLayer('E246')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 仔ジカが母シカに言った。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="247"><a name="247"><TD id="E247" onclick="javascript:toggleLayer('J247')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You are larger than a dog, and swifter, and more used to running,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J247" onclick="javascript:toggleLayer('E247')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「お母さんは、イヌよりも大きいし、敏捷で、駆けるのもとっても速い。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="248"><a name="248"><TD id="E248" onclick="javascript:toggleLayer('J248')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and you have your horns as a defense;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J248" onclick="javascript:toggleLayer('E248')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その上、身を守る角だって持っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="249"><a name="249"><TD id="E249" onclick="javascript:toggleLayer('J249')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> why, then, O Mother! do the hounds frighten you so?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J249" onclick="javascript:toggleLayer('E249')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それなのになぜ、猟犬を怖がるの？」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="250"><a name="250"><TD id="E250" onclick="javascript:toggleLayer('J250')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She smiled, and said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J250" onclick="javascript:toggleLayer('E250')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 母シカはにこやかに答えた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="251"><a name="251"><TD id="E251" onclick="javascript:toggleLayer('J251')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I know full well, my son, that all you say is true.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J251" onclick="javascript:toggleLayer('E251')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「お前の言うことは、みなその通りなんだけど
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="252"><a name="252"><TD id="E252" onclick="javascript:toggleLayer('J252')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have the advantages you mention, but when I hear even the bark of a single dog I feel ready to faint, and fly away as fast as I can."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J252" onclick="javascript:toggleLayer('E252')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ・・・・でも母さんは、イヌの吠えるのを一声聞いただけで、卒倒しそうになり、飛んで逃げたくなるんだよ。」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="253"><a name="253"><TD ID="TAB253" onclick="javascript:toggleLayer('J253')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB253" onclick="javascript:toggleLayer('E253')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="254"><a name="254"><TD id="E254" onclick="javascript:toggleLayer('J254')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No arguments will give courage to the coward.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J254" onclick="javascript:toggleLayer('E254')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いくら説得しても、臆病者は勇者にはならない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="255"><a name="255"><TD ID="TAB255" onclick="javascript:toggleLayer('J255')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB255" onclick="javascript:toggleLayer('E255')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="256"><a name="256"><TD id="E256" onclick="javascript:toggleLayer('J256')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Bear and the Fox 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J256" onclick="javascript:toggleLayer('E256')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２３．クマとキツネ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="257"><a name="257"><TD id="E257" onclick="javascript:toggleLayer('J257')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A BEAR boasted very much of his philanthropy, saying that of all animals he was the most tender in his regard for man,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J257" onclick="javascript:toggleLayer('E257')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あるクマが、我こそは、動物の中で、一番人間への愛情が細やかであると、痛く自慢した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="258"><a name="258"><TD id="E258" onclick="javascript:toggleLayer('J258')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for he had such respect for him that he would not even touch his dead body. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J258" onclick="javascript:toggleLayer('E258')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ……と言うのも、自分は人の死体にさえ、触れようとはしないからだと言うのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="259"><a name="259"><TD id="E259" onclick="javascript:toggleLayer('J259')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A Fox hearing these words said with a smile to the Bear,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J259" onclick="javascript:toggleLayer('E259')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを聞いてキツネが言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="260"><a name="260"><TD id="E260" onclick="javascript:toggleLayer('J260')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oh! 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J260" onclick="javascript:toggleLayer('E260')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おお、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="261"><a name="261"><TD id="E261" onclick="javascript:toggleLayer('J261')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that you would eat the dead and not the living."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J261" onclick="javascript:toggleLayer('E261')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> クマさんや、生きた人を食べずに、死んだ人を食べなさい。」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="262"><a name="262"><TD ID="TAB262" onclick="javascript:toggleLayer('J262')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB262" onclick="javascript:toggleLayer('E262')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="263"><a name="263"><TD id="E263" onclick="javascript:toggleLayer('J263')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Swallow and the Crow 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J263" onclick="javascript:toggleLayer('E263')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２４．ツバメとカラス
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="264"><a name="264"><TD id="E264" onclick="javascript:toggleLayer('J264')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> THE SWALLOW and the Crow had a contention about their plumage. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J264" onclick="javascript:toggleLayer('E264')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ツバメとカラスが、羽のことで言い争っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="265"><a name="265"><TD id="E265" onclick="javascript:toggleLayer('J265')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Crow put an end to the dispute by saying, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J265" onclick="javascript:toggleLayer('E265')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、カラスがこんな事を言って、その議論に決着をつけた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="266"><a name="266"><TD id="E266" onclick="javascript:toggleLayer('J266')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Your feathers are all very well in the spring, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J266" onclick="javascript:toggleLayer('E266')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「君の羽は、春の装いにはぴったりかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="267"><a name="267"><TD id="E267" onclick="javascript:toggleLayer('J267')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but mine protect me against the winter."  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J267" onclick="javascript:toggleLayer('E267')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、僕の羽は、冬の寒さからをも、身を守ってくれるんだよ！」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="268"><a name="268"><TD ID="TAB268" onclick="javascript:toggleLayer('J268')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB268" onclick="javascript:toggleLayer('E268')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="269"><a name="269"><TD id="E269" onclick="javascript:toggleLayer('J269')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Fair weather friends are not worth much.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J269" onclick="javascript:toggleLayer('E269')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 困難な時の友こそ本当の友。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="270"><a name="270"><TD ID="TAB270" onclick="javascript:toggleLayer('J270')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB270" onclick="javascript:toggleLayer('E270')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="271"><a name="271"><TD id="E271" onclick="javascript:toggleLayer('J271')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Mountain in Labor 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J271" onclick="javascript:toggleLayer('E271')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２５．山のお産 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="272"><a name="272"><TD id="E272" onclick="javascript:toggleLayer('J272')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A MOUNTAIN was once greatly agitated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J272" onclick="javascript:toggleLayer('E272')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かつて、山が大いに揺れ動いたことがあった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="273"><a name="273"><TD id="E273" onclick="javascript:toggleLayer('J273')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Loud groans and noises were heard,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J273" onclick="javascript:toggleLayer('E273')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 巨大なうなり声が響き渡った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="274"><a name="274"><TD id="E274" onclick="javascript:toggleLayer('J274')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and crowds of people came from all parts to see what was the matter.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J274" onclick="javascript:toggleLayer('E274')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一体何が起こるのか一目見ようと、あらゆる所から、人々が集まってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="275"><a name="275"><TD id="E275" onclick="javascript:toggleLayer('J275')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While they were assembled in anxious expectation of some terrible calamity, out came a Mouse.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J275" onclick="javascript:toggleLayer('E275')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 何か恐ろしい大災害が起こるのではないか？　
+と、皆、固唾を飲んで見守った。 
+が、しかし、出てきたのはネズミ一匹だけだった。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="276"><a name="276"><TD ID="TAB276" onclick="javascript:toggleLayer('J276')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB276" onclick="javascript:toggleLayer('E276')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="277"><a name="277"><TD id="E277" onclick="javascript:toggleLayer('J277')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't make much ado about nothing.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J277" onclick="javascript:toggleLayer('E277')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 大山鳴動してネズミ一匹
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="278"><a name="278"><TD ID="TAB278" onclick="javascript:toggleLayer('J278')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB278" onclick="javascript:toggleLayer('E278')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="279"><a name="279"><TD id="E279" onclick="javascript:toggleLayer('J279')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Ass, the Fox, and the Lion 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J279" onclick="javascript:toggleLayer('E279')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２６．ロバとキツネとライオン 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="280"><a name="280"><TD id="E280" onclick="javascript:toggleLayer('J280')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> THE ASS and the Fox, having entered into partnership together for their mutual protection, went out into the forest to hunt. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J280" onclick="javascript:toggleLayer('E280')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 危ない目に合ったら、互いに助け合おうと約束して、ロバとキツネが、森へと狩りに出かけた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="281"><a name="281"><TD id="E281" onclick="javascript:toggleLayer('J281')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They had not proceeded far when they met a Lion. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J281" onclick="javascript:toggleLayer('E281')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だが、森の奥へと踏み込む前にライオンと出くわしてしまった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="282"><a name="282"><TD id="E282" onclick="javascript:toggleLayer('J282')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Fox, seeing imminent danger, approached the Lion and promised to contrive for him the capture of the Ass if the Lion would pledge his word not to harm the Fox.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J282" onclick="javascript:toggleLayer('E282')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 絶体絶命の窮地に立って、キツネはライオンの所へ近づいて行き、もし、自分を助けてくれるならば、ロバを捕らえるよい知恵を授けると言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="283"><a name="283"><TD id="E283" onclick="javascript:toggleLayer('J283')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then, upon assuring the Ass that he would not be injured, the Fox led him to a deep pit and arranged that he should fall into it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J283" onclick="javascript:toggleLayer('E283')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> キツネは、ロバを言いくるめると、深い穴に連れて行き、ロバがその中に落ちるように仕向けた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="284"><a name="284"><TD id="E284" onclick="javascript:toggleLayer('J284')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Lion, seeing that the Ass was secured, immediately clutched the Fox,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J284" onclick="javascript:toggleLayer('E284')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ライオンは、ロバが動けないのを見ると、即座にキツネを捕まえた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="285"><a name="285"><TD id="E285" onclick="javascript:toggleLayer('J285')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and attacked the Ass at his leisure.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J285" onclick="javascript:toggleLayer('E285')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、ロバに取りかかったのは、キツネがすんでからだった。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="286"><a name="286"><TD ID="TAB286" onclick="javascript:toggleLayer('J286')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB286" onclick="javascript:toggleLayer('E286')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="287"><a name="287"><TD id="E287" onclick="javascript:toggleLayer('J287')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Tortoise and the Eagle  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J287" onclick="javascript:toggleLayer('E287')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２７．カメとワシ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="288"><a name="288"><TD id="E288" onclick="javascript:toggleLayer('J288')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A TORTOISE, lazily basking in the sun, complained to the sea-birds of her hard fate, that no one would teach her to fly. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J288" onclick="javascript:toggleLayer('E288')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 日がな一日、日向ぼっこをしていたカメが、海鳥に向かって、誰も空の飛び方を教えてくれないのだと愚痴をこぼした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="289"><a name="289"><TD id="E289" onclick="javascript:toggleLayer('J289')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An Eagle, hovering near, heard her lamentation and demanded what reward she would give him if he would take her aloft and float her in the air.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J289" onclick="javascript:toggleLayer('E289')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 近くを舞っていたワシが、カメの溜め息まじりの言葉を聞くと、何かお礼をくれるのなら、空高く連れて行って、飛び方を教えてやると言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="290"><a name="290"><TD ID="TAB290" onclick="javascript:toggleLayer('J290')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J290" onclick="javascript:toggleLayer('E290')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カメは喜び勇んでこう答えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="291"><a name="291"><TD ID="TAB291" onclick="javascript:toggleLayer('J291')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB291" onclick="javascript:toggleLayer('E291')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="292"><a name="292"><TD id="E292" onclick="javascript:toggleLayer('J292')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I will give you," 
+she said, 
+"all the riches of the Red Sea." 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J292" onclick="javascript:toggleLayer('E292')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「紅海の幸を全てあなたに差し上げます」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="293"><a name="293"><TD id="E293" onclick="javascript:toggleLayer('J293')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I will teach you to fly then,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J293" onclick="javascript:toggleLayer('E293')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「よしわかった、ではお前に、空の飛び方を教えてやろう」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="294"><a name="294"><TD id="E294" onclick="javascript:toggleLayer('J294')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Eagle; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J294" onclick="javascript:toggleLayer('E294')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ワシはそう言うと、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="295"><a name="295"><TD id="E295" onclick="javascript:toggleLayer('J295')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and taking her up in his talons he carried her almost to the clouds 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J295" onclick="javascript:toggleLayer('E295')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カメを鈎爪でひっつかみ、雲間へと運んでいった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="296"><a name="296"><TD ID="TAB296" onclick="javascript:toggleLayer('J296')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J296" onclick="javascript:toggleLayer('E296')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「さあ、飛ぶのだ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="297"><a name="297"><TD ID="TAB297" onclick="javascript:toggleLayer('J297')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB297" onclick="javascript:toggleLayer('E297')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="298"><a name="298"><TD id="E298" onclick="javascript:toggleLayer('J298')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> suddenly he let her go, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J298" onclick="javascript:toggleLayer('E298')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ワシはそう言うと、突然、カメを放り出した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="299"><a name="299"><TD id="E299" onclick="javascript:toggleLayer('J299')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and she fell on a lofty mountain, dashing her shell to pieces.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J299" onclick="javascript:toggleLayer('E299')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カメは、そびえ立つ山の頂きに落ちて行き、甲羅もろとも粉々に砕け散った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="300"><a name="300"><TD id="E300" onclick="javascript:toggleLayer('J300')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Tortoise exclaimed in the moment of death:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J300" onclick="javascript:toggleLayer('E300')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カメは死ぬ間際にこう言った。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="aesop-1.htm">prev</a>
+<a href="aesop-0.htm">0</a>
+<a href="aesop-1.htm">1</a>
+<2>
+<a href="aesop-3.htm">3</a>
+<a href="aesop-4.htm">4</a>
+<a href="aesop-5.htm">5</a>
+<a href="aesop-6.htm">6</a>
+<a href="aesop-7.htm">7</a>
+<a href="aesop-8.htm">8</a>
+<a href="aesop-9.htm">9</a>
+<a href="aesop-10.htm">10</a>
+<a href="aesop-11.htm">11</a>
+<a href="aesop-12.htm">12</a>
+<a href="aesop-13.htm">13</a>
+<a href="aesop-14.htm">14</a>
+<a href="aesop-15.htm">15</a>
+<a href="aesop-16.htm">16</a>
+<a href="aesop-17.htm">17</a>
+<a href="aesop-18.htm">18</a>
+<a href="aesop-19.htm">19</a>
+<a href="aesop-20.htm">20</a>
+<a href="aesop-21.htm">21</a>
+<a href="aesop-22.htm">22</a>
+<a href="aesop-23.htm">23</a>
+<a href="aesop-24.htm">24</a>
+<a href="aesop-25.htm">25</a>
+<a href="aesop-26.htm">26</a>
+<a href="aesop-27.htm">27</a>
+<a href="aesop-28.htm">28</a>
+<a href="aesop-29.htm">29</a>
+<a href="aesop-30.htm">30</a>
+<a href="aesop-31.htm">31</a>
+<a href="aesop-32.htm">32</a>
+<a href="aesop-33.htm">33</a>
+<a href="aesop-3.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/aesope.txt">local copy</a> / <a href="http://www.gutenberg.net/etext91/aesop11.txt">http://www.gutenberg.net/etext91/aesop11.txt</a><li>オリジナルの日本語文: <a href="../org/aesopj.txt">local copy</a> / <a href="http://www.geocities.co.jp/Bookend/9563/Aesop/Aesop1.txt">http://www.geocities.co.jp/Bookend/9563/Aesop/Aesop1.txt</a><li><a href="../manual-alignment/aesop.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,557 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Adventures of Sherlock Holmes / Arthur Conan Doyle 著</h2><h2>シャーロック・ホームズの冒険 / コナン・ドイル 著 / coderati 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/advne.txt">英語文</a>&<a href="../org/advnj.txt">日本語文</a> / <a href="../manual-alignment/advn.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>16 of The Adventures of Sherlock Holmes</TITLE>
+<hr>
+<a href="advn-15.htm">prev</a>
+<a href="advn-0.htm">0</a>
+<a href="advn-1.htm">1</a>
+<a href="advn-2.htm">2</a>
+<a href="advn-3.htm">3</a>
+<a href="advn-4.htm">4</a>
+<a href="advn-5.htm">5</a>
+<a href="advn-6.htm">6</a>
+<a href="advn-7.htm">7</a>
+<a href="advn-8.htm">8</a>
+<a href="advn-9.htm">9</a>
+<a href="advn-10.htm">10</a>
+<a href="advn-11.htm">11</a>
+<a href="advn-12.htm">12</a>
+<a href="advn-13.htm">13</a>
+<a href="advn-14.htm">14</a>
+<a href="advn-15.htm">15</a>
+<16>
+<a href="advn-17.htm">17</a>
+<a href="advn-18.htm">18</a>
+<a href="advn-19.htm">19</a>
+<a href="advn-20.htm">20</a>
+<a href="advn-21.htm">21</a>
+<a href="advn-17.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1601"><a name="1601"><TD id="E1601" onclick="javascript:toggleLayer('J1601')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A flush stole over Miss Sutherland's face, and she picked nervously at the fringe of her jacket.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1601" onclick="javascript:toggleLayer('E1601')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ミス・サザーランドの顔を赤らみがおおい、彼女は上着の房飾りを神経質にいじった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1602"><a name="1602"><TD id="E1602" onclick="javascript:toggleLayer('J1602')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I met him first at the gasfitters' ball,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1602" onclick="javascript:toggleLayer('E1602')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「初めて彼に会ったのはガス取り付け業者の舞踏会でした」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1603"><a name="1603"><TD id="E1603" onclick="javascript:toggleLayer('J1603')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she said.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1603" onclick="javascript:toggleLayer('E1603')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と彼女は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1604"><a name="1604"><TD id="E1604" onclick="javascript:toggleLayer('J1604')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "They used to send father tickets when he was alive, and then afterwards they remembered us, and sent them to mother.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1604" onclick="javascript:toggleLayer('E1604')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「父が生きていた頃はいつも父にチケットを送ってくれたものですが、その後も私たちを忘れなかったのですね、母に送られてきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1605"><a name="1605"><TD id="E1605" onclick="javascript:toggleLayer('J1605')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Windibank did not wish us to go.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1605" onclick="javascript:toggleLayer('E1605')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ウィンディバンクさんは私たちが行くのを嫌がりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1606"><a name="1606"><TD id="E1606" onclick="javascript:toggleLayer('J1606')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He never did wish us to go anywhere.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1606" onclick="javascript:toggleLayer('E1606')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの人は私たちをどこへも行かせたくないんです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1607"><a name="1607"><TD id="E1607" onclick="javascript:toggleLayer('J1607')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He would get quite mad if I wanted so much as to join a Sunday-school treat.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1607" onclick="javascript:toggleLayer('E1607')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私が日曜学校のお楽しみに参加したいというだけでもう、かんかんに怒るんですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1608"><a name="1608"><TD id="E1608" onclick="javascript:toggleLayer('J1608')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But this time I was set on going, and I would go;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1608" onclick="javascript:toggleLayer('E1608')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも今回は私、行くと決心して、無理にも出かけましたわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1609"><a name="1609"><TD id="E1609" onclick="javascript:toggleLayer('J1609')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for what right had he to prevent?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1609" onclick="javascript:toggleLayer('E1609')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だってどんな権利があってあの人が止めるんですの？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1610"><a name="1610"><TD id="E1610" onclick="javascript:toggleLayer('J1610')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He said the folk were not fit for us to know, when all father's friends were to be there.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1610" onclick="javascript:toggleLayer('E1610')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの人はそこの人たちは私たちの知り合いとしてふさわしくないとか言いますが、父の友達がみんな来るんですからねえ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1611"><a name="1611"><TD id="E1611" onclick="javascript:toggleLayer('J1611')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And he said that I had nothing fit to wear, when I had my purple plush that I had never so much as taken out of the drawer.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1611" onclick="javascript:toggleLayer('E1611')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから私にはふさわしい服がないなんて言ったんです、私にはたんすから取り出したこともない紫のビロードのがあるのに。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1612"><a name="1612"><TD id="E1612" onclick="javascript:toggleLayer('J1612')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At last, when nothing else would do, he went off to France upon the business of the firm, but we went, mother and I, with Mr. Hardy, who used to be our foreman, and it was there I met Mr. Hosmer Angel."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1612" onclick="javascript:toggleLayer('E1612')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 結局、どうしようもないとなると、あの人は会社の仕事でフランスに行きましたが、私たち、母と私と、前にうちの職工長だったハーディさんとで出かけましたら、そこでホズマー・エンジェルさんに出会ったんです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1613"><a name="1613"><TD id="E1613" onclick="javascript:toggleLayer('J1613')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I suppose,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1613" onclick="javascript:toggleLayer('E1613')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「きっと、」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1614"><a name="1614"><TD id="E1614" onclick="javascript:toggleLayer('J1614')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Holmes,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1614" onclick="javascript:toggleLayer('E1614')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホームズが言った、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1615"><a name="1615"><TD id="E1615" onclick="javascript:toggleLayer('J1615')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "that when Mr. Windibank came back from France he was very annoyed at your having gone to the ball."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1615" onclick="javascript:toggleLayer('E1615')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「フランスから戻ったウィンディバンクさんはあなた方が舞踏会へ行ったことでずいぶん怒ったでしょうね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1616"><a name="1616"><TD id="E1616" onclick="javascript:toggleLayer('J1616')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oh, well, he was very good about it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1616" onclick="javascript:toggleLayer('E1616')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああ、それがね、とても物分りがよくって。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1617"><a name="1617"><TD id="E1617" onclick="javascript:toggleLayer('J1617')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He laughed, I remember, and shrugged his shoulders, and said there was no use denying anything to a woman, for she would have her way." 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1617" onclick="javascript:toggleLayer('E1617')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの人は笑って、そうでしたわ、それから肩をすくめて、女にだめだなんて言っても何にもならない、どうせ好きなようにするんだから、と言いました。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1618"><a name="1618"><TD id="E1618" onclick="javascript:toggleLayer('J1618')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I see.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1618" onclick="javascript:toggleLayer('E1618')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「なるほど。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1619"><a name="1619"><TD id="E1619" onclick="javascript:toggleLayer('J1619')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then at the gasfitters' ball you met, as I understand, a gentleman called Mr. Hosmer Angel."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1619" onclick="javascript:toggleLayer('E1619')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでガス取り付け業者の舞踏会であなたはホズマー・エンジェルさんという紳士に出会ったということですね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1620"><a name="1620"><TD id="E1620" onclick="javascript:toggleLayer('J1620')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Yes, sir.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1620" onclick="javascript:toggleLayer('E1620')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうですわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1621"><a name="1621"><TD id="E1621" onclick="javascript:toggleLayer('J1621')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I met him that night, and he called next day to ask if we had got home all safe, and after that we met him--that is to say, Mr. Holmes, I met him twice for walks, but after that father came back again, and Mr. Hosmer Angel could not come to the house any more." 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1621" onclick="javascript:toggleLayer('E1621')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私はその晩彼に会って、翌日彼が立ち寄って私たちが無事に帰ったかと訊いて、その後私たちは彼に会いました－－つまりね、ホームズさん、私は二度彼に会って散歩したんですが、その後父がまた帰ってきて、ホズマー・エンジェルさんはもう家へ来るわけにはいかなくなったんです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1622"><a name="1622"><TD id="E1622" onclick="javascript:toggleLayer('J1622')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "No?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1622" onclick="javascript:toggleLayer('E1622')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いけませんか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1623"><a name="1623"><TD id="E1623" onclick="javascript:toggleLayer('J1623')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Well, you know father didn't like anything of the sort.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1623" onclick="javascript:toggleLayer('E1623')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうですわね、なにしろ父がそういうことは一切嫌いですし。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1624"><a name="1624"><TD id="E1624" onclick="javascript:toggleLayer('J1624')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He wouldn't have any visitors if he could help it, and he used to say that a woman should be happy in her own family circle.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1624" onclick="javascript:toggleLayer('E1624')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父はなるべくならお客がないようにしてますし、よく言ってますわ、女は自分の家族に囲まれてこそ幸せだと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1625"><a name="1625"><TD id="E1625" onclick="javascript:toggleLayer('J1625')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But then, as I used to say to mother, a woman wants her own circle to begin with, and I had not got mine yet."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1625" onclick="javascript:toggleLayer('E1625')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そう言いますけどねえ、私も母によく言いましたわ、女にはまず自分の家族が必要だと、ところが私のはまだないんですから。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1626"><a name="1626"><TD id="E1626" onclick="javascript:toggleLayer('J1626')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "But how about Mr. Hosmer Angel?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1626" onclick="javascript:toggleLayer('E1626')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「しかしホズマー・エンジェルさんはどうなんですか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1627"><a name="1627"><TD id="E1627" onclick="javascript:toggleLayer('J1627')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Did he make no attempt to see you?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1627" onclick="javascript:toggleLayer('E1627')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたに会おうとしなかったんですか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1628"><a name="1628"><TD id="E1628" onclick="javascript:toggleLayer('J1628')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Well, father was going off to France again in a week, and Hosmer wrote and said that it would be safer and better not to see each other until he had gone.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1628" onclick="javascript:toggleLayer('E1628')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それがね、父がまた一週間以内にフランスへ出かけることになって、ホズマーが手紙で言ってきたんです、父が行くまでお互い会わない方が安全だしよかろうって。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1629"><a name="1629"><TD id="E1629" onclick="javascript:toggleLayer('J1629')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We could write in the meantime, and he used to write every day.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1629" onclick="javascript:toggleLayer('E1629')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それまでは私たち手紙を書くことができましたし、彼も毎日手紙をくれたものでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1630"><a name="1630"><TD id="E1630" onclick="javascript:toggleLayer('J1630')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I took the letters in in the morning, so there was no need for father to know."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1630" onclick="javascript:toggleLayer('E1630')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私は朝のうちに手紙を取りに行って、そうすれば父に知られずにすみますから。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1631"><a name="1631"><TD id="E1631" onclick="javascript:toggleLayer('J1631')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Were you engaged to the gentleman at this time?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1631" onclick="javascript:toggleLayer('E1631')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「この時点であなたはその紳士と婚約していましたか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1632"><a name="1632"><TD id="E1632" onclick="javascript:toggleLayer('J1632')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oh, yes, Mr. Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1632" onclick="javascript:toggleLayer('E1632')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああ、ええ、ホームズさん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1633"><a name="1633"><TD id="E1633" onclick="javascript:toggleLayer('J1633')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We were engaged after the first walk that we took.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1633" onclick="javascript:toggleLayer('E1633')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちは最初にした散歩の後婚約しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1634"><a name="1634"><TD id="E1634" onclick="javascript:toggleLayer('J1634')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hosmer--Mr. Angel--was a cashier in an office in Leadenhall Street--and--"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1634" onclick="javascript:toggleLayer('E1634')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホズマー－－エンジェルさん－－はレドゥンホール街の会社の出納係で、それから－－」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1635"><a name="1635"><TD id="E1635" onclick="javascript:toggleLayer('J1635')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "What office?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1635" onclick="javascript:toggleLayer('E1635')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「何という会社？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1636"><a name="1636"><TD id="E1636" onclick="javascript:toggleLayer('J1636')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "That's the worst of it, Mr. Holmes, I don't know."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1636" onclick="javascript:toggleLayer('E1636')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そこがいちばんまずいんですがホームズさん、私知らないんです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1637"><a name="1637"><TD id="E1637" onclick="javascript:toggleLayer('J1637')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Where did he live, then?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1637" onclick="javascript:toggleLayer('E1637')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ではどこに彼は住んでました？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1638"><a name="1638"><TD id="E1638" onclick="javascript:toggleLayer('J1638')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "He slept on the premises."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1638" onclick="javascript:toggleLayer('E1638')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「その建物に泊まってましたわ、」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1639"><a name="1639"><TD id="E1639" onclick="javascript:toggleLayer('J1639')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "And you don't know his address?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1639" onclick="javascript:toggleLayer('E1639')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それで彼の住所を知らないんですね？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1640"><a name="1640"><TD id="E1640" onclick="javascript:toggleLayer('J1640')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "No--except that it was Leadenhall Street."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1640" onclick="javascript:toggleLayer('E1640')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ええ－－レドゥンホール街だということ以外は。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1641"><a name="1641"><TD id="E1641" onclick="javascript:toggleLayer('J1641')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Where did you address your letters, then?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1641" onclick="javascript:toggleLayer('E1641')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「では手紙のあて先はどこにしたんですか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1642"><a name="1642"><TD id="E1642" onclick="javascript:toggleLayer('J1642')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "To the Leadenhall Street Post Office, to be left till called for.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1642" onclick="javascript:toggleLayer('E1642')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「レドゥンホール街郵便局です、局留めで。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1643"><a name="1643"><TD id="E1643" onclick="javascript:toggleLayer('J1643')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He said that if they were sent to the office he would be chaffed by all the other clerks about having letters from a lady, so I offered to typewrite them, like he did his, but he wouldn't have that, for he said that when I wrote them they seemed to come from me, but when they were typewritten he always felt that the machine had come between us.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1643" onclick="javascript:toggleLayer('E1643')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 会社宛に出すと婦人から手紙をもらったと言ってほかの事務員がみんなで冷やかすからと彼が言いますし、それで私タイプで打とうかと言ったんです、彼が自分のをそうしてますようにね、でもそれじゃあ彼いらないって、だって私が書いたものなら私から来たと感じられるけれども、タイプしたものではいつも機械が私たちの邪魔をするような気がすると彼は言いますの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1644"><a name="1644"><TD id="E1644" onclick="javascript:toggleLayer('J1644')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> That will just show you how fond he was of me, Mr. Holmes, and the little things that he would think of."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1644" onclick="javascript:toggleLayer('E1644')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはまさしく彼がどのくらい私のことを好きかを示してますわ、ホームズさん、それと小さなことに彼が気がつくことも。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1645"><a name="1645"><TD id="E1645" onclick="javascript:toggleLayer('J1645')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It was most suggestive," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1645" onclick="javascript:toggleLayer('E1645')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それはとても示唆に富むことでした」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1646"><a name="1646"><TD id="E1646" onclick="javascript:toggleLayer('J1646')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1646" onclick="javascript:toggleLayer('E1646')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホームズは言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1647"><a name="1647"><TD id="E1647" onclick="javascript:toggleLayer('J1647')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It has long been an axiom of mine that the little things are infinitely the most important.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1647" onclick="javascript:toggleLayer('E1647')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「長年僕の原理としてきたことですが、小さなことは何よりもきわめて重要なんです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1648"><a name="1648"><TD id="E1648" onclick="javascript:toggleLayer('J1648')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Can you remember any other little things about Mr. Hosmer Angel?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1648" onclick="javascript:toggleLayer('E1648')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホズマー・エンジェルさんに関してほかに何か小さなことを覚えていませんか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1649"><a name="1649"><TD id="E1649" onclick="javascript:toggleLayer('J1649')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "He was a very shy man, Mr. Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1649" onclick="javascript:toggleLayer('E1649')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「とても恥ずかしがりでしたわ、ホームズさん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1650"><a name="1650"><TD id="E1650" onclick="javascript:toggleLayer('J1650')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He would rather walk with me in the evening than in the daylight, for he said that he hated to be conspicuous.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1650" onclick="javascript:toggleLayer('E1650')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私と歩くのも日中よりも夕方でした、彼が人目につくのがいやだと言って。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1651"><a name="1651"><TD id="E1651" onclick="javascript:toggleLayer('J1651')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Very retiring and gentlemanly he was.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1651" onclick="javascript:toggleLayer('E1651')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とても遠慮がちで紳士的な人でしたわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1652"><a name="1652"><TD id="E1652" onclick="javascript:toggleLayer('J1652')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Even his voice was gentle.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1652" onclick="javascript:toggleLayer('E1652')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 声まで穏やかでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1653"><a name="1653"><TD id="E1653" onclick="javascript:toggleLayer('J1653')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He'd had the quinsy and swollen glands when he was young, he told me, and it had left him with a weak throat, and a hesitating, whispering fashion of speech. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1653" onclick="javascript:toggleLayer('E1653')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 若い頃、扁桃腺を腫らしたことがあって、それでのどが弱くなって、口ごもるような、ささやくような話し方になった、と彼は言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1654"><a name="1654"><TD id="E1654" onclick="javascript:toggleLayer('J1654')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was always well dressed, very neat and plain, but his eyes were weak, just as mine are, and he wore tinted glasses against the glare."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1654" onclick="javascript:toggleLayer('E1654')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いつも立派な身なりで、とてもきちんとして地味で、ですが目が弱くて、ちょうど私と同じように、それでまぶしくないようにサングラスをかけてましたわ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1655"><a name="1655"><TD id="E1655" onclick="javascript:toggleLayer('J1655')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Well, and what happened when Mr. Windibank, your stepfather, returned to France?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1655" onclick="javascript:toggleLayer('E1655')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「さて、それでどうなりました、あなたの義理のお父さんのウィンディバンクさんがフランスへ戻った時？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1656"><a name="1656"><TD id="E1656" onclick="javascript:toggleLayer('J1656')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Mr. Hosmer Angel came to the house again and proposed that we should marry before father came back.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1656" onclick="javascript:toggleLayer('E1656')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ホズマー・エンジェルさんがまた家へ来て、父が帰る前に結婚しようと提案しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1657"><a name="1657"><TD id="E1657" onclick="javascript:toggleLayer('J1657')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was in dreadful earnest and made me swear, with my hands on the Testament, that whatever happened I would always be true to him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1657" onclick="javascript:toggleLayer('E1657')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は恐ろしく真剣で、私に誓わせるんです、私の手を聖書にのせ、何があろうと私がいつまでも彼に忠実であるように、と。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1658"><a name="1658"><TD id="E1658" onclick="javascript:toggleLayer('J1658')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mother said he was quite right to make me swear, and that it was a sign of his passion.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1658" onclick="javascript:toggleLayer('E1658')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 母は言いましたわ、彼が私に誓いを立てさせるのは全く正しいし、それは愛情のしるしだと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1659"><a name="1659"><TD id="E1659" onclick="javascript:toggleLayer('J1659')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mother was all in his favour from the first and was even fonder of him than I was.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1659" onclick="javascript:toggleLayer('E1659')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 母は最初から彼の味方で、私よりもっと彼を気に入ってるくらいでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1660"><a name="1660"><TD id="E1660" onclick="javascript:toggleLayer('J1660')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then, when they talked of marrying within the week, I began to ask about father; but they both said never to mind about father, but just to tell him afterwards, and mother said she would make it all right with him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1660" onclick="javascript:toggleLayer('E1660')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから、二人が一週間以内に結婚するような話をするので、私が父のことを尋ねかけると、二人とも父のことは心配するな、ただ後から言えばいいと言い、母は自分が父のことはうまくやると言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1661"><a name="1661"><TD id="E1661" onclick="javascript:toggleLayer('J1661')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I didn't quite like that, Mr. Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1661" onclick="javascript:toggleLayer('E1661')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私はそれがあまり気に入りませんでしたわ、ホームズさん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1662"><a name="1662"><TD id="E1662" onclick="javascript:toggleLayer('J1662')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It seemed funny that I should ask his leave, as he was only a few years older than me;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1662" onclick="javascript:toggleLayer('E1662')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歳がいくつも上でもない人に許可を求めなければならないなんておかしいようですもの。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1663"><a name="1663"><TD id="E1663" onclick="javascript:toggleLayer('J1663')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but I didn't want to do anything on the sly, so I wrote to father at Bordeaux, where the company has its French offices, but the letter came back to me on the very morning of the wedding."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1663" onclick="javascript:toggleLayer('E1663')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも私は何にしろこそこそやりたくなかったので、ボルドーの父に、あ、そこに会社のフランスでの事務所のあるんですけど、手紙を書きましたが、その手紙は結婚式当日の朝、私の所に戻ってきました。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1664"><a name="1664"><TD id="E1664" onclick="javascript:toggleLayer('J1664')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It missed him, then?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1664" onclick="javascript:toggleLayer('E1664')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ではお父さんと行き違ったんですね？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1665"><a name="1665"><TD id="E1665" onclick="javascript:toggleLayer('J1665')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Yes, sir;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1665" onclick="javascript:toggleLayer('E1665')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ええ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1666"><a name="1666"><TD id="E1666" onclick="javascript:toggleLayer('J1666')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for he had started to England just before it arrived."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1666" onclick="javascript:toggleLayer('E1666')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが届く直前にイギリスへ発ったからです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1667"><a name="1667"><TD id="E1667" onclick="javascript:toggleLayer('J1667')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Ha!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1667" onclick="javascript:toggleLayer('E1667')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ほう！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1668"><a name="1668"><TD id="E1668" onclick="javascript:toggleLayer('J1668')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that was unfortunate.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1668" onclick="javascript:toggleLayer('E1668')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは残念でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1669"><a name="1669"><TD id="E1669" onclick="javascript:toggleLayer('J1669')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your wedding was arranged, then, for the Friday.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1669" onclick="javascript:toggleLayer('E1669')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで、あなた方の結婚式はその金曜日に決められた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1670"><a name="1670"><TD id="E1670" onclick="javascript:toggleLayer('J1670')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Was it to be in church?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1670" onclick="javascript:toggleLayer('E1670')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 教会でやる予定でしたか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1671"><a name="1671"><TD id="E1671" onclick="javascript:toggleLayer('J1671')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Yes, sir, but very quietly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1671" onclick="javascript:toggleLayer('E1671')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ええ、でもごく簡素に。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1672"><a name="1672"><TD id="E1672" onclick="javascript:toggleLayer('J1672')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was to be at St. Saviour's, near King's Cross, and we were to have breakfast afterwards at the St. Pancras Hotel.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1672" onclick="javascript:toggleLayer('E1672')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> キングスクロスの近くのセント・セイヴャーズで挙げて、その後セント・パンクラスホテルで披露宴をする予定でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1673"><a name="1673"><TD id="E1673" onclick="javascript:toggleLayer('J1673')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hosmer came for us in a hansom, but as there were two of us he put us both into it and stepped himself into a four-wheeler, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1673" onclick="javascript:toggleLayer('E1673')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホズマーは二人乗りで私たちを迎えに来ましたが、私たち二人いましたので、彼は私たち二人をそれに押し込んで、自分は四輪馬車に乗り込みました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1674"><a name="1674"><TD id="E1674" onclick="javascript:toggleLayer('J1674')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which happened to be the only other cab in the street.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1674" onclick="javascript:toggleLayer('E1674')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たまたま通りにはほかに馬車がいなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1675"><a name="1675"><TD id="E1675" onclick="javascript:toggleLayer('J1675')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We got to the church first, and when the four-wheeler drove up we waited for him to step out, but he never did, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1675" onclick="javascript:toggleLayer('E1675')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちが先に教会に着き、それから四輪馬車がやってきて、私たちは彼が出てくるのを待ちましたが、彼は出てきませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1676"><a name="1676"><TD id="E1676" onclick="javascript:toggleLayer('J1676')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and when the cabman got down from the box and looked there was no one there! 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1676" onclick="javascript:toggleLayer('E1676')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 御者が席から降りてきて見ると、そこには誰もいなかったのです！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1677"><a name="1677"><TD id="E1677" onclick="javascript:toggleLayer('J1677')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The cabman said that he could not imagine what had become of him, for he had seen him get in with his own eyes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1677" onclick="javascript:toggleLayer('E1677')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 御者は、自分の目で彼が乗り込むのを見たのだから、彼がどうなってしまったか想像もつかないと言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1678"><a name="1678"><TD id="E1678" onclick="javascript:toggleLayer('J1678')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> That was last Friday, Mr. Holmes, and I have never seen or heard anything since then to throw any light upon what became of him."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1678" onclick="javascript:toggleLayer('E1678')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが先週の金曜日です、ホームズさん、それ以来、彼がどうなったかについて光明を投ずるようなことを何一つ見も聞きもしないのです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1679"><a name="1679"><TD id="E1679" onclick="javascript:toggleLayer('J1679')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It seems to me that you have been very shamefully treated," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1679" onclick="javascript:toggleLayer('E1679')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「僕にはあなたがずいぶんけしからん扱いを受けたように思えますが」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1680"><a name="1680"><TD id="E1680" onclick="javascript:toggleLayer('J1680')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1680" onclick="javascript:toggleLayer('E1680')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホームズが言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1681"><a name="1681"><TD id="E1681" onclick="javascript:toggleLayer('J1681')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oh, no, sir!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1681" onclick="javascript:toggleLayer('E1681')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おお、いいえ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1682"><a name="1682"><TD id="E1682" onclick="javascript:toggleLayer('J1682')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was too good and kind to leave me so.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1682" onclick="javascript:toggleLayer('E1682')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は優しい、いい人ですからそんなふうに私を捨てるはずがありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1683"><a name="1683"><TD id="E1683" onclick="javascript:toggleLayer('J1683')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Why, all the morning he was saying to me that, whatever happened, I was to be true; and that even if something quite unforeseen occurred to separate us, I was always to remember that I was pledged to him, and that he would claim his pledge sooner or later.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1683" onclick="javascript:toggleLayer('E1683')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ええ、あの朝も彼は私にずっと言ってましたわ、何があろうと、私は忠実でなければならない、そして何かまったく予期せぬことが起こって私たちを引き離しても、私が彼に誓ったこと、そしていつかは彼が自分の誓いの正当性を主張することを私はいつまでも忘れてはいけないと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1684"><a name="1684"><TD id="E1684" onclick="javascript:toggleLayer('J1684')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It seemed strange talk for a wedding-morning, but what has happened since gives a meaning to it."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1684" onclick="javascript:toggleLayer('E1684')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 結婚式の朝にしては妙な話ですけど、その後起こったことを見ればそれが意味を持ってきますわ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1685"><a name="1685"><TD id="E1685" onclick="javascript:toggleLayer('J1685')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Most certainly it does.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1685" onclick="javascript:toggleLayer('E1685')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「間違いなくそうですね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1686"><a name="1686"><TD id="E1686" onclick="javascript:toggleLayer('J1686')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your own opinion is, then, that some unforeseen catastrophe has occurred to him?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1686" onclick="javascript:toggleLayer('E1686')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すると、あなたご自身の考えでは、彼に予期せぬ災難が降りかかったと？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1687"><a name="1687"><TD id="E1687" onclick="javascript:toggleLayer('J1687')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Yes, sir.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1687" onclick="javascript:toggleLayer('E1687')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうですわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1688"><a name="1688"><TD id="E1688" onclick="javascript:toggleLayer('J1688')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I believe that he foresaw some danger, or else he would not have talked so.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1688" onclick="javascript:toggleLayer('E1688')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私、彼が何か危険を予期していたと信じます、でなければあんな話はしなかったでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1689"><a name="1689"><TD id="E1689" onclick="javascript:toggleLayer('J1689')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And then I think that what he foresaw happened."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1689" onclick="javascript:toggleLayer('E1689')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこへ彼の予期したことが起こったんですわ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1690"><a name="1690"><TD id="E1690" onclick="javascript:toggleLayer('J1690')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "But you have no notion as to what it could have been?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1690" onclick="javascript:toggleLayer('E1690')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「しかしどんなことが起こったかについては何も考えはないんですね？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1691"><a name="1691"><TD id="E1691" onclick="javascript:toggleLayer('J1691')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "None."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1691" onclick="javascript:toggleLayer('E1691')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「何にも。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1692"><a name="1692"><TD id="E1692" onclick="javascript:toggleLayer('J1692')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "One more question.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1692" onclick="javascript:toggleLayer('E1692')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もう一問。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1693"><a name="1693"><TD id="E1693" onclick="javascript:toggleLayer('J1693')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> How did your mother take the matter?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1693" onclick="javascript:toggleLayer('E1693')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お母さんはこの事をどう見ました？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1694"><a name="1694"><TD id="E1694" onclick="javascript:toggleLayer('J1694')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "She was angry, and said that I was never to speak of the matter again."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1694" onclick="javascript:toggleLayer('E1694')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「母は腹を立てて、この問題は二度と口にしちゃいけないと言いました。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1695"><a name="1695"><TD id="E1695" onclick="javascript:toggleLayer('J1695')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "And your father?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1695" onclick="javascript:toggleLayer('E1695')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それでお父さんは？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1696"><a name="1696"><TD id="E1696" onclick="javascript:toggleLayer('J1696')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Did you tell him?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1696" onclick="javascript:toggleLayer('E1696')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お父さんには話しましたか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1697"><a name="1697"><TD id="E1697" onclick="javascript:toggleLayer('J1697')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Yes;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1697" onclick="javascript:toggleLayer('E1697')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ええ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1698"><a name="1698"><TD id="E1698" onclick="javascript:toggleLayer('J1698')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he seemed to think, with me, that something had happened, and that I should hear of Hosmer again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1698" onclick="javascript:toggleLayer('E1698')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父は私に賛成して、何事かが起こったと、だからまたホズマーの消息は聞けるだろうと思ったようです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1699"><a name="1699"><TD id="E1699" onclick="javascript:toggleLayer('J1699')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As he said, what interest could anyone have in bringing me to the doors of the church, and then leaving me?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1699" onclick="javascript:toggleLayer('E1699')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父の言うように、誰にしろ私を教会の玄関まで連れていってそこで私を放り出して何の得があるんです？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1700"><a name="1700"><TD id="E1700" onclick="javascript:toggleLayer('J1700')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now, if he had borrowed my money, or if he had married me and got my money settled on him, there might be some reason, but Hosmer was very independent about money and never would look at a shilling of mine.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1700" onclick="javascript:toggleLayer('E1700')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこですわ、彼が私からお金を借りていたとか、結婚して私のお金を彼に分与させたとかいうならわからなくもないですけど、ホズマーはお金のことでは全く誰に頼る必要もありませんでしたし、私のお金なんかちっとも問題にしませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="advn-15.htm">prev</a>
+<a href="advn-0.htm">0</a>
+<a href="advn-1.htm">1</a>
+<a href="advn-2.htm">2</a>
+<a href="advn-3.htm">3</a>
+<a href="advn-4.htm">4</a>
+<a href="advn-5.htm">5</a>
+<a href="advn-6.htm">6</a>
+<a href="advn-7.htm">7</a>
+<a href="advn-8.htm">8</a>
+<a href="advn-9.htm">9</a>
+<a href="advn-10.htm">10</a>
+<a href="advn-11.htm">11</a>
+<a href="advn-12.htm">12</a>
+<a href="advn-13.htm">13</a>
+<a href="advn-14.htm">14</a>
+<a href="advn-15.htm">15</a>
+<16>
+<a href="advn-17.htm">17</a>
+<a href="advn-18.htm">18</a>
+<a href="advn-19.htm">19</a>
+<a href="advn-20.htm">20</a>
+<a href="advn-21.htm">21</a>
+<a href="advn-17.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/advne.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/advnj.txt">local copy</a><li><a href="../manual-alignment/advn.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

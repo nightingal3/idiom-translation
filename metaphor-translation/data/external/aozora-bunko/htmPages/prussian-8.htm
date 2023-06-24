@@ -1,0 +1,254 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Prussian Officer / D. H. Lawrence 著</h2><h2>プロシア士官 / デイヴィド・ハーバート・ロレンス 著 / Yusuke Inatomi  訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/prussiane.txt">英語文</a>&<a href="../org/prussianj.txt">日本語文</a> / <a href="../manual-alignment/prussian.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>8 of The Prussian Officer</TITLE>
+<hr>
+<a href="prussian-7.htm">prev</a>
+<a href="prussian-0.htm">0</a>
+<a href="prussian-1.htm">1</a>
+<a href="prussian-2.htm">2</a>
+<a href="prussian-3.htm">3</a>
+<a href="prussian-4.htm">4</a>
+<a href="prussian-5.htm">5</a>
+<a href="prussian-6.htm">6</a>
+<a href="prussian-7.htm">7</a>
+<8>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="801"><a name="801"><TD id="E801" onclick="javascript:toggleLayer('J801')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When the soldiers found him, three hours later, he was lying with his face over his arm, his black hair giving off heat under the sun. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J801" onclick="javascript:toggleLayer('E801')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 4
+三時間の後に兵士たちが彼を見つけたとき、彼は腕に顔を乗せて身を横たえ、彼の黒髪は太陽に炙られ熱を放っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="802"><a name="802"><TD id="E802" onclick="javascript:toggleLayer('J802')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But he was still alive.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J802" onclick="javascript:toggleLayer('E802')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だが、彼はまだ生きていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="803"><a name="803"><TD id="E803" onclick="javascript:toggleLayer('J803')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Seeing the open, black mouth the young soldiers dropped him in horror.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J803" onclick="javascript:toggleLayer('E803')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼をかかえあげるとき、兵士たちは、その黒々と開かれた口を怖れ、おもわず彼の体を取り落とした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="804"><a name="804"><TD id="E804" onclick="javascript:toggleLayer('J804')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He died in the hospital at night, without having seen again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J804" onclick="javascript:toggleLayer('E804')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は二度と目を開くことなく、夜中に、病院で息絶えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="805"><a name="805"><TD id="E805" onclick="javascript:toggleLayer('J805')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The doctors saw the bruises on his legs, behind, and were silent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J805" onclick="javascript:toggleLayer('E805')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 医師たちは、彼の腿の裏に打ち傷があるのを見たが、何も言わなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="806"><a name="806"><TD id="E806" onclick="javascript:toggleLayer('J806')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The bodies of the two men lay together, side by side, in the mortuary, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J806" onclick="javascript:toggleLayer('E806')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 大尉と従卒の身体は、遺体置き場に、隣り合わせに横たえられた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="807"><a name="807"><TD id="E807" onclick="javascript:toggleLayer('J807')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the one white and slender, but laid rigidly at rest, the other looking as if every moment it must rouse into life again, so young and unused, from a slumber.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J807" onclick="javascript:toggleLayer('E807')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方の身体は、蒼白くほっそりしていたが、死にひたり、固く強ばったまま横たわり、対して、もう一つの身体は、まるで今にも昏睡から醒めて、生へ呼び戻されようとしているかのように、若々しく、無垢に見えるのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="808"><a name="808"><TD ID="TAB808" onclick="javascript:toggleLayer('J808')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB808" onclick="javascript:toggleLayer('E808')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+</TABLE></span><HR>
+<a href="prussian-7.htm">prev</a>
+<a href="prussian-0.htm">0</a>
+<a href="prussian-1.htm">1</a>
+<a href="prussian-2.htm">2</a>
+<a href="prussian-3.htm">3</a>
+<a href="prussian-4.htm">4</a>
+<a href="prussian-5.htm">5</a>
+<a href="prussian-6.htm">6</a>
+<a href="prussian-7.htm">7</a>
+<8>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/prussiane.txt">local copy</a> / <a href="http://www.literature.org/authors/lawrence-david-herbert/the-prussian-officer-and-other-stories/part-01/index.html">http://www.literature.org/authors/lawrence-david-herbert/the-prussian-officer-and-other-stories/part-01/index.html</a><li>オリジナルの日本語文: <a href="../org/prussianj.txt">local copy</a> / <a href="http://yokohama.cool.ne.jp/trounoir/prussian.html">http://yokohama.cool.ne.jp/trounoir/prussian.html</a><li><a href="../manual-alignment/prussian.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

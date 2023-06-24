@@ -1,0 +1,472 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Ivy Day in the Committee Room / James Joyce 著</h2><h2>アイビーデイの委員会室 / ジェイムズ・ジョイス 著 / coderati 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/ivye.txt">英語文</a>&<a href="../org/ivyj.txt">日本語文</a> / <a href="../manual-alignment/ivy.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>6 of Ivy Day in the Committee Room</TITLE>
+<hr>
+<a href="ivy-5.htm">prev</a>
+<a href="ivy-0.htm">0</a>
+<a href="ivy-1.htm">1</a>
+<a href="ivy-2.htm">2</a>
+<a href="ivy-3.htm">3</a>
+<a href="ivy-4.htm">4</a>
+<a href="ivy-5.htm">5</a>
+<6>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="601"><a name="601"><TD id="E601" onclick="javascript:toggleLayer('J601')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Henchy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J601" onclick="javascript:toggleLayer('E601')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とヘンチー氏が言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="602"><a name="602"><TD id="E602" onclick="javascript:toggleLayer('J602')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Hynes sat on the side of the table near Mr. Lyons but said nothing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J602" onclick="javascript:toggleLayer('E602')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハインズ氏はテーブルの端のライアンズ氏のそばに座ったが何も言わなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="603"><a name="603"><TD id="E603" onclick="javascript:toggleLayer('J603')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "There's one of them, anyhow,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J603" onclick="javascript:toggleLayer('E603')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「とにかく一人いる、」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="604"><a name="604"><TD id="E604" onclick="javascript:toggleLayer('J604')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Henchy,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J604" onclick="javascript:toggleLayer('E604')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘンチー氏は言った、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="605"><a name="605"><TD id="E605" onclick="javascript:toggleLayer('J605')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "that didn't renege him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J605" onclick="javascript:toggleLayer('E605')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「彼を否定しなかったものが。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="606"><a name="606"><TD id="E606" onclick="javascript:toggleLayer('J606')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> By God, I'll say for you, Joe!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J606" onclick="javascript:toggleLayer('E606')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうとも、君のことさ、ジョー！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="607"><a name="607"><TD id="E607" onclick="javascript:toggleLayer('J607')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No, by God, you stuck to him like a man!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J607" onclick="javascript:toggleLayer('E607')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いや、そうとも、君は男らしく彼に忠実だったぞ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="608"><a name="608"><TD id="E608" onclick="javascript:toggleLayer('J608')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "0, Joe," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J608" onclick="javascript:toggleLayer('E608')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああ、ジョー」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="609"><a name="609"><TD id="E609" onclick="javascript:toggleLayer('J609')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. O'Connor suddenly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J609" onclick="javascript:toggleLayer('E609')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と不意にオコナー氏が言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="610"><a name="610"><TD id="E610" onclick="javascript:toggleLayer('J610')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Give us that thing you wrote
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J610" onclick="javascript:toggleLayer('E610')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「君の書いたあのやつを聞かせてくれよ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="611"><a name="611"><TD id="E611" onclick="javascript:toggleLayer('J611')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> --do you remember?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J611" onclick="javascript:toggleLayer('E611')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> －－思い出せる？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="612"><a name="612"><TD id="E612" onclick="javascript:toggleLayer('J612')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Have you got it on you?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J612" onclick="javascript:toggleLayer('E612')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 記憶してるかい？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="613"><a name="613"><TD id="E613" onclick="javascript:toggleLayer('J613')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "0, ay!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J613" onclick="javascript:toggleLayer('E613')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おお、そうだ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="614"><a name="614"><TD id="E614" onclick="javascript:toggleLayer('J614')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Henchy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J614" onclick="javascript:toggleLayer('E614')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とヘンチー氏が言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="615"><a name="615"><TD id="E615" onclick="javascript:toggleLayer('J615')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Give us that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J615" onclick="javascript:toggleLayer('E615')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あれをやってくれ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="616"><a name="616"><TD id="E616" onclick="javascript:toggleLayer('J616')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Did you ever hear that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J616" onclick="javascript:toggleLayer('E616')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 前に聞いたことがあるかい、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="617"><a name="617"><TD id="E617" onclick="javascript:toggleLayer('J617')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Crofton?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J617" onclick="javascript:toggleLayer('E617')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> クロフトン？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="618"><a name="618"><TD id="E618" onclick="javascript:toggleLayer('J618')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Listen to this now:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J618" onclick="javascript:toggleLayer('E618')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> じゃあこれを聞いてみな。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="619"><a name="619"><TD id="E619" onclick="javascript:toggleLayer('J619')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> splendid thing."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J619" onclick="javascript:toggleLayer('E619')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すばらしい作品だ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="620"><a name="620"><TD id="E620" onclick="javascript:toggleLayer('J620')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Go on," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J620" onclick="javascript:toggleLayer('E620')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「やってくれ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="621"><a name="621"><TD id="E621" onclick="javascript:toggleLayer('J621')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. O'Connor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J621" onclick="javascript:toggleLayer('E621')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とオコナー氏が言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="622"><a name="622"><TD id="E622" onclick="javascript:toggleLayer('J622')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Fire away, Joe."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J622" onclick="javascript:toggleLayer('E622')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「始めてくれ、ジョー。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="623"><a name="623"><TD id="E623" onclick="javascript:toggleLayer('J623')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Hynes did not seem to remember at once the piece to which they were alluding, but, after reflecting a while, he said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J623" onclick="javascript:toggleLayer('E623')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハインズ氏は彼らの言っている一編をすぐには思い出せないようだった、が、しばらく熟考した後、言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="624"><a name="624"><TD id="E624" onclick="javascript:toggleLayer('J624')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "O, that thing is it.... 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J624" onclick="javascript:toggleLayer('E624')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おお、あの詩だ・・・
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="625"><a name="625"><TD id="E625" onclick="javascript:toggleLayer('J625')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Sure, that's old now."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J625" onclick="javascript:toggleLayer('E625')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうだな、もう古いやつだ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="626"><a name="626"><TD id="E626" onclick="javascript:toggleLayer('J626')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Out with it, man!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J626" onclick="javascript:toggleLayer('E626')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もったいぶらずにさ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="627"><a name="627"><TD id="E627" onclick="javascript:toggleLayer('J627')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. O'Connor.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J627" onclick="javascript:toggleLayer('E627')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とオコナー氏が言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="628"><a name="628"><TD id="E628" onclick="javascript:toggleLayer('J628')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "'Sh, 'sh,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J628" onclick="javascript:toggleLayer('E628')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「シ、シ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="629"><a name="629"><TD id="E629" onclick="javascript:toggleLayer('J629')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Henchy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J629" onclick="javascript:toggleLayer('E629')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とヘンチー氏は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="630"><a name="630"><TD id="E630" onclick="javascript:toggleLayer('J630')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Now, Joe!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J630" onclick="javascript:toggleLayer('E630')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「さあ、ジョー！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="631"><a name="631"><TD id="E631" onclick="javascript:toggleLayer('J631')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Hynes hesitated a little longer. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J631" onclick="javascript:toggleLayer('E631')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハインズ氏は少しぐずぐずと躊躇していた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="632"><a name="632"><TD id="E632" onclick="javascript:toggleLayer('J632')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then amid the silence he took off his hat, laid it on the table and stood up.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J632" onclick="javascript:toggleLayer('E632')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから静寂の中、彼は帽子を脱いでそれをテーブルの上に置き、立ち上がった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="633"><a name="633"><TD id="E633" onclick="javascript:toggleLayer('J633')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He seemed to be rehearsing the piece in his mind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J633" onclick="javascript:toggleLayer('E633')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は心の中でその一編のリハーサルをしているように見えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="634"><a name="634"><TD id="E634" onclick="javascript:toggleLayer('J634')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After a rather long pause he announced:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J634" onclick="javascript:toggleLayer('E634')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かなり長い間の後、彼は披露した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="635"><a name="635"><TD id="E635" onclick="javascript:toggleLayer('J635')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> THE DEATH OF PARNELL
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J635" onclick="javascript:toggleLayer('E635')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> パーネルの死
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="636"><a name="636"><TD id="E636" onclick="javascript:toggleLayer('J636')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 6th October, 1891
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J636" onclick="javascript:toggleLayer('E636')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 1891年十月六日
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="637"><a name="637"><TD id="E637" onclick="javascript:toggleLayer('J637')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He cleared his throat once or twice and then began to recite:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J637" onclick="javascript:toggleLayer('E637')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は一、二度咳払いをしてそれから朗誦し始めた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="638"><a name="638"><TD id="E638" onclick="javascript:toggleLayer('J638')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> O, Erin, mourn with grief and woe
+For he lies dead whom the fell gang
+Of modern hypocrites laid low.
+He lies slain by the coward hounds
+He raised to glory from the mire;
+And Erin's hopes and Erin's dreams
+Perish upon her monarch's pyre.
+In palace, cabin or in cot
+The Irish heart where'er it be
+Is bowed with woe--for he is gone
+Who would have wrought her destiny.
+He would have had his Erin famed,
+The green flag gloriously unfurled,
+Her statesmen, bards and warriors raised
+Before the nations of the World.
+He dreamed (alas, 'twas but a dream!)
+Of Liberty: but as he strove
+To clutch that idol, treachery
+Sundered him from the thing he loved.
+Shame on the coward, caitiff hands
+That smote their Lord or with a kiss
+Betrayed him to the rabble-rout
+Of fawning priests--no friends of his.
+May everlasting shame consume
+The memory of those who tried
+To befoul and smear the exalted name
+Of one who spurned them in his pride.
+He fell as fall the mighty ones,
+Nobly undaunted to the last,
+And death has now united him
+With Erin's heroes of the past.
+No sound of strife disturb his sleep!
+Calmly he rests: no human pain
+Or high ambition spurs him now
+The peaks of glory to attain.
+They had their way: they laid him low.
+But Erin, list, his spirit may
+Rise, like the Phoenix from the flames,
+When breaks the dawning of the day,
+The day that brings us Freedom's reign.
+And on that day may Erin well
+Pledge in the cup she lifts to Joy
+One grief--the memory of Parnell.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J638" onclick="javascript:toggleLayer('E638')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> パーネルは死んだ
+残忍な偽善者どもの手にかかり
+僕らの無冠の王は死んだ
+嘆く、嘆く、悲しみのエリン
+泥沼から引き上げてやった
+臆病な犬どもに彼は殺された
+エリンの希望もエリンの夢も
+その君主の積みまきの上に滅びた
+御殿にあろうとも、小屋にあろうとも
+悲しみにひしがれるアイルランドの心
+その運命をもたらすはずの
+彼が逝ってしまったから
+彼あらば世界に
+エリンの名を知らしめ
+栄光の緑の旗をはためかせ
+政治家たち、詩人たち、戦士たちの立ち上がったものを
+彼は自由を夢見た
+悲しいかな、夢にすぎなかった
+偶像をつかもうとしたその時
+裏切りが彼と愛するものを引き離した
+恥を知れ、臆病者
+彼らの君主を襲い
+媚を売る聖職者衆に
+売り渡した卑劣漢ども
+永遠の恥辱よ、焼き尽くせ
+誇りをもって彼らをはねつけた人の
+高貴の名を汚し
+傷つけた者どもの記憶を
+最後まで気高く
+屈せずに倒れた強き人
+死が彼を今は亡き
+エリンの英雄たちと一つにした
+彼の眠りを乱す争いはなし！
+静かに彼は休む
+彼を栄光へと駆り立てる
+人としての苦悩も大望も今はない
+彼らは思い通り彼を殺した
+しかしエリンは望む、彼の魂よ
+炎から不死鳥のように舞い上がれと
+その日の夜の明ける時
+自由の御代が僕らにもたらされる
+その日、エリンよ、挙げよ
+喜びの杯を悲しみのために
+パーネルの思い出のために
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="639"><a name="639"><TD ID="TAB639" onclick="javascript:toggleLayer('J639')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB639" onclick="javascript:toggleLayer('E639')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="640"><a name="640"><TD id="E640" onclick="javascript:toggleLayer('J640')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Hynes sat down again on the table.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J640" onclick="javascript:toggleLayer('E640')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハインズ氏は再びテーブルに座った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="641"><a name="641"><TD id="E641" onclick="javascript:toggleLayer('J641')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When he had finished his recitation there was a silence and then a burst of clapping:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J641" onclick="javascript:toggleLayer('E641')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の朗誦が終わると沈黙が訪れ、それからどっと拍手が起こった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="642"><a name="642"><TD id="E642" onclick="javascript:toggleLayer('J642')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> even Mr. Lyons clapped.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J642" onclick="javascript:toggleLayer('E642')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ライアンズ氏さえ拍手した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="643"><a name="643"><TD id="E643" onclick="javascript:toggleLayer('J643')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The applause continued for a little time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J643" onclick="javascript:toggleLayer('E643')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 喝采は少しの間続いた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="644"><a name="644"><TD id="E644" onclick="javascript:toggleLayer('J644')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When it had ceased all the auditors drank from their bottles in silence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J644" onclick="javascript:toggleLayer('E644')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それがやむとすべての聞き手が黙って瓶から飲んだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="645"><a name="645"><TD id="E645" onclick="javascript:toggleLayer('J645')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pok!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J645" onclick="javascript:toggleLayer('E645')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ポン！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="646"><a name="646"><TD id="E646" onclick="javascript:toggleLayer('J646')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The cork flew out of Mr. Hynes' bottle, but Mr. Hynes remained sitting flushed and bare-headed on the table. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J646" onclick="javascript:toggleLayer('E646')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハインズ氏の瓶からコルクが飛び出したが、ハインズ氏は上気し、帽子もかぶらずにテーブルの上に座ったままでいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="647"><a name="647"><TD id="E647" onclick="javascript:toggleLayer('J647')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He did not seem to have heard the invitation.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J647" onclick="javascript:toggleLayer('E647')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はその誘いを耳にしなかったように見えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="648"><a name="648"><TD id="E648" onclick="javascript:toggleLayer('J648')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Good man, Joe!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J648" onclick="javascript:toggleLayer('E648')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ようよう、ジョー！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="649"><a name="649"><TD id="E649" onclick="javascript:toggleLayer('J649')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. O'Connor, taking out his cigarette papers and pouch the better to hide his emotion.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J649" onclick="javascript:toggleLayer('E649')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とオコナー氏はなるべく感動を隠そうとしてタバコの巻紙とタバコ入れを取り出しながら言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="650"><a name="650"><TD id="E650" onclick="javascript:toggleLayer('J650')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "What do you think of that, Crofton?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J650" onclick="javascript:toggleLayer('E650')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「どう思う、クロフトン？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="651"><a name="651"><TD id="E651" onclick="javascript:toggleLayer('J651')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried Mr. Henchy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J651" onclick="javascript:toggleLayer('E651')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とヘンチー氏が叫んだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="652"><a name="652"><TD id="E652" onclick="javascript:toggleLayer('J652')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Isn't that fine?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J652" onclick="javascript:toggleLayer('E652')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「すばらしいじゃないか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="653"><a name="653"><TD id="E653" onclick="javascript:toggleLayer('J653')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J653" onclick="javascript:toggleLayer('E653')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> え？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="654"><a name="654"><TD id="E654" onclick="javascript:toggleLayer('J654')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Crofton said that it was a very fine piece of writing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J654" onclick="javascript:toggleLayer('E654')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> クロフトンはとてもすばらしい作品だと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="ivy-5.htm">prev</a>
+<a href="ivy-0.htm">0</a>
+<a href="ivy-1.htm">1</a>
+<a href="ivy-2.htm">2</a>
+<a href="ivy-3.htm">3</a>
+<a href="ivy-4.htm">4</a>
+<a href="ivy-5.htm">5</a>
+<6>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/ivye.txt">local copy</a> / <a href="http://www.gutenberg.org/dirs/etext01/dblnr11.txt">http://www.gutenberg.org/dirs/etext01/dblnr11.txt</a><li>オリジナルの日本語文: <a href="../org/ivyj.txt">local copy</a> / <a href="http://homepage3.nifty.com/coderachi/joyce/ivdy.html">http://homepage3.nifty.com/coderachi/joyce/ivdy.html</a><li><a href="../manual-alignment/ivy.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,526 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>A Mother / James Joyce 著</h2><h2>母親 / ジェイムズ・ジョイス 著 / coderati 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/amothere.txt">英語文</a>&<a href="../org/amotherj.txt">日本語文</a> / <a href="../manual-alignment/amother.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of A Mother</TITLE>
+<hr>
+<a href="amother-1.htm">prev</a>
+<a href="amother-0.htm">0</a>
+<a href="amother-1.htm">1</a>
+<2>
+<a href="amother-3.htm">3</a>
+<a href="amother-3.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Freeman man had come in to say that he could not wait for the concert as he had to report the lecture which an American priest was giving in the Mansion House. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> フリーマンの男は、マンション・ハウスでアメリカ人の司祭が行っている講演の記事を書かなければならないのでコンサートまで待てないと断るために来たのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He said they were to leave the report for him at the Freeman office and he would see that it went in.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> フリーマン社でも記事を彼に任せざるをえず、彼はそれが掲載に回るよう取り計らうつもりだと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was a grey-haired man, with a plausible voice and careful manners.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はまことしやかな声、慎重なふるまいの白髪男だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He held an extinguished cigar in his hand and the aroma of cigar smoke floated near him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は消えた葉巻を手に持ち、近くには葉巻の煙の香りが漂っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He had not intended to stay a moment because concerts and artistes bored him considerably but he remained leaning against the mantelpiece.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> コンサートにもアーティストにも相当うんざりしていた彼は少しもとどまるつもりはなかったのにマントルピースに凭れて居残っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Miss Healy stood in front of him, talking and laughing. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ミス・ヒーリーが彼の前に立って談笑していた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was old enough to suspect one reason for her politeness but young enough in spirit to turn the moment to account.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は、彼女が礼儀正しくする理由に感づくだけ年齢を十分重ねていたが、この機会を利用する心の若さも十分だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="208"><a name="208"><TD id="E208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The warmth, fragrance and colour of her body appealed to his senses.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J208" onclick="javascript:toggleLayer('E208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女の体の暖かさ、かぐわしさ、血色が彼の五感に訴えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was pleasantly conscious that the bosom which he saw rise and fall slowly beneath him rose and fell at that moment for him, that the laughter and fragrance and wilful glances were his tribute.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の下にゆっくりと隆起して沈むのが見える胸がその瞬間彼のために隆起して沈んだこと、笑い声、香気、意図的な視線が彼の賜物であることを意識して彼は愉快だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="210"><a name="210"><TD id="E210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When he could stay no longer he took leave of her regretfully.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J210" onclick="javascript:toggleLayer('E210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もうそれ以上いられないという時彼は残念そうに彼女に別れを告げた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "O'Madden Burke will write the notice," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「オマドゥン・バークが批評を書くだろ、」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he explained to Mr. Holohan,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はホラハン氏に説明した、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "and I'll see it in."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それで僕が載るようにするから。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Thank you very much, Mr. Hendrick,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「どうもありがとうございます、ヘンドリックさん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Holohan.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホラハン氏は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="216"><a name="216"><TD id="E216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> you'll see it in, I know.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J216" onclick="javascript:toggleLayer('E216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あなたが載るようにしてくださるんですね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now, won't you have a little something before you go?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところで行く前にちょっと何か召し上がりませんか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I don't mind,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「かまいませんよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. Hendrick.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とヘンドリック氏は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The two men went along some tortuous passages and up a dark staircase and came to a secluded room where one of the stewards was uncorking bottles for a few gentlemen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二人がいくつかの曲がりくねった廊下を通り、暗い階段を上がり、奥まった部屋に着くと、幹事の一人が数人の紳士ためにコルク栓を抜いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="221"><a name="221"><TD id="E221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One of these gentlemen was Mr. O'Madden Burke, who had found out the room by instinct.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J221" onclick="javascript:toggleLayer('E221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらの紳士の一人は本能によってこの部屋を見つけ出したオマドゥン・バーク氏だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD id="E222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was a suave, elderly man who balanced his imposing body, when at rest, upon a large silk umbrella. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はもの柔らかな初老の男で、休息する時には、大きな絹の傘で堂々たるからだの平衡を保っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD id="E223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His magniloquent western name was the moral umbrella upon which he balanced the fine problem of his finances.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼の大仰な西部の名前は、彼の財政上のご立派な問題の平衡を保つ道徳的な傘だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD id="E224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He was widely respected.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は広く尊敬されていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD id="E225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While Mr. Holohan was entertaining the Freeman man Mrs. Kearney was speaking so animatedly to her husband that he had to ask her to lower her voice.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホラハン氏がフリーマンの男をもてなしている頃、カーニー夫人の方は夫が声を低くするように頼まなければならないほど活発に夫に話しかけていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD id="E226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The conversation of the others in the dressing-room had become strained.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 楽屋のほかの人たちの会話は緊張を帯びてきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD id="E227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Bell, the first item, stood ready with his music but the accompanist made no sign.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最初の演目のベル氏は楽譜を手に用意ができているのに伴奏者にはその素振りがなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD id="E228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Evidently something was wrong.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 明らかにどこかおかしかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD id="E229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Kearney looked straight before him, stroking his beard, while Mrs. Kearney spoke into Kathleen's ear with subdued emphasis.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カーニー氏はまっすぐ前を見てあごひげをなで、一方カーニー夫人は抑えた強調子でキャスリーンに耳打ちした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD id="E230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From the hall came sounds of encouragement, clapping and stamping of feet.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホールからは手を叩き足を踏み鳴らす激励の音が聞こえた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="231"><a name="231"><TD id="E231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first tenor and the baritone and Miss Healy stood together, waiting tranquilly, but Mr. Bell's nerves were greatly agitated because he was afraid the audience would think that he had come late.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J231" onclick="javascript:toggleLayer('E231')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ファーストテナーとバリトンとミス・ヒーリーは一緒に立ち、落ち着いて待っていたが、ベル氏の神経は聴衆が彼が遅刻して来たと考えるのではないかと懸念して大いに動揺していた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="232"><a name="232"><TD id="E232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Holohan and Mr. O'Madden Burke came into the room 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J232" onclick="javascript:toggleLayer('E232')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホラハン氏とオマドゥン・バーク氏が部屋に入ってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="233"><a name="233"><TD id="E233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In a moment Mr. Holohan perceived the hush. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J233" onclick="javascript:toggleLayer('E233')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たちまちホラハン氏は静まり返ったことに気づいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="234"><a name="234"><TD id="E234" onclick="javascript:toggleLayer('J234')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He went over to Mrs. Kearney and spoke with her earnestly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J234" onclick="javascript:toggleLayer('E234')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はカーニー夫人の所へ行き、彼女と真剣に話した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="235"><a name="235"><TD id="E235" onclick="javascript:toggleLayer('J235')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While they were speaking the noise in the hall grew louder.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J235" onclick="javascript:toggleLayer('E235')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らが話している間にもホールのざわめきは大きくなっていった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="236"><a name="236"><TD id="E236" onclick="javascript:toggleLayer('J236')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Holohan became very red and excited.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J236" onclick="javascript:toggleLayer('E236')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホラハン氏はすっかり真っ赤になって興奮していた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="237"><a name="237"><TD id="E237" onclick="javascript:toggleLayer('J237')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He spoke volubly, but Mrs. Kearney said curtly at intervals:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J237" onclick="javascript:toggleLayer('E237')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は多弁を費やした、しかしカーニー夫人は間を置いてぶっきらぼうに言うのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="238"><a name="238"><TD id="E238" onclick="javascript:toggleLayer('J238')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "She won't go on.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J238" onclick="javascript:toggleLayer('E238')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「彼女は出ませんよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="239"><a name="239"><TD id="E239" onclick="javascript:toggleLayer('J239')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She must get her eight guineas."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J239" onclick="javascript:toggleLayer('E239')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女は八ギニーもらわなければ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="240"><a name="240"><TD id="E240" onclick="javascript:toggleLayer('J240')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Holohan pointed desperately towards the hall where the audience was clapping and stamping.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J240" onclick="javascript:toggleLayer('E240')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホラハン氏は必死に、聴衆が拍手し、足を踏み鳴らすホールの方を指さした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="241"><a name="241"><TD id="E241" onclick="javascript:toggleLayer('J241')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He appealed to Mr Kearney and to Kathleen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J241" onclick="javascript:toggleLayer('E241')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はカーニー氏にもキャスリーンにも懇願した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="242"><a name="242"><TD id="E242" onclick="javascript:toggleLayer('J242')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But Mr. Kearney continued to stroke his beard and Kathleen looked down, moving the point of her new shoe: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J242" onclick="javascript:toggleLayer('E242')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしカーニー氏はあごひげをなで続け、キャスリーンは新しい靴の先を動かしながら目を下にやった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="243"><a name="243"><TD id="E243" onclick="javascript:toggleLayer('J243')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it was not her fault.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J243" onclick="javascript:toggleLayer('E243')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女の責任ではない、と。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="244"><a name="244"><TD id="E244" onclick="javascript:toggleLayer('J244')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mrs. Kearney repeated:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J244" onclick="javascript:toggleLayer('E244')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カーニー夫人は繰り返した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="245"><a name="245"><TD id="E245" onclick="javascript:toggleLayer('J245')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "She won't go on without her money."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J245" onclick="javascript:toggleLayer('E245')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「お金なしでは彼女は出ません。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="246"><a name="246"><TD id="E246" onclick="javascript:toggleLayer('J246')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After a swift struggle of tongues Mr. Holohan hobbled out in haste.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J246" onclick="javascript:toggleLayer('E246')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 迅速な舌先の苦闘に続いてホラハン氏は急いで足を引きずり出て行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="247"><a name="247"><TD id="E247" onclick="javascript:toggleLayer('J247')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The room was silent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J247" onclick="javascript:toggleLayer('E247')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 部屋は静かだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="248"><a name="248"><TD id="E248" onclick="javascript:toggleLayer('J248')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When the strain of the silence had become somewhat painful Miss Healy said to the baritone:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J248" onclick="javascript:toggleLayer('E248')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 静寂の緊張がやや苦痛になった時ミス・ヒーリーがバリトンに言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="249"><a name="249"><TD id="E249" onclick="javascript:toggleLayer('J249')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Have you seen Mrs. Pat Campbell this week?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J249" onclick="javascript:toggleLayer('E249')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「今週パット・キャンベル夫人をご覧になりまして？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="250"><a name="250"><TD id="E250" onclick="javascript:toggleLayer('J250')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The baritone had not seen her but he had been told that she was very fine.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J250" onclick="javascript:toggleLayer('E250')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> バリトンは彼女を見たことはなかったが、彼女はとてもすばらしいと聞いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="251"><a name="251"><TD id="E251" onclick="javascript:toggleLayer('J251')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The conversation went no further. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J251" onclick="javascript:toggleLayer('E251')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 会話はそれ以上続かなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="252"><a name="252"><TD id="E252" onclick="javascript:toggleLayer('J252')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first tenor bent his head and began to count the links of the gold chain which was extended across his waist, smiling and humming random notes to observe the effect on the frontal sinus.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J252" onclick="javascript:toggleLayer('E252')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ファーストテナーは頭をかがめ、ウェストに渡した金の鎖の輪を数え始め、にっこりしたり前頭洞ヘの効果を見るためにでたらめなキーをハミングしたりした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="253"><a name="253"><TD id="E253" onclick="javascript:toggleLayer('J253')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From time to time everyone glanced at Mrs. Kearney.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J253" onclick="javascript:toggleLayer('E253')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 誰もが時々カーニー夫人を見やった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="254"><a name="254"><TD id="E254" onclick="javascript:toggleLayer('J254')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The noise in the auditorium had risen to a clamour when Mr. Fitzpatrick burst into the room, followed by Mr. Holohan who was panting.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J254" onclick="javascript:toggleLayer('E254')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 観客席のざわめきがどよめきにまで高まった時フィッツパトリック氏が部屋に躍りこみ、息を切らしたホラハン氏が続いた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="255"><a name="255"><TD id="E255" onclick="javascript:toggleLayer('J255')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The clapping and stamping in the hall were punctuated by whistling.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J255" onclick="javascript:toggleLayer('E255')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホールの拍手や足踏みは口笛によりたびたび中断した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="256"><a name="256"><TD id="E256" onclick="javascript:toggleLayer('J256')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. Fitzpatrick held a few banknotes in his hand.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J256" onclick="javascript:toggleLayer('E256')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> フィッツパトリック氏は手に数枚の紙幣を持っていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="257"><a name="257"><TD id="E257" onclick="javascript:toggleLayer('J257')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He counted out four into Mrs. Kearney's hand and said she would get the other half at the interval. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J257" onclick="javascript:toggleLayer('E257')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はカーニー夫人の手の中に四枚を数え、残りの半分は休憩時間にと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="258"><a name="258"><TD id="E258" onclick="javascript:toggleLayer('J258')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mrs. Kearney said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J258" onclick="javascript:toggleLayer('E258')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カーニー夫人は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="259"><a name="259"><TD id="E259" onclick="javascript:toggleLayer('J259')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "This is four shillings short."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J259" onclick="javascript:toggleLayer('E259')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「これは四シリング足りません。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="260"><a name="260"><TD id="E260" onclick="javascript:toggleLayer('J260')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But Kathleen gathered in her skirt and said: 
+"Now. 
+Mr. Bell," 
+to the first item, who was shaking like an aspen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J260" onclick="javascript:toggleLayer('E260')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしキャスリーンはスカートを引き寄せて
+「さあ、ベルさん」
+とぶるぶる震えている最初の演奏者に言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="261"><a name="261"><TD id="E261" onclick="javascript:toggleLayer('J261')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The singer and the accompanist went out together.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J261" onclick="javascript:toggleLayer('E261')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歌手と伴奏者は一緒に出て行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="262"><a name="262"><TD id="E262" onclick="javascript:toggleLayer('J262')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The noise in hall died away. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J262" onclick="javascript:toggleLayer('E262')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホールのざわめきは次第に静まった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="263"><a name="263"><TD id="E263" onclick="javascript:toggleLayer('J263')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There was a pause of a few seconds:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J263" onclick="javascript:toggleLayer('E263')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 数秒の間があった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="264"><a name="264"><TD id="E264" onclick="javascript:toggleLayer('J264')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and then the piano was heard.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J264" onclick="javascript:toggleLayer('E264')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それからピアノが聞こえた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="265"><a name="265"><TD id="E265" onclick="javascript:toggleLayer('J265')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first part of the concert was very successful except for Madam Glynn's item.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J265" onclick="javascript:toggleLayer('E265')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> コンサートの第一部はマダム・グリンの演目を除いて大成功だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="266"><a name="266"><TD id="E266" onclick="javascript:toggleLayer('J266')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The poor lady sang Killarney in a bodiless gasping voice, with all the old-fashioned mannerisms of intonation and pronunciation which she believed lent elegance to her singing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J266" onclick="javascript:toggleLayer('E266')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 哀れなレディーは、自らの歌唱に優雅を添えると信ずる流行遅れの独特の抑揚、発音を駆使し、張りのないあえぐような声で『キラーニー』を歌った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="267"><a name="267"><TD id="E267" onclick="javascript:toggleLayer('J267')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She looked as if she had been resurrected from an old stage-wardrobe and the cheaper parts of the hall made fun of her high wailing notes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J267" onclick="javascript:toggleLayer('E267')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女はまるで古い舞台衣装から蘇ってきたかのように見え、そのかん高い咽び声はホールの安席の方では物笑いの種となった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="268"><a name="268"><TD id="E268" onclick="javascript:toggleLayer('J268')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first tenor and the contralto, however, brought down the house. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J268" onclick="javascript:toggleLayer('E268')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしファーストテナーとコントラルトは満場をうならせた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="269"><a name="269"><TD id="E269" onclick="javascript:toggleLayer('J269')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Kathleen played a selection of Irish airs which was generously applauded.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J269" onclick="javascript:toggleLayer('E269')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> キャスリーンはアイルランドのメロディーを選んで弾き、惜しみない拍手喝采を受けた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="270"><a name="270"><TD id="E270" onclick="javascript:toggleLayer('J270')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first part closed with a stirring patriotic recitation delivered by a young lady who arranged amateur theatricals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J270" onclick="javascript:toggleLayer('E270')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第一部の終わりは素人芝居を脚色した若い婦人による、感動を呼ぶ愛国的な朗唱だった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="271"><a name="271"><TD id="E271" onclick="javascript:toggleLayer('J271')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was deservedly applauded;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J271" onclick="javascript:toggleLayer('E271')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは当然の拍手を受けた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="272"><a name="272"><TD id="E272" onclick="javascript:toggleLayer('J272')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, when it was ended, the men went out for the interval, content.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J272" onclick="javascript:toggleLayer('E272')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、それが終わると、人々は満足して休憩をとりに外へ出た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="273"><a name="273"><TD id="E273" onclick="javascript:toggleLayer('J273')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All this time the dressing-room was a hive of excitement.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J273" onclick="javascript:toggleLayer('E273')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この間ずっと楽屋は興奮のるつぼだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="274"><a name="274"><TD id="E274" onclick="javascript:toggleLayer('J274')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In one corner were Mr. Holohan, Mr. Fitzpatrick, Miss Beirne, two of the stewards, the baritone, the bass, and Mr. O'Madden Burke.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J274" onclick="javascript:toggleLayer('E274')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方の隅にはホラハン氏、フィッツパトリック氏、ミス・バーン、幹事二人、バリトン、バス、オマドゥン・バーク氏がいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="275"><a name="275"><TD id="E275" onclick="javascript:toggleLayer('J275')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mr. O'Madden Burke said it was the most scandalous exhibition he had ever witnessed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J275" onclick="javascript:toggleLayer('E275')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オマドゥン・バーク氏はこれは彼がかって目撃した中でも最も恥さらしなことだと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="276"><a name="276"><TD id="E276" onclick="javascript:toggleLayer('J276')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Miss Kathleen Kearney's musical career was ended in Dublin after that, he said.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J276" onclick="javascript:toggleLayer('E276')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうなってはミス・キャスリーン・カーニーの音楽の経歴もダブリンでは終わったと彼は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="277"><a name="277"><TD id="E277" onclick="javascript:toggleLayer('J277')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The baritone was asked what did he think of Mrs. Kearney's conduct.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J277" onclick="javascript:toggleLayer('E277')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> バリトンはカーニー夫人の行為をどう思うかと訊かれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="278"><a name="278"><TD id="E278" onclick="javascript:toggleLayer('J278')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He did not like to say anything.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J278" onclick="javascript:toggleLayer('E278')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼は何も言いたくなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="279"><a name="279"><TD id="E279" onclick="javascript:toggleLayer('J279')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He had been paid his money and wished to be at peace with men.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J279" onclick="javascript:toggleLayer('E279')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はすでに金をもらっていたし人々と仲良くしたかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="280"><a name="280"><TD id="E280" onclick="javascript:toggleLayer('J280')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> However, he said that Mrs. Kearney might have taken the artistes into consideration.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J280" onclick="javascript:toggleLayer('E280')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし彼はカーニー夫人がアーティストたちを考慮に入れてもよかったのにと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="281"><a name="281"><TD id="E281" onclick="javascript:toggleLayer('J281')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The stewards and the secretaries debated hotly as to what should be done when the interval came.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J281" onclick="javascript:toggleLayer('E281')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 幹事たち、書記たちは休憩時間が来たらどうすべきかについて熱くなって討論した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="282"><a name="282"><TD id="E282" onclick="javascript:toggleLayer('J282')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I agree with Miss Beirne,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J282" onclick="javascript:toggleLayer('E282')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「私はミス・バーンに賛成です」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="283"><a name="283"><TD id="E283" onclick="javascript:toggleLayer('J283')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Mr. O'Madden Burke.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J283" onclick="javascript:toggleLayer('E283')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とオマドゥン・バーク氏は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="284"><a name="284"><TD id="E284" onclick="javascript:toggleLayer('J284')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Pay her nothing."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J284" onclick="javascript:toggleLayer('E284')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「彼女に何も払わないこと。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="285"><a name="285"><TD id="E285" onclick="javascript:toggleLayer('J285')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In another corner of the room were Mrs. Kearney and he: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J285" onclick="javascript:toggleLayer('E285')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 部屋のもう一方の隅にはカーニー夫人と彼、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="286"><a name="286"><TD id="E286" onclick="javascript:toggleLayer('J286')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> husband, Mr. Bell, Miss Healy and the young lady who had to recite the patriotic piece.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J286" onclick="javascript:toggleLayer('E286')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち夫、ベル氏、ミス・ヒーリー、愛国的な一編を朗唱しなければならなかった若い婦人がいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="287"><a name="287"><TD id="E287" onclick="javascript:toggleLayer('J287')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mrs. Kearney said that the Committee had treated her scandalously.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J287" onclick="javascript:toggleLayer('E287')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カーニー夫人が委員会は彼女に対してけしからぬ扱いをしたと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="288"><a name="288"><TD id="E288" onclick="javascript:toggleLayer('J288')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She had spared neither trouble nor expense and this was how she was repaid.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J288" onclick="javascript:toggleLayer('E288')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女は労も費用も惜しまなかったのにこんなふうな報いを受けた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="289"><a name="289"><TD id="E289" onclick="javascript:toggleLayer('J289')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They thought they had only a girl to deal with and that therefore, they could ride roughshod over her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J289" onclick="javascript:toggleLayer('E289')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らは娘っ子一人を相手にすればいいと考えてそれで、彼らは彼女にひどい扱いができたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="290"><a name="290"><TD id="E290" onclick="javascript:toggleLayer('J290')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But she would show them their mistake.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J290" onclick="javascript:toggleLayer('E290')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし彼女は彼らの間違いを明らかにするつもりだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="291"><a name="291"><TD id="E291" onclick="javascript:toggleLayer('J291')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They wouldn't have dared to have treated her like that if she had been a man.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J291" onclick="javascript:toggleLayer('E291')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女が男だったら彼らもあんなふうに彼女を扱う勇気はなかったろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="292"><a name="292"><TD id="E292" onclick="javascript:toggleLayer('J292')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But she would see that her daughter got her rights:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J292" onclick="javascript:toggleLayer('E292')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし彼女はきっと娘が正当なものを得るようにするつもりだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="293"><a name="293"><TD id="E293" onclick="javascript:toggleLayer('J293')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she wouldn't be fooled.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J293" onclick="javascript:toggleLayer('E293')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女はごまかされたりしない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="294"><a name="294"><TD id="E294" onclick="javascript:toggleLayer('J294')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If they didn't pay her to the last farthing she would make Dublin ring.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J294" onclick="javascript:toggleLayer('E294')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らが最後の一文まで払うのでなかったらダブリンに知れ渡らせてやる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="295"><a name="295"><TD id="E295" onclick="javascript:toggleLayer('J295')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Of course she was sorry for the sake of the artistes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J295" onclick="javascript:toggleLayer('E295')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もちろんアーティストたちのことを考えると遺憾だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="296"><a name="296"><TD id="E296" onclick="javascript:toggleLayer('J296')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But what else could she do?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J296" onclick="javascript:toggleLayer('E296')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし彼女として他にどうしたらいい？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="297"><a name="297"><TD id="E297" onclick="javascript:toggleLayer('J297')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She appealed to the second tenor who said he thought she had not been well treated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J297" onclick="javascript:toggleLayer('E297')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女は、彼女がよい扱いを受けたとは思わないと言ったセカンドテナーに訴えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="298"><a name="298"><TD id="E298" onclick="javascript:toggleLayer('J298')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then she appealed to Miss Healy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J298" onclick="javascript:toggleLayer('E298')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから彼女はミス・ヒーリーに訴えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="299"><a name="299"><TD id="E299" onclick="javascript:toggleLayer('J299')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Miss Healy wanted to join the other group but she did not like to do so because she was a great friend of Kathleen's and the Kearneys had often invited her to their house.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J299" onclick="javascript:toggleLayer('E299')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ミス・ヒーリーはもう一方のグループに加わりたかったが、彼女はキャスリーンの親友だったしカーニー家にはたびたび招かれていたのでそうするのはいやだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="300"><a name="300"><TD id="E300" onclick="javascript:toggleLayer('J300')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As soon as the first part was ended Mr. Fitzpatrick and Mr. Holohan went over to Mrs. Kearney and told her that the other four guineas would be paid after the committee meeting on the following Tuesday and that, in case her daughter did not play for the second part, the committee would consider the contract broken and would pay nothing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J300" onclick="javascript:toggleLayer('E300')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第一部が終わるとすぐにフィッツパトリック氏とホラハン氏はカーニー夫人の所へ行き、残りの四ギニーは次の火曜日にある委員会の会合の後で支払われるだろう、彼女の娘が第二部の演奏をしない場合には委員会は契約が破棄されたとみなし何も支払わないだろうと言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="amother-1.htm">prev</a>
+<a href="amother-0.htm">0</a>
+<a href="amother-1.htm">1</a>
+<2>
+<a href="amother-3.htm">3</a>
+<a href="amother-3.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/amothere.txt">local copy</a> / <a href="http://www.gutenberg.org/dirs/etext01/dblnr11.txt">http://www.gutenberg.org/dirs/etext01/dblnr11.txt</a><li>オリジナルの日本語文: <a href="../org/amotherj.txt">local copy</a> / <a href="http://homepage3.nifty.com/coderachi/joyce/mthr.html">http://homepage3.nifty.com/coderachi/joyce/mthr.html</a><li><a href="../manual-alignment/amother.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

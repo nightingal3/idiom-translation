@@ -1,0 +1,562 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Alice's Adventures in Wonderland / Lewis Carroll 著</h2><h2>不思議の国のアリス / ルイス・キャロル 著 / 山形浩生<hiyori13@alum.mit.edu> 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/alicee.txt">英語文</a>&<a href="../org/alicej.txt">日本語文</a> / <a href="../manual-alignment/alice.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>24 of Alice's Adventures in Wonderland</TITLE>
+<hr>
+<a href="alice-23.htm">prev</a>
+<a href="alice-0.htm">0</a>
+<a href="alice-1.htm">1</a>
+<a href="alice-2.htm">2</a>
+<a href="alice-3.htm">3</a>
+<a href="alice-4.htm">4</a>
+<a href="alice-5.htm">5</a>
+<a href="alice-6.htm">6</a>
+<a href="alice-7.htm">7</a>
+<a href="alice-8.htm">8</a>
+<a href="alice-9.htm">9</a>
+<a href="alice-10.htm">10</a>
+<a href="alice-11.htm">11</a>
+<a href="alice-12.htm">12</a>
+<a href="alice-13.htm">13</a>
+<a href="alice-14.htm">14</a>
+<a href="alice-15.htm">15</a>
+<a href="alice-16.htm">16</a>
+<a href="alice-17.htm">17</a>
+<a href="alice-18.htm">18</a>
+<a href="alice-19.htm">19</a>
+<a href="alice-20.htm">20</a>
+<a href="alice-21.htm">21</a>
+<a href="alice-22.htm">22</a>
+<a href="alice-23.htm">23</a>
+<24>
+<a href="alice-25.htm">25</a>
+<a href="alice-26.htm">26</a>
+<a href="alice-27.htm">27</a>
+<a href="alice-28.htm">28</a>
+<a href="alice-29.htm">29</a>
+<a href="alice-25.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="2401"><a name="2401"><TD id="E2401" onclick="javascript:toggleLayer('J2401')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `No, no!  The adventures first,' said the Gryphon in an impatient tone:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2401" onclick="javascript:toggleLayer('E2401')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> グリフォンがうずうずして言います。
+「だめだめ、冒険が先。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2402"><a name="2402"><TD id="E2402" onclick="javascript:toggleLayer('J2402')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `explanations take such a dreadful time.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2402" onclick="javascript:toggleLayer('E2402')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 説明ってのは、ありゃえらく時間がかかるんだ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2403"><a name="2403"><TD id="E2403" onclick="javascript:toggleLayer('J2403')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So Alice began telling them her adventures from the time when she first saw the White Rabbit.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2403" onclick="javascript:toggleLayer('E2403')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでアリスは、白うさぎを見たところから自分の冒険の話をはじめました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2404"><a name="2404"><TD id="E2404" onclick="javascript:toggleLayer('J2404')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She was a little nervous about it just at first,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2404" onclick="javascript:toggleLayer('E2404')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最初はちょっと不安でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2405"><a name="2405"><TD id="E2405" onclick="javascript:toggleLayer('J2405')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the two creatures got so close to her, one on each side, and opened their eyes and mouths so VERY wide,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2405" onclick="javascript:toggleLayer('E2405')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だって二匹の生き物がすっごく近くによってきて、アリスの左右について、お目目とお口をすんごくひらいていたからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2406"><a name="2406"><TD id="E2406" onclick="javascript:toggleLayer('J2406')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but she gained courage as she went on.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2406" onclick="javascript:toggleLayer('E2406')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、先にすすむうちに、勇気が出てきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2407"><a name="2407"><TD id="E2407" onclick="javascript:toggleLayer('J2407')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Her listeners were perfectly quiet till she got to the part about her repeating `YOU ARE OLD, FATHER WILLIAM,' to the Caterpillar, and the words all coming different, and then the Mock Turtle drew a long breath, and said
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2407" onclick="javascript:toggleLayer('E2407')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> きき手はずっとなにも言いませんでしたが、いもむしに『ウィリアム父さんお歳をめして』を暗唱して、ことばがぜんぶちがって出てきたところにくると、にせウミガメが思いっきり息をすいこんで言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2408"><a name="2408"><TD id="E2408" onclick="javascript:toggleLayer('J2408')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `That's very curious.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2408" onclick="javascript:toggleLayer('E2408')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それはじつにおもしろいわぁ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2409"><a name="2409"><TD id="E2409" onclick="javascript:toggleLayer('J2409')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `It's all about as curious as it can be,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2409" onclick="javascript:toggleLayer('E2409')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「うん、なにもかもすっごくおもしろい」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2410"><a name="2410"><TD id="E2410" onclick="javascript:toggleLayer('J2410')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Gryphon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2410" onclick="javascript:toggleLayer('E2410')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とグリフォン。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2411"><a name="2411"><TD id="E2411" onclick="javascript:toggleLayer('J2411')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `It all came different!'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2411" onclick="javascript:toggleLayer('E2411')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ぜんぶちがって出てきたのねぇ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2412"><a name="2412"><TD id="E2412" onclick="javascript:toggleLayer('J2412')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the Mock Turtle repeated thoughtfully.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2412" onclick="javascript:toggleLayer('E2412')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とにせウミガメは考えこんでくりかえします。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2413"><a name="2413"><TD id="E2413" onclick="javascript:toggleLayer('J2413')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `I should like to hear her try and repeat something now.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2413" onclick="javascript:toggleLayer('E2413')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ぼく、この子がここでなにか暗唱するのをきいてみたいわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2414"><a name="2414"><TD id="E2414" onclick="javascript:toggleLayer('J2414')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Tell her to begin.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2414" onclick="javascript:toggleLayer('E2414')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> やれって言ってやってよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2415"><a name="2415"><TD id="E2415" onclick="javascript:toggleLayer('J2415')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He looked at the Gryphon
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2415" onclick="javascript:toggleLayer('E2415')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とにせウミガメはグリフォンのほうを見ました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2416"><a name="2416"><TD id="E2416" onclick="javascript:toggleLayer('J2416')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as if he thought it had some kind of authority over Alice.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2416" onclick="javascript:toggleLayer('E2416')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まるでグリフォンがアリスに命令する力があるとでも思ってるみたいです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2417"><a name="2417"><TD id="E2417" onclick="javascript:toggleLayer('J2417')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Stand up and repeat "'TIS THE VOICE OF THE SLUGGARD,"'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2417" onclick="javascript:toggleLayer('E2417')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「立って『不精者（ぶしょうもの）の宣言』を復唱するんだ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2418"><a name="2418"><TD id="E2418" onclick="javascript:toggleLayer('J2418')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Gryphon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2418" onclick="javascript:toggleLayer('E2418')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とグリフォン。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2419"><a name="2419"><TD id="E2419" onclick="javascript:toggleLayer('J2419')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `How the creatures order one about, and make one repeat lessons!' thought Alice;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2419" onclick="javascript:toggleLayer('E2419')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「まったくここの生き物って、人に命令してばかりで、お勉強の復習ばかりさせるんだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2420"><a name="2420"><TD id="E2420" onclick="javascript:toggleLayer('J2420')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `I might as well be at school at once.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2420" onclick="javascript:toggleLayer('E2420')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いますぐ学校にもどったほうがましかも」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2421"><a name="2421"><TD id="E2421" onclick="javascript:toggleLayer('J2421')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> However, she got up, and began to repeat it,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2421" onclick="javascript:toggleLayer('E2421')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもアリスは立ちあがって復唱をはじめました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2422"><a name="2422"><TD id="E2422" onclick="javascript:toggleLayer('J2422')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but her head was so full of the Lobster Quadrille, that she hardly knew what she was saying, and the words came very queer indeed:--
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2422" onclick="javascript:toggleLayer('E2422')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも頭がロブスターのカドリーユおどりでいっぱいだったので、自分がなにを言ってるのかまるでわからず、おかげでことばもずいぶんへんてこになっちゃったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2423"><a name="2423"><TD id="E2423" onclick="javascript:toggleLayer('J2423')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> *     *     *     *     *
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2423" onclick="javascript:toggleLayer('E2423')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2424"><a name="2424"><TD id="E2424" onclick="javascript:toggleLayer('J2424')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `'Tis the voice of the Lobster; I heard him declare,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2424" onclick="javascript:toggleLayer('E2424')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ロブスターの宣言を、わたしが聞いたところでは
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2425"><a name="2425"><TD id="E2425" onclick="javascript:toggleLayer('J2425')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You have baked me too brown, I must sugar my hair."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2425" onclick="javascript:toggleLayer('E2425')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 『わしはこんがり焼かれすぎ、髪に砂糖をまぶさなきゃ』
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2426"><a name="2426"><TD id="E2426" onclick="javascript:toggleLayer('J2426')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As a duck with its eyelids, so he with his nose
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2426" onclick="javascript:toggleLayer('E2426')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アヒルがまぶたでするように、ロブスターは鼻ヅラで
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2427"><a name="2427"><TD id="E2427" onclick="javascript:toggleLayer('J2427')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Trims his belt and his buttons, and turns out his toes.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2427" onclick="javascript:toggleLayer('E2427')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ベルトとボタンを整えて、つま先そとに向けまする」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2428"><a name="2428"><TD ID="TAB2428" onclick="javascript:toggleLayer('J2428')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2428" onclick="javascript:toggleLayer('E2428')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2429"><a name="2429"><TD id="E2429" onclick="javascript:toggleLayer('J2429')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [later editions continued as follows
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2429" onclick="javascript:toggleLayer('E2429')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2430"><a name="2430"><TD ID="TAB2430" onclick="javascript:toggleLayer('J2430')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2430" onclick="javascript:toggleLayer('E2430')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2431"><a name="2431"><TD id="E2431" onclick="javascript:toggleLayer('J2431')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When the sands are all dry,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2431" onclick="javascript:toggleLayer('E2431')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「砂がすっかりかわいたら、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2432"><a name="2432"><TD id="E2432" onclick="javascript:toggleLayer('J2432')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he is gay as a lark,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2432" onclick="javascript:toggleLayer('E2432')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヒバリまがいに大ごきげん
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2433"><a name="2433"><TD id="E2433" onclick="javascript:toggleLayer('J2433')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And will talk in contemptuous tones of the Shark,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2433" onclick="javascript:toggleLayer('E2433')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> サメを小ばかにしてまわる
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2434"><a name="2434"><TD id="E2434" onclick="javascript:toggleLayer('J2434')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But, when the tide rises and sharks are around,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2434" onclick="javascript:toggleLayer('E2434')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも潮がみちてサメがくりゃ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2435"><a name="2435"><TD id="E2435" onclick="javascript:toggleLayer('J2435')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His voice has a timid and tremulous sound.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2435" onclick="javascript:toggleLayer('E2435')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 声はおびえてふるえます。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2436"><a name="2436"><TD id="E2436" onclick="javascript:toggleLayer('J2436')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> *     *     *     *     *
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2436" onclick="javascript:toggleLayer('E2436')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2437"><a name="2437"><TD id="E2437" onclick="javascript:toggleLayer('J2437')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `That's different from what I used to say when I was a child,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2437" onclick="javascript:toggleLayer('E2437')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おれが子どものころに暗唱したのとは、ちがってるなあ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2438"><a name="2438"><TD id="E2438" onclick="javascript:toggleLayer('J2438')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Gryphon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2438" onclick="javascript:toggleLayer('E2438')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とグリフォン。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2439"><a name="2439"><TD id="E2439" onclick="javascript:toggleLayer('J2439')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Well, I never heard it before,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2439" onclick="javascript:toggleLayer('E2439')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「うん、ぼくははじめてきくけど、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2440"><a name="2440"><TD id="E2440" onclick="javascript:toggleLayer('J2440')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Mock Turtle; 
+`but it sounds uncommon nonsense.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2440" onclick="javascript:toggleLayer('E2440')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもわけわからないデタラメにしかきこえないわよ」
+とにせウミガメ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2441"><a name="2441"><TD id="E2441" onclick="javascript:toggleLayer('J2441')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP>  Alice said nothing;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2441" onclick="javascript:toggleLayer('E2441')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アリスはなにも言いませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2442"><a name="2442"><TD id="E2442" onclick="javascript:toggleLayer('J2442')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she had sat down with her face in her hands, wondering if anything would EVER happen in a natural way again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2442" onclick="javascript:toggleLayer('E2442')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すわって、顔を両手でおおって、もうこの先二度と、なにもふつうにはおきないのかしら、と考えていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2443"><a name="2443"><TD id="E2443" onclick="javascript:toggleLayer('J2443')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `I should like to have it explained,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2443" onclick="javascript:toggleLayer('E2443')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「説明してもらえないかしらぁ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2444"><a name="2444"><TD id="E2444" onclick="javascript:toggleLayer('J2444')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Mock Turtle.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2444" onclick="javascript:toggleLayer('E2444')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とにせウミガメ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2445"><a name="2445"><TD id="E2445" onclick="javascript:toggleLayer('J2445')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `She can't explain it,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2445" onclick="javascript:toggleLayer('E2445')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「説明できないよ、この子」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2446"><a name="2446"><TD id="E2446" onclick="javascript:toggleLayer('J2446')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Gryphon hastily.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2446" onclick="javascript:toggleLayer('E2446')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とグリフォンがいそいで言います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2447"><a name="2447"><TD id="E2447" onclick="javascript:toggleLayer('J2447')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Go on with the next verse.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2447" onclick="javascript:toggleLayer('E2447')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「つぎんとこ、やってごらん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2448"><a name="2448"><TD id="E2448" onclick="javascript:toggleLayer('J2448')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `But about his toes?' the Mock Turtle persisted. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2448" onclick="javascript:toggleLayer('E2448')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「でもつま先はどうなるのぉ？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2449"><a name="2449"><TD id="E2449" onclick="javascript:toggleLayer('J2449')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `How COULD he turn them out with his nose, you know?'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2449" onclick="javascript:toggleLayer('E2449')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だってロブスターが、どうやったらそれを鼻でそとに向けるのぉ、ねえ？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2450"><a name="2450"><TD id="E2450" onclick="javascript:toggleLayer('J2450')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `It's the first position in dancing.'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2450" onclick="javascript:toggleLayer('E2450')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おどりの最初のポジションよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2451"><a name="2451"><TD id="E2451" onclick="javascript:toggleLayer('J2451')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Alice said;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2451" onclick="javascript:toggleLayer('E2451')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とアリスは言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2452"><a name="2452"><TD id="E2452" onclick="javascript:toggleLayer('J2452')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but was dreadfully puzzled by the whole thing, and longed to change the subject.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2452" onclick="javascript:toggleLayer('E2452')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> が、なにもかもとんでもなく頭がこんがらがっていて、話題を変えたくてしかたありませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2453"><a name="2453"><TD id="E2453" onclick="javascript:toggleLayer('J2453')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Go on with the next verse,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2453" onclick="javascript:toggleLayer('E2453')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「つぎんとこ、やってごらん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2454"><a name="2454"><TD id="E2454" onclick="javascript:toggleLayer('J2454')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the Gryphon repeated impatiently:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2454" onclick="javascript:toggleLayer('E2454')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> グリフォンが、まちきれないようすで言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2455"><a name="2455"><TD id="E2455" onclick="javascript:toggleLayer('J2455')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `it begins "I passed by his garden."'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2455" onclick="javascript:toggleLayer('E2455')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「出だしは『とおりすがりにそいつの庭で』だよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2456"><a name="2456"><TD id="E2456" onclick="javascript:toggleLayer('J2456')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Alice did not dare to disobey, though she felt sure it would all come wrong, and she went on in a trembling voice:--
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2456" onclick="javascript:toggleLayer('E2456')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アリスはとてもさからったりできませんでしたが、でもぜったいにぜんぶめちゃくちゃになるな、と思ったので、ふるえる声でつづけました：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2457"><a name="2457"><TD id="E2457" onclick="javascript:toggleLayer('J2457')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> *     *     *     *     *
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2457" onclick="javascript:toggleLayer('E2457')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2458"><a name="2458"><TD id="E2458" onclick="javascript:toggleLayer('J2458')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `I passed by his garden, and marked, with one eye,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2458" onclick="javascript:toggleLayer('E2458')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「とおりすがりにそいつの庭で、わたしが片目で見たことにゃ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2459"><a name="2459"><TD id="E2459" onclick="javascript:toggleLayer('J2459')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> How the Owl and the Panther were sharing a pie--'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2459" onclick="javascript:toggleLayer('E2459')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヒョウとオウムがパイをわけ――
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2460"><a name="2460"><TD ID="TAB2460" onclick="javascript:toggleLayer('J2460')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2460" onclick="javascript:toggleLayer('E2460')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2461"><a name="2461"><TD id="E2461" onclick="javascript:toggleLayer('J2461')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [later editions continued as follows
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2461" onclick="javascript:toggleLayer('E2461')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2462"><a name="2462"><TD ID="TAB2462" onclick="javascript:toggleLayer('J2462')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2462" onclick="javascript:toggleLayer('E2462')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2463"><a name="2463"><TD id="E2463" onclick="javascript:toggleLayer('J2463')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Panther took pie-crust, and gravy, and meat,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2463" onclick="javascript:toggleLayer('E2463')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヒョウがたべたはパイ皮、肉汁と肉
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2464"><a name="2464"><TD id="E2464" onclick="javascript:toggleLayer('J2464')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While the Owl had the dish as its share of the treat.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2464" onclick="javascript:toggleLayer('E2464')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オウムの分け前、お皿だけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2465"><a name="2465"><TD id="E2465" onclick="javascript:toggleLayer('J2465')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When the pie was all finished, the Owl, as a boon,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2465" onclick="javascript:toggleLayer('E2465')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> パイがおわるとおなさけに
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2466"><a name="2466"><TD id="E2466" onclick="javascript:toggleLayer('J2466')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Was kindly permitted to pocket the spoon:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2466" onclick="javascript:toggleLayer('E2466')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オウムはおさじをもちかえり
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2467"><a name="2467"><TD id="E2467" onclick="javascript:toggleLayer('J2467')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While the Panther received knife and fork with a growl,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2467" onclick="javascript:toggleLayer('E2467')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヒョウはうなってナイフとフォーク
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2468"><a name="2468"><TD id="E2468" onclick="javascript:toggleLayer('J2468')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And concluded the banquet--]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2468" onclick="javascript:toggleLayer('E2468')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夕餉（ゆうげ）のしめは、あわれな――」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2469"><a name="2469"><TD id="E2469" onclick="javascript:toggleLayer('J2469')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> *     *     *     *     *
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2469" onclick="javascript:toggleLayer('E2469')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2470"><a name="2470"><TD id="E2470" onclick="javascript:toggleLayer('J2470')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `What IS the use of repeating all that stuff,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2470" onclick="javascript:toggleLayer('E2470')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「こんなの暗唱してもらってどうしろってゆーの？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2471"><a name="2471"><TD id="E2471" onclick="javascript:toggleLayer('J2471')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the Mock Turtle interrupted,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2471" onclick="javascript:toggleLayer('E2471')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とにせウミガメが口をはさみます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2472"><a name="2472"><TD id="E2472" onclick="javascript:toggleLayer('J2472')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `if you don't explain it as you go on?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2472" onclick="javascript:toggleLayer('E2472')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「とちゅうで説明してくれなきゃ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2473"><a name="2473"><TD id="E2473" onclick="javascript:toggleLayer('J2473')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's by far the most confusing thing I ever heard!'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2473" onclick="javascript:toggleLayer('E2473')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくがこれまで聞いた中で、一番わけわからんしろものだわ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2474"><a name="2474"><TD id="E2474" onclick="javascript:toggleLayer('J2474')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Yes, I think you'd better leave off,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2474" onclick="javascript:toggleLayer('E2474')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「うん、そのくらいにしとこうね」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2475"><a name="2475"><TD id="E2475" onclick="javascript:toggleLayer('J2475')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Gryphon:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2475" onclick="javascript:toggleLayer('E2475')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とグリフォンが言って、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2476"><a name="2476"><TD id="E2476" onclick="javascript:toggleLayer('J2476')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Alice was only too glad to do so.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2476" onclick="javascript:toggleLayer('E2476')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アリスはよろこんでそれにしたがいました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2477"><a name="2477"><TD id="E2477" onclick="javascript:toggleLayer('J2477')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Shall we try another figure of the Lobster Quadrille?' the Gryphon went on.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2477" onclick="javascript:toggleLayer('E2477')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> グリフォンがつづけます。
+「ロブスターのカドリーユおどりを、べつのやりかたでやろうか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2478"><a name="2478"><TD id="E2478" onclick="javascript:toggleLayer('J2478')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Or would you like the Mock Turtle to sing you a song?'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2478" onclick="javascript:toggleLayer('E2478')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それともにせウミガメに歌をうたってほしい？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2479"><a name="2479"><TD id="E2479" onclick="javascript:toggleLayer('J2479')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Oh, a song, please, if the Mock Turtle would be so kind,'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2479" onclick="javascript:toggleLayer('E2479')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ああ、歌がいいです、おねがい、にせウミガメさんさえよろしければ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2480"><a name="2480"><TD id="E2480" onclick="javascript:toggleLayer('J2480')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Alice replied, so eagerly that the Gryphon said, in a rather offended tone,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2480" onclick="javascript:toggleLayer('E2480')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アリスのへんじがあまりに熱心だったので、グリフォンはちょっと気を悪くしたようです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2481"><a name="2481"><TD id="E2481" onclick="javascript:toggleLayer('J2481')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Hm!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2481" onclick="javascript:toggleLayer('E2481')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ふん、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2482"><a name="2482"><TD id="E2482" onclick="javascript:toggleLayer('J2482')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No accounting for tastes!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2482" onclick="javascript:toggleLayer('E2482')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まあいろんなしゅみの人がいるからね！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2483"><a name="2483"><TD id="E2483" onclick="javascript:toggleLayer('J2483')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Sing her "Turtle Soup," will you, old fellow?'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2483" onclick="javascript:toggleLayer('E2483')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おいだんな、この子に『ウミガメスープ』をうたってやってくんない？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2484"><a name="2484"><TD id="E2484" onclick="javascript:toggleLayer('J2484')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Mock Turtle sighed deeply, and began, in a voice sometimes choked with sobs, to sing this:--
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2484" onclick="javascript:toggleLayer('E2484')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> にせウミガメはふかいためいきをつくと、ときどきすすり泣きでつっかえる声で、こんな歌をうたいだしました：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2485"><a name="2485"><TD id="E2485" onclick="javascript:toggleLayer('J2485')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> *     *     *     *     *
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2485" onclick="javascript:toggleLayer('E2485')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2486"><a name="2486"><TD id="E2486" onclick="javascript:toggleLayer('J2486')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Beautiful Soup, so rich and green,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2486" onclick="javascript:toggleLayer('E2486')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「みごとなスープ、みどりのどろどろ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2487"><a name="2487"><TD id="E2487" onclick="javascript:toggleLayer('J2487')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Waiting in a hot tureen!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2487" onclick="javascript:toggleLayer('E2487')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あつあつおなべでまっている！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2488"><a name="2488"><TD id="E2488" onclick="javascript:toggleLayer('J2488')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Who for such dainties would not stoop?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2488" onclick="javascript:toggleLayer('E2488')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だれでものりだすすてきな美食！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2489"><a name="2489"><TD id="E2489" onclick="javascript:toggleLayer('J2489')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Soup of the evening, beautiful Soup!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2489" onclick="javascript:toggleLayer('E2489')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゆうべのスープ、みごとなスープ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2490"><a name="2490"><TD id="E2490" onclick="javascript:toggleLayer('J2490')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Soup of the evening, beautiful Soup!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2490" onclick="javascript:toggleLayer('E2490')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゆうべのスープ、みごとなスープ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2491"><a name="2491"><TD id="E2491" onclick="javascript:toggleLayer('J2491')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Beau--ootiful Soo--oop!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2491" onclick="javascript:toggleLayer('E2491')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みぃぃごとぉなスゥゥゥプ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2492"><a name="2492"><TD id="E2492" onclick="javascript:toggleLayer('J2492')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Beau--ootiful Soo--oop!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2492" onclick="javascript:toggleLayer('E2492')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みぃぃごとぉなスゥゥゥプ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2493"><a name="2493"><TD id="E2493" onclick="javascript:toggleLayer('J2493')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Soo--oop of the e--e--evening,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2493" onclick="javascript:toggleLayer('E2493')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゆぅぅぅべのスゥゥゥプゥ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2494"><a name="2494"><TD id="E2494" onclick="javascript:toggleLayer('J2494')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Beautiful, beautiful Soup!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2494" onclick="javascript:toggleLayer('E2494')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みごとなみごとなスープ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2495"><a name="2495"><TD id="E2495" onclick="javascript:toggleLayer('J2495')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> `Beautiful Soup!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2495" onclick="javascript:toggleLayer('E2495')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「みごとなスープ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2496"><a name="2496"><TD id="E2496" onclick="javascript:toggleLayer('J2496')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Who cares for fish, Game, or any other dish?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2496" onclick="javascript:toggleLayer('E2496')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さかなもおにくもサラダもいらぬ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2497"><a name="2497"><TD id="E2497" onclick="javascript:toggleLayer('J2497')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Who would not give all else for two
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2497" onclick="javascript:toggleLayer('E2497')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二ペンスほどのみごとなスープ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2498"><a name="2498"><TD id="E2498" onclick="javascript:toggleLayer('J2498')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pennyworth only of beautiful Soup?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2498" onclick="javascript:toggleLayer('E2498')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でだれもがすべてをなげだしましょう！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2499"><a name="2499"><TD id="E2499" onclick="javascript:toggleLayer('J2499')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pennyworth only of beautiful Soup?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2499" onclick="javascript:toggleLayer('E2499')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みごとなスープが一ペンス！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2500"><a name="2500"><TD id="E2500" onclick="javascript:toggleLayer('J2500')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Beau--ootiful Soo--oop!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2500" onclick="javascript:toggleLayer('E2500')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みぃぃごとぉなスゥゥゥプ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="alice-23.htm">prev</a>
+<a href="alice-0.htm">0</a>
+<a href="alice-1.htm">1</a>
+<a href="alice-2.htm">2</a>
+<a href="alice-3.htm">3</a>
+<a href="alice-4.htm">4</a>
+<a href="alice-5.htm">5</a>
+<a href="alice-6.htm">6</a>
+<a href="alice-7.htm">7</a>
+<a href="alice-8.htm">8</a>
+<a href="alice-9.htm">9</a>
+<a href="alice-10.htm">10</a>
+<a href="alice-11.htm">11</a>
+<a href="alice-12.htm">12</a>
+<a href="alice-13.htm">13</a>
+<a href="alice-14.htm">14</a>
+<a href="alice-15.htm">15</a>
+<a href="alice-16.htm">16</a>
+<a href="alice-17.htm">17</a>
+<a href="alice-18.htm">18</a>
+<a href="alice-19.htm">19</a>
+<a href="alice-20.htm">20</a>
+<a href="alice-21.htm">21</a>
+<a href="alice-22.htm">22</a>
+<a href="alice-23.htm">23</a>
+<24>
+<a href="alice-25.htm">25</a>
+<a href="alice-26.htm">26</a>
+<a href="alice-27.htm">27</a>
+<a href="alice-28.htm">28</a>
+<a href="alice-29.htm">29</a>
+<a href="alice-25.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/alicee.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/alicej.txt">local copy</a><li><a href="../manual-alignment/alice.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

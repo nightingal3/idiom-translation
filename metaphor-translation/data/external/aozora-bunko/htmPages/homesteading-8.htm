@@ -1,0 +1,531 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Homesteading the Noosphere / Eric S. Raymond 著</h2><h2>ノウアスフィアの開墾 / レイモンド、エリック・S 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/homesteadinge.txt">英語文</a>&<a href="../org/homesteadingj.txt">日本語文</a> / <a href="../manual-alignment/homesteading.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>8 of Homesteading the Noosphere</TITLE>
+<hr>
+<a href="homesteading-7.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<8>
+<a href="homesteading-9.htm">9</a>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-9.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="801"><a name="801"><TD id="E801" onclick="javascript:toggleLayer('J801')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?or, at least, nobody has ever flamed me for revealing them!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J801" onclick="javascript:toggleLayer('E801')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――少なくとも、それをばらしたぼくに対してフレームしてきた人はだれもいない！ 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="802"><a name="802"><TD id="E802" onclick="javascript:toggleLayer('J802')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Respondents to this essay too numerous to list have pointed out that hacker ownership customs seem intimately related to (and may derive directly from) the practices of the academic world, especially the scientific research commmunity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J802" onclick="javascript:toggleLayer('E802')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 名前を挙げきれないくらい多数のコメントが寄せられ、ハッカーの所有権慣習は学問世界、特に科学研究コミュニティの行いと密接に関連し、そこから直接派生したものかもしれないと指摘してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="803"><a name="803"><TD id="E803" onclick="javascript:toggleLayer('J803')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This research community has similar problems in mining a territory of potentially productive ideas, and exhibits very similar adaptive solutions to those problems in the ways it uses peer review and reputation. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J803" onclick="javascript:toggleLayer('E803')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした研究コミュニティは、潜在的に生産的なアイデアのなわばりを掘り起こすという面で似たような問題を抱えているし、同業者のレビューや評判を使うという点で、その問題に対して非常に類似した適応解決手段を示している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="804"><a name="804"><TD id="E804" onclick="javascript:toggleLayer('J804')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Since many hackers have had formative exposure to academia 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J804" onclick="javascript:toggleLayer('E804')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのハッカーたちは、アカデミズムの世界と正式な接触を持ったことがある
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="805"><a name="805"><TD id="E805" onclick="javascript:toggleLayer('J805')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (it's common to learn how to hack while in college)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J805" onclick="javascript:toggleLayer('E805')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （大学でハッキングを学ぶのはよくあることだ）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="806"><a name="806"><TD id="E806" onclick="javascript:toggleLayer('J806')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the extent to which academia shares adaptive patterns with the hacker culture is of more than casual interest in understanding how these customs are applied. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J806" onclick="javascript:toggleLayer('E806')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからアカデミズムの世界が適応パターン面でハッカー文化とどれほど共通性があるかという話は、こういう慣習の適用方法を理解するにあたっては、ついで以上の興味を向けるべき課題だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="807"><a name="807"><TD id="E807" onclick="javascript:toggleLayer('J807')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Obvious parallels with the hacker `gift culture' as I have characterized it abound in academia.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J807" onclick="javascript:toggleLayer('E807')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくが特徴づけたようなハッカー「贈与文化」との明らかな類比が、アカデミズムの世界でもたくさん見られる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="808"><a name="808"><TD id="E808" onclick="javascript:toggleLayer('J808')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Once a researcher achieves tenure, there is no need to worry about survival issues.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J808" onclick="javascript:toggleLayer('E808')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 研究者が終身職を手に入れると同時に、もはや生存の問題は気にする必要がなくなる
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="809"><a name="809"><TD id="E809" onclick="javascript:toggleLayer('J809')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Indeed, the concept of tenure can probably be traced back to an earlier gift culture in which ``natural philosophers'' were primarily wealthy gentlemen with time on their hands to devote to research.)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J809" onclick="javascript:toggleLayer('E809')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （実は終身職の概念は、「自然哲学者」たちがおもに金持ちの紳士たちで、研究に没頭するだけの暇をもっていた、初期の贈与文化までさかのぼることができる）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="810"><a name="810"><TD id="E810" onclick="javascript:toggleLayer('J810')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the absence of survival issues, reputation enhancement becomes the driving goal, which encourages sharing of new ideas and research through journals and other media.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J810" onclick="javascript:toggleLayer('E810')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 生存問題がない以上、評判の向上が作業をつき動かす目標となり、それは雑誌などのメディアを通じて新しいアイデアと研究の共有を奨励する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="811"><a name="811"><TD id="E811" onclick="javascript:toggleLayer('J811')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This makes objective functional sense
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J811" onclick="javascript:toggleLayer('E811')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは客観的にみて、機能的に筋が通っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="812"><a name="812"><TD id="E812" onclick="javascript:toggleLayer('J812')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because scientific research, like the hacker culture, relies heavily on the idea of `standing upon the shoulders of giants', 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J812" onclick="javascript:toggleLayer('E812')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 科学研究はハッカー文化と同じく、「巨人の肩に立つ（先人の成果に積み重ねる）」という考え方に大きく依存しているからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="813"><a name="813"><TD id="E813" onclick="javascript:toggleLayer('J813')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and not having to rediscover basic principles over and over again.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J813" onclick="javascript:toggleLayer('E813')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これにより、同じ基本原理をなんども発表しなおさずにすむ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="814"><a name="814"><TD id="E814" onclick="javascript:toggleLayer('J814')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some have gone so far as to suggest that hacker customs are merely a reflection of the research community's folkways and have actually (in most cases) been acquired there by individual hackers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J814" onclick="javascript:toggleLayer('E814')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある人はこの議論を極端にすすめて、ハッカー慣習は単に研究コミュニティの民俗的な慣習の反映にすぎず、実は（ほとんどが）そこで獲得されたものだ、とまで主張する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="815"><a name="815"><TD id="E815" onclick="javascript:toggleLayer('J815')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This probably overstates the case,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J815" onclick="javascript:toggleLayer('E815')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはたぶん話を誇張させすぎているだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="816"><a name="816"><TD id="E816" onclick="javascript:toggleLayer('J816')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if only because hacker custom seems to be readily acquired by intelligent high-schoolers!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J816" onclick="javascript:toggleLayer('E816')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカー慣習は頭のいい高校生でもすぐに獲得できてしまうという一点だけでもそれは明らかだと思う。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="817"><a name="817"><TD ID="TAB817" onclick="javascript:toggleLayer('J817')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB817" onclick="javascript:toggleLayer('E817')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="818"><a name="818"><TD id="E818" onclick="javascript:toggleLayer('J818')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Gift Outcompetes Exchange
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB818" onclick="javascript:toggleLayer('E818')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="819"><a name="819"><TD ID="TAB819" onclick="javascript:toggleLayer('J819')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB819" onclick="javascript:toggleLayer('E819')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="820"><a name="820"><TD id="E820" onclick="javascript:toggleLayer('J820')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is a more interesting possibility here.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J820" onclick="javascript:toggleLayer('E820')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここにはもっとおもしろい可能性がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="821"><a name="821"><TD id="E821" onclick="javascript:toggleLayer('J821')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I suspect academia and the hacker culture share adaptive patterns not because they're genetically related, but because they've both evolved the one most optimal social organization for what they're trying to do, given the laws of nature and the instinctive wiring of human beings.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J821" onclick="javascript:toggleLayer('E821')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくの憶測だけれど、学問の世界とハッカー文化が同じ適応パターンを示すのは、それが出自の点で親戚だからではなく、物理法則と人間の本能の仕組みを千手としたときに、それぞれ自分たちがやろうとしていたことを実現するための、唯一最適な社会組織を発達させたんじゃないだろうか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="822"><a name="822"><TD id="E822" onclick="javascript:toggleLayer('J822')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The verdict of history seems to be that free-market capitalism is the globally optimal way to cooperate for economic efficiency;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J822" onclick="javascript:toggleLayer('E822')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歴史的にみて、自由市場資本主義こそが経済効率を求めて協力するための世界的に最適な方法だという審判はくだったようだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="823"><a name="823"><TD id="E823" onclick="javascript:toggleLayer('J823')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> perhaps, in a similar way, the reputation-game gift culture is the globally optimal way to cooperate for generating (and checking!) high-quality creative work. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J823" onclick="javascript:toggleLayer('E823')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ひょっとして同じように、評判ゲームに基づく贈与文化は、高品質の創造的作業を産み出し（そしてチェックする！）ために協力するにあたって、世界的に最適な方法なのかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="824"><a name="824"><TD ID="TAB824" onclick="javascript:toggleLayer('J824')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB824" onclick="javascript:toggleLayer('E824')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="825"><a name="825"><TD id="E825" onclick="javascript:toggleLayer('J825')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Support for this theory becomes from a large body of psychological studies on the interaction between art and reward [GNU].
+These studies have received less attention than they should, in part perhaps because their popularizers have shown a tendency to overinterpret them into general attacks against the free market and intellectual property.
+Nevertheless, their results do suggest that some kinds of scarcity-economics rewards actually decrease the productivity of creative workers such as programmers.
+Psychologist Theresa Amabile of Brandeis University, cautiously summarizing the results of a 1984 study of motivation and reward, observed ``It may be that commissioned work will, in general, be less creative than work that is done out of pure interest.''.
+Amabile goes on to observe that ``The more complex the activity, the more it's hurt by extrinsic reward.'' Interestingly, the studies suggest that flat salaries don't demotivate, but piecework rates and bonuses do.
+Thus, it may be economically smart to give performance bonuses to people who flip burgers or dug ditches, but it's probably smarter to decouple salary from performance in a programming shop and let people choose their own projects (both trends that the open-source world takes to their logical conclusions).
+Indeed, these results suggest that the only time it is a good idea to reward performance in programming is when the programmer is so motivated that he or she would have worked without the reward!
+Other researchers in the field are willing to point a finger straight at the issues of autonomy and creative control that so preoccupy hackers.
+``To the extent one's experience of being self-determined is limited,'' said Richard Ryan, associate psychology professor at the University of Rochester, ``one's creativity will be reduced as well.''
+In general, presenting any task as a means rather than an end in itself seems to demotivate.
+Even winning a competition with others or gaining peer esteem can be demotivating in this way if the victory is experienced as work for reward (which may explain why hackers are culturally prohibited from explicitly seeking or claiming that esteem).
+To complicate the management problem further, controlling verbal feedback seems to be just as demotivating as piecework payment.
+Ryan found that corporate employees who were told, ``Good, you're doing as you should'' were ``significantly less intrinsically motivated than those who received feedback informationally.''
+It may still be intelligent to offer incentives, but they have to come without attachments to avoid gumming up the works. 
+There is a critical difference (Ryan observes) between saying, ``I'm giving you this reward because I recognize the value of your work'', and ``You're getting this reward because you've lived up to my standards.'' 
+The first does not demotivate; the second does.
+In these psychological observations we can ground a case that an open-source development group will be substantially more productive (especially over the long term, in which creativity becomes more critical as a productivity multiplier) than an equivalently sized and skilled group of closed-source programmers (de)motivated by scarcity rewards.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB825" onclick="javascript:toggleLayer('E825')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="826"><a name="826"><TD ID="TAB826" onclick="javascript:toggleLayer('J826')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J826" onclick="javascript:toggleLayer('E826')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この点は、もし本当なら、ただの（失礼）学問的興味以上のものとなる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="827"><a name="827"><TD ID="TAB827" onclick="javascript:toggleLayer('J827')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB827" onclick="javascript:toggleLayer('E827')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="828"><a name="828"><TD id="E828" onclick="javascript:toggleLayer('J828')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This suggests from a slightly different angle one of the speculations in The Cathedral And The Bazaar;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J828" onclick="javascript:toggleLayer('E828')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは『伽藍とバザール』（邦訳、原文)での考察を、ちょっと別の角度からも論証しなおしたものとなる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="829"><a name="829"><TD id="E829" onclick="javascript:toggleLayer('J829')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that, ultimately, the industrial/factory mode of software production was doomed to be outcompeted from the moment capitalism began to create enough of a wealth surplus that many programmers could live in a post-scarcity gift culture.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J829" onclick="javascript:toggleLayer('E829')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり多くのプログラマがポスト稀少性時代の贈与文化の中で生きられるだけの富の余剰を資本主義が作り出せるようになった瞬間から、最終的にはソフト生産の産業資本主義様式は競争に負けるべく運命づけられているのだ、という考察だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="830"><a name="830"><TD ID="TAB830" onclick="javascript:toggleLayer('J830')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB830" onclick="javascript:toggleLayer('E830')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="831"><a name="831"><TD id="E831" onclick="javascript:toggleLayer('J831')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Indeed, it seems the prescription for highest software productivity is almost a Zen paradox; 
+if you want the most efficient production, you must give up trying to make programmers produce. 
+Handle their subsistence, give them their heads, and forget about deadlines. 
+To a conventional manager this sounds crazily indulgent and doomed
+?but it is exactly the recipe with which the open-source culture is now clobbering its competition.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB831" onclick="javascript:toggleLayer('E831')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="832"><a name="832"><TD ID="TAB832" onclick="javascript:toggleLayer('J832')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB832" onclick="javascript:toggleLayer('E832')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="833"><a name="833"><TD id="E833" onclick="javascript:toggleLayer('J833')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Conclusion: From Custom to Customary Law
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J833" onclick="javascript:toggleLayer('E833')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 19　結論：慣習から慣習法へ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="834"><a name="834"><TD id="E834" onclick="javascript:toggleLayer('J834')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We have examined the customs which regulate the ownership and control of open-source software.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J834" onclick="javascript:toggleLayer('E834')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これまでオープンソース・ソフトの所有権とコントロールを支配する慣習をみてきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="835"><a name="835"><TD id="E835" onclick="javascript:toggleLayer('J835')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We have seen how they imply an underlying theory of property rights homologous to the Lockean theory of land tenure.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J835" onclick="javascript:toggleLayer('E835')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その根底にある理論が、ロック式の土地所有権理論と似た所有権概念であることもみた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="836"><a name="836"><TD id="E836" onclick="javascript:toggleLayer('J836')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We have related that to an analysis of the hacker culture as a `gift culture' in which participants compete for prestige by giving time, energy, and creativity away.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J836" onclick="javascript:toggleLayer('E836')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それと結びつけて、参加者が時間とエネルギーと創造性をあげてしまうことで名声を競う「贈与文化」としてハッカー文化を分析してみた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="837"><a name="837"><TD id="E837" onclick="javascript:toggleLayer('J837')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We have examined the implications of this analysis for conflict resolution in the culture.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J837" onclick="javascript:toggleLayer('E837')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてその分析が、文化内の紛争解決にとって持つ意味について検討してみた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="838"><a name="838"><TD id="E838" onclick="javascript:toggleLayer('J838')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The next logical question to ask is "Why does this matter?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J838" onclick="javascript:toggleLayer('E838')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 論理的に考えて次にたずねるべき質問は「それがどうしたの？」というものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="839"><a name="839"><TD id="E839" onclick="javascript:toggleLayer('J839')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hackers developed these customs without conscious analysis and (up to now) have followed them without conscious analysis.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J839" onclick="javascript:toggleLayer('E839')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーは意識的な分析なしにこうした慣習を発展させてきたし、（いままでは）意識的な分析なしにそれにしたがってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="840"><a name="840"><TD id="E840" onclick="javascript:toggleLayer('J840')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's not immediately clear that conscious analysis has gained us anything practical
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J840" onclick="javascript:toggleLayer('E840')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを意識的に分析してみたところで、なにか実用性のある成果が得られたかどうかは、すぐにははっきりしない
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="841"><a name="841"><TD id="E841" onclick="javascript:toggleLayer('J841')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?unless, perhaps, we can move from description to prescription and deduce ways to improve the functioning of these customs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J841" onclick="javascript:toggleLayer('E841')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――ただし、これによって記述から処方へと歩みを進めて、こういう習慣の機能を改良する方法が抽出できるなら話は別だろう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="842"><a name="842"><TD id="E842" onclick="javascript:toggleLayer('J842')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> We have found a close logical analogy for hacker customs in the theory of land tenure under the Anglo-American common-law tradition.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J842" onclick="javascript:toggleLayer('E842')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 英米慣習法の伝統の土地所有権理論が、ハッカー慣習と論理的にとても近い関係にあることを見てきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="843"><a name="843"><TD id="E843" onclick="javascript:toggleLayer('J843')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Historically [Miller], the European tribal cultures that invented this tradition improved their dispute-resolution systems by moving from a system of unarticulated, semi-conscious custom to a body of explicit customary law memorized by tribal wisemen ?and eventually, written down.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J843" onclick="javascript:toggleLayer('E843')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 歴史的にみて [Miller]、これを発明したヨーロッパの部族文化は、明文化もはっきり意識化もされない慣習から部族の賢者たちが記憶するはっきりした慣習法体系に移行し、やがてはそれを成文化することで、紛争解決システムを向上させていった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="844"><a name="844"><TD id="E844" onclick="javascript:toggleLayer('J844')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Perhaps, as our population rises and acculturation of all new members becomes more difficult, it is time for the hacker culture to do something analogous
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J844" onclick="javascript:toggleLayer('E844')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たぶん、人数がふえてきて新メンバー全員の文化順応を行うのがだんだん難しくなってくるにつれて、ハッカー文化もなにかそれと似たようなことをする時期がきているんだろう
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="845"><a name="845"><TD id="E845" onclick="javascript:toggleLayer('J845')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?to develop written codes of good practice for resolving the various sorts of disputes that can arise in connection with open-source projects, and a tradition of arbitration in which senior members of the community may be asked to mediate disputes. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J845" onclick="javascript:toggleLayer('E845')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――オープンソース・プロジェクトとのかかわりで生じる可能性のあるさまざまな紛争を解決するためのよい方法を、明文化したコードとして開発し、コミュニティの長老メンバーが紛争調停を行うような、仲裁の伝統をつくりあげることだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="846"><a name="846"><TD id="E846" onclick="javascript:toggleLayer('J846')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The analysis in this essay suggests the outlines of what such a code might look like, making explicit that which was previously implicit.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J846" onclick="javascript:toggleLayer('E846')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この論文での分析から、これまで内在的だったものを明文化するようなそういうコードの概略が、どんなものになるべきかが示唆される。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="847"><a name="847"><TD id="E847" onclick="javascript:toggleLayer('J847')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No such codes could be imposed from above;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J847" onclick="javascript:toggleLayer('E847')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうコードは決して上から押しつけられるものではあり得ない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="848"><a name="848"><TD id="E848" onclick="javascript:toggleLayer('J848')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they would have to be voluntarily adopted by the founders or owners of individual projects.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J848" onclick="javascript:toggleLayer('E848')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 個別プロジェクトの創始者や所有者が、自主的に採用するものでなくてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="849"><a name="849"><TD id="E849" onclick="javascript:toggleLayer('J849')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nor could they be completely rigid,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J849" onclick="javascript:toggleLayer('E849')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそれは完全に硬直したものでもありえない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="850"><a name="850"><TD id="E850" onclick="javascript:toggleLayer('J850')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as the pressures on the culture are likely to change over time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J850" onclick="javascript:toggleLayer('E850')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 文化にかかる圧力はだんだん変わるはずだからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="851"><a name="851"><TD id="E851" onclick="javascript:toggleLayer('J851')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Finally, for enforcement of such codes to work, they would have to reflect a broad consensus of the hacker tribe.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J851" onclick="javascript:toggleLayer('E851')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最後に、こういうコードが実行上うまく機能するには、ハッカー部族の幅広い合意を反映したものでなくてはならない。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="852"><a name="852"><TD id="E852" onclick="javascript:toggleLayer('J852')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have begun work on such a code, tentatively titled the "Malvern Protocol" after the little town where I live.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J852" onclick="javascript:toggleLayer('E852')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくはそういうコードを書く作業を始めていて、ぼくが住んでいる小さな町の名前をとってそれを仮に「マルヴァーン綱領」と名付けている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="853"><a name="853"><TD id="E853" onclick="javascript:toggleLayer('J853')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If the general analysis in this paper becomes sufficiently widely accepted, I will make the Malvern Protocol publicly available as a model code for dispute resolution.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J853" onclick="javascript:toggleLayer('E853')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしこの論文の一般的な分析がそれなりに広く受け入れられたら、マルヴァーン綱領を紛争解決コードの見本として公開する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="854"><a name="854"><TD id="E854" onclick="javascript:toggleLayer('J854')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Parties interested in critiquing and developing this code, or just offering feedback on whether they think it's a good idea or not, are invited to contact me by email.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J854" onclick="javascript:toggleLayer('E854')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このコードの批評や開発に興味のある向きや、単にそれがいいか悪いかフィードバックをくれたい人は、電子メールでぼくにコンタクトしてほしい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="855"><a name="855"><TD ID="TAB855" onclick="javascript:toggleLayer('J855')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB855" onclick="javascript:toggleLayer('E855')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="856"><a name="856"><TD id="E856" onclick="javascript:toggleLayer('J856')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Questions for Further Research
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J856" onclick="javascript:toggleLayer('E856')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 20　これからの研究の課題
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="857"><a name="857"><TD id="E857" onclick="javascript:toggleLayer('J857')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The culture's (and my own) understanding of large projects that don't follow a benevolent-dictator model is weak.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J857" onclick="javascript:toggleLayer('E857')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカー文化（そしてぼく）は、優しい独裁者モデルに従わない大規模プロジェクトについてあまりよく理解できていない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="858"><a name="858"><TD id="E858" onclick="javascript:toggleLayer('J858')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Most such projects fail.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J858" onclick="javascript:toggleLayer('E858')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういうプロジェクトの多くは失敗する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="859"><a name="859"><TD id="E859" onclick="javascript:toggleLayer('J859')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A few become spectacularly successful and important (Perl, Apache, KDE). 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J859" onclick="javascript:toggleLayer('E859')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも少数はものすごい大成功をおさめて重要になる（Perl、Apache、KDE）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="860"><a name="860"><TD id="E860" onclick="javascript:toggleLayer('J860')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nobody really understands where the difference lies.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J860" onclick="javascript:toggleLayer('E860')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ちがいがどこにあるのか、だれにもわかっていない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="861"><a name="861"><TD id="E861" onclick="javascript:toggleLayer('J861')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There's a vague sense abroad that each such project is sui generis and stands or falls on the group dynamic of its particular members, but is this true or are there replicable strategies that a group can follow?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J861" onclick="javascript:toggleLayer('E861')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （そういうプロジェクトはそれぞれsui generis（まったく独自のもの）であり、たまたまそのメンバーのグループ力学に基づいて成功したりしなかったりするのだというのが、漠然とただよう理解だけれど、でもこれって本当なんだろうか、それともある集団がとるべき複製可能な戦略があるんだろうか？）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="862"><a name="862"><TD ID="TAB862" onclick="javascript:toggleLayer('J862')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB862" onclick="javascript:toggleLayer('E862')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="863"><a name="863"><TD ID="TAB863" onclick="javascript:toggleLayer('J863')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J863" onclick="javascript:toggleLayer('E863')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 21　書誌、注、謝辞
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="864"><a name="864"><TD id="E864" onclick="javascript:toggleLayer('J864')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Miller] Miller, William Ian; Bloodtaking and Peacemaking: Feud, Law, and Society in Saga Iceland; University of Chicago Press 1990, ISBN 0-226-52680-1. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J864" onclick="javascript:toggleLayer('E864')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [Miller] Miller, William Ian; Bloodtaking and Peacemaking: Feud, Law, and Society in Saga Iceland.; University of Chicago Press 1990, ISBN 0-226-52680-1.
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="865"><a name="865"><TD id="E865" onclick="javascript:toggleLayer('J865')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A fascinating study of Icelandic folkmoot law,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J865" onclick="javascript:toggleLayer('E865')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アイスランドの民会法についてのすばらしい研究。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="866"><a name="866"><TD id="E866" onclick="javascript:toggleLayer('J866')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which both illuminates the ancestry of the Lockean theory of property and describes the later stages of a historical process by which custom passed into customary law and thence to written law.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J866" onclick="javascript:toggleLayer('E866')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ロック式所有権理論がどれほど古いかを明らかにするとともに、慣習が慣習法へとひきつがれ、そして成文法になる歴史的なプロセスの後半を描いている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="867"><a name="867"><TD id="E867" onclick="javascript:toggleLayer('J867')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Mal] Malaclypse the Younger; Principia Discordia, or How I Found Goddess and What I Did To Her When I Found Her; Loompanics, ISBN 1-55950-040-9. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J867" onclick="javascript:toggleLayer('E867')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [Mal] Malaclypse the Younger; Principia Discordia, or How I Found Goddess and What I Did To Her When I Found Her.; Loompanics, ISBN 1-55950-040-9.
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="868"><a name="868"><TD id="E868" onclick="javascript:toggleLayer('J868')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There is much enlightening silliness to be found in Discordianism.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J868" onclick="javascript:toggleLayer('E868')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すごく軽い冗談口てんこもりだけれど、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="869"><a name="869"><TD id="E869" onclick="javascript:toggleLayer('J869')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amidst it, the `SNAFU principle' provides a rather trenchant analysis of why command hierarchies don't scale well.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J869" onclick="javascript:toggleLayer('E869')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのなかの「SNAFU 原理」なる代物は、上意下達方式がなぜスケーラビリティが低いのかについて、なかなか深遠な分析を提供している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="870"><a name="870"><TD id="E870" onclick="javascript:toggleLayer('J870')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There's a browseable HTML version.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J870" onclick="javascript:toggleLayer('E870')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ブラウズ可能な HTML 版あり。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="871"><a name="871"><TD id="E871" onclick="javascript:toggleLayer('J871')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [BCT] J. Barkow, L. Cosmides, and J. Tooby (Eds.); The Adapted Mind: Evolutionary Psychology and the Generation of Culture. New York: Oxford University Press 1992. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J871" onclick="javascript:toggleLayer('E871')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [BCT] J. Barkow, L. Cosmides, and J. Tooby (Eds.); The Adapted Mind: Evolutionary Psychology and the Generation of Culture. New York: Oxford University Press 1992.
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="872"><a name="872"><TD id="E872" onclick="javascript:toggleLayer('J872')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An excellent introduction to evolutionary psychology.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J872" onclick="javascript:toggleLayer('E872')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 進化心理学へのすぐれた入門書。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="873"><a name="873"><TD id="E873" onclick="javascript:toggleLayer('J873')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some of the papers bear directly on the three cultural types I discuss (command/exchange/gift), suggesting that these patterns are wired into the human psyche fairly deep.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J873" onclick="javascript:toggleLayer('E873')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 論文のいくつかは、ぼくが論じている3種類の文化タイプ（上意下達、交換、贈与）と直接かかわるもので、こういうパターンが人間の心理のかなり深いところにまで食い込んでいるらしいことを示唆している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="874"><a name="874"><TD id="E874" onclick="javascript:toggleLayer('J874')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [MHG] Goldhaber, Michael K.; The Attention Economy and the Net.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J874" onclick="javascript:toggleLayer('E874')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [MHG] Goldhaber, Michael K.; The Attention Economy and the Net
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="875"><a name="875"><TD id="E875" onclick="javascript:toggleLayer('J875')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I discovered this paper after my version 1.7.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J875" onclick="javascript:toggleLayer('E875')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この論文はバージョン 1.7 のあとで発見した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="876"><a name="876"><TD id="E876" onclick="javascript:toggleLayer('J876')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It has obvious flaws (Goldhaber's argument for the inapplicability of economic reasoning to attention does not bear close examination), 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J876" onclick="javascript:toggleLayer('E876')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一目でわかる欠点もある（Goldhaber は、関心というものには経済的な理由づけが適用できないと論じているけれど、この議論はよく読むと成り立たない）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="877"><a name="877"><TD id="E877" onclick="javascript:toggleLayer('J877')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but Goldhaber nevertheless has funny and perceptive things to say about the role of attention-seeking in organizing behavior. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J877" onclick="javascript:toggleLayer('E877')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> けれど、それでも Goldhaber は組織行動における関心集めの役割についておもしろくて鋭いことを言っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="878"><a name="878"><TD id="E878" onclick="javascript:toggleLayer('J878')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The prestige or peer repute I have discussed can fruitfully be viewed as a particular case of attention in his sense.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J878" onclick="javascript:toggleLayer('E878')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくが論じた名声や仲間内の評判は、かれが言う意味での関心の特殊例として見ると有益。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="879"><a name="879"><TD id="E879" onclick="javascript:toggleLayer('J879')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [HH] I have summarized the history of the hacker culture in A Brief History Of Hackerdom.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J879" onclick="javascript:toggleLayer('E879')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [HH] ハッカー社会（hackerdom）の歴史については、ここにまとめてみた（邦訳はこちら）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="880"><a name="880"><TD id="E880" onclick="javascript:toggleLayer('J880')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The book that will explain it really well remains to be written, probably not by me.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J880" onclick="javascript:toggleLayer('E880')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これをほんとうにきちんと説明してくれる本は未だに書かれていないし、それを書くのはたぶんぼくではないと思う。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="881"><a name="881"><TD id="E881" onclick="javascript:toggleLayer('J881')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [N] The term `noosphere' is an obscure term of art in philosophy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J881" onclick="javascript:toggleLayer('E881')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [N]「ノウアスフィア（noosphere）」は哲学特有の専門用語で、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="882"><a name="882"><TD id="E882" onclick="javascript:toggleLayer('J882')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is pronounced KNOW-uh-sfee
+(two o-sounds, one long and stressed, one short and unstressed tending towards schwa). 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J882" onclick="javascript:toggleLayer('E882')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ノウ・ア・スフィア」が正しい発音
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="883"><a name="883"><TD ID="TAB883" onclick="javascript:toggleLayer('J883')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB883" onclick="javascript:toggleLayer('E883')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="884"><a name="884"><TD ID="TAB884" onclick="javascript:toggleLayer('J884')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J884" onclick="javascript:toggleLayer('E884')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （訳注：ティヤール・ド・シャルダンが使っていて、日本ではヌースフィアと書かれることが多い。
+この翻訳では著者にしたがった）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="885"><a name="885"><TD ID="TAB885" onclick="javascript:toggleLayer('J885')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB885" onclick="javascript:toggleLayer('E885')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="886"><a name="886"><TD id="E886" onclick="javascript:toggleLayer('J886')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If one is being excruciatingly correct about one's orthography, the term is properly spelled with a diaeresis over the second `o' to mark it as a separate vowel.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J886" onclick="javascript:toggleLayer('E886')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 表記について死ぬほど厳密でありたいなら、正しくは二番目の o の上に点々がつく。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="887"><a name="887"><TD id="E887" onclick="javascript:toggleLayer('J887')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In more detail;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J887" onclick="javascript:toggleLayer('E887')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もっと詳しく言えば：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="888"><a name="888"><TD id="E888" onclick="javascript:toggleLayer('J888')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> this term for ``the sphere of human thought'' derives from the Greek `noos' meaning `mind', `intelligence', or `perception'. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J888" onclick="javascript:toggleLayer('E888')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この「人間の思考の圏域」を表す用語は、ギリシャ語の「nous」、つまり精神や意志、息などを指す単語から生まれている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="889"><a name="889"><TD id="E889" onclick="javascript:toggleLayer('J889')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was invented by E. LeRoy in Les origines humaines et l'evolution de l'intelligence (Paris 1928).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J889" onclick="javascript:toggleLayer('E889')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> E. LeRoy が Les origines humaines et l'evolution de l'intelligence (Paris 1928)で発明したことばだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="890"><a name="890"><TD id="E890" onclick="javascript:toggleLayer('J890')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It was popularized first by the Russian biologist and pioneering ecologist Vladimir Ivanovich Vernadsky, (1863?1945), then by the Jesuit paleontologist/philosopher Pierre Teilhard de Chardin (1881?1955).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J890" onclick="javascript:toggleLayer('E890')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これはさらに、ロシアの生物学者にして先駆的なエコロジスト Vladimir Ivanovich Vernadsky (1863-1945)によって広められ、さらにはイエズス会の古生物学者兼哲学者ピエール・ティヤール・ド・シャルダン Pierre Teilhard de Chardin (1881-1955)がこれを広めた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="891"><a name="891"><TD id="E891" onclick="javascript:toggleLayer('J891')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is with Teilhard de Chardin's theory of future human evolution to a form of pure mind culminating in union with the Godhead that the term is now primarily associated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J891" onclick="javascript:toggleLayer('E891')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いまではこの用語は主に、人間が将来純粋な精神体へと進化して神様と融合するというかれの理論と結びついて考えられている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="892"><a name="892"><TD id="E892" onclick="javascript:toggleLayer('J892')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [DF] David Friedman, one of the most lucid and accessible thinkers in contemporary economics, has written an excellent outline of the history and logic of intellectual-property law.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J892" onclick="javascript:toggleLayer('E892')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [DF]現代経済学で最も雄弁かつわかりやすい論者デビッド・フリードマンは、知的財産法の歴史と論理について見事な概論を書いている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="893"><a name="893"><TD id="E893" onclick="javascript:toggleLayer('J893')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I recommend it as a starting point to anyone interested in these issues.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J893" onclick="javascript:toggleLayer('E893')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この問題に関心ある人すべての出発点としておすすめする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="894"><a name="894"><TD id="E894" onclick="javascript:toggleLayer('J894')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [BSD] One interesting difference between the Linux and BSD worlds is that the Linux kernel (and associated OS core utilities) have never forked, but BSD's has, at least three times. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J894" onclick="javascript:toggleLayer('E894')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [SP]　Linux と BSD の世界とのおもしろいちがいの一つは、Linux のカーネル（および関連する OS の中心的なユーティリティ）は一度も分裂していないけれど、BSD は少なくとも 3 回は分裂しているということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="895"><a name="895"><TD id="E895" onclick="javascript:toggleLayer('J895')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What makes this interesting is that the social structure of the BSD groups is centralized in a way intended to define clear lines of authority and to prevent forking, while the decentralized and amorphous Linux community takes no such measures. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J895" onclick="javascript:toggleLayer('E895')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これがおもしろいのは、BSD グループの社会構造は中央集権化されていて、権限をはっきりと線引きすることで分裂を防ぐようになっているのに、中央集権化されていなくて不定型なLinuxコミュニティは分裂を防ぐような手段をまったく講じていないからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="896"><a name="896"><TD id="E896" onclick="javascript:toggleLayer('J896')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It appears that the projects which open up development the most actually have the least tendency to fork!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J896" onclick="javascript:toggleLayer('E896')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 開発をなるべく開放したほうが、いちばん分裂しにくくなるとしか思えない！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="897"><a name="897"><TD id="E897" onclick="javascript:toggleLayer('J897')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Henry Spencer &lt;henry@spsystems.net&gt; suggests that, in general, the stability of a political system is inversely proportional to the height of the entry barriers to its political process. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J897" onclick="javascript:toggleLayer('E897')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Henry Spencer &lt;henry@spsystems.net&gt; の考えによれば、一般に政治的なシステムの安定性は、その政治プロセスへの参入障壁の高さに反比例するのではないか、とのこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="898"><a name="898"><TD id="E898" onclick="javascript:toggleLayer('J898')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His analysis is worth quoting here:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J898" onclick="javascript:toggleLayer('E898')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれの分析は、ここで引用するだけの価値がある：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="899"><a name="899"><TD id="E899" onclick="javascript:toggleLayer('J899')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One major strength of a relatively open democracy is that most potential revolutionaries find it easier to make progress toward their objectives by working via the system rather by attacking it. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J899" onclick="javascript:toggleLayer('E899')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「比較的オープンな民主主義の大きな強みの一つは、ほとんどの潜在的革命家は自分の目的を達成するのに、システムを利用したほうがシステムを攻撃するよりも簡単だと判断する、ということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="900"><a name="900"><TD id="E900" onclick="javascript:toggleLayer('J900')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This strength is easily undermined if established parties act together to `raise the bar', making it more difficult for small dissatisfied groups to see some progress made toward their goals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J900" onclick="javascript:toggleLayer('E900')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 各種組織が協力して「敷居を上げて」、不満を持った小集団が自分の目標を多少なりとも達成するのをむずかしくすると、この強みはすぐに消えてしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="homesteading-7.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<8>
+<a href="homesteading-9.htm">9</a>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-9.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/homesteadinge.txt">local copy</a> / <a href="http://www.catb.org/~esr/writings/homesteading/">http://www.catb.org/~esr/writings/homesteading/</a><li>オリジナルの日本語文: <a href="../org/homesteadingj.txt">local copy</a> / <a href="http://cruel.org/freeware/noosphere.html">http://cruel.org/freeware/noosphere.html</a><li><a href="../manual-alignment/homesteading.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

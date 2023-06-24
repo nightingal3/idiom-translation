@@ -1,0 +1,532 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>DISCOURSE ON THE METHOD OF RIGHTLY CONDUCTING THE REASON, AND SEEKING TRUTH IN THE SCIENCES / Rene Descartes 著</h2><h2>もろもろの学問分野で、正しく理詰めで真理を探究するための方法についての考察 / ルネ・デカルト  著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/discoursee.txt">英語文</a>&<a href="../org/discoursej.txt">日本語文</a> / <a href="../manual-alignment/discourse.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>6 of DISCOURSE ON THE METHOD OF RIGHTLY CONDUCTING THE REASON, AND SEEKING TRUTH IN THE SCIENCES</TITLE>
+<hr>
+<a href="discourse-5.htm">prev</a>
+<a href="discourse-0.htm">0</a>
+<a href="discourse-1.htm">1</a>
+<a href="discourse-2.htm">2</a>
+<a href="discourse-3.htm">3</a>
+<a href="discourse-4.htm">4</a>
+<a href="discourse-5.htm">5</a>
+<6>
+<a href="discourse-7.htm">7</a>
+<a href="discourse-8.htm">8</a>
+<a href="discourse-7.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="601"><a name="601"><TD id="E601" onclick="javascript:toggleLayer('J601')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and which, by the same means, distributing the animal spirits through the muscles, can cause the members of such a body to move in as many different ways, and in a manner as suited, whether to the objects that are presented to its senses or to its internal affections, as can take place in our own case apart from the guidance of the will.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J601" onclick="javascript:toggleLayer('E601')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして同じやりかたで動物霊気を筋肉に配分することにより、肉体のいろいろな部分がわれわれの意志に導かれないような場合でも、感覚に示された物体や内的な欲求にしたがって、さまざまにちがった形で動くようになることもしめした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="602"><a name="602"><TD id="E602" onclick="javascript:toggleLayer('J602')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nor will this appear at all strange to those who are acquainted with the variety of movements performed by the different automata,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J602" onclick="javascript:toggleLayer('E602')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは、いろいろな\ruby{自動人形}{オートマトン}のさまざまな動きになじみのある人なら、あまり不思議とも思わないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="603"><a name="603"><TD id="E603" onclick="javascript:toggleLayer('J603')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> or moving machines fabricated by human industry,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J603" onclick="javascript:toggleLayer('E603')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あるいは人間の産業で製造されている、動く機械を見てもわかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="604"><a name="604"><TD id="E604" onclick="javascript:toggleLayer('J604')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that with help of but few pieces compared with the great multitude of bones, muscles, nerves, arteries, veins, and other parts that are found in the body of each animal.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J604" onclick="javascript:toggleLayer('E604')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした人形や機械は、動物の大量の骨や筋肉や神経、動脈、静脈などの部品と比べて、ごく少数の部品だけでそういう動きを実現している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="605"><a name="605"><TD id="E605" onclick="javascript:toggleLayer('J605')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Such persons will look upon this body as a machine made by the hands of God,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J605" onclick="javascript:toggleLayer('E605')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう人々は、動物の肉体を見て、神の手が作った機械だと考えるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="606"><a name="606"><TD id="E606" onclick="javascript:toggleLayer('J606')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which is incomparably better arranged, and adequate to movements more admirable than is any machine of human invention.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J606" onclick="javascript:toggleLayer('E606')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 機械としては比較にならないほど緻密に構成されていて、運動に対する適正は人間の発明したどんな機械より見事だというだけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="607"><a name="607"><TD id="E607" onclick="javascript:toggleLayer('J607')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And here I specially stayed to show that,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J607" onclick="javascript:toggleLayer('E607')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてここでわたしが示したいのは次のようなことだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="608"><a name="608"><TD id="E608" onclick="javascript:toggleLayer('J608')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> were there such machines exactly resembling organs and outward form an ape or any other irrational animal, we could have no means of knowing that they were in any respect of a different nature from these animals;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J608" onclick="javascript:toggleLayer('E608')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> サルなどの理性を持たない動物の器官や外形を正確にまねた機械があったとしたら、われわれはそれがこういう動物とは別の性質を持っているということは、いっさい知りようがない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="609"><a name="609"><TD id="E609" onclick="javascript:toggleLayer('J609')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but if there were machines bearing the image of our bodies, and capable of imitating our actions as far as it is morally possible, there would still remain two most certain tests whereby to know that they were not therefore really men.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J609" onclick="javascript:toggleLayer('E609')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしもしわれわれの姿に似せた機械があって、それがわれわれのふるまいを、事実上可能な限りまねできたとしても、それが人間でないと判断できる、きわめて確実な試験方法が二つ残るのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="610"><a name="610"><TD id="E610" onclick="javascript:toggleLayer('J610')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Of these the first is that they could never use words or other signs arranged in such a manner as is competent to us in order to declare our thoughts to others:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J610" onclick="javascript:toggleLayer('E610')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このうちまず最初のものは、獣たちは、他者に対して思考を伝えるような形では、ことばなどの記号を並べることが絶対にできない、ということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="611"><a name="611"><TD id="E611" onclick="javascript:toggleLayer('J611')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for we may easily conceive a machine to be so constructed that it emits vocables, and even that it emits some correspondent to the action upon it of external objects which cause a change in its organs;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J611" onclick="javascript:toggleLayer('E611')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 単語を発するように作られた機械を考えるのは簡単だし、その発しかたが、外部の物体によって内部器官に変化が加えられるのに応じて変わるようなものですら可能だろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="612"><a name="612"><TD id="E612" onclick="javascript:toggleLayer('J612')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for example, if touched in a particular place it may demand what we wish to say to it;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J612" onclick="javascript:toggleLayer('E612')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえば、もしある特定の場所にふれたら、望みを言えと要求し、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="613"><a name="613"><TD id="E613" onclick="javascript:toggleLayer('J613')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if in another it may cry out that it is hurt, and such like;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J613" onclick="javascript:toggleLayer('E613')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 別のところにさわったら痛いと叫ぶ、といったような機械だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="614"><a name="614"><TD id="E614" onclick="javascript:toggleLayer('J614')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but not that it should arrange them variously so as appositely to reply to what is said in its presence, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J614" onclick="javascript:toggleLayer('E614')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、そのことばをいろいろ変えて配置して、それに対して言われたことにきちんと返答するような機械はできない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="615"><a name="615"><TD id="E615" onclick="javascript:toggleLayer('J615')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as men of the lowest grade of intellect can do.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J615" onclick="javascript:toggleLayer('E615')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 知性が最低の人間であっても、そのくらいはできる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="616"><a name="616"><TD id="E616" onclick="javascript:toggleLayer('J616')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The second test is, that although such machines might execute many things with equal or perhaps greater perfection than any of us, they would, without doubt, fail in certain others 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J616" onclick="javascript:toggleLayer('E616')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第二の試験は、そうした機械はいろいろなことを、人間と同じくらいの完成度で、いやそれ以上の完成度をもって実行できるだろうけれど、それはまちがいなく他のことでは失敗するだろうということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="617"><a name="617"><TD id="E617" onclick="javascript:toggleLayer('J617')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> from which it could be discovered that they did not act from knowledge, but solely from the disposition of their organs:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J617" onclick="javascript:toggleLayer('E617')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここから、その機械が知識に基づいて動いているのではなく、その器官の仕組みに応じて動いているだけだ、ということが発見できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="618"><a name="618"><TD id="E618" onclick="javascript:toggleLayer('J618')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for while reason is an universal instrument that is alike available on every occasion, these organs, on the contrary, need a particular arrangement for each particular action;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J618" onclick="javascript:toggleLayer('E618')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 理性というのは普遍的な仕組みであって、あらゆる状況に適用できるけれど、そうした器官というのは個別の行動について、特定のしつらえが必要になるわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="619"><a name="619"><TD id="E619" onclick="javascript:toggleLayer('J619')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> whence it must be morally impossible that there should exist in any machine a diversity of organs sufficient to enable it to act in all the occurrences of life, in the way in which our reason enables us to act. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J619" onclick="javascript:toggleLayer('E619')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、われわれの理性が可能にしているような形で、人生のあらゆる状況に対応を可能とするような器官の多様性をもった機械というのは、道徳的にも存在し得ないはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="620"><a name="620"><TD id="E620" onclick="javascript:toggleLayer('J620')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Again, by means of these two tests we may likewise know the difference between men and brutes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J620" onclick="javascript:toggleLayer('E620')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この2つの試験の結果として、人間と獣のちがいもわかるはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="621"><a name="621"><TD id="E621" onclick="javascript:toggleLayer('J621')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For it is highly deserving of remark, that there are no men so dull and stupid, not even idiots, as to be incapable of joining together different words, and thereby constructing a declaration by which to make their thoughts understood;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J621" onclick="javascript:toggleLayer('E621')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どんなに愚かで魯鈍な人間でも、ことばをつなぎあわせて、思考を理解させるような宣言を作れないような人間はいない。
+白痴ですらそうだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="622"><a name="622"><TD id="E622" onclick="javascript:toggleLayer('J622')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that on the other hand, there is no other animal, however perfect or happily circumstanced, which can do the like.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J622" onclick="javascript:toggleLayer('E622')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところが一方では、どんなに完全で恵まれた環境におかれても、そんなことができる動物はいないのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="623"><a name="623"><TD id="E623" onclick="javascript:toggleLayer('J623')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nor does this inability arise from want of organs:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J623" onclick="javascript:toggleLayer('E623')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてしゃべれないのは、別に器官がないせいではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="624"><a name="624"><TD id="E624" onclick="javascript:toggleLayer('J624')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for we observe that magpies and parrots can utter words like ourselves, and are yet unable to speak as we do, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J624" onclick="javascript:toggleLayer('E624')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 九官鳥やオウムは、人間と同じようなことばを発することができるけれど、でも人間のようにしゃべることはできない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="625"><a name="625"><TD id="E625" onclick="javascript:toggleLayer('J625')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that is, so as to show that they understand what they say;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J625" onclick="javascript:toggleLayer('E625')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり自分の言っていることを理解していることを示せない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="626"><a name="626"><TD id="E626" onclick="javascript:toggleLayer('J626')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in place of which men born deaf and dumb, and thus not less, but rather more than the brutes, destitute of the organs which others use in speaking, are in the habit of spontaneously inventing certain signs by which they discover their thoughts to those who, being usually in their company, have leisure to learn their language.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J626" onclick="javascript:toggleLayer('E626')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところがつんぼで愚鈍に生まれついた人は、しゃべるための器官の欠如という点では獣よりひどいわけだが、それでも独自になんらかの身振りを発明して、かれらの言語を学ぶだけの余裕がある者、通常は身のまわりの者たちに、自分の考えを表明できるようになるのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="627"><a name="627"><TD id="E627" onclick="javascript:toggleLayer('J627')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this proves not only that the brutes have less reason than man, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J627" onclick="javascript:toggleLayer('E627')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてここから証明されるのは、獣は人間より理性が少ないというだけではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="628"><a name="628"><TD id="E628" onclick="javascript:toggleLayer('J628')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but that they have none at all:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J628" onclick="javascript:toggleLayer('E628')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 獣には理性がまったくない、ということが証明されるのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="629"><a name="629"><TD id="E629" onclick="javascript:toggleLayer('J629')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for we see that very little is required to enable a person to speak;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J629" onclick="javascript:toggleLayer('E629')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、人がしゃべれるために必要なものは実にわずかだ、というのはわかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="630"><a name="630"><TD id="E630" onclick="javascript:toggleLayer('J630')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and since a certain inequality of capacity is observable among animals of the same species, as well as among men,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J630" onclick="javascript:toggleLayer('E630')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、人間たちの中でもいろいろ能力の差があるように、動物の同じ種の中でも、ある程度の能力差は見られる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="631"><a name="631"><TD id="E631" onclick="javascript:toggleLayer('J631')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and since some are more capable of being instructed than others, it is incredible that the most perfect ape or parrot of its species, should not in this be equal to the most stupid infant of its kind or at least to one that was crack-brained, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J631" onclick="javascript:toggleLayer('E631')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして中には仕込みやすいものもいるのを考えると、サルやオウムの中でもっとも完成されたものが、人間のもっとも愚鈍な子供や、脳障害のある子供にすら匹敵するものとならないのは、驚くべきことだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="632"><a name="632"><TD id="E632" onclick="javascript:toggleLayer('J632')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> unless the soul of brutes were of a nature wholly different from ours.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J632" onclick="javascript:toggleLayer('E632')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは、獣の魂が本質的に、人間の魂とはまったくちがっているからだと考えるしかない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="633"><a name="633"><TD id="E633" onclick="javascript:toggleLayer('J633')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And we ought not to confound speech with the natural movements which indicate the passions, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J633" onclick="javascript:toggleLayer('E633')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、しゃべることと、感情を示す自然な運動とを近藤してはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="634"><a name="634"><TD id="E634" onclick="javascript:toggleLayer('J634')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and can be imitated by machines as well as manifested by animals;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J634" onclick="javascript:toggleLayer('E634')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう運動のほうは、動物も示すが機械で簡単にまねできるのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="635"><a name="635"><TD id="E635" onclick="javascript:toggleLayer('J635')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> nor must it be thought with certain of the ancients, that the brutes speak, although we do not understand their language. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J635" onclick="javascript:toggleLayer('E635')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> また古人のように、獣たちはしゃべるのだけれど、われわれにその言語が理解できないだけだと考えてもいけない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="636"><a name="636"><TD id="E636" onclick="javascript:toggleLayer('J636')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For if such were the case, since they are endowed with many organs analogous to ours, they could as easily communicate their thoughts to us as to their fellows. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J636" onclick="javascript:toggleLayer('E636')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、もしそれが事実なら、獣たちはわれわれと似たような器官をたくさん与えられているのだから、仲間として自分の考えをわれわれに楽に伝えることができるはずだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="637"><a name="637"><TD id="E637" onclick="javascript:toggleLayer('J637')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is also very worthy of remark, that, though there are many animals which manifest more industry than we in certain of their actions, the same animals are yet observed to show none at all in many others:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J637" onclick="javascript:toggleLayer('E637')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらに行動の一部の面では、われわれよりずっと活発に動く動物たちはたくさんいるけれど、その動物たちも、ほかの多くの面ではまったく活動を見せてくれないのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="638"><a name="638"><TD id="E638" onclick="javascript:toggleLayer('J638')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that the circumstance that they do better than we does not prove that they are endowed with mind,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J638" onclick="javascript:toggleLayer('E638')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからかれらがある面でわれわれより優れているというのは、かれらに精神が備わっているという証明にはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="639"><a name="639"><TD id="E639" onclick="javascript:toggleLayer('J639')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it would thence follow that they possessed greater reason than any of us, and could surpass us in all things; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J639" onclick="javascript:toggleLayer('E639')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしそうなったら、動物たちのほうがわれわれのだれよりも高い理性を備えていて、あらゆる面でわれわれを上回っているはずだからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="640"><a name="640"><TD id="E640" onclick="javascript:toggleLayer('J640')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> on the contrary, it rather proves that they are destitute of reason, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J640" onclick="javascript:toggleLayer('E640')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> むしろそれは、かれらに理性が欠けているということを証明しているのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="641"><a name="641"><TD id="E641" onclick="javascript:toggleLayer('J641')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that it is nature which acts in them according to the disposition of their organs: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J641" onclick="javascript:toggleLayer('E641')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてその器官の命ずるままに動くのが動物の天性なのだということになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="642"><a name="642"><TD id="E642" onclick="javascript:toggleLayer('J642')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> thus it is seen, that a clock composed only of wheels and weights can number the hours and measure time more exactly than we with all our skin.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J642" onclick="javascript:toggleLayer('E642')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり歯車やおもりだけでできている時計のほうが、これだけの皮膚を備えたわれわれよりも正確に時を刻み、時間をはかれることからも、これはわかるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="643"><a name="643"><TD id="E643" onclick="javascript:toggleLayer('J643')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I had after this described the reasonable soul, and shown that it could by no means be educed from the power of matter, as the other things of which I had spoken, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J643" onclick="javascript:toggleLayer('E643')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうしてわたしは、まともな魂というものを説明し、それがほかのところで説明したような物質の力だけからは、絶対に導けないのを示した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="644"><a name="644"><TD id="E644" onclick="javascript:toggleLayer('J644')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but that it must be expressly created;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J644" onclick="javascript:toggleLayer('E644')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは独立に創られなくてはならないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="645"><a name="645"><TD id="E645" onclick="javascript:toggleLayer('J645')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that it is not sufficient that it be lodged in the human body exactly like a pilot in a ship, unless perhaps to move its members, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J645" onclick="javascript:toggleLayer('E645')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、単に四肢を動かすだけならともかく、それが船の航海士のように肉体の中に置かれるだけでは不十分だということも示した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="646"><a name="646"><TD id="E646" onclick="javascript:toggleLayer('J646')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but that it is necessary for it to be joined and united more closely to the body, in order to have sensations and appetites similar to ours, and thus constitute a real man.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J646" onclick="javascript:toggleLayer('E646')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人間のような感覚や欲求を持つ、本物の人間をつくるためには、その魂が肉体ともっと密接に結びついて統合されなくてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="647"><a name="647"><TD id="E647" onclick="javascript:toggleLayer('J647')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I here entered, in conclusion, upon the subject of the soul at considerable length, because it is of the greatest moment: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J647" onclick="javascript:toggleLayer('E647')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 結局わたしがここで、魂のことについて長々と書いてきたのは、それがいちばん火急の問題だからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="648"><a name="648"><TD id="E648" onclick="javascript:toggleLayer('J648')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for after the error of those who deny the existence of God, an error which I think I have already sufficiently refuted, there is none that is more powerful in leading feeble minds astray from the straight path of virtue than the supposition that the soul of the brutes is of the same nature with our own;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J648" onclick="javascript:toggleLayer('E648')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神の存在を否定する者たちの誤り（この誤りについては、すでに十分に反論をしたつもりだ）をのぞけば、獣たちの魂がわれわれの魂と同じ性質のものだという思いこみほど強力に、弱い精神を惑わして美徳のまっすぐな道からはずれさせてしまうものはないからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="649"><a name="649"><TD id="E649" onclick="javascript:toggleLayer('J649')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and consequently that after this life we have nothing to hope for or fear, more than flies and ants;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J649" onclick="javascript:toggleLayer('E649')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう思いこみがあるとすぐに、この人生が終わってしまえば、ハエやアリと同じでその後にはなにも期待できず、またおそれるものもないのだ、という考えが出てきてしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="650"><a name="650"><TD id="E650" onclick="javascript:toggleLayer('J650')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in place of which, when we know how far they differ we much better comprehend the reasons which establish that the soul is of a nature wholly independent of the body, and that consequently it is not liable to die with the latter 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J650" onclick="javascript:toggleLayer('E650')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところが、人間と獣の魂がどんなにちがっているかがわかれば、魂がその性質からして肉体とはまったく独立している理由がはっきりわかり、だから肉体といっしょに死んでしまうようなこともないのもわかる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="651"><a name="651"><TD id="E651" onclick="javascript:toggleLayer('J651')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, finally, because no other causes are observed capable of destroying it, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J651" onclick="javascript:toggleLayer('E651')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも魂を破壊できるような力を持つ原因は一つも観察されていないからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="652"><a name="652"><TD id="E652" onclick="javascript:toggleLayer('J652')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> we are naturally led thence to judge that it is immortal.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J652" onclick="javascript:toggleLayer('E652')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よってわれわれは、魂が不死であるという判断にたどりつくことになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="653"><a name="653"><TD ID="TAB653" onclick="javascript:toggleLayer('J653')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB653" onclick="javascript:toggleLayer('E653')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="654"><a name="654"><TD id="E654" onclick="javascript:toggleLayer('J654')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> PART VI
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J654" onclick="javascript:toggleLayer('E654')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 第 6 部
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="655"><a name="655"><TD id="E655" onclick="javascript:toggleLayer('J655')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Three years have now elapsed since I finished the treatise containing all these matters;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J655" onclick="javascript:toggleLayer('E655')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういう話をすべて書いた論文を完成させてから、もう3年たった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="656"><a name="656"><TD id="E656" onclick="javascript:toggleLayer('J656')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I was beginning to revise it, with the view to put it into the hands of a printer, when I learned that persons to whom I greatly defer, and whose authority over my actions is hardly less influential than is my own reason over my thoughts, had condemned a certain doctrine in physics, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J656" onclick="javascript:toggleLayer('E656')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそろそろ印刷業者に渡そうかと思って改訂を始めたところで、わたしが大いに敬意を表し、わが理性が思考に与えるのと同じくらいの権威をわが行動に与えている人々が、ある物理学の説を糾弾したという話をきいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="657"><a name="657"><TD id="E657" onclick="javascript:toggleLayer('J657')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> published a short time previously by another individual to which I will not say that I adhered,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J657" onclick="javascript:toggleLayer('E657')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この学説はある人がしばらく前に出版したものだったのだけれど、わたしはその学説を支持しているとは言わない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="658"><a name="658"><TD id="E658" onclick="javascript:toggleLayer('J658')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but only that, previously to their censure I had observed in it nothing which I could imagine to be prejudicial either to religion or to the state, and nothing therefore which would have prevented me from giving expression to it in writing, if reason had persuaded me of its truth;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J658" onclick="javascript:toggleLayer('E658')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、こうして検閲される前にわたしが見た限りでは、そこには宗教に対しても国家に対しても、偏向していると思えるようなところはいっさい見あたらなかったし、理性的に考えてそれが真実だと思ったら、そう書き記すことをためらうべき理由はいっさい見あたらなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="659"><a name="659"><TD id="E659" onclick="javascript:toggleLayer('J659')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and this led me to fear lest among my own doctrines likewise some one might be found in which I had departed from the truth, notwithstanding the great care I have always taken not to accord belief to new opinions of which I had not the most certain demonstrations, and not to give expression to aught that might tend to the hurt of any one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J659" onclick="javascript:toggleLayer('E659')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしは新しい見解は非常に確実な実証がなくては採用しないように細心の注意をはらい、記述についても、だれも傷つけないよう念を入れている。
+でも、そんなことはおかまいなしに、わたしの学説を見て、これは真理から乖離しているなどと言い出す人が出てくるのではないだろうか。
+こんな一件があったので、わたしは怖くなってしまった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="660"><a name="660"><TD id="E660" onclick="javascript:toggleLayer('J660')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This has been sufficient to make me alter my purpose of publishing them;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J660" onclick="javascript:toggleLayer('E660')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この一件で、出版しようという目標は捨てることにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="661"><a name="661"><TD id="E661" onclick="javascript:toggleLayer('J661')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for although the reasons by which I had been induced to take this resolution were very strong, yet my inclination, which has always been hostile to writing books, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J661" onclick="javascript:toggleLayer('E661')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 出版しようという決意にいたった理由づけはとても強力ではあったけれど、もともと本を書くというのはあまり気がすすまないことだったのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="662"><a name="662"><TD id="E662" onclick="javascript:toggleLayer('J662')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> enabled me immediately to discover other considerations sufficient to excuse me for not undertaking the task. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J662" onclick="javascript:toggleLayer('E662')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この性向のおかげで、出版作業に手をつけない口実となるような、他の関心事がすぐに見つかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="663"><a name="663"><TD id="E663" onclick="javascript:toggleLayer('J663')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And these reasons, on one side and the other, are such, that not only is it in some measure my interest here to state them, but that of the public, perhaps, to know them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J663" onclick="javascript:toggleLayer('E663')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこういう理由というのは、なんのかのいってわたしとしても描いておきたいことだし、世間的にも知っておくほうが利益になるようなものだからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="664"><a name="664"><TD id="E664" onclick="javascript:toggleLayer('J664')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have never made much account of what has proceeded from my own mind;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J664" onclick="javascript:toggleLayer('E664')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしは、自分の精神から生まれ出たものについて、あまり考えたことがない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="665"><a name="665"><TD id="E665" onclick="javascript:toggleLayer('J665')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and so long as I gathered no other advantage from the method I employ beyond satisfying myself on some difficulties belonging to the speculative sciences, or endeavoring to regulate my actions according to the principles it taught me, I never thought myself bound to publish anything respecting it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J665" onclick="javascript:toggleLayer('E665')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分としては、思弁科学に属するいくつかの問題について自分を満足させたり、それが教えてくれる原理にしたがって自分の行動を律したりする以外には、自分の使う手法からなんのメリットも得ていない以上、それについてなにかを出版すべきだなどと考えたこともない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="666"><a name="666"><TD id="E666" onclick="javascript:toggleLayer('J666')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For in what regards manners, every one is so full of his own wisdom,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J666" onclick="javascript:toggleLayer('E666')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 振る舞いに関する限り、みんなそれぞれ一家言を持っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="667"><a name="667"><TD id="E667" onclick="javascript:toggleLayer('J667')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that there might be found as many reformers as heads, if any were allowed to take upon themselves the task of mending them,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J667" onclick="javascript:toggleLayer('E667')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、人の振る舞いを改めていいことになったら、それこそ人の数だけ改革者が出てくるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="668"><a name="668"><TD id="E668" onclick="javascript:toggleLayer('J668')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> except those whom God has constituted the supreme rulers of his people or to whom he has given sufficient grace and zeal to be prophets;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J668" onclick="javascript:toggleLayer('E668')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからそんな仕事は、神が民草の大いなる支配者に任命した人か、あるいは優雅さと情熱を与えられて預言者となる人々だけがやればいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="669"><a name="669"><TD id="E669" onclick="javascript:toggleLayer('J669')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and although my speculations greatly pleased myself, I believed that others had theirs, which perhaps pleased them still more. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J669" onclick="javascript:toggleLayer('E669')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしの思弁は、自分自身を大いに満足させてはくれたけれど、ほかの人は、これよりもっと満足できるような思弁を持っているのだろうと思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="670"><a name="670"><TD id="E670" onclick="javascript:toggleLayer('J670')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But as soon as I had acquired some general notions respecting physics, and beginning to make trial of them in various particular difficulties, had observed how far they can carry us, and how much they differ from the principles that have been employed up to the present time, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J670" onclick="javascript:toggleLayer('E670')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、物理に関する一般原則を考えついて、それを個別のいろんな問題で試してみると、それがいかに広く適用できるかはすぐにわかったし、それがいままで使われてきたいろんな原理とどれほど異なっているかもわかってしまった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="671"><a name="671"><TD id="E671" onclick="javascript:toggleLayer('J671')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I believed that I could not keep them concealed without sinning grievously against the law by which we are bound to promote, as far as in us lies, the general good of mankind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J671" onclick="javascript:toggleLayer('E671')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、これを隠しておくことは、できるだけ人類の福祉を推進すべきだという法に対する憂慮すべき罪になると感じた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="672"><a name="672"><TD id="E672" onclick="javascript:toggleLayer('J672')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For by them I perceived it to be possible to arrive at knowledge highly useful in life;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J672" onclick="javascript:toggleLayer('E672')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしの考えついた原則を使えば、人生においてとても役にたつ知識に到達することが可能だと思えたし、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="673"><a name="673"><TD id="E673" onclick="javascript:toggleLayer('J673')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and in room of the speculative philosophy usually taught in the schools, to discover a practical, by means of which, knowing the force and action of fire, water, air the stars, the heavens, and all the other bodies that surround us, as distinctly as we know the various crafts of our artisans, we might also apply them in the same way to all the uses to which they are adapted, and thus render ourselves the lords and possessors of nature. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J673" onclick="javascript:toggleLayer('E673')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 学校でふつうは教わる思弁的な哲学のかわりに、火や水や星や天など、われわれを取り巻くすべての物体の力とふるまいを、われらが工匠たちのさまざまな技巧を理解するくらいきちんと理解するための現実的な手段を発見できるようになるとも感じ、それをそうした物体が使われるあらゆる場面で同じように追うようして、われわれを自然の主にして所有者とすることができるだろうと思った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="674"><a name="674"><TD id="E674" onclick="javascript:toggleLayer('J674')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this is a result to be desired,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J674" onclick="javascript:toggleLayer('E674')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこれは、望ましい結果だろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="675"><a name="675"><TD id="E675" onclick="javascript:toggleLayer('J675')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> not only in order to the invention of an infinity of arts, by which we might be enabled to enjoy without any trouble the fruits of the earth, and all its comforts, but also and especially for the preservation of health, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J675" onclick="javascript:toggleLayer('E675')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは無数の技芸を産み出して、この世の果実や快適さをなんの苦労もなく楽しむためというだけでなく、健康を保つためにも（いやそのためにこそ）望ましい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="676"><a name="676"><TD id="E676" onclick="javascript:toggleLayer('J676')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which is without doubt, of all the blessings of this life, the first and fundamental one;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J676" onclick="javascript:toggleLayer('E676')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 健康というのは、この人生での祝福のうち、一番の、もっとも根本的なものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="677"><a name="677"><TD id="E677" onclick="javascript:toggleLayer('J677')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the mind is so intimately dependent upon the condition and relation of the organs of the body, that if any means can ever be found to render men wiser and more ingenious than hitherto, I believe that it is in medicine they must be sought for.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J677" onclick="javascript:toggleLayer('E677')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、精神というのは肉体器官の状況や関係に実に密接に依存しているから、人間を今よりもっと賢く器用にするための方法が見つかるものならば、それは医学分野に求めなくてはならないと思うのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="678"><a name="678"><TD id="E678" onclick="javascript:toggleLayer('J678')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is true that the science of medicine, as it now exists, contains few things whose utility is very remarkable:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J678" onclick="javascript:toggleLayer('E678')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 医学は現状のままでも、とてもめざましい効用をもつ知見を産み出している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="679"><a name="679"><TD id="E679" onclick="javascript:toggleLayer('J679')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but without any wish to depreciate it, I am confident that there is no one, even among those whose profession it is, who does not admit that all at present known in it is almost nothing in comparison of what remains to be discovered;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J679" onclick="javascript:toggleLayer('E679')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれを貶めるつもりはないけれど、医学に従事している者でさえ、まだわかっていないことに比べたら、いまわかっていることなんてないに等しいというのは一人残らず認めるはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="680"><a name="680"><TD id="E680" onclick="javascript:toggleLayer('J680')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that we could free ourselves from an infinity of maladies of body as well as of mind, and perhaps also even from the debility of age, if we had sufficiently ample knowledge of their causes, and of all the remedies provided for us by nature.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J680" onclick="javascript:toggleLayer('E680')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 無数の肉体や精神の疾患、あるいは高齢に伴う能力減退ですら、その原因について十分な知識を持っていて、それに対して自然が提供する対処法を理解していれば、人類はそういうものから逃れることができるようになることもみんな同意するはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="681"><a name="681"><TD id="E681" onclick="javascript:toggleLayer('J681')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But since I designed to employ my whole life in the search after so necessary a science, and since I had fallen in with a path which seems to me such, that if any one follow it he must inevitably reach the end desired, unless he be hindered either by the shortness of life or the want of experiments, I judged that there could be no more effectual provision against these two impediments than if I were faithfully to communicate to the public all the little I might myself have found, and incite men of superior genius to strive to proceed farther, by contributing, each according to his inclination and ability, to the experiments which it would be necessary to make, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J681" onclick="javascript:toggleLayer('E681')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもわたしは、全人生をこんなに必要とされている科学の探求にうちこむように仕立てたし、そしてわたしが通った道をたどれば、人生の短さや実験の必要性によってじゃまされない限り、だれでも望む目標に必ず到達できると思ったので、いまの二つの生涯に対するいちばん有効な対抗措置としては、誠心誠意をもってわたし自身の発見したわずかながらのことを伝えて、もっと優れた才能の持ち主が、努力して、それぞれの指向や才能に応じて必要な実験をして貢献することで、それをもう少し先まで進めてくれるよううながすことだと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="682"><a name="682"><TD id="E682" onclick="javascript:toggleLayer('J682')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and also by informing the public of all they might discover, so that, by the last beginning where those before them had left off, and thus connecting the lives and labours of many, we might collectively proceed much farther than each by himself could do.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J682" onclick="javascript:toggleLayer('E682')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、世界に対して発見できるかもしれないことすべてを伝えることで、先人たちがやり終えたところを出発点として、多くの人生や寿命をつなぎあわせることで、人類全体として、個々人だけで到達できるよりずっと先まで進めるようにするのがいいと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="683"><a name="683"><TD id="E683" onclick="javascript:toggleLayer('J683')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I remarked, moreover, with respect to experiments, that they become always more necessary the more one is advanced in knowledge;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J683" onclick="javascript:toggleLayer('E683')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらに、実験について言えば、知識がどんどん高まるにつれて実験はますます必要になってくるのを知った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="684"><a name="684"><TD id="E684" onclick="javascript:toggleLayer('J684')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for, at the commencement, it is better to make use only of what is spontaneously presented to our senses, and of which we cannot remain ignorant, provided we bestow on it any reflection, however slight, than to concern ourselves about more uncommon and recondite phenomena:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J684" onclick="javascript:toggleLayer('E684')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最初の頃は、一般的でない事柄や深遠な現象にかまけたりするよりも、自分の感覚に直接提示され、無視できないないものを使って、多少なりとも思索を行うほうがいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="685"><a name="685"><TD id="E685" onclick="javascript:toggleLayer('J685')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the reason of which is, that the more uncommon often only mislead us so long as the causes of the more ordinary are still unknown; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J685" onclick="javascript:toggleLayer('E685')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その理由は、一般的でないものは、もっとふつうの事柄の原因がまだわかっていないときには、誤解をもとだからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="686"><a name="686"><TD id="E686" onclick="javascript:toggleLayer('J686')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and the circumstances upon which they depend are almost always so special and minute as to be highly difficult to detect.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J686" onclick="javascript:toggleLayer('E686')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう一般的でないものが依存している状況というのは、必ずといっていいほど実に特殊で起こりにくいものなので、検出するのがとてもむずかしいのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="687"><a name="687"><TD id="E687" onclick="javascript:toggleLayer('J687')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But in this I have adopted the following order:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J687" onclick="javascript:toggleLayer('E687')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、これについては、こんな順序を採用することにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="688"><a name="688"><TD id="E688" onclick="javascript:toggleLayer('J688')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> first, I have essayed to find in general the principles,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J688" onclick="javascript:toggleLayer('E688')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まず一般的なものの中から原理を見出そうとする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="689"><a name="689"><TD id="E689" onclick="javascript:toggleLayer('J689')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> or first causes of all that is or can be in the world, or first causes of all that is or can be in the world, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J689" onclick="javascript:toggleLayer('E689')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 原理というはつまり、この世界に存在するもの、あるいは存在可能なものすべての第一原因だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="690"><a name="690"><TD id="E690" onclick="javascript:toggleLayer('J690')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> without taking into consideration for this end anything but God himself who has created it, and without educing them from any other source than from certain germs of truths naturally existing in our minds
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J690" onclick="javascript:toggleLayer('E690')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この目的のためには、それを創り出した神自身以外はなにも考えず、そしてそれを導き出すにあたっては、われわれの精神の中に自然に存在している、真理の宝石以外には何の源も使わない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="691"><a name="691"><TD id="E691" onclick="javascript:toggleLayer('J691')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the second place, I examined what were the first and most ordinary effects that could be deduced from these causes;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J691" onclick="javascript:toggleLayer('E691')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 二番目には、こうした原因から真っ先に導き出せる、いちばんふつうの結果が何かを検討した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="692"><a name="692"><TD id="E692" onclick="javascript:toggleLayer('J692')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it appears to me that, in this way, I have found heavens, stars, an earth, and even on the earth water, air, fire, minerals, and some other things of this kind, which of all others are the most common and simple, and hence the easiest to know.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J692" onclick="javascript:toggleLayer('E692')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてどうやらこうすることで、万物の中でいちばんあり不売れていて単純で、したがって一番わかりやすいものである、天や星、地球、そして地上の水や空気、火、好物といったようなものを見つけることができた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="693"><a name="693"><TD id="E693" onclick="javascript:toggleLayer('J693')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Afterwards when I wished to descend to the more particular, so many diverse objects presented themselves to me, that I believed it to be impossible for the human mind to distinguish the forms or species of bodies that are upon the earth, from an infinity of others which might have been, if it had pleased God to place them there, or consequently to apply them to our use, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J693" onclick="javascript:toggleLayer('E693')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後、もっと個別のものに降りていこうとしたら、すさまじく多様な対象が出てきてしまい、だから人間の精神が、地上に存在する形態や存在の種類を、神さえそれをよしとしたなら存在し得たかもしれない無数のものから区別したり、さらにそれを活用したりするのは、そのままでは不可能だと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="694"><a name="694"><TD id="E694" onclick="javascript:toggleLayer('J694')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> unless we rise to causes through their effects, and avail ourselves of many particular experiments.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J694" onclick="javascript:toggleLayer('E694')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それをやるには、結果を通じて原因にまでさかのぼり、個別の実験をいろいろやらなくてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="695"><a name="695"><TD id="E695" onclick="javascript:toggleLayer('J695')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thereupon, turning over in my mind I the objects that had ever been presented to my senses I freely venture to state that I have never observed any which I could not satisfactorily explain by the principles had discovered.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J695" onclick="javascript:toggleLayer('E695')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこから、頭の中でわたしの感覚の前に一度でも現れた物体を転がしつつ、わたしは自分の発見した原理に基づいて満足のいく説明できないようなものには、一つとしてお目にかかったことがないと敢えて断言しよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="696"><a name="696"><TD id="E696" onclick="javascript:toggleLayer('J696')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But it is necessary also to confess that the power of nature is so ample and vast, and these principles so simple and general, that I have hardly observed a single particular effect which I cannot at once recognize as capable of being deduced in man different modes from the principles, and that my greatest difficulty usually is to discover in which of these modes the effect is dependent upon them;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J696" onclick="javascript:toggleLayer('E696')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも一方では、自然の力は実に広大で多様であり、こうした原理のほうはとても単純かつ一般的なので、どの個別の結果をとっても、そうした原理からさまざまなちがった形で導き出せることがすぐに認識できてしまい、だからいちばんむずかしいのは、そのさまざまなやり方のうち、どの結果がどれに依存しているのかを発見することなのだ、ということは告白しておこう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="697"><a name="697"><TD id="E697" onclick="javascript:toggleLayer('J697')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for out of this difficulty cannot otherwise extricate myself than by again seeking certain experiments,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J697" onclick="javascript:toggleLayer('E697')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この困難から逃れるためには、これまた各種の実験をしてみるしかない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="698"><a name="698"><TD id="E698" onclick="javascript:toggleLayer('J698')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which may be such that their result is not the same, if it is in the one of these modes at we must explain it, as it would be if it were to be explained in the other.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J698" onclick="javascript:toggleLayer('E698')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 実験をすれば、あの説明にしたがって出てくる結果の場合と、この説明にしたがって出てくる結果の場合とがちがっているようにできる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="699"><a name="699"><TD id="E699" onclick="javascript:toggleLayer('J699')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As to what remains, I am now in a position to discern, as I think, with sufficient clearness what course must be taken to make the majority those experiments which may conduce to this end:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J699" onclick="javascript:toggleLayer('E699')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして残ったものはというと、わたしはこの目的に資するような実験をどのように行うべきか、その大半を十分はっきりと見て取ることができるように思う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="700"><a name="700"><TD id="E700" onclick="javascript:toggleLayer('J700')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but I perceive likewise that they are such and so numerous, that neither my hands nor my income, though it were a thousand times larger than it is, would be sufficient for them all; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J700" onclick="javascript:toggleLayer('E700')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも同じくわたしは、そうした実験があまりに多種多様で、わたしの手も収入も、それがいまの千倍あったとしても、すべてやるわけにはいかないのも認識できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="discourse-5.htm">prev</a>
+<a href="discourse-0.htm">0</a>
+<a href="discourse-1.htm">1</a>
+<a href="discourse-2.htm">2</a>
+<a href="discourse-3.htm">3</a>
+<a href="discourse-4.htm">4</a>
+<a href="discourse-5.htm">5</a>
+<6>
+<a href="discourse-7.htm">7</a>
+<a href="discourse-8.htm">8</a>
+<a href="discourse-7.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/discoursee.txt">local copy</a> / <a href="http://www.gutenberg.net/etext93/dcart10.txt">http://www.gutenberg.net/etext93/dcart10.txt</a><li>オリジナルの日本語文: <a href="../org/discoursej.txt">local copy</a> / <a href="http://www.genpaku.org/dcart01/DCART10j.html">http://www.genpaku.org/dcart01/DCART10j.html</a><li><a href="../manual-alignment/discourse.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

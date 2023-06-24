@@ -1,0 +1,322 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Homesteading the Noosphere / Eric S. Raymond 著</h2><h2>ノウアスフィアの開墾 / レイモンド、エリック・S 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/homesteadinge.txt">英語文</a>&<a href="../org/homesteadingj.txt">日本語文</a> / <a href="../manual-alignment/homesteading.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>10 of Homesteading the Noosphere</TITLE>
+<hr>
+<a href="homesteading-9.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<a href="homesteading-8.htm">8</a>
+<a href="homesteading-9.htm">9</a>
+<10>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1001"><a name="1001"><TD id="E1001" onclick="javascript:toggleLayer('J1001')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An anonymously contributed observation about reputation incentives operating even when the craftsman is unaware of them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1001" onclick="javascript:toggleLayer('E1001')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 匿名で寄せられた、評判インセンティブが職人自身も気づかないうちに機能しているという見解を加筆。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1002"><a name="1002"><TD id="E1002" onclick="javascript:toggleLayer('J1002')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Added instructive contrasts with warez d00dz, material on the `software should speak for itself' premise, and observations on avoiding personality cults.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1002" onclick="javascript:toggleLayer('E1002')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> warez d00dzとの示唆的な対照性について加筆、「ソフトは自ら語るべきだ」との考えについての部分加筆、個人崇拝の回避に関する考えを加筆。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1003"><a name="1003"><TD id="E1003" onclick="javascript:toggleLayer('J1003')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As a result of all these changes, the section on `The Problem of Ego' grew and fissioned. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1003" onclick="javascript:toggleLayer('E1003')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした変更の結果、「エゴの問題」の章が拡大して分裂。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1004"><a name="1004"><TD id="E1004" onclick="javascript:toggleLayer('J1004')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.716 April 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1004" onclick="javascript:toggleLayer('E1004')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1998年4月16日] バージョン1.7。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1005"><a name="1005"><TD id="E1005" onclick="javascript:toggleLayer('J1005')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> New section on `Global implications'
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1005" onclick="javascript:toggleLayer('E1005')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「分野全体としての意義」についての章を追加。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1006"><a name="1006"><TD id="E1006" onclick="javascript:toggleLayer('J1006')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> discusses historical tends in the colonization of the noosphere, and examines the `category-killer' phenomenon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1006" onclick="javascript:toggleLayer('E1006')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ノウアスフィアの植民地化に関する歴史的トレンドを論じ、「カテゴリーキラー」現象について検討。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1007"><a name="1007"><TD id="E1007" onclick="javascript:toggleLayer('J1007')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Added another research question. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1007" onclick="javascript:toggleLayer('E1007')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今後の研究課題を追加。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1008"><a name="1008"><TD id="E1008" onclick="javascript:toggleLayer('J1008')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.827 April 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1008" onclick="javascript:toggleLayer('E1008')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1998年4月27日] バージョン1.8。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1009"><a name="1009"><TD id="E1009" onclick="javascript:toggleLayer('J1009')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Added Goldhaber to the bibliography.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1009" onclick="javascript:toggleLayer('E1009')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 書誌にGoldhaberを追加。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1010"><a name="1010"><TD id="E1010" onclick="javascript:toggleLayer('J1010')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is the version that will go in the Linux Expo proceedings. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1010" onclick="javascript:toggleLayer('E1010')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linux Expo予稿集に載るのはこのバージョン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1011"><a name="1011"><TD id="E1011" onclick="javascript:toggleLayer('J1011')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.926 May 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1011" onclick="javascript:toggleLayer('E1011')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1998年5月26日] バージョン 1.9。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1012"><a name="1012"><TD ID="TAB1012" onclick="javascript:toggleLayer('J1012')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1012" onclick="javascript:toggleLayer('E1012')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Fare Rideau のノウアスフィア・エルゴスフィアの区別を加筆。
+Incorporated Far・Rideau's noosphere/ergosphere distinction.
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1013"><a name="1013"><TD id="E1013" onclick="javascript:toggleLayer('J1013')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Incorporated RMS's assertion that he is not anticommercial. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1013" onclick="javascript:toggleLayer('E1013')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> RMSの、自分は反商業主義ではないという主張を追加。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1014"><a name="1014"><TD id="E1014" onclick="javascript:toggleLayer('J1014')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> New section on acculturation and academia (thanks to Ross J. Reedstrom, Eran Tromer, Allan McInnes, Mike Whitaker, and others).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1014" onclick="javascript:toggleLayer('E1014')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「文化適応とアカデミズム」についての章を追加（Ross J. Reedstrom、Eran Tromer、Allen MacInnes 他に感謝）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1015"><a name="1015"><TD id="E1015" onclick="javascript:toggleLayer('J1015')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> More about humility, (`egoless behavior') from Jerry Fass and Marsh Ray. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1015" onclick="javascript:toggleLayer('E1015')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 謙虚さ（「エゴのない行動」）について加筆、Jerry Fass と Marsh Ray からのコメントに基づく。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1016"><a name="1016"><TD id="E1016" onclick="javascript:toggleLayer('J1016')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.1011 July 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1016" onclick="javascript:toggleLayer('E1016')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1998年7月11日] バージョン 1.10。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1017"><a name="1017"><TD id="E1017" onclick="javascript:toggleLayer('J1017')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Remove Fare Rideau's reference to `fame' at his suggestion. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1017" onclick="javascript:toggleLayer('E1017')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 本人の示唆に基づき、Fare Rideau のコメントから名声ということばを除く。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1018"><a name="1018"><TD id="E1018" onclick="javascript:toggleLayer('J1018')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.1421 November 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1018" onclick="javascript:toggleLayer('E1018')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1998年11月21日] バージョン 1.14。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1019"><a name="1019"><TD id="E1019" onclick="javascript:toggleLayer('J1019')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Minor editorial and stale-link fixes. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1019" onclick="javascript:toggleLayer('E1019')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ちょっとした編集上の修正と古いリンクの訂正。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1020"><a name="1020"><TD id="E1020" onclick="javascript:toggleLayer('J1020')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.2131 Aug 1999esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1020" onclick="javascript:toggleLayer('E1020')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [1999年8月8日] 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1021"><a name="1021"><TD id="E1021" onclick="javascript:toggleLayer('J1021')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Major revision for the O'Reilly book.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1021" onclick="javascript:toggleLayer('E1021')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> O'Reilly の本用に大幅改訂。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1022"><a name="1022"><TD id="E1022" onclick="javascript:toggleLayer('J1022')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Incorporated some ideas about the costs of forking and rogue patches from Michael Chastain.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1022" onclick="javascript:toggleLayer('E1022')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Michael Chastain からもらった、プロジェクト分裂のコストと非公式パッチのコストについてのアイデアを組み込む。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1023"><a name="1023"><TD id="E1023" onclick="javascript:toggleLayer('J1023')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thomas Gagne (tgagne@ix.netcom.com) noticed the similarity between "seniority wins" and database heuristics.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1023" onclick="javascript:toggleLayer('E1023')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Thomas Gagne &lt;tgagne@ix.netcom.com&gt; は、「年功が勝つ」というのとデータベースのヒューリスティクスの類似性に気がついた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1024"><a name="1024"><TD id="E1024" onclick="javascript:toggleLayer('J1024')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Henry Spencer's political analogy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1024" onclick="javascript:toggleLayer('E1024')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Henry Spencer の政治とのアナロジー。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1025"><a name="1025"><TD id="E1025" onclick="javascript:toggleLayer('J1025')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ryan Waldron and El Howard (elhoward@hotmail.com) contributed thoughts on the value of novelty.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1025" onclick="javascript:toggleLayer('E1025')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Ryan Waldron と El Howard &lt;elhoward@hotmail.com&gt; は、目新しさの価値について考えを出してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1026"><a name="1026"><TD id="E1026" onclick="javascript:toggleLayer('J1026')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thomas Bryan (tbryan@arlut.utexas.edu) explained the hacker revulsion to ``embrace and extend''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1026" onclick="javascript:toggleLayer('E1026')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Thomas Bryan &lt;tbryan@arlut.utexas.edu&gt; は「抱き込んで拡張」に対するハッカーの嫌悪を説明してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1027"><a name="1027"><TD id="E1027" onclick="javascript:toggleLayer('J1027')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Darcy Horrocks inspired the new section ``How Fine A Gift?''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1027" onclick="javascript:toggleLayer('E1027')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Darcy Horrocks は新しい章の「どれほどすばらしい贈り物？」の示唆を与えてくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1028"><a name="1028"><TD id="E1028" onclick="javascript:toggleLayer('J1028')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Other new material on the connection to the Maslovian hierarcy of values, and the taboo against attacks on competence. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1028" onclick="javascript:toggleLayer('E1028')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マスロー式価値のヒエラルキーとの関連についての新しい文章と、能力に対する攻撃に関するタブーについて加筆。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1029"><a name="1029"><TD ID="TAB1029" onclick="javascript:toggleLayer('J1029')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1029" onclick="javascript:toggleLayer('E1029')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （翻訳上のミスについて、白田秀彰氏&lt;hideaki@leo.misc.hit-u.ac.jp&gt;からご指摘をいただいた。
+伏して感謝する――訳者記す）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="homesteading-9.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<a href="homesteading-8.htm">8</a>
+<a href="homesteading-9.htm">9</a>
+<10>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/homesteadinge.txt">local copy</a> / <a href="http://www.catb.org/~esr/writings/homesteading/">http://www.catb.org/~esr/writings/homesteading/</a><li>オリジナルの日本語文: <a href="../org/homesteadingj.txt">local copy</a> / <a href="http://cruel.org/freeware/noosphere.html">http://cruel.org/freeware/noosphere.html</a><li><a href="../manual-alignment/homesteading.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

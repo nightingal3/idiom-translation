@@ -1,0 +1,257 @@
+Usable GUI Design: A Quick Guide
+
+
+Usable GUI Design: A Quick Guide for F/OSS Developers
+
+
+
+Update: I have read many comments on this article and have written an FAQ 
+responding to some of them
+Introduction
+The Open Source software world is full of excellent software. High-quality F/OSS 
+software is available for virtually any task a computer user could want to do, 
+from word-processing to web-serving. There is one small problem with much of 
+this huge array of software: it is often far more difficult to use than it could 
+be. Professional UI designers tell us that user interfaces should be the first 
+thing designed when we come to develop an application, and that programmers are 
+incapable of doing this kind of design. They say it can only be done by the 
+professional UI experts; OSS projects don't have access to these kind of people, 
+and therefore can never be truly usable.
+This doesn't mean we should just give up on UI design. From the quality of many 
+commercial applications' UIs, having usability experts on staff doesn't 
+guarantee a good interface either. Effort, knowledge and thought by any 
+developer can improve the usability of an application greatly. We may only find 
+a local optimum rather than the global, but even that is a step in the right 
+direction.
+After years of struggling with these problems, I thought I would write down a 
+short list of five things that we OSS developers should consider when designing 
+our application's GUI. These are drawn from my experience in using and writing 
+OSS software and my reading of a few very interesting books and web sites on the 
+subject. These works are listed in the references &#8212; they are all excellent 
+reading for any developer interested in usability issues.
+I have intentionally only mentioned points here which do not require major 
+amounts of work to implement, and about which there is little controversy. 
+Larger Ågwhole-applicationÅh issues are beyond the scope of this article. None of 
+these ideas is new or particularly complex, but their effect can be very great. 
+I should also note here that in several of the examples I use, it is possible to 
+fix the problem by changing the application's settings. I have decided to only 
+consider the default settings: presumably, the defaults represent the 
+developer's idea of the most usable design for their application.
+Before I start, I should probably make one more point in order to at least 
+mitigate the flames I will receive: although I may sound quite harsh on some 
+applications below, this is in no way meant as anything but constructive 
+criticism. I use most of these applications every day and they are fantastic 
+pieces of work, the product of years of hard work by dedicated developers. I am 
+merely making suggestions of potential improvements; no offence is intended to 
+anybody.
+The Points
+0) The user is not using your application
+The most basic point in all computer UI design is that the user does not want to 
+use your application. They want to get their work done as quickly and easily as 
+possible, and the application is simply a tool aiding that. The more you can 
+keep your application out of the way of the user, the better. Effort spent on 
+using your application is effort not spent on the work the user is trying to do. 
+Two key quotes from Alan Cooper's second book, About Face 2.0, summarise this 
+very well:
+  ÅgImagine users as very intelligent but very busyÅh 
+  ÅgNo matter how cool your interface is, less of it would be betterÅh 
+Points 1 to 4 in this article are really just special cases of this rule.
+1) Fitt's Law
+This is the most basic and well known of UI design laws. It states that the 
+larger and nearer to the mouse pointer an on-screen object is, the easier it is 
+to click on. That's common sense, yet it is often completely ignored in UI 
+design.
+
+Figure 1: Firefox toolbarConsider, for example, the default Firefox button bar 
+(Figure 1). When web browsing, by far the most common button anyone hits is the 
+Back button. The Back button should therefore be the easiest to hit: that way, 
+you minimise the effort required of the user to use your application, and allow 
+them to concentrate on web browsing. But in the button bar, all five buttons are 
+the same size. Is the Stop button really as important as the Back button? No, of 
+course not. A better design would be something like Figure 2. This makes the 
+Back button both easier to click on by Fitt's law, and also easier to 
+distinguish from the other buttons.
+
+Figure 2: An alternative designThe apparent size of a control can be enlarged by 
+placing it at a screen edge. When the mouse cursor hits the edge of the screen, 
+it stops at exactly the screen edge, irrespective of how fast the mouse is 
+moving. This means that for the mouse user objects at the screen edge extend 
+effectively an infinite distance off the screen. A one pixel target in the 
+top-right corner of the screen would be trivially easy to hit; you would just 
+have to ÅethrowÅf the mouse up and right as far as you liked. Move that one pixel 
+to the middle of the screen, and hitting it would take you much longer. From 
+this we can see that controls that we want to be easy to hit should be 
+positioned at the edges or corners of the screen.
+ 
+Figure 3: Metacity window decorations.
+Note the inactive border around the buttons.The simplest example of this is the 
+window management buttons on all windows (close, maximise etc.). These need to 
+be easy to hit, so that controlling windows isn't fiddly. From their position at 
+the top corners of all applications, these are prime candidates for moving to 
+the corners. Yet very few window managers do this: most Metacity themes don't, 
+XFCE4 doesn't. All it takes is to move the buttons one pixel up and right and 
+the user can close windows without even having to look.
+ 
+Figure 4: Scrollbar
+one pixel gap.Another example is scroll bars. Most applications on my desktop 
+put the right hand edge of the scroll bar one pixel away from the edge of the 
+screen when maximised, shrinking the slider from the potential easy to hit 
+infinite box to the right of the screen to a tiny 10-pixel wide box that takes 
+an extra few seconds to click on every time I want to scroll.
+To summarise this point then:
+  Make commonly used controls larger and distinctive 
+  Use the edges and corners of the screen to make your controls virtually 
+  infinite 
+  Never, ever put controls 1 pixel away from a screen edge or corner 
+2) Unnecessary interference
+When a user is working, their attention is on the work they are doing. Every 
+time they have to move their attention away from their work to the application, 
+it takes time for them to get back to where they were in their work. Therefore, 
+you should minimise the amount of distraction and interference your application 
+gives the user. Every application has an item that is its key focus &#8212; in a text 
+editor, it's the text; in a web browser, it's the web page &#8212; so make that 
+central to your interface.
+An example for this is confirmation and progress dialogs. Evolution, for 
+example, pops up a dialog box every time I click ÅgSend/ReceiveÅh to inform me of 
+its progress in checking my mail. This dialog is right in the way of the mail 
+being received and blocks access to the rest of the application. What purpose 
+does this dialog serve? All it does is get in the way of the user. It would be 
+far better eliminated and replaced with a status bar progress meter.
+ 
+Figure 5: Find dialog in gEditA worse example is KDE's default Trashcan 
+behaviour. Sending a file to the Trash is an easily reversible action that the 
+user might want to do several times in a row: why force users to click ÅgOKÅh 
+every time, when the action can be easily undone. If you want to alert the user 
+to the fact that a file has been sent to the trash, play some sort of animation. 
+Don't put a road block in their way every time they do such a simple action. All 
+that does is annoy users, slow them down and condition them to blindly click OK 
+on dialogs.
+Another example is the omnipresent ÅgText not foundÅh dialog in the search 
+facility of text editors. If the text I entered in the search dialog hasn't been 
+found, it's most likely that I typed the search string wrong and now want to 
+edit it and repeat the search. But there's now a dialog box with an ÅgOKÅh button 
+in the way, so I have to click that away before I can do anything. More 
+annoyance and work on the part of the user. A better example is Firefox's find 
+dialog, which turns red when the search term isn't found.
+
+Figure 6: Contrary to all the evidence,
+there are no monkeys on SlashdotTo summarise this point:
+  Don't put road blocks in the way of your users 
+  Only pop up a dialog if it contains useful information 
+  If at all possible, use non-modal status indicators 
+3) Use the power of the computer
+Computers are powerful things these days, with billions of processor cycles per 
+second and hundreds of gigabytes of storage available. Humans, however, haven't 
+changed that much in hundreds of years. We still get tired, bored or distracted 
+and have a limited amount of mental energy available at any one time. It would 
+seem a good idea, therefore, to shift as much work as possible off the poor, 
+worn out human and on to the untiring, super fast computer in front of them.
+In user interface design, the implication of this idea is clear: every time 
+there is a decision to be made or work to be done, try to make the interface do 
+it for the user. For example, in my task bar at the moment I have two xterms 
+open (Figure 7). One is open in the directory of the SiEd source code, the other 
+in the directory of the LaTeX code for a research paper. Can you tell which is 
+which? I can't, so in order to select the correct one I have to do work, either 
+by clicking on the taskbar or hovering over it and using the tooltips. But the 
+computer knows which is which: why can't it do that work for me?
+ 
+Figure 7: GNOME's taskbar being unhelpfulThe solution is simple: for the entries 
+of identical applications in the taskbar, look at the task names and display 
+sufficient information to distinguish them. That way, I can quickly select 
+between many different applications with little thought. The computer does the 
+work so I don't have too.
+If computers have so much storage space available, why do so many applications 
+forget my settings every time I exit them? For example, I never use the Anjuta 
+IDE in anything but a maximised window. Anjuta defaults to an window almost as 
+large as my screen when opened, with the top left corner about three pixels from 
+the corner of the screen. So I click maximise, do some development and exit. 
+Next time I open Anjuta, it has reverted to an unmaximised window again. So I am 
+forced to stop what I'm doing and click maximise every time I start the program. 
+Storing the previous window size, position and state would take maybe 20 bytes 
+of storage, a small price to pay for saving thousands of clicks.
+The Nautilus file manager in GNOME gets this right: everything from the window 
+size to the scrollbar position is remembered for every window, so once I set up 
+a directory window the way I want it, I never have to worry about it again.
+To summarise this point:
+  The computer is powerful: use the computer's power to help the user 
+  Make similar items easy to distinguish between 
+  Remember application settings 
+4) Make items easy to distinguish and find
+This point is pretty simple: items on the screen that do different things should 
+be easy to see and differentiate from each other. For an extreme example of 
+attempting to make actions easily accessible and failing, look at Konqueror's 
+default taskbar:
+ 
+Figure 8: Konqueror's default toolbarThe left hand item is the up-arrow, 
+possibly the least used command in the web browser. The left hand position is 
+the easiest to find and click on, so the most commonly used action should go 
+there. Every other browser I know of correctly puts the Back button on the left 
+for this reason.
+The Find button and the two zoom buttons are very similar; the Forward, Back, 
+Up, Home and Refresh buttons are all the same colour, making quick 
+identification of them more difficult. But most importantly, there are fifteen 
+of them! Humans are very good at distinguishing between around five items: we 
+can do it instantly, with no thought. That's the main reason that sheet music 
+has five lines on the stave. More than five items and we have to stop and use 
+brain power to figure out which item is which. A much better design would only 
+put the most commonly used items on the toolbar, minimising the work the user 
+has to do in the common case. Many applications have this many items on the 
+taskbar, but for a task as simple as browsing the web, fifteen is overkill. I 
+have watched new users try to use Konqueror and seen first hand how much this 
+layout confuses them; it confuses me, an experienced computer user.
+Another example of difficulty in distinguishing items can be found in the 
+default GNOME theme. Look at the text selection in Figure 9.
+ 
+Figure 9: Text selection in GNOME Simple themeWhen the user selects text, his 
+attention is on the selected text. He has presumably selected it in order to do 
+something with it. So why does this theme change the background of the selection 
+to a dark colour, so that the hardest text to read on the screen is the very 
+text the user is most focused on? Would it not be better to make this text stand 
+out from the rest by making it brighter and easier to read?
+To summarise this point:
+  Make items that do different things distinctive 
+  Don't overwhelm your user with choice 
+  Make the currently selected or focused item easy to distinguish and read 
+Conclusions
+These five points represent a small but important part of UI design. They are 
+not in any way commandments or miracle cures for UI problems. Following their 
+principles in designing an interface should, in my opinion, greatly improve the 
+usability of an application. I would welcome any comments, corrections or 
+additions (email address below, remove the nospam).
+These ideas are only a brief summary: I would recommend anyone serious about 
+interface design to look at the references listed below. Alan Cooper's book is 
+excellent; Jef Raskin's is a very useful reference, with some interesting ideas 
+for thinking outside the ÅestandardÅf range of interface design.
+I have read many comments on this article and have written an FAQ responding to 
+some of them
+
+
+
+References
+  About Face 2.0: The Essentials of Interaction Design, Alan Cooper and Robert 
+  Reimann, 2003, Wiley 
+  The Humane Interface, Jef Raskin, 2000, Addison-Wesley Professional 
+  The Interface Hall of Shame 
+  Apple Human Interface Guidelines 
+  KDE Human Interface Guidelines 
+  GNOME Human Interface Guidelines 
+  Shneiderman's "Eight Golden Rules of Interface Design" 
+Changelog
+  2004-11-19 : Replaced OpenOffice maximisation state example with Anjuta 
+  example after fixing my OpenOffice install and realising it did remember state 
+  after all 
+  2004-11-21 : Added links to KDE and GNOME HIGs 
+  2004-11-21 : Added link to FAQ 
+  2005-01-18 : Added Link to Eight Golden Rules 
+About the author
+I'm a Free Software advocate and the main developer of SiEd, a GPL-licensed text 
+editor for Palm OS devices. In my real life, I am doing a PhD in Process 
+Scheduling at the Centre for Process Systems Engineering, Imperial College.
+Benjamin Roe
+
+
+
+
+This work is licensed under a Creative Commons License and is Copyright Benjamin 
+Roe 2004.
+Last modified: Sun Nov 21 13:43:59 GMT 2004 

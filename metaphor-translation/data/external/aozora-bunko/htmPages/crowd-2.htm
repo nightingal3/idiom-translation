@@ -1,0 +1,407 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>THE CROWD / GUSTAVE LE BON  著</h2><h2>『群集心理』 / ル・ボン 著 / Felix 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/crowde.txt">英語文</a>&<a href="../org/crowdj.txt">日本語文</a> / <a href="../manual-alignment/crowd.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>2 of THE CROWD</TITLE>
+<hr>
+<a href="crowd-1.htm">prev</a>
+<a href="crowd-0.htm">0</a>
+<a href="crowd-1.htm">1</a>
+<2>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="201"><a name="201"><TD id="E201" onclick="javascript:toggleLayer('J201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The psychological crowd is a provisional being formed of heterogeneous elements, which for a moment are combined, exactly as the cells which constitute a living body form by their reunion a new being which displays characteristics very different from those possessed by each of the cells singly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J201" onclick="javascript:toggleLayer('E201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心理学的群集は異質な要素がある瞬間に接合したような暫定的な存在（provisional being）であって、ちょうど生体を構成する細胞が１つ１つの細胞のもち性質とは非常に異なる性質を示す新たな生体を構成するために再結合するようなものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="202"><a name="202"><TD id="E202" onclick="javascript:toggleLayer('J202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Contrary to an opinion which one is astonished to find coming from the pen of so acute a philosopher as Herbert Spencer, in the aggregate which constitutes a crowd there is in no sort a summing-up of or an average struck between its elements. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J202" onclick="javascript:toggleLayer('E202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> スペンサー（Herbert Spencer;1855-1893）のような哲学者が主張する意見とは異なり、群集を構成する集合体には各要素の総和や平均値というものは存在しない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="203"><a name="203"><TD id="E203" onclick="javascript:toggleLayer('J203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What really takes place is a combination followed by the creation of new characteristics,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J203" onclick="javascript:toggleLayer('E203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まさに化学における結合反応で新化合物が生成するようなものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="204"><a name="204"><TD id="E204" onclick="javascript:toggleLayer('J204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> just as in chemistry certain elements, when brought into contact--bases and acids, for example--combine to form a new body possessing properties quite different from those of the bodies that have served to form it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J204" onclick="javascript:toggleLayer('E204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえば塩基と酸が結合する前と後とではまるで異なる性質を持つようなものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="205"><a name="205"><TD id="E205" onclick="javascript:toggleLayer('J205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is easy to prove how much the individual forming part of a crowd differs from the isolated individual, but it is less easy to discover the causes of this difference.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J205" onclick="javascript:toggleLayer('E205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 群集を構成する個人がばらばらでいる時と異なる性質を示すことは容易であるが、その原因を明らかにすることは困難である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="206"><a name="206"><TD id="E206" onclick="javascript:toggleLayer('J206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To obtain at any rate a glimpse of them it is necessary in the first place to call to mind the truth established by modern psychology, that unconscious phenomena play an altogether preponderating part not only in organic life, but also in the operations of the intelligence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J206" onclick="javascript:toggleLayer('E206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この原因について細部にまでわたって理解するには、器官の作用のみならず意識の作用に関しても無意識現象が重要な働きをしているという現代心理学の真実をまず思い起こすべきであろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="207"><a name="207"><TD id="E207" onclick="javascript:toggleLayer('J207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The conscious life of the mind is of small importance in comparison with its unconscious life.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J207" onclick="javascript:toggleLayer('E207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 無意識の作用のもとにある生活*5に比べれば、意識の作用のもとにある生活は対した重要性を持たない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="208"><a name="208"><TD id="E208" onclick="javascript:toggleLayer('J208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The most subtle analyst, the most acute observer, is scarcely successful in discovering more than a very small number of the unconscious motives that determine his conduct. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J208" onclick="javascript:toggleLayer('E208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしどんな優秀な分析者・観察者であっても、自らの行為を決定する無意識的動機を発見、特定することはなかなか困難である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="209"><a name="209"><TD id="E209" onclick="javascript:toggleLayer('J209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Our conscious acts are the outcome of an unconscious substratum created in the mind in the main by hereditary influences.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J209" onclick="javascript:toggleLayer('E209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 我々の意識的行動ですら、主に遺伝的影響でもたらされる無意識的な基盤からもたらされるものなのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="210"><a name="210"><TD id="E210" onclick="javascript:toggleLayer('J210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This substratum consists of the innumerable common characteristics handed down from generation to generation, which constitute the genius of a race.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J210" onclick="javascript:toggleLayer('E210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこの基盤は幾世代にもわたって伝えられてきた無数の共通の性質から構成されているのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="211"><a name="211"><TD id="E211" onclick="javascript:toggleLayer('J211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Behind the avowed causes of our acts there undoubtedly lie secret causes that we do not avow, but behind these secret causes there are many others more secret still which we ourselves ignore.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J211" onclick="javascript:toggleLayer('E211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 我々の行動の背景には我々の気づき得ない原因が横たわっている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="212"><a name="212"><TD id="E212" onclick="javascript:toggleLayer('J212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The greater part of our daily actions are the result of hidden motives which escape our observation.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J212" onclick="javascript:toggleLayer('E212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 日常の行動の大部分が観察もできない隠された動機の結果なのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="213"><a name="213"><TD id="E213" onclick="javascript:toggleLayer('J213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is more especially with respect to those unconscious elements which constitute the genius of a race that all the individuals belonging to it resemble each other, while it is principally in respect to the conscious elements of their character--the fruit of education, and yet more of exceptional hereditary conditions--that they differ from each other. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J213" onclick="javascript:toggleLayer('E213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ある民族に属する個人どうしが互いによく似ているのは民族の性質を決定する無意識的要素によるものであり、個々の人間に差異があるのは教育の成果や遺伝条件といった意識的要素によるものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="214"><a name="214"><TD id="E214" onclick="javascript:toggleLayer('J214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Men the most unlike in the matter of their intelligence possess instincts, passions, and feelings that are very similar. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J214" onclick="javascript:toggleLayer('E214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 知性の面ではかなり異なる者どうしであったとしても、本能や情熱、感情という点から見れば大した差はない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="215"><a name="215"><TD id="E215" onclick="javascript:toggleLayer('J215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the case of every thing that belongs to the realm of sentiment--religion, politics, morality, the affections and antipathies, &amp;c.--the most eminent men seldom surpass the standard of the most ordinary individuals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J215" onclick="javascript:toggleLayer('E215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 感情に関することがら、例えば宗教・政治・道徳・愛情・反感など*6は、どんなに優れた人が居たとしても常人のレベルを遥かに超越することなどできない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="216"><a name="216"><TD id="E216" onclick="javascript:toggleLayer('J216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> From the intellectual point of view an abyss may exist between a great mathematician and his boot maker, but from the point of view of character the difference is most often slight or non-existent.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J216" onclick="javascript:toggleLayer('E216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 偉大な数学者とその数学者のはく靴をつくる職人とでは知性の面では大きな隔たりがある*7が、性質の面から言えば差は全くないか、あっても極めて少しである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="217"><a name="217"><TD id="E217" onclick="javascript:toggleLayer('J217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is precisely these general qualities of character, governed by forces of which we are unconscious, and possessed by the majority of the normal individuals of a race in much the same degree--it is precisely these qualities, I say, that in crowds become common property.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J217" onclick="javascript:toggleLayer('E217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この性質（性格）の一般的傾向は無意識の力によって支配されているものであり、１つの民族に属する標準的な個人が同程度に持っているもので、まさにこれが群集として共通に現れる性質なのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="218"><a name="218"><TD id="E218" onclick="javascript:toggleLayer('J218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the collective mind the intellectual aptitudes of the individuals, and in consequence their individuality, are weakened. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J218" onclick="javascript:toggleLayer('E218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 集団的精神の中では個人の知的な才能・個性は弱体化する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="219"><a name="219"><TD id="E219" onclick="javascript:toggleLayer('J219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The heterogeneous is swamped by the homogeneous, and the unconscious qualities obtain the upper hand.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J219" onclick="javascript:toggleLayer('E219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 同質性が異質性を凌駕し、無意識的性質が優性になるのだ。*8　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="220"><a name="220"><TD id="E220" onclick="javascript:toggleLayer('J220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This very fact that crowds possess in common ordinary qualities explains why they can never accomplish acts demanding a high degree of intelligence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J220" onclick="javascript:toggleLayer('E220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 高度な知性が要求される行為を群集が為し得ないのは、まさに群集が凡庸な性質を共通に持っているという事実によるものである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="221"><a name="221"><TD id="E221" onclick="javascript:toggleLayer('J221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The decisions affecting matters of general interest come to by an assembly of men of distinction, but specialists in different walks of life, are not sensibly superior to the decisions that would be adopted by a gathering of imbeciles.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J221" onclick="javascript:toggleLayer('E221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それぞれ分野の異なる専門家による一般的事項に関する会議の結論が、愚かな人々*9による会議の結論に比べて優れていると言うわけではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="222"><a name="222"><TD id="E222" onclick="javascript:toggleLayer('J222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The truth is, they can only bring to bear in common on the work in hand those mediocre qualities which are the birthright of every average individual. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J222" onclick="javascript:toggleLayer('E222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 実際のところ、平均的個人が持って生まれた凡庸な性質で取り組むしかないのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="223"><a name="223"><TD id="E223" onclick="javascript:toggleLayer('J223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In crowds it is stupidity and not mother-wit that is accumulated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J223" onclick="javascript:toggleLayer('E223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 群集の中では蓄積されるのは持って生まれた才覚ではないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="224"><a name="224"><TD id="E224" onclick="javascript:toggleLayer('J224')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is not all the world, as is so often repeated, that has more wit than Voltaire, but assuredly Voltaire that has more wit than all the world, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J224" onclick="javascript:toggleLayer('E224')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 頻繁に繰り返されてきたことであるが、世界中の誰もがヴォルテール（Voltaire:本名 Francois Marie Arouet;1694 - 1778）ほど機知に富んではいない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="225"><a name="225"><TD id="E225" onclick="javascript:toggleLayer('J225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if by "all the world" crowds are to be understood.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J225" onclick="javascript:toggleLayer('E225')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしこの「世界中」というのが群集を意味するのであれば、確かにそうなのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="226"><a name="226"><TD id="E226" onclick="javascript:toggleLayer('J226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If the individuals of a crowd confined themselves to putting in common the ordinary qualities of which each of them has his share, there would merely result the striking of an average, and not, as we have said is actually the case, the creation of new characteristics.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J226" onclick="javascript:toggleLayer('E226')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、もし群集を構成するそれぞれが、［群集になることで］その平凡な性質を混合するだけのことであったなら、単に平均化という結果が得られるだけで、先ほどから見ている、新しい性質が発生することは説明されない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="227"><a name="227"><TD id="E227" onclick="javascript:toggleLayer('J227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> How is it that these new characteristics are created?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J227" onclick="javascript:toggleLayer('E227')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ならば、この新しい性質はどうやって生まれてくるのか。　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="228"><a name="228"><TD id="E228" onclick="javascript:toggleLayer('J228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is what we are now to investigate.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J228" onclick="javascript:toggleLayer('E228')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを今から考えてみよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="229"><a name="229"><TD id="E229" onclick="javascript:toggleLayer('J229')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Different causes determine the appearance of these characteristics peculiar to crowds, and not possessed by isolated individuals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J229" onclick="javascript:toggleLayer('E229')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 隔絶された個人が持っていない性質で、群衆のみが持つ性質が出現するためには様々な要因が挙げられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="230"><a name="230"><TD id="E230" onclick="javascript:toggleLayer('J230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first is that the individual forming part of a crowd acquires, solely from numerical considerations, a sentiment of invincible power which allows him to yield to instincts which, had he been alone, he would perforce have kept under restraint.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J230" onclick="javascript:toggleLayer('E230')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １つめの要因は、もし１人でいたならばきっと抑制したであろうが、ただ群集の一部を構成しているというだけで、まるで無敵の力が本能を解き放つかのような意識にとらわれることである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="231"><a name="231"><TD id="E231" onclick="javascript:toggleLayer('J231')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He will be the less disposed to check himself from the consideration that, a crowd being anonymous, and in consequence irresponsible, the sentiment of responsibility which always controls individuals disappears entirely.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J231" onclick="javascript:toggleLayer('E231')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 群集が匿名となり、そのために責任の所在がわからなくなれば、群集を構成する個人は自らの行動に対する責任をとり、行動を制御する感覚が全く無くなってしまうのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="232"><a name="232"><TD id="E232" onclick="javascript:toggleLayer('J232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The second cause, which is contagion, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J232" onclick="javascript:toggleLayer('E232')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２つめの要因は伝染である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="233"><a name="233"><TD id="E233" onclick="javascript:toggleLayer('J233')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> also intervenes to etermine the manifestation in crowds of their special characteristics, and at the same time the trend they are to take.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J233" onclick="javascript:toggleLayer('E233')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 群集を特徴付けるものであり、かつ同時に群集がとる傾向である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="234"><a name="234"><TD id="E234" onclick="javascript:toggleLayer('J234')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Contagion is a phenomenon of which it is easy to establish the presence, but that it is not easy to explain. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J234" onclick="javascript:toggleLayer('E234')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この伝染という現象はよく見うけられるが、［それがなぜ起こるかについての］説明は容易ではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="235"><a name="235"><TD id="E235" onclick="javascript:toggleLayer('J235')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It must be classed among those phenomena of a hypnotic order, which we shall shortly study.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J235" onclick="javascript:toggleLayer('E235')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この現象は催眠術のようなものとは区別されねばならず、近いうちに解明されるべき課題である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="236"><a name="236"><TD id="E236" onclick="javascript:toggleLayer('J236')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In a crowd every sentiment and act is contagious, and contagious to such a degree that an individual readily sacrifices his personal interest to the collective interest. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J236" onclick="javascript:toggleLayer('E236')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 群集の中では感情も行動も伝染し、［群集の］集団的な利益のためには個人の利益が簡単に犠牲にされることもあるくらいだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="237"><a name="237"><TD id="E237" onclick="javascript:toggleLayer('J237')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is an aptitude very contrary to his nature, and of which a man is scarcely capable, except when he makes part of a crowd.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J237" onclick="javascript:toggleLayer('E237')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは個人の本性とは真っ向から対立し、群集の一部でいる時以外にはまず現れない性質である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="238"><a name="238"><TD id="E238" onclick="javascript:toggleLayer('J238')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Updated : 2002/11/07)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB238" onclick="javascript:toggleLayer('E238')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="239"><a name="239"><TD ID="TAB239" onclick="javascript:toggleLayer('J239')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J239" onclick="javascript:toggleLayer('E239')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （ごめん、これから訳すから待っててね。先に訳してくれてもいいけど。）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="240"><a name="240"><TD ID="TAB240" onclick="javascript:toggleLayer('J240')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB240" onclick="javascript:toggleLayer('E240')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="241"><a name="241"><TD id="E241" onclick="javascript:toggleLayer('J241')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A third cause, and by far the most important, determines in the individuals of a crowd special characteristics which are quite contrary at times to those presented by the isolated individual. 
+I allude to that suggestibility of which, moreover, the contagion mentioned above is neither more nor less than an effect. 
+To understand this phenomenon it is necessary to bear in mind certain recent physiological discoveries. 
+We know to-day that by various processes an individual may be brought into such a condition that, having entirely lost his conscious personality, he obeys all the suggestions of the operator who has deprived him of it, and commits acts in utter contradiction with his character and habits. 
+The most careful observations seem to prove that an individual immerged for some length of time in a crowd in action soon finds himself--either in consequence of the magnetic influence given out by the crowd, or from some other cause of which we are ignorant--in a special state, which much resembles the state of fascination in which the hypnotised individual finds himself in the hands of the hypnotiser. 
+The activity of the brain being paralysed in the case of the hypnotised subject, the latter becomes the slave of all the unconscious activities of his spinal cord, which the hypnotiser directs at will. 
+The conscious personality has entirely vanished; will and discernment are lost. 
+All feelings and thoughts are bent in the direction determined by the hypnotiser. 
+Such also is approximately the state of the individual forming part of a psychological crowd. 
+He is no longer conscious of his acts. 
+In his case, as in the case of the hypnotised subject, at the same time that certain faculties are destroyed, others may be brought to a high degree of exaltation. 
+Under the influence of a suggestion, he will undertake the accomplishment of certain acts with irresistible impetuosity. 
+This impetuosity fis the more irresistible in the case of crowds than in that of the hypnotised subject, from the fact that, the suggestion being the same for all the individuals of the crowd, it gains in strength by reciprocity. 
+The individualities in the crowd who might possess a personality sufficiently strong to resist the suggestion are too few in number to struggle against the current. 
+At the utmost, they may be able to attempt a diversion by means of different suggestions. 
+It is in this way, for instance, that a happy expression, an image opportunely evoked, have occasionally deterred crowds from the most bloodthirsty acts. 
+We see, then, that the disappearance of the conscious personality, the predominance of the unconscious personality, the turning by means of suggestion and contagion of feelings and ideas in an identical direction, the tendency to immediately transform the suggested ideas into acts; 
+these, we see, are the principal characteristics of the individual forming part of a crowd. 
+He is no longer himself, but has become an automaton who has ceased to be guided by his will. 
+Moreover, by the mere fact that he forms part of an organised crowd, a man descends several rungs in the ladder of civilisation. 
+Isolated, he may be a cultivated individual; 
+in a crowd, he is a barbarian--that is, a creature acting by instinct. 
+He possesses the spontaneity, the violence, the ferocity, and also the enthusiasm and heroism of primitive beings, whom he further tends to resemble by the facility with which he allows himself to be impressed by words and images--which would be entirely without action on each of the isolated individuals composing the crowd--and to be induced to commit acts contrary to his most obvious interests and his best-known habits. 
+An individual in a crowd is a grain of sand amid other grains of sand, which the wind stirs up at will. 
+It is for these reasons that juries are seen to deliver verdicts of which each individual juror would disapprove, that parliamentary assemblies adopt laws and measures of which each of their members would disapprove in his own person. 
+Taken separately, the men of the Convention were enlightened citizens of peaceful habits. 
+United in a crowd, they did not hesitate to give their adhesion to the most savage proposals, to guillotine individuals most clearly innocent, and, contrary to their interests, to renounce their inviolability and to decimate themselves. 
+It is not only by his acts that the individual in a crowd differs essentially from himself. 
+Even before he has entirely lost his independence, his ideas and feelings have undergone a transformation, and the transformation is so profound as to change the miser into a spendthrift, the sceptic into a believer, the honest man into a criminal, and the coward into a hero. 
+The renunciation of all its privileges which the nobility voted in a moment of enthusiasm during the celebrated night of August 4, 1789, would certainly never have been consented to by any of its members taken singly. 
+The conclusion to be drawn from what precedes is, that the crowd is always intellectually inferior to the isolated individual, but that, from the point of view of feelings and of the acts these feelings provoke, the crowd may, according to circumstances, he better or worse than the individual. 
+All depends on the nature of the suggestion to which the crowd is exposed. 
+This is the point that has been completely misunderstood by writers who have only studied crowds from the criminal point of view. 
+Doubtless a crowd is often criminal, but also it is often heroic. 
+It is crowds rather than isolated individuals that may be induced to run the risk of death to secure the triumph of a creed or an idea, that may be fired with enthusiasm for glory and honour, that are led on--almost without bread and without arms, as in the age of the Crusades--to deliver the tomb of Christ from the infidel, or, as in '93, to defend the fatherland. 
+Such heroism is without doubt somewhat unconscious, but it is of such heroism that history is made. 
+Were peoples only to be credited with the great actions performed in cold blood, the annals of the world would register but few of them. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB241" onclick="javascript:toggleLayer('E241')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="242"><a name="242"><TD ID="TAB242" onclick="javascript:toggleLayer('J242')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB242" onclick="javascript:toggleLayer('E242')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="243"><a name="243"><TD ID="TAB243" onclick="javascript:toggleLayer('J243')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J243" onclick="javascript:toggleLayer('E243')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【原注】
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="244"><a name="244"><TD ID="TAB244" onclick="javascript:toggleLayer('J244')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J244" onclick="javascript:toggleLayer('E244')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （本文へ戻る↑）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="245"><a name="245"><TD ID="TAB245" onclick="javascript:toggleLayer('J245')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB245" onclick="javascript:toggleLayer('E245')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="246"><a name="246"><TD ID="TAB246" onclick="javascript:toggleLayer('J246')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J246" onclick="javascript:toggleLayer('E246')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【訳注…というか半分以上チャチャ】 
+通勤電車にたまたま乗りあわせた人たちは、それだけでは「（心理的）群集」ではないが、アナウンスか何かで「最高ですか～！」と言われて、一斉に手を挙げて「最高で～す！」と叫ぶようになると、それは「群集」だってこと、かな。（本文へ戻る↑） 
+実はここから先、"character"という単語が乱発される。これは群集（the crowd）に対しても個人に対しても英語では同じ単語。でも、日本語だと、個人については「性格」のほうがすわりがいいような気もするが、結局このあたりの文章の趣旨から言うと、「結局、個人を見るときも集団を見るときもその持っている "charcter" の違いで分類できるんだ」と言いたいようなので、同じ単語「性質」で一貫させる。（本文へ戻る↑） 
+ここの「すっかり組織化された群集」という言いまわしは、日本語としては非常に気持ちが悪い。原文は"the phase of complete organisation"となってるんだけど、何を以って"complete"と見なすのか、このあとしばらく読んでても一向にわからない。ってなわけでわかったらもっとマシな日本語に替えるけど、それまでガマンしてね。
+ん？　なに？　"phase"は単なるある一時点の「様相」であって、順番に上がって行く「段階」じゃないだろうって？　いやいや、その後に"in this advanced phase of organisation"とか出てくんだよ。著者の（英訳者のかも知れんが）頭の中では、組織化が進む段階があると理解しているってことだろう。組織化が進むことが「より進んだ（advanced）」状態かどうかは、２１世紀になろうとするこの時期ではギモンだねぇ。ただ、１９世紀の終わり頃ではどうだか。（本文へ戻る↑） 
+このあたりの言いまわしは常に持って回った言い回しになっていて、「群集には特徴がある」と言い続けているのに、その具体的な中身に一向に言及していない。
+それと、どうも、群集の精神（の性質）は、民族（race）に固有の不変な部分と、組織化することによってその上部に重なって（superposed）追加される特徴という二重構造になっているという理解をしているように読める。人間に固有の性質が組織化によって変容して現れる、のではなくて。そうすると、組織化した群集の性質がそれを構成する民族（race）によって異なるのか否か、異なるとすれば何が原因なのかを解明する必要に迫られることになるが。。。（本文へ戻る↑） 
+この前後で"unconscious life"とか"conscious life"とかいう表現が頻出する。が、これを「無意識的生活」「意識的生活」と訳してもなんのことか意味不明である。文脈から判断するに、無意識が重要な働きをしている間の生活という意味にもとれそうなので「無意識の作用のもとにある生活」というふうに訳すことにした。（本文へ戻る↑） 
+感情の例として愛情・反感はわかるけど、宗教や道徳、政治まで入っているのは、勘違いなのか慧眼なのか。よくある精神活動の３分類（感性・悟性・知性）の枠組みでは、宗教や道徳、政治って悟性とか知性に属するものだと思うけど。うーーん、それとも、ほんとはそうあるべきなんだけれども、実体は感情の産物だよねぇって皮肉りたいのかもよ。（本文へ戻る↑） 
+この言い方はすごく、靴職人の知性を低く評価してるけど、これは、訳のネタ本がそうなってるのであって、僕がそう思ってるんじゃないよ。…と責任転嫁。（本文へ戻る↑） 
+このあたり、個人がどんなに優秀でも群集になったら結構おバカになるのは、そういう性質が集団になったら現れるからだと書いてあるが、それって説明したことになっているのか？（本文へ戻る↑） 
+繰り返すけど、これは、訳のネタ本がそうなってるのであって、僕がそう思ってるんじゃないよ。（本文へ戻る↑） 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="247"><a name="247"><TD ID="TAB247" onclick="javascript:toggleLayer('J247')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB247" onclick="javascript:toggleLayer('E247')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="248"><a name="248"><TD ID="TAB248" onclick="javascript:toggleLayer('J248')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J248" onclick="javascript:toggleLayer('E248')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【凡例】
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="249"><a name="249"><TD ID="TAB249" onclick="javascript:toggleLayer('J249')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J249" onclick="javascript:toggleLayer('E249')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 本文中で“hogehoge”（クォーテーション）とあったものは「hogehoge」（かぎかっこ）で表記。 
+原典にはないが日本語としてまともにするために追加した言葉は [hogehoge] で追加。 
+原文で CAPITALISE して強調してあった文章は太字にしてみた。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="250"><a name="250"><TD ID="TAB250" onclick="javascript:toggleLayer('J250')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB250" onclick="javascript:toggleLayer('E250')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="251"><a name="251"><TD ID="TAB251" onclick="javascript:toggleLayer('J251')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J251" onclick="javascript:toggleLayer('E251')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【履歴】
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="252"><a name="252"><TD ID="TAB252" onclick="javascript:toggleLayer('J252')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J252" onclick="javascript:toggleLayer('E252')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Jan 15,2000 翻訳開始 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="253"><a name="253"><TD ID="TAB253" onclick="javascript:toggleLayer('J253')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB253" onclick="javascript:toggleLayer('E253')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="254"><a name="254"><TD id="E254" onclick="javascript:toggleLayer('J254')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Updated 2002/11/07 by Felix
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB254" onclick="javascript:toggleLayer('E254')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="crowd-1.htm">prev</a>
+<a href="crowd-0.htm">0</a>
+<a href="crowd-1.htm">1</a>
+<2>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/crowde.txt">local copy</a> / <a href="http://www.gutenberg.net/etext96/tcrwd10.txt">http://www.gutenberg.net/etext96/tcrwd10.txt</a><li>オリジナルの日本語文: <a href="../org/crowdj.txt">local copy</a> / <a href="http://www.mahoroba.ne.jp/~felix/Notes/Sugita/index.html">http://www.mahoroba.ne.jp/~felix/Notes/Sugita/index.html</a><li><a href="../manual-alignment/crowd.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

@@ -1,0 +1,600 @@
+使える GUI デザイン:フリー／オープンソース・ソフトウェア開発者のための手引き
+Usable GUI Design: A Quick Guide for F/OSS Developers 
+
+
+イントロダクション
+Introduction
+
+オープンソース・ソフトウェアの世界は優れたソフトウェアでいっぱいです。
+The Open Source software world is full of excellent software. 
+
+ワードプロセッサから Web サービスにいたるまで、コンピュータでしたいと思うようなおおよそすべての作業において、高品質のフリー／オープンソース・ソフトウェアを利用することができます。
+High-quality F/OSS software is available for virtually any task a computer user could want to do, from word-processing to web-serving.
+
+しかしこうして勢ぞろいしたソフトウェアにも、ひとつ欠点があります。
+There is one small problem with much of this huge array of software:
+
+あるべき使い勝手からかけ離れて使いにくいということがたびたびあるのです。
+it is often far more difficult to use than it could be.
+
+UI デザインの専門家は、アプリケーションの開発にあたっていちばんに設計されるべきなのはユーザー・インターフェースであるといいますが、プログラマにはこうした設計をすることができません。
+Professional UI designers tell us that user interfaces should be the first thing designed when we come to develop an application, and that programmers are incapable of doing this kind of design.
+
+それは UI の専門家でなければできないことで、
+They say it can only be done by the professional UI experts;
+
+オープンソース・ソフトウェアのプロジェクトではこうした人々の手を借りることができず、それゆえ本当の使いやすさというものは望むべくもないというのです。
+OSS projects don't have access to these kind of people, and therefore can never be truly usable.
+
+これは、わたしたちが UI デザインをあきらめるべきだということではありません。
+This doesn't mean we should just give up on UI design.
+
+多くの商用アプリケーションの UI の品質を見ればわかるように、スタッフにユーザビリティのエキスパートを加えればそれで優れたユーザー・インターフェースが保証されるというわけでもないのです。
+From the quality of many commercial applications' UIs, having usability experts on staff doesn't guarantee a good interface either.
+
+開発者の努力、知識、洞察力がアプリケーションの使い勝手を大きく向上させることを可能にするのです。
+Effort, knowledge and thought by any developer can improve the usability of an application greatly.
+
+わたしたちに見つけられるのは絶対的ではなくて近似的な解にすぎないかもしれませんが、それでもそれは正しい方向への進歩です。
+We may only find a local optimum rather than the global, but even that is a step in the right direction.
+
+こうした問題に数年にわたって取り組んだ末に、わたしはオープンソース・ソフトウェア開発者がアプリケーションの GUI をデザインする際に守るべき 5 つの点について書くことにしました。
+After years of struggling with these problems, I thought I would write down a short list of five things that we OSS developers should consider when designing our application's GUI.
+
+これらは、わたしがオープンソース・ソフトウェアを使用・開発した経験と、こうしたことがらについて扱っているいくつかのたいへん興味深い書籍や Web サイトから導き出したものです。
+These are drawn from my experience in using and writing OSS software and my reading of a few very interesting books and web sites on the subject.
+
+それらの作品については参考文献に挙げてあります
+These works are listed in the references
+
+――ユーザビリティの問題に興味がある開発者にとってはどれもすばらしい読みものです。
+――they are all excellent reading for any developer interested in usability issues.
+
+ほとんどの作品に必ずしも実装を要求されないことがらや、ちょっとした論争になっているようなことがらについては、わたしはあえて軽く触れるにとどめました。
+I have intentionally only mentioned points here which do not require major amounts of work to implement, and about which there is little controversy. 
+
+より広い「すべてのアプリケーション」についてが本稿の対象だからです。
+Larger “whole-application” issues are beyond the scope of this article. 
+
+ここに挙げていることは新しいことでもなければ、これといって難しいことでもありませんが、その効果には目を見張るものがあります。
+None of these ideas is new or particularly complex, but their effect can be very great. 
+
+それから、わたしがここで取り上げる例についても述べておきます。
+I should also note here that in several of the examples I use,
+
+そのうちのいくつかについては、アプリケーションの設定を変えることで解決できるものもあります。
+it is possible to fix the problem by changing the application's settings. 
+
+しかし、わたしはデフォルトの設定についてのみ考慮することにしました。
+I have decided to only consider the default settings:
+
+デフォルトの状態こそが、そのアプリケーションにおけるもっとも使い勝手のよいデザインについての開発者の考えを表しているように思われるからです。
+presumably, the defaults represent the developer's idea of the most usable design for their application.
+
+はじめるに先立って、予想される罵倒にそなえてもう一点述べておくことにしましょう。
+Before I start, I should probably make one more point in order to at least mitigate the flames I will receive:
+
+アプリケーションによっては、以下に述べることがとりわけ手厳しいものに聞こえるかもしれませんが、これに建設的な批評以外の意図はありません。
+although I may sound quite harsh on some applications below, this is in no way meant as anything but constructive criticism.
+
+ほとんどのアプリケーションをわたしは毎日使っており、いずれも献身的な開発者たちの何年にもわたる努力の賜物、とびきりの名品ぞろいです。
+I use most of these applications every day and they are fantastic pieces of work, the product of years of hard work by dedicated developers.
+
+わたしはただ、さらなる改善の余地を提案しているだけで、
+I am merely making suggestions of potential improvements; 
+
+誰にたいする攻撃の意図もありません。
+no offence is intended to anybody.
+
+ポイント
+The Points
+
+0) ユーザーはアプリケーションを使うわけではない
+0) The user is not using your application
+
+コンピュータの UI デザインにおけるもっとも基本的なポイントは、ユーザーはあなたのアプリケーションを使うために使っているわけではないということです。
+The most basic point in all computer UI design is that the user does not want to use your application.
+
+ユーザーは自分の作業をできるだけ手早く片付けたいと思っていて、アプリケーションはたんにその助けとなる道具であるにすぎません。
+They want to get their work done as quickly and easily as possible, and the application is simply a tool aiding that. 
+
+ユーザーをできるだけ早く解放してあげるアプリケーションほどよいアプリケーションです。
+The more you can keep your application out of the way of the user, the better.
+
+あなたのアプリケーションを使うことに費やされた努力というのは、ユーザーのやろうとしている作業を片付けることには貢献していない努力なのです。
+Effort spent on using your application is effort not spent on the work the user is trying to do. 
+
+Alan Cooper の 2 冊目の著作、「About Face 2.0」から、このことをうまく要約しているふたつを引用することにします。
+Two key quotes from Alan Cooper's second book, About Face 2.0, summarise this very well:
+
+「ユーザーは賢く、そして多忙であると考えよ」 
+“Imagine users as very intelligent but very busy” 
+
+「どんなにクールなインターフェースでも、それなしで済むに超したことはない」 
+“No matter how cool your interface is, less of it would be better” 
+
+本稿の残りの 4 点はこの原則の特別なケースであるというのにすぎません。
+Points 1 to 4 in this article are really just special cases of this rule.
+
+1) Fitt の法則
+1) Fitt's Law
+
+Fitt の法則はもっとも基本的で有名な UI デザインの法則です。
+This is the most basic and well known of UI design laws.
+
+それによれば、スクリーン上のオブジェクトが大きくてマウスポインタに近いほど、クリックしやすいと述べられています。
+It states that the larger and nearer to the mouse pointer an on-screen object is, the easier it is to click on.
+
+こんなことはあたりまえなのですが、それでも UI デザインではすっかり無視されてしまうことが少なくありません。
+That's common sense, yet it is often completely ignored in UI design.
+
+ 
+図 1: Firefox のツールバー
+Figure 1: Firefox toolbar
+
+たとえば、デフォルトの Firefox のボタンバー（図 1）を考えてみてください。
+Consider, for example, the default Firefox button bar (Figure 1).
+
+Web ブラウジングでは、他と比べて圧倒的に押すことの多いボタンは［戻る］ボタンです。
+When web browsing, by far the most common button anyone hits is the Back button.
+
+したがって［戻る］ボタンは押しやすくなくてはいけません。
+The Back button should therefore be the easiest to hit:
+
+このようにアプリケーションを使うことに費やす労力を最小限にすることで、ユーザーが Web ブラウジングに集中できるようになるのです。
+that way, you minimise the effort required of the user to use your application, and allow them to concentrate on web browsing.
+
+ところがこのボタンバーでは、5 つのボタンすべてが同じ大きさになっています。
+But in the button bar, all five buttons are the same size.
+
+［中止］ボタンは本当に［戻る］ボタンと同じくらい重要なのでしょうか？　
+Is the Stop button really as important as the Back button?
+
+もちろん違います。
+No, of course not.
+
+よりよいデザインは図 2 のようなものになるでしょう。
+A better design would be something like Figure 2.
+
+ここでは［戻る］ボタンは Fitt の法則にしたがって大きく、そして他のボタンよりも目立つものになっています。
+This makes the Back button both easier to click on by Fitt's law, and also easier to distinguish from the other buttons.
+ 
+図 2: 代替デザイン案
+Figure 2: An alternative design
+
+コントロールの外見上の大きさは、それをスクリーンの端に配置することで大きくすることができます。
+The apparent size of a control can be enlarged by placing it at a screen edge.
+
+マウスカーソルはスクリーンの端にまで達すると、どんなに早くマウスを動かしていたとしても、そこでマウスカーソルの動きは止まります。
+When the mouse cursor hits the edge of the screen, it stops at exactly the screen edge, irrespective of how fast the mouse is moving.
+
+このことは、マウスの使用者にとってはスクリーンの端にあるものは、スクリーンの外側に無限に広がっていることになるということを意味します。
+This means that for the mouse user objects at the screen edge extend effectively an infinite distance off the screen.
+
+スクリーンの右上にある 1 ピクセルのターゲットにマウスカーソルを合わせるのは簡単なことです。
+A one pixel target in the top-right corner of the screen would be trivially easy to hit;
+
+マウスを右上に適当に「投げて」やればいいからです。
+you would just have to ‘throw’ the mouse up and right as far as you liked.
+
+スクリーンの中ほどにある 1 ピクセルにマウスカーソルを合わせてそれを押すのにはそれよりも時間がかかることでしょう。
+Move that one pixel to the middle of the screen, and hitting it would take you much longer. 
+
+このことから、押しやすくあってほしいコントロールは、スクリーン端に配置されるべきだということがわかります。
+From this we can see that controls that we want to be easy to hit should be positioned at the edges or corners of the screen.
+ 
+図 3: Metacity ウィンドウの装飾。
+Figure 3: Metacity window decorations.
+
+ボタンの周辺に無効な領域がある。
+Note the inactive border around the buttons.
+
+もっとも簡単な例は、すべてのウィンドウに付いている（［閉じる］［最大化］などの）ウィンドウ操作用のボタンです。
+The simplest example of this is the window management buttons on all windows (close, maximise etc.).
+
+ウィンドウを操作しやすくするために、これらは押しやすくなっている必要があります。
+These need to be easy to hit, so that controlling windows isn't fiddly.
+
+全アプリケーションの上隅にあるわけですから、これらは角に置く筆頭候補です。
+From their position at the top corners of all applications, these are prime candidates for moving to the corners.
+
+しかしながらそれを実践しているウィンドウ・マネージャはごくわずかです。
+Yet very few window managers do this:
+
+ほとんどの Metacity テーマがやっていませんし、XFCE4 もやっていません。
+most Metacity themes don't, XFCE4 doesn't.
+
+ボタンを 1 ピクセル右上に移動させるだけで、ユーザーは目をつむってでもウィンドウを閉じることができるようになるというのにです。
+All it takes is to move the buttons one pixel up and right and the user can close windows without even having to look. 
+
+図 4: スクロールバー
+Figure 4: Scrollbar
+
+1 ピクセルのギャップ。
+one pixel gap.
+
+もうひとつの例はスクロールバーです。
+Another example is scroll bars.
+
+わたしのデスクトップにあるほとんどのアプリケーションは、最大化したときにその右端から1 ピクセル離れたところにスクロールバーが付くようになっており、そうなっているばっかりにせっかくのポイントしやすい幅無限大のボックスは 10 ピクセルの小さなボックスへと縮められてしまっていて、わたしはスクロールしたいと思うたびにそこをクリックするのに余計な数秒を費やすことになってしまいます。
+Most applications on my desktop put the right hand edge of the scroll bar one pixel away from the edge of the screen when maximised, shrinking the slider from the potential easy to hit infinite box to the right of the screen to a tiny 10-pixel wide box that takes an extra few seconds to click on every time I want to scroll.
+
+このことをまとめると以下のようになります。
+To summarise this point then:
+
+よく使われるコントロールは大きく、目立つようにする。 
+Make commonly used controls larger and distinctive 
+
+スクリーンの端と四隅に配置されるコントロールは事実上無限に広がっているとみなすことができる。 
+Use the edges and corners of the screen to make your controls virtually infinite 
+
+スクリーンの端や四隅から 1 ピクセル離れてコントロールを置くようなことはしない。 
+Never, ever put controls 1 pixel away from a screen edge or corner 
+
+2) 不必要なインターフェース
+2) Unnecessary interference
+
+ユーザーが作業をしているときには、かれらの注意は行っている作業のことにあります。
+When a user is working, their attention is on the work they are doing. 
+
+ユーザーがアプリケーションへと注意を向けるそのたびごとに、かられが作業に集中しなおすだけの時間が失われていきます。
+Every time they have to move their attention away from their work to the application, it takes time for them to get back to where they were in their work.
+
+したがって、アプリケーションがユーザーの気を散らせたり邪魔をしたりするようなことは最小限にとどめなければなりません。
+Therefore, you should minimise the amount of distraction and interference your application gives the user.
+
+アプリケーションにはそれが対象としているアイテムというものが存在しています
+Every application has an item that is its key focus 
+
+――テキストエディタならテキスト、
+――in a text editor, it's the text;
+
+Web ブラウザなら Web ページです。
+in a web browser, it's the web page
+
+インターフェースはそれが中心になるように作らなければいけません。
+――so make that central to your interface.
+
+このことの例としては、確認や進行状況のダイアログが挙げられます。
+An example for this is confirmation and progress dialogs. 
+
+たとえば、Evolution はわたしが［送受信］ボタンを押すたびにダイアログをポップアップしてメールをチェックしているその進行状況を教えます。
+Evolution, for example, pops up a dialog box every time I click “Send/Receive” to inform me of its progress in checking my mail.
+
+このダイアログはメールを受信したので、ほかのアプリケーションへのアクセスをブロックしようという場合であればまっとうだといえます。
+This dialog is right in the way of the mail being received and blocks access to the rest of the application.
+
+しかしこのダイアログの提供しているものはなんでしょう？　
+What purpose does this dialog serve?
+
+これはたんにユーザーの邪魔をするのにしか役に立っていません。
+All it does is get in the way of the user. 
+
+このダイアログは廃止して、ステータスバーの進捗メーターに置き換えたほうがずっとよいでしょう。
+It would be far better eliminated and replaced with a status bar progress meter.
+ 
+図 5: gEdit の検索ダイアログ
+Figure 5: Find dialog in gEdit
+
+さらに悪い例は KDE のごみ箱のデフォルトでの振る舞いです。
+A worse example is KDE's default Trashcan behaviour.
+
+ファイルをごみ箱に送るのは、簡単に復元でき、またユーザーが繰り返し行うこともある操作です。
+Sending a file to the Trash is an easily reversible action that the user might want to do several times in a row:
+
+どうして簡単にやり直せる作業でユーザーに［OK］を毎回クリックするのを強制するのでしょうか。
+why force users to click “OK” every time, when the action can be easily undone. 
+
+ユーザーにファイルがごみ箱に送られたということを警告したいのであれば、アニメーションのようなものを表示させればいいのです。
+If you want to alert the user to the fact that a file has been sent to the trash, play some sort of animation. 
+
+こうした簡単な操作において毎回ユーザーの邪魔をしてはいけません。
+Don't put a road block in their way every time they do such a simple action. 
+
+そんなことはユーザーをうるさがらせて作業を遅滞させ、ダイアログでやみくもに［OK］を押すよくない習慣を付けさせることにしかつながりません。
+All that does is annoy users, slow them down and condition them to blindly click OK on dialogs.
+
+別の例はテキストエディタの検索機能でおなじみの「見つかりません」ダイアログです。
+Another example is the omnipresent “Text not found” dialog in the search facility of text editors.
+
+検索ダイアログに入力した文字列が見つからなかったとすれば、おそらくは検索する文字列が間違っていたわけで、それなら検索文字列を修正して検索を続けようとするのが普通です。
+If the text I entered in the search dialog hasn't been found, it's most likely that I typed the search string wrong and now want to edit it and repeat the search.
+
+しかしそこには［OK］ボタンのついたダイアログボックスが立ちはだかっており、なにをするにもまずはそいつをクリックしてのけなければならないのです。
+But there's now a dialog box with an “OK” button in the way, so I have to click that away before I can do anything.
+
+ユーザーにはさらなる苛立ちと手間がかさみます。
+More annoyance and work on the part of the user.
+
+よい例としては Firefox の検索ダイアログが挙げられます。
+A better example is Firefox's find dialog, 
+
+これは検索語が見つからないときには赤く色が付くのです。
+which turns red when the search term isn't found.
+ 
+図 6: あらゆる証拠に反して、Slashdot には monkey は見あたらない。
+Figure 6: Contrary to all the evidence, there are no monkeys on Slashdot
+
+
+（訳注: Slashdot の monkey というのは、２ちゃんねるでいう厨房と同じような意味だそうです。
+山形浩生さんより教えていただきました。）
+
+
+このことをまとめると:
+To summarise this point:
+
+ユーザーの通り道につまずくような石を置かない。 
+Don't put road blocks in the way of your users 
+
+ポップアップダイアログは役に立つ情報を含んでいる場合にのみ使う。 
+Only pop up a dialog if it contains useful information 
+
+できるだけ非モーダルなステータス表示をする。 
+If at all possible, use non-modal status indicators 
+
+3) コンピュータのパワーを使え
+3) Use the power of the computer
+
+コンピュータは昨今、1 秒間に何十億回もの演算をこなし、何百ギガバイトものストレージを使うことのできる、パワフルなものとなりました。
+Computers are powerful things these days, with billions of processor cycles per second and hundreds of gigabytes of storage available.
+
+かたや人間はといえば、何百年たってもそれほど変わっていません。
+Humans, however, haven't changed that much in hundreds of years.
+
+わたしたちはいまだに疲れやすく、すぐ飽きるし、間違えるし、一度に限られた精神力しか発揮することができません。
+We still get tired, bored or distracted and have a limited amount of mental energy available at any one time. 
+
+したがって、できるだけ多くの作業を、みすぼらしく擦り切れた人間などではなく、疲れ知らずでメチャ速の、目の前のコンピュータに任せるようにしたほうが賢明であるように思われるのです。
+It would seem a good idea, therefore, to shift as much work as possible off the poor, worn out human and on to the untiring, super fast computer in front of them.
+
+ユーザー・インターフェースにおいて、このアイデアの示唆するところは明白です。
+In user interface design, the implication of this idea is clear: 
+
+決定しなければならないことや、やらなければならないことがあるたびに、インターフェースがユーザーのためにそれをやってくれるようにできないか考えてみてください。
+every time there is a decision to be made or work to be done, try to make the interface do it for the user.
+
+たとえば、わたしのタスクバーには現在ふたつの xterm が開いています（図 7）。
+For example, in my task bar at the moment I have two xterms open (Figure 7).
+
+ひとつは SiEd のソースコードのあるディレクトリを開いており、もうひとつは論文の LaTeX コードがあるディレクトリを開いています。
+One is open in the directory of the SiEd source code, the other in the directory of the LaTeX code for a research paper.
+
+どっちがどっちだかわかりますか？　
+Can you tell which is which?
+
+わかりませんよね。
+I can't,
+
+そこでわたしは自分の作業したいほうを選ぶのに、タスクバーをクリックしたり、そこにマウスカーソルをもっていってツールチップを表示させたりすることになるわけです。
+so in order to select the correct one I have to do work, either by clicking on the taskbar or hovering over it and using the tooltips.
+
+しかしコンピュータはどっちがどっちなのか知っているのです。
+But the computer knows which is which: 
+
+どうしてそれをわたしのためにやってくれないのでしょうか？
+why can't it do that work for me?
+ 
+図 7: GNOME のタスクバーは不親切だ。
+Figure 7: GNOME's taskbar being unhelpful
+
+解決策は単純です。
+The solution is simple:
+
+タスクバーにある同一のアプリケーションについては、タスク名を見て、それらを区別できるような情報を表示するようにすればよいのです。
+for the entries of identical applications in the taskbar, look at the task names and display sufficient information to distinguish them. 
+
+そうすれば、わたしは多くの異なるアプリケーションをほとんど考えることなく切り替えることができます。
+That way, I can quickly select between many different applications with little thought.
+
+コンピュータがその作業をやってくれるので、わたしはそれをしなくてすむわけです。
+The computer does the work so I don't have too.
+
+もしコンピュータがそれほどまでに広大なストレージを利用できるというのであれば、終了させるたびにわたしの設定を忘れてしまうアプリケーションが多いのはどうしてなのでしょう？　
+If computers have so much storage space available, why do so many applications forget my settings every time I exit them?
+
+わたしは Anjuta IDE は必ず最大化させて使うのですが、
+For example, I never use the Anjuta IDE in anything but a maximised window. 
+
+Anjuta は起動させるとわたしの使っているスクリーンと同じくらいの大きさでウィンドウを初期化し、ウィンドウの左上をスクリーンから 3 ピクセル離れたところにもっていきます。
+Anjuta defaults to an window almost as large as my screen when opened, with the top left corner about three pixels from the corner of the screen.
+
+そこでわたしはウィンドウを最大化させ、なにか開発をして、終了させます。
+So I click maximise, do some development and exit. 
+
+次回 Anjuta を起動させると、それはまたもや最大化されていない状態に逆戻りです。
+Next time I open Anjuta, it has reverted to an unmaximised window again. 
+
+そこでわたしは、やろうとしていたことについて考えるのを中断して、このプログラムを起動するたびに毎回最大化ボタンをクリックするのです。
+So I am forced to stop what I'm doing and click maximise every time I start the program. 
+
+以前のウィンドウのサイズや場所、状態を記憶しておくのにはストレージの 20 バイトもあれば足りるでしょう。
+Storing the previous window size, position and state would take maybe 20 bytes of storage, 
+
+何千回のクリックに比べれば安いものです。
+a small price to pay for saving thousands of clicks.
+
+GNOME の Nautilus ファイルマネージャはこの点申し分ありません。
+The Nautilus file manager in GNOME gets this right: 
+
+ウィンドウのサイズからスクロールバーの位置に至るまで、すべてがウィンドウごとに記憶されており、一度ディレクトリのウィンドウを好みに設定しておけばもうそのことで頭を悩ませることはありません。
+everything from the window size to the scrollbar position is remembered for every window, so once I set up a directory window the way I want it, I never have to worry about it again.
+
+以上をまとめると以下のようになります:
+To summarise this point:
+
+コンピュータはパワフルだ: 
+The computer is powerful:
+
+コンピュータのパワーでユーザーを助けよう。 
+use the computer's power to help the user 
+
+似ているアイテムを区別しやすくしてあげよう。 
+Make similar items easy to distinguish between 
+
+アプリケーションの設定は記憶する。 
+Remember application settings 
+
+4) アイテムは区別しやすく見つけやすく
+4) Make items easy to distinguish and find
+
+このポイントはきわめてシンプルです。
+This point is pretty simple:
+
+異なることをするスクリーン上のアイテムは見やすくそしてお互いに異なって見えるべきだということです。
+items on the screen that do different things should be easy to see and differentiate from each other.
+
+操作をしやすくしようと目論んで失敗している端的な例として、Konqueror のデフォルトのタスクバーをご覧ください。
+For an extreme example of attempting to make actions easily accessible and failing, look at Konqueror's default taskbar:
+
+図 8: Konqueror のデフォルトのツールバー
+Figure 8: Konqueror's default toolbar
+
+左端のアイテムは上向きの矢印になっていて、Web ブラウザの中ではもっとも使用頻度の少ないコマンドが割り当てられています。
+The left hand item is the up-arrow, possibly the least used command in the web browser.
+
+左端というのはもっとも見つけやすくクリックしやすい場所ですから、もっともよく使われる操作がここにこなくてはいけません。
+The left hand position is the easiest to find and click on, so the most commonly used action should go there.
+
+わたしの知っている他のすべてのブラウザが［戻る］ボタンを左端に置いているのはそれが理由です。
+Every other browser I know of correctly puts the Back button on the left for this reason.
+
+検索ボタンとふたつのズームボタンはとても似通っています。
+The Find button and the two zoom buttons are very similar;
+
+［進む］［戻る］［上へ］［ホーム］そして［更新］ボタンはすべて同じ色をしています。
+the Forward, Back, Up, Home and Refresh buttons are all the same colour, 
+
+すばやくこれらを見分けるのは至難の業です。
+making quick identification of them more difficult.
+
+さらに重要なことは、それらが 15 個も並んでいるということです！　
+But most importantly, there are fifteen of them!
+
+人間は 5 つ前後のアイテムを識別するのは得意で、
+Humans are very good at distinguishing between around five items:
+
+それくらいであれば考え込まずに即座にすることができます。
+we can do it instantly, with no thought.
+
+楽譜の譜面が 5 行からなっているのもそれが主な理由です。
+That's the main reason that sheet music has five lines on the stave.
+
+5 つを超えると、わたしたちは立ち止まって脳を使ってどれがどれであるかを考えなければならなくなります。
+More than five items and we have to stop and use brain power to figure out which item is which.
+
+優れたデザインでは、ツールバーにはもっともよく使われるアイテムのみが配置され、一般的にユーザーがしなければならないことを最小限に絞っています。
+A much better design would only put the most commonly used items on the toolbar, minimising the work the user has to do in the common case.
+
+多くのアプリケーションがこうしたたくさんのアイテムをタスクバーに並べていますが、Web をブラウズするといった単純なタスクの場合は、15 個というのはやりすぎです。
+Many applications have this many items on the taskbar, but for a task as simple as browsing the web, fifteen is overkill.
+
+わたしは新規のユーザーが Konqueror を使おうとして、この配置がいかにかれら自身を混乱させるかを見てきました。
+I have watched new users try to use Konqueror and seen first hand how much this layout confuses them;
+
+経験を積んだコンピュータユーザーであるわたしでさえ混乱するのですから。
+it confuses me, an experienced computer user.
+
+アイテムの識別が困難になる別の例は、デフォルトの GNOME で見られます。
+Another example of difficulty in distinguishing items can be found in the default GNOME theme.
+
+図 9 の範囲選択されたテキストを見てください。
+Look at the text selection in Figure 9.
+ 
+図 9: GNOME Simple theme のテキスト選択
+Figure 9: Text selection in GNOME Simple theme
+
+ユーザーがテキストを範囲選択したとき、彼の注意は選択したテキストにあります。
+When the user selects text, his attention is on the selected text.
+
+ユーザーはおそらくそれをどうにかするために選択したのですから。
+He has presumably selected it in order to do something with it.
+
+それなのにどうしてこのテーマでは選択範囲の背景を暗い色にして、ユーザーが注目しているまさにそのテキストをスクリーン上で読みにくくしてしまうのでしょうか？　
+So why does this theme change the background of the selection to a dark colour, so that the hardest text to read on the screen is the very text the user is most focused on?
+
+その部分を明るくして他の部分から際立たせ、読みやすくしたほうがよいのではないでしょうか？
+Would it not be better to make this text stand out from the rest by making it brighter and easier to read?
+
+このことをまとめると以下のようになります: 
+To summarise this point:
+
+異なることをするアイテムは区別しやすく 
+Make items that do different things distinctive 
+
+ユーザーを選択肢でおぼれさせない 
+Don't overwhelm your user with choice 
+
+選択していたりフォーカスのあたっているアイテムは目立たせ、読みやすいようにする 
+Make the currently selected or focused item easy to distinguish and read 
+
+結論
+Conclusions
+
+以上の 5 つのポイントは些細なことですが、UI デザインの重要な部分を占めています。
+These five points represent a small but important part of UI design. 
+
+これらは UI の問題についての、鉄の掟や特効薬といったものではありません。
+They are not in any way commandments or miracle cures for UI problems.
+
+これらの原則にしたがってインターフェースをデザインすることで、わたしの意見によれば、アプリケーションの使い勝手を大きく向上できるということです。
+Following their principles in designing an interface should, in my opinion, greatly improve the usability of an application.
+
+訂正や追加など、どんなコメントでも歓迎します
+I would welcome any comments, corrections or additions 
+
+（下記のメールアドレスへどうぞ、nospam の部分を取り除いてください）。
+(email address below, remove the nospam).
+
+これらのアイデアは簡単な要約にすぎません。
+These ideas are only a brief summary:
+
+インターフェース・デザインについて真剣に取り組もうという方には、下記に挙げる参考資料に目を通されることをお勧めします。
+I would recommend anyone serious about interface design to look at the references listed below.
+
+Alan Cooper の本はたいへんすばらしいものです。
+Alan Cooper's book is excellent;
+
+Jef Raskin のはひじょうに役に立つ資料で、「普通」のインターフェース・デザインから離れた興味深いアイデアが含まれています。
+Jef Raskin's is a very useful reference, with some interesting ideas for thinking outside the ‘standard’ range of interface design.
+
+本稿についてたくさんのコメントをいただいたので、そのうちのいくつかに答えるべく、FAQ を書きました。
+I have read many comments on this article and have written an FAQ responding to some of them
+
+参考文献
+References
+
+About Face 2.0: The Essentials of Interaction Design, Alan Cooper and Robert 
+Reimann, 2003, Wiley 
+The Humane Interface, Jef Raskin, 2000, Addison-Wesley Professional
+（邦訳: ジェフ・ラスキン、『ヒューメイン・インタフェース――人に優しいシステムへの新たな指針』、ピアソンエデュケーション、2001 年） 
+The Interface Hall of Shame 
+Apple Human Interface Guidelines 
+KDE Human Interface Guidelines 
+GNOME Human Interface Guidelines 
+
+更新履歴（オリジナル）
+Changelog
+
+2004-11-19: 再インストールしたらなんだか状態を覚えてくれるようになったので、OpenOffice の最大化の例を Anjuta の例に変更。 
+2004-11-19 : Replaced OpenOffice maximisation state example with Anjuta example after fixing my OpenOffice install and realising it did remember state after all 
+
+2004-11-21: KDE と GNOME HIGs へのリンクを追加。 
+2004-11-21 : Added links to KDE and GNOME HIGs 
+
+2004-11-21: FAQ へのリンクを追加。 
+2004-11-21 : Added link to FAQ 
+
+
+2005-01-18 : Added Link to Eight Golden Rules 
+
+
+著者について
+About the author
+
+わたしはフリーソフトウェアの擁護者で、GPL ライセンスの Palm OS デバイス向けテキストエディタ、SiEd のメイン・デベロッパーです。
+I'm a Free Software advocate and the main developer of SiEd, a GPL-licensed text editor for Palm OS devices.
+
+実生活では、インペリアル・カレッジのプロセスシステム工学科で Process Scheduling の PhD をしています。
+In my real life, I am doing a PhD in Process Scheduling at the Centre for Process Systems Engineering, Imperial College.
+
+Benjamin Roe

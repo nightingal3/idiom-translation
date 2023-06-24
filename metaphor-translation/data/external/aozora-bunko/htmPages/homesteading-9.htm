@@ -1,0 +1,524 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Homesteading the Noosphere / Eric S. Raymond 著</h2><h2>ノウアスフィアの開墾 / レイモンド、エリック・S 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/homesteadinge.txt">英語文</a>&<a href="../org/homesteadingj.txt">日本語文</a> / <a href="../manual-alignment/homesteading.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>9 of Homesteading the Noosphere</TITLE>
+<hr>
+<a href="homesteading-8.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<a href="homesteading-8.htm">8</a>
+<9>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-10.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="901"><a name="901"><TD id="E901" onclick="javascript:toggleLayer('J901')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (A similar principle can be found in economics. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J901" onclick="javascript:toggleLayer('E901')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （同じような原理は経済でも見られる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="902"><a name="902"><TD id="E902" onclick="javascript:toggleLayer('J902')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Open markets have the strongest competition, and generally the best and cheapest products. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J902" onclick="javascript:toggleLayer('E902')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 開放市場では競合がいちばん激しく、さらに最高で最低価格の製品が得られるのがふつうだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="903"><a name="903"><TD id="E903" onclick="javascript:toggleLayer('J903')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because of this, it's very much in the best interests of established companies to make market entry more difficult
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J903" onclick="javascript:toggleLayer('E903')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このため、既存企業としては、新規参入をなるべくむずかしくするのがいちばん利益になる
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="904"><a name="904"><TD id="E904" onclick="javascript:toggleLayer('J904')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ?for example, by convincing governments to require elaborate RFI testing on computers, or by creating `consensus' standards which are so complex that they cannot be implemented effectively from scratch without large resources. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J904" onclick="javascript:toggleLayer('E904')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――たとえば政府に対し、コンピュータに入念な RFI テストを義務づけさせたり、ポケットが深くない限り、複雑すぎて1から実装するのが実質的に不可能な「合意に基づく」規格を作ったりするわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="905"><a name="905"><TD id="E905" onclick="javascript:toggleLayer('J905')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The markets with the strongest entry barriers are the ones that come under the strongest attack from revolutionaries, e.g. the Internet and the Justice Dept. vs. the Bell System.)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J905" onclick="javascript:toggleLayer('E905')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 参入障壁がいちばん強力な市場は、革命家、たとえばインターネットや、司法省対ベルシステムの独禁法裁判などからいちばん攻撃を受けやすい市場でもある。）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="906"><a name="906"><TD id="E906" onclick="javascript:toggleLayer('J906')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An open process with low entry barriers encourages participation rather than secession, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J906" onclick="javascript:toggleLayer('E906')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 参入障壁の低いオープンなプロセスは、分離させるより、むしろ参加をうながす。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="907"><a name="907"><TD id="E907" onclick="javascript:toggleLayer('J907')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because one can get results without the high overheads of secession. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J907" onclick="javascript:toggleLayer('E907')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 分離による高いオーバーヘッドなしに成果が得られるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="908"><a name="908"><TD id="E908" onclick="javascript:toggleLayer('J908')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The results may not be as impressive as what could be achieved by seceding, but they come at a lower price, and most people will consider that an acceptable tradeoff. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J908" onclick="javascript:toggleLayer('E908')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その成果は、分離したら達成できるものほどはすごくないかもしれないけれど、必要コストは低いし、多くの人はこれをがまんできる範囲のトレードオフだと判断する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="909"><a name="909"><TD id="E909" onclick="javascript:toggleLayer('J909')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (When the Spanish government revoked Franco's anti-Basque laws and offered the Basque provinces their own schools and limited local autonomy, most of the Basque Separatist movement evaporated almost overnight. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J909" onclick="javascript:toggleLayer('E909')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （スペイン政府がフランコの反バスク法を廃止して、バスク地方に独自の学校と一定の自治権を与えたら、バスク独立運動のほとんどは一瞬で消えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="910"><a name="910"><TD id="E910" onclick="javascript:toggleLayer('J910')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Only the hard-core Marxists insisted that it wasn't good enough.)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J910" onclick="javascript:toggleLayer('E910')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでは不十分だと固執したのは、ゴリゴリのマルクス主義者だけだった。）」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="911"><a name="911"><TD id="E911" onclick="javascript:toggleLayer('J911')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [RP] There are some subtleties about rogue patches.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J911" onclick="javascript:toggleLayer('E911')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [RP]非公式パッチについてはいくつか細かい点がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="912"><a name="912"><TD id="E912" onclick="javascript:toggleLayer('J912')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> One can divide them into `friendly' and `unfriendly' types.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J912" onclick="javascript:toggleLayer('E912')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まずこれは、「友好的なもの」と「敵対するもの」に分類できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="913"><a name="913"><TD id="E913" onclick="javascript:toggleLayer('J913')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A `friendly' patch is designed to be merged back into the project's main-line sources under the maintainer's control
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J913" onclick="javascript:toggleLayer('E913')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「友好的」なパッチは管理者のコントロール下で、プロジェクトのソースコードの主流に織り込まれるように設計されている
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="914"><a name="914"><TD id="E914" onclick="javascript:toggleLayer('J914')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (whether or not that merge actually happens); 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J914" onclick="javascript:toggleLayer('E914')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （それが実際に織り込まれるかはまた別の話）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="915"><a name="915"><TD id="E915" onclick="javascript:toggleLayer('J915')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> an `unfriendly' one is intended to yank the project in a direction the maintainer doesn't approve.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J915" onclick="javascript:toggleLayer('E915')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「敵対」パッチは、管理者の認めない方向にプロジェクトをねじまげようとするものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="916"><a name="916"><TD id="E916" onclick="javascript:toggleLayer('J916')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some projects (notably the Linux kernel itself) are pretty relaxed about friendly patches and even encourage independent distribution of them as part of their beta-test phase.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J916" onclick="javascript:toggleLayer('E916')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一部のプロジェクト（とくに Linux カーネルそのもの）は友好パッチにはすごく甘くて、むしろベータテストの段階では、独自のパッケージを推奨したりさえする。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="917"><a name="917"><TD id="E917" onclick="javascript:toggleLayer('J917')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An unfriendly patch, on the other hand, represents a decision to compete with the original and is a serious matter.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J917" onclick="javascript:toggleLayer('E917')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方の敵対パッチはオリジナルと張り合おうという決断を示すもので、深刻な事態となる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="918"><a name="918"><TD id="E918" onclick="javascript:toggleLayer('J918')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Maintaining a whole raft of unfriendly patches tends to lead to forking.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J918" onclick="javascript:toggleLayer('E918')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 敵対パッチを大量に管理するようになると、プロジェクトはやがて分裂に向かうことが多い。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="919"><a name="919"><TD id="E919" onclick="javascript:toggleLayer('J919')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [LW] I am indebted to Michael Funk &lt;mwfunk@uncc.campus.mci.net&gt; for pointing out how instructive a contrast with hackers the pirate culture is.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J919" onclick="javascript:toggleLayer('E919')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [LW]ハッカーと海賊ソフト文化との対比がいかに示唆的かを指摘してくれた点で、Michael Funk &lt;mwfunk@uncc.campus.mci.net&gt;には感謝したい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="920"><a name="920"><TD id="E920" onclick="javascript:toggleLayer('J920')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Linus Walleij has posted an analysis of their cultural dynamics that differs from mine
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J920" onclick="javascript:toggleLayer('E920')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Linus Wallejは、かれらの文化力学についてぼくとは異なる分析をポストしている
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="921"><a name="921"><TD id="E921" onclick="javascript:toggleLayer('J921')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (describing them as a scarcity culture)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J921" onclick="javascript:toggleLayer('E921')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （かれらを希少性文化として描いている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="922"><a name="922"><TD id="E922" onclick="javascript:toggleLayer('J922')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in A Comment on `Warez D00dz' Culture.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J922" onclick="javascript:toggleLayer('E922')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは A Comment on `Warez D00dz' Culture (http://www.df.lth.se/~triad/papers/Raymond_D00dz.htmlを参照。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="923"><a name="923"><TD id="E923" onclick="javascript:toggleLayer('J923')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The contrast may not last.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J923" onclick="javascript:toggleLayer('E923')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この対比は、長続きしないかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="924"><a name="924"><TD id="E924" onclick="javascript:toggleLayer('J924')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Former cracker Andrej Brandt &lt;andy@pilgrim.cs.net.pl&gt; reports that he believes the cracker/warez d00dz culture is now withering away, with its brightest people and leaders assimilating to the open-source world.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J924" onclick="javascript:toggleLayer('E924')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もとクラッカーのAndrej Brandt &lt;andy@pilgrim.cs.net.pl&gt; の見解によると、cracker/warez d00dz 文化は現在しぼみつつあって、いちばん優れた人材やリーダーたちは、オープンソースの世界に取り込まれているという。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="925"><a name="925"><TD id="E925" onclick="javascript:toggleLayer('J925')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Independent evidence for this view may be provided by a precedent-breaking July 1999 action of the cracker group calling itself `Cult of the Dead Cow'.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J925" onclick="javascript:toggleLayer('E925')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この視点について独立した証拠としては、「Cult of the Dead Cow」というクラッカー集団が 1999 年 6 月に行った、前例のない行動がある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="926"><a name="926"><TD id="E926" onclick="javascript:toggleLayer('J926')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They have released their `Back Orifice 2000' for breaking Microsoft Windows security tools under the GPL.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J926" onclick="javascript:toggleLayer('E926')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれらは、Microsoft Windows のセキュリティを破るためのツールである「Back Orifice 2000」を GPL のもとで公開した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="927"><a name="927"><TD id="E927" onclick="javascript:toggleLayer('J927')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [HT] In evolutionary terms, the craftsman's urge itself may (like internalized ethics) be a result of the high risk and cost of deception. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J927" onclick="javascript:toggleLayer('E927')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [HT] 進化論的にいえば、職人の衝動自体が（内面化された倫理と同じく）裏切りの高リスクとコストの結果かもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="928"><a name="928"><TD id="E928" onclick="javascript:toggleLayer('J928')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Evolutionary psychologists have collected experimental evidence [BCT] that human beings have brain logic specialized for detecting social deceptions,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J928" onclick="javascript:toggleLayer('E928')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 進化心理学者たちは、人間が社会的なだましを検出するのに特化した脳論理回路を持っているという証拠を得ている[BCT]。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="929"><a name="929"><TD id="E929" onclick="javascript:toggleLayer('J929')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it is fairly easy to see why our ancestors should have been selected for ability to detect cheating. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J929" onclick="javascript:toggleLayer('E929')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、われわれの先祖がインチキを検出する能力を持ったために選別されたのはなぜか、理解するのは容易だろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="930"><a name="930"><TD id="E930" onclick="javascript:toggleLayer('J930')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore, if one wishes to have a reputation for personality traits that confer advantage but are risky or costly, it may actually be better tactics to actually have these traits than to fake them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J930" onclick="javascript:toggleLayer('E930')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、もしリスクもコストも高いけれど、メリットももたらすような性格の持ち主だという評判を得たければ、そういう性質があるふりをしてごまかすよりも、実際にそういう性質を身につけるほうが戦術的に優れているかも知れない
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="931"><a name="931"><TD id="E931" onclick="javascript:toggleLayer('J931')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (``Honesty is the best policy'')
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J931" onclick="javascript:toggleLayer('E931')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （「正直がいちばん」というやつだ）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="932"><a name="932"><TD id="E932" onclick="javascript:toggleLayer('J932')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Evolutionary psychologists have suggested that this explains behavior like barroom fights.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J932" onclick="javascript:toggleLayer('E932')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 進化心理学者たちは、これで酒場のけんかのような行動も説明できるのでは、と言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="933"><a name="933"><TD id="E933" onclick="javascript:toggleLayer('J933')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Among younger adult male humans, having a reputation for toughness is both socially and (even in today's feminist-influenced climate) sexually useful. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J933" onclick="javascript:toggleLayer('E933')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 若い大人の男性の間では、「タフだ」という評判は社会的にも（そして現在のフェミニズムの栄養が強い風土にあってなお）性的にも有用なのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="934"><a name="934"><TD id="E934" onclick="javascript:toggleLayer('J934')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Faking toughness, however, is extremely risky;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J934" onclick="javascript:toggleLayer('E934')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「タフさ」を詐称するのは、非常にリスクが高い。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="935"><a name="935"><TD id="E935" onclick="javascript:toggleLayer('J935')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the negative result of being found out leaves one in a worse position than never having claimed the trait. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J935" onclick="javascript:toggleLayer('E935')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それがばれたときのマイナスの影響は、それを主張しなかった場合に比べてもっと悪い立場にその人物を追いやってしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="936"><a name="936"><TD id="E936" onclick="javascript:toggleLayer('J936')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The cost of deception is so high that it is sometimes better minimaxing to internalize toughness and risk serious injury in a fight to prove it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J936" onclick="javascript:toggleLayer('E936')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この詐欺のコストはあまりに高いので、「タフさ」を内面化して、けんかで無理にそれを証明するために深刻なけがのリスクを負うほうが、最小効用の最大化（ミニマックス化）のためには有効なことさえある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="937"><a name="937"><TD id="E937" onclick="javascript:toggleLayer('J937')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Parallel observations have been made about less controversial traits like honesty.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J937" onclick="javascript:toggleLayer('E937')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もっと議論にならない「正直さ」のような性向についても、似たような観察がなされている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="938"><a name="938"><TD id="E938" onclick="javascript:toggleLayer('J938')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Though the primary meditation-like rewards of creative work should not be underestimated, the craftsman's urge is probably at least in part just such an internalization 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J938" onclick="javascript:toggleLayer('E938')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 創造的な仕事の、主に瞑想にも似た見返りは過小評価してはならないけれど、職人の衝動というのは、おそらく部分的にはまさにこうした内面化からくるものなのだろう
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="939"><a name="939"><TD id="E939" onclick="javascript:toggleLayer('J939')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (where the base trait is `capacity for painstaking work' or something similar).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J939" onclick="javascript:toggleLayer('E939')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （そこでは基本的な性向は、「面倒な仕事をこなす能力」といったようなものになる）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="940"><a name="940"><TD ID="TAB940" onclick="javascript:toggleLayer('J940')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB940" onclick="javascript:toggleLayer('E940')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="941"><a name="941"><TD id="E941" onclick="javascript:toggleLayer('J941')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Handicap theory may also be relevant. 
+The peacock's gaudy tail and the stag's massive rack of antlers are sexy to females because they send a message about the health of the male 
+(and, consequently, its fitness to sire healthy offspring). 
+They say: "I am so vigorous that I can afford to waste a lot of energy on this extravagant display." 
+Giving away source code, like owning a sports car, is very similar to such showy, wasteful finery - it's expense without obvious return, and makes the giver at least theoretically very sexy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB941" onclick="javascript:toggleLayer('E941')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="942"><a name="942"><TD ID="TAB942" onclick="javascript:toggleLayer('J942')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB942" onclick="javascript:toggleLayer('E942')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="943"><a name="943"><TD id="E943" onclick="javascript:toggleLayer('J943')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [MH] A concise summary of Maslow's hierarchy and related theories is available on the Web at Maslow's Hierarchy of Needs
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J943" onclick="javascript:toggleLayer('E943')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [MH] マスローのヒエラルキーと関連理論についての簡潔なまとめは、web上で読める。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="944"><a name="944"><TD ID="TAB944" onclick="javascript:toggleLayer('J944')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB944" onclick="javascript:toggleLayer('E944')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="945"><a name="945"><TD ID="TAB945" onclick="javascript:toggleLayer('J945')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J945" onclick="javascript:toggleLayer('E945')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「Maslow's Hierarchy of Needs」（http://www.valdosta.peachnet.edu/~whuitt/psy702/regsys/maslow.html）
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="946"><a name="946"><TD ID="TAB946" onclick="javascript:toggleLayer('J946')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB946" onclick="javascript:toggleLayer('E946')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="947"><a name="947"><TD id="E947" onclick="javascript:toggleLayer('J947')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [DC] However, demanding humility from leaders may be a more general characteristic of gift or abundance cultures.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J947" onclick="javascript:toggleLayer('E947')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [DC] しかしながら、リーダーに謙虚さを求めるというのは、贈与文化、過剰文化のもっと一般的な性質なのかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="948"><a name="948"><TD id="E948" onclick="javascript:toggleLayer('J948')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> David Christie &lt;dc@netscape.com&gt; reports on a trip through the outer islands of Fiji:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J948" onclick="javascript:toggleLayer('E948')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> David Christie &lt;dc@netscape.com&gt; は、フィジーの周辺部の島を旅したときについてこう書いている:
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="949"><a name="949"><TD id="E949" onclick="javascript:toggleLayer('J949')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In Fijian village chiefs, we observed the same sort of self-deprecating, low-key leadership style that you attribute to open source project leaders.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J949" onclick="javascript:toggleLayer('E949')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「フィジーの村長にも、あなたがオープンソースのリーダーについて述べたのと同じように、卑下する腰の低いリーダーシップのスタイルが観察されました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="950"><a name="950"><TD id="E950" onclick="javascript:toggleLayer('J950')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [...] Though accorded great respect and of course all of whatever actual power there is in Fiji, the chiefs we met demonstrated genuine humility and often a saint-like acceptance of their duty.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J950" onclick="javascript:toggleLayer('E950')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [中略] 大いなる尊敬を集め、そしてフィジーにある限りの現実の力をすべて持っているのに、われわれが会った村長たちは本物の謙虚さを示し、しばしば自分たちの任務を聖人のように受け入れていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="951"><a name="951"><TD id="E951" onclick="javascript:toggleLayer('J951')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is particularly interesting given that being chief is a hereditary role,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J951" onclick="javascript:toggleLayer('E951')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは、村長というのが世襲だということを考えるとなおさら興味深いものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="952"><a name="952"><TD id="E952" onclick="javascript:toggleLayer('J952')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> not an elected position or a popularity contest. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J952" onclick="javascript:toggleLayer('E952')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 選出されるわけでもないし、人気投票で決まるのでもありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="953"><a name="953"><TD id="E953" onclick="javascript:toggleLayer('J953')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Somehow they are trained to it by the culture itself, although they are born to it, not chosen by their peers.''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J953" onclick="javascript:toggleLayer('E953')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どういうわけか、生まれついてのことで仲間に選ばれたわけでもないのに、文化そのものによって訓練されているらしいのです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="954"><a name="954"><TD id="E954" onclick="javascript:toggleLayer('J954')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He goes on to emphasize that he believes the characteristic style of Fijian chiefs springs from the difficulty of compelling cooperation:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J954" onclick="javascript:toggleLayer('E954')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれはさらに、このフィジーの村長に特有のスタイルは、協力を強制するのがむずかしいという事実からくるのだと思っていることを強調している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="955"><a name="955"><TD id="E955" onclick="javascript:toggleLayer('J955')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a chief has ``no big carrot or big stick''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J955" onclick="javascript:toggleLayer('E955')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 村長は「大きなニンジンも、大きな棒も持っていない」わけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="956"><a name="956"><TD id="E956" onclick="javascript:toggleLayer('J956')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [NO] As a matter of observable fact, people who found successful projects gather more prestige than people who do arguably equal amounts of work debugging and assisting with successful projects.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J956" onclick="javascript:toggleLayer('E956')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [NO] 見ればすぐにわかることだが、うまくいったプロジェクトを創始した人のほうが、成功したプロジェクトのデバッグや援助で同じくらいの仕事をした人にくらべて、高い評判を獲得する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="957"><a name="957"><TD id="E957" onclick="javascript:toggleLayer('J957')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> An earlier version of this paper asked
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J957" onclick="javascript:toggleLayer('E957')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この論文のかつてのバージョンでは、次のような疑問を提示していた：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="958"><a name="958"><TD id="E958" onclick="javascript:toggleLayer('J958')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``Is this a rational valuation of comparative effort, or is it a second-order effect of the unconscious territorial model we have adduced here?''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J958" onclick="javascript:toggleLayer('E958')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「これは比較できる作業の価値評価として合理的なものだろうか、それともぼくたちがここで示してきた無意識の領土モデルからくる二次的な副産物なんだろうか？」　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="959"><a name="959"><TD id="E959" onclick="javascript:toggleLayer('J959')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Several respondents suggested persuasive and essentially equivalent theories.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J959" onclick="javascript:toggleLayer('E959')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 何人かのコメントは、説得力ある、基本的には同じ理論を示唆してくれている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="960"><a name="960"><TD id="E960" onclick="javascript:toggleLayer('J960')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The following analysis by Ryan Waldron &lt;rew@erebor.com&gt; puts the case well:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J960" onclick="javascript:toggleLayer('E960')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 以下の Ryan Waldron &lt;rew@erebor.com&gt; の分析がこの論点をうまく表現している：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="961"><a name="961"><TD id="E961" onclick="javascript:toggleLayer('J961')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the context of the Lockean land theory, one who establishes a new and successful project has essentially discovered or opened up new territory on which others can homestead.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J961" onclick="javascript:toggleLayer('E961')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ロック式土地理論の文脈では、新しい成功したプロジェクトを確立した人物は、本質的に新しい領土を開拓して、そこをほかの人たちが入植できるようにしたことになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="962"><a name="962"><TD id="E962" onclick="javascript:toggleLayer('J962')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For most successful projects, there is a pattern of declining returns, so that after a while, the credit for contributions to a project has become so diffuse that it is hard for significant reputation to accrete to a late participant, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J962" onclick="javascript:toggleLayer('E962')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ほとんどの成功したプロジェクトでは、収益はだんだん減るというパターンがあるので、しばらくすると、プロジェクトへの貢献のクレジットは実に間が空いたものになってきて、後からの参加者には、十分な評価が蓄積しにくくなってしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="963"><a name="963"><TD id="E963" onclick="javascript:toggleLayer('J963')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> regardless of the quality of his work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J963" onclick="javascript:toggleLayer('E963')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その人がどんなに高質な仕事をしようとも。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="964"><a name="964"><TD id="E964" onclick="javascript:toggleLayer('J964')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For instance, how good a job would I have to do making modifications to the perl code to have even a fraction of the recognition for my participation that Larry, Tom, Randall, and others have achieved?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J964" onclick="javascript:toggleLayer('E964')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえば、ぼくがこれからPerlを改善して、Larry や Tom や Randall などが達成した認知のごく一部でも獲得しようと思ったら、本当にすさまじくいい仕事をしなくてはならないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="965"><a name="965"><TD id="E965" onclick="javascript:toggleLayer('J965')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> However, if a new project is founded [by someone else] tomorrow, and I am an early and frequent participant in it, my ability to share in the respect generated by such a successful project is greatly enhanced by my early participation therein 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J965" onclick="javascript:toggleLayer('E965')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、新しいプロジェクトが [だれか別の人によって] 明日にでも創始されたら、そしてぼくが初期の熱心な参加者になったら、そのうまくいったプロジェクトによって生じた尊敬の分け前をもらう能力は、早めに参加していたということによって大きく拡大する
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="966"><a name="966"><TD id="E966" onclick="javascript:toggleLayer('J966')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (assuming similar quality of contributions).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J966" onclick="javascript:toggleLayer('E966')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （貢献の中身が同程度だったとしても）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="967"><a name="967"><TD id="E967" onclick="javascript:toggleLayer('J967')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I reckon it to be similar to those who invest in Microoft stock early and those who invest in it later.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J967" onclick="javascript:toggleLayer('E967')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たぶん、早めに Micro$oft 株を買った人と、後で投資した人の差に近いと思う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="968"><a name="968"><TD id="E968" onclick="javascript:toggleLayer('J968')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Everyone may profit, but early participants profit more. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J968" onclick="javascript:toggleLayer('E968')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みんな儲かるけれど、早めに買った人はもっと儲かる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="969"><a name="969"><TD id="E969" onclick="javascript:toggleLayer('J969')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore, at some point I will be more interested in a new and successful IPO than I will be in participating in the continual increase of an existing body of corporate stock.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J969" onclick="javascript:toggleLayer('E969')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからどこかの時点で、ぼくは既存の企業の株が絶えず値上がりするのに加わるよりは、新しい成功する IPO のほうに興味をおぼえるようになるはずだ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="970"><a name="970"><TD id="E970" onclick="javascript:toggleLayer('J970')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ryan Waldron's analogy can be extended.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J970" onclick="javascript:toggleLayer('E970')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Ryan Waldron のアナロジーはもっと拡張できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="971"><a name="971"><TD id="E971" onclick="javascript:toggleLayer('J971')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The project founder has to do a missionary sell of a new idea that may or may not be acceptable or of use to others. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J971" onclick="javascript:toggleLayer('E971')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プロジェクトの創始者は、他の人に受け入れられるか、つかいものになるかもわからない新しいアイデアを、伝道師のように売り込まなくてはならない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="972"><a name="972"><TD id="E972" onclick="javascript:toggleLayer('J972')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus the founder incurs something analogous to an IPO risk
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J972" onclick="javascript:toggleLayer('E972')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから創始者は IPO リスクと似たよなものを負担することになる
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="973"><a name="973"><TD id="E973" onclick="javascript:toggleLayer('J973')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (of possible damage to their reputation),
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J973" onclick="javascript:toggleLayer('E973')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （自分の評判へのダメージの可能性として）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="974"><a name="974"><TD id="E974" onclick="javascript:toggleLayer('J974')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> more so than others who assist with a project that has already garnered some acceptance by their peers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J974" onclick="javascript:toggleLayer('E974')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは、仲間内である程度受け入れられたプロジェクトを手伝った人よりも、負担するリスクが大きい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="975"><a name="975"><TD id="E975" onclick="javascript:toggleLayer('J975')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The founder's reward is consistent despite the fact that the assistants may be putting in more work in real terms.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J975" onclick="javascript:toggleLayer('E975')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 創始者の見返りは、実際問題として助手たちが仕事をたくさんつぎ込んでいても、一定だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="976"><a name="976"><TD id="E976" onclick="javascript:toggleLayer('J976')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This is easily seen as analogous to the relationship between risk and rewards in an exchange economy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J976" onclick="javascript:toggleLayer('E976')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは交換経済におけるリスクと見返りの関係として楽に理解できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="977"><a name="977"><TD id="E977" onclick="javascript:toggleLayer('J977')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Other respondents have observed that our nervous system is tuned to perceive differences, not steady state. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J977" onclick="javascript:toggleLayer('E977')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 他の評者たちの見解では、われわれの神経システムは、ちがいを認識するように調整されていて、安定状態には敏感ではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="978"><a name="978"><TD id="E978" onclick="javascript:toggleLayer('J978')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The revolutionary change evidenced by the creation of a new project is therefore much more noticeable than the cumulative effect of constant incremental improvement. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J978" onclick="javascript:toggleLayer('E978')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新しいプロジェクトの創造によって目的される革命的な変化は、したがってたえまない段階的な改善の集積効果より、ずっと認知されやすい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="979"><a name="979"><TD id="E979" onclick="javascript:toggleLayer('J979')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus Linus is revered as the father of Linux, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J979" onclick="javascript:toggleLayer('E979')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから Linus は Linux の父として尊敬される。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="980"><a name="980"><TD id="E980" onclick="javascript:toggleLayer('J980')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> although the net effect of improvements by thousands of other contributors have done more to contribute to the success of the OS than one man's work ever could.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J980" onclick="javascript:toggleLayer('E980')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その他何千という貢献者たちによる貢献の純粋量は、Linus 一人の仕事なんかでは絶対に不可能なほど、OS の成功に貢献してはいても。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="981"><a name="981"><TD id="E981" onclick="javascript:toggleLayer('J981')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [HD] The phrase ``de-commoditizing'' is a reference to the Halloween Documents
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J981" onclick="javascript:toggleLayer('E981')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [HD] 「脱・共有化」（de-commoditizing）ということばは、「ハロウィーン文書」への言及。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="982"><a name="982"><TD id="E982" onclick="javascript:toggleLayer('J982')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in which Microsoft used ``de-commoditize'' quite frankly to refer to their most effective long-term strategy for maintaining an exploitative monopoly lock on customers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J982" onclick="javascript:toggleLayer('E982')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この文書でマイクロソフトは、顧客を収奪できるような独占的囲い込みを維持するための、いちばん有効な長期戦略として、この「脱共有化」を何のためらいもなく提案している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="983"><a name="983"><TD id="E983" onclick="javascript:toggleLayer('J983')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [GNU] The Free Software Foundation's main website carries an article that summarizes the results of many of these studies.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J983" onclick="javascript:toggleLayer('E983')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [GNU]　フリーソフトウェア財団 (Free Software Foundation) の主ウェブサイトは、こうした研究の結果をまとめた記事を載せている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="984"><a name="984"><TD id="E984" onclick="javascript:toggleLayer('J984')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The quotes in this essay are excerpted from there.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J984" onclick="javascript:toggleLayer('E984')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 本論での引用はそこから抜粋したものだ。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="985"><a name="985"><TD ID="TAB985" onclick="javascript:toggleLayer('J985')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB985" onclick="javascript:toggleLayer('E985')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="986"><a name="986"><TD id="E986" onclick="javascript:toggleLayer('J986')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Acknowledgements
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J986" onclick="javascript:toggleLayer('E986')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 22　謝辞
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="987"><a name="987"><TD id="E987" onclick="javascript:toggleLayer('J987')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Robert Lanphier &lt;robla@real.com&gt; contributed much to the discussion of egoless behavior.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J987" onclick="javascript:toggleLayer('E987')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Robert Lanphiir &lt;robla@real.com&gt; はエゴのない行動についての議論に大きく貢献してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="988"><a name="988"><TD id="E988" onclick="javascript:toggleLayer('J988')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Eric Kidd &lt;eric.kidd@pobox.com&gt; highlighted the role of valuing humility in preventing cults of personality.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J988" onclick="javascript:toggleLayer('E988')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Eric Kidd &lt;eric.kidd@pobox.com&gt; は、個人崇拝を避ける意味で謙虚さが大事であるという点を明確にしてくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="989"><a name="989"><TD id="E989" onclick="javascript:toggleLayer('J989')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The section on global effects was inspired by comments from Daniel Burn &lt;daniel@tsathoggua.lab.usyd.edu.au&gt;. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J989" onclick="javascript:toggleLayer('E989')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 全世界的な影響についての章は、Daniel Burn &lt;daniel@tsathoggua.lab.usyd.edu.au&gt; からのコメントに触発された。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="990"><a name="990"><TD id="E990" onclick="javascript:toggleLayer('J990')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mike Whitaker &lt;mrw@entropic.co.uk&gt; inspired the main thread in the section on acculturation. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J990" onclick="javascript:toggleLayer('E990')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Mike Whitaker &lt;mrw@entropic.co.uk&gt; は文化への順応に関する議論の大筋の発想を与えてくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="991"><a name="991"><TD id="E991" onclick="javascript:toggleLayer('J991')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Chris Phoenix &lt;cphoenix@best.com&gt; pointed out the importance of the fact that hackers cannot gain reputation by doing other hackers down. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J991" onclick="javascript:toggleLayer('E991')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Chris Phoenix &lt;cphoenix@best.com&gt; は、ハッカーたちは他のハッカーを追い落としても評判を高めることはできないという事実の重要性を指摘してくれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="992"><a name="992"><TD ID="TAB992" onclick="javascript:toggleLayer('J992')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB992" onclick="javascript:toggleLayer('E992')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="993"><a name="993"><TD id="E993" onclick="javascript:toggleLayer('J993')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A.J. Venter &lt;JAVenter@africon.co.za&gt; pointed out parallels with the medieval ideal of knighthood. 
+Ian Lance Taylor &lt;ian@airs.com&gt; sent careful criticisms of the reputation-game model which motivated me to think through and explain my assumptions more clearly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB993" onclick="javascript:toggleLayer('E993')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="994"><a name="994"><TD ID="TAB994" onclick="javascript:toggleLayer('J994')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB994" onclick="javascript:toggleLayer('E994')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="995"><a name="995"><TD ID="TAB995" onclick="javascript:toggleLayer('J995')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J995" onclick="javascript:toggleLayer('E995')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 23　改訂履歴
+この論文に書かれた内容については、あらゆる誤りや誤解をふくめてぼくが全責任を負うものである。
+でも、ぼくはコメントやフィードバックを歓迎してきたし、それらを利用してこの論文をよりよいものにしてきた
+――このプロセスは、どこか決まった時点で止めたりするつもりはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="996"><a name="996"><TD ID="TAB996" onclick="javascript:toggleLayer('J996')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB996" onclick="javascript:toggleLayer('E996')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="997"><a name="997"><TD id="E997" onclick="javascript:toggleLayer('J997')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.210 April 1998esr
+First published on the Web. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J997" onclick="javascript:toggleLayer('E997')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible">  [1998年4月10日] Web上でバージョン1.2を公開。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="998"><a name="998"><TD id="E998" onclick="javascript:toggleLayer('J998')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Revision 1.312 April 1998esr
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J998" onclick="javascript:toggleLayer('E998')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible">  [1998年4月12日] バージョン1.3。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="999"><a name="999"><TD id="E999" onclick="javascript:toggleLayer('J999')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Typo fixes and responses to first round of public comments.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J999" onclick="javascript:toggleLayer('E999')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 誤植の訂正と、最初の一般コメント群への対応。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1000"><a name="1000"><TD id="E1000" onclick="javascript:toggleLayer('J1000')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> First four items in bibliography.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1000" onclick="javascript:toggleLayer('E1000')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 書誌の最初の4点。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="homesteading-8.htm">prev</a>
+<a href="homesteading-0.htm">0</a>
+<a href="homesteading-1.htm">1</a>
+<a href="homesteading-2.htm">2</a>
+<a href="homesteading-3.htm">3</a>
+<a href="homesteading-4.htm">4</a>
+<a href="homesteading-5.htm">5</a>
+<a href="homesteading-6.htm">6</a>
+<a href="homesteading-7.htm">7</a>
+<a href="homesteading-8.htm">8</a>
+<9>
+<a href="homesteading-10.htm">10</a>
+<a href="homesteading-10.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/homesteadinge.txt">local copy</a> / <a href="http://www.catb.org/~esr/writings/homesteading/">http://www.catb.org/~esr/writings/homesteading/</a><li>オリジナルの日本語文: <a href="../org/homesteadingj.txt">local copy</a> / <a href="http://cruel.org/freeware/noosphere.html">http://cruel.org/freeware/noosphere.html</a><li><a href="../manual-alignment/homesteading.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

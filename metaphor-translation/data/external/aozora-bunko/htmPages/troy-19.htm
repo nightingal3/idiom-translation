@@ -1,0 +1,400 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>TALES OF TROY: ULYSSES THE SACKER OF CITIES / Andrew Lang 著</h2><h2>トロイア物語：都市の略奪者ユリシーズ / アンドリュー・ラング 著 / 永江良一  訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/troye.txt">英語文</a>&<a href="../org/troyj.txt">日本語文</a> / <a href="../manual-alignment/troy.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>19 of TALES OF TROY: ULYSSES THE SACKER OF CITIES</TITLE>
+<hr>
+<a href="troy-18.htm">prev</a>
+<a href="troy-0.htm">0</a>
+<a href="troy-1.htm">1</a>
+<a href="troy-2.htm">2</a>
+<a href="troy-3.htm">3</a>
+<a href="troy-4.htm">4</a>
+<a href="troy-5.htm">5</a>
+<a href="troy-6.htm">6</a>
+<a href="troy-7.htm">7</a>
+<a href="troy-8.htm">8</a>
+<a href="troy-9.htm">9</a>
+<a href="troy-10.htm">10</a>
+<a href="troy-11.htm">11</a>
+<a href="troy-12.htm">12</a>
+<a href="troy-13.htm">13</a>
+<a href="troy-14.htm">14</a>
+<a href="troy-15.htm">15</a>
+<a href="troy-16.htm">16</a>
+<a href="troy-17.htm">17</a>
+<a href="troy-18.htm">18</a>
+<19>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1901"><a name="1901"><TD id="E1901" onclick="javascript:toggleLayer('J1901')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then he stood beside the horse, holding Helen's hand, and whispered to her that she must call each of the chiefs in the voice of his wife.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1901" onclick="javascript:toggleLayer('E1901')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから彼は馬の傍らに立ち、ヘレネーの手をつかんで、大将ひとりびとりにその妻の声でよびかけよとささやいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1902"><a name="1902"><TD id="E1902" onclick="javascript:toggleLayer('J1902')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She was obliged to obey, and she called Menelaus in her own voice, and Diomede in the voice of his wife, and Ulysses in the very voice of Penelope.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1902" onclick="javascript:toggleLayer('E1902')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘレネーは従わざるを得ず、自分の声でメネラーオスに、その妻の声でディオメーデースに、ペーネロペーそっくりの声でユリシーズに呼びかけた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1903"><a name="1903"><TD id="E1903" onclick="javascript:toggleLayer('J1903')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then Menelaus and Diomede were eager to answer, but Ulysses grasped their hands and whispered the word "Echo!" 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1903" onclick="javascript:toggleLayer('E1903')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでメネラーオスとディオメーデースは返答したくてたまらなかったが、ユリシーズがその手をつかんで、「エコー」という言葉をささやいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1904"><a name="1904"><TD id="E1904" onclick="javascript:toggleLayer('J1904')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then they remembered that this was a name of Helen, because she could speak in all voices, and they were silent;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1904" onclick="javascript:toggleLayer('E1904')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでみんな、それがヘレネーがあらゆる声で話すことができるのでついた彼女についた名前であることを思いだし、静かにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1905"><a name="1905"><TD id="E1905" onclick="javascript:toggleLayer('J1905')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but Anticlus was still eager to answer, till Ulysses held his strong hand over his mouth. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1905" onclick="javascript:toggleLayer('E1905')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしアンティクロスはまだも返答したがり、ユリシーズは強い手でその口を押えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1906"><a name="1906"><TD id="E1906" onclick="javascript:toggleLayer('J1906')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There was only silence, and Deiphobus led Helen back to his house.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1906" onclick="javascript:toggleLayer('E1906')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あたりは静まりかえったままで、デーイポボスはヘレネーを家に連れ帰った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1907"><a name="1907"><TD id="E1907" onclick="javascript:toggleLayer('J1907')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When they had gone away Epeius opened the side of the horse, and all the chiefs let themselves down softly to the ground.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1907" onclick="javascript:toggleLayer('E1907')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この連中が去ると、エペイオスが木馬の側面を開き、大将全員が静かに地面に下りた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1908"><a name="1908"><TD id="E1908" onclick="javascript:toggleLayer('J1908')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Some rushed to the gate, to open it, and they killed the sleeping sentinels and let in the Greeks.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1908" onclick="javascript:toggleLayer('E1908')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 何人かは門に走ってこれを開き、眠りこけた番兵を殺して、ギリシア軍を導きいれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1909"><a name="1909"><TD id="E1909" onclick="javascript:toggleLayer('J1909')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Others sped with torches to burn the houses of the Trojan princes,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1909" onclick="javascript:toggleLayer('E1909')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その他の者はトロイアの王侯の家を焼くため松明を手に散開した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1910"><a name="1910"><TD id="E1910" onclick="javascript:toggleLayer('J1910')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and terrible was the slaughter of men, unarmed and half awake, and loud were the cries of the women.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1910" onclick="javascript:toggleLayer('E1910')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 武装を解き半ば寝ぼけた男たちの大虐殺はすさまじく、女たちは大きな叫び声をあげた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1911"><a name="1911"><TD id="E1911" onclick="javascript:toggleLayer('J1911')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But Ulysses had slipped away at the first, none knew where. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1911" onclick="javascript:toggleLayer('E1911')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方ユリシーズは最初にこっそり抜け出して、誰もどこにいるのか知らなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1912"><a name="1912"><TD id="E1912" onclick="javascript:toggleLayer('J1912')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Neoptolemus ran to the palace of Priam,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1912" onclick="javascript:toggleLayer('E1912')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ネオプトレモスはプリアモスの宮殿に走った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1913"><a name="1913"><TD id="E1913" onclick="javascript:toggleLayer('J1913')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who was sitting at the altar in his courtyard, praying vainly to the Gods,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1913" onclick="javascript:toggleLayer('E1913')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プリアモスは中庭の祭壇にぬかずき、むなしく神に祈りを捧げた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1914"><a name="1914"><TD id="E1914" onclick="javascript:toggleLayer('J1914')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for Neoptolemus slew the old man cruelly, and his white hair was dabbled in his blood.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1914" onclick="javascript:toggleLayer('E1914')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、ネオプトレモスは無惨にも老人を屠り、その白髪には自が血がはねかかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1915"><a name="1915"><TD id="E1915" onclick="javascript:toggleLayer('J1915')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All through the city was fighting and slaying;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1915" onclick="javascript:toggleLayer('E1915')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 町中で戦闘と殺戮が行われた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1916"><a name="1916"><TD id="E1916" onclick="javascript:toggleLayer('J1916')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but Menelaus went to the house of Deiphobus, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1916" onclick="javascript:toggleLayer('E1916')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方メネラーオスはデーイポボスの家へと向かった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1917"><a name="1917"><TD id="E1917" onclick="javascript:toggleLayer('J1917')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> knowing that Helen was there.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1917" onclick="javascript:toggleLayer('E1917')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこにヘレネーがいると知っていたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1918"><a name="1918"><TD id="E1918" onclick="javascript:toggleLayer('J1918')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In the doorway he found Deiphobus lying dead in all his armour, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1918" onclick="javascript:toggleLayer('E1918')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 戸口でデーイポボスが武具を着けて死んで横たわっていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1919"><a name="1919"><TD id="E1919" onclick="javascript:toggleLayer('J1919')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> a spear standing in his breast.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1919" onclick="javascript:toggleLayer('E1919')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 胸には槍が突き立てられていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1920"><a name="1920"><TD id="E1920" onclick="javascript:toggleLayer('J1920')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There were footprints marked in blood, leading through the portico and into the hall.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1920" onclick="javascript:toggleLayer('E1920')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 血染めの足跡がポーティコを通って広間へと続いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1921"><a name="1921"><TD id="E1921" onclick="javascript:toggleLayer('J1921')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There Menelaus went, and found Ulysses leaning, wounded, against one of the central pillars of the great chamber,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1921" onclick="javascript:toggleLayer('E1921')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> メネラーオスが入ってみると、ユリシーズが傷つき大きな部屋の中央の柱にもたれていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1922"><a name="1922"><TD id="E1922" onclick="javascript:toggleLayer('J1922')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the firelight shining on his armour.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1922" onclick="javascript:toggleLayer('E1922')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 火の光がその武具にきらめいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1923"><a name="1923"><TD id="E1923" onclick="javascript:toggleLayer('J1923')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Why hast thou slain Deiphobus and robbed me of my revenge?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1923" onclick="javascript:toggleLayer('E1923')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「なぜそなたはデーイポボスを殺し、我が仇を奪い取るのだ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1924"><a name="1924"><TD id="E1924" onclick="javascript:toggleLayer('J1924')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Menelaus.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1924" onclick="javascript:toggleLayer('E1924')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とメネラーオスは言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1925"><a name="1925"><TD id="E1925" onclick="javascript:toggleLayer('J1925')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You swore to give me a gift,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1925" onclick="javascript:toggleLayer('E1925')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「貴殿は私に贈物をやると誓われた。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1926"><a name="1926"><TD id="E1926" onclick="javascript:toggleLayer('J1926')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Ulysses,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1926" onclick="javascript:toggleLayer('E1926')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とユリシーズは言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1927"><a name="1927"><TD id="E1927" onclick="javascript:toggleLayer('J1927')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "and will you keep your oath?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1927" onclick="javascript:toggleLayer('E1927')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「貴殿はその誓いを守られましょうな。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1928"><a name="1928"><TD id="E1928" onclick="javascript:toggleLayer('J1928')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Ask what you will,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1928" onclick="javascript:toggleLayer('E1928')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「望みを言うがよい。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1929"><a name="1929"><TD id="E1929" onclick="javascript:toggleLayer('J1929')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Menelaus;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1929" onclick="javascript:toggleLayer('E1929')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とメネラーオスが言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1930"><a name="1930"><TD id="E1930" onclick="javascript:toggleLayer('J1930')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "it is yours 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1930" onclick="javascript:toggleLayer('E1930')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それはそなたの物。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1931"><a name="1931"><TD id="E1931" onclick="javascript:toggleLayer('J1931')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and my oath cannot be broken."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1931" onclick="javascript:toggleLayer('E1931')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 我が誓いを破ることはない。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1932"><a name="1932"><TD id="E1932" onclick="javascript:toggleLayer('J1932')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I ask the life of Helen of the fair hands,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1932" onclick="javascript:toggleLayer('E1932')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「美しき手のヘレネーの命を所望する。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1933"><a name="1933"><TD id="E1933" onclick="javascript:toggleLayer('J1933')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Ulysses 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1933" onclick="javascript:toggleLayer('E1933')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とユリシーズは言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1934"><a name="1934"><TD id="E1934" onclick="javascript:toggleLayer('J1934')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "this is my own life-price that I pay back to her,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1934" onclick="javascript:toggleLayer('E1934')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「これが我が命を救った彼女への恩返しだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1935"><a name="1935"><TD id="E1935" onclick="javascript:toggleLayer('J1935')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for she saved my life when I took the Luck of Troy, and I swore that hers should be saved."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1935" onclick="javascript:toggleLayer('E1935')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは私がトロイアの幸運の宝を奪ったとき、彼女が我が命を救い、私は彼女の命を救おうと誓ったのだ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1936"><a name="1936"><TD id="E1936" onclick="javascript:toggleLayer('J1936')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then Helen stole, glimmering in white robes, from a recess in the dark hall, and fell at the feet of Menelaus;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1936" onclick="javascript:toggleLayer('E1936')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのときヘレネーが、白いローブをほんのり光らせて、奥から暗い広間へとそっと現れ、メネラーオスの足元に身を投げ出し、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1937"><a name="1937"><TD id="E1937" onclick="javascript:toggleLayer('J1937')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> her golden hair lay in the dust of the hearth, and her hands moved to touch his knees.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1937" onclick="javascript:toggleLayer('E1937')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 金髪を炉辺の埃に置き、彼の膝に振れようと手を延ばした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1938"><a name="1938"><TD id="E1938" onclick="javascript:toggleLayer('J1938')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> His drawn sword fell from the hands of Menelaus, and pity and love came into his heart,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1938" onclick="javascript:toggleLayer('E1938')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> メネラーオスは抜き身の剣を手から落し、憐憫と愛情が心にわき上がった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1939"><a name="1939"><TD id="E1939" onclick="javascript:toggleLayer('J1939')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he raised her from the dust and her white arms were round his neck, and they both wept.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1939" onclick="javascript:toggleLayer('E1939')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてヘレネーを埃から立ち上がらせると、彼女は白い腕で彼の首を抱き、二人は泣いた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1940"><a name="1940"><TD id="E1940" onclick="javascript:toggleLayer('J1940')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> That night Menelaus fought no more, but they tended the wound of Ulysses,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1940" onclick="javascript:toggleLayer('E1940')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その夜、メネラーオスはもうそれ以上戦わず、ユリシーズの傷の手当をした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1941"><a name="1941"><TD id="E1941" onclick="javascript:toggleLayer('J1941')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the sword of Deiphobus had bitten through his helmet.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1941" onclick="javascript:toggleLayer('E1941')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜならデーイポボスの剣が兜を貫いて切りつけたからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1942"><a name="1942"><TD id="E1942" onclick="javascript:toggleLayer('J1942')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When dawn came Troy lay in ashes, and the women were being driven with spear shafts to the ships, and the men were left unburied, a prey to dogs and all manner of birds.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1942" onclick="javascript:toggleLayer('E1942')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夜が明けたとき、トロイアは灰塵に帰しており、女たちは槍の柄で船へと追いたてられ、男たちは犬やありとあらゆる鳥どもの餌食となるよう、葬られずに捨て置かれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1943"><a name="1943"><TD id="E1943" onclick="javascript:toggleLayer('J1943')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus the grey city fell, that had lorded it for many centuries.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1943" onclick="javascript:toggleLayer('E1943')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうして何世紀もの間その地を治めた灰色の町は陥落した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1944"><a name="1944"><TD id="E1944" onclick="javascript:toggleLayer('J1944')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All the gold and silver and rich embroideries, and ivory and amber, the horses and chariots, were divided among the army;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1944" onclick="javascript:toggleLayer('E1944')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 金や銀や豪奢な刺繍、象牙と琥珀、馬と戦車はすべて軍隊に分けられた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1945"><a name="1945"><TD id="E1945" onclick="javascript:toggleLayer('J1945')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> all but a treasure of silver and gold, hidden in a chest within a hollow of the wall, and this treasure was found, not very many years ago, by men digging deep on the hill where Troy once stood. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1945" onclick="javascript:toggleLayer('E1945')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 銀や金の財宝以外のすべては壁の洞の中の箱に隠され、この宝ははるかな年月を経たのちに、かつてトロイアの建っていた丘を深く掘り起こした男に発見された。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1946"><a name="1946"><TD id="E1946" onclick="javascript:toggleLayer('J1946')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The women, too, were given to the princes, and Neoptolemus took Andromache to his home in Argos, to draw water from the well and to be the slave of a master,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1946" onclick="javascript:toggleLayer('E1946')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 女たちも王侯たちに分けられて、ネオプトレモスはアンドロマケーをアルゴスの故郷へ連れて行き、井戸から水汲みをさせ、主人の奴隷にした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1947"><a name="1947"><TD id="E1947" onclick="javascript:toggleLayer('J1947')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Agamemnon carried beautiful Cassandra, the daughter of Priam, to his palace in Mycenae, where they were both slain in one night.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1947" onclick="javascript:toggleLayer('E1947')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アガメムノーンはプリアモスの娘、美しきカッサンドラーをミュケーナイの宮殿に連れていったが、そこで二人とも一夜のうちに殺された。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1948"><a name="1948"><TD id="E1948" onclick="javascript:toggleLayer('J1948')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Only Helen was led with honour to the ship of Menelaus.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1948" onclick="javascript:toggleLayer('E1948')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘレネーただ一人が名誉を保ってメネラーオスの船に迎えられたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1949"><a name="1949"><TD id="E1949" onclick="javascript:toggleLayer('J1949')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The story of all that happened to Ulysses on his way home from Troy is told in another book, "Tales of the Greek Seas."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1949" onclick="javascript:toggleLayer('E1949')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> トロイアから故郷へ向かう途中でユリシーズの身に起こったことの物語は、別の本『ギリシア海物語』で語ろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="troy-18.htm">prev</a>
+<a href="troy-0.htm">0</a>
+<a href="troy-1.htm">1</a>
+<a href="troy-2.htm">2</a>
+<a href="troy-3.htm">3</a>
+<a href="troy-4.htm">4</a>
+<a href="troy-5.htm">5</a>
+<a href="troy-6.htm">6</a>
+<a href="troy-7.htm">7</a>
+<a href="troy-8.htm">8</a>
+<a href="troy-9.htm">9</a>
+<a href="troy-10.htm">10</a>
+<a href="troy-11.htm">11</a>
+<a href="troy-12.htm">12</a>
+<a href="troy-13.htm">13</a>
+<a href="troy-14.htm">14</a>
+<a href="troy-15.htm">15</a>
+<a href="troy-16.htm">16</a>
+<a href="troy-17.htm">17</a>
+<a href="troy-18.htm">18</a>
+<19>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/troye.txt">local copy</a> / <a href="http://gutenberg.ssivanic.hr/etext99/tltry10.txt">http://gutenberg.ssivanic.hr/etext99/tltry10.txt</a><li>オリジナルの日本語文: <a href="../org/troyj.txt">local copy</a> / <a href="http://page.freett.com/rionag/lang/troy.html">http://page.freett.com/rionag/lang/troy.html</a><li><a href="../manual-alignment/troy.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

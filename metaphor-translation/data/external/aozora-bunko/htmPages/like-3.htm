@@ -1,0 +1,527 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>AS YOU LIKE IT / Mary Lamb 著</h2><h2>お気に召すまま / Mary Lamb（M.ラム） 著 / SOGO_e-text_library 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/likee.txt">英語文</a>&<a href="../org/likej.txt">日本語文</a> / <a href="../manual-alignment/like.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>3 of AS YOU LIKE IT</TITLE>
+<hr>
+<a href="like-2.htm">prev</a>
+<a href="like-0.htm">0</a>
+<a href="like-1.htm">1</a>
+<a href="like-2.htm">2</a>
+<3>
+<a href="like-4.htm">4</a>
+<a href="like-4.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="301"><a name="301"><TD id="E301" onclick="javascript:toggleLayer('J301')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who had so cruelly used him and had threatened to destroy him by fire, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J301" onclick="javascript:toggleLayer('E301')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かねてからオーランドゥを虐待し、なおかつ火を放って焼き殺そうとした当人なのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="302"><a name="302"><TD id="E302" onclick="javascript:toggleLayer('J302')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he was almost tempted to leave him a prey to the hungry lioness; but brotherly affection and the gentleness of his nature soon overcame his first anger against his brother;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J302" onclick="javascript:toggleLayer('E302')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥは、このまま兄を飢えた雌ライオンの餌食にしてやろうかと思いかけたが、兄弟愛と生来の育ちの良さから、はじめに抱いた兄への怒りを抑えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="303"><a name="303"><TD id="E303" onclick="javascript:toggleLayer('J303')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he drew his sword and attacked the lioness and slew her,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J303" onclick="javascript:toggleLayer('E303')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、刀を抜き、雌ライオンに立ちむかい、これを倒した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="304"><a name="304"><TD id="E304" onclick="javascript:toggleLayer('J304')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and thus preserved his brother's life both from the venomous snake and from the furious lioness;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J304" onclick="javascript:toggleLayer('E304')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これにより、彼は兄の命を毒蛇と狂暴な雌ライオンから救いだした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="305"><a name="305"><TD id="E305" onclick="javascript:toggleLayer('J305')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but before Orlando could conquer the lioness she had torn one of his arms with her sharp claws.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J305" onclick="javascript:toggleLayer('E305')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、雌ライオンは倒される前に、鋭い爪で相手の腕を引き裂いたのだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="306"><a name="306"><TD id="E306" onclick="javascript:toggleLayer('J306')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While Orlando was engaged with the lioness, Oliver awaked, and, perceiving that his brother Orlando, whom he had so cruelly treated, was saving him from the fury of a wild beast at the risk of his own life,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J306" onclick="javascript:toggleLayer('E306')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥが雌ライオンと格闘している間に、オリヴァは目を覚まし、自分の弟が、あれほど自分がいじめたのにもかかわらず、命を懸けて野獣の猛威から自分を救ってくれたのを知った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="307"><a name="307"><TD id="E307" onclick="javascript:toggleLayer('J307')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> shame and remorse at once seized him, and he repented of his unworthy conduct and besought with many tears his brother's pardon for the injuries he had done him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J307" onclick="javascript:toggleLayer('E307')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恥と後悔で胸がいっぱいになり、卑劣な行為を悔い改め、オーランドゥに、自分が加えてきた侮辱を許してくれと涙を流して訴えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="308"><a name="308"><TD id="E308" onclick="javascript:toggleLayer('J308')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Orlando rejoiced to see him so penitent, and readily forgave him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J308" onclick="javascript:toggleLayer('E308')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥは兄が悔い改めたのを見て喜び、すぐに彼を許した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="309"><a name="309"><TD id="E309" onclick="javascript:toggleLayer('J309')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They embraced each other
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J309" onclick="javascript:toggleLayer('E309')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２人は抱き合った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="310"><a name="310"><TD id="E310" onclick="javascript:toggleLayer('J310')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and from that hour Oliver loved Orlando with a true brotherly affection, though he had come to the forest bent on his destruction.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J310" onclick="javascript:toggleLayer('E310')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オリヴァは最初は弟を殺すつもりで森に来たのだったが、これ以来、真の兄弟愛でもってオーランドゥを愛するようになった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="311"><a name="311"><TD id="E311" onclick="javascript:toggleLayer('J311')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The wound in Orlando's arm having bled very much,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J311" onclick="javascript:toggleLayer('E311')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥの腕の傷からはおびただしい量の血が出ていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="312"><a name="312"><TD id="E312" onclick="javascript:toggleLayer('J312')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he found himself too weak to go to visit Ganymede, and therefore he desired his brother to go and tell Ganymede,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J312" onclick="javascript:toggleLayer('E312')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 体が弱ってとてもゲニミードを訪ねていけそうもなかったので、兄に、ゲニミードのところへ行って
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="313"><a name="313"><TD id="E313" onclick="javascript:toggleLayer('J313')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "whom," said Orlando, "I in sport do call my Rosalind,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J313" onclick="javascript:toggleLayer('E313')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （「その人をぼくはふざけてロザリンドと呼んでいるんだ。」とオーランドゥは言った）、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="314"><a name="314"><TD id="E314" onclick="javascript:toggleLayer('J314')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the accident which had befallen him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J314" onclick="javascript:toggleLayer('E314')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分の身に起こったことを知らせてくれ、と頼んだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="315"><a name="315"><TD id="E315" onclick="javascript:toggleLayer('J315')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thither then Oliver went, and told to Ganymede and Aliena how Orlando had saved his life;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J315" onclick="javascript:toggleLayer('E315')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでオリヴァはゲニミードの家を訪ね、ゲニミードとエリーナに、オーランドゥが命を救ってくれた次第を話した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="316"><a name="316"><TD id="E316" onclick="javascript:toggleLayer('J316')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and when he had finished the story of Orlando's bravery and his own providential escape he owned to them that he was Orlando's brother who had so cruelly used him;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J316" onclick="javascript:toggleLayer('E316')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥの勇敢さと、自分が運良く難を免れた事情を語り終わると、自分こそオーランドゥを虐待した兄であると告白し、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="317"><a name="317"><TD id="E317" onclick="javascript:toggleLayer('J317')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and then be told them of their reconciliation.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J317" onclick="javascript:toggleLayer('E317')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 兄弟の仲直りの話をした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="318"><a name="318"><TD id="E318" onclick="javascript:toggleLayer('J318')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The sincere sorrow that Oliver expressed for his offenses made such a lively impression on the kind heart of Aliena
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J318" onclick="javascript:toggleLayer('E318')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オリヴァが自分の犯した罪を深く後悔しているのを見て、優しい心を持つエリーナは感銘を受けた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="319"><a name="319"><TD id="E319" onclick="javascript:toggleLayer('J319')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that she instantly fell in love with him;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J319" onclick="javascript:toggleLayer('E319')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてたちまちオリヴァを愛するようになった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="320"><a name="320"><TD id="E320" onclick="javascript:toggleLayer('J320')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Oliver observing how much she pitied the distress he told her he felt for his fault, he as suddenly fell in love with her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J320" onclick="javascript:toggleLayer('E320')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一方オリヴァも、自分の苦悩を聞いてエリーナが深く同情してくれるのを見て、たちまちエリーナを愛するようになった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="321"><a name="321"><TD id="E321" onclick="javascript:toggleLayer('J321')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But while love was thus stealing into the hearts of Aliena and Oliver, he was no less busy with Ganymede,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J321" onclick="javascript:toggleLayer('E321')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところで、エリーナとオリヴァの胸中に愛情が忍びこんでいる間に、ゲニミードにも愛情の力が働いていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="322"><a name="322"><TD id="E322" onclick="javascript:toggleLayer('J322')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who, hearing of the danger Orlando had been in, and that he was wounded by the lioness, fainted;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J322" onclick="javascript:toggleLayer('E322')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲニミードは、オーランドゥが危機に陥り、雌ライオンに傷つけられたのを見て、気を失ってしまった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="323"><a name="323"><TD id="E323" onclick="javascript:toggleLayer('J323')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and when he recovered he pretended that he had counterfeited the swoon in the imaginary character of Rosalind, and Ganymede said to Oliver:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J323" onclick="javascript:toggleLayer('E323')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 再び気づいたとき、彼はロザリンドならこうするだろう行動をしたんだと称し、オリヴァにこう言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="324"><a name="324"><TD id="E324" onclick="javascript:toggleLayer('J324')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Tell your brother Orlando how well I counterfeited a swoon."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J324" onclick="javascript:toggleLayer('E324')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「弟さんのオーランドゥに、ぼくがうまく気絶の真似をしたと言ってくださいね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="325"><a name="325"><TD id="E325" onclick="javascript:toggleLayer('J325')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But Oliver saw by the paleness of his complexion that he did really faint, and, much wondering at the weakness of the young man, he said,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J325" onclick="javascript:toggleLayer('E325')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしオリヴァは、ゲニミードの顔色が悪いのを見て、彼が本当に気絶したことを見抜き、この青年の気の弱さを妙だなと思いながらこう言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="326"><a name="326"><TD id="E326" onclick="javascript:toggleLayer('J326')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Well,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J326" onclick="javascript:toggleLayer('E326')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうかい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="327"><a name="327"><TD id="E327" onclick="javascript:toggleLayer('J327')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if you did counterfeit, take a good heart and counterfeit to be a man."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J327" onclick="javascript:toggleLayer('E327')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし真似するんなら、元気を出して一人前の男の真似をするんだな。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="328"><a name="328"><TD id="E328" onclick="javascript:toggleLayer('J328')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "So I do,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J328" onclick="javascript:toggleLayer('E328')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうしましょう。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="329"><a name="329"><TD id="E329" onclick="javascript:toggleLayer('J329')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> replied Ganymede, truly,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J329" onclick="javascript:toggleLayer('E329')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲニミードは大まじめに言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="330"><a name="330"><TD id="E330" onclick="javascript:toggleLayer('J330')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "but I should have been a woman by right."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J330" onclick="javascript:toggleLayer('E330')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「しかしぼくは本当は女性であるべきだったんだ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="331"><a name="331"><TD id="E331" onclick="javascript:toggleLayer('J331')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Oliver made this visit a very long one, and when at last he returned back to his brother he had much news to tell him;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J331" onclick="javascript:toggleLayer('E331')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オリヴァはずいぶん長いこと２人のところにいたから、やっと弟の元に帰ってきたときには話すことがたくさんあった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="332"><a name="332"><TD id="E332" onclick="javascript:toggleLayer('J332')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for, besides the account of Ganymede's fainting at the hearing that Orlando was wounded, Oliver told him how he had fallen in love with the fair shepherdess Aliena, and that she had lent a favorable ear to his suit, even in this their first interview;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J332" onclick="javascript:toggleLayer('E332')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥが負傷したと聞いてゲニミードが気を失ったことはもちろん、美しい羊飼いの娘エリーナを好きになってしまったこと、初めてあったばかりなのにエリーナが彼の告白に好意を持って耳を傾けたことなどをオーランドゥに話したのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="333"><a name="333"><TD id="E333" onclick="javascript:toggleLayer('J333')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he talked to his brother, as of a thing almost settled, that he should marry Aliena,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J333" onclick="javascript:toggleLayer('E333')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてオリヴァは弟に、もうほとんど決定したことのように、自分はエリーナと結婚するんだ、と話した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="334"><a name="334"><TD id="E334" onclick="javascript:toggleLayer('J334')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> saying 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J334" onclick="javascript:toggleLayer('E334')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はこうも言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="335"><a name="335"><TD id="E335" onclick="javascript:toggleLayer('J335')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that he so well loved her
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J335" onclick="javascript:toggleLayer('E335')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分はエリーナをとても愛しているんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="336"><a name="336"><TD id="E336" onclick="javascript:toggleLayer('J336')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that he would live here as a shepherd
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J336" onclick="javascript:toggleLayer('E336')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから羊飼いとしてここに住む。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="337"><a name="337"><TD id="E337" onclick="javascript:toggleLayer('J337')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and settle his estate and house at home upon Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J337" onclick="javascript:toggleLayer('E337')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 故郷の財産や家はオーランドゥに譲るつもりだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="338"><a name="338"><TD id="E338" onclick="javascript:toggleLayer('J338')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You have my consent,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J338" onclick="javascript:toggleLayer('E338')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「異議なしです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="339"><a name="339"><TD id="E339" onclick="javascript:toggleLayer('J339')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J339" onclick="javascript:toggleLayer('E339')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥは言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="340"><a name="340"><TD id="E340" onclick="javascript:toggleLayer('J340')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Let your wedding be to-morrow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J340" onclick="javascript:toggleLayer('E340')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「結婚式は明日にしましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="341"><a name="341"><TD id="E341" onclick="javascript:toggleLayer('J341')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I will invite the duke and his friends.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J341" onclick="javascript:toggleLayer('E341')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私は公爵と友人がたを招待しますね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="342"><a name="342"><TD id="E342" onclick="javascript:toggleLayer('J342')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Go and persuade your shepherdess to agree to this.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J342" onclick="javascript:toggleLayer('E342')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さあ、あの羊飼いさんのところへ行って承知させなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="343"><a name="343"><TD id="E343" onclick="javascript:toggleLayer('J343')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She is now alone,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J343" onclick="javascript:toggleLayer('E343')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの人今１人ですよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="344"><a name="344"><TD id="E344" onclick="javascript:toggleLayer('J344')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for, look, here comes her brother."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J344" onclick="javascript:toggleLayer('E344')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あそこにあの人のお兄さんが来てますからね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="345"><a name="345"><TD id="E345" onclick="javascript:toggleLayer('J345')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Oliver went to Aliena,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J345" onclick="javascript:toggleLayer('E345')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オリヴァはエリーナのところへ行った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="346"><a name="346"><TD id="E346" onclick="javascript:toggleLayer('J346')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Ganymede, whom Orlando had perceived approaching, came to inquire after the health of his wounded friend.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J346" onclick="javascript:toggleLayer('E346')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲニミードが来たことをオーランドゥは気づいていたのだが、ゲニミードは負傷した友人に調子はどうだいと尋ねた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="347"><a name="347"><TD id="E347" onclick="javascript:toggleLayer('J347')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When Orlando and Ganymede began to talk over the sudden love which had taken place between Oliver and Aliena.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J347" onclick="javascript:toggleLayer('E347')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥとゲニミードは、オリヴァとエリーナの間に突然芽生えた恋愛感情のことを話しだした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="348"><a name="348"><TD id="E348" onclick="javascript:toggleLayer('J348')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Orlando said be had advised his brother to persuade his fair shepherdess to be married on the morrow,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J348" onclick="javascript:toggleLayer('E348')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのとき、オーランドゥはゲニミードに、あなたの美しい娘さんに、明日オリヴァと結婚してくれるよう頼んでくれ、と言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="349"><a name="349"><TD id="E349" onclick="javascript:toggleLayer('J349')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and then he added how much he could wish to be married on the same day to his Rosalind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J349" onclick="javascript:toggleLayer('E349')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、自分も同じ日にロザリンドと結婚できたらどれだけうれしいだろうなあ、と付け足した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="350"><a name="350"><TD id="E350" onclick="javascript:toggleLayer('J350')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ganymede, who well approved of this arrangement, said that if Orlando really loved Rosalind as well as he professed to do, he should have his wish;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J350" onclick="javascript:toggleLayer('E350')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲニミードはこの提案に大乗り気で、もしオーランドゥが口で言うようにロザリンドを本当に愛しているなら、その願いは叶うだろう、と言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="351"><a name="351"><TD id="E351" onclick="javascript:toggleLayer('J351')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for on the morrow he would engage to make Rosalind appear in her own person, and also that Rosalind should be willing to marry Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J351" onclick="javascript:toggleLayer('E351')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜかというと、明日になるとロザリンド本人が現れる、そしてロザリンドは喜んでオーランドゥと結婚するから、と請けあった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="352"><a name="352"><TD id="E352" onclick="javascript:toggleLayer('J352')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This seemingly wonderful event, which, as Ganymede was the Lady Rosalind, he could so easily perform,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J352" onclick="javascript:toggleLayer('E352')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは不思議なことに思えたが、ゲニミードがロザリンド嬢であるからには、ゲニミードには簡単に実行できることだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="353"><a name="353"><TD id="E353" onclick="javascript:toggleLayer('J353')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> be pretended he would bring to pass by the aid of magic, which he said he had learned of an uncle who was a famous magician.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J353" onclick="javascript:toggleLayer('E353')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だが口では魔術の助けを得て行うんだと言い、その魔法は有名な魔術師だったおじに習ったんだと話した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="354"><a name="354"><TD id="E354" onclick="javascript:toggleLayer('J354')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The fond lover Orlando, half believing and half doubting what he heard, asked Ganymede if he spoke in sober meaning.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J354" onclick="javascript:toggleLayer('E354')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恋に甘くなったオーランドゥは、半信半疑で聞きながら、ゲニミードに本気で言っているのかと尋ねた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="355"><a name="355"><TD id="E355" onclick="javascript:toggleLayer('J355')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "By my life I do,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J355" onclick="javascript:toggleLayer('E355')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「命にかけて本当です。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="356"><a name="356"><TD id="E356" onclick="javascript:toggleLayer('J356')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Ganymede.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J356" onclick="javascript:toggleLayer('E356')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とゲニミードは答えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="357"><a name="357"><TD id="E357" onclick="javascript:toggleLayer('J357')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Therefore put on your best clothes, and bid the duke and your friends to your wedding,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J357" onclick="javascript:toggleLayer('E357')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ですから、晴れ着を着て、公爵とその友人たちに結婚式に来てもらいなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="358"><a name="358"><TD id="E358" onclick="javascript:toggleLayer('J358')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for if you desire to be married to-morrow to Rosalind, she shall be here."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J358" onclick="javascript:toggleLayer('E358')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし明日ロザリンドと結婚したいなら、彼女に来させますから。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="359"><a name="359"><TD id="E359" onclick="javascript:toggleLayer('J359')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The next morning, Oliver having obtained the consent of Aliena, they came into the presence of the duke,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J359" onclick="javascript:toggleLayer('E359')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 翌朝、オリヴァはエリーナの承諾を得たので、２人は公爵の御前に出た。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="360"><a name="360"><TD id="E360" onclick="javascript:toggleLayer('J360')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and with them also came Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J360" onclick="javascript:toggleLayer('E360')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥも２人に同席していた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="361"><a name="361"><TD id="E361" onclick="javascript:toggleLayer('J361')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They being all assembled to celebrate this double marriage,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J361" onclick="javascript:toggleLayer('E361')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一同がこの２人の結婚式を祝おうと集まってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="362"><a name="362"><TD id="E362" onclick="javascript:toggleLayer('J362')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and as yet only one of the brides appearing, there was much of wondering and conjecture, but they mostly thought that Ganymede was making a jest of Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J362" onclick="javascript:toggleLayer('E362')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だが花嫁がまだ１人しかいなかったので、不思議に思いいろんな推測が飛び交い、大方ゲニミードはオーランドゥをからかっているんだろうという結論になっていた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="363"><a name="363"><TD id="E363" onclick="javascript:toggleLayer('J363')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The duke, hearing that it was his own daughter that was to be brought in this strange way, asked Orlando if he believed the shepherd-boy could really do what he had promised;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J363" onclick="javascript:toggleLayer('E363')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 公爵は、不思議な方法で連れてこられるのが自分の娘だと聞き、オーランドゥに、その羊飼いは本当に約束を実行できるのかね、と尋ねた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="364"><a name="364"><TD id="E364" onclick="javascript:toggleLayer('J364')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and while Orlando was answering that he knew not what to think, Ganymede entered and asked the duke, if he brought his daughter, whether he would consent to her marriage with Orlando.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J364" onclick="javascript:toggleLayer('E364')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、オーランドゥがどう考えてよいか分からないと答えていると、ゲニミードが入ってきて、公爵に、もし令嬢をつれてきたらオーランドゥとの結婚を承諾するかどうか尋ねた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="365"><a name="365"><TD id="E365" onclick="javascript:toggleLayer('J365')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "That I would,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J365" onclick="javascript:toggleLayer('E365')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「承諾するよ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="366"><a name="366"><TD id="E366" onclick="javascript:toggleLayer('J366')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the duke,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J366" onclick="javascript:toggleLayer('E366')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 公爵は言った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="367"><a name="367"><TD id="E367" onclick="javascript:toggleLayer('J367')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "if I had kingdoms to give with her."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J367" onclick="javascript:toggleLayer('E367')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「たとえ王国を娘に委譲することになったとしてもね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="368"><a name="368"><TD id="E368" onclick="javascript:toggleLayer('J368')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ganymede then said to Orlando,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J368" onclick="javascript:toggleLayer('E368')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを聞いて、ゲニミードはオーランドゥに尋ねた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="369"><a name="369"><TD id="E369" onclick="javascript:toggleLayer('J369')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "And you say you will marry her if I bring her here."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J369" onclick="javascript:toggleLayer('E369')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もしぼくがここに彼女を連れてきたら、あなたは彼女と結婚すると言われるのですね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="370"><a name="370"><TD id="E370" onclick="javascript:toggleLayer('J370')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "That I would,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J370" onclick="javascript:toggleLayer('E370')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そうするよ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="371"><a name="371"><TD id="E371" onclick="javascript:toggleLayer('J371')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Orlando,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J371" onclick="javascript:toggleLayer('E371')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥは答えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="372"><a name="372"><TD id="E372" onclick="javascript:toggleLayer('J372')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "if I were king of many kingdoms."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J372" onclick="javascript:toggleLayer('E372')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「もし私が多くの王国を治める王だったとしてもね。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="373"><a name="373"><TD id="E373" onclick="javascript:toggleLayer('J373')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ganymede and Aliena then went out together,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J373" onclick="javascript:toggleLayer('E373')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこで、ゲニミードとエリーナは連れだって出ていった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="374"><a name="374"><TD id="E374" onclick="javascript:toggleLayer('J374')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, Ganymede throwing off his male attire, and being once more dressed in woman's apparel, quickly became Rosalind without the power of magic;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J374" onclick="javascript:toggleLayer('E374')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ゲニミードが男の服装を脱ぎ捨てて、もう一度彼女の着物を着ると、魔術の力もなしに、すぐロザリンドとなった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="375"><a name="375"><TD id="E375" onclick="javascript:toggleLayer('J375')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Aliena, changing her country garb for her own rich clothes, was with as little trouble transformed into the lady Celia.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J375" onclick="javascript:toggleLayer('E375')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エリーナはいなかの服を自分自身の立派な着物に着替えると、なんの苦もなくシーリア嬢に変わった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="376"><a name="376"><TD id="E376" onclick="javascript:toggleLayer('J376')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While they were gone, the duke said to Orlando that he thought the shepherd Ganymede very like his daughter Rosalind;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J376" onclick="javascript:toggleLayer('E376')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２人がいない間、公爵はオーランドゥに、羊飼いのゲニミードが娘のロザリンドに似ているように思えると話した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="377"><a name="377"><TD id="E377" onclick="javascript:toggleLayer('J377')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Orlando said he also had observed the resemblance.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J377" onclick="javascript:toggleLayer('E377')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オーランドゥも、そっくりに見えるんですと答えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="378"><a name="378"><TD id="E378" onclick="javascript:toggleLayer('J378')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They had no time to wonder how all this would end, for Rosalind and Celia, in their own clothes, entered,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J378" onclick="javascript:toggleLayer('E378')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いったいどうなっていくのか心配するいとまもなく、ロザリンドとシーリアが自分の服を来て入ってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="379"><a name="379"><TD id="E379" onclick="javascript:toggleLayer('J379')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, no longer pretending that it was by the power of magic that she came there, Rosalind threw herself on her knees before her father and begged his blessing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J379" onclick="javascript:toggleLayer('E379')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、自分がここに現れたのは魔法によるものだとは一言も言わずに、ロザリンドは父の前にひざまずいて祝福を求めた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="380"><a name="380"><TD id="E380" onclick="javascript:toggleLayer('J380')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It seemed so wonderful to all present that she should so suddenly appear, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J380" onclick="javascript:toggleLayer('E380')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ロザリンドが突然姿を現したことは、列席した人々にはとても不思議なことに見えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="381"><a name="381"><TD id="E381" onclick="javascript:toggleLayer('J381')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that it might well have passed for magic;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J381" onclick="javascript:toggleLayer('E381')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まさに魔法だと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="382"><a name="382"><TD id="E382" onclick="javascript:toggleLayer('J382')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but Rosalind would no longer trifle with her father, and told him the story of her banishment, and of her dwelling in the forest as a shepherd-boy, her cousin Celia passing as her sister.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J382" onclick="javascript:toggleLayer('E382')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしロザリンドは、父をからかうようなことはせず、自分が追放となったいきさつを話し、森の中で自分は羊飼いの少年、いとこのシーリアはその妹として住んでいたことを告白した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="383"><a name="383"><TD id="E383" onclick="javascript:toggleLayer('J383')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The duke ratified the consent he had already given to the marriage;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J383" onclick="javascript:toggleLayer('E383')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 公爵はすでに結婚に対して与えた承諾を確認した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="384"><a name="384"><TD id="E384" onclick="javascript:toggleLayer('J384')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and Orlando and Rosalind, Oliver and Celia, were married at the same time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J384" onclick="javascript:toggleLayer('E384')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてオーランドゥとロザリンド、オリヴァとシーリアとが同時に結婚した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="385"><a name="385"><TD id="E385" onclick="javascript:toggleLayer('J385')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And though their wedding could not be celebrated in this wild forest with any of the parade of splendor usual on such occasions, yet a happier wedding-day was never passed.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J385" onclick="javascript:toggleLayer('E385')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この結婚は、このような荒れ果てた森の中では、こんな状況につきものの華麗な盛儀では祝えなかったが、かつてなく幸せな結婚となった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="386"><a name="386"><TD id="E386" onclick="javascript:toggleLayer('J386')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And while they were eating their venison under the cool shade of the pleasant trees, as if nothing should be wanting to complete the felicity of this good duke and the true lovers, an unexpected messenger arrived to tell the duke the joyful news
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J386" onclick="javascript:toggleLayer('E386')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一同がいい感じに涼しい木陰で鹿肉を食べていると、この善良な公爵と真実の恋人たちに完全な幸福を与えるかのごとく、予期せぬ使者が到着し、公爵にうれしい知らせを告げた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="387"><a name="387"><TD id="E387" onclick="javascript:toggleLayer('J387')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that his dukedom was restored to him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J387" onclick="javascript:toggleLayer('E387')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは、公国が公爵に返還されたというものだった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="388"><a name="388"><TD id="E388" onclick="javascript:toggleLayer('J388')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The usurper, enraged at the flight of his daughter Celia, and hearing that every day men of great worth resorted to the forest of Arden to join the lawful duke in his exile, much envying that his brother should be so highly respected in his adversity, put himself at the head of a large force and advanced toward theforest, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J388" onclick="javascript:toggleLayer('E388')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの横領者は、娘シーリアが家出したことに激怒し、また日ごとに立派な人々が、追放の身である正統な公爵の元へはせ参じようと、アーデンの森に向かうと聞いて、兄が逆境にあっても尊敬されているのをねたむあまり、大軍の先頭に立って、森めざして軍を進めた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="389"><a name="389"><TD id="E389" onclick="javascript:toggleLayer('J389')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> intending to seize his brother and put him with all his faithful followers to the sword;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J389" onclick="javascript:toggleLayer('E389')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 兄を捕らえ、忠実な従者たちを刃にかけようと企てたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="390"><a name="390"><TD id="E390" onclick="javascript:toggleLayer('J390')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but by a wonderful interposition of Providence this bad brother was converted from his evil intention,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J390" onclick="javascript:toggleLayer('E390')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ところが、摂理の神が不思議な介入を行い、よこしまな弟に邪悪な計画を思いとどまらせたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="391"><a name="391"><TD id="E391" onclick="javascript:toggleLayer('J391')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for just as he entered the skirts of the wild forest he was met by an old religious man, a hermit, with whom he had much talk and who in the end completely turned his heart from his wicked design.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J391" onclick="javascript:toggleLayer('E391')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、彼が森の外れにさしかかったとき、１人の老僧（隠者であった）に出会い、その人といろいろ語り合い、ついに悪い計画をまったくやめてしまうに至ったのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="392"><a name="392"><TD id="E392" onclick="javascript:toggleLayer('J392')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thenceforward he became a true penitent, and resolved, relinquishing his unjust dominion, to spend the remainder of his days in a religious house.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J392" onclick="javascript:toggleLayer('E392')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それ以来、彼は心から悔い改め、不正に手にいれた領地を放棄して、余生を修道院で送ろうと決心した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="393"><a name="393"><TD id="E393" onclick="javascript:toggleLayer('J393')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The first act of his newly conceived penitence was to send a messenger to his brother (as has been related) to offer to restore to him his dukedom, which be had usurped so long, and with it the lands and revenues of his friends, the faithful followers of his adversity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J393" onclick="javascript:toggleLayer('E393')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心からの悔い改めの第一歩として、兄に使者を派遣し、（前に述べたように）長い間横領していた公国を兄に返還し、兄の逆境時代に忠実に付き従ってきた人たちの領地と所領を返そうと申し出ることにしたのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="394"><a name="394"><TD id="E394" onclick="javascript:toggleLayer('J394')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This joyful news, as unexpected as it was welcome, came opportunely to heighten the festivity and rejoicings at the wedding of the princesses.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J394" onclick="javascript:toggleLayer('E394')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この予期しなかった愉快な知らせは、まったくちょうどいいときに来たから、姫君たちの結婚式のお祭り気分や祝賀気分をいやが上にも盛り上げた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="395"><a name="395"><TD id="E395" onclick="javascript:toggleLayer('J395')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Celia complimented her cousin on this good, fortune which had happened to the duke, Rosalind's father, and wished her joy very sincerely,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J395" onclick="javascript:toggleLayer('E395')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> シーリアはロザリンドの父である公爵の身に起こった幸運にお祝いを述べて、ロザリンドの幸せを心から喜んだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="396"><a name="396"><TD id="E396" onclick="javascript:toggleLayer('J396')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> though she herself was no longer heir to the dukedom, but by this restoration which her father had made, Rosalind was now the heir, so completely was the love of these two cousins unmixed with anything of jealousy or of envy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J396" onclick="javascript:toggleLayer('E396')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> シーリア自身について言えば、父の公国返還によって、公国の後継者は自分ではなくロザリンドになったのであるが、２人の間にある愛情は純粋で、一点のねたみも羨望も混ざっていなかった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="397"><a name="397"><TD id="E397" onclick="javascript:toggleLayer('J397')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The duke had now an opportunity of rewarding those true friends who had stayed with him in his banishment;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J397" onclick="javascript:toggleLayer('E397')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今や公爵は、追放中にともにいてくれた真の友人たちに報いる機会を得たのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="398"><a name="398"><TD id="E398" onclick="javascript:toggleLayer('J398')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and these worthy followers, though they had patiently shared his adverse fortune, were very well pleased to return in peace and prosperity, to the palace of their lawful duke.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J398" onclick="javascript:toggleLayer('E398')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 付き従った人たちも、忍耐強く公爵と不幸な運命を共にした末に、平和と幸福に包まれながら、正統な公爵と共に宮殿に戻れることを大変喜んだのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="399"><a name="399"><TD ID="TAB399" onclick="javascript:toggleLayer('J399')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB399" onclick="javascript:toggleLayer('E399')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="400"><a name="400"><TD ID="TAB400" onclick="javascript:toggleLayer('J400')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J400" onclick="javascript:toggleLayer('E400')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ［＃注１］フランスとベルギーとにまたがるアルデンヌ（Ardennes）高原の森、ということに設定してある。
+［＃注２］ギリシア人が人類の歴史を金・銀・銅・鉄の４時代に分けた第１の時代。社会の進歩が最高潮に達して幸福と平和に満ちた時代。
+［＃注３］昔の迷信。
+［＃注４］新約聖書「ペテロの第一の手紙」から。
+［＃注５］神様のこと。出典は「ヨブ記」38章、「列王紀略上」17章などか。
+［＃注６］ここは、およそキリストの愛の教えが伝えられているところに住んだことがあるならば、ということ。
+［＃注７］通常10音節弱強格14行の詩。
+［＃注８］特定の人、物などに寄せる抒情詩。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="like-2.htm">prev</a>
+<a href="like-0.htm">0</a>
+<a href="like-1.htm">1</a>
+<a href="like-2.htm">2</a>
+<3>
+<a href="like-4.htm">4</a>
+<a href="like-4.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/likee.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/likej.txt">local copy</a><li><a href="../manual-alignment/like.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

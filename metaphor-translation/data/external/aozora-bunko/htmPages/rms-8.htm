@@ -1,0 +1,531 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>RMS lecture at KTH / Richard M. Stallman 著</h2><h2>RMS スウェーデン王立工科大学講演  / リチャード・M・ストールマン 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/rmse.txt">英語文</a>&<a href="../org/rmsj.txt">日本語文</a> / <a href="../manual-alignment/rms.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>8 of RMS lecture at KTH</TITLE>
+<hr>
+<a href="rms-7.htm">prev</a>
+<a href="rms-0.htm">0</a>
+<a href="rms-1.htm">1</a>
+<a href="rms-2.htm">2</a>
+<a href="rms-3.htm">3</a>
+<a href="rms-4.htm">4</a>
+<a href="rms-5.htm">5</a>
+<a href="rms-6.htm">6</a>
+<a href="rms-7.htm">7</a>
+<8>
+<a href="rms-9.htm">9</a>
+<a href="rms-9.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="801"><a name="801"><TD id="E801" onclick="javascript:toggleLayer('J801')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And therefore, for the sake of giving people as much control as possible over their own lives, it has to be the user who decides those things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J801" onclick="javascript:toggleLayer('E801')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> したがって、人々に自分自身のくらしをできる限り好きなようにさせるという趣旨からして、そういうことを決めるのはそのユーザであるべきなんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="802"><a name="802"><TD id="E802" onclick="javascript:toggleLayer('J802')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The second line of argument they make is the economic one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J802" onclick="javascript:toggleLayer('E802')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 連中の二番目の議論は、経済的なものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="803"><a name="803"><TD id="E803" onclick="javascript:toggleLayer('J803')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``How will people get payed to program?''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J803" onclick="javascript:toggleLayer('E803')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「プログラムを書いても報酬が得られないじゃないか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="804"><a name="804"><TD id="E804" onclick="javascript:toggleLayer('J804')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they say, and there's a little bit of real issue in this.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J804" onclick="javascript:toggleLayer('E804')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と言うわけで、ここには確かにホントの問題がちょっとはある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="805"><a name="805"><TD id="E805" onclick="javascript:toggleLayer('J805')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But a lot of what they say is confusion.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J805" onclick="javascript:toggleLayer('E805')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも連中のいうことのかなりの部分は混乱してる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="806"><a name="806"><TD id="E806" onclick="javascript:toggleLayer('J806')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And the confusion is, it's not at all the same to say
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J806" onclick="javascript:toggleLayer('E806')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてどこが混乱してるかっていうと、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="807"><a name="807"><TD id="E807" onclick="javascript:toggleLayer('J807')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``if we want to have a lot of people programming we must arrange for them not to need to make a living in any other fashion''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J807" onclick="javascript:toggleLayer('E807')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「たくさんの人がプログラミングするようにしたいなら、ほかの手段で生計をたてなくてもいいような仕組みをつくらなきゃ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="808"><a name="808"><TD id="E808" onclick="javascript:toggleLayer('J808')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> on the one hand, and to say
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J808" onclick="javascript:toggleLayer('E808')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのと、その一方では
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="809"><a name="809"><TD id="E809" onclick="javascript:toggleLayer('J809')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``We need to have the current system, you need to get rich by programming''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J809" onclick="javascript:toggleLayer('E809')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いまのシステムじゃなきゃダメだ、プログラミングで金持ちにならなきゃ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="810"><a name="810"><TD id="E810" onclick="javascript:toggleLayer('J810')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> on the other hand.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J810" onclick="javascript:toggleLayer('E810')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのとでは、話がまるっきしちがうってこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="811"><a name="811"><TD id="E811" onclick="javascript:toggleLayer('J811')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There's a big difference between just making a living wage and making the kind of money programmers, at least in the US make nowadays.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J811" onclick="javascript:toggleLayer('E811')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 生きてけるだけの賃金を得るのと、少なくとも最近のアメリカのプログラマがもらってるような給料をもらうってのとでは、話がぜんぜんちがう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="812"><a name="812"><TD id="E812" onclick="javascript:toggleLayer('J812')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They always say:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J812" onclick="javascript:toggleLayer('E812')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みんながいつも言うのは
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="813"><a name="813"><TD id="E813" onclick="javascript:toggleLayer('J813')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``How will I eat?'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J813" onclick="javascript:toggleLayer('E813')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「じゃあおれはどうやって喰ってけばいいんだ？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="814"><a name="814"><TD id="E814" onclick="javascript:toggleLayer('J814')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but the problem is not really how
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J814" onclick="javascript:toggleLayer('E814')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ってことだけれど、実際には
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="815"><a name="815"><TD id="E815" onclick="javascript:toggleLayer('J815')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``Will he eat?'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J815" onclick="javascript:toggleLayer('E815')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「こいつは食えるか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="816"><a name="816"><TD id="E816" onclick="javascript:toggleLayer('J816')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but ``How will he eat sushi?''. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J816" onclick="javascript:toggleLayer('E816')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ってことじゃなくて「こいつは寿司（訳注：高くて高級なぜいたくな飯という意味）が食えるか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="817"><a name="817"><TD id="E817" onclick="javascript:toggleLayer('J817')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``How will I have a roof over my head?'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J817" onclick="javascript:toggleLayer('E817')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ってことで、「雨つゆがしのげるか」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="818"><a name="818"><TD id="E818" onclick="javascript:toggleLayer('J818')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but the real problem is
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J818" onclick="javascript:toggleLayer('E818')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ってことじゃなくてホントに言いたいのは
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="819"><a name="819"><TD id="E819" onclick="javascript:toggleLayer('J819')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``How can he afford a condo?''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J819" onclick="javascript:toggleLayer('E819')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「高級マンションが買えるか」ってことなんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="820"><a name="820"><TD id="E820" onclick="javascript:toggleLayer('J820')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The current system were chosen by the people who invest in software development, because it gives them the possibility of making the most possible money,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J820" onclick="javascript:toggleLayer('E820')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いまの方式は、最大限の儲けを得るためにソフト開発に投資しようと思った人の選んだシステム。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="821"><a name="821"><TD id="E821" onclick="javascript:toggleLayer('J821')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> not because it's the only way anyone can ever come up with money to support a system development effort.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J821" onclick="javascript:toggleLayer('E821')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> システム開発をサポートするための唯一の方法だからこうなってるわけじゃないんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="822"><a name="822"><TD id="E822" onclick="javascript:toggleLayer('J822')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In fact, even as recently as ten and fifteen years ago it was common to support software development in other ways.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J822" onclick="javascript:toggleLayer('E822')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 実は、ほんの 10 年とか 15 年とか前のごく最近までは、ソフト開発をほかの方法でサポートするのがあたりまえだったんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="823"><a name="823"><TD id="E823" onclick="javascript:toggleLayer('J823')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For example, those DIGITAL operating systems that were free, even in the early seventies, were developed by people who were paid for their work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J823" onclick="javascript:toggleLayer('E823')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえばDIGITAL の OS は 1970 年代初期までフリーだったけれど、フリーの OS ってのは、70 年代初期ですら、ちゃんと給料もらってる人が開発してたんだよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="824"><a name="824"><TD id="E824" onclick="javascript:toggleLayer('J824')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Many useful programs has been developed at universities.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J824" onclick="javascript:toggleLayer('E824')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 役に立つプログラムの多くは大学で開発されてる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="825"><a name="825"><TD id="E825" onclick="javascript:toggleLayer('J825')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nowadays those programs are often sold, but fifteen years ago they were usually free, yet the people were paid for their work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J825" onclick="javascript:toggleLayer('E825')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最近だとこういうプログラムは売られることが多いけど、15 年前ならふつうはフリーで、それでもみんな給料がもらえてたんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="826"><a name="826"><TD id="E826" onclick="javascript:toggleLayer('J826')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When you have something like a program, like an infinite sandwich, like a road, which has to be built once, but once it is built it pretty much doesn't matter how much you use it, there's no cost in using it, generally it's better if we don't put any price on using it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J826" onclick="javascript:toggleLayer('E826')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プログラムみたいなものだと、これは無限サンドイッチとか、道とかみたいなもので、一回はつくらなきゃダメだけど、一度つくったらもうそれを何回使おうが関係なくて、使うのにコストもかかんないなら、使うのに値段なんかつけないほうが一般的にいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="827"><a name="827"><TD id="E827" onclick="javascript:toggleLayer('J827')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And there are plenty of those things that we develop now, and pay people to build.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J827" onclick="javascript:toggleLayer('E827')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、いまでもぼくたちがつくって、作った人に金を払うようなそういうものってのはたくさんある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="828"><a name="828"><TD id="E828" onclick="javascript:toggleLayer('J828')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For example, all the streets out there.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J828" onclick="javascript:toggleLayer('E828')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえばそこらの道がそうだよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="829"><a name="829"><TD id="E829" onclick="javascript:toggleLayer('J829')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's very easy to find people who will program without being paid; it really is impossible to find people who will build streets without being paid.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J829" onclick="javascript:toggleLayer('E829')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お金を払わずに道を造ってくれる人を見つけるのは無理だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="830"><a name="830"><TD id="E830" onclick="javascript:toggleLayer('J830')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Building streets is not creative and fun like programming.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J830" onclick="javascript:toggleLayer('E830')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 道をつくるのはプログラミングとちがってクリエイティブじゃないし、楽しくもない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="831"><a name="831"><TD id="E831" onclick="javascript:toggleLayer('J831')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But we have plenty of streets out there, we do come up with the money to pay them,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J831" onclick="javascript:toggleLayer('E831')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、世の中にはたくさん道があって、それに支払うだけの金も捻出されてる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="832"><a name="832"><TD id="E832" onclick="javascript:toggleLayer('J832')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it's much better the way we do it
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J832" onclick="javascript:toggleLayer('E832')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそのほうが、ずっといいよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="833"><a name="833"><TD id="E833" onclick="javascript:toggleLayer('J833')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> than if if we said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J833" onclick="javascript:toggleLayer('E833')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもこういうことだってできる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="834"><a name="834"><TD id="E834" onclick="javascript:toggleLayer('J834')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``Let's have companies go and build streets and put toll booths up, and then every time you turn another street corner, you pay another toll.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J834" onclick="javascript:toggleLayer('E834')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「企業に道をつくらせて勝手に料金所をつけさせて、街角を曲がるたびに通行料を支払うようにしよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="835"><a name="835"><TD id="E835" onclick="javascript:toggleLayer('J835')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And then the companies that picked the good places to put their streets, they will be profitable, and the others will go bankrupt.''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J835" onclick="javascript:toggleLayer('E835')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしていい場所に道を敷いた企業は儲かって、そうでないのは倒産するようにしよう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="836"><a name="836"><TD id="E836" onclick="javascript:toggleLayer('J836')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There's a funny thing that happens whenever someone comes up with a way of making lots of money by hoarding something.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J836" onclick="javascript:toggleLayer('E836')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だれかが、何かを隠匿することで大金を儲ける方法を編み出すと、変なことが起きる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="837"><a name="837"><TD id="E837" onclick="javascript:toggleLayer('J837')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Until that time you've probably had lots and lots of people who were really enthusiastic and eager to workin that field,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J837" onclick="javascript:toggleLayer('E837')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それまでは、たぶんその分野にすごく情熱をもっていて、熱心に働く人たちがたくさんいたんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="838"><a name="838"><TD id="E838" onclick="javascript:toggleLayer('J838')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the only sort of question is how can they get any sort of livelihood at all.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J838" onclick="javascript:toggleLayer('E838')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 唯一の問題は、その人たちはそもそも喰っていけるのか、ということだけ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="839"><a name="839"><TD id="E839" onclick="javascript:toggleLayer('J839')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If we think of mathematicians for example, there are a lot more people who want to be pure mathematicians than there is funding for anybody to be pure mathematicians.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J839" onclick="javascript:toggleLayer('E839')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえば数学者を考えてみると、純粋数学者に支給されるお金よりも、純粋数学者志望者のほうがずっと多い。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="840"><a name="840"><TD id="E840" onclick="javascript:toggleLayer('J840')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And even when you do get funding, you don't get very much, they don't live well.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J840" onclick="javascript:toggleLayer('E840')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして支払われたとしても、大した額じゃないし、あまりいい暮らしもできない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="841"><a name="841"><TD id="E841" onclick="javascript:toggleLayer('J841')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And for musicians it's even worse.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J841" onclick="javascript:toggleLayer('E841')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ミュージシャンとなるともっとひどい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="842"><a name="842"><TD id="E842" onclick="javascript:toggleLayer('J842')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I saw a statistics for how much the average musician, the average person devoting most of his time trying to be a musician, in Massachusetts made;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J842" onclick="javascript:toggleLayer('E842')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 時間の大半を費やしてミュージシャンになろうとしてる人が、平均的なミュージシャンでどのくらい稼いでるかっていう統計を見たことがある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="843"><a name="843"><TD id="E843" onclick="javascript:toggleLayer('J843')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it was something like half the median income or less.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J843" onclick="javascript:toggleLayer('E843')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マサチューセッツでは、確か州平均所得の半分以下だったんだよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="844"><a name="844"><TD id="E844" onclick="javascript:toggleLayer('J844')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is barely enough to live on, it's difficult.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J844" onclick="javascript:toggleLayer('E844')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かつかつで暮らしてけるくらいで、つらいよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="845"><a name="845"><TD id="E845" onclick="javascript:toggleLayer('J845')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But there are lots of them trying to do that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J845" onclick="javascript:toggleLayer('E845')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、そうしたがる人はたくさんいる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="846"><a name="846"><TD id="E846" onclick="javascript:toggleLayer('J846')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And then, somehow when it gets generally possible to get very well paid to do something,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J846" onclick="javascript:toggleLayer('E846')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこへ、何かをすることですごくたくさん稼げるようになったとしよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="847"><a name="847"><TD id="E847" onclick="javascript:toggleLayer('J847')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> all those people disappear, and people start saying
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J847" onclick="javascript:toggleLayer('E847')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> するとそういう人たちは消えて、みんなこう言うんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="848"><a name="848"><TD id="E848" onclick="javascript:toggleLayer('J848')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``nobody will do it unless they get paid that well''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J848" onclick="javascript:toggleLayer('E848')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そのくらい儲からなきゃ、だれもやりゃしないよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="849"><a name="849"><TD id="E849" onclick="javascript:toggleLayer('J849')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And I saw this happen in the field of programming.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J849" onclick="javascript:toggleLayer('E849')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてぼくは、これがプログラミングの分野でおこるのを見てきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="850"><a name="850"><TD id="E850" onclick="javascript:toggleLayer('J850')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The very same people who used to work at the AI lab and get payed very little and love it, now wouldn't dream of working for less than fifty thousand dollars a year.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J850" onclick="javascript:toggleLayer('E850')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> AI 研で働いてて、大した給料もなかったのに仕事が大好きだった人たちが、いまでは年に 5 万ドルはもらわなきゃとても働けないよ、なんて言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="851"><a name="851"><TD id="E851" onclick="javascript:toggleLayer('J851')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What happened?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J851" onclick="javascript:toggleLayer('E851')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どうしちゃったわけ？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="852"><a name="852"><TD id="E852" onclick="javascript:toggleLayer('J852')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When you dangle before people the possibility of making lots of money, when they see that other people doing similar work are getting paid that much money, they feel that they should get the same, and thus no-one is willing to continue the old way.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J852" onclick="javascript:toggleLayer('E852')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 人の前に大金を儲ける可能性をぶら下げてやると、似たようなことをしてるほかの人たちが、そんだけの金を稼いでるのを見ると、みんな自分たちも同じくらい稼ぐべきだという気になって、だから昔ながらのやりかたを続けようという人はだれもいない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="853"><a name="853"><TD id="E853" onclick="javascript:toggleLayer('J853')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And it's easy after this has happened to think that paying people a lot of money is the only way it could be, but that's not so.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J853" onclick="javascript:toggleLayer('E853')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこれが起きちゃったら、人に大金を払うしか手がないんだと思いこむのは簡単なんだけれど、でもそりゃちがう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="854"><a name="854"><TD id="E854" onclick="javascript:toggleLayer('J854')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If the possibility of making a lots of money did not exist, you would have people who would accept doing it for a little money,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J854" onclick="javascript:toggleLayer('E854')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし大金を儲ける可能性がなかったら、ちょっとのお金でもそれをやろうって人が出てくるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="855"><a name="855"><TD id="E855" onclick="javascript:toggleLayer('J855')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> specially when it's something that is creative and fun.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J855" onclick="javascript:toggleLayer('E855')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 特にそれがクリエイティブでおもしろいことなら。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="856"><a name="856"><TD ID="TAB856" onclick="javascript:toggleLayer('J856')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB856" onclick="javascript:toggleLayer('E856')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="857"><a name="857"><TD ID="TAB857" onclick="javascript:toggleLayer('J857')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J857" onclick="javascript:toggleLayer('E857')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 4.3 ソフト隠匿との闘い
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="858"><a name="858"><TD id="E858" onclick="javascript:toggleLayer('J858')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now I saw the unique world of the AI lab destroyed, and I saw that selling software was an intrinsic part of what had destroyed it, and I saw also, as I explained before, how you need to have free software in order to have a community like that.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J858" onclick="javascript:toggleLayer('E858')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> AI 研のユニークな世界が破壊されるのを見てきて、ソフトを売るのがその核心なんだってことも見てきたし、さらにはさっき説明したように、ああいう社会を手に入れるにはフリーソフトが必要なんだってことも見てきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="859"><a name="859"><TD id="E859" onclick="javascript:toggleLayer('J859')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But then thinking about it more, I realized all these ways in which hoarding software hurts all of society,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J859" onclick="javascript:toggleLayer('E859')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれからいろいろ考えてみて、ソフト隠匿がいろんな形で社会全てを傷つけることに思い当たったんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="860"><a name="860"><TD id="E860" onclick="javascript:toggleLayer('J860')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> most specially by pressuring people to sell out their neighbors and causing social decay.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J860" onclick="javascript:toggleLayer('E860')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 特に、人々に隣人を売り渡すよう圧力をかけて、それが社会の退廃を招いてるってことに。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="861"><a name="861"><TD id="E861" onclick="javascript:toggleLayer('J861')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The same spirit that leads people to watch while somebody in the street is getting stabbed and not tell anyone.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J861" onclick="javascript:toggleLayer('E861')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 道で人が刺されてるのを見ても、黙ってようとするのと同じ精神だよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="862"><a name="862"><TD id="E862" onclick="javascript:toggleLayer('J862')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The spirit that we can see so many companies all around us displaying all the time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J862" onclick="javascript:toggleLayer('E862')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこらじゅうの企業がしょっちゅう示してるのがわかる、あの精神だよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="863"><a name="863"><TD id="E863" onclick="javascript:toggleLayer('J863')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And it was clear to me I had a choice,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J863" onclick="javascript:toggleLayer('E863')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、ぼくは自分が道を選べるのがはっきりしてた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="864"><a name="864"><TD id="E864" onclick="javascript:toggleLayer('J864')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I could become part of that world and feel unhappy about what I was doing with my life, or I could decide to fight it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J864" onclick="javascript:toggleLayer('E864')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その世界の一部となって、自分の送ってる人生について不幸に感じ続けるか、それともそれと闘うか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="865"><a name="865"><TD id="E865" onclick="javascript:toggleLayer('J865')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So I decided to fight it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J865" onclick="javascript:toggleLayer('E865')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからぼくは闘うことにした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="866"><a name="866"><TD id="E866" onclick="javascript:toggleLayer('J866')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I've dedicated my career to try to rebuild the software sharing community, to trying to put an end to the phenomenon of hoarding generally useful information.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J866" onclick="javascript:toggleLayer('E866')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくはキャリアを捧げて、ソフト共有コミュニティの再建に努めてきたし、一般にとって有用な情報を員臆するという現象を終わらせようと努力してきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="867"><a name="867"><TD id="E867" onclick="javascript:toggleLayer('J867')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And the GNU system is a means to this end.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J867" onclick="javascript:toggleLayer('E867')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして GNU システムは、この目的達成のための手段なんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="868"><a name="868"><TD id="E868" onclick="javascript:toggleLayer('J868')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is a technical means to a social end.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J868" onclick="javascript:toggleLayer('E868')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 社会的な目的のための、技術的な手段だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="869"><a name="869"><TD id="E869" onclick="javascript:toggleLayer('J869')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> With the GNU system, I hope to vacinate the users against the threat of the software hoarders.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J869" onclick="javascript:toggleLayer('E869')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> GNU システムによって、ぼくはソフト隠匿者どもの脅しに対してユーザたちにワクチンをあげたいんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="870"><a name="870"><TD id="E870" onclick="javascript:toggleLayer('J870')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Right now the hoarders essentially claims the power to render a person's computer useless.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J870" onclick="javascript:toggleLayer('E870')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いま現在、この隠匿者どもは基本的に、人のコンピュータを粗大ゴミにしてしまう力を持ってる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="871"><a name="871"><TD id="E871" onclick="javascript:toggleLayer('J871')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> There used to be people in the US, most commonly about fifty years ago, they were in the Mafia,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J871" onclick="javascript:toggleLayer('E871')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アメリカでは、だいたい 50 年くらい前に、マフィアとかでそういう連中がいた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="872"><a name="872"><TD id="E872" onclick="javascript:toggleLayer('J872')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they would go up to stores and bars, especially bars when bars were illegal of course.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J872" onclick="javascript:toggleLayer('E872')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 店やバーに行って、特にもちろん違法なバーだよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="873"><a name="873"><TD id="E873" onclick="javascript:toggleLayer('J873')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> They would go up and say:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J873" onclick="javascript:toggleLayer('E873')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでこう言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="874"><a name="874"><TD id="E874" onclick="javascript:toggleLayer('J874')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``A lot of places around here have been burning down lately.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J874" onclick="javascript:toggleLayer('E874')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ここらへんじゃあ、最近火事が多いですなあ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="875"><a name="875"><TD id="E875" onclick="javascript:toggleLayer('J875')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You wouldn't want your place to burn down, would you?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J875" onclick="javascript:toggleLayer('E875')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あんたんとこも、火事なんかになったらいやだよねえ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="876"><a name="876"><TD id="E876" onclick="javascript:toggleLayer('J876')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Well we can protect you from fires, you just have to pay us a thousand dollars a month, and we'll make sure you don't have a fire here''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J876" onclick="javascript:toggleLayer('E876')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おれたちなら、あんたを火事から守ってやれるんだよ、月に 1,000 ドル払ってくれるだけで、ここで火事が起きないようにしてやるよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="877"><a name="877"><TD id="E877" onclick="javascript:toggleLayer('J877')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And this was called ``the protection racket''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J877" onclick="javascript:toggleLayer('E877')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これがいわゆる「保護恐喝」ってやつ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="878"><a name="878"><TD id="E878" onclick="javascript:toggleLayer('J878')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now we have something where a person says
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J878" onclick="javascript:toggleLayer('E878')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さていまはだれかがこう言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="879"><a name="879"><TD id="E879" onclick="javascript:toggleLayer('J879')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``You got a nice computer there, and you've got some programs there that you're using.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J879" onclick="javascript:toggleLayer('E879')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「なかなかいいコンピュータをお持ちですな、それでいろいろソフトも使ってらっしゃる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="880"><a name="880"><TD id="E880" onclick="javascript:toggleLayer('J880')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Well, if you don't want those programs to disappear, if you don't want the police to come after you, you better pay me a thousand dollars, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J880" onclick="javascript:toggleLayer('E880')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さて、そのソフトに消えてほしくなければ、警察に追われる身になりたくなければ、わたしに 1,000 ドル払いなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="881"><a name="881"><TD id="E881" onclick="javascript:toggleLayer('J881')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I'll give you a copy of this program with a license'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J881" onclick="javascript:toggleLayer('E881')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしたらこのプログラムをライセンス付きで売ってあげよう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="882"><a name="882"><TD id="E882" onclick="javascript:toggleLayer('J882')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and this is called ``the software protection racket''.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J882" onclick="javascript:toggleLayer('E882')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これが人呼んで「ソフト保護恐喝」。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="883"><a name="883"><TD id="E883" onclick="javascript:toggleLayer('J883')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Really all they're doing is interfering with everybody else doing what needs to be done, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J883" onclick="javascript:toggleLayer('E883')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ホント、連中がなにやってるかといえば、ほかの人がやるべきことをしようとすんのをじゃましてるだけじゃん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="884"><a name="884"><TD id="E884" onclick="javascript:toggleLayer('J884')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but they're pretending as much to them selves as to the rest of us, that they are providing a useful function.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J884" onclick="javascript:toggleLayer('E884')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なのに、連中はわれわれに対しても自分自身に対しても、自分たちがなにか有益な機能を果たしてるようなふりをしてみせてる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="885"><a name="885"><TD id="E885" onclick="javascript:toggleLayer('J885')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Well, what I hope is that when that software Mafia guy comes up and says,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J885" onclick="javascript:toggleLayer('E885')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> で、ぼくの願いは、ソフトウェア・マフィアの連中がやってきて
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="886"><a name="886"><TD id="E886" onclick="javascript:toggleLayer('J886')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``You want those programs to disappear on your computer?'',
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J886" onclick="javascript:toggleLayer('E886')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「そのプログラムがコンピュータから消えてもいいのか？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="887"><a name="887"><TD id="E887" onclick="javascript:toggleLayer('J887')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the user can say
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J887" onclick="javascript:toggleLayer('E887')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と言ったら、利用者たちが
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="888"><a name="888"><TD id="E888" onclick="javascript:toggleLayer('J888')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ``I'm not afraid of you any more.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J888" onclick="javascript:toggleLayer('E888')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おまえなんかもうこわくないぞ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="889"><a name="889"><TD id="E889" onclick="javascript:toggleLayer('J889')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have this free GNU software,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J889" onclick="javascript:toggleLayer('E889')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくにはこのフリーの GNU ソフトがあるんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="890"><a name="890"><TD id="E890" onclick="javascript:toggleLayer('J890')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and there's nothing you can do to me now.''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J890" onclick="javascript:toggleLayer('E890')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もうおまえたちは手も足も出ないんだぞ」と言えることなんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="891"><a name="891"><TD id="E891" onclick="javascript:toggleLayer('J891')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Now, one of the justifications people sometimes offer for owning software, is the idea of giving people an incentive to produce things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J891" onclick="javascript:toggleLayer('E891')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さて、ソフト所有を正当化する議論として出てくるのが、みんなにものをつくるインセンティブを与えるってやつだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="892"><a name="892"><TD id="E892" onclick="javascript:toggleLayer('J892')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I support the idea of private enterprise in general, and the idea of hope to make money by producing things that other people like to use, but it's going haywire in the field of software now.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J892" onclick="javascript:toggleLayer('E892')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ぼくは私企業の考え方には一般的に賛成だし、ほかの人が喜んで使ってくれるものをつくってお金を得たいな、と思うのにも賛成だけれど、ソフトの分野ではこれが収拾つかない状態になってきてる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="893"><a name="893"><TD id="E893" onclick="javascript:toggleLayer('J893')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Producing a proprietary program is not the same contribution to society as producing the same program and letting it be free.
+Because writing the program is just a potential contribution to society.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J893" onclick="javascript:toggleLayer('E893')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 独占ソフトをつくるのは、同じプログラムをつくってそれをフリーにするのとでは、社会への貢献度がぜんぜんちがう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="894"><a name="894"><TD id="E894" onclick="javascript:toggleLayer('J894')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The real contribution to the wealth of society happens only when the program is used.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J894" onclick="javascript:toggleLayer('E894')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 社会の富への貢献が起こるのは、そのプログラムが使われたときだけなんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="895"><a name="895"><TD id="E895" onclick="javascript:toggleLayer('J895')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And if you prevent the program from being used, the contribution doesn't actually happen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J895" onclick="javascript:toggleLayer('E895')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プログラムが使われるのを妨害したら、その貢献は起きないんだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="896"><a name="896"><TD id="E896" onclick="javascript:toggleLayer('J896')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So, the contribution that society needs is not these proprietary programs that everyone has such an incentive to make, the contribution we really want is free software, so our society is going haywire because it gives people an incentive to do what is not very useful, and no incentive to do what is useful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J896" onclick="javascript:toggleLayer('E896')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから社会が必要としている貢献は、みんながえらくインセンティブをもってつくってる独占ソフトではなくて、ぼくたちが本当に求めてる貢献はフリーソフトで、ぼくたちの社会が収拾つかなくなっているのは、それがあまり役にたたないことをするインセンティブを人に与えて、役に立つことをするインセンティブをぜんぜん与えてないからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="897"><a name="897"><TD id="E897" onclick="javascript:toggleLayer('J897')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus the basic idea of private enterprise is not being followed, and you could even say that the society is neurotic.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J897" onclick="javascript:toggleLayer('E897')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから私企業の基本的な考え方がここではおかしくなっていて、だから社会自体が神経症気味とさえ言えるかもね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="898"><a name="898"><TD id="E898" onclick="javascript:toggleLayer('J898')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After all when an individual encourages in others behavior that is not good for that individual we call this a neurosis.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J898" onclick="javascript:toggleLayer('E898')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だってさ、個人が他人に対して、その個人自身にとってよくない行動を推奨するとき、その人は神経症なんだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="899"><a name="899"><TD id="E899" onclick="javascript:toggleLayer('J899')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Here society is behaving in that fashion,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J899" onclick="javascript:toggleLayer('E899')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここでは社会がそういうふうに行動してる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="900"><a name="900"><TD id="E900" onclick="javascript:toggleLayer('J900')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> encouraging programmers to do things that is not good for society.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J900" onclick="javascript:toggleLayer('E900')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プログラマに、社会にとってよくないことをするように奨励してるんだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="rms-7.htm">prev</a>
+<a href="rms-0.htm">0</a>
+<a href="rms-1.htm">1</a>
+<a href="rms-2.htm">2</a>
+<a href="rms-3.htm">3</a>
+<a href="rms-4.htm">4</a>
+<a href="rms-5.htm">5</a>
+<a href="rms-6.htm">6</a>
+<a href="rms-7.htm">7</a>
+<8>
+<a href="rms-9.htm">9</a>
+<a href="rms-9.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/rmse.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/rmsj.txt">local copy</a><li><a href="../manual-alignment/rms.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

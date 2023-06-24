@@ -1,0 +1,388 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Prince / Nicolo Machiavelli 著</h2><h2>君主 / ニッコロ・マキャヴェリ 著 / 永江良一 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/prince2e.txt">英語文</a>&<a href="../org/prince2j.txt">日本語文</a> / <a href="../manual-alignment/prince2.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>15 of The Prince</TITLE>
+<hr>
+<a href="prince2-14.htm">prev</a>
+<a href="prince2-0.htm">0</a>
+<a href="prince2-1.htm">1</a>
+<a href="prince2-2.htm">2</a>
+<a href="prince2-3.htm">3</a>
+<a href="prince2-4.htm">4</a>
+<a href="prince2-5.htm">5</a>
+<a href="prince2-6.htm">6</a>
+<a href="prince2-7.htm">7</a>
+<a href="prince2-8.htm">8</a>
+<a href="prince2-9.htm">9</a>
+<a href="prince2-10.htm">10</a>
+<a href="prince2-11.htm">11</a>
+<a href="prince2-12.htm">12</a>
+<a href="prince2-13.htm">13</a>
+<a href="prince2-14.htm">14</a>
+<15>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1501"><a name="1501"><TD id="E1501" onclick="javascript:toggleLayer('J1501')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And nothing honours a man more than to establish new laws and new ordinances when he himself was newly risen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1501" onclick="javascript:toggleLayer('E1501')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新たに身を起したとき、新しい法、新しい秩序を確立することほど、人にとって名誉なことはありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1502"><a name="1502"><TD id="E1502" onclick="javascript:toggleLayer('J1502')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Such things when they are well founded and dignified will make him revered and admired, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1502" onclick="javascript:toggleLayer('E1502')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それらがきちんと創られ立派なものとなるとき、そうしたことで彼は崇敬され称賛されるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1503"><a name="1503"><TD id="E1503" onclick="javascript:toggleLayer('J1503')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and in Italy there are not wanting opportunities to bring such into use in every form.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1503" onclick="javascript:toggleLayer('E1503')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかも、イタリアでは、どんな形態であれ、そうしたものを利用しはじめる機会が欠けているわけではないのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1504"><a name="1504"><TD id="E1504" onclick="javascript:toggleLayer('J1504')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Here there is great valour in the limbs whilst it fails in the head.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1504" onclick="javascript:toggleLayer('E1504')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここでは、偉大な勇猛さは、手足にはあるけれど、頭には欠けているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1505"><a name="1505"><TD id="E1505" onclick="javascript:toggleLayer('J1505')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Look attentively at the duels and the hand-to-hand combats, how superior the Italians are in strength, dexterity, and subtlety. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1505" onclick="javascript:toggleLayer('E1505')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 決闘だの一対一の戦闘を注意して見てみると、イタリア人は力や技巧や巧妙さではとても優れています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1506"><a name="1506"><TD id="E1506" onclick="javascript:toggleLayer('J1506')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But when it comes to armies they do not bear comparison, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1506" onclick="javascript:toggleLayer('E1506')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし軍隊となると、比較に耐えません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1507"><a name="1507"><TD id="E1507" onclick="javascript:toggleLayer('J1507')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and this springs entirely from the insufficiency of the leaders,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1507" onclick="javascript:toggleLayer('E1507')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは全くもって指導者の無能から生じているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1508"><a name="1508"><TD id="E1508" onclick="javascript:toggleLayer('J1508')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> since those who are capable are not obedient, and each one seems to himself to know, there having never been any one so distinguished above the rest, either by valour or fortune, that others would yield to him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1508" onclick="javascript:toggleLayer('E1508')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 有能な人は従順でなく、個々人が自分はよく知っているのだと思い込んでいるので、武勇でも運でも他の者から目立つほど優れた人がおらず、他の者が指導者に従わなかったからなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1509"><a name="1509"><TD id="E1509" onclick="javascript:toggleLayer('J1509')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hence it is that for so long a time, and during so much fighting in the past twenty years, whenever there has been an army wholly Italian, it has always given a poor account of itself;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1509" onclick="javascript:toggleLayer('E1509')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このため、長い間、過去二十年の戦乱の間、全軍イタリア人の場合はいつも、戦績は振わなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1510"><a name="1510"><TD id="E1510" onclick="javascript:toggleLayer('J1510')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> the first witness to this is Il Taro, afterwards Allesandria, Capua, Genoa, Vaila, Bologna, Mestri.(*)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1510" onclick="javascript:toggleLayer('E1510')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その証拠がタロ、アレッサンドリア、カプア、ジェノヴァ、ヴァイラ、ボローニャ、メストリの戦いでした[48]。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1511"><a name="1511"><TD id="E1511" onclick="javascript:toggleLayer('J1511')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If, therefore, your illustrious house wishes to follow these remarkable men who have redeemed their country, it is necessary before all things, as a true foundation for every enterprise, to be provided with your own forces, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1511" onclick="javascript:toggleLayer('E1511')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、高名なる貴家が国を質から請け出そうという優れた人材を率いようとするなら、どんな企図でも真の基盤となるご自身の軍事力を用意することが、何よりもまず必要です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1512"><a name="1512"><TD id="E1512" onclick="javascript:toggleLayer('J1512')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because there can be no more faithful, truer, or better soldiers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1512" onclick="javascript:toggleLayer('E1512')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら自分の軍隊以上に忠実でまっとうで優良な兵士は、いないのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1513"><a name="1513"><TD id="E1513" onclick="javascript:toggleLayer('J1513')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And although singly they are good, altogether they will be much better when they find themselves commanded by their prince, honoured by him, and maintained at his expense.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1513" onclick="javascript:toggleLayer('E1513')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼ら個々人が優れているといっても、自分たちの君主が指揮しており、その君主が栄誉を授け、その君主の費用で養われていると知れば、さらにいっそう優れたものとなるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1514"><a name="1514"><TD id="E1514" onclick="javascript:toggleLayer('J1514')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Therefore it is necessary to be prepared with such arms, so that you can be defended against foreigners by Italian valour.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1514" onclick="javascript:toggleLayer('E1514')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それで貴殿はイタリアの武勇によって外交勢力から守られるのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1515"><a name="1515"><TD id="E1515" onclick="javascript:toggleLayer('J1515')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And although Swiss and Spanish infantry may be considered very formidable, nevertheless there is a defect in both, by reason of which a third order would not only be able to oppose them, but might be relied upon to overthrow them. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1515" onclick="javascript:toggleLayer('E1515')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> スイスやスペインの歩兵が非常に手ごわいとはいっても、両軍とも欠陥があり、そのため第三の軍制で彼らに対抗できるだけでなく、彼らを壊滅させることができるかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1516"><a name="1516"><TD id="E1516" onclick="javascript:toggleLayer('J1516')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For the Spaniards cannot resist cavalry, and the Switzers are afraid of infantry whenever they encounter them in close combat.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1516" onclick="javascript:toggleLayer('E1516')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのは、スペイン軍は騎兵に対抗できないし、またスイス兵は接近戦で遭遇するとかならず歩兵を恐れるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1517"><a name="1517"><TD id="E1517" onclick="javascript:toggleLayer('J1517')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Owing to this, as has been and may again be seen, the Spaniards are unable to resist French cavalry, and the Switzers are overthrown by Spanish infantry.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1517" onclick="javascript:toggleLayer('E1517')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> このおかげで、スペイン軍がフランス騎兵に対抗できず、スイス兵が歩兵によって壊走するのが、これまで見られてきたし、これからも見られるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1518"><a name="1518"><TD id="E1518" onclick="javascript:toggleLayer('J1518')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And although a complete proof of this latter cannot be shown, nevertheless there was some evidence of it at the battle of Ravenna, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1518" onclick="javascript:toggleLayer('E1518')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> スイス兵の件はきちんと証明することはできないのですが、ラヴェンナの戦いでそのいくらかは明らかになりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1519"><a name="1519"><TD id="E1519" onclick="javascript:toggleLayer('J1519')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> when the Spanish infantry were confronted by German battalions, who follow the same tactics as the Swiss;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1519" onclick="javascript:toggleLayer('E1519')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その戦いではスペイン歩兵がドイツの大隊と戦ったのですが、ドイツ大隊はスイス兵と同じ戦術をとっていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1520"><a name="1520"><TD id="E1520" onclick="javascript:toggleLayer('J1520')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> when the Spaniards, by agility of body and with the aid of their shields, got in under the pikes of the Germans and stood out of danger, able to attack, while the Germans stood helpless, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1520" onclick="javascript:toggleLayer('E1520')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> スペイン兵が集団の敏捷さと盾の助けでドイツ軍の槍をかいくぐり、危険がなく攻撃可能な場所にたったのに、ドイツ軍のほうは孤立無援の状態になったのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1521"><a name="1521"><TD id="E1521" onclick="javascript:toggleLayer('J1521')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, if the cavalry had not dashed up, all would have been over with them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1521" onclick="javascript:toggleLayer('E1521')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし騎兵が駆けつけなければ、彼らは万事休していたことでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1522"><a name="1522"><TD id="E1522" onclick="javascript:toggleLayer('J1522')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is possible, therefore, knowing the defects of both these infantries, to invent a new one, which will resist cavalry and not be afraid of infantry;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1522" onclick="javascript:toggleLayer('E1522')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、こうした両歩兵の欠陥を知れば、騎兵に対抗できて歩兵を恐れない、新しい歩兵を創案することも可能です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1523"><a name="1523"><TD id="E1523" onclick="javascript:toggleLayer('J1523')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> this need not create a new order of arms, but a variation upon the old.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1523" onclick="javascript:toggleLayer('E1523')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これには新しい軍団を創設する必要はなく、古くからある軍団に変更を加えるだけで十分です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1524"><a name="1524"><TD id="E1524" onclick="javascript:toggleLayer('J1524')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And these are the kind of improvements which confer reputation and power upon a new prince.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1524" onclick="javascript:toggleLayer('E1524')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは新しい君主に名声と権力をもたらす改善なのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1525"><a name="1525"><TD id="E1525" onclick="javascript:toggleLayer('J1525')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This opportunity, therefore, ought not to be allowed to pass for letting Italy at last see her liberator appear.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1525" onclick="javascript:toggleLayer('E1525')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、イタリアがついにその解放者が現れるのを目にしようというこの機会を、見過ごしてはなりません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1526"><a name="1526"><TD id="E1526" onclick="javascript:toggleLayer('J1526')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Nor can one express the love with which he would be received in all those provinces which have suffered so much from these foreign scourings, with what thirst for revenge, with what stubborn faith, with what devotion, with what tears.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1526" onclick="javascript:toggleLayer('E1526')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これら外国の屑どもから痛めつけられたあらゆる地方で、どれほどの愛で、どれほどの復讐の渇望をもって、どれほど強固な信念で、どれほど献身で、どれほど涙で、その解放者が迎えられるか、表現できないほどです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1527"><a name="1527"><TD id="E1527" onclick="javascript:toggleLayer('J1527')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What door would be closed to him?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1527" onclick="javascript:toggleLayer('E1527')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼にたいし閉される門戸があるのでしょうか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1528"><a name="1528"><TD id="E1528" onclick="javascript:toggleLayer('J1528')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Who would refuse obedience to him?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1528" onclick="javascript:toggleLayer('E1528')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だれが彼に服従するのを拒むのでしょうか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1529"><a name="1529"><TD id="E1529" onclick="javascript:toggleLayer('J1529')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What envy would hinder him?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1529" onclick="javascript:toggleLayer('E1529')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どんな妬みが彼を邪魔だてするのでしょうか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1530"><a name="1530"><TD id="E1530" onclick="javascript:toggleLayer('J1530')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> What Italian would refuse him homage? 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1530" onclick="javascript:toggleLayer('E1530')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> どういうイタリア人が彼に臣従を誓うのを拒むのでしょうか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1531"><a name="1531"><TD id="E1531" onclick="javascript:toggleLayer('J1531')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> To all of us this barbarous dominion stinks.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1531" onclick="javascript:toggleLayer('E1531')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たち全員にとって、この蛮族の支配が悪臭を放っています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1532"><a name="1532"><TD id="E1532" onclick="javascript:toggleLayer('J1532')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let, therefore, your illustrious house take up this charge with that courage and hope with which all just enterprises are undertaken, so that under its standard our native country may be ennobled, and under its auspices may be verified that saying of Petrarch:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1532" onclick="javascript:toggleLayer('E1532')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ですから、高名なる貴家が、あらゆる正義の企図に着手する際に抱く勇気と希望をもって、この任務を引き受け、その軍旗の下に我が祖国の名を高らしめ、その吉兆の下にペトラルカの次の言葉が正しいことを示されますよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1533"><a name="1533"><TD id="E1533" onclick="javascript:toggleLayer('J1533')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Virtu contro al Furore
+Prendera l'arme, e fia il combatter corto:
+Che l'antico valore
+Negli italici cuor non e ancor morto.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1533" onclick="javascript:toggleLayer('E1533')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 暴虐に抗う徳は
+武器を取りて、戦はたちまち止まん
+いにしえの猛き心は
+イタリアの民の胸に未だ滅びざれば 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1534"><a name="1534"><TD id="E1534" onclick="javascript:toggleLayer('J1534')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Virtue against fury shall advance the fight,
+And it i' th' combat soon shall put to flight:
+For the old Roman valour is not dead,
+Nor in th' Italians' brests extinguished.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1534" onclick="javascript:toggleLayer('E1534')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1535"><a name="1535"><TD ID="TAB1535" onclick="javascript:toggleLayer('J1535')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1535" onclick="javascript:toggleLayer('E1535')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1536"><a name="1536"><TD id="E1536" onclick="javascript:toggleLayer('J1536')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (*) Giuliano de Medici.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1536" onclick="javascript:toggleLayer('E1536')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 英訳の注
+[47] ジュリアーノ・デ・メディチ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1537"><a name="1537"><TD id="E1537" onclick="javascript:toggleLayer('J1537')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He had just been created a cardinal by Leo X.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1537" onclick="javascript:toggleLayer('E1537')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼はレオ十世により枢機卿に叙任されたところであった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1538"><a name="1538"><TD id="E1538" onclick="javascript:toggleLayer('J1538')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In 1523 Giuliano was elected Pope, and took the title of Clement VII.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1538" onclick="javascript:toggleLayer('E1538')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 1523年にはジュリアーノは教皇に選出され、クレメンスという称号を得た。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1539"><a name="1539"><TD id="E1539" onclick="javascript:toggleLayer('J1539')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [48] 
+(*) The battles of Il Taro, 1495;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1539" onclick="javascript:toggleLayer('E1539')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> イル・タロの戦闘は1495年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1540"><a name="1540"><TD id="E1540" onclick="javascript:toggleLayer('J1540')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Alessandria, 1499; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1540" onclick="javascript:toggleLayer('E1540')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アレッサンドリアは1499年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1541"><a name="1541"><TD id="E1541" onclick="javascript:toggleLayer('J1541')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Capua,1501;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1541" onclick="javascript:toggleLayer('E1541')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カプアは1501年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1542"><a name="1542"><TD id="E1542" onclick="javascript:toggleLayer('J1542')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Genoa, 1507;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1542" onclick="javascript:toggleLayer('E1542')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ジェノヴァは1507年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1543"><a name="1543"><TD id="E1543" onclick="javascript:toggleLayer('J1543')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Vaila, 1509;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1543" onclick="javascript:toggleLayer('E1543')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヴァイラは1509年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1544"><a name="1544"><TD id="E1544" onclick="javascript:toggleLayer('J1544')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Bologna, 1511;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1544" onclick="javascript:toggleLayer('E1544')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ボローニャは1511年、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1545"><a name="1545"><TD id="E1545" onclick="javascript:toggleLayer('J1545')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Mestri, 1513.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1545" onclick="javascript:toggleLayer('E1545')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> メストリは1513年に起った。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="prince2-14.htm">prev</a>
+<a href="prince2-0.htm">0</a>
+<a href="prince2-1.htm">1</a>
+<a href="prince2-2.htm">2</a>
+<a href="prince2-3.htm">3</a>
+<a href="prince2-4.htm">4</a>
+<a href="prince2-5.htm">5</a>
+<a href="prince2-6.htm">6</a>
+<a href="prince2-7.htm">7</a>
+<a href="prince2-8.htm">8</a>
+<a href="prince2-9.htm">9</a>
+<a href="prince2-10.htm">10</a>
+<a href="prince2-11.htm">11</a>
+<a href="prince2-12.htm">12</a>
+<a href="prince2-13.htm">13</a>
+<a href="prince2-14.htm">14</a>
+<15>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/prince2e.txt">local copy</a> / <a href="http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/">http://etext.library.adelaide.edu.au/m/machiavelli/niccolo/m149p/</a><li>オリジナルの日本語文: <a href="../org/prince2j.txt">local copy</a> / <a href="http://page.freett.com/rionag/machiavelli/prince.html">http://page.freett.com/rionag/machiavelli/prince.html</a><li><a href="../manual-alignment/prince2.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

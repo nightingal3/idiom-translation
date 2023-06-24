@@ -1,0 +1,370 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>A Scandal in Bohemia / Arthur Conan Doyle 著</h2><h2>ボヘミアの醜聞 / コナン・ドイル 著 / 大久保ゆう 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/scandale.txt">英語文</a>&<a href="../org/scandalj.txt">日本語文</a> / <a href="../manual-alignment/scandal.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>8 of A Scandal in Bohemia</TITLE>
+<hr>
+<a href="scandal-7.htm">prev</a>
+<a href="scandal-0.htm">0</a>
+<a href="scandal-1.htm">1</a>
+<a href="scandal-2.htm">2</a>
+<a href="scandal-3.htm">3</a>
+<a href="scandal-4.htm">4</a>
+<a href="scandal-5.htm">5</a>
+<a href="scandal-6.htm">6</a>
+<a href="scandal-7.htm">7</a>
+<8>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="801"><a name="801"><TD id="E801" onclick="javascript:toggleLayer('J801')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> --oh, what a woman!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J801" onclick="javascript:toggleLayer('E801')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――まさに、なんたる女だ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="802"><a name="802"><TD id="E802" onclick="javascript:toggleLayer('J802')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried the King of Bohemia, when we had all three read this epistle.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J802" onclick="javascript:toggleLayer('E802')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と我々三人が親書を読み終えたとき、ボヘミア王が叫んだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="803"><a name="803"><TD id="E803" onclick="javascript:toggleLayer('J803')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Did I not tell you how quick and resolute she was?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J803" onclick="javascript:toggleLayer('E803')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「言うによろしく、怜悧決然たる女であろう？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="804"><a name="804"><TD id="E804" onclick="javascript:toggleLayer('J804')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Would she not have made an admirable queen?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J804" onclick="javascript:toggleLayer('E804')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> きっと王妃の誉れとなったであろうに。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="805"><a name="805"><TD id="E805" onclick="javascript:toggleLayer('J805')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Is it not a pity that she was not on my level?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J805" onclick="javascript:toggleLayer('E805')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 惜しむらくは、階級が余には不相応であったことか。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="806"><a name="806"><TD id="E806" onclick="javascript:toggleLayer('J806')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "From what I have seen of the lady she seems indeed to be on a very different level to your Majesty,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J806" onclick="javascript:toggleLayer('E806')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「僕が拝見しましても、この女性と陛下、なるほど階級に差があるようです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="807"><a name="807"><TD id="E807" onclick="javascript:toggleLayer('J807')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Holmes coldly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J807" onclick="javascript:toggleLayer('E807')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホームズは冷ややかに言う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="808"><a name="808"><TD id="E808" onclick="javascript:toggleLayer('J808')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am sorry that I have not been able to bring your Majesty's business to a more successful conclusion."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J808" onclick="javascript:toggleLayer('E808')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「遺憾ながら、陛下のご依頼を上首尾な結果に終わらせることが出来ませんでした。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="809"><a name="809"><TD id="E809" onclick="javascript:toggleLayer('J809')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "On the contrary, my dear sir,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J809" onclick="javascript:toggleLayer('E809')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「その逆であるぞ、貴公。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="810"><a name="810"><TD id="E810" onclick="javascript:toggleLayer('J810')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried the King;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J810" onclick="javascript:toggleLayer('E810')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王は感嘆する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="811"><a name="811"><TD id="E811" onclick="javascript:toggleLayer('J811')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "nothing could be more successful.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J811" onclick="javascript:toggleLayer('E811')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「まことに上首尾である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="812"><a name="812"><TD id="E812" onclick="javascript:toggleLayer('J812')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I know that her word is inviolate.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J812" onclick="javascript:toggleLayer('E812')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あの女の言葉に嘘偽りはない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="813"><a name="813"><TD id="E813" onclick="javascript:toggleLayer('J813')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The photograph is now as safe as if it were in the fire."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J813" onclick="javascript:toggleLayer('E813')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 写真は火中にくべたも同然、今や安全である。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="814"><a name="814"><TD id="E814" onclick="javascript:toggleLayer('J814')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am glad to hear your Majesty say so."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J814" onclick="javascript:toggleLayer('E814')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「陛下にそう言っていただき光栄に存じます。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="815"><a name="815"><TD id="E815" onclick="javascript:toggleLayer('J815')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am immensely indebted to you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J815" onclick="javascript:toggleLayer('E815')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「大儀であった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="816"><a name="816"><TD id="E816" onclick="javascript:toggleLayer('J816')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pray tell me in what way I can reward you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J816" onclick="javascript:toggleLayer('E816')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 礼をつかわすゆえ、何なりと言うがよかろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="817"><a name="817"><TD id="E817" onclick="javascript:toggleLayer('J817')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This ring--"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J817" onclick="javascript:toggleLayer('E817')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この指輪なぞ……」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="818"><a name="818"><TD id="E818" onclick="javascript:toggleLayer('J818')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He slipped an emerald snake ring from his finger and held it out upon the palm of his hand.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J818" onclick="javascript:toggleLayer('E818')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王は指から翠玉（エメラルド）の蛇型指輪を抜き取り、自らの掌上に載せた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="819"><a name="819"><TD id="E819" onclick="javascript:toggleLayer('J819')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Your Majesty has something which I should value even more highly,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J819" onclick="javascript:toggleLayer('E819')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「陛下は僕にとってもっと価値のある物をお持ちです。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="820"><a name="820"><TD id="E820" onclick="javascript:toggleLayer('J820')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Holmes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J820" onclick="javascript:toggleLayer('E820')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホームズ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="821"><a name="821"><TD id="E821" onclick="javascript:toggleLayer('J821')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "You have but to name it."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J821" onclick="javascript:toggleLayer('E821')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「何か言ってみたまえ。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="822"><a name="822"><TD id="E822" onclick="javascript:toggleLayer('J822')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "This photograph!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J822" onclick="javascript:toggleLayer('E822')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「この写真です。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="823"><a name="823"><TD ID="TAB823" onclick="javascript:toggleLayer('J823')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB823" onclick="javascript:toggleLayer('E823')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="824"><a name="824"><TD id="E824" onclick="javascript:toggleLayer('J824')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The King stared at him in amazement.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB824" onclick="javascript:toggleLayer('E824')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="825"><a name="825"><TD ID="TAB825" onclick="javascript:toggleLayer('J825')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB825" onclick="javascript:toggleLayer('E825')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="826"><a name="826"><TD id="E826" onclick="javascript:toggleLayer('J826')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Irene's photograph!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J826" onclick="javascript:toggleLayer('E826')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「イレーナの写真とな！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="827"><a name="827"><TD id="E827" onclick="javascript:toggleLayer('J827')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he cried.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J827" onclick="javascript:toggleLayer('E827')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と王。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="828"><a name="828"><TD id="E828" onclick="javascript:toggleLayer('J828')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Certainly,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J828" onclick="javascript:toggleLayer('E828')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「よかろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="829"><a name="829"><TD id="E829" onclick="javascript:toggleLayer('J829')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if you wish it."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J829" onclick="javascript:toggleLayer('E829')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 望むのであれば。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="830"><a name="830"><TD id="E830" onclick="javascript:toggleLayer('J830')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I thank your Majesty.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J830" onclick="javascript:toggleLayer('E830')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ありがたく存じます、陛下。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="831"><a name="831"><TD id="E831" onclick="javascript:toggleLayer('J831')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then there is no more to be done in the matter.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J831" onclick="javascript:toggleLayer('E831')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しからば、もはやこの件は解決いたしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="832"><a name="832"><TD id="E832" onclick="javascript:toggleLayer('J832')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I have the honour to wish you a very good-morning."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J832" onclick="javascript:toggleLayer('E832')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ごきげんよう、と謹んで申し上げます。」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="833"><a name="833"><TD id="E833" onclick="javascript:toggleLayer('J833')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He bowed, and, turning away without observing the hand which the King had stretched out to him, he set off in my company for his chambers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J833" onclick="javascript:toggleLayer('E833')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とホームズはお辞儀し、王の差し出した手に見向きもせず、きびすを返し、私とともに私室へ引き上げたのだった。　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="834"><a name="834"><TD id="E834" onclick="javascript:toggleLayer('J834')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And that was how a great scandal threatened to affect the kingdom of Bohemia, and how the best plans of Mr. Sherlock Holmes were beaten by a woman's wit.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J834" onclick="javascript:toggleLayer('E834')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 以上がボヘミア王室を脅かした一大醜聞であり、ホームズの深謀が一女性の機知にうち砕かれた事件の顛末である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="835"><a name="835"><TD id="E835" onclick="javascript:toggleLayer('J835')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He used to make merry over the cleverness of women, but I have not heard him do it of late.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J835" onclick="javascript:toggleLayer('E835')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 以前は女性の浅知恵と冷やかしていたホームズも、最近は一言もない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="836"><a name="836"><TD id="E836" onclick="javascript:toggleLayer('J836')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And when he speaks of Irene Adler, or when he refers to her photograph, it is always under the honourable title of the woman.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J836" onclick="javascript:toggleLayer('E836')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてアイリーン・アドラーに触れたり、写真を引き合いに出したりする際には、ホームズは常に『あのひと』という敬称を使うのである。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="837"><a name="837"><TD ID="TAB837" onclick="javascript:toggleLayer('J837')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB837" onclick="javascript:toggleLayer('E837')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="838"><a name="838"><TD ID="TAB838" onclick="javascript:toggleLayer('J838')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J838" onclick="javascript:toggleLayer('E838')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 【訳注】
+※１　オデッサ……現在のウクライナ共和国、黒海沿岸の港町。当時の人口四九万九六七三。
+※２　トリンコマリィ……現在のスリランカ、セイロン島にある軍港。当時はイギリス領で、人口一万一二九五。
+※３　ガソジン……家庭用の、小型炭酸水製造器。アルカリ炭酸塩と酸を化合させて生成する。ニューヨークにあるシャーロキアン団体、ベイカー街イレギュラーズの会合シンボル。
+※４　ポンド……一ポンド、〇・四五グラム。七ポンドでおよそ三キロ。
+※５　ヨードホルム……消毒用の結晶性化合物。局所殺菌剤である。
+※６　硝酸銀……外科手術にも利用された硝酸化合物。
+※７　金の単位……一九七一年までイギリスは今と異なる通貨単位を私用していた。現在の貨幣感覚でいうと、一ペニー＝一〇〇円　一シリング＝一二〇〇円　一ポンド＝二万四〇〇〇円程度であり、十二ペンス（ペニー）は一シリング、二十シリングは一ポンド。硬貨についた名前として、クラウンは五シリング銀貨、ソヴリンは一ポンド金貨。ギニーは一・〇五ポンドに当たる。以上のことを考慮すると、一〇〇〇ポンドは二四〇〇万円に相当する。
+※８　Eger……原文ではEgriaで、誤りである。当時の人口、二万三六六五。アルブレヒト・オイゼイビウス・ヴェンセル・フォン・ヴァレンシュタイン（一五八三―一六三四）はボヘミア出身で、十七世紀の三十年戦争において、皇帝軍総司令官として傭兵主体の軍を率いて戦ったが、後に皇帝派の刺客によってここで暗殺される。シラーの詩劇で有名。
+※９　ボヘミア……現在のチェコ近辺。チェック人とドイツ人が住民の多くを占め、両国語が使われていた。人口六三一万八二八〇。ベーメン。
+※10　ブルーム型馬車……二人乗りの箱形座席と一段高い御者席のある四輪馬車。この馬車を普及させたイギリスの政治家、ブルーアム・ヘンリ卿（一七七八―一八六八）にちなむ。
+※11　ボズウェル……ジェイムズ・ボズウェル（一七四〇―一七九五）。スコットランドの弁護士、作家。同じく著名な作家で辞書編集者サミュエル・ジョンソン博士（一七〇九―一七八四）を信奉し、その伝記作家となった。「サミュエル・ジョンソン伝」は英語で書かれた伝記の最高傑作と称される。プロジェクト・グーテンベルクに電子テキストがある。
+※12　アストラカン毛皮……ロシア、カスピ海ヴォルガ河口アストラハン地方原産の子羊の巻き毛の黒い毛皮。非常に高価であった。
+※13　プラハ……現在のチェコの首都。当時、ボヘミアの首都で人口は二〇万四四九八。中欧最古の都市の一つ。
+※14　ワルシャワ……現在のポーランドの首都。当時ロシア帝国領で、人口七五万六四二六。ヴァルシャヴァ。
+※15　ラビ……ユダヤ教徒間の尊称で、宗教的指導者や、律法博士を呼ぶ際に使う。またその本人を差す。
+※16　コントラルト……女声の最も低い音域。
+※17　ランガム・ホテル……ウェスト・エンドのロンドン一有名な超高級ホテル。
+※18　セーム革……子鹿あるいは羊の革の床部分を油なめしし、スエード調に仕上げた革のこと。非常にしなやかなため、手袋、衣料、また一部の履き物にも使用される。本来はアルプス・南欧・西南アジア産のシャモア（レイヨウの一種）の皮で作られた柔軟な革だけを呼んだ。
+※19　キャビネ判……縦一六・五センチ×横一二センチの写真判。
+※20　フリーメイソン……一七一七年、「自由・平等・博愛・兄弟愛・人類同胞主義」を掲げ設立された秘密結社。相互扶助と友愛を目的とし、現在まで世界中の財政界の人々が軒並み会員になっている。
+※21　チャブ錠……イギリスの発明家チャールズ・チャブ（？―一八四五）発明のはじき金つきの特殊錠。
+※22　シャグ煙草……粗悪で強い煙草の葉を刻んだ、刻み煙草。
+※23　イナ・テンプル法学院……ストランド街とヴィクトリア・エンバンクメントの中間にある、法務協会。法廷弁護士召集の独占権を有する、法律研究のための大法人組織『四法学院』の一つ。
+※24　ハンソム型馬車……御者席が客席の後ろの高座席にある、一頭立て二輪の有蓋馬車。客席は二人乗り。特許権所有者で建築技師ジョゼフ・Ａ・ハンソム（一八〇三―一八八二）にちなむ。主に辻馬車（後述）に使われる。当時ロンドン市民は呼び子を携帯し、それを二回吹けばやってくる。
+※25　リージェント街……市内有数の商店が並ぶ、ロンドンの目抜き通り。ジョン・ナッシュの設計で、北のオックスフォード街から南のピカディリ・サーカスをつなぐ。
+※26　エッジウェア通り……ウェスト・エンドにあり、オックスフォード街へ北西に向かい伸びている。
+※27　ランドー型馬車……二座席が前後に向かい合い、それぞれに折り畳みの幌が付いている四輪馬車。ドイツ、バイエルンにある街の名前にちなむ。
+※28　辻馬車……今で言うタクシー。ちなみに今で言うバスは乗り合い馬車である。
+※29　サープリス……聖職者や聖歌隊が儀式の際に着る袖の長い白衣。
+※30　ターナーさん（夫人）……もちろん下宿の女主人はハドソン夫人のはずだが、なぜかターナーとされている。間違いの原因は様々に推測される。
+※31　ジョン・ヘア……一八四四―一九二一。イギリスの名優で、劇場の支配人である。役作りについて専門的研究をした。一九〇七年に勲爵士に叙せられる。
+※32　アルスター・コート……大きく深々とした種類のコートで、丈はほぼ足の近くまであり、ベルトでしめるようになっているものもある。しばしばフードやケープが付いている。
+※33　チャリング・クロス発大陸行……ロンドンにある駅の一つから、ヨーロッパ大陸との海峡まで行く汽車のこと。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="scandal-7.htm">prev</a>
+<a href="scandal-0.htm">0</a>
+<a href="scandal-1.htm">1</a>
+<a href="scandal-2.htm">2</a>
+<a href="scandal-3.htm">3</a>
+<a href="scandal-4.htm">4</a>
+<a href="scandal-5.htm">5</a>
+<a href="scandal-6.htm">6</a>
+<a href="scandal-7.htm">7</a>
+<8>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/scandale.txt">local copy</a> / <a href="http://www.ibiblio.org/gutenberg/etext99/advsh12.txt">http://www.ibiblio.org/gutenberg/etext99/advsh12.txt</a><li>オリジナルの日本語文: <a href="../org/scandalj.txt">local copy</a> / <a href="http://www.comcarry.ne.jp/~maerd/221b/canon/adventure/bohemia/bohemia.htm">http://www.comcarry.ne.jp/~maerd/221b/canon/adventure/bohemia/bohemia.htm</a><li><a href="../manual-alignment/scandal.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

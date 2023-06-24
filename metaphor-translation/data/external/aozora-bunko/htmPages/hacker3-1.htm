@@ -1,0 +1,519 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Manager FAQ / Peter Seebach 著</h2><h2>管理職のためのハッカー FAQ / シーバック、ピーター 著 / yomoyomo  訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/hacker3e.txt">英語文</a>&<a href="../org/hacker3j.txt">日本語文</a> / <a href="../manual-alignment/hacker3.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>1 of The Manager FAQ</TITLE>
+<hr>
+<a href="hacker3-0.htm">prev</a>
+<a href="hacker3-0.htm">0</a>
+<1>
+<a href="hacker3-2.htm">2</a>
+<a href="hacker3-2.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="101"><a name="101"><TD id="E101" onclick="javascript:toggleLayer('J101')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't worry about it. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J101" onclick="javascript:toggleLayer('E101')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心配には及びません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="102"><a name="102"><TD id="E102" onclick="javascript:toggleLayer('J102')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.1: But it's been two weeks since I saw anything! 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J102" onclick="javascript:toggleLayer('E102')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 2.1: しかし見るところ二週間そればっかりなんですよ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="103"><a name="103"><TD id="E103" onclick="javascript:toggleLayer('J103')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is working, alone probably, on a big project, and just started, right?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J103" onclick="javascript:toggleLayer('E103')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは、多分一人で、ビッグ・プロジェクトに従事していて、それは始まったばかり、でよろしいですか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="104"><a name="104"><TD id="E104" onclick="javascript:toggleLayer('J104')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She's probably trying to figure it all out in advance.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J104" onclick="javascript:toggleLayer('E104')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女は多分その全容をあらかじめ理解しようとしているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="105"><a name="105"><TD id="E105" onclick="javascript:toggleLayer('J105')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ask her how it's going;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J105" onclick="javascript:toggleLayer('E105')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼女に進捗を尋ねてみてください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="106"><a name="106"><TD id="E106" onclick="javascript:toggleLayer('J106')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if she starts a lot of sentences, but interrupts them all with "no, wait..." or "drat, that won't work", it's going well. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J106" onclick="javascript:toggleLayer('E106')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし彼女が次々とセンテンスを話しだすが、「いや、待って・・・」とか「ちぇっ、上手くいかないぞ」といった言葉で中断するようなら、順調です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="107"><a name="107"><TD id="E107" onclick="javascript:toggleLayer('J107')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.2: Isn't this damaging to productivity? 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J107" onclick="javascript:toggleLayer('E107')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 2.2: それって生産性にダメージを与えてませんか？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="108"><a name="108"><TD id="E108" onclick="javascript:toggleLayer('J108')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> No.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J108" onclick="javascript:toggleLayer('E108')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いいえ、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="109"><a name="109"><TD id="E109" onclick="javascript:toggleLayer('J109')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker needs to recreate and think about things in many ways.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J109" onclick="javascript:toggleLayer('E109')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは色々なやり方で気晴らしをし、物事を考える必要があるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="110"><a name="110"><TD id="E110" onclick="javascript:toggleLayer('J110')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He will be more productive with this recreation than without it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J110" onclick="javascript:toggleLayer('E110')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 気晴らしをしないより、した方がより生産的であるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="111"><a name="111"><TD id="E111" onclick="javascript:toggleLayer('J111')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker enjoys working;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J111" onclick="javascript:toggleLayer('E111')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは仕事を楽しんでます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="112"><a name="112"><TD id="E112" onclick="javascript:toggleLayer('J112')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> don't worry about things getting done reasonably well and quickly. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J112" onclick="javascript:toggleLayer('E112')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 合理的にかつ迅速に仕事がなされるかについて心配することはありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="113"><a name="113"><TD id="E113" onclick="javascript:toggleLayer('J113')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.3: My hacker is constantly doing things unrelated to her job responsibilities.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J113" onclick="javascript:toggleLayer('E113')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 2.3: うちのとこのハッカーはいつも自分の職責と関係のないことをやってます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="114"><a name="114"><TD id="E114" onclick="javascript:toggleLayer('J114')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Do they need to be done?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J114" onclick="javascript:toggleLayer('E114')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その職責を果たす必要があるのですか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="115"><a name="115"><TD id="E115" onclick="javascript:toggleLayer('J115')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Very few hackers can resist solving a problem when they can solve it, and no one else is solving it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J115" onclick="javascript:toggleLayer('E115')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分は問題を解けるが他の誰もそれを解けない場合、問題を解くことに抵抗できるハッカーはほとんどいません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="116"><a name="116"><TD id="E116" onclick="javascript:toggleLayer('J116')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For that matter, is your hacker getting her job done?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J116" onclick="javascript:toggleLayer('E116')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この場合、あなたのとこのハッカーは仕事をうまくやってますか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="117"><a name="117"><TD id="E117" onclick="javascript:toggleLayer('J117')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If so, consider these other things a freebie or perk (for you).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J117" onclick="javascript:toggleLayer('E117')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしそうなら、そうした行動を（あなたへの）無償のサービス、チップと考えてみて下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="118"><a name="118"><TD id="E118" onclick="javascript:toggleLayer('J118')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Although it may not be conventional, it's probably helping out quite a bit. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J118" onclick="javascript:toggleLayer('E118')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それは協定にはないかもしれないが、いくばかりか助力にはなるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="119"><a name="119"><TD id="E119" onclick="javascript:toggleLayer('J119')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.4: My hacker is writing a book, reading USENET news, playing video games, talking with friends on the phone, and building sculptures out of paper clips. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J119" onclick="javascript:toggleLayer('E119')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 2.4: うちのとこのハッカーは本を書き、USENET を読み、ビデオゲームで遊び、電話で友人と話し、紙ばさみで彫刻を創っているんです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="120"><a name="120"><TD id="E120" onclick="javascript:toggleLayer('J120')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> On company time! 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J120" onclick="javascript:toggleLayer('E120')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 就業時間にですよ！
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="121"><a name="121"><TD id="E121" onclick="javascript:toggleLayer('J121')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He sounds happy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J121" onclick="javascript:toggleLayer('E121')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 幸せそうですね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="122"><a name="122"><TD id="E122" onclick="javascript:toggleLayer('J122')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The chances are he's in one of three states: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J122" onclick="javascript:toggleLayer('E122')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多分以下の三つのいずれかなのでしょう：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="123"><a name="123"><TD id="E123" onclick="javascript:toggleLayer('J123')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Basic job responsibilities are periodic (phone support, documentation, et al.) and there's a lull in incoming work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J123" onclick="javascript:toggleLayer('E123')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 基本的な職責が周期的なもの（電話サポート、文書調査など）で、次に来る仕事までの小康状態である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="124"><a name="124"><TD id="E124" onclick="javascript:toggleLayer('J124')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't worry about it! 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J124" onclick="javascript:toggleLayer('E124')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心配御無用です！ 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="125"><a name="125"><TD id="E125" onclick="javascript:toggleLayer('J125')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is stuck on a difficult problem. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J125" onclick="javascript:toggleLayer('E125')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは困難な問題に突き当たっている。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="126"><a name="126"><TD id="E126" onclick="javascript:toggleLayer('J126')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is bored silly and is trying to find amusement.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J126" onclick="javascript:toggleLayer('E126')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーはひどく退屈していて、娯楽を見つけようとしている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="127"><a name="127"><TD id="E127" onclick="javascript:toggleLayer('J127')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Perhaps you should find him more challenging work? 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J127" onclick="javascript:toggleLayer('E127')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> できましたら、あなたはよりやりがいのある仕事を見つけてやるべきではないでしょうか？ 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="128"><a name="128"><TD id="E128" onclick="javascript:toggleLayer('J128')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Any of these factors may be involved.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J128" onclick="javascript:toggleLayer('E128')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 以上の要素のいずれかがあてはまるのかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="129"><a name="129"><TD id="E129" onclick="javascript:toggleLayer('J129')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All of them may be involved.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J129" onclick="javascript:toggleLayer('E129')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 全部があてはまるのかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="130"><a name="130"><TD id="E130" onclick="javascript:toggleLayer('J130')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In general, if the work is challenging, and is getting done, don't worry too much about the process.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J130" onclick="javascript:toggleLayer('E130')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 一般に、もし仕事にやりがいがあり、うまくいっているなら、そのプロセスについて心配することはありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="131"><a name="131"><TD id="E131" onclick="javascript:toggleLayer('J131')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You might ask for your corporation to be given credit in the book.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J131" onclick="javascript:toggleLayer('E131')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーが書いた本にクレジットが与えられるようかけあってみては如何でしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="132"><a name="132"><TD id="E132" onclick="javascript:toggleLayer('J132')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.5: But my other workers are offended by my hacker's success, and it hurts their productivity. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J132" onclick="javascript:toggleLayer('E132')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 2.5: しかしですね、うちの他の従業員はハッカーの成功に気分を損ねてますし、彼らの生産性を損なっているのですが。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="133"><a name="133"><TD id="E133" onclick="javascript:toggleLayer('J133')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Do you really need to have workers around who would rather be the person getting something done, than have it done already?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J133" onclick="javascript:toggleLayer('E133')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたは本当に、既に何かをやってしまった労働者より、現在うまくやっている労働者を求めているのですか？　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="134"><a name="134"><TD id="E134" onclick="javascript:toggleLayer('J134')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ego has very little place in the workplace.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J134" onclick="javascript:toggleLayer('E134')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エゴなんて職場で重視するものではないでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="135"><a name="135"><TD id="E135" onclick="javascript:toggleLayer('J135')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If they can't do it well, assign them to something they can do. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J135" onclick="javascript:toggleLayer('E135')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし連中がうまくできてないのなら、連中ができる仕事を割り当てることです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="136"><a name="136"><TD id="E136" onclick="javascript:toggleLayer('J136')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Section 3: Stimulus and response
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J136" onclick="javascript:toggleLayer('E136')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3章: 鼓舞と反応
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="137"><a name="137"><TD id="E137" onclick="javascript:toggleLayer('J137')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.0: My hacker did something good, and I want to reward him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J137" onclick="javascript:toggleLayer('E137')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.0: うちのハッカーはよくやってますので、私としては彼に報酬を与えたいのですが。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="138"><a name="138"><TD id="E138" onclick="javascript:toggleLayer('J138')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Good!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J138" onclick="javascript:toggleLayer('E138')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 素晴らしい！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="139"><a name="139"><TD id="E139" onclick="javascript:toggleLayer('J139')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Here are some of the things most hackers would like to receive in exchange for their work: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J139" onclick="javascript:toggleLayer('E139')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのハッカーが自分の仕事と引き換えに受けたいと思うものの幾つかを以下に挙げます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="140"><a name="140"><TD id="E140" onclick="javascript:toggleLayer('J140')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Respect. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J140" onclick="javascript:toggleLayer('E140')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 尊敬 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="141"><a name="141"><TD id="E141" onclick="javascript:toggleLayer('J141')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Admiration. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J141" onclick="javascript:toggleLayer('E141')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 称賛 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="142"><a name="142"><TD id="E142" onclick="javascript:toggleLayer('J142')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Compliments. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J142" onclick="javascript:toggleLayer('E142')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 賛辞 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="143"><a name="143"><TD id="E143" onclick="javascript:toggleLayer('J143')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Understanding. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J143" onclick="javascript:toggleLayer('E143')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 理解 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="144"><a name="144"><TD id="E144" onclick="javascript:toggleLayer('J144')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Discounts on expensive toys. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J144" onclick="javascript:toggleLayer('E144')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 高価なおもちゃの割引 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="145"><a name="145"><TD id="E145" onclick="javascript:toggleLayer('J145')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Money. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J145" onclick="javascript:toggleLayer('E145')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> お金 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="146"><a name="146"><TD id="E146" onclick="javascript:toggleLayer('J146')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These are not necessarily in order.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J146" onclick="javascript:toggleLayer('E146')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 必ずしも順番通りではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="147"><a name="147"><TD id="E147" onclick="javascript:toggleLayer('J147')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The 4th item (understanding) is the most difficult.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J147" onclick="javascript:toggleLayer('E147')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ４番目の項目（理解）が最も難しいでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="148"><a name="148"><TD id="E148" onclick="javascript:toggleLayer('J148')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Try to remember this good thing your hacker just did the next time you discover he just spent a day playing x-trek.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J148" onclick="javascript:toggleLayer('E148')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次回あなたのとこのハッカーが x-trek をやって遊んでいるのを見かけたときに、ハッカーが成し遂げたいい仕事のことを思い出そうとしてください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="149"><a name="149"><TD id="E149" onclick="javascript:toggleLayer('J149')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Rather than complaining about getting work done, write it off as "a perk" that was granted (informally) as a bonus for a job well done.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J149" onclick="javascript:toggleLayer('E149')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 仕事にぐちをこぼすよりは、うまくいった仕事へのボーナスとして（非公式に）与えられる「臨時収入」とみなすことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="150"><a name="150"><TD id="E150" onclick="javascript:toggleLayer('J150')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't worry;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J150" onclick="javascript:toggleLayer('E150')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心配御無用！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="151"><a name="151"><TD id="E151" onclick="javascript:toggleLayer('J151')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> hackers get bored quickly when they aren't doing their work.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J151" onclick="javascript:toggleLayer('E151')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーというものは仕事をやらなければすぐに退屈してしまうものですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="152"><a name="152"><TD id="E152" onclick="javascript:toggleLayer('J152')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.1: My hacker did something bad, and I want to punish him. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J152" onclick="javascript:toggleLayer('E152')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.1: うちのとこのハッカーは仕事が上手くいってないので、私としては彼に処罰を与えたいところです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="153"><a name="153"><TD id="E153" onclick="javascript:toggleLayer('J153')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J153" onclick="javascript:toggleLayer('E153')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それはいけません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="154"><a name="154"><TD id="E154" onclick="javascript:toggleLayer('J154')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 30 years of psychological research has shown that punishment has no desirable long-term effects.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J154" onclick="javascript:toggleLayer('E154')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ３０年に渡る心理学の調査によると、処罰では長期的には望ましい効果がでません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="155"><a name="155"><TD id="E155" onclick="javascript:toggleLayer('J155')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is not a lab rat.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J155" onclick="javascript:toggleLayer('E155')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは実験用ネズミではないのです
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="156"><a name="156"><TD id="E156" onclick="javascript:toggleLayer('J156')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (Even if he were a lab rat, punishment wouldn't work;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J156" onclick="javascript:toggleLayer('E156')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （あまつさえ彼が実験用ネズミであるとしても、処罰ではうまくいかないでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="157"><a name="157"><TD id="E157" onclick="javascript:toggleLayer('J157')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> at least, not if he were one of the sorts of lab rats the psych research was done on.)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J157" onclick="javascript:toggleLayer('E157')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 少なくとも、心理調査が有効な実験用ネズミの類だったとしたら）。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="158"><a name="158"><TD id="E158" onclick="javascript:toggleLayer('J158')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you don't like something your hacker is doing, express your concerns.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J158" onclick="javascript:toggleLayer('E158')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしあなたがそのハッカーのすることが気に食わないなら、あなたの考えを伝えることです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="159"><a name="159"><TD id="E159" onclick="javascript:toggleLayer('J159')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Explain what it is that bothers you about the behavior. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J159" onclick="javascript:toggleLayer('E159')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 振る舞いについて、あなたを悩ませていることを説明するのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="160"><a name="160"><TD id="E160" onclick="javascript:toggleLayer('J160')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Be prepared for an argument;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J160" onclick="javascript:toggleLayer('E160')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 議論のための準備をすることです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="161"><a name="161"><TD id="E161" onclick="javascript:toggleLayer('J161')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> your hacker is a rational entity, and presumably had reasons.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J161" onclick="javascript:toggleLayer('E161')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは道理をわきまえた存在であって、理由があったのでしょうね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="162"><a name="162"><TD id="E162" onclick="javascript:toggleLayer('J162')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't jump on him too quickly;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J162" onclick="javascript:toggleLayer('E162')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼を余りにも性急にこっぴどくしからないことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="163"><a name="163"><TD id="E163" onclick="javascript:toggleLayer('J163')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they may turn out to be good reasons.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J163" onclick="javascript:toggleLayer('E163')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ちゃんとした理由があったことが分かるかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="164"><a name="164"><TD id="E164" onclick="javascript:toggleLayer('J164')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Don't be afraid to apologize if you're wrong.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J164" onclick="javascript:toggleLayer('E164')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしあなたの方が間違っていたら、素直に謝りましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="165"><a name="165"><TD id="E165" onclick="javascript:toggleLayer('J165')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If your hacker admits to having been wrong, don't demand an apology;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J165" onclick="javascript:toggleLayer('E165')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしあなたのとこのハッカーが非を認めても、謝罪を要求しないように。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="166"><a name="166"><TD id="E166" onclick="javascript:toggleLayer('J166')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so far as the hacker is concerned, admitting to being wrong is an apology, most likely.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J166" onclick="javascript:toggleLayer('E166')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーにおいては、非を認めることは、大抵において謝罪なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="167"><a name="167"><TD id="E167" onclick="javascript:toggleLayer('J167')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.2: I don't get it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J167" onclick="javascript:toggleLayer('E167')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.2: 私には理解できません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="168"><a name="168"><TD id="E168" onclick="javascript:toggleLayer('J168')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I offered my hacker a significant promotion, and she turned it down and acted offended. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J168" onclick="javascript:toggleLayer('E168')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私はうちのハッカーに著しい昇進をオファーしたのですが、彼女はそれを拒絶し、まるで傷つけられたかのように振る舞ったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="169"><a name="169"><TD id="E169" onclick="javascript:toggleLayer('J169')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A promotion frequently involves spending more time listening to people describing what they're doing, and less time playing with computers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J169" onclick="javascript:toggleLayer('E169')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 昇進により、他人の仕事の説明を聞くために費やす時間が増え、コンピュータと戯れる時間が減るということが往々にして起こります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="170"><a name="170"><TD id="E170" onclick="javascript:toggleLayer('J170')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is enjoying her work;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J170" onclick="javascript:toggleLayer('E170')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは現在の仕事を楽しんでいるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="171"><a name="171"><TD id="E171" onclick="javascript:toggleLayer('J171')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> if you want to offer a reward, consider an improvement in title, a possible raise, and some compliments.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J171" onclick="javascript:toggleLayer('E171')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり、もしあなたが報酬を申し出るなら、肩書きにおける昇進、可能な給料の引き上げ、そしてちょっとした賛辞を考慮することです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="172"><a name="172"><TD id="E172" onclick="javascript:toggleLayer('J172')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Make sure your hacker knows you are pleased with her accomplishments
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J172" onclick="javascript:toggleLayer('E172')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたが彼女の業績に満足していることを確かに知らしめること、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="173"><a name="173"><TD id="E173" onclick="javascript:toggleLayer('J173')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> -- that's what she's there for. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J173" onclick="javascript:toggleLayer('E173')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それこそが彼女が求めるものなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="174"><a name="174"><TD id="E174" onclick="javascript:toggleLayer('J174')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.3: My company policy won't let me give my hacker any more raises until he's in management. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J174" onclick="javascript:toggleLayer('E174')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.3: 我が社の規定では、管理職になってもらわないとハッカーに昇給を認めるわけにはいかないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="175"><a name="175"><TD id="E175" onclick="javascript:toggleLayer('J175')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your company policy is broken.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J175" onclick="javascript:toggleLayer('E175')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 貴社の規定はおかしいですよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="176"><a name="176"><TD id="E176" onclick="javascript:toggleLayer('J176')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A hacker can earn as much as $200 an hour (sometimes more) doing freelance consulting.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J176" onclick="javascript:toggleLayer('E176')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> フリーランスのコンサルティングをやって、時給 200 ドル（時にはそれ以上）も稼げるハッカーもいます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="177"><a name="177"><TD id="E177" onclick="javascript:toggleLayer('J177')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You may wish to offer your hacker a contracted permanent consulting position with benefits, or otherwise find loopholes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J177" onclick="javascript:toggleLayer('E177')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーに、手当て付きの終身のコンサルティングの地位を申し出てもよいでしょうし、それができないのなら抜け道を探すことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="178"><a name="178"><TD id="E178" onclick="javascript:toggleLayer('J178')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Or, find perks to offer
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J178" onclick="javascript:toggleLayer('E178')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さもなければ、何か役得を見つけてやることですね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="179"><a name="179"><TD id="E179" onclick="javascript:toggleLayer('J179')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - many hackers will cheerfully accept a discount on hardware from their favorite manufacturer as an effective raise. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J179" onclick="javascript:toggleLayer('E179')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 多くのハッカーは、彼らのお気に入りのメーカー製のハードウェアの割引を、印象的な昇給として喜んで受け入れるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="180"><a name="180"><TD id="E180" onclick="javascript:toggleLayer('J180')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.4: I can't believe the hacker on my staff is worth as much as we're paying. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J180" onclick="javascript:toggleLayer('E180')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 3.4: 私にはうちのスタッフのハッカーに給料分の価値があるとは信じられないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="181"><a name="181"><TD id="E181" onclick="javascript:toggleLayer('J181')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Ask the other staff in the department what the hacker does, and what they think of it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J181" onclick="javascript:toggleLayer('E181')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その部署の他のスタッフに、そのハッカーがやっている仕事や、それについての感想を尋ねなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="182"><a name="182"><TD id="E182" onclick="javascript:toggleLayer('J182')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The chances are that your hacker is spending a few hours a week answering arcane questions that would otherwise require an expensive external consultant.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J182" onclick="javascript:toggleLayer('E182')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恐らく、あなたのとこのハッカーは週に二三時間、他だったら高額な外部のコンサルタントが必要な、難解な質問に答えるのに費やしているのでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="183"><a name="183"><TD id="E183" onclick="javascript:toggleLayer('J183')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker may be fulfilling another job's worth of responsibilities in his spare time around the office.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J183" onclick="javascript:toggleLayer('E183')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは、時間を切りつめて、オフィスまわりでもう一人分の仕事に値する職責を果たしているのかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="184"><a name="184"><TD id="E184" onclick="javascript:toggleLayer('J184')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Very few hackers aren't worth what they're getting paid;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J184" onclick="javascript:toggleLayer('E184')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 給料分の価値のないハッカーなどごく少数です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="185"><a name="185"><TD id="E185" onclick="javascript:toggleLayer('J185')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they enjoy accomplishing difficult tasks, and improving worker efficiency. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J185" onclick="javascript:toggleLayer('E185')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼らは困難な仕事を成し遂げることを楽しみ、労働者の効率を改善しているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="186"><a name="186"><TD id="E186" onclick="javascript:toggleLayer('J186')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Section 4: What does that mean?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J186" onclick="javascript:toggleLayer('E186')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 4章: それはどういう意味？
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="187"><a name="187"><TD id="E187" onclick="javascript:toggleLayer('J187')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 4.0: My hacker doesn't speak English.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J187" onclick="javascript:toggleLayer('E187')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 4.0: うちのハッカーは英語を喋りません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="188"><a name="188"><TD id="E188" onclick="javascript:toggleLayer('J188')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At least, I don't think so. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J188" onclick="javascript:toggleLayer('E188')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 少なくとも、私にはそうでないように思えます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="189"><a name="189"><TD id="E189" onclick="javascript:toggleLayer('J189')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your hacker is a techie.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J189" onclick="javascript:toggleLayer('E189')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたのとこのハッカーは techie（技術オタク）なんです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="190"><a name="190"><TD id="E190" onclick="javascript:toggleLayer('J190')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your best bet is to pick up a copy of TNHD (The New Hacker's Dictionary).
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J190" onclick="javascript:toggleLayer('E190')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> TNHD（The New Hacker's Dictionary）のコピーをピックアップすれば間違いないでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="191"><a name="191"><TD id="E191" onclick="javascript:toggleLayer('J191')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It can be found as http://catb.org/esr/jargon (last I checked) or from a good bookstore.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J191" onclick="javascript:toggleLayer('E191')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> http://www.catb.org/~esr/jargon（最後に私がチェックしたときには）か、品揃えのよい本屋で見つかります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="192"><a name="192"><TD id="E192" onclick="javascript:toggleLayer('J192')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you have trouble understanding that reference, ask your hacker if she has a copy, or would be willing to explain her terms.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J192" onclick="javascript:toggleLayer('E192')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうした参考文献を理解するのが困難なら、あなたのとこのハッカーに、コピーを持ってないかとか、もし良ければ用語を説明してくれないかなと尋ねてみましょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="193"><a name="193"><TD id="E193" onclick="javascript:toggleLayer('J193')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Most hackers are willing to explain terms.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J193" onclick="javascript:toggleLayer('E193')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 殆どのハッカーは専門用語を説明するのをいとわないです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="194"><a name="194"><TD id="E194" onclick="javascript:toggleLayer('J194')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Be ready for condescension;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J194" onclick="javascript:toggleLayer('E194')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恩着せがましい態度をとられるかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="195"><a name="195"><TD id="E195" onclick="javascript:toggleLayer('J195')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it's not intended as an insult,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J195" onclick="javascript:toggleLayer('E195')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれは彼女があなたを侮辱しようと思っているわけではないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="196"><a name="196"><TD id="E196" onclick="javascript:toggleLayer('J196')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but if you don't know the words, she probably has to talk down to you at first to explain them. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J196" onclick="javascript:toggleLayer('E196')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたがその単語を知らなければ、彼女はまずそれを説明するためにレベルを落として話さなければならないのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="197"><a name="197"><TD id="E197" onclick="javascript:toggleLayer('J197')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It's a reasonably difficult set of words;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J197" onclick="javascript:toggleLayer('E197')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 当然ながらそれは難しい単語の集まりです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="198"><a name="198"><TD id="E198" onclick="javascript:toggleLayer('J198')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> there are a lot of them, and their usage is much more precise than it sounds.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J198" onclick="javascript:toggleLayer('E198')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なにしろ沢山ありますし、それらの単語の用法はぱっと聞いた印象よりずっとより厳密です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="199"><a name="199"><TD id="E199" onclick="javascript:toggleLayer('J199')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Hackers love word games.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J199" onclick="javascript:toggleLayer('E199')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ハッカーは言語ゲームが好きなんです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="200"><a name="200"><TD id="E200" onclick="javascript:toggleLayer('J200')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [It is also possible that English is not your hacker's native language, and that it's not yours either.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J200" onclick="javascript:toggleLayer('E200')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> [英語があなたのとこのハッカーのネイティブな言語でないこともまたありえますし、あなた自身がそうでないかもしれません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="hacker3-0.htm">prev</a>
+<a href="hacker3-0.htm">0</a>
+<1>
+<a href="hacker3-2.htm">2</a>
+<a href="hacker3-2.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/hacker3e.txt">local copy</a> / <a href="http://www.plethora.net/%7Eseebs/faqs/manager.html">http://www.plethora.net/%7Eseebs/faqs/manager.html</a><li>オリジナルの日本語文: <a href="../org/hacker3j.txt">local copy</a> / <a href="http://www1.neweb.ne.jp/wa/yamdas/column/technique/hackerj.html">http://www1.neweb.ne.jp/wa/yamdas/column/technique/hackerj.html</a><li><a href="../manual-alignment/hacker3.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

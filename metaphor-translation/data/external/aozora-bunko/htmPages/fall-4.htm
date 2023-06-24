@@ -1,0 +1,240 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Fall of the House of Usher / Edgar Allan Poe 著</h2><h2>アッシャー家の崩壊 / エドガー・アラン・ポー 著 / 佐々木直次郎 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/falle.txt">英語文</a>&<a href="../org/fallj.txt">日本語文</a> / <a href="../manual-alignment/fall.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>4 of The Fall of the House of Usher</TITLE>
+<hr>
+<a href="fall-3.htm">prev</a>
+<a href="fall-0.htm">0</a>
+<a href="fall-1.htm">1</a>
+<a href="fall-2.htm">2</a>
+<a href="fall-3.htm">3</a>
+<4>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="401"><a name="401"><TD id="E401" onclick="javascript:toggleLayer('J401')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - there came a fierce breath of the whirlwind
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J401" onclick="javascript:toggleLayer('E401')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――一陣の旋風がすさまじく吹いてきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="402"><a name="402"><TD id="E402" onclick="javascript:toggleLayer('J402')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - the entire orb of the satellite burst at once upon my sight
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J402" onclick="javascript:toggleLayer('E402')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――月の全輪がこつぜんとして私の眼前にあらわれた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="403"><a name="403"><TD id="E403" onclick="javascript:toggleLayer('J403')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - my brain reeled as I saw the mighty walls rushing asunder
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J403" onclick="javascript:toggleLayer('E403')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――巨大な壁が真っ二つに崩れ落ちるのを見たとき、私の頭はぐらぐらとした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="404"><a name="404"><TD id="E404" onclick="javascript:toggleLayer('J404')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - there was a long tumultuous shouting sound like the voice of a thousand waters
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J404" onclick="javascript:toggleLayer('E404')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――幾千の怒濤（どとう）のひびきのような、長い、轟々（ごうごう）たる、叫ぶような音が起った。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="405"><a name="405"><TD id="E405" onclick="javascript:toggleLayer('J405')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - and the deep and dank tarn at my feet closed sullenly and silently over the fragments of the "_House of Usher_."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J405" onclick="javascript:toggleLayer('E405')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ――そして、私の足もとの、深い、どんよりした沼は、「アッシャー家［＃「アッシャー家」に傍点］」の破片を、陰鬱（いんうつ）に、音もなく、呑（の）みこんでしまった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="406"><a name="406"><TD ID="TAB406" onclick="javascript:toggleLayer('J406')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB406" onclick="javascript:toggleLayer('E406')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<TR id="407"><a name="407"><TD ID="TAB407" onclick="javascript:toggleLayer('J407')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB407" onclick="javascript:toggleLayer('E407')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+</TABLE></span><HR>
+<a href="fall-3.htm">prev</a>
+<a href="fall-0.htm">0</a>
+<a href="fall-1.htm">1</a>
+<a href="fall-2.htm">2</a>
+<a href="fall-3.htm">3</a>
+<4>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/falle.txt">local copy</a><li>オリジナルの日本語文: <a href="../org/fallj.txt">local copy</a><li><a href="../manual-alignment/fall.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

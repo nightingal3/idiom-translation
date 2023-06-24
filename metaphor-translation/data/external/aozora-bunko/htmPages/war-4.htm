@@ -1,0 +1,366 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>SUN TZU ON THE ART OF WAR / SUN TZU 著</h2><h2>孫子の兵法 / 孫子 著 / 八木都志郎 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/ware.txt">英語文</a>&<a href="../org/warj.txt">日本語文</a> / <a href="../manual-alignment/war.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>4 of SUN TZU ON THE ART OF WAR</TITLE>
+<hr>
+<a href="war-3.htm">prev</a>
+<a href="war-0.htm">0</a>
+<a href="war-1.htm">1</a>
+<a href="war-2.htm">2</a>
+<a href="war-3.htm">3</a>
+<4>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<TR id="401"><a name="401"><TD ID="TAB401" onclick="javascript:toggleLayer('J401')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB401" onclick="javascript:toggleLayer('E401')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="402"><a name="402"><TD id="E402" onclick="javascript:toggleLayer('J402')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> V.  ENERGY
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J402" onclick="javascript:toggleLayer('E402')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 五・勢い 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="403"><a name="403"><TD id="E403" onclick="javascript:toggleLayer('J403')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 1.  Sun Tzu said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J403" onclick="javascript:toggleLayer('E403')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １．孫子は言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="404"><a name="404"><TD id="E404" onclick="javascript:toggleLayer('J404')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The control of a large force is the same principle as the control of a few men:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J404" onclick="javascript:toggleLayer('E404')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「大軍を率いるのは、その原理は少人数を率いるのと同じです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="405"><a name="405"><TD id="E405" onclick="javascript:toggleLayer('J405')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it is merely a question of dividing up their numbers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J405" onclick="javascript:toggleLayer('E405')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ただその人数分けが問題になるだけなのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="406"><a name="406"><TD ID="TAB406" onclick="javascript:toggleLayer('J406')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB406" onclick="javascript:toggleLayer('E406')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="407"><a name="407"><TD id="E407" onclick="javascript:toggleLayer('J407')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [That is,  cutting up the army into regiments,  companies, etc.,  with subordinate officers in command of each.  
+Tu Mu reminds us of Han Hsin's famous reply to the first Han Emperor, who once said to him:  
+"How large an army do you think I could lead?"   
+"Not more than 100,000 men, your Majesty."   
+"And you?"
+asked the Emperor.  
+"Oh!" 
+he answered, 
+"the more the better."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB407" onclick="javascript:toggleLayer('E407')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="408"><a name="408"><TD ID="TAB408" onclick="javascript:toggleLayer('J408')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB408" onclick="javascript:toggleLayer('E408')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="409"><a name="409"><TD id="E409" onclick="javascript:toggleLayer('J409')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.  Fighting with a large army under your command is nowise different from fighting with a small one: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J409" onclick="javascript:toggleLayer('E409')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２．軍を率いて人数の多い敵と戦うのは、少人数の敵と戦うのとほとんど違いはありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="410"><a name="410"><TD id="E410" onclick="javascript:toggleLayer('J410')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> it is merely a question of instituting signs and signals.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J410" onclick="javascript:toggleLayer('E410')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 号令や合図が問題になるだけです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="411"><a name="411"><TD id="E411" onclick="javascript:toggleLayer('J411')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.  To ensure that your whole host may withstand the brunt of the enemy's attack and remain unshaken
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J411" onclick="javascript:toggleLayer('E411')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ３．自軍が敵軍の猛攻に必ず耐えて、揺るがないでいられるようにすること。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="412"><a name="412"><TD id="E412" onclick="javascript:toggleLayer('J412')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> - this is effected by maneuvers direct and indirect.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J412" onclick="javascript:toggleLayer('E412')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは正攻法と奇襲の作戦行動によってできることです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="413"><a name="413"><TD ID="TAB413" onclick="javascript:toggleLayer('J413')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB413" onclick="javascript:toggleLayer('E413')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="414"><a name="414"><TD id="E414" onclick="javascript:toggleLayer('J414')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [We now come to one of the most interesting parts of Sun Tzu's treatise, the discussion of the CHENG and the CH`I."  
+As it is by no means easy to grasp the full significance of these two terms, or to render them consistently by good English equivalents;  
+it may be as well to tabulate some of the commentators' remarks on the subject before proceeding further.
+Li Ch`uan:  
+"Facing the enemy is CHENG, making lateral diversion is CH`I.  
+Chia Lin:  
+"In presence of the enemy, your troops should be arrayed in normal fashion, but in order to secure victory abnormal maneuvers must be employed."   
+Mei Yao-ch`en:
+"CH`I is active, CHENG is passive; 
+passivity means waiting for an opportunity, activity beings the victory itself."  
+Ho Shih:   
+"We must cause the enemy to regard our straightforward attack as one that is secretly designed, and vice versa; 
+thus CHENG may also be CH`I, and CH`I may also be CHENG."  
+He instances the famous exploit of Han Hsin, who when marching ostensibly against Lin-chin (now Chao-i in Shensi), suddenly threw a large force across the Yellow River in wooden tubs, utterly disconcerting his opponent. [Ch`ien Han Shu, ch. 3.]  Here, we are told, the march on Lin-chin was CHENG, and the surprise maneuver was CH`I."
+Chang Yu gives the following summary of opinions on the words:
+"Military writers do not agree with regard to the meaning of CH`I and CHENG.  
+Wei Liao Tzu [4th cent. B.C.] says:  
+'Direct warfare favors frontal attacks, indirect warfare attacks from the rear.' 
+Ts`ao Kung says:  
+'Going straight out to join battle is a direct operation;   
+appearing on the enemy's rear is an indirect maneuver.'  
+Li Wei-kung [6th and 7th cent. A.D.] says:  
+'In war, to march straight ahead is CHENG; 
+turning movements, on the other hand, are CH`I.'  
+These writers simply regard CHENG as CHENG, and CH`I as CH`I;  
+they do not note that the two are mutually interchangeable and run into each other like the two sides of a circle [see infra, ss. 11].  
+A comment on the T`ang Emperor T`ai Tsung goes to the root of the matter:  
+'A CH`I maneuver may be CHENG, if we make the enemy look upon it as CHENG; 
+then our real attack will be CH`I, and vice versa.  
+The whole secret lies in confusing the enemy, so that he cannot fathom our real intent.'"
+To put it perhaps a little more clearly:  
+any attack or other operation is CHENG, on which the enemy has had his attention fixed; whereas that is CH`I," 
+which takes him by surprise or comes from an unexpected quarter.  
+If the enemy perceives a movement which is meant to be CH`I,"  it immediately becomes CHENG."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB414" onclick="javascript:toggleLayer('E414')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="415"><a name="415"><TD ID="TAB415" onclick="javascript:toggleLayer('J415')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB415" onclick="javascript:toggleLayer('E415')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="416"><a name="416"><TD id="E416" onclick="javascript:toggleLayer('J416')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 4.  That the impact of your army may be like a grindstone dashed against an egg - this is effected by the science of weak points and strong.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J416" onclick="javascript:toggleLayer('E416')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ４．自軍の攻撃が卵に投げつけられた石のようであるのは、これは弱点と強みを研究したからこそなのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="417"><a name="417"><TD id="E417" onclick="javascript:toggleLayer('J417')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 5.  In all fighting, the direct method may be used for joining battle,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J417" onclick="javascript:toggleLayer('E417')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ５．どんな戦いでも、戦端を開くのには正攻法がとられるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="418"><a name="418"><TD id="E418" onclick="javascript:toggleLayer('J418')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but indirect methods will be needed in order to secure victory.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J418" onclick="javascript:toggleLayer('E418')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし奇襲作戦は勝利を確実にするために必要とされるはずです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="419"><a name="419"><TD ID="TAB419" onclick="javascript:toggleLayer('J419')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB419" onclick="javascript:toggleLayer('E419')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="420"><a name="420"><TD id="E420" onclick="javascript:toggleLayer('J420')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Chang Yu says:  
+"Steadily develop indirect tactics, either by pounding the enemy's flanks or falling on his rear."   
+A brilliant example of "indirect tactics"  which decided the fortunes of a campaign was Lord Roberts' night march round the Peiwar Kotal in the second Afghan war. [1]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB420" onclick="javascript:toggleLayer('E420')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="421"><a name="421"><TD ID="TAB421" onclick="javascript:toggleLayer('J421')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB421" onclick="javascript:toggleLayer('E421')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="422"><a name="422"><TD id="E422" onclick="javascript:toggleLayer('J422')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 6.  Indirect tactics, efficiently applied, are inexhausible as Heaven and Earth, unending as the flow of rivers and streams; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J422" onclick="javascript:toggleLayer('E422')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ６．奇襲作戦を効果的に用いれば、さながら天と地のように疲れを知らず、また川が溢れたり流れるように無尽蔵に、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="423"><a name="423"><TD id="E423" onclick="javascript:toggleLayer('J423')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> like the sun and moon, they end but to begin anew; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J423" onclick="javascript:toggleLayer('E423')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 太陽と月のように沈んでもまた新たに昇り、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="424"><a name="424"><TD id="E424" onclick="javascript:toggleLayer('J424')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> like the four seasons, they pass away to return once more. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J424" onclick="javascript:toggleLayer('E424')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 四季の移り変わりのように去ってもまた舞い戻って来るようになるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="425"><a name="425"><TD ID="TAB425" onclick="javascript:toggleLayer('J425')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB425" onclick="javascript:toggleLayer('E425')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="426"><a name="426"><TD id="E426" onclick="javascript:toggleLayer('J426')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Tu Yu and Chang Yu understand this of the permutations of CH`I and CHENG."  
+But at present Sun Tzu is not speaking of CHENG at all,  unless, indeed, we suppose with Cheng Yu-hsien that a clause relating to it has fallen out of the text.  
+Of course,  as has already been pointed out, the two are so inextricably interwoven in all military operations, that they cannot really be considered apart.  
+Here we simply have an expression, in figurative language, of the almost infinite resource of a great leader.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB426" onclick="javascript:toggleLayer('E426')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="427"><a name="427"><TD ID="TAB427" onclick="javascript:toggleLayer('J427')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB427" onclick="javascript:toggleLayer('E427')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="428"><a name="428"><TD id="E428" onclick="javascript:toggleLayer('J428')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 7.  There are not more than five musical notes, yet the combinations of these five give rise to more melodies than can ever be heard.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J428" onclick="javascript:toggleLayer('E428')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ７．五つの音しかなくても、その五つが組合わされば聞いたこともないようなメロディーを奏でることにもなります。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="429"><a name="429"><TD id="E429" onclick="javascript:toggleLayer('J429')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 8.  There are not more than five primary colors (blue, yellow, red, white, and black), yet in combination they produce more hues than can ever been seen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J429" onclick="javascript:toggleLayer('E429')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ８．五つの原色（青、黄色、赤、白、黒）しかなくても、組み合わせれば見たこともないような色合いになります。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="430"><a name="430"><TD id="E430" onclick="javascript:toggleLayer('J430')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 9   There are not more than five cardinal tastes (sour, acrid, salt, sweet, bitter), yet combinations of them yield more flavors than can ever be tasted.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J430" onclick="javascript:toggleLayer('E430')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ９．主な味覚は五つ（酸っぱさ、辛さ、塩辛さ、甘さ、苦さ）しかなくても、組み合わせればこれまでにない味わいを生み出すようになります。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="431"><a name="431"><TD id="E431" onclick="javascript:toggleLayer('J431')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 10.  In battle, there are not more than two methods of attack 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J431" onclick="javascript:toggleLayer('E431')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １０．戦闘中には二つの攻撃方法しかありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="432"><a name="432"><TD id="E432" onclick="javascript:toggleLayer('J432')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> -  the direct and the indirect;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J432" onclick="javascript:toggleLayer('E432')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 正攻法と奇襲です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="433"><a name="433"><TD id="E433" onclick="javascript:toggleLayer('J433')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> yet these two in combination give rise to an endless series of maneuvers.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J433" onclick="javascript:toggleLayer('E433')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでもこの二つを組み合わせれば無限の作戦ができるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="434"><a name="434"><TD ID="TAB434" onclick="javascript:toggleLayer('J434')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB434" onclick="javascript:toggleLayer('E434')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="435"><a name="435"><TD ID="TAB435" onclick="javascript:toggleLayer('J435')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J435" onclick="javascript:toggleLayer('E435')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つづく 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="436"><a name="436"><TD ID="TAB436" onclick="javascript:toggleLayer('J436')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB436" onclick="javascript:toggleLayer('E436')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="437"><a name="437"><TD ID="TAB437" onclick="javascript:toggleLayer('J437')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J437" onclick="javascript:toggleLayer('E437')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> プロジェクト杉田玄白　正式参加　版権についてはリンク先を参照してください。
+一応ここでもはっきりしておきますが、クレジットさえ残していただければどのようなかたちであれ再利用は許可されます。
+訳者の承認を得る必要もありません。
+原文は Project Gutenberg にあるものを使用しました。
+したがってProject Gutenberg の名前を使って商業利用をする場合は制限があります。
+使わなければいかなるかたちであっても再利用に制限はありません。
+（つまり、この訳文自体には利用制限はありません。
+クレジットさえ残せば商業利用も含めてどのように利用されても構いません） 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="438"><a name="438"><TD ID="TAB438" onclick="javascript:toggleLayer('J438')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J438" onclick="javascript:toggleLayer('E438')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 00/09/29 第二章追加
+00/10/22 第三章追加　細かいところを訂正
+00/10/23 第四章追加　素早い更新に我ながら感心。
+01/09/02 遅ればせながら第五章追加。一年近くも放っておいたのか・・・
+翻訳したもの　　トップぺージへ　　訳者へメールを送る 
+(c) 八木都志郎
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="war-3.htm">prev</a>
+<a href="war-0.htm">0</a>
+<a href="war-1.htm">1</a>
+<a href="war-2.htm">2</a>
+<a href="war-3.htm">3</a>
+<4>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/ware.txt">local copy</a> / <a href="http://www.gutenberg.net/etext94/sunzu10.txt">http://www.gutenberg.net/etext94/sunzu10.txt</a><li>オリジナルの日本語文: <a href="../org/warj.txt">local copy</a> / <a href="http://lovemorgue.org/trans/suntzu1.html">http://lovemorgue.org/trans/suntzu1.html</a><li><a href="../manual-alignment/war.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

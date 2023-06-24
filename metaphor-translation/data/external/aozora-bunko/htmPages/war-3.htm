@@ -1,0 +1,486 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>SUN TZU ON THE ART OF WAR / SUN TZU 著</h2><h2>孫子の兵法 / 孫子 著 / 八木都志郎 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/ware.txt">英語文</a>&<a href="../org/warj.txt">日本語文</a> / <a href="../manual-alignment/war.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>3 of SUN TZU ON THE ART OF WAR</TITLE>
+<hr>
+<a href="war-2.htm">prev</a>
+<a href="war-0.htm">0</a>
+<a href="war-1.htm">1</a>
+<a href="war-2.htm">2</a>
+<3>
+<a href="war-4.htm">4</a>
+<a href="war-4.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="301"><a name="301"><TD id="E301" onclick="javascript:toggleLayer('J301')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (4)   He will win who, prepared himself, waits to take the enemy unprepared.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J301" onclick="javascript:toggleLayer('E301')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （４）常に備えがあって、敵の備えが薄いときを狙う人は勝ちます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="302"><a name="302"><TD id="E302" onclick="javascript:toggleLayer('J302')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> (5)   He will win who has military capacity and is not interfered with by the sovereign.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J302" onclick="javascript:toggleLayer('E302')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> （５）軍事の才能があって、国王が干渉してこない人は勝ちます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="303"><a name="303"><TD ID="TAB303" onclick="javascript:toggleLayer('J303')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB303" onclick="javascript:toggleLayer('E303')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="304"><a name="304"><TD id="E304" onclick="javascript:toggleLayer('J304')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Tu Yu quotes Wang Tzu as saying:  
+"It is the sovereign's function to give broad instructions, but to decide on battle it is the function of the general."  
+It is needless to dilate on the military disasters which have been caused by undue interference with operations in the field on the part of the home government.
+Napoleon undoubtedly owed much of his extraordinary success to the fact that he was not hampered by central authority.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB304" onclick="javascript:toggleLayer('E304')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="305"><a name="305"><TD ID="TAB305" onclick="javascript:toggleLayer('J305')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB305" onclick="javascript:toggleLayer('E305')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="306"><a name="306"><TD id="E306" onclick="javascript:toggleLayer('J306')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 18.  Hence the saying:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J306" onclick="javascript:toggleLayer('E306')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １８．というようなわけで、こんなことが言われるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="307"><a name="307"><TD id="E307" onclick="javascript:toggleLayer('J307')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you know the enemy and know yourself, you need not fear the result of a hundred battles. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J307" onclick="javascript:toggleLayer('E307')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「敵と自分自身のことを理解していれば、百回の戦闘にもその結果を心配する必要はありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="308"><a name="308"><TD id="E308" onclick="javascript:toggleLayer('J308')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you know yourself but not the enemy, for every victory gained you will also suffer a defeat.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J308" onclick="javascript:toggleLayer('E308')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分ことは分かっているけれども敵のことは知らないという場合は、勝利を得る度に同じくらい負けて苦しみもするでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="309"><a name="309"><TD ID="TAB309" onclick="javascript:toggleLayer('J309')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB309" onclick="javascript:toggleLayer('E309')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="310"><a name="310"><TD id="E310" onclick="javascript:toggleLayer('J310')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Li Ch`uan cites the case of Fu Chien, prince of Ch`in, who in 383 A.D. marched with a vast army against the Chin Emperor.
+When warned not to despise an enemy who could command the services of such men as Hsieh An and Huan Ch`ung, he boastfully replied:   
+"I have the population of eight provinces at my back, infantry and horsemen to the number of one million;  
+why,  they could dam up the Yangtsze River itself by merely throwing their whips into the stream.  
+What danger have I to fear?"
+Nevertheless,  his forces were soon after disastrously routed at the Fei River, and he was obliged to beat a hasty retreat.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB310" onclick="javascript:toggleLayer('E310')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="311"><a name="311"><TD ID="TAB311" onclick="javascript:toggleLayer('J311')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB311" onclick="javascript:toggleLayer('E311')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="312"><a name="312"><TD id="E312" onclick="javascript:toggleLayer('J312')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you know neither the enemy nor yourself, you will succumb in every battle.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J312" onclick="javascript:toggleLayer('E312')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もし敵のことも味方のことも理解していなければ、どの戦いでもボロ負けしてしまうでしょう」と。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="313"><a name="313"><TD ID="TAB313" onclick="javascript:toggleLayer('J313')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB313" onclick="javascript:toggleLayer('E313')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="314"><a name="314"><TD id="E314" onclick="javascript:toggleLayer('J314')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Chang Yu said:  
+"Knowing the enemy enables you to take the offensive, knowing yourself enables you to stand on the defensive."  
+He adds:  
+"Attack is the secret of defense;  
+defense is the planning of an attack."  
+It would be hard to find a better epitome of the root-principle of war.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB314" onclick="javascript:toggleLayer('E314')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="315"><a name="315"><TD ID="TAB315" onclick="javascript:toggleLayer('J315')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB315" onclick="javascript:toggleLayer('E315')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="316"><a name="316"><TD id="E316" onclick="javascript:toggleLayer('J316')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> IV.  TACTICAL DISPOSITIONS
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J316" onclick="javascript:toggleLayer('E316')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 四・戦略的な作戦計画
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="317"><a name="317"><TD ID="TAB317" onclick="javascript:toggleLayer('J317')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB317" onclick="javascript:toggleLayer('E317')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="318"><a name="318"><TD id="E318" onclick="javascript:toggleLayer('J318')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Ts`ao Kung explains the Chinese meaning of the words for the title of this chapter:  
+"marching and countermarching on the part of the two armies with a view to discovering each other's condition."   
+Tu Mu says:  
+"It is through the dispositions of an army that its condition may be discovered.  
+Conceal your dispositions, and your condition will remain secret, which leads to victory,;  
+show your dispositions, and your condition will become patent, which leads to defeat."  
+Wang Hsi remarks that the good general can "secure success by modifying his tactics to meet those of the enemy."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB318" onclick="javascript:toggleLayer('E318')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="319"><a name="319"><TD ID="TAB319" onclick="javascript:toggleLayer('J319')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB319" onclick="javascript:toggleLayer('E319')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="320"><a name="320"><TD id="E320" onclick="javascript:toggleLayer('J320')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 1.  Sun Tzu said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J320" onclick="javascript:toggleLayer('E320')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １．孫子は言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="321"><a name="321"><TD id="E321" onclick="javascript:toggleLayer('J321')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The good fighters of old first put themselves beyond the possibility of defeat, and then waited for an opportunity of defeating the enemy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J321" onclick="javascript:toggleLayer('E321')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「昔の優秀な戦士たちは、まず負けるはずのない態勢を作り上げてから、敵を倒せる機会を待ちました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="322"><a name="322"><TD id="E322" onclick="javascript:toggleLayer('J322')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 2.  To secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J322" onclick="javascript:toggleLayer('E322')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２．負けない態勢を作ることはこちら側の問題です。敵を倒せる機会ができるかどうかは相手側の問題なのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="323"><a name="323"><TD ID="TAB323" onclick="javascript:toggleLayer('J323')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB323" onclick="javascript:toggleLayer('E323')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="324"><a name="324"><TD id="E324" onclick="javascript:toggleLayer('J324')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP>      [That is, of course, by a mistake on the enemy's part.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB324" onclick="javascript:toggleLayer('E324')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="325"><a name="325"><TD ID="TAB325" onclick="javascript:toggleLayer('J325')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB325" onclick="javascript:toggleLayer('E325')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="326"><a name="326"><TD id="E326" onclick="javascript:toggleLayer('J326')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 3.  Thus the good fighter is able to secure himself against defeat,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J326" onclick="javascript:toggleLayer('E326')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ３．つまり、いい戦士たちは負けない態勢を作ることはできますが、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="327"><a name="327"><TD ID="TAB327" onclick="javascript:toggleLayer('J327')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB327" onclick="javascript:toggleLayer('E327')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="328"><a name="328"><TD id="E328" onclick="javascript:toggleLayer('J328')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Chang Yu says this is done,  
+"By concealing the disposition of his troops, covering up his tracks, and taking unremitting precautions."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB328" onclick="javascript:toggleLayer('E328')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="329"><a name="329"><TD ID="TAB329" onclick="javascript:toggleLayer('J329')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB329" onclick="javascript:toggleLayer('E329')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="330"><a name="330"><TD id="E330" onclick="javascript:toggleLayer('J330')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but cannot make certain of defeating the enemy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J330" onclick="javascript:toggleLayer('E330')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 敵を倒す機会を作ることはできないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="331"><a name="331"><TD id="E331" onclick="javascript:toggleLayer('J331')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 4.  Hence the saying:  
+One may KNOW how to conquer without being able to DO it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J331" onclick="javascript:toggleLayer('E331')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ４．ですから
+「敵を倒すやり方を知っている人も、それができるわけではない」
+と言われているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="332"><a name="332"><TD id="E332" onclick="javascript:toggleLayer('J332')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 5.  Security against defeat implies defensive tactics;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J332" onclick="javascript:toggleLayer('E332')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ５．負けない体勢というのは守備態勢のことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="333"><a name="333"><TD id="E333" onclick="javascript:toggleLayer('J333')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ability to defeat the enemy means taking the offensive.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J333" onclick="javascript:toggleLayer('E333')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 敵を倒せる能力というのは攻撃に回るということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="334"><a name="334"><TD ID="TAB334" onclick="javascript:toggleLayer('J334')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB334" onclick="javascript:toggleLayer('E334')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="335"><a name="335"><TD id="E335" onclick="javascript:toggleLayer('J335')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [I retain the sense found in a similar passage in ss.  1-3, in spite of the fact that the commentators are all against me.
+The meaning they give,  "He who cannot conquer takes the defensive," is plausible enough.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB335" onclick="javascript:toggleLayer('E335')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="336"><a name="336"><TD ID="TAB336" onclick="javascript:toggleLayer('J336')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB336" onclick="javascript:toggleLayer('E336')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="337"><a name="337"><TD id="E337" onclick="javascript:toggleLayer('J337')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 6.   Standing on the defensive indicates insufficient strength;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J337" onclick="javascript:toggleLayer('E337')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ６．守りに回るというのは、そんなに強くはないということを示します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="338"><a name="338"><TD id="E338" onclick="javascript:toggleLayer('J338')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> attacking, a superabundance of strength.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J338" onclick="javascript:toggleLayer('E338')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 攻撃するということは、圧倒的に強いということです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="339"><a name="339"><TD id="E339" onclick="javascript:toggleLayer('J339')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 7.  The general who is skilled in defense hides in the most secret recesses of the earth;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J339" onclick="javascript:toggleLayer('E339')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ７．守りに長けた人は地中奥深くのいちばん隠れたところに身を隠します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="340"><a name="340"><TD ID="TAB340" onclick="javascript:toggleLayer('J340')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB340" onclick="javascript:toggleLayer('E340')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="341"><a name="341"><TD id="E341" onclick="javascript:toggleLayer('J341')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Literally,  "hides under the ninth earth,"  which is a metaphor indicating the utmost secrecy and concealment, so that the enemy may not know his whereabouts."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB341" onclick="javascript:toggleLayer('E341')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="342"><a name="342"><TD ID="TAB342" onclick="javascript:toggleLayer('J342')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB342" onclick="javascript:toggleLayer('E342')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="343"><a name="343"><TD id="E343" onclick="javascript:toggleLayer('J343')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he who is skilled in attack flashes forth from the topmost heights of heaven.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J343" onclick="javascript:toggleLayer('E343')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 攻撃に長けた人は天の高見から急襲するのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="344"><a name="344"><TD ID="TAB344" onclick="javascript:toggleLayer('J344')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB344" onclick="javascript:toggleLayer('E344')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="345"><a name="345"><TD id="E345" onclick="javascript:toggleLayer('J345')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Another metaphor, implying that he falls on his adversary like a thunderbolt, against which there is no time to prepare. 
+This is the opinion of most of the commentators.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB345" onclick="javascript:toggleLayer('E345')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="346"><a name="346"><TD ID="TAB346" onclick="javascript:toggleLayer('J346')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB346" onclick="javascript:toggleLayer('E346')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="347"><a name="347"><TD id="E347" onclick="javascript:toggleLayer('J347')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus on the one hand we have ability to protect ourselves;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J347" onclick="javascript:toggleLayer('E347')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり一方で防御の能力を持っていれば、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="348"><a name="348"><TD id="E348" onclick="javascript:toggleLayer('J348')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> on the other, a victory that is complete.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J348" onclick="javascript:toggleLayer('E348')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もう一方には完全な勝利があるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="349"><a name="349"><TD id="E349" onclick="javascript:toggleLayer('J349')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 8.  To see victory only when it is within the ken of the common herd is not the acme of excellence.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J349" onclick="javascript:toggleLayer('E349')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ８．一般の人たちに理解できる程度のものであった場合にしか勝利と見なさないようであれば、最高に優れているとはいえません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="350"><a name="350"><TD ID="TAB350" onclick="javascript:toggleLayer('J350')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB350" onclick="javascript:toggleLayer('E350')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="351"><a name="351"><TD id="E351" onclick="javascript:toggleLayer('J351')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [As Ts`ao Kung remarks, 
+"the thing is to see the plant before it has germinated," 
+to foresee the event before the action has begun.  
+Li Ch`uan alludes to the story of Han Hsin who, when about to attack the vastly superior army of Chao, which was strongly entrenched in the city of Ch`eng-an, said to his officers:  
+"Gentlemen, we are going to annihilate the enemy, and shall meet again at dinner."  
+The officers hardly took his words seriously, and gave a very dubious assent.  
+But Han Hsin had already worked out in his mind the details of a clever stratagem, whereby, as he foresaw, he was able to capture the city and inflict a crushing defeat on his adversary."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB351" onclick="javascript:toggleLayer('E351')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="352"><a name="352"><TD ID="TAB352" onclick="javascript:toggleLayer('J352')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB352" onclick="javascript:toggleLayer('E352')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="353"><a name="353"><TD id="E353" onclick="javascript:toggleLayer('J353')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 9.  Neither is it the acme of excellence if you fight andconquer and the whole Empire says, "Well done!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J353" onclick="javascript:toggleLayer('E353')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ９．闘って相手を征服し、国中が「よくやった！」と誉めてくれても、やはり最高に優れているとはいえません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="354"><a name="354"><TD ID="TAB354" onclick="javascript:toggleLayer('J354')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB354" onclick="javascript:toggleLayer('E354')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="355"><a name="355"><TD id="E355" onclick="javascript:toggleLayer('J355')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [True excellence being, as Tu Mu says:  
+"To plan secretly, to move surreptitiously, to foil the enemy's intentions and balk his schemes, so that at last the day may be won without shedding a drop of blood."  
+Sun Tzu reserves his approbation for things that "the world's coarse thumb And finger fail to plumb."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB355" onclick="javascript:toggleLayer('E355')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="356"><a name="356"><TD ID="TAB356" onclick="javascript:toggleLayer('J356')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB356" onclick="javascript:toggleLayer('E356')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="357"><a name="357"><TD id="E357" onclick="javascript:toggleLayer('J357')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 10.  To lift an autumn hair is no sign of great strength;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J357" onclick="javascript:toggleLayer('E357')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １０．細くなった髪の毛を持ち上げても力持ちだということにはなりません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="358"><a name="358"><TD ID="TAB358" onclick="javascript:toggleLayer('J358')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB358" onclick="javascript:toggleLayer('E358')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="359"><a name="359"><TD id="E359" onclick="javascript:toggleLayer('J359')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> ["Autumn" hair" is explained as the fur of a hare, which is finest in autumn, when it begins to grow afresh.  
+The phrase is a very common one in Chinese writers.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB359" onclick="javascript:toggleLayer('E359')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="360"><a name="360"><TD ID="TAB360" onclick="javascript:toggleLayer('J360')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB360" onclick="javascript:toggleLayer('E360')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="361"><a name="361"><TD id="E361" onclick="javascript:toggleLayer('J361')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> to see the sun and moon is no sign of sharp sight;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J361" onclick="javascript:toggleLayer('E361')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 太陽や月が見えたからといってことさら目がいいというわけではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="362"><a name="362"><TD id="E362" onclick="javascript:toggleLayer('J362')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> to hear the noise of thunder is no sign of a quick ear.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J362" onclick="javascript:toggleLayer('E362')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 雷鳴が聞こえたからといって耳がいいというわけではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="363"><a name="363"><TD ID="TAB363" onclick="javascript:toggleLayer('J363')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB363" onclick="javascript:toggleLayer('E363')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="364"><a name="364"><TD id="E364" onclick="javascript:toggleLayer('J364')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Ho Shih gives as real instances of strength, sharp sight and quick hearing:  
+Wu Huo, who could lift a tripod weighing 250 stone;  
+Li Chu, who at a distance of a hundred paces could see objects no bigger than a mustard seed; 
+and Shih K`uang, a blind musician who could hear the footsteps of a mosquito.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB364" onclick="javascript:toggleLayer('E364')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="365"><a name="365"><TD ID="TAB365" onclick="javascript:toggleLayer('J365')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB365" onclick="javascript:toggleLayer('E365')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="366"><a name="366"><TD id="E366" onclick="javascript:toggleLayer('J366')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 11.  What the ancients called a clever fighter is one who not only wins, but excels in winning with ease.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J366" onclick="javascript:toggleLayer('E366')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １１．昔の人たちは優れた戦士のことを、ただ勝つだけでなく、いとも簡単に勝つところがすごいと言っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="367"><a name="367"><TD ID="TAB367" onclick="javascript:toggleLayer('J367')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB367" onclick="javascript:toggleLayer('E367')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="368"><a name="368"><TD id="E368" onclick="javascript:toggleLayer('J368')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [The last half is literally "one who, conquering, excels in easy conquering."   
+Mei Yao-ch`en says:  
+"He who only sees the obvious, wins his battles with difficulty; 
+he who looks below the surface of things, wins with ease."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB368" onclick="javascript:toggleLayer('E368')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="369"><a name="369"><TD ID="TAB369" onclick="javascript:toggleLayer('J369')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB369" onclick="javascript:toggleLayer('E369')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="370"><a name="370"><TD id="E370" onclick="javascript:toggleLayer('J370')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 12.  Hence his victories bring him neither reputation for wisdom nor credit for courage.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J370" onclick="javascript:toggleLayer('E370')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １２．というのも、そんな人の勝利は知恵を讃えられたり、勇気を賞賛されたりはしないからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="371"><a name="371"><TD ID="TAB371" onclick="javascript:toggleLayer('J371')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB371" onclick="javascript:toggleLayer('E371')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="372"><a name="372"><TD id="E372" onclick="javascript:toggleLayer('J372')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Tu Mu explains this very well:  
+"Inasmuch as his victories are gained over circumstances that have not come to light, the world as large knows nothing of them, and he wins no reputation for wisdom; 
+inasmuch as the hostile state submits before there has been any bloodshed, he receives no credit for courage."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB372" onclick="javascript:toggleLayer('E372')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="373"><a name="373"><TD ID="TAB373" onclick="javascript:toggleLayer('J373')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB373" onclick="javascript:toggleLayer('E373')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="374"><a name="374"><TD id="E374" onclick="javascript:toggleLayer('J374')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 13.  He wins his battles by making no mistakes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J374" onclick="javascript:toggleLayer('E374')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １３．そのような人はミスを犯さずに戦いに勝ちます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="375"><a name="375"><TD ID="TAB375" onclick="javascript:toggleLayer('J375')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB375" onclick="javascript:toggleLayer('E375')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="376"><a name="376"><TD id="E376" onclick="javascript:toggleLayer('J376')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Ch`en Hao says:   
+"He plans no superfluous marches, he devises no futile attacks."  
+The connection of ideas is thus explained by Chang Yu:  
+"One who seeks to conquer by sheer strength, clever though he may be at winning pitched battles, is also liable on occasion to be vanquished;
+whereas he who can look into the future and discern conditions that are not yet manifest, will never make a blunder and therefore invariably win."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB376" onclick="javascript:toggleLayer('E376')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="377"><a name="377"><TD ID="TAB377" onclick="javascript:toggleLayer('J377')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB377" onclick="javascript:toggleLayer('E377')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="378"><a name="378"><TD id="E378" onclick="javascript:toggleLayer('J378')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Making no mistakes is what establishes the certainty of victory,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J378" onclick="javascript:toggleLayer('E378')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ミスを犯さなければ、勝利は確かなものになります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="379"><a name="379"><TD id="E379" onclick="javascript:toggleLayer('J379')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it means conquering an enemy that is already defeated.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J379" onclick="javascript:toggleLayer('E379')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら敵を征服する前にもう勝ったことになっているからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="380"><a name="380"><TD id="E380" onclick="javascript:toggleLayer('J380')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 14.  Hence the skillful fighter puts himself into a position which makes defeat impossible, and does not miss the moment for defeating the enemy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J380" onclick="javascript:toggleLayer('E380')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １４．というのも、優れた兵士は負けることがあり得ない立場に身を置き、敵を倒せる瞬間を見逃したりはしないからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="381"><a name="381"><TD ID="TAB381" onclick="javascript:toggleLayer('J381')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB381" onclick="javascript:toggleLayer('E381')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="382"><a name="382"><TD id="E382" onclick="javascript:toggleLayer('J382')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [A  "counsel of perfection"  as Tu Mu truly observes. 
+"Position" need not be confined to the actual ground occupied by the troops.  
+It includes all the arrangements and preparations which a wise general will make to increase the safety of his army.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB382" onclick="javascript:toggleLayer('E382')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="383"><a name="383"><TD ID="TAB383" onclick="javascript:toggleLayer('J383')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB383" onclick="javascript:toggleLayer('E383')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="384"><a name="384"><TD id="E384" onclick="javascript:toggleLayer('J384')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 15.  Thus it is that in war the victorious strategist only seeks battle after the victory has been won, whereas he who is destined to defeat first fights and afterwards looks for victory.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J384" onclick="javascript:toggleLayer('E384')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １５．そんなわけで、勝利する軍の作戦を立てる人は、すでに勝ってしまってから戦争を始めますが、負けると決まっているような人はまず始めに戦って、その後から勝利を求めるのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="385"><a name="385"><TD ID="TAB385" onclick="javascript:toggleLayer('J385')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB385" onclick="javascript:toggleLayer('E385')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="386"><a name="386"><TD id="E386" onclick="javascript:toggleLayer('J386')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Ho Shih thus expounds the paradox:  
+"In warfare, first lay plans which will ensure victory, and then lead your army to battle;  
+if you will not begin with stratagem but rely on brute strength alone, victory will no longer be assured."]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB386" onclick="javascript:toggleLayer('E386')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="387"><a name="387"><TD ID="TAB387" onclick="javascript:toggleLayer('J387')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB387" onclick="javascript:toggleLayer('E387')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="388"><a name="388"><TD id="E388" onclick="javascript:toggleLayer('J388')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 16.  The consummate leader cultivates the moral law, and strictly adheres to method and discipline;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J388" onclick="javascript:toggleLayer('E388')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １６．立派なリーダーは徳の高い政治を敷き、秩序と規律を厳格に守ります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="389"><a name="389"><TD id="E389" onclick="javascript:toggleLayer('J389')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> thus it is in his power to control success.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J389" onclick="javascript:toggleLayer('E389')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから勝利を収めるのも思うがままなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="390"><a name="390"><TD id="E390" onclick="javascript:toggleLayer('J390')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 17.  In respect of military method, we have, firstly, Measurement; secondly, Estimation of quantity; thirdly, Calculation; fourthly, Balancing of chances; fifthly, Victory.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J390" onclick="javascript:toggleLayer('E390')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １７．軍隊の運用についてわたしたちが見てきたのは、まず一番目には計ること、二番目には量を見積もること、三番目には計算すること、四番目にはチャンスをそれぞれ比べてみること、五番目には勝利することです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="391"><a name="391"><TD id="E391" onclick="javascript:toggleLayer('J391')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 18.  Measurement owes its existence to Earth; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J391" onclick="javascript:toggleLayer('E391')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １８．計るというのは、地面あってのことです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="392"><a name="392"><TD id="E392" onclick="javascript:toggleLayer('J392')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Estimation of quantity to Measurement; Calculation to Estimation of quantity; Balancing of chances to Calculation; and Victory to Balancing of chances.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J392" onclick="javascript:toggleLayer('E392')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 量を見積もるのは計ること、計算は数の見積もり、チャンスをそれぞれ比べてみることは計算、勝利はチャンスをそれぞれ比べてみることがあって成り立つのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="393"><a name="393"><TD ID="TAB393" onclick="javascript:toggleLayer('J393')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB393" onclick="javascript:toggleLayer('E393')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="394"><a name="394"><TD id="E394" onclick="javascript:toggleLayer('J394')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [It is not easy to distinguish the four terms very clearly in the Chinese.  
+The first seems to be surveying and measurement of the ground, which enable us to form an estimate of the enemy's strength, and to make calculations based on the data thus obtained; 
+we are thus led to a general weighing-up, or comparison of the enemy's chances with our own; 
+if the latter turn the scale, then victory ensues.  
+The chief difficulty lies in third term, which in the Chinese some commentators take as a calculation of NUMBERS, thereby making it nearly synonymous with the second term.  
+Perhaps the second term should be thought of as a consideration of the enemy's general position or condition, while the third term is the estimate of his numerical strength.
+On the other hand, Tu Mu says:   
+"The question of relative strength having been settled, we can bring the varied resources of cunning into play."  
+Ho Shih seconds this interpretation, but weakens it.  
+However, it points to the third term as being a calculation of numbers.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB394" onclick="javascript:toggleLayer('E394')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="395"><a name="395"><TD ID="TAB395" onclick="javascript:toggleLayer('J395')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB395" onclick="javascript:toggleLayer('E395')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="396"><a name="396"><TD id="E396" onclick="javascript:toggleLayer('J396')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 19.  A victorious army opposed to a routed one, is as a pound's weight placed in the scale against a single grain.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J396" onclick="javascript:toggleLayer('E396')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> １９．行軍してくる敵軍に向かい合った勝利する軍隊は、一粒の種と一緒に計りに乗せられた１ポンドの錘のようなものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="397"><a name="397"><TD ID="TAB397" onclick="javascript:toggleLayer('J397')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB397" onclick="javascript:toggleLayer('E397')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="398"><a name="398"><TD id="E398" onclick="javascript:toggleLayer('J398')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [Literally, "a victorious army is like an I (20 oz.) weighed against a SHU (1/24 oz.); 
+a routed army is a SHU weighed against an I."   
+The point is simply the enormous advantage which a disciplined force, flushed with victory, has over one demoralized by defeat."  
+Legge, in his note on Mencius, I. 2. ix.  2, makes the I to be 24 Chinese ounces, and corrects Chu Hsi's statement that it equaled 20 oz. only.  
+But Li Ch`uan of the T`ang dynasty here gives the same figure as Chu Hsi.]
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB398" onclick="javascript:toggleLayer('E398')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="399"><a name="399"><TD ID="TAB399" onclick="javascript:toggleLayer('J399')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB399" onclick="javascript:toggleLayer('E399')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="400"><a name="400"><TD id="E400" onclick="javascript:toggleLayer('J400')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 20.  The onrush of a conquering force is like the bursting of pent-up waters into a chasm a thousand fathoms deep.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J400" onclick="javascript:toggleLayer('E400')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ２０．相手を征服しようとする軍の突撃は、せき止められた水が決壊して六百フィートの谷になだれ込むのと似ています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="war-2.htm">prev</a>
+<a href="war-0.htm">0</a>
+<a href="war-1.htm">1</a>
+<a href="war-2.htm">2</a>
+<3>
+<a href="war-4.htm">4</a>
+<a href="war-4.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/ware.txt">local copy</a> / <a href="http://www.gutenberg.net/etext94/sunzu10.txt">http://www.gutenberg.net/etext94/sunzu10.txt</a><li>オリジナルの日本語文: <a href="../org/warj.txt">local copy</a> / <a href="http://lovemorgue.org/trans/suntzu1.html">http://lovemorgue.org/trans/suntzu1.html</a><li><a href="../manual-alignment/war.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

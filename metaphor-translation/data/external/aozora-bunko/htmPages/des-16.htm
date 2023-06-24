@@ -1,0 +1,405 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Cracking DES: Secrets of Encryption Research, Wiretap Politics, and Chip Design / Electronic Frontier Foundation 著</h2><h2>DESのクラック：暗号研究と盗聴政策、チップ設計の秘密  / ELECTRONIC FRONTIER FOUNDATION 著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/dese.txt">英語文</a>&<a href="../org/desj.txt">日本語文</a> / <a href="../manual-alignment/des.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>16 of Cracking DES: Secrets of Encryption Research, Wiretap Politics, and Chip Design</TITLE>
+<hr>
+<a href="des-15.htm">prev</a>
+<a href="des-0.htm">0</a>
+<a href="des-1.htm">1</a>
+<a href="des-2.htm">2</a>
+<a href="des-3.htm">3</a>
+<a href="des-4.htm">4</a>
+<a href="des-5.htm">5</a>
+<a href="des-6.htm">6</a>
+<a href="des-7.htm">7</a>
+<a href="des-8.htm">8</a>
+<a href="des-9.htm">9</a>
+<a href="des-10.htm">10</a>
+<a href="des-11.htm">11</a>
+<a href="des-12.htm">12</a>
+<a href="des-13.htm">13</a>
+<a href="des-14.htm">14</a>
+<a href="des-15.htm">15</a>
+<16>
+<a href="des-17.htm">17</a>
+<a href="des-18.htm">18</a>
+<a href="des-19.htm">19</a>
+<a href="des-20.htm">20</a>
+<a href="des-17.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1601"><a name="1601"><TD ID="TAB1601" onclick="javascript:toggleLayer('J1601')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1601" onclick="javascript:toggleLayer('E1601')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いちばん下の列 (P3): DESクラッカー基板用の電源と信号。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1602"><a name="1602"><TD ID="TAB1602" onclick="javascript:toggleLayer('J1602')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1602" onclick="javascript:toggleLayer('E1602')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1603"><a name="1603"><TD ID="TAB1603" onclick="javascript:toggleLayer('J1603')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1603" onclick="javascript:toggleLayer('E1603')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 割り当ては以下の通り：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1604"><a name="1604"><TD ID="TAB1604" onclick="javascript:toggleLayer('J1604')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1604" onclick="javascript:toggleLayer('E1604')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1605"><a name="1605"><TD ID="TAB1605" onclick="javascript:toggleLayer('J1605')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1605" onclick="javascript:toggleLayer('E1605')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Table 8-1: いちばん下のコネクタへの信号割り当て
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1606"><a name="1606"><TD ID="TAB1606" onclick="javascript:toggleLayer('J1606')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1606" onclick="javascript:toggleLayer('E1606')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1607"><a name="1607"><TD ID="TAB1607" onclick="javascript:toggleLayer('J1607')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1607" onclick="javascript:toggleLayer('E1607')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> A列もとの割り当て信号新しい割り当て
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1608"><a name="1608"><TD ID="TAB1608" onclick="javascript:toggleLayer('J1608')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1608" onclick="javascript:toggleLayer('E1608')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1609"><a name="1609"><TD ID="TAB1609" onclick="javascript:toggleLayer('J1609')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1609" onclick="javascript:toggleLayer('E1609')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 1 to 25+5 VoltsDES クラッカーチップ用の電源供給
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1610"><a name="1610"><TD ID="TAB1610" onclick="javascript:toggleLayer('J1610')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1610" onclick="javascript:toggleLayer('E1610')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1611"><a name="1611"><TD ID="TAB1611" onclick="javascript:toggleLayer('J1611')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1611" onclick="javascript:toggleLayer('E1611')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 26 to 27+12 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1612"><a name="1612"><TD ID="TAB1612" onclick="javascript:toggleLayer('J1612')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1612" onclick="javascript:toggleLayer('E1612')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1613"><a name="1613"><TD ID="TAB1613" onclick="javascript:toggleLayer('J1613')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1613" onclick="javascript:toggleLayer('E1613')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pins 28 to 29-12 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1614"><a name="1614"><TD ID="TAB1614" onclick="javascript:toggleLayer('J1614')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1614" onclick="javascript:toggleLayer('E1614')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1615"><a name="1615"><TD ID="TAB1615" onclick="javascript:toggleLayer('J1615')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1615" onclick="javascript:toggleLayer('E1615')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pins 30 to 32-5 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1616"><a name="1616"><TD ID="TAB1616" onclick="javascript:toggleLayer('J1616')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1616" onclick="javascript:toggleLayer('E1616')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1617"><a name="1617"><TD ID="TAB1617" onclick="javascript:toggleLayer('J1617')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1617" onclick="javascript:toggleLayer('E1617')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> B列もとの割り当て信号新しい割り当て
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1618"><a name="1618"><TD ID="TAB1618" onclick="javascript:toggleLayer('J1618')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1618" onclick="javascript:toggleLayer('E1618')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1619"><a name="1619"><TD ID="TAB1619" onclick="javascript:toggleLayer('J1619')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1619" onclick="javascript:toggleLayer('E1619')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 1予約未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1620"><a name="1620"><TD ID="TAB1620" onclick="javascript:toggleLayer('J1620')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1620" onclick="javascript:toggleLayer('E1620')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1621"><a name="1621"><TD ID="TAB1621" onclick="javascript:toggleLayer('J1621')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1621" onclick="javascript:toggleLayer('E1621')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 2予約未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1622"><a name="1622"><TD ID="TAB1622" onclick="javascript:toggleLayer('J1622')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1622" onclick="javascript:toggleLayer('E1622')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1623"><a name="1623"><TD ID="TAB1623" onclick="javascript:toggleLayer('J1623')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1623" onclick="javascript:toggleLayer('E1623')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 3予約Reset (C_RST)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1624"><a name="1624"><TD ID="TAB1624" onclick="javascript:toggleLayer('J1624')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1624" onclick="javascript:toggleLayer('E1624')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1625"><a name="1625"><TD ID="TAB1625" onclick="javascript:toggleLayer('J1625')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1625" onclick="javascript:toggleLayer('E1625')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 4予約Read Strobe (C_RDB)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1626"><a name="1626"><TD ID="TAB1626" onclick="javascript:toggleLayer('J1626')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1626" onclick="javascript:toggleLayer('E1626')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1627"><a name="1627"><TD ID="TAB1627" onclick="javascript:toggleLayer('J1627')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1627" onclick="javascript:toggleLayer('E1627')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 5予約Write Strobe (C_WRB)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1628"><a name="1628"><TD ID="TAB1628" onclick="javascript:toggleLayer('J1628')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1628" onclick="javascript:toggleLayer('E1628')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1629"><a name="1629"><TD ID="TAB1629" onclick="javascript:toggleLayer('J1629')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1629" onclick="javascript:toggleLayer('E1629')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 6予約Address Latch Enable (C_AEN)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1630"><a name="1630"><TD ID="TAB1630" onclick="javascript:toggleLayer('J1630')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1630" onclick="javascript:toggleLayer('E1630')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1631"><a name="1631"><TD ID="TAB1631" onclick="javascript:toggleLayer('J1631')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1631" onclick="javascript:toggleLayer('E1631')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 7予約Control_1 (C_CNT1) or C_ADRSELB
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1632"><a name="1632"><TD ID="TAB1632" onclick="javascript:toggleLayer('J1632')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1632" onclick="javascript:toggleLayer('E1632')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1633"><a name="1633"><TD ID="TAB1633" onclick="javascript:toggleLayer('J1633')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1633" onclick="javascript:toggleLayer('E1633')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 8予約Control_2 (C_CNT2) or C_CSB
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1634"><a name="1634"><TD ID="TAB1634" onclick="javascript:toggleLayer('J1634')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1634" onclick="javascript:toggleLayer('E1634')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1635"><a name="1635"><TD ID="TAB1635" onclick="javascript:toggleLayer('J1635')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1635" onclick="javascript:toggleLayer('E1635')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 9予約Data 7 (C_D7)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1636"><a name="1636"><TD ID="TAB1636" onclick="javascript:toggleLayer('J1636')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1636" onclick="javascript:toggleLayer('E1636')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1637"><a name="1637"><TD ID="TAB1637" onclick="javascript:toggleLayer('J1637')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1637" onclick="javascript:toggleLayer('E1637')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 10予約Data 6 (C_D6)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1638"><a name="1638"><TD ID="TAB1638" onclick="javascript:toggleLayer('J1638')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1638" onclick="javascript:toggleLayer('E1638')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1639"><a name="1639"><TD ID="TAB1639" onclick="javascript:toggleLayer('J1639')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1639" onclick="javascript:toggleLayer('E1639')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 11予約Data 5 (C_D5)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1640"><a name="1640"><TD ID="TAB1640" onclick="javascript:toggleLayer('J1640')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1640" onclick="javascript:toggleLayer('E1640')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1641"><a name="1641"><TD ID="TAB1641" onclick="javascript:toggleLayer('J1641')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1641" onclick="javascript:toggleLayer('E1641')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 12予約Data 4 (C_D4)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1642"><a name="1642"><TD ID="TAB1642" onclick="javascript:toggleLayer('J1642')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1642" onclick="javascript:toggleLayer('E1642')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1643"><a name="1643"><TD ID="TAB1643" onclick="javascript:toggleLayer('J1643')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1643" onclick="javascript:toggleLayer('E1643')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 13予約Data 3 (C_D3)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1644"><a name="1644"><TD ID="TAB1644" onclick="javascript:toggleLayer('J1644')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1644" onclick="javascript:toggleLayer('E1644')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1645"><a name="1645"><TD ID="TAB1645" onclick="javascript:toggleLayer('J1645')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1645" onclick="javascript:toggleLayer('E1645')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 14予約Data 2 (C_D2)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1646"><a name="1646"><TD ID="TAB1646" onclick="javascript:toggleLayer('J1646')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1646" onclick="javascript:toggleLayer('E1646')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1647"><a name="1647"><TD ID="TAB1647" onclick="javascript:toggleLayer('J1647')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1647" onclick="javascript:toggleLayer('E1647')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 15予約Data 1 (C_D1)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1648"><a name="1648"><TD ID="TAB1648" onclick="javascript:toggleLayer('J1648')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1648" onclick="javascript:toggleLayer('E1648')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1649"><a name="1649"><TD ID="TAB1649" onclick="javascript:toggleLayer('J1649')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1649" onclick="javascript:toggleLayer('E1649')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 8-1 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1650"><a name="1650"><TD ID="TAB1650" onclick="javascript:toggleLayer('J1650')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1650" onclick="javascript:toggleLayer('E1650')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1651"><a name="1651"><TD ID="TAB1651" onclick="javascript:toggleLayer('J1651')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1651" onclick="javascript:toggleLayer('E1651')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Table 8-1: いちばん下のコネクタへの信号割り当て (continued)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1652"><a name="1652"><TD ID="TAB1652" onclick="javascript:toggleLayer('J1652')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1652" onclick="javascript:toggleLayer('E1652')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1653"><a name="1653"><TD ID="TAB1653" onclick="javascript:toggleLayer('J1653')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1653" onclick="javascript:toggleLayer('E1653')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 16予約Data 0 (C_D0)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1654"><a name="1654"><TD ID="TAB1654" onclick="javascript:toggleLayer('J1654')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1654" onclick="javascript:toggleLayer('E1654')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1655"><a name="1655"><TD ID="TAB1655" onclick="javascript:toggleLayer('J1655')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1655" onclick="javascript:toggleLayer('E1655')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 17予約Address 7 (C_A7)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1656"><a name="1656"><TD ID="TAB1656" onclick="javascript:toggleLayer('J1656')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1656" onclick="javascript:toggleLayer('E1656')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1657"><a name="1657"><TD ID="TAB1657" onclick="javascript:toggleLayer('J1657')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1657" onclick="javascript:toggleLayer('E1657')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 18予約Address 6 (C_A6)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1658"><a name="1658"><TD ID="TAB1658" onclick="javascript:toggleLayer('J1658')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1658" onclick="javascript:toggleLayer('E1658')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1659"><a name="1659"><TD ID="TAB1659" onclick="javascript:toggleLayer('J1659')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1659" onclick="javascript:toggleLayer('E1659')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 19予約Address 5 (C_A5)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1660"><a name="1660"><TD ID="TAB1660" onclick="javascript:toggleLayer('J1660')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1660" onclick="javascript:toggleLayer('E1660')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1661"><a name="1661"><TD ID="TAB1661" onclick="javascript:toggleLayer('J1661')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1661" onclick="javascript:toggleLayer('E1661')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 20予約Address 4 (C_A4)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1662"><a name="1662"><TD ID="TAB1662" onclick="javascript:toggleLayer('J1662')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1662" onclick="javascript:toggleLayer('E1662')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1663"><a name="1663"><TD ID="TAB1663" onclick="javascript:toggleLayer('J1663')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1663" onclick="javascript:toggleLayer('E1663')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 21予約Address 3 (C_A3)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1664"><a name="1664"><TD ID="TAB1664" onclick="javascript:toggleLayer('J1664')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1664" onclick="javascript:toggleLayer('E1664')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1665"><a name="1665"><TD ID="TAB1665" onclick="javascript:toggleLayer('J1665')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1665" onclick="javascript:toggleLayer('E1665')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 22予約Address 2 (C_A2)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1666"><a name="1666"><TD ID="TAB1666" onclick="javascript:toggleLayer('J1666')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1666" onclick="javascript:toggleLayer('E1666')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1667"><a name="1667"><TD ID="TAB1667" onclick="javascript:toggleLayer('J1667')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1667" onclick="javascript:toggleLayer('E1667')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 23予約Address 1 (C_A1)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1668"><a name="1668"><TD ID="TAB1668" onclick="javascript:toggleLayer('J1668')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1668" onclick="javascript:toggleLayer('E1668')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1669"><a name="1669"><TD ID="TAB1669" onclick="javascript:toggleLayer('J1669')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1669" onclick="javascript:toggleLayer('E1669')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 24予約Address 0 (C_A0)
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1670"><a name="1670"><TD ID="TAB1670" onclick="javascript:toggleLayer('J1670')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1670" onclick="javascript:toggleLayer('E1670')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1671"><a name="1671"><TD ID="TAB1671" onclick="javascript:toggleLayer('J1671')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1671" onclick="javascript:toggleLayer('E1671')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 25予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1672"><a name="1672"><TD ID="TAB1672" onclick="javascript:toggleLayer('J1672')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1672" onclick="javascript:toggleLayer('E1672')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1673"><a name="1673"><TD ID="TAB1673" onclick="javascript:toggleLayer('J1673')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1673" onclick="javascript:toggleLayer('E1673')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 26予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1674"><a name="1674"><TD ID="TAB1674" onclick="javascript:toggleLayer('J1674')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1674" onclick="javascript:toggleLayer('E1674')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1675"><a name="1675"><TD ID="TAB1675" onclick="javascript:toggleLayer('J1675')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1675" onclick="javascript:toggleLayer('E1675')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 27予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1676"><a name="1676"><TD ID="TAB1676" onclick="javascript:toggleLayer('J1676')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1676" onclick="javascript:toggleLayer('E1676')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1677"><a name="1677"><TD ID="TAB1677" onclick="javascript:toggleLayer('J1677')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1677" onclick="javascript:toggleLayer('E1677')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 28予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1678"><a name="1678"><TD ID="TAB1678" onclick="javascript:toggleLayer('J1678')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1678" onclick="javascript:toggleLayer('E1678')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1679"><a name="1679"><TD ID="TAB1679" onclick="javascript:toggleLayer('J1679')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1679" onclick="javascript:toggleLayer('E1679')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 29予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1680"><a name="1680"><TD ID="TAB1680" onclick="javascript:toggleLayer('J1680')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1680" onclick="javascript:toggleLayer('E1680')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1681"><a name="1681"><TD ID="TAB1681" onclick="javascript:toggleLayer('J1681')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1681" onclick="javascript:toggleLayer('E1681')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 30予約GND
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1682"><a name="1682"><TD ID="TAB1682" onclick="javascript:toggleLayer('J1682')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1682" onclick="javascript:toggleLayer('E1682')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1683"><a name="1683"><TD ID="TAB1683" onclick="javascript:toggleLayer('J1683')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1683" onclick="javascript:toggleLayer('E1683')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 31予約全インターフェースIC用の+5 V 供給
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1684"><a name="1684"><TD ID="TAB1684" onclick="javascript:toggleLayer('J1684')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1684" onclick="javascript:toggleLayer('E1684')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1685"><a name="1685"><TD ID="TAB1685" onclick="javascript:toggleLayer('J1685')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1685" onclick="javascript:toggleLayer('E1685')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pin 32予約全インターフェースIC用の+5 V 供給
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1686"><a name="1686"><TD ID="TAB1686" onclick="javascript:toggleLayer('J1686')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1686" onclick="javascript:toggleLayer('E1686')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1687"><a name="1687"><TD ID="TAB1687" onclick="javascript:toggleLayer('J1687')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1687" onclick="javascript:toggleLayer('E1687')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> C列もとの割り当て信号新しい割り当て
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1688"><a name="1688"><TD ID="TAB1688" onclick="javascript:toggleLayer('J1688')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1688" onclick="javascript:toggleLayer('E1688')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1689"><a name="1689"><TD id="E1689" onclick="javascript:toggleLayer('J1689')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Pins 1 to 25GNDGND
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1689" onclick="javascript:toggleLayer('E1689')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1690"><a name="1690"><TD ID="TAB1690" onclick="javascript:toggleLayer('J1690')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1690" onclick="javascript:toggleLayer('E1690')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1691"><a name="1691"><TD ID="TAB1691" onclick="javascript:toggleLayer('J1691')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1691" onclick="javascript:toggleLayer('E1691')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pins 26 to 27+12 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1692"><a name="1692"><TD ID="TAB1692" onclick="javascript:toggleLayer('J1692')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1692" onclick="javascript:toggleLayer('E1692')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1693"><a name="1693"><TD ID="TAB1693" onclick="javascript:toggleLayer('J1693')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1693" onclick="javascript:toggleLayer('E1693')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pins 28 to 29-12 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1694"><a name="1694"><TD ID="TAB1694" onclick="javascript:toggleLayer('J1694')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1694" onclick="javascript:toggleLayer('E1694')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1695"><a name="1695"><TD ID="TAB1695" onclick="javascript:toggleLayer('J1695')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1695" onclick="javascript:toggleLayer('E1695')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> Pins 30 to 32-5 Volts未使用
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1696"><a name="1696"><TD ID="TAB1696" onclick="javascript:toggleLayer('J1696')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1696" onclick="javascript:toggleLayer('E1696')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1697"><a name="1697"><TD ID="TAB1697" onclick="javascript:toggleLayer('J1697')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1697" onclick="javascript:toggleLayer('E1697')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> A列の pins 1-25 は、DESクラッカーチップの電源を供給している。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1698"><a name="1698"><TD ID="TAB1698" onclick="javascript:toggleLayer('J1698')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1698" onclick="javascript:toggleLayer('E1698')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1699"><a name="1699"><TD ID="TAB1699" onclick="javascript:toggleLayer('J1699')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1699" onclick="javascript:toggleLayer('E1699')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これは通常は+5 ボルトだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1700"><a name="1700"><TD ID="TAB1700" onclick="javascript:toggleLayer('J1700')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1700" onclick="javascript:toggleLayer('E1700')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+</TABLE></span><HR>
+<a href="des-15.htm">prev</a>
+<a href="des-0.htm">0</a>
+<a href="des-1.htm">1</a>
+<a href="des-2.htm">2</a>
+<a href="des-3.htm">3</a>
+<a href="des-4.htm">4</a>
+<a href="des-5.htm">5</a>
+<a href="des-6.htm">6</a>
+<a href="des-7.htm">7</a>
+<a href="des-8.htm">8</a>
+<a href="des-9.htm">9</a>
+<a href="des-10.htm">10</a>
+<a href="des-11.htm">11</a>
+<a href="des-12.htm">12</a>
+<a href="des-13.htm">13</a>
+<a href="des-14.htm">14</a>
+<a href="des-15.htm">15</a>
+<16>
+<a href="des-17.htm">17</a>
+<a href="des-18.htm">18</a>
+<a href="des-19.htm">19</a>
+<a href="des-20.htm">20</a>
+<a href="des-17.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/dese.txt">local copy</a> / <a href="http://cryptome.org/cracking-des.htm">http://cryptome.org/cracking-des.htm</a><li>オリジナルの日本語文: <a href="../org/desj.txt">local copy</a> / <a href="http://www.genpaku.org/crackdes/cracking-desj.html">http://www.genpaku.org/crackdes/cracking-desj.html</a><li><a href="../manual-alignment/des.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

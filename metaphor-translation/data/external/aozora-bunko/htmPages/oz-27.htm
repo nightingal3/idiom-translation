@@ -1,0 +1,585 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>THE WONDERFUL WIZARD OF OZ / L. Frank Baum 著</h2><h2>オズの魔法使い / Ｌ・フランク・ボーム 著 / 武田正代・山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/oze.txt">英語文</a>&<a href="../org/ozj.txt">日本語文</a> / <a href="../manual-alignment/oz.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>27 of THE WONDERFUL WIZARD OF OZ</TITLE>
+<hr>
+<a href="oz-26.htm">prev</a>
+<a href="oz-0.htm">0</a>
+<a href="oz-1.htm">1</a>
+<a href="oz-2.htm">2</a>
+<a href="oz-3.htm">3</a>
+<a href="oz-4.htm">4</a>
+<a href="oz-5.htm">5</a>
+<a href="oz-6.htm">6</a>
+<a href="oz-7.htm">7</a>
+<a href="oz-8.htm">8</a>
+<a href="oz-9.htm">9</a>
+<a href="oz-10.htm">10</a>
+<a href="oz-11.htm">11</a>
+<a href="oz-12.htm">12</a>
+<a href="oz-13.htm">13</a>
+<a href="oz-14.htm">14</a>
+<a href="oz-15.htm">15</a>
+<a href="oz-16.htm">16</a>
+<a href="oz-17.htm">17</a>
+<a href="oz-18.htm">18</a>
+<a href="oz-19.htm">19</a>
+<a href="oz-20.htm">20</a>
+<a href="oz-21.htm">21</a>
+<a href="oz-22.htm">22</a>
+<a href="oz-23.htm">23</a>
+<a href="oz-24.htm">24</a>
+<a href="oz-25.htm">25</a>
+<a href="oz-26.htm">26</a>
+<27>
+<a href="oz-28.htm">28</a>
+<a href="oz-29.htm">29</a>
+<a href="oz-30.htm">30</a>
+<a href="oz-31.htm">31</a>
+<a href="oz-32.htm">32</a>
+<a href="oz-33.htm">33</a>
+<a href="oz-28.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<TR id="2701"><a name="2701"><TD ID="TAB2701" onclick="javascript:toggleLayer('J2701')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2701" onclick="javascript:toggleLayer('E2701')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2702"><a name="2702"><TD id="E2702" onclick="javascript:toggleLayer('J2702')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am tired of being such a humbug.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2702" onclick="javascript:toggleLayer('E2702')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わしもこんなペテン師でいるのは飽きた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2703"><a name="2703"><TD id="E2703" onclick="javascript:toggleLayer('J2703')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If I should go out of this Palace my people would soon discover I am not a Wizard, and then they would be vexed with me for having deceived them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2703" onclick="javascript:toggleLayer('E2703')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この宮殿から外に出たら、やがて臣民たちはわしが魔法使いでないのを知って、だましたわしに腹をたてるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2704"><a name="2704"><TD id="E2704" onclick="javascript:toggleLayer('J2704')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So I have to stay shut up in these rooms all day, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2704" onclick="javascript:toggleLayer('E2704')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから一日中ここの部屋に閉じこもってなきゃならんので。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2705"><a name="2705"><TD id="E2705" onclick="javascript:toggleLayer('J2705')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and it gets tiresome.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2705" onclick="javascript:toggleLayer('E2705')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 退屈でかなわん。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2706"><a name="2706"><TD id="E2706" onclick="javascript:toggleLayer('J2706')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I'd much rather go back to Kansas with you and be in a circus again."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2706" onclick="javascript:toggleLayer('E2706')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いっしょにカンザスに戻ってサーカスに入るほうがずっといい」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2707"><a name="2707"><TD id="E2707" onclick="javascript:toggleLayer('J2707')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I shall be glad to have your company," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2707" onclick="javascript:toggleLayer('E2707')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「喜んでごいっしょにどうぞ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2708"><a name="2708"><TD id="E2708" onclick="javascript:toggleLayer('J2708')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Dorothy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2708" onclick="javascript:toggleLayer('E2708')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とドロシー。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2709"><a name="2709"><TD id="E2709" onclick="javascript:toggleLayer('J2709')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Thank you," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2709" onclick="javascript:toggleLayer('E2709')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ありがとう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2710"><a name="2710"><TD ID="TAB2710" onclick="javascript:toggleLayer('J2710')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2710" onclick="javascript:toggleLayer('E2710')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2711"><a name="2711"><TD id="E2711" onclick="javascript:toggleLayer('J2711')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he answered.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2711" onclick="javascript:toggleLayer('E2711')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2712"><a name="2712"><TD ID="TAB2712" onclick="javascript:toggleLayer('J2712')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2712" onclick="javascript:toggleLayer('E2712')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2713"><a name="2713"><TD id="E2713" onclick="javascript:toggleLayer('J2713')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Now, if you will help me sew the silk together,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2713" onclick="javascript:toggleLayer('E2713')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さて、絹を縫うのを手伝ってくれないか。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2714"><a name="2714"><TD id="E2714" onclick="javascript:toggleLayer('J2714')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> we will begin to work on our balloon."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2714" onclick="javascript:toggleLayer('E2714')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 気球づくりにとりかかろう」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2715"><a name="2715"><TD id="E2715" onclick="javascript:toggleLayer('J2715')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So Dorothy took a needle and thread, and as fast as Oz cut the strips of silk into proper shape the girl sewed them neatly together.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2715" onclick="javascript:toggleLayer('E2715')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこでドロシーは針と糸を手にとって、オズが絹の帯を正しい形に切るがはやいか、それをきれいに縫い合わせたのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2716"><a name="2716"><TD id="E2716" onclick="javascript:toggleLayer('J2716')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> First there was a strip of light green silk, then a strip of dark green and then a strip of emerald green;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2716" onclick="javascript:toggleLayer('E2716')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最初は薄緑の絹で、次は濃い緑の帯、そしてエメラルドグリーンの帯。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2717"><a name="2717"><TD id="E2717" onclick="javascript:toggleLayer('J2717')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for Oz had a fancy to make the balloon in different shades of the color about them.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2717" onclick="javascript:toggleLayer('E2717')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのもオズは気取って、風船をさまざまな濃さをもった身の回りの色にしようと思ったからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2718"><a name="2718"><TD id="E2718" onclick="javascript:toggleLayer('J2718')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It took three days to sew all the strips together, but when it was finished they had a big bag of green silk more than twenty feet long.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2718" onclick="javascript:toggleLayer('E2718')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 帯を全部ぬいあわせるには三日かかりましたが、完成すると長さ７メートル以上の大きな緑の絹の袋ができました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2719"><a name="2719"><TD id="E2719" onclick="javascript:toggleLayer('J2719')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then Oz painted it on the inside with a coat of thin glue, to make it airtight, after which he announced that the balloon was ready.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2719" onclick="javascript:toggleLayer('E2719')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それからオズは内側にうすい糊をぬって膜をつくって空気がもれないようにして、それから気球ができたと宣言しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2720"><a name="2720"><TD id="E2720" onclick="javascript:toggleLayer('J2720')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "But we must have a basket to ride in," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2720" onclick="javascript:toggleLayer('E2720')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「でもわしらが乗るためのかごがないとな」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2721"><a name="2721"><TD id="E2721" onclick="javascript:toggleLayer('J2721')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> he said.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2721" onclick="javascript:toggleLayer('E2721')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というと、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2722"><a name="2722"><TD id="E2722" onclick="javascript:toggleLayer('J2722')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So he sent the soldier with the green whiskers for a big clothes basket, which he fastened with many ropes to the bottom of the balloon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2722" onclick="javascript:toggleLayer('E2722')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 緑のひげを持った兵隊に、大きなせんたくかごをを持ってこさせまして、それをたくらんの縄で気球の底につなぎました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2723"><a name="2723"><TD id="E2723" onclick="javascript:toggleLayer('J2723')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When it was all ready, Oz sent word to his people that he was going to make a visit to a great brother Wizard who lived in the clouds.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2723" onclick="javascript:toggleLayer('E2723')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 準備万端ととのうと、オズは臣民に対して、雲の中に住む大兄弟魔法使いを訪ねると宣言しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2724"><a name="2724"><TD id="E2724" onclick="javascript:toggleLayer('J2724')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The news spread rapidly throughout the city and everyone came to see the wonderful sight.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2724" onclick="javascript:toggleLayer('E2724')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのしらせは町中にすぐ広まって、みんなそのすばらしい光景を見物にきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2725"><a name="2725"><TD id="E2725" onclick="javascript:toggleLayer('J2725')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Oz ordered the balloon carried out in front of the Palace, and the people gazed upon it with much curiosity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2725" onclick="javascript:toggleLayer('E2725')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オズは気球を宮殿の前に運ばせて、みんな物珍しそうにそれをながめます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2726"><a name="2726"><TD id="E2726" onclick="javascript:toggleLayer('J2726')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Tin Woodman had chopped a big pile of wood, and now he made a fire of it, and Oz held the bottom of the balloon over the fire so that the hot air that arose from it would be caught in the silken bag.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2726" onclick="javascript:toggleLayer('E2726')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ブリキの木こりが薪の山を切ってきて、たき火をおこし、オズは気球の底を火の上にもってきて、そこからたちのぼる熱い空気が絹の袋に入るようにしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2727"><a name="2727"><TD id="E2727" onclick="javascript:toggleLayer('J2727')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Gradually the balloon swelled out and rose into the air, until finally the basket just touched the ground.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2727" onclick="javascript:toggleLayer('E2727')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> やがて気球はふくれあがって宙に浮き、とうとうかごがやっと地面にふれているだけとなりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2728"><a name="2728"><TD id="E2728" onclick="javascript:toggleLayer('J2728')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then Oz got into the basket and said to all the people in a loud voice:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2728" onclick="javascript:toggleLayer('E2728')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてオズはかごに入ってから、みんなに大声で言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2729"><a name="2729"><TD id="E2729" onclick="javascript:toggleLayer('J2729')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I am now going away to make a visit.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2729" onclick="javascript:toggleLayer('E2729')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ではこれから訪ねるので出かけるぞ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2730"><a name="2730"><TD id="E2730" onclick="javascript:toggleLayer('J2730')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> While I am gone the Scarecrow will rule over you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2730" onclick="javascript:toggleLayer('E2730')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 留守のあいだはかかしがみんなを治める。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2731"><a name="2731"><TD id="E2731" onclick="javascript:toggleLayer('J2731')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I command you to obey him as you would me."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2731" onclick="javascript:toggleLayer('E2731')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしにしたがうのと同じようにかかしにもしたがうよう命令する」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2732"><a name="2732"><TD id="E2732" onclick="javascript:toggleLayer('J2732')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The balloon was by this time tugging hard at the rope that held it to the ground,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2732" onclick="javascript:toggleLayer('E2732')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そのときにはもう気球は地面につなぐ縄を強く引っ張っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2733"><a name="2733"><TD id="E2733" onclick="javascript:toggleLayer('J2733')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the air within it was hot, and this made it so much lighter in weight than the air without that it pulled hard to rise into the sky.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2733" onclick="javascript:toggleLayer('E2733')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 中の空気が熱くて、外の空気よりもずっと重さが軽くなっていたので、空にあがりたくて引っ張るのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2734"><a name="2734"><TD id="E2734" onclick="javascript:toggleLayer('J2734')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Come, Dorothy!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2734" onclick="javascript:toggleLayer('E2734')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「ドロシー、おいで！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2735"><a name="2735"><TD id="E2735" onclick="javascript:toggleLayer('J2735')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried the Wizard.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2735" onclick="javascript:toggleLayer('E2735')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と魔法使いが叫びました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2736"><a name="2736"><TD id="E2736" onclick="javascript:toggleLayer('J2736')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Hurry up, or the balloon will fly away."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2736" onclick="javascript:toggleLayer('E2736')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「急いで、気球が飛んでしまう！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2737"><a name="2737"><TD id="E2737" onclick="javascript:toggleLayer('J2737')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I can't find Toto anywhere,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2737" onclick="javascript:toggleLayer('E2737')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「トトが見つからないのよ！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2738"><a name="2738"><TD id="E2738" onclick="javascript:toggleLayer('J2738')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> replied Dorothy, who did not wish to leave her little dog behind.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2738" onclick="javascript:toggleLayer('E2738')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ドロシーは子犬を残していきたくはなかったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2739"><a name="2739"><TD id="E2739" onclick="javascript:toggleLayer('J2739')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Toto had run into the crowd to bark at a kitten, and Dorothy at last found him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2739" onclick="javascript:toggleLayer('E2739')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> トトは子ネコに吠えようとして群衆の中にかけこんでしまい、ドロシーはやっとのことでそれを見つけました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2740"><a name="2740"><TD id="E2740" onclick="javascript:toggleLayer('J2740')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She picked him up and ran towards the balloon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2740" onclick="javascript:toggleLayer('E2740')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして抱え上げると気球のほうに走っていきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2741"><a name="2741"><TD id="E2741" onclick="javascript:toggleLayer('J2741')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> She was within a few steps of it, and Oz was holding out his hands to help her into the basket, when, crack! went the ropes, and the balloon rose into the air without her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2741" onclick="javascript:toggleLayer('E2741')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あと数歩というところまできて、オズがかごに入るのを助けようと手を伸ばしていたのですが、そこで縄がぷつん！　と切れて、気球はドロシーを待たずに宙にまいあがりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2742"><a name="2742"><TD id="E2742" onclick="javascript:toggleLayer('J2742')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Come back!" 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2742" onclick="javascript:toggleLayer('E2742')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「戻ってきて！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2743"><a name="2743"><TD id="E2743" onclick="javascript:toggleLayer('J2743')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she screamed. 
+"I want to go, too!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2743" onclick="javascript:toggleLayer('E2743')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あたしも行きたいの！」
+とドロシーは叫びました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2744"><a name="2744"><TD id="E2744" onclick="javascript:toggleLayer('J2744')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I can't come back, my dear,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2744" onclick="javascript:toggleLayer('E2744')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「無理だよ、おじょうちゃん」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2745"><a name="2745"><TD id="E2745" onclick="javascript:toggleLayer('J2745')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> called Oz from the basket.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2745" onclick="javascript:toggleLayer('E2745')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とオズはかごから言います。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2746"><a name="2746"><TD id="E2746" onclick="javascript:toggleLayer('J2746')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Good-bye!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2746" onclick="javascript:toggleLayer('E2746')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「さようなら！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2747"><a name="2747"><TD id="E2747" onclick="javascript:toggleLayer('J2747')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Good-bye!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2747" onclick="javascript:toggleLayer('E2747')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「さようなら！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2748"><a name="2748"><TD id="E2748" onclick="javascript:toggleLayer('J2748')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> shouted everyone, and all eyes were turned upward to where the Wizard was riding in the basket, rising every moment farther and farther into the sky.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2748" onclick="javascript:toggleLayer('E2748')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とみんなも叫び、みんなかごに乗った魔法使いのほうを見上げ、それが一瞬毎にどんどん空に上がっていくのを見送りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2749"><a name="2749"><TD id="E2749" onclick="javascript:toggleLayer('J2749')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And that was the last any of them ever saw of Oz, the Wonderful Wizard, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2749" onclick="javascript:toggleLayer('E2749')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてみんながすばらしい魔法使いオズを見たのはそれが最後でした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2750"><a name="2750"><TD id="E2750" onclick="javascript:toggleLayer('J2750')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> though he may have reached Omaha safely, and be there now, for all we know.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2750" onclick="javascript:toggleLayer('E2750')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オマハに無事ついたのかもしれませんし、いまもそこにいるのかもしれませんね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2751"><a name="2751"><TD id="E2751" onclick="javascript:toggleLayer('J2751')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But the people remembered him lovingly, and said to one another:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2751" onclick="javascript:toggleLayer('E2751')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもここの人々はみんな愛情をこめてオズを思い出しながら、こう言い合ったものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2752"><a name="2752"><TD id="E2752" onclick="javascript:toggleLayer('J2752')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Oz was always our friend.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2752" onclick="javascript:toggleLayer('E2752')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「オズはいつでもわれわれの友だなあ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2753"><a name="2753"><TD id="E2753" onclick="javascript:toggleLayer('J2753')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When he was here he built for us this beautiful Emerald City, and now he is gone he has left the Wise Scarecrow to rule over us."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2753" onclick="javascript:toggleLayer('E2753')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここにいたときにはこの美しいエメラルドの都を作ってくれたし、去ったときには国を治めるのに賢いかかしを残してくれたんだから」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2754"><a name="2754"><TD id="E2754" onclick="javascript:toggleLayer('J2754')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Still, for many days they grieved over the loss of the Wonderful Wizard, and would not be comforted.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2754" onclick="javascript:toggleLayer('E2754')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでも、何日にもわたってみんなすばらしい魔法使いがいなくなったことを嘆き、なかなか元気になりませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2755"><a name="2755"><TD ID="TAB2755" onclick="javascript:toggleLayer('J2755')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2755" onclick="javascript:toggleLayer('E2755')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="2756"><a name="2756"><TD id="E2756" onclick="javascript:toggleLayer('J2756')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 18.  Away to the South
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2756" onclick="javascript:toggleLayer('E2756')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 18　南の国へ
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2757"><a name="2757"><TD id="E2757" onclick="javascript:toggleLayer('J2757')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Dorothy wept bitterly at the passing of her hope to get home to Kansas again;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2757" onclick="javascript:toggleLayer('E2757')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ドロシーは、またもやカンザスに戻る希望が消えたのでおいおいと泣きました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2758"><a name="2758"><TD id="E2758" onclick="javascript:toggleLayer('J2758')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but when she thought it all over she was glad she had not gone up in a balloon.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2758" onclick="javascript:toggleLayer('E2758')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも考え直してみると、気球で空に舞い上がらなくてよかったと思いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2759"><a name="2759"><TD id="E2759" onclick="javascript:toggleLayer('J2759')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And she also felt sorry at losing Oz, and so did her companions.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2759" onclick="javascript:toggleLayer('E2759')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてオズがいなくなって悲しく思いまして、それは仲間たちも同じでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2760"><a name="2760"><TD id="E2760" onclick="javascript:toggleLayer('J2760')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Tin Woodman came to her and said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2760" onclick="javascript:toggleLayer('E2760')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ブリキの木こりがやってきて言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2761"><a name="2761"><TD id="E2761" onclick="javascript:toggleLayer('J2761')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Truly I should be ungrateful if I failed to mourn for the man who gave me my lovely heart.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2761" onclick="javascript:toggleLayer('E2761')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「美しい心をくれた人物のために嘆かなかったら、まさに恩知らずになってしまう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2762"><a name="2762"><TD id="E2762" onclick="javascript:toggleLayer('J2762')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I should like to cry a little because Oz is gone, if you will kindly wipe away my tears, so that I shall not rust."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2762" onclick="javascript:toggleLayer('E2762')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> オズがいなくなったので少し泣きたいので、さびないように涙をぬぐってくれないかな」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2763"><a name="2763"><TD id="E2763" onclick="javascript:toggleLayer('J2763')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "With pleasure,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2763" onclick="javascript:toggleLayer('E2763')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「喜んで」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2764"><a name="2764"><TD id="E2764" onclick="javascript:toggleLayer('J2764')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she answered, and brought a towel at once.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2764" onclick="javascript:toggleLayer('E2764')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とドロシーは答えてすぐにタオルを持ってきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2765"><a name="2765"><TD id="E2765" onclick="javascript:toggleLayer('J2765')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then the Tin Woodman wept for several minutes, and she watched the tears carefully and wiped them away with the towel.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2765" onclick="javascript:toggleLayer('E2765')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてブリキの木こりは数分ほど泣きまして、ドロシーは注意して涙を見張り、タオルでぬぐってあげました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2766"><a name="2766"><TD id="E2766" onclick="javascript:toggleLayer('J2766')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When he had finished, he thanked her kindly and oiled himself thoroughly with his jeweled oil-can, to guard against mishap.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2766" onclick="javascript:toggleLayer('E2766')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 終わると、木こりはていねいにお礼をいって、宝石をちりばめた油さしでたっぷりと油をさし、まちがいが起こらないようにしたのでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2767"><a name="2767"><TD id="E2767" onclick="javascript:toggleLayer('J2767')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Scarecrow was now the ruler of the Emerald City, and although he was not a Wizard the people were proud of him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2767" onclick="javascript:toggleLayer('E2767')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かかしはいまやエメラルドの都の支配者で、魔法使いではなくても人々はかかしをほこりに思っていました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2768"><a name="2768"><TD id="E2768" onclick="javascript:toggleLayer('J2768')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "For,"
+they said, 
+"there is not another city in all the world that is ruled by a stuffed man."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2768" onclick="javascript:toggleLayer('E2768')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「だって世界中どこをさがしても、詰め物をした人が治める町なんか二つとないからな」
+と言って。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2769"><a name="2769"><TD id="E2769" onclick="javascript:toggleLayer('J2769')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And, so far as they knew, they were quite right.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2769" onclick="javascript:toggleLayer('E2769')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてかれらの知る限り、これはまさにその通りでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2770"><a name="2770"><TD id="E2770" onclick="javascript:toggleLayer('J2770')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The morning after the balloon had gone up with Oz, the four travelers met in the Throne Room and talked matters over.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2770" onclick="javascript:toggleLayer('E2770')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 気球がオズといっしょに昇天した次の朝、四人の旅人たちは玉座の間に集まって話し合いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2771"><a name="2771"><TD id="E2771" onclick="javascript:toggleLayer('J2771')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Scarecrow sat in the big throne and the others stood respectfully before him.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2771" onclick="javascript:toggleLayer('E2771')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かかしは大きな玉座にすわり、ほかのみんなは敬意をこめてその前に立っています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2772"><a name="2772"><TD id="E2772" onclick="javascript:toggleLayer('J2772')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "We are not so unlucky," 
+said the new ruler,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2772" onclick="javascript:toggleLayer('E2772')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 新しい支配者は言いました。
+「ぼくたちは別に運が悪いわけじゃないよね。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2773"><a name="2773"><TD id="E2773" onclick="javascript:toggleLayer('J2773')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "for this Palace and the Emerald City belong to us, and we can do just as we please.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2773" onclick="javascript:toggleLayer('E2773')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この宮殿とエメラルドの都はぼくたちのものだから、好き勝手にしていいんだし。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2774"><a name="2774"><TD id="E2774" onclick="javascript:toggleLayer('J2774')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When I remember that a short time ago I was up on a pole in a farmer's cornfield, and that now I am the ruler of this beautiful City, I am quite satisfied with my lot."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2774" onclick="javascript:toggleLayer('E2774')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ほんの少し前にはお百姓さんのトウモロコシ畑の中でぼうに突き刺さっていたのを思い出し、それがいまやこの美しい町の統治者だと思うと、ぼくは自分の身の上に大満足だよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2775"><a name="2775"><TD id="E2775" onclick="javascript:toggleLayer('J2775')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I also," 
+said the Tin Woodman, 
+"am well-pleased with my new heart;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2775" onclick="javascript:toggleLayer('E2775')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「わたしもまた、自分の新しい心に大満足だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2776"><a name="2776"><TD id="E2776" onclick="javascript:toggleLayer('J2776')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, really, that was the only thing I wished in all the world."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2776" onclick="javascript:toggleLayer('E2776')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして実際、世界で他に何一つ望むものはなかった」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2777"><a name="2777"><TD id="E2777" onclick="javascript:toggleLayer('J2777')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "For my part, I am content in knowing I am as brave as any beast that ever lived, if not braver,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2777" onclick="javascript:toggleLayer('E2777')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「わたしはといえば、自分がこの世に生まれたどんな獣に勝るとも劣らないくらい勇敢だと知るだけで満足だよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2778"><a name="2778"><TD id="E2778" onclick="javascript:toggleLayer('J2778')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Lion modestly.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2778" onclick="javascript:toggleLayer('E2778')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とライオンは慎ましくいいました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2779"><a name="2779"><TD id="E2779" onclick="javascript:toggleLayer('J2779')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "If Dorothy would only be contented to live in the Emerald City,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2779" onclick="javascript:toggleLayer('E2779')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「あとはドロシーさえエメラルドの都に暮らすのに満足なら、
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2780"><a name="2780"><TD id="E2780" onclick="javascript:toggleLayer('J2780')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> continued the Scarecrow,
+"we might all be happy together."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2780" onclick="javascript:toggleLayer('E2780')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> みんな幸せになれるのになあ」
+とかかしが続けました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2781"><a name="2781"><TD id="E2781" onclick="javascript:toggleLayer('J2781')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "But I don't want to live here,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2781" onclick="javascript:toggleLayer('E2781')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「でもあたしはここには住みたくないのよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2782"><a name="2782"><TD id="E2782" onclick="javascript:toggleLayer('J2782')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> cried Dorothy.  
+"I want to go to Kansas, and live with Aunt Em and Uncle Henry."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2782" onclick="javascript:toggleLayer('E2782')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> カンザスにいって、エムおばさんとヘンリーおじさんといっしょに暮らしたいの」
+とドロシーは叫びます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2783"><a name="2783"><TD id="E2783" onclick="javascript:toggleLayer('J2783')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Well, then, what can be done?" 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2783" onclick="javascript:toggleLayer('E2783')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「うーん、だったらどんな手があるかな？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2784"><a name="2784"><TD id="E2784" onclick="javascript:toggleLayer('J2784')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> inquired the Woodman.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2784" onclick="javascript:toggleLayer('E2784')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と木こりがききました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2785"><a name="2785"><TD id="E2785" onclick="javascript:toggleLayer('J2785')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Scarecrow decided to think,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2785" onclick="javascript:toggleLayer('E2785')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かかしは考えることにしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2786"><a name="2786"><TD id="E2786" onclick="javascript:toggleLayer('J2786')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he thought so hard that the pins and needles began to stick out of his brains.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2786" onclick="javascript:toggleLayer('E2786')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしていっしょうけんめい考えたので、針やピンが脳みそから飛び出してきました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2787"><a name="2787"><TD id="E2787" onclick="javascript:toggleLayer('J2787')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Finally he said:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2787" onclick="javascript:toggleLayer('E2787')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ついにこう言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2788"><a name="2788"><TD id="E2788" onclick="javascript:toggleLayer('J2788')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Why not call the Winged Monkeys, and ask them to carry you over the desert?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2788" onclick="javascript:toggleLayer('E2788')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「翼ザルを呼んで、砂漠の向こうまで運んでもらったらどう？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2789"><a name="2789"><TD id="E2789" onclick="javascript:toggleLayer('J2789')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I never thought of that!"
+ said Dorothy joyfully.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2789" onclick="javascript:toggleLayer('E2789')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ドロシーは嬉しそうにいいました。
+「それは思いつかなかったわ！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2790"><a name="2790"><TD id="E2790" onclick="javascript:toggleLayer('J2790')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "It's just the thing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2790" onclick="javascript:toggleLayer('E2790')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> まさにそれよ！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2791"><a name="2791"><TD id="E2791" onclick="javascript:toggleLayer('J2791')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I'll go at once for the Golden Cap."
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2791" onclick="javascript:toggleLayer('E2791')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すぐに金の帽子を取ってくる」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2792"><a name="2792"><TD id="E2792" onclick="javascript:toggleLayer('J2792')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When she brought it into the Throne Room she spoke the magic words, and soon the band of Winged Monkeys flew in through the open window and stood beside her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2792" onclick="javascript:toggleLayer('E2792')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それを玉座の間にもってきて呪文を唱えると、すぐに翼ザルの群れが開いた窓から飛び込んできて横に立ちました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2793"><a name="2793"><TD id="E2793" onclick="javascript:toggleLayer('J2793')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "This is the second time you have called us,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2793" onclick="javascript:toggleLayer('E2793')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「二度目のお呼びですよ」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2794"><a name="2794"><TD id="E2794" onclick="javascript:toggleLayer('J2794')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said the Monkey King, bowing before the little girl.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2794" onclick="javascript:toggleLayer('E2794')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とサルの王さまは、少女の前でおじぎしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2795"><a name="2795"><TD id="E2795" onclick="javascript:toggleLayer('J2795')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "What do you wish?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2795" onclick="javascript:toggleLayer('E2795')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「お望みは？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2796"><a name="2796"><TD id="E2796" onclick="javascript:toggleLayer('J2796')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "I want you to fly with me to Kansas," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2796" onclick="javascript:toggleLayer('E2796')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いっしょにカンザスまで飛んでちょうだい」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2797"><a name="2797"><TD id="E2797" onclick="javascript:toggleLayer('J2797')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> said Dorothy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2797" onclick="javascript:toggleLayer('E2797')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> とドロシー。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2798"><a name="2798"><TD id="E2798" onclick="javascript:toggleLayer('J2798')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But the Monkey King shook his head.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2798" onclick="javascript:toggleLayer('E2798')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもサルの王さまはかぶりをふりました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="2799"><a name="2799"><TD id="E2799" onclick="javascript:toggleLayer('J2799')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "That cannot be done," 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J2799" onclick="javascript:toggleLayer('E2799')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「それはできません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="2800"><a name="2800"><TD ID="TAB2800" onclick="javascript:toggleLayer('J2800')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB2800" onclick="javascript:toggleLayer('E2800')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+</TABLE></span><HR>
+<a href="oz-26.htm">prev</a>
+<a href="oz-0.htm">0</a>
+<a href="oz-1.htm">1</a>
+<a href="oz-2.htm">2</a>
+<a href="oz-3.htm">3</a>
+<a href="oz-4.htm">4</a>
+<a href="oz-5.htm">5</a>
+<a href="oz-6.htm">6</a>
+<a href="oz-7.htm">7</a>
+<a href="oz-8.htm">8</a>
+<a href="oz-9.htm">9</a>
+<a href="oz-10.htm">10</a>
+<a href="oz-11.htm">11</a>
+<a href="oz-12.htm">12</a>
+<a href="oz-13.htm">13</a>
+<a href="oz-14.htm">14</a>
+<a href="oz-15.htm">15</a>
+<a href="oz-16.htm">16</a>
+<a href="oz-17.htm">17</a>
+<a href="oz-18.htm">18</a>
+<a href="oz-19.htm">19</a>
+<a href="oz-20.htm">20</a>
+<a href="oz-21.htm">21</a>
+<a href="oz-22.htm">22</a>
+<a href="oz-23.htm">23</a>
+<a href="oz-24.htm">24</a>
+<a href="oz-25.htm">25</a>
+<a href="oz-26.htm">26</a>
+<27>
+<a href="oz-28.htm">28</a>
+<a href="oz-29.htm">29</a>
+<a href="oz-30.htm">30</a>
+<a href="oz-31.htm">31</a>
+<a href="oz-32.htm">32</a>
+<a href="oz-33.htm">33</a>
+<a href="oz-28.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/oze.txt">local copy</a> / <a href="http://www.gutenberg.net/etext93/wizoz10.txt">http://www.gutenberg.net/etext93/wizoz10.txt</a><li>オリジナルの日本語文: <a href="../org/ozj.txt">local copy</a> / <a href="http://www.genpaku.org/oz/wizoz.txt">http://www.genpaku.org/oz/wizoz.txt</a><li><a href="../manual-alignment/oz.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

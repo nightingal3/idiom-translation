@@ -1,0 +1,456 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>Luther's Little Instruction Book / Translation by Robert E. Smith 著</h2><h2>マルチン・ルターの小信仰問答書 / マルチン・ルター 著 / 結城浩 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/luthere.txt">英語文</a>&<a href="../org/lutherj.txt">日本語文</a> / <a href="../manual-alignment/luther.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>4 of Luther's Little Instruction Book</TITLE>
+<hr>
+<a href="luther-3.htm">prev</a>
+<a href="luther-0.htm">0</a>
+<a href="luther-1.htm">1</a>
+<a href="luther-2.htm">2</a>
+<a href="luther-3.htm">3</a>
+<4>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="401"><a name="401"><TD id="E401" onclick="javascript:toggleLayer('J401')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This cup is the New Testament in my blood, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J401" onclick="javascript:toggleLayer('E401')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この杯は私の血による新しい契約〔新約〕です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="402"><a name="402"><TD id="E402" onclick="javascript:toggleLayer('J402')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which is shed for you to forgive sins.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J402" onclick="javascript:toggleLayer('E402')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたたちの罪を赦すために流されるものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="403"><a name="403"><TD id="E403" onclick="javascript:toggleLayer('J403')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This do, as often as you drink it, to remember Me!''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J403" onclick="javascript:toggleLayer('E403')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これを飲むたびに、私を忘れないようにこれを行いなさい」 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="404"><a name="404"><TD id="E404" onclick="javascript:toggleLayer('J404')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> III. Q. What good does this eating and drinking do?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J404" onclick="javascript:toggleLayer('E404')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 問い　食べたり飲んだりすることがどんなよいことをなすのでしょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="405"><a name="405"><TD id="E405" onclick="javascript:toggleLayer('J405')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A. These words tell us: ``Given for you'' and ``Shed for you to forgive sins.''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J405" onclick="javascript:toggleLayer('E405')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 答え　「あなたたちのために与えられる」および「あなたたちの罪を赦すために流される」という言葉が示しています。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="406"><a name="406"><TD id="E406" onclick="javascript:toggleLayer('J406')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Namely, that the forgiveness of sins, life and salvation are given to us through these words in the sacrament.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J406" onclick="javascript:toggleLayer('E406')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち聖餐式のこれらの言葉を通して、罪の赦し、命と救いが私たちに与えられます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="407"><a name="407"><TD id="E407" onclick="javascript:toggleLayer('J407')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because, where sins are forgiven, there is life and salvation as well.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J407" onclick="javascript:toggleLayer('E407')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜならば罪が赦されるところでは、命と救いも同じようにあるからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="408"><a name="408"><TD id="E408" onclick="javascript:toggleLayer('J408')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> IV.  Q. How can physical eating and drinking do such great things?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J408" onclick="javascript:toggleLayer('E408')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 問い　どうして物理的な食べたり飲んだりすることがそんなにすばらしいことをなすのでしょうか。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="409"><a name="409"><TD id="E409" onclick="javascript:toggleLayer('J409')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A. Of course, eating and drinking do not do these things.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J409" onclick="javascript:toggleLayer('E409')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 答え　もちろん、食べたり飲んだりすることがそのようなことをなすわけではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="410"><a name="410"><TD id="E410" onclick="javascript:toggleLayer('J410')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These words, written here, do them: ``given for you'' and ``shed for you to forgive sins.''
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J410" onclick="javascript:toggleLayer('E410')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ここに書かれている「あなたたちのために与えられる」および「あなたたちの罪を赦すために流される」という言葉が、それらのよいことをなすのです
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="411"><a name="411"><TD id="E411" onclick="javascript:toggleLayer('J411')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These words, along with physical eating and drinking are the important part of the sacrament.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J411" onclick="javascript:toggleLayer('E411')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらの言葉は、物理的な食べたり飲んだりすることとともに聖餐式の重要な部分を占めているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="412"><a name="412"><TD id="E412" onclick="javascript:toggleLayer('J412')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Anyone who believes these words has what they say and what they record, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J412" onclick="javascript:toggleLayer('E412')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらの言葉を信じる人は、ここで述べている通りのもの、ここに記されている通りのものを得るのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="413"><a name="413"><TD id="E413" onclick="javascript:toggleLayer('J413')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> namely, the forgiveness of sins.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J413" onclick="javascript:toggleLayer('E413')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すなわち、罪の赦しを得るのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="414"><a name="414"><TD id="E414" onclick="javascript:toggleLayer('J414')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> V.   Q. Who, then, receives such a sacrament in a worthy way?
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J414" onclick="javascript:toggleLayer('E414')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 問い　それでは誰がこのような聖餐にあずかることができるのでしょうか。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="415"><a name="415"><TD id="E415" onclick="javascript:toggleLayer('J415')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> A. Of course, fasting and other physical preparations are excellent disciplines for the body.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J415" onclick="javascript:toggleLayer('E415')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 答え　もちろん、断食やそのほかの物理的な準備というのは、体にとってすばらしい訓練となるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="416"><a name="416"><TD id="E416" onclick="javascript:toggleLayer('J416')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But anyone who believes these words, ``Given for you,'' and ``Shed for you to forgive sins,'' is really worthy and well prepared.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J416" onclick="javascript:toggleLayer('E416')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかし、「あなたたちのために与えられる」および「あなたたちの罪を赦すために流される」という言葉を信じる人なら誰でも、聖餐にあずかる十分な資格があり、準備ができているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="417"><a name="417"><TD id="E417" onclick="javascript:toggleLayer('J417')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But whoever doubts or does not believe these words is not worthy and is unprepared,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J417" onclick="javascript:toggleLayer('E417')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしながら、これらの言葉を疑ったり信じなかったりする人は聖餐にあずかる資格がないのであり、準備ができていないのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="418"><a name="418"><TD id="E418" onclick="javascript:toggleLayer('J418')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because the words, ``for you'' demand a heart that fully believes.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J418" onclick="javascript:toggleLayer('E418')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら「あなたたちのために」という言葉は、完全に信ずる心を求めるからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="419"><a name="419"><TD ID="TAB419" onclick="javascript:toggleLayer('J419')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB419" onclick="javascript:toggleLayer('E419')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="420"><a name="420"><TD ID="TAB420" onclick="javascript:toggleLayer('J420')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J420" onclick="javascript:toggleLayer('E420')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 朝と夕べの祈り
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="421"><a name="421"><TD ID="TAB421" onclick="javascript:toggleLayer('J421')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB421" onclick="javascript:toggleLayer('E421')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="422"><a name="422"><TD id="E422" onclick="javascript:toggleLayer('J422')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> How a Father Should Teach His Household to Conduct Morning and Evening Devotions.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J422" onclick="javascript:toggleLayer('E422')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父親が家族に朝と夕べの祈りを教えるには 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="423"><a name="423"><TD id="E423" onclick="javascript:toggleLayer('J423')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Morning Devotions
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J423" onclick="javascript:toggleLayer('E423')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 朝の祈り
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="424"><a name="424"><TD id="E424" onclick="javascript:toggleLayer('J424')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As soon as you get out of bed in the morning, you should bless yourself with the sign of the Holy Cross and say:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J424" onclick="javascript:toggleLayer('E424')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 朝、起きたらすぐに、聖なる十字架のしるしによって自分自身を祝福し、次のように言いましょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="425"><a name="425"><TD id="E425" onclick="javascript:toggleLayer('J425')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> May the will of God, the Father, the Son and the Holy Spirit be done!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J425" onclick="javascript:toggleLayer('E425')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父、子、聖霊なる神様の御心がなされますように。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="426"><a name="426"><TD id="E426" onclick="javascript:toggleLayer('J426')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J426" onclick="javascript:toggleLayer('E426')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アーメン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="427"><a name="427"><TD id="E427" onclick="javascript:toggleLayer('J427')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then, kneeling or standing, say the creed and pray the Lord's Prayer. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J427" onclick="javascript:toggleLayer('E427')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから、ひざまづいても立ったままでもよいですから、使徒信条を述べ、主の祈りを祈りなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="428"><a name="428"><TD id="E428" onclick="javascript:toggleLayer('J428')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you wish, you may then pray this little prayer as well:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J428" onclick="javascript:toggleLayer('E428')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次の小さな祈りを祈ってもよいでしょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="429"><a name="429"><TD id="E429" onclick="javascript:toggleLayer('J429')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> My Heavenly Father,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J429" onclick="javascript:toggleLayer('E429')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 天にいらっしゃる、わたしのお父様。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="430"><a name="430"><TD id="E430" onclick="javascript:toggleLayer('J430')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I thank You, through Jesus Christ,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J430" onclick="javascript:toggleLayer('E430')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたの愛する御子（みこ）イエス・キリストを通して、感謝します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="431"><a name="431"><TD id="E431" onclick="javascript:toggleLayer('J431')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Your beloved Son, that You kept me safe from all evil and danger last night.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J431" onclick="javascript:toggleLayer('E431')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 昨晩も、あらゆる悪いものや危ないことから私を守ってくださり、ありがとうございます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="432"><a name="432"><TD id="E432" onclick="javascript:toggleLayer('J432')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Save me, I pray, today as well, from every evil and sin, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J432" onclick="javascript:toggleLayer('E432')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日一日もまた、あらゆる悪と罪からわたしをお救いください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="433"><a name="433"><TD id="E433" onclick="javascript:toggleLayer('J433')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that all I do and the way that I live will please you.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J433" onclick="javascript:toggleLayer('E433')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、私の行動や生活があなたを喜ばせるようにと祈ります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="434"><a name="434"><TD id="E434" onclick="javascript:toggleLayer('J434')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I put myself in your care, body and soul and all that I have.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J434" onclick="javascript:toggleLayer('E434')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私自身を、すなわち私の体と、私の心と、私の持っているものすべてを、あなたの御手（みて）におゆだねいたします。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="435"><a name="435"><TD id="E435" onclick="javascript:toggleLayer('J435')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let Your holy Angels be with me, so that the evil enemy will not gain power over me.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J435" onclick="javascript:toggleLayer('E435')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 悪しき敵が私に力を振るうことがないように、聖なる天使を私のところにおつかわし下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="436"><a name="436"><TD id="E436" onclick="javascript:toggleLayer('J436')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J436" onclick="javascript:toggleLayer('E436')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アーメン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="437"><a name="437"><TD id="E437" onclick="javascript:toggleLayer('J437')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After that, with joy go about your work and perhaps sing a song inspired by the Ten Commandments or your own thoughts.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J437" onclick="javascript:toggleLayer('E437')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後で、喜びをもって仕事をはじめたり、十戒やあなた自身の考えから示された歌を歌ったりしてもよいでしょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="438"><a name="438"><TD id="E438" onclick="javascript:toggleLayer('J438')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Evening Devotions
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J438" onclick="javascript:toggleLayer('E438')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夕べの祈り
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="439"><a name="439"><TD id="E439" onclick="javascript:toggleLayer('J439')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> When you go to bed in the evening, you should bless yourself with the sign of the Holy Cross and say:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J439" onclick="javascript:toggleLayer('E439')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 夜、寝床に入るとき、十字架のしるしによって自分自身を祝福し、次のように言いましょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="440"><a name="440"><TD id="E440" onclick="javascript:toggleLayer('J440')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> May the will of God, the Father, the Son and the Holy Spirit be done!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J440" onclick="javascript:toggleLayer('E440')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父、子、聖霊なる神様の御心がなされますように。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="441"><a name="441"><TD id="E441" onclick="javascript:toggleLayer('J441')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J441" onclick="javascript:toggleLayer('E441')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アーメン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="442"><a name="442"><TD id="E442" onclick="javascript:toggleLayer('J442')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Then, kneeling or standing, say the creed and pray the Lord's Prayer.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J442" onclick="javascript:toggleLayer('E442')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それから、ひざまづいても立ったままでも、使徒信条を述べ、主の祈りを祈りなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="443"><a name="443"><TD id="E443" onclick="javascript:toggleLayer('J443')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If you wish, then you may pray this little prayer as well:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J443" onclick="javascript:toggleLayer('E443')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 次の小さな祈りを祈ってもよいでしょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="444"><a name="444"><TD id="E444" onclick="javascript:toggleLayer('J444')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> My Heavenly Father,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J444" onclick="javascript:toggleLayer('E444')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 天にいらっしゃる、わたしのお父様。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="445"><a name="445"><TD id="E445" onclick="javascript:toggleLayer('J445')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I thank You, through Jesus Christ, Your beloved Son,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J445" onclick="javascript:toggleLayer('E445')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたの愛する御子（みこ）イエス・キリストを通して、感謝します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="446"><a name="446"><TD id="E446" onclick="javascript:toggleLayer('J446')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that You have protected me, by Your grace. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J446" onclick="javascript:toggleLayer('E446')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたの恵みによって私を守ってくださり、ありがとうございます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="447"><a name="447"><TD id="E447" onclick="javascript:toggleLayer('J447')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Forgive, I pray, all my sins and the evil I have done.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J447" onclick="javascript:toggleLayer('E447')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今日私がおかした罪と悪をどうかおゆるし下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="448"><a name="448"><TD id="E448" onclick="javascript:toggleLayer('J448')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Protect me, by Your grace, tonight.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J448" onclick="javascript:toggleLayer('E448')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 今晩も、神様のお恵みによって私をお守りください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="449"><a name="449"><TD id="E449" onclick="javascript:toggleLayer('J449')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I put myself in your care, body and soul and all that I have.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J449" onclick="javascript:toggleLayer('E449')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私自身を、すなわち私の体と、私の心と、私の持っているものすべてを、あなたの御手（みて）におゆだねいたします。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="450"><a name="450"><TD id="E450" onclick="javascript:toggleLayer('J450')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let Your holy angels be with me, so that the evil enemy will not gain power over me. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J450" onclick="javascript:toggleLayer('E450')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 悪しき敵が私に力を振るうことがないように、聖なる天使を私のところにおつかわし下さい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="451"><a name="451"><TD id="E451" onclick="javascript:toggleLayer('J451')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J451" onclick="javascript:toggleLayer('E451')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アーメン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="452"><a name="452"><TD id="E452" onclick="javascript:toggleLayer('J452')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After this, go to sleep immediately with joy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J452" onclick="javascript:toggleLayer('E452')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後すぐに、喜びながら眠りましょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="453"><a name="453"><TD ID="TAB453" onclick="javascript:toggleLayer('J453')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB453" onclick="javascript:toggleLayer('E453')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="454"><a name="454"><TD ID="TAB454" onclick="javascript:toggleLayer('J454')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J454" onclick="javascript:toggleLayer('E454')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 食事の祈り
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="455"><a name="455"><TD ID="TAB455" onclick="javascript:toggleLayer('J455')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB455" onclick="javascript:toggleLayer('E455')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="456"><a name="456"><TD id="E456" onclick="javascript:toggleLayer('J456')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> How a Father Should Teach His Household to say Grace and Return Thanks at Meals:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J456" onclick="javascript:toggleLayer('E456')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 父親が食事の恵みと感謝の祈りを教えるには 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="457"><a name="457"><TD id="E457" onclick="javascript:toggleLayer('J457')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The children and servants should come to the table modestly and with folded hands and say:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J457" onclick="javascript:toggleLayer('E457')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 子ども達と使用人たちは食卓に集まって慎みつつ両手を組み、次のように言いましょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="458"><a name="458"><TD id="E458" onclick="javascript:toggleLayer('J458')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> All eyes look to you, O Lord,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J458" onclick="javascript:toggleLayer('E458')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 主よ、いまあなたに目を向けます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="459"><a name="459"><TD id="E459" onclick="javascript:toggleLayer('J459')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and You give everyone food at the right time.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J459" onclick="javascript:toggleLayer('E459')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたは皆に食べ物をちょうどよい時に与えてくださいます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="460"><a name="460"><TD id="E460" onclick="javascript:toggleLayer('J460')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> You open Your generous hands and satisfy the hunger of all living things with what they desire.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J460" onclick="javascript:toggleLayer('E460')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あなたは惜しみなく与えてくださる御手を開き、すべての生きるものの飢えを、望むもので満たしてくださいます。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="461"><a name="461"><TD id="E461" onclick="javascript:toggleLayer('J461')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Note:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J461" onclick="javascript:toggleLayer('E461')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 原注：
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="462"><a name="462"><TD id="E462" onclick="javascript:toggleLayer('J462')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "What they desire" means that all animals get so much to eat, that they are happy and cheerful. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J462" onclick="javascript:toggleLayer('E462')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「望むもの」というのは、すべての生き物がたくさん食べて、幸福で、喜びにあふれるようなものを意味します。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="463"><a name="463"><TD id="E463" onclick="javascript:toggleLayer('J463')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Because, worry and greed interferes with such desires.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J463" onclick="javascript:toggleLayer('E463')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、思い悩みや強欲はそのような望みを妨害するからです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="464"><a name="464"><TD id="E464" onclick="javascript:toggleLayer('J464')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> After this, pray the Lord's Prayer and the following prayer:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J464" onclick="javascript:toggleLayer('E464')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その後で、主の祈りと次のお祈りを祈りましょう。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="465"><a name="465"><TD id="E465" onclick="javascript:toggleLayer('J465')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Lord God,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J465" onclick="javascript:toggleLayer('E465')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 主なる神様。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="466"><a name="466"><TD id="E466" onclick="javascript:toggleLayer('J466')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Heavenly Father,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J466" onclick="javascript:toggleLayer('E466')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 天のお父様。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="467"><a name="467"><TD id="E467" onclick="javascript:toggleLayer('J467')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> bless us and these gifts,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J467" onclick="javascript:toggleLayer('E467')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちを祝福し、これらの賜物を祝福してください。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="468"><a name="468"><TD id="E468" onclick="javascript:toggleLayer('J468')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which we receive from Your generous hand, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J468" onclick="javascript:toggleLayer('E468')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これらは、あなたの惜しみなく与えてくださる御手からいただいたものです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="469"><a name="469"><TD id="E469" onclick="javascript:toggleLayer('J469')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> through Jesus Christ, our Lord.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J469" onclick="javascript:toggleLayer('E469')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちの主、イエスさまを通して祈ります。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="470"><a name="470"><TD id="E470" onclick="javascript:toggleLayer('J470')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Amen.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J470" onclick="javascript:toggleLayer('E470')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> アーメン。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="471"><a name="471"><TD ID="TAB471" onclick="javascript:toggleLayer('J471')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB471" onclick="javascript:toggleLayer('E471')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="472"><a name="472"><TD ID="TAB472" onclick="javascript:toggleLayer('J472')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J472" onclick="javascript:toggleLayer('E472')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 〔訳注：『信仰要義』ではこの後に「食後の祈り」および「家庭訓」が書かれていますが、 Project Wittenburgのテキストでは書かれていません。〕
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="473"><a name="473"><TD ID="TAB473" onclick="javascript:toggleLayer('J473')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB473" onclick="javascript:toggleLayer('E473')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="474"><a name="474"><TD ID="TAB474" onclick="javascript:toggleLayer('J474')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J474" onclick="javascript:toggleLayer('E474')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 訳者あとがき
+マルチン・ルターの小信仰問答書について
+『マルチン・ルターの小信仰問答書』(1529年)は、宗教改革を行なったマルチン・ルターがキリスト教の教義のエッセンスを問答形式でまとめたものです。
+学者や教育程度の高い人に向けたものではなく、一般の民衆、特にあまり教育を受けていない人向けに書かれています。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="475"><a name="475"><TD ID="TAB475" onclick="javascript:toggleLayer('J475')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J475" onclick="javascript:toggleLayer('E475')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 宗教改革後、ルターは各地の教会を巡視しました。
+しかし、多くの人がキリスト教の教義を知らずにおり、また牧師にも指導力が不足していることを見て、ルターは大きなショックを受けました。
+そこでルターはまず牧師向けに『ドイツ・カテキズム』（後に『大信仰問答書』）という大きな信仰書を著し、そしてその後、一般の信徒向けに短くまとめた信仰書を編纂しました。
+それがここで紹介している『マルチン・ルターの小信仰問答書』です。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="476"><a name="476"><TD ID="TAB476" onclick="javascript:toggleLayer('J476')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J476" onclick="javascript:toggleLayer('E476')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 『マルチン・ルターの小信仰問答書』は、キリスト教における十戒、使徒信条、主の祈り、洗礼、罪の告白、聖餐式などの意味を問答形式で簡潔・平明にまとめており、キリスト教の全体像をとらえるためのよきテキストになっています。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="477"><a name="477"><TD ID="TAB477" onclick="javascript:toggleLayer('J477')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J477" onclick="javascript:toggleLayer('E477')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> マルチン・ルター(1483-1546)は、ドイツの宗教改革者で、 1517年、免罪符販売を行なっていた当時の教会に対して、 95カ条にのぼる抗議文を公開しました。
+その中でルターは、人は免罪符によってではなく神を信ずる信仰によってのみ救われることを主張します。
+これをきっかけとして宗教改革がはじまりました。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="478"><a name="478"><TD ID="TAB478" onclick="javascript:toggleLayer('J478')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J478" onclick="javascript:toggleLayer('E478')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この翻訳について
+この『マルチン・ルターの小信仰問答書』は、 Project Wittenburgの、 Luther's Little Instruction Book (The Small Catechism of Martin Luther), translated by Robert E. Smith, May 22, 1994, (Version 1.1 -- December 22, 1994), -if html PW# 001-003-002Ea -if latex PW\# 001-003-002Ea の全訳です。 
+訳注は〔訳注：　〕で示しました。 
+聖書の言葉は英文を翻訳しました。 
+主の祈りの文章は、多くのプロテスタントの教会で唱えられているものを記述したものです。
+ルターの文章との呼応を補うために〔　〕の形で訳文を示しました。 
+使徒信条の文章は、多くのプロテスタントの教会で唱えられているものを記述したものです。 
+訳者はプロテスタントの一信徒に過ぎません。
+誤訳などの指摘を歓迎します。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="479"><a name="479"><TD ID="TAB479" onclick="javascript:toggleLayer('J479')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J479" onclick="javascript:toggleLayer('E479')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 参考文献
+  『信仰要義』マルチン・ルター著、石原 謙訳、岩波書店（岩波文庫） 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="luther-3.htm">prev</a>
+<a href="luther-0.htm">0</a>
+<a href="luther-1.htm">1</a>
+<a href="luther-2.htm">2</a>
+<a href="luther-3.htm">3</a>
+<4>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/luthere.txt">local copy</a> / <a href="http://www.iclnet.org/pub/resources/text/wittenberg/luther/little.book/book-1.txt">http://www.iclnet.org/pub/resources/text/wittenberg/luther/little.book/book-1.txt</a><li>オリジナルの日本語文: <a href="../org/lutherj.txt">local copy</a> / <a href="http://www.hyuki.com/trans/smallct.html">http://www.hyuki.com/trans/smallct.html</a><li><a href="../manual-alignment/luther.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

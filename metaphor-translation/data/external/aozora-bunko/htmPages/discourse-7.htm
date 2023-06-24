@@ -1,0 +1,533 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>DISCOURSE ON THE METHOD OF RIGHTLY CONDUCTING THE REASON, AND SEEKING TRUTH IN THE SCIENCES / Rene Descartes 著</h2><h2>もろもろの学問分野で、正しく理詰めで真理を探究するための方法についての考察 / ルネ・デカルト  著 / 山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/discoursee.txt">英語文</a>&<a href="../org/discoursej.txt">日本語文</a> / <a href="../manual-alignment/discourse.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>7 of DISCOURSE ON THE METHOD OF RIGHTLY CONDUCTING THE REASON, AND SEEKING TRUTH IN THE SCIENCES</TITLE>
+<hr>
+<a href="discourse-6.htm">prev</a>
+<a href="discourse-0.htm">0</a>
+<a href="discourse-1.htm">1</a>
+<a href="discourse-2.htm">2</a>
+<a href="discourse-3.htm">3</a>
+<a href="discourse-4.htm">4</a>
+<a href="discourse-5.htm">5</a>
+<a href="discourse-6.htm">6</a>
+<7>
+<a href="discourse-8.htm">8</a>
+<a href="discourse-8.htm">next</a>
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="701"><a name="701"><TD id="E701" onclick="javascript:toggleLayer('J701')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that according as henceforward I shall have the means of making more or fewer experiments, I shall in the same proportion make greater or less progress in the knowledge of nature.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J701" onclick="javascript:toggleLayer('E701')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして以上から、行う実験の多少と比例する形で、自然についての知識に関する進歩も増えたり減ったりすることになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="702"><a name="702"><TD id="E702" onclick="javascript:toggleLayer('J702')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This was what I had hoped to make known by the treatise I had written,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J702" onclick="javascript:toggleLayer('E702')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしが論文で知ってもらおうとしたのは、こういうことなのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="703"><a name="703"><TD id="E703" onclick="javascript:toggleLayer('J703')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and so clearly to exhibit the advantage that would thence accrue to the public, as to induce all who have the common good of man at heart, that is, all who are virtuous in truth, and not merely in appearance, or according to opinion, as well to communicate to me the experiments they had already made, as to assist me in those that remain to be made.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J703" onclick="javascript:toggleLayer('E703')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、そうすることで一般に対して蓄積されるメリットをはっきりと示し、人類の共通の利益を大事にしている人々、つまりただの外見や意見にしたがうだけではなく、真理を美徳とする人々にも、かれらの行った実験をわたしに伝えて、まだ行っていない実験を行えるようわたしを助けてほしい、ということを伝えたかったのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="704"><a name="704"><TD id="E704" onclick="javascript:toggleLayer('J704')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But since that time other reasons have occurred to me, by which I have been led to change my opinion,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J704" onclick="javascript:toggleLayer('E704')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれからほかの考えが生まれて、そのためにわたしは自分の見解を変えることになった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="705"><a name="705"><TD id="E705" onclick="javascript:toggleLayer('J705')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and to think that I ought indeed to go on committing to writing all the results which I deemed of any moment, as soon as I should have tested their truth, and to bestow the same care upon them as I would have done had it been my design to publish them. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J705" onclick="javascript:toggleLayer('E705')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あらゆる時点で、なにかの正しさを試験して確認したら、その結果をすべて記録しておいて、出版しようと思ったものと同じだけの注意を払うべきだと考えるようになったのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="706"><a name="706"><TD id="E706" onclick="javascript:toggleLayer('J706')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> This course commended itself to me, as well because I thus afforded myself more ample inducement to examine them thoroughly,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J706" onclick="javascript:toggleLayer('E706')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうことを思いついたのは、自分の考えについてもっと十分に検討を行うよう自らを則すという目的もあった。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="707"><a name="707"><TD id="E707" onclick="javascript:toggleLayer('J707')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for doubtless that is always more narrowly scrutinized which we believe will be read by many, than that which is written merely for our private use (and frequently what has seemed to me true when I first conceived it, has appeared false when I have set about committing it to writing), as because I thus lost no opportunity of advancing the interests of the public, as far as in me lay, and since thus likewise, if my writings possess any value, those into whose hands they may fall after my death may be able to put them to what use they deem proper. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J707" onclick="javascript:toggleLayer('E707')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分一人で使うために書いただけのものに比べて、多数の人間に読まれると思ったものは、いつももっと厳しくチェックをするのはまちがいないところだし（そして、思いついたときには事実だと思えたことが、書いてみると実はまちがいだったということもよくあったので）、さらにそうすれば人類一般の利益を促進する機会を、自分に可能な限り追求する機会を失わずにすみ、そしてわたしの著作が多少なりとも価値があるなら、死後にだれかの手にわたったときにも、その人たちがそれを適切と考えるやり方で勝つようしてくれるだろうと思ったのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="708"><a name="708"><TD id="E708" onclick="javascript:toggleLayer('J708')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But I resolved by no means to consent to their publication during my lifetime,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J708" onclick="javascript:toggleLayer('E708')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、いかなる理由があっても、存命中はそれらの出版に同意しまいと決意した。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="709"><a name="709"><TD id="E709" onclick="javascript:toggleLayer('J709')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> lest either the oppositions or the controversies to which they might give rise, or even the reputation, such as it might be, which they would acquire for me, should be any occasion of my losing the time that I had set apart for my own improvement.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J709" onclick="javascript:toggleLayer('E709')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それが巻き起こしかねない反論や毀誉褒貶もあったし、その著作のおかげで、もし万が一、わたしが有名になったりしてしまったら、自分を向上させるためにとっておいた時間が失われてしまうと思ったからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="710"><a name="710"><TD id="E710" onclick="javascript:toggleLayer('J710')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For though it be true that every one is bound to promote to the extent of his ability the good of others, and that to be useful to no one is really to be worthless, yet it is likewise true that our cares ought to extend beyond the present, and it is good to omit doing what might perhaps bring some profit to the living, when we have in view the accomplishment of other ends that will be of much greater advantage to posterity.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J710" onclick="javascript:toggleLayer('E710')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 万人は、自分の力の限り、他人にとってよいことを行うようにつとめるべきだというのは事実ではあるし、だれにとっても便利な存在でないというのは、まさに無価値な人間になるということではあるけれど、でも一方ではわれわれの気づかいは現在だけにとどまるべきではないし、後世にとってずっと大きなメリットをもたらす何かを達成しようとしているなら、いま生きている人々に対してメリットのあることを多少は削るのもよいことだ、というのも真実だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="711"><a name="711"><TD id="E711" onclick="javascript:toggleLayer('J711')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And in truth, I am quite willing it should be known that the little I have hitherto learned is almost nothing in comparison with that of which I am ignorant, and to the knowledge of which I do not despair of being able to attain;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J711" onclick="javascript:toggleLayer('E711')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてわたしは、自分がこれまでに学んできたことは、まだ知らないことの量や、獲得できなくても仕方ないと思える知識の総量に比べれば、ほとんど無に等しいということも、是非とも知ってほしいと思う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="712"><a name="712"><TD id="E712" onclick="javascript:toggleLayer('J712')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it is much the same with those who gradually discover truth in the sciences, as with those who when growing rich find less difficulty in making great acquisitions, than they formerly experienced when poor in making acquisitions of much smaller amount.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J712" onclick="javascript:toggleLayer('E712')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、学問でだんだん真理を発見していくのは、人がお金持ちになるにつれて、貧乏だった頃にはごく少額の買い物でも苦労したのが、高価な買い物でも大した苦労をしなくなるのと同じようなものだからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="713"><a name="713"><TD id="E713" onclick="javascript:toggleLayer('J713')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Or they may be compared to the commanders of armies,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J713" onclick="javascript:toggleLayer('E713')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あるいは、軍の指揮官と比べてもいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="714"><a name="714"><TD id="E714" onclick="javascript:toggleLayer('J714')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> whose forces usually increase in proportion to their victories,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J714" onclick="javascript:toggleLayer('E714')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その軍勢は、その勝利の数に比例して増大するのがふつうだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="715"><a name="715"><TD id="E715" onclick="javascript:toggleLayer('J715')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and who need greater prudence to keep together the residue of their troops after a defeat than after a victory to take towns and provinces.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J715" onclick="javascript:toggleLayer('E715')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして町や地域を制圧するのに勝利した後よりは、敗北した後に部隊の残党をまとめておく時のほうが、大きな辛抱を強いられる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="716"><a name="716"><TD id="E716" onclick="javascript:toggleLayer('J716')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For he truly engages in battle who endeavors to surmount all the difficulties and errors which prevent him from reaching the knowledge of truth, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J716" onclick="javascript:toggleLayer('E716')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、その人は真理の知識に到達するのを阻害しているあらゆる困難やまちがいを乗り越えようと、まさに戦いを挑むことになるわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="717"><a name="717"><TD id="E717" onclick="javascript:toggleLayer('J717')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he is overcome in fight who admits a false opinion touching a matter of any generality and importance, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J717" onclick="javascript:toggleLayer('E717')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして一般性のある重要な事柄について、まちがった意見を認めてしまったら、戦いで敗北したのと同じだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="718"><a name="718"><TD id="E718" onclick="javascript:toggleLayer('J718')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and he requires thereafter much more skill to recover his former position than to make great advances when once in possession of thoroughly ascertained principles.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J718" onclick="javascript:toggleLayer('E718')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そこからかつての立場を回復するためには、完全に確実となった原理をいったんつかんで、そこから大きな進歩をとげるのに比べれば、ずっと多くの技能を必要とするようになるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="719"><a name="719"><TD id="E719" onclick="javascript:toggleLayer('J719')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As for myself, if I have succeeded in discovering any truths in the sciences (and I trust that what is contained in this volume 1 will show that I have found some), I can declare that they are but the consequences and results of five or six principal difficulties which I have surmounted, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J719" onclick="javascript:toggleLayer('E719')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしはといえば、わたしが学問において何らかの真理を発見しおおせたとするなら（そしてこの文に含まれている内容で、多少の真理が発見できたことは示せていると信じるが）、それはわたしが原理的な困難5つか6つを克服しおおせたことの帰結にして結果にすぎないと断言できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="720"><a name="720"><TD id="E720" onclick="javascript:toggleLayer('J720')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and my encounters with which I reckoned as battles in which victory declared for me.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J720" onclick="javascript:toggleLayer('E720')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそういう困難との対決を戦闘と考えればわたしは勝利をおさめたわけだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="721"><a name="721"><TD id="E721" onclick="javascript:toggleLayer('J721')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I will not hesitate even to avow my belief that nothing further is wanting to enable me fully to realize my designs than to gain two or three similar victories;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J721" onclick="javascript:toggleLayer('E721')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらには、わたしの計画を完全に実現するためには、同じような勝利をあと2、3個おさめれば十分だという信念を、ここでためらうことなく表明しよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="722"><a name="722"><TD id="E722" onclick="javascript:toggleLayer('J722')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and that I am not so far advanced in years but that, according to the ordinary course of nature, I may still have sufficient leisure for this end. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J722" onclick="javascript:toggleLayer('E722')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてわたしは、通常の寿命にしたがうならば、その目的を達成するのに十分なくらい余生がある年齢にしかなっていない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="723"><a name="723"><TD id="E723" onclick="javascript:toggleLayer('J723')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But I conceive myself the more bound to husband the time that remains the greater my expectation of being able to employ it aright, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J723" onclick="javascript:toggleLayer('E723')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしわたしは、自分できちんと律することができるという期待が大きい時間を養うのに専心したいのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="724"><a name="724"><TD id="E724" onclick="javascript:toggleLayer('J724')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I should doubtless have much to rob me of it, were I to publish the principles of my physics:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J724" onclick="javascript:toggleLayer('E724')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてもしわたしが物理学の原理を刊行したら、そうした時間はまちがいなく大幅に奪われてしまうだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="725"><a name="725"><TD id="E725" onclick="javascript:toggleLayer('J725')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for although they are almost all so evident that to assent to them no more is needed than simply to understand them, and although there is not one of them of which I do not expect to be able to give demonstration, yet, as it is impossible that they can be in accordance with all the diverse opinions of others, I foresee that I should frequently be turned aside from my grand design, on occasion of the opposition which they would be sure to awaken.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J725" onclick="javascript:toggleLayer('E725')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その原理はすべて実に自明なので、それを理解しさえすれば、それに同意できるはずだし、そのどれ一つとして、わたしに証明できないようなものはないはずだけれど、それが他人の多様な意見すべてと折り合うなどということは不可能なので、確実に起きるはずの反論が出てくるたびに、しょっちゅうわたしは自分の大計画から注意をそらされることになってしまうと予想されるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="726"><a name="726"><TD id="E726" onclick="javascript:toggleLayer('J726')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It may be said, that these oppositions would be useful both in making me aware of my errors,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J726" onclick="javascript:toggleLayer('E726')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした反論は、わたしに自分のまちがいを認識させてくれるという点で役にたつとはいえるかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="727"><a name="727"><TD id="E727" onclick="javascript:toggleLayer('J727')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, if my speculations contain anything of value, in bringing others to a fuller understanding of it;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J727" onclick="javascript:toggleLayer('E727')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてわたしの思索に多少なりとも価値があるなら、他人がそれをもっと十分に理解できるようにしてくれる点でも役にたつかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="728"><a name="728"><TD id="E728" onclick="javascript:toggleLayer('J728')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and still farther, as many can see better than one, in leading others who are now beginning to avail themselves of my principles, to assist me in turn with their discoveries. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J728" onclick="javascript:toggleLayer('E728')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてもっと言えば、目玉は多い方がよく見えるので、わたしの原理にしたがおうとしている他の人々を導くことで、かわりにかれらが独自の発見をして、わたしを助けてくれるようになる、という意義もあるかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="729"><a name="729"><TD id="E729" onclick="javascript:toggleLayer('J729')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But though I recognize my extreme liability to error, and scarce ever trust to the first thoughts which occur to me, yet-the experience I have had of possible objections to my views prevents me from anticipating any profit from them.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J729" onclick="javascript:toggleLayer('E729')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしながら、自分がきわめてまちがいを犯しやすいことは認識しているし、思いついたことをそのまま信じるなどということはほとんどないにしても、わたしの観点に対するあり得る反論についてのこれまでの経験から言うと、そこから何かの利益が得られるとはとても期待できない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="730"><a name="730"><TD id="E730" onclick="javascript:toggleLayer('J730')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For I have already had frequent proof of the judgments, as well of those I esteemed friends, as of some others to whom I thought I was an object of indifference, and even of some whose malignancy and envy would, I knew, determine them to endeavor to discover what partiality concealed from the eyes of my friends.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J730" onclick="javascript:toggleLayer('E730')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、自分の判断に対しては十分な証明を加えてきたし、友人として尊重している人々の判断も仰いだし、わたしに対して特に関心のない人々の判断も仰いだし、さらにはわたしに対して悪意と羨望を持っていて、友人たちの目からは部分的に隠されていたものを一生懸命探すであろう人々の判断すら仰いでいるのだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="731"><a name="731"><TD id="E731" onclick="javascript:toggleLayer('J731')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But it has rarely happened that anything has been objected to me which I had myself altogether overlooked,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J731" onclick="javascript:toggleLayer('E731')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それでも、わたしがまったく見落としていた点について何か反論がきたことはほとんどない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="732"><a name="732"><TD id="E732" onclick="javascript:toggleLayer('J732')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> unless it were something far removed from the subject:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J732" onclick="javascript:toggleLayer('E732')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> あっても、まったく的はずれなものばかりだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="733"><a name="733"><TD id="E733" onclick="javascript:toggleLayer('J733')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> so that I have never met with a single critic of my opinions who did not appear to me either less rigorous or less equitable than myself.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J733" onclick="javascript:toggleLayer('E733')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからわたしの批判者で、わたしより厳密でないか、わたしほど公正でないような人物には、一人としてお目にかかったことがないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="734"><a name="734"><TD id="E734" onclick="javascript:toggleLayer('J734')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And further, I have never observed that any truth before unknown has been brought to light by the disputations that are practised in the schools;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J734" onclick="javascript:toggleLayer('E734')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらに、スコラ学派の実践しているような論争によって、これまで知られていない真理が明らかになった例を、わたしは寡聞にして知らない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="735"><a name="735"><TD id="E735" onclick="javascript:toggleLayer('J735')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for while each strives for the victory, each is much more occupied in making the best of mere verisimilitude, than in weighing the reasons on both sides of the question;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J735" onclick="javascript:toggleLayer('E735')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それぞれの参加者は議論での勝利をもとめてがんばるけれど、いすれの人も、単なるもっともらしい議論を上手につくることにばかりかまけていて、議論の双方の理由づけをきちんと計ろうとはしないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="736"><a name="736"><TD id="E736" onclick="javascript:toggleLayer('J736')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and those who have been long good advocates are not afterwards on that account the better judges.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J736" onclick="javascript:toggleLayer('E736')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてある論をずっと支持してきた人たちも、将来的にその点について、よりよい判断ができるわけではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="737"><a name="737"><TD id="E737" onclick="javascript:toggleLayer('J737')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> As for the advantage that others would derive from the communication of my thoughts, it could not be very great;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J737" onclick="javascript:toggleLayer('E737')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 他の人々がわたしの思考を学んで得るメリットについていえば、それはあまり大きなものではないはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="738"><a name="738"><TD id="E738" onclick="javascript:toggleLayer('J738')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because I have not yet so far prosecuted them as that much does not remain to be added before they can be applied to practice. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J738" onclick="javascript:toggleLayer('E738')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、わたしはまだ自分の思考を十分に展開しておらず、それを現実に適用できるようになるためには、まだまだ多くのことを追加する必要が残っているからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="739"><a name="739"><TD id="E739" onclick="javascript:toggleLayer('J739')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And I think I may say without vanity, that if there is any one who can carry them out that length, it must be myself rather than another: 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J739" onclick="javascript:toggleLayer('E739')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそれを十分に押し進めることができる人物がいるとすれば、それはほかのだれよりも、このわたしだろうと虚栄心ぬきで言える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="740"><a name="740"><TD id="E740" onclick="javascript:toggleLayer('J740')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> not that there may not be in the world many minds incomparably superior to mine, but because one cannot so well seize a thing and make it one's own, when it has been learned from another, as when one has himself discovered it.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J740" onclick="javascript:toggleLayer('E740')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この世に、わたしなど比較にならないほど優れた頭脳がたくさんある可能性を否定するわけではないが、何かをつかんで自分のものとする場合には、他人からそれを学んだ人よりも、それを自分で発見した人のほうがずっと優れているからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="741"><a name="741"><TD id="E741" onclick="javascript:toggleLayer('J741')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And so true is this of the present subject that,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J741" onclick="javascript:toggleLayer('E741')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして目下のテーマについてはこれが実によく当てはまるのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="742"><a name="742"><TD id="E742" onclick="javascript:toggleLayer('J742')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> though I have often explained some of my opinions to persons of much acuteness, who, whilst I was speaking, appeared to understand them very distinctly, yet, when they repeated them, I have observed that they almost always changed them to such an extent that I could no longer acknowledge them as mine.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J742" onclick="javascript:toggleLayer('E742')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分の見解を、とても頭の鋭敏な人々に何度か説明してみたが、わたしが説明しているときにははっきりと理解してくれたようだったのに、それを復唱してもらうと、必ず大きくそれを変えてしまっていて、もはや自分の考えとして認めがたいものとなっているのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="743"><a name="743"><TD id="E743" onclick="javascript:toggleLayer('J743')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I am glad, by the way, to take this opportunity of requesting posterity never to believe on hearsay that anything has proceeded from me which has not been published by myself;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J743" onclick="javascript:toggleLayer('E743')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ちなみにわたしはこの場を借りて、わたしが自分で刊行したもの以外に、わたしが何かを発表しているというような噂を信じないだけの慎みをお願いしたい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="744"><a name="744"><TD id="E744" onclick="javascript:toggleLayer('J744')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I am not at all astonished at the extravagances attributed to those ancient philosophers whose own writings we do not possess; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J744" onclick="javascript:toggleLayer('E744')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 著作がまったく伝わっていないような古代哲学者に帰せられる、各種のとんでもない議論にはまったく感心しない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="745"><a name="745"><TD id="E745" onclick="javascript:toggleLayer('J745')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> whose thoughts, however, I do not on that account suppose to have been really absurd, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J745" onclick="javascript:toggleLayer('E745')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、かれらの思想がだからといって、本当にばかげたものだったわけではないと思う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="746"><a name="746"><TD id="E746" onclick="javascript:toggleLayer('J746')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> seeing they were among the ablest men of their times, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J746" onclick="javascript:toggleLayer('E746')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれらはその時代でいちばん有能な人々だったわけだから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="747"><a name="747"><TD id="E747" onclick="javascript:toggleLayer('J747')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but only that these have been falsely represented to us. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J747" onclick="javascript:toggleLayer('E747')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ただその思想がまちがった形でわれわれに伝えられているだけだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="748"><a name="748"><TD id="E748" onclick="javascript:toggleLayer('J748')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is observable, accordingly, that scarcely in a single instance has any one of their disciples surpassed them;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J748" onclick="javascript:toggleLayer('E748')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さらには、その弟子たちが師匠を超えた例というのも、ほんの一例たりともないということもわかるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="749"><a name="749"><TD id="E749" onclick="javascript:toggleLayer('J749')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I am quite sure that the most devoted of the present followers of Aristotle would think themselves happy if they had as much knowledge of nature as he possessed, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J749" onclick="javascript:toggleLayer('E749')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしいて、今日アリストテレスをいちばん熱心に支持する人たちは、自然についてアリストテレスと同じだけの知識を得られれば満足してしまうのはまちがいないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="750"><a name="750"><TD id="E750" onclick="javascript:toggleLayer('J750')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> were it even under the condition that they should never afterwards attain to higher.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J750" onclick="javascript:toggleLayer('E750')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それ以上の知識はその後一切得られないという条件がついたとしても、である。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="751"><a name="751"><TD id="E751" onclick="javascript:toggleLayer('J751')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In this respect they are like the ivy which never strives to rise above the tree that sustains it, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J751" onclick="javascript:toggleLayer('E751')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この意味でかれらは、自分を支える木より高いところには決して登ろうと努力しない、つる草のようなものだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="752"><a name="752"><TD id="E752" onclick="javascript:toggleLayer('J752')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and which frequently even returns downwards when it has reached the top;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J752" onclick="javascript:toggleLayer('E752')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういうつる草は、いったんてっぺんにたどり着くと、下のほうに下がってきてしまうこともよくある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="753"><a name="753"><TD id="E753" onclick="javascript:toggleLayer('J753')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for it seems to me that they also sink, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J753" onclick="javascript:toggleLayer('E753')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そういう追随者たちも、いわば沈んでしまうのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="754"><a name="754"><TD id="E754" onclick="javascript:toggleLayer('J754')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in other words, render themselves less wise than they would be if they gave up study, who, not contented with knowing all that is intelligibly explained in their author, desire in addition to find in him the solution of many difficulties of which he says not a word, and never perhaps so much as thought.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J754" onclick="javascript:toggleLayer('E754')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり、その著者によってはっきりわかるように説明されたことをすべて知るだけでは気がすまずに、その人物が一言も発言していないどころか、おそらくは考えてもいないような問題について、その人物の中に答えを見つけようとするのだ。
+そしてそうすることで、そんな研究をやめたときよりも、かえって愚かになってしまっているようにわたしには思える。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="755"><a name="755"><TD id="E755" onclick="javascript:toggleLayer('J755')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Their fashion of philosophizing, however, is well suited to persons whose abilities fall below mediocrity;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J755" onclick="javascript:toggleLayer('E755')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だが、そういう連中の哲学的ポーズは、能力が凡庸以下の人々にはとても都合がいい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="756"><a name="756"><TD id="E756" onclick="javascript:toggleLayer('J756')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for the obscurity of the distinctions and principles of which they make use enables them to speak of all things with as much confidence as if they really knew them, and to defend all that they say on any subject against the most subtle and skillful, without its being possible for any one to convict them of error.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J756" onclick="javascript:toggleLayer('E756')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> かれらが使う原理やものごとの区分があいまいさなために、かれらはあらゆることについて自信をもって知ったかぶりができるようになり、自分の発言すべてについて、どんなに細かく達者な反論であっても弁護ができるようになり、だれもかれらがまちがっているといって糾弾できなくなってしまうのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="757"><a name="757"><TD id="E757" onclick="javascript:toggleLayer('J757')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> In this they seem to me to be like a blind man, who, in order to fight on equal terms with a person that sees, should have made him descend to the bottom of an intensely dark cave:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J757" onclick="javascript:toggleLayer('E757')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> この点でかれらは、めくらが目あきと対等にやりあおうとして、とても暗い洞窟の底にその目あきをつれてきたようなものだと思う。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="758"><a name="758"><TD id="E758" onclick="javascript:toggleLayer('J758')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I may say that such persons have an interest in my refraining from publishing the principles of the philosophy of which I make use;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J758" onclick="javascript:toggleLayer('E758')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそういう連中は、わたしが使用している哲学原理を刊行しないほうが都合がいいのだ、とも言っておこう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="759"><a name="759"><TD id="E759" onclick="javascript:toggleLayer('J759')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for, since these are of a kind the simplest and most evident, I should, by publishing them, do much the same as if I were to throw open the windows, and allow the light of day to enter the cave into which the combatants had descended.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J759" onclick="javascript:toggleLayer('E759')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、わたしの哲学原理はなかでもいちばん簡単で自明だから、それを刊行することで、いわばわたしは窓をサッと開けて、対戦者たちが降りていった洞窟の中に、日中の光を入れてしまうことになるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="760"><a name="760"><TD id="E760" onclick="javascript:toggleLayer('J760')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But even superior men have no reason for any great anxiety to know these principles,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J760" onclick="javascript:toggleLayer('E760')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、優れた人々でさえ、こうした原理を知らなければという不安を抱くべき理由はまったくない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="761"><a name="761"><TD id="E761" onclick="javascript:toggleLayer('J761')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for if what they desire is to be able to speak of all things, and to acquire a reputation for learning, they will gain their end more easily by remaining satisfied with the appearance of truth, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J761" onclick="javascript:toggleLayer('E761')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのも、かれらが望んでいるのが万物について語れるようになり、学識が高いという評判を得たいだけなら、真実らしく見えることで満足していたほうが、その目的を簡単に達成できる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="762"><a name="762"><TD id="E762" onclick="javascript:toggleLayer('J762')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> which can be found without much difficulty in all sorts of matters, than by seeking the truth itself which unfolds itself but slowly and that only in some departments, while it obliges us, when we have to speak of others, freely to confess our ignorance. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J762" onclick="javascript:toggleLayer('E762')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 真実らしいことならば、いろんなことを見ているだけで何の苦労もなく見つかるものだが、真理そのものを探そうとすれば、それはゆっくりとしか解明されず、しかもごく一部の分野だけで、しかも一方では他人に話さなくてはならない場合には、自分の無知をはっきりと告白しなくてはならないことになるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="763"><a name="763"><TD id="E763" onclick="javascript:toggleLayer('J763')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If, however, they prefer the knowledge of some few truths to the vanity of appearing ignorant of none, as such knowledge is undoubtedly much to be preferred, and, if they choose to follow a course similar to mine, they do not require for this that I should say anything more than I have already said in this discourse. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J763" onclick="javascript:toggleLayer('E763')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> しかしもしかれらが、だれにも無知に見えたくないという虚栄よりも、少数の真理を知ることを望むのであれば、そういう知識はまちがいなく多いに好ましいものであり、そしてかれらがわたしと似た道をたどろうとするのであれば、この文ですでに述べた以上のことをわたしが述べる必要もないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="764"><a name="764"><TD id="E764" onclick="javascript:toggleLayer('J764')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For if they are capable of making greater advancement than I have made, they will much more be able of themselves to discover all that I believe myself to have found;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J764" onclick="javascript:toggleLayer('E764')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> なぜなら、もしその人たちがわたしよりも大きな進歩をとげるだけの力があるならば、かれらはわたしが発見したと思うものすべてを、自力で見つける能力がそれ以上にあるはずなのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="765"><a name="765"><TD id="E765" onclick="javascript:toggleLayer('J765')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> since as I have never examined aught except in order, it is certain that what yet remains to be discovered is in itself more difficult and recondite, than that which I have already been enabled to find, and the gratification would be much less in learning it from me than in discovering it for themselves.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J765" onclick="javascript:toggleLayer('E765')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしはすべてを順序をおって検討しているので、これから発見されるべきことというのは、わたしがいままで発見できたことに比べて、もっと難しくて深遠であるはずだし、わたしからそれを教わったら、それを自分で発見するのに比べて、満足がずっと少ないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="766"><a name="766"><TD id="E766" onclick="javascript:toggleLayer('J766')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Besides this, the habit which they will acquire, by seeking first what is easy, and then passing onward slowly and step by step to the more difficult, will benefit them more than all my instructions.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J766" onclick="javascript:toggleLayer('E766')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> それにかれらが身につける習慣、つまりまず簡単なものから求めて、そこからゆっくりと一歩ずつ、もっと難しいものを求めていくというやり方は、わたしが教えることすべてよりもかれらの役にたつはずだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="767"><a name="767"><TD id="E767" onclick="javascript:toggleLayer('J767')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Thus, in my own case, I am persuaded that if I had been taught from my youth all the truths of which I have since sought out demonstrations, and had thus learned them without labour, I should never, perhaps, have known any beyond these;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J767" onclick="javascript:toggleLayer('E767')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 自分についていえば、もしわたしがこれまで証明を自力で探し出してきたような真理すべてについて、若い頃にすべて教わっていたとしたら、それを越えるものはいっさい学ばなかっただろうと確信する。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="768"><a name="768"><TD id="E768" onclick="javascript:toggleLayer('J768')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> at least, I should never have acquired the habit and the facility which I think I possess in always discovering new truths in proportion as I give myself to the search.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J768" onclick="javascript:toggleLayer('E768')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 少なくとも、自分が力を注いだぶんだけ新しい真理を発見するという習慣と能力は、絶対にミニつかなかっただろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="769"><a name="769"><TD id="E769" onclick="javascript:toggleLayer('J769')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And, in a single word, if there is any work in the world which cannot be so well finished by another as by him who has commenced it, it is that at which I labour.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J769" onclick="javascript:toggleLayer('E769')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> つまり一言で言えば、この世でその創始者以外にはきちんと終えられないような仕事があるとすれば、それはわたしが取り組んでいるこの仕事なのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="770"><a name="770"><TD id="E770" onclick="javascript:toggleLayer('J770')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> It is true, indeed, as regards the experiments which may conduce to this end, that one man is not equal to the task of making them all;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J770" onclick="javascript:toggleLayer('E770')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 確かに、この目的に貢献するような実験においては、たった一人の人間がそのすべてを行うことはできないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="771"><a name="771"><TD id="E771" onclick="javascript:toggleLayer('J771')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but yet he can advantageously avail himself, in this work, of no hands besides his own, unless those of artisans, or parties of the same kind, whom he could pay, and whom the hope of gain (a means of great efficacy) might stimulate to accuracy in the performance of what was prescribed to them. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J771" onclick="javascript:toggleLayer('E771')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 工匠などの集団に支払いをして、かれらが利益を得ようとして（とても有効な手段だ）頼まれたことの実行を厳密にやってくれるような場合をのぞけば、その人物は自分以外のだれの手も頼りにできない。
+それでもかれとしては、そのほうが都合がいいともいえるだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="772"><a name="772"><TD id="E772" onclick="javascript:toggleLayer('J772')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For as to those who, through curiosity or a desire of learning, of their own accord, perhaps, offer him their services, besides that in general their promises exceed their performance, and that they sketch out fine designs of which not one is ever realized, they will, without doubt, expect to be compensated for their trouble by the explication of some difficulties, or, at least, by compliments and useless speeches, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J772" onclick="javascript:toggleLayer('E772')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 好奇心や学習意欲にかられて、自らの意志でサービスを提供してくれるような人は、だいたいにおいて、実際の成果よりも誇大な約束をしがちだし、壮大な意図だけは説明してくれても、どれ一つとして実現されず、さらにそういう人々はまちがいなく、手伝ったかわりになにか問題を説明してくれとか、最低でもお世辞とか無駄なおしゃべりを代償に求める。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="773"><a name="773"><TD id="E773" onclick="javascript:toggleLayer('J773')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in which he cannot spend any portion of his time without loss to himself. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J773" onclick="javascript:toggleLayer('E773')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その人は、そんなことに時間を費やすことで、結局は損をして終わってしまうのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="774"><a name="774"><TD id="E774" onclick="javascript:toggleLayer('J774')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And as for the experiments that others have already made, even although these parties should be willing of themselves to communicate them to him (which is what those who esteem them secrets will never do), the experiments are, for the most part, accompanied with so many circumstances and superfluous elements, as to make it exceedingly difficult to disentangle the truth from its adjuncts- besides, he will find almost all of them so ill described, or even so false (because those who made them have wished to see in them only such facts as they deemed conformable to their principles),  that, if in the entire number there should be some of a nature suited to his purpose, still their value could not compensate for the time what would be necessary to make the selection.  
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J774" onclick="javascript:toggleLayer('E774')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして他の人がすでにそうした実験を行っている場合、その人々はそれについて、喜んでその人物に伝えるべきではあるのだが（それを秘密にするのに価値があると思っている人々は絶対にそうしないだろう）、実験はほとんどの場合、無数の条件やよけいな要素がくっついてくるものであり、真実と付随的なものとを峻別するのは、とてもむずかしい――さらにその実験のほとんどすべては記述があまりに不十分で、時にはウソが書いてあったりするので（というのもそれを記述した人たちは自分の原理原則にあてはまるような事実だけをそこに見ようとしたりするから）、全体の数字の中にはなにかその人の目的に会うような性質のものが含まれているかもしれないけれど、その価値は、それを選り分けるのに必要となる時間に見合うものではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="775"><a name="775"><TD id="E775" onclick="javascript:toggleLayer('J775')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> So that if there existed any one whom we assuredly knew to be capable of making discoveries of the highest kind, and of the greatest possible utility to the public;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J775" onclick="javascript:toggleLayer('E775')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だからもし、最高級の発見ができて、世間に対して考え得る最高の公用をもたらせるのが確実な人がいたとしよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="776"><a name="776"><TD id="E776" onclick="javascript:toggleLayer('J776')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and if all other men were therefore eager by all means to assist him in successfully prosecuting his designs,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J776" onclick="javascript:toggleLayer('E776')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてそのため、ほかの人みんな、手を尽くしてかれの思い通りの探求をさせてやろうと思っていたとしよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="777"><a name="777"><TD id="E777" onclick="javascript:toggleLayer('J777')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I do not see that they could do aught else for him beyond contributing to defray the expenses of the experiments that might be necessary;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J777" onclick="javascript:toggleLayer('E777')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> もしそうなら、必要となる実験の費用を分担してやるよりほかにないだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="778"><a name="778"><TD id="E778" onclick="javascript:toggleLayer('J778')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and for the rest, prevent his being deprived of his leisure by the unseasonable interruptions of any one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J778" onclick="javascript:toggleLayer('E778')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてあとは、他人からタイミングの悪いじゃまが入って、かれが時間を自由に使えなくなるのを防ぐくらいだろう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="779"><a name="779"><TD id="E779" onclick="javascript:toggleLayer('J779')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But besides that I neither have so high an opinion of myself as to be willing to make promise of anything extraordinary, nor feed on imaginations so vain as to fancy that the public must be much interested in my designs;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J779" onclick="javascript:toggleLayer('E779')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、わたしはなにか非凡な発見ができるなどと約束するほどの自負はないし、世間一般がわたしの意図なんかに大した興味を抱くと夢想するほどの虚栄心もない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="780"><a name="780"><TD id="E780" onclick="javascript:toggleLayer('J780')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I do not, on the other hand, own a soul so mean as to be capable of accepting from any one a favor of which it could be supposed that I was unworthy.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J780" onclick="javascript:toggleLayer('E780')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも一方では、わたしが無価値だと思えるような恩恵をほかのだれからであれ受けられると思うほどの邪悪な魂も持ってはいないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="781"><a name="781"><TD id="E781" onclick="javascript:toggleLayer('J781')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> These considerations taken together were the reason why, for the last three years, I have been unwilling to publish the treatise I had on hand,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J781" onclick="javascript:toggleLayer('E781')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こういうことをいろいろ考えていたために、過去3年にわたってわたしは手元の論文の出版をためらってきた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="782"><a name="782"><TD id="E782" onclick="javascript:toggleLayer('J782')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and why I even resolved to give publicity during my life to no other that was so general, or by which the principles of my physics might be understood.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J782" onclick="javascript:toggleLayer('E782')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、存命中の評判についても、ごく一般的なものや、わたしの物理学の原理を理解してもらうための原理に限ろうと決意したのも、それが理由だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="783"><a name="783"><TD id="E783" onclick="javascript:toggleLayer('J783')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> But since then, two other reasons have come into operation that have determined me here to subjoin some particular specimens, and give the public some account of my doings and designs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J783" onclick="javascript:toggleLayer('E783')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもそれ以来、別の理由が2つ生じてきて、そのためにわたしはここにいくつかの材料を追加して、自分のやってきたことや計画について世間に知らせようと考えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="784"><a name="784"><TD id="E784" onclick="javascript:toggleLayer('J784')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Of these considerations, the first is, that if I failed to do so, many who were cognizant of my previous intention to publish some writings, might have imagined that the reasons which induced me to refrain from so doing, were less to my credit than they really are;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J784" onclick="javascript:toggleLayer('E784')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> その考察事項のうち最初のものは、もしわたしがそれを発表しなかったら、著作を刊行しようというわたしの昔の意図を知っている人たちは、わたしが著作を発表しないでいるのはわたしにとって実際よりも都合の悪いことがいろいろあるからだと想像するかもしれないからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="785"><a name="785"><TD id="E785" onclick="javascript:toggleLayer('J785')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for although I am not immoderately desirous of glory, or even, if I may venture so to say, although I am averse from it 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J785" onclick="javascript:toggleLayer('E785')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> わたしは極端に栄光を求めたりはしないし、敢えて言っていいなら、それを避けたいと思っている。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="786"><a name="786"><TD id="E786" onclick="javascript:toggleLayer('J786')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> in so far as I deem it hostile to repose which I hold in greater account than aught else,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J786" onclick="javascript:toggleLayer('E786')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 栄光というのは、ほかのなによりもわたしが打時にしている休息をじゃまするものだと思えるからだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="787"><a name="787"><TD id="E787" onclick="javascript:toggleLayer('J787')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> yet, at the same time, I have never sought to conceal my actions as if they were crimes, nor made use of many precautions that I might remain unknown;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J787" onclick="javascript:toggleLayer('E787')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも同時に、自分の行動についてそれが犯罪であるかのように隠そうとしたこともないし、敢えて無名でいようとしていろいろな手だてを講じたりしたこともない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="788"><a name="788"><TD id="E788" onclick="javascript:toggleLayer('J788')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and this partly because I should have thought such a course of conduct a wrong against myself, and partly because it would have occasioned me some sort of uneasiness which would again have been contrary to the perfect mental tranquillity which I court. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J788" onclick="javascript:toggleLayer('E788')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてこれは一部は、そういう行いが自分自身に対してまちがっていると思ったこともあるし、一部はそれがある種のとまどいを自分に引き起こして、それがわたしの宿している完全な精神的平静をじゃまするものだったからでもある。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="789"><a name="789"><TD id="E789" onclick="javascript:toggleLayer('J789')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And forasmuch as, while thus indifferent to the thought alike of fame or of forgetfulness, I have yet been unable to prevent myself from acquiring some sort of reputation, I have thought it incumbent on me to do my best to save myself at least from being ill-spoken of.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J789" onclick="javascript:toggleLayer('E789')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、名声と無名とのどちらについてもわたしは無関心だったのだけれど、でも自分が何かしらの評判を獲得してしまうのは防ぎようがなく、だからわたしとしては、少なくとも悪く言われるようなことだけは、なるべく避けるに越したことはないと考えるようになったのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="790"><a name="790"><TD id="E790" onclick="javascript:toggleLayer('J790')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The other reason that has determined me to commit to writing these specimens of philosophy is, that I am becoming daily more and more alive to the delay which my design of self-instruction suffers, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J790" onclick="javascript:toggleLayer('E790')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうした哲学的な材料について著述をしようと思ったもう一つの理由は、日ごとに、自己指導というわが方針の遅れに気がつかざるを得ないということだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="791"><a name="791"><TD id="E791" onclick="javascript:toggleLayer('J791')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> for want of the infinity of experiments I require, and which it is impossible for me to make without the assistance of others:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J791" onclick="javascript:toggleLayer('E791')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 必要とされる実験は無数にあるし、そういう実験も他人の助けを借りなくては、一人でやるのは不可能だ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="792"><a name="792"><TD id="E792" onclick="javascript:toggleLayer('J792')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and, without flattering myself so much as to expect the public to take a large share in my interests, I am yet unwilling to be found so far wanting in the duty I owe to myself, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J792" onclick="javascript:toggleLayer('E792')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして世間がわたしの関心事を大きく共有してくれると思うほどうぬぼれてはいないけれど、でも自分自身に課した義務の天でこんなに遅れをとっている状態なのもいやなのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="793"><a name="793"><TD id="E793" onclick="javascript:toggleLayer('J793')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> as to give occasion to those who shall survive me to make it matter of reproach against me some day, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J793" onclick="javascript:toggleLayer('E793')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうなればいつの日かわたしより長生きしたものたちが、わたしを批判する材料としてその遅れを使うかもしれない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="794"><a name="794"><TD id="E794" onclick="javascript:toggleLayer('J794')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> that I might have left them many things in a much more perfect state than I have done, had I not too much neglected to make them aware of the ways in which they could have promoted the accomplishment of my designs.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J794" onclick="javascript:toggleLayer('E794')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いろんなことを、自分の設計にしたがって達成するためにとれたかもしれない手段について、世間に知らせるのをこんなに怠らなければ、いろんなことを実際よりもずっと完成された状態にしてい後世に残せたのだ、などと言われたくないのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="795"><a name="795"><TD id="E795" onclick="javascript:toggleLayer('J795')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And I thought that it was easy for me to select some matters which should neither be obnoxious to much controversy, nor should compel me to expound more of my principles than I desired, and which should yet be sufficient clearly to exhibit what I can or cannot accomplish in the sciences. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J795" onclick="javascript:toggleLayer('E795')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、毀誉褒貶の種にならず、さらにわたしが望むよりも自分の原理を先にまで進めてしまうようなこともないけれど、一方で自分が学問の領域でなにを達成できて、なにを達成できないかをじゅうぶんにはっきりと示すような材料を選ぶのは、簡単だろうと思えた。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="796"><a name="796"><TD id="E796" onclick="javascript:toggleLayer('J796')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Whether or not I have succeeded in this it is not for me to say;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J796" onclick="javascript:toggleLayer('E796')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これが成功したかは、わたしの言うべきことではない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="797"><a name="797"><TD id="E797" onclick="javascript:toggleLayer('J797')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and I do not wish to forestall the judgments of others by speaking myself of my writings;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J797" onclick="javascript:toggleLayer('E797')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして自分の書いたものについて自ら語ることで、ほかの人たちの判断をゆがめたくもない。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="798"><a name="798"><TD id="E798" onclick="javascript:toggleLayer('J798')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but it will gratify me if they be examined, and, to afford the greater inducement to this I request all who may have any objections to make to them, to take the trouble of forwarding these to my publisher, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J798" onclick="javascript:toggleLayer('E798')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でも、自分の著作が検討されてればわたしはうれしいし、そしてそれをさらに引き出すために、この著作についてなにか反論のある人はみんな、ご苦労だがそれを出版社宛に送ってほしいのだ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="799"><a name="799"><TD id="E799" onclick="javascript:toggleLayer('J799')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> who will give me notice of them, that I may endeavor to subjoin at the same time my reply;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J799" onclick="javascript:toggleLayer('E799')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうすれば出版社はそれをわたしに伝え、そしてわたしはそれに対してこちらの返事を添付するようにしよう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="800"><a name="800"><TD id="E800" onclick="javascript:toggleLayer('J800')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and in this way readers seeing both at once will more easily determine where the truth lies;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J800" onclick="javascript:toggleLayer('E800')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> こうすることで、読者たちはその反論と、わたしの答えを同時に見ることで、真実がどこにあるかをもっと容易に見られるようになる。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="discourse-6.htm">prev</a>
+<a href="discourse-0.htm">0</a>
+<a href="discourse-1.htm">1</a>
+<a href="discourse-2.htm">2</a>
+<a href="discourse-3.htm">3</a>
+<a href="discourse-4.htm">4</a>
+<a href="discourse-5.htm">5</a>
+<a href="discourse-6.htm">6</a>
+<7>
+<a href="discourse-8.htm">8</a>
+<a href="discourse-8.htm">next</a>
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/discoursee.txt">local copy</a> / <a href="http://www.gutenberg.net/etext93/dcart10.txt">http://www.gutenberg.net/etext93/dcart10.txt</a><li>オリジナルの日本語文: <a href="../org/discoursej.txt">local copy</a> / <a href="http://www.genpaku.org/dcart01/DCART10j.html">http://www.genpaku.org/dcart01/DCART10j.html</a><li><a href="../manual-alignment/discourse.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

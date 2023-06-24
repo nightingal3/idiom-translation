@@ -1,0 +1,350 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>THE WONDERFUL WIZARD OF OZ / L. Frank Baum 著</h2><h2>オズの魔法使い / Ｌ・フランク・ボーム 著 / 武田正代・山形浩生 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/oze.txt">英語文</a>&<a href="../org/ozj.txt">日本語文</a> / <a href="../manual-alignment/oz.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>33 of THE WONDERFUL WIZARD OF OZ</TITLE>
+<hr>
+<a href="oz-32.htm">prev</a>
+<a href="oz-0.htm">0</a>
+<a href="oz-1.htm">1</a>
+<a href="oz-2.htm">2</a>
+<a href="oz-3.htm">3</a>
+<a href="oz-4.htm">4</a>
+<a href="oz-5.htm">5</a>
+<a href="oz-6.htm">6</a>
+<a href="oz-7.htm">7</a>
+<a href="oz-8.htm">8</a>
+<a href="oz-9.htm">9</a>
+<a href="oz-10.htm">10</a>
+<a href="oz-11.htm">11</a>
+<a href="oz-12.htm">12</a>
+<a href="oz-13.htm">13</a>
+<a href="oz-14.htm">14</a>
+<a href="oz-15.htm">15</a>
+<a href="oz-16.htm">16</a>
+<a href="oz-17.htm">17</a>
+<a href="oz-18.htm">18</a>
+<a href="oz-19.htm">19</a>
+<a href="oz-20.htm">20</a>
+<a href="oz-21.htm">21</a>
+<a href="oz-22.htm">22</a>
+<a href="oz-23.htm">23</a>
+<a href="oz-24.htm">24</a>
+<a href="oz-25.htm">25</a>
+<a href="oz-26.htm">26</a>
+<a href="oz-27.htm">27</a>
+<a href="oz-28.htm">28</a>
+<a href="oz-29.htm">29</a>
+<a href="oz-30.htm">30</a>
+<a href="oz-31.htm">31</a>
+<a href="oz-32.htm">32</a>
+<33>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="3301"><a name="3301"><TD id="E3301" onclick="javascript:toggleLayer('J3301')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Glinda the Good stepped down from her ruby throne to give the little girl a good-bye kiss, and Dorothy thanked her for all the kindness she had shown to her friends and herself.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3301" onclick="javascript:toggleLayer('E3301')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> よいグリンダはルビーの玉座から立ち上がっておりてくると、少女にさよならのキスをして、ドロシーはグリンダが友人たちや自分に示してくれたいろいろな親切のお礼を言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3302"><a name="3302"><TD id="E3302" onclick="javascript:toggleLayer('J3302')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Dorothy now took Toto up solemnly in her arms, and having said one last good-bye she clapped the heels of her shoes together three times, saying:
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3302" onclick="javascript:toggleLayer('E3302')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> さてドロシーは重々しくトトをうでに抱きかかえると、最後にもう一度さよならを言ってから、くつのかかとを三回うちつけてこう言いました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3303"><a name="3303"><TD id="E3303" onclick="javascript:toggleLayer('J3303')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Take me home to Aunt Em!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3303" onclick="javascript:toggleLayer('E3303')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「おうちのエムおばさんのところにつれて帰って！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3304"><a name="3304"><TD id="E3304" onclick="javascript:toggleLayer('J3304')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Instantly she was whirling through the air, so swiftly that all she could see or feel was the wind whistling past her ears.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3304" onclick="javascript:toggleLayer('E3304')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> すぐに彼女は宙を舞い、それがあまりに速すぎて、見えるのも感じられるのも耳をかすめる風の音だけでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3305"><a name="3305"><TD id="E3305" onclick="javascript:toggleLayer('J3305')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Silver Shoes took but three steps, and then she stopped so suddenly that she rolled over upon the grass several times beforeshe knew where she was.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3305" onclick="javascript:toggleLayer('E3305')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 銀のくつはたった三歩進んだだけで、そしてあまりに急に止まったので、草の上で何回か転げるまで自分がどこにいるのか気がつきませんでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3306"><a name="3306"><TD id="E3306" onclick="javascript:toggleLayer('J3306')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> At length, however, she sat up and looked about her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3306" onclick="javascript:toggleLayer('E3306')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> でもゆっくりと、ドロシーは起きあがってあたりを見回しました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3307"><a name="3307"><TD id="E3307" onclick="javascript:toggleLayer('J3307')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Good gracious!" 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3307" onclick="javascript:toggleLayer('E3307')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「まあどうしましょう！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3308"><a name="3308"><TD id="E3308" onclick="javascript:toggleLayer('J3308')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she cried.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3308" onclick="javascript:toggleLayer('E3308')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と叫びました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3309"><a name="3309"><TD id="E3309" onclick="javascript:toggleLayer('J3309')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For she was sitting on the broad Kansas prairie, and just before her was the new farmhouse Uncle Henry built after the cyclone had carried away the old one.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3309" onclick="javascript:toggleLayer('E3309')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> というのもドロシーはひろいカンザスの平原にすわっていて、目の前にはヘンリーおじさんが、古い家を竜巻にもっていかれた後で建てた新しい農家があったからです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3310"><a name="3310"><TD id="E3310" onclick="javascript:toggleLayer('J3310')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Uncle Henry was milking the cows in the barnyard, and Toto had jumped out of her arms and was running toward the barn, barking furiously.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3310" onclick="javascript:toggleLayer('E3310')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ヘンリーおじさんは納屋でウシの乳しりをしていて、トトはドロシーの腕からとびだして、すさまじく吠えながら納屋のほうに走っていきます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3311"><a name="3311"><TD id="E3311" onclick="javascript:toggleLayer('J3311')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Dorothy stood up and found she was in her stocking-feet.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3311" onclick="javascript:toggleLayer('E3311')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 立ち上がってみると、足はストッキングだけのはだしでした。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3312"><a name="3312"><TD id="E3312" onclick="javascript:toggleLayer('J3312')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For the Silver Shoes had fallen off in her flight through the air, and were lost forever in the desert.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3312" onclick="javascript:toggleLayer('E3312')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 銀のくつは空中飛行の途中でぬげてしまい、砂漠の中へ永遠に失われてしまったのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="3313"><a name="3313"><TD ID="TAB3313" onclick="javascript:toggleLayer('J3313')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB3313" onclick="javascript:toggleLayer('E3313')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="3314"><a name="3314"><TD id="E3314" onclick="javascript:toggleLayer('J3314')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 24.  Home Again
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3314" onclick="javascript:toggleLayer('E3314')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 24　おうちへ帰る
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3315"><a name="3315"><TD id="E3315" onclick="javascript:toggleLayer('J3315')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Aunt Em had just come out of the house to water the cabbages when she looked up and saw Dorothy running toward her.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3315" onclick="javascript:toggleLayer('E3315')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> エムおばさんはちょうど、キャベツに水をやりに家から出てきたところでしたが、顔をあげると自分に向かって走ってくるドロシーが目に入りました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3316"><a name="3316"><TD id="E3316" onclick="javascript:toggleLayer('J3316')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "My darling child!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3316" onclick="javascript:toggleLayer('E3316')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「愛しい子！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3317"><a name="3317"><TD id="E3317" onclick="javascript:toggleLayer('J3317')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> she cried, folding the little girl in her arms and covering her face with kisses.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3317" onclick="javascript:toggleLayer('E3317')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> と叫んで、おばさんは少女を抱きしめて顔中にキスをしました。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3318"><a name="3318"><TD id="E3318" onclick="javascript:toggleLayer('J3318')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "Where in the world did you come from?"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3318" onclick="javascript:toggleLayer('E3318')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 「いったいぜんたいどこからきたんだね？」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3319"><a name="3319"><TD id="E3319" onclick="javascript:toggleLayer('J3319')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "From the Land of Oz," 
+said Dorothy gravely.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3319" onclick="javascript:toggleLayer('E3319')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> ドロシーは重々しく申しました。
+「オズの国からよ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3320"><a name="3320"><TD id="E3320" onclick="javascript:toggleLayer('J3320')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "And here is Toto, too.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3320" onclick="javascript:toggleLayer('E3320')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そしてトトもいるわ。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3321"><a name="3321"><TD id="E3321" onclick="javascript:toggleLayer('J3321')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And oh, Aunt Em!
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3321" onclick="javascript:toggleLayer('E3321')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そして、ああエムおばさん！　
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="3322"><a name="3322"><TD id="E3322" onclick="javascript:toggleLayer('J3322')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> I'm so glad to be at home again!"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3322" onclick="javascript:toggleLayer('E3322')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おうちに帰れてほんとうによかった！」
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="3323"><a name="3323"><TD ID="TAB3323" onclick="javascript:toggleLayer('J3323')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB3323" onclick="javascript:toggleLayer('E3323')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="3324"><a name="3324"><TD ID="TAB3324" onclick="javascript:toggleLayer('J3324')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J3324" onclick="javascript:toggleLayer('E3324')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> おしまい
+ </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="oz-32.htm">prev</a>
+<a href="oz-0.htm">0</a>
+<a href="oz-1.htm">1</a>
+<a href="oz-2.htm">2</a>
+<a href="oz-3.htm">3</a>
+<a href="oz-4.htm">4</a>
+<a href="oz-5.htm">5</a>
+<a href="oz-6.htm">6</a>
+<a href="oz-7.htm">7</a>
+<a href="oz-8.htm">8</a>
+<a href="oz-9.htm">9</a>
+<a href="oz-10.htm">10</a>
+<a href="oz-11.htm">11</a>
+<a href="oz-12.htm">12</a>
+<a href="oz-13.htm">13</a>
+<a href="oz-14.htm">14</a>
+<a href="oz-15.htm">15</a>
+<a href="oz-16.htm">16</a>
+<a href="oz-17.htm">17</a>
+<a href="oz-18.htm">18</a>
+<a href="oz-19.htm">19</a>
+<a href="oz-20.htm">20</a>
+<a href="oz-21.htm">21</a>
+<a href="oz-22.htm">22</a>
+<a href="oz-23.htm">23</a>
+<a href="oz-24.htm">24</a>
+<a href="oz-25.htm">25</a>
+<a href="oz-26.htm">26</a>
+<a href="oz-27.htm">27</a>
+<a href="oz-28.htm">28</a>
+<a href="oz-29.htm">29</a>
+<a href="oz-30.htm">30</a>
+<a href="oz-31.htm">31</a>
+<a href="oz-32.htm">32</a>
+<33>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/oze.txt">local copy</a> / <a href="http://www.gutenberg.net/etext93/wizoz10.txt">http://www.gutenberg.net/etext93/wizoz10.txt</a><li>オリジナルの日本語文: <a href="../org/ozj.txt">local copy</a> / <a href="http://www.genpaku.org/oz/wizoz.txt">http://www.genpaku.org/oz/wizoz.txt</a><li><a href="../manual-alignment/oz.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+

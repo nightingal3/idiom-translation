@@ -1,0 +1,440 @@
+<HTML><HEAD><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script type="text/javascript">
+<!--
+
+IE = (navigator.appName == "Microsoft Internet Explorer")
+
+function lookup(e) {
+  if(IE){
+    range = document.selection.createRange()
+    str = range.text
+  }else{
+    str = document.getSelection()
+  }
+  code = str.charCodeAt(0)
+  if(code >= 0 && code <= 127){
+    str = str.replace(/^[^a-zA-Z0-9]+/,"")
+    str = str.replace(/[^a-zA-Z0-9]+$/,"")
+    if(str != ""){
+      win = open("http://dictionary.goo.ne.jp/search.php?MT="+escape(str)+"&kind=&mode=0", "Goo", "width=600,height=400,scrollbars=yes")
+      win.focus()
+    }
+  } 
+}
+function showLayer(id){ 
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'visible'
+    }else if(document.all){
+        document.all(id).style.visibility = 'visible'
+    }else if(document.layers){
+        document.layers[id].visibility = 'show'
+    }
+}
+
+reJ = new RegExp('J');
+reE = new RegExp('E');
+function hideLayer(id){
+    if(id.match(reJ) && !document.F.CJ.checked) return
+    if(id.match(reE) && !document.F.CE.checked) return
+    if(document.getElementById){
+        document.getElementById(id).style.visibility = 'hidden'
+    }else if(document.all){
+        document.all(id).style.visibility = 'hidden'
+    }else if(document.layers){
+        document.layers[id].visibility = 'hidden'
+    }
+}
+function layerIsVisible(id){
+    if(document.getElementById){
+        return (document.getElementById(id).style.visibility == 'visible')
+    }else if(document.all){
+        return (document.all(id).style.visibility == 'visible')
+    }else if(document.layers){
+        return (document.layers[id].visibility == 'show')
+    }
+}
+function toggleLayer(id){
+    if(layerIsVisible(id)){
+        hideLayer(id)
+    }else{
+        showLayer(id)
+    }
+}
+
+function showOrHideE(eng, jp){
+    if(document.F.CE.checked){
+        hideLayer(eng)
+    }else{
+        showLayer(jp)
+    }
+}
+
+function showOrHideJ(jp, eng){
+    if(document.F.CJ.checked){
+        hideLayer(jp)
+    }else{
+        showLayer(eng)
+    }
+}
+				
+
+function hasAttribute2(obj, attr){
+    if(IE){
+        return true
+    }else if(document.getElementById){
+        return obj.hasAttribute(attr)
+    }else{
+        return true
+    }
+}
+
+reTAB = new RegExp("TAB")
+function hideJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        hideLayer(id)
+            }else if(id.match(reTAB) &&
+            (document.F.CJ.checked || document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#FFFFFF")
+            }
+	}
+    }
+}
+function showJE(str) {
+    re = new RegExp(str);
+    spans = document.getElementsByTagName("TD")
+    for(i=0; i<spans.length; i++){
+        if(hasAttribute2(spans[i], "id")){
+            id = spans[i].getAttribute("id")
+            if(id.match(re)){
+	        showLayer(id)
+            }else if(id.match(reTAB) &&
+            (!document.F.CJ.checked && !document.F.CE.checked)){
+                spans[i].setAttribute('BGCOLOR', "#F0F0F0")
+	    }
+	}
+    }
+}
+function addRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'ALL'
+    obj.frame = 'BORDER'
+}
+
+function removeRules (){
+    obj = document.getElementById('TRANSPAIR');
+    obj.rules = 'NONE'
+    obj.frame = 'VOID'
+}
+
+function onoffJ(){
+    if (document.F.CJ.checked) {
+        hideJE('J');
+        addRules();
+    }else{
+        showJE('J');
+        if(!document.F.CE.checked){
+            removeRules();
+        }
+    }
+}
+function onoffE(){
+    if (document.F.CE.checked) {
+        hideJE('E');
+        addRules();
+    }else{
+        showJE('E');
+        if(!document.F.CJ.checked){
+            removeRules();
+        }
+    }
+}
+				
+// -->
+</script>
+</HEAD><BODY BGCOLOR=#FFFFFF><div align=right><a href="../data/titles-ja-pages.htm">タイトル順</a>/<a href="../data/authors-pages.htm">著者順</a>/<a href="../data/translators-pages.htm">訳者順</a>/<a href="../index.html">ホーム</a></div><h2>The Imitation of Christ / Thomas a Kempis 著</h2><h2>キリストにならいて / トマス・ア・ケンピス 著 / 結城浩 訳</h2><p>Annotator: 高橋真弓</p><div align=right><form name="F"><input type="checkbox" name="CE" onclick="onoffE()">英語文を消す <input type="checkbox" name="CJ" onclick="onoffJ()">日本語文を消す <br>(反対側の文を押すと消えた文が出る)</form></div>オリジナル:<a href="../org/christe.txt">英語文</a>&<a href="../org/christj.txt">日本語文</a> / <a href="../manual-alignment/christ.alm">対訳データ</a> / <a href="#preamble">このページにある対訳文について</a>
+<TITLE>12 of The Imitation of Christ</TITLE>
+<hr>
+<a href="christ-11.htm">prev</a>
+<a href="christ-0.htm">0</a>
+<a href="christ-1.htm">1</a>
+<a href="christ-2.htm">2</a>
+<a href="christ-3.htm">3</a>
+<a href="christ-4.htm">4</a>
+<a href="christ-5.htm">5</a>
+<a href="christ-6.htm">6</a>
+<a href="christ-7.htm">7</a>
+<a href="christ-8.htm">8</a>
+<a href="christ-9.htm">9</a>
+<a href="christ-10.htm">10</a>
+<a href="christ-11.htm">11</a>
+<12>
+next
+<a name="tableBegin"></a><HR><span><TABLE BGCOLOR=#F0F0F0 ID=TRANSPAIR FRAME=VOID RULES=NONE BORDERCOLOR=#000000>
+<!-- TRANS_PAIR BEGIN --><TR id="1201"><a name="1201"><TD id="E1201" onclick="javascript:toggleLayer('J1201')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 4. Sit thou down always in the lowest room
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1201" onclick="javascript:toggleLayer('E1201')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> いつも最も低い場所を占めなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1202"><a name="1202"><TD id="E1202" onclick="javascript:toggleLayer('J1202')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and thou shalt be given the highest place.(2)
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1202" onclick="javascript:toggleLayer('E1202')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうすれば、最も高い場所があなたに与えられるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1203"><a name="1203"><TD id="E1203" onclick="javascript:toggleLayer('J1203')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For the highest cannot be without the lowest.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1203" onclick="javascript:toggleLayer('E1203')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最も高い場所は、最も低い場所から離れては存在しないのですから。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1204"><a name="1204"><TD id="E1204" onclick="javascript:toggleLayer('J1204')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> For the highest saints of God are least in their own sight, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1204" onclick="javascript:toggleLayer('E1204')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神の御前においても偉大な聖徒達は、自分達を一番取るに足らない者と考えている人達です。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1205"><a name="1205"><TD id="E1205" onclick="javascript:toggleLayer('J1205')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and the more glorious they are, so much the lowlier are they in themselves; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1205" onclick="javascript:toggleLayer('E1205')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 心の中で謙虚になればなるほど、聖徒達は神の栄光の元で輝くのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1206"><a name="1206"><TD id="E1206" onclick="javascript:toggleLayer('J1206')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> full of grace and heavenly glory, 
+they are not desirous of vain-glory; 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1206" onclick="javascript:toggleLayer('E1206')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 聖徒達は空しい栄光を望みません。
+だから、真実と天からの栄光に満たされているのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1207"><a name="1207"><TD id="E1207" onclick="javascript:toggleLayer('J1207')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> resting on God and strong in His might, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1207" onclick="javascript:toggleLayer('E1207')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神に守られて安定して、強くおられます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1208"><a name="1208"><TD id="E1208" onclick="javascript:toggleLayer('J1208')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> they cannot be lifted up in any wise.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1208" onclick="javascript:toggleLayer('E1208')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> けして傲慢な人々ではありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1209"><a name="1209"><TD id="E1209" onclick="javascript:toggleLayer('J1209')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> And they who ascribe unto God all the good which they have received, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1209" onclick="javascript:toggleLayer('E1209')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 聖徒達は、自分達が受け取る全てのよいことを、神のおかげであると考えます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1210"><a name="1210"><TD id="E1210" onclick="javascript:toggleLayer('J1210')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> "seek not glory one of another,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1210" onclick="javascript:toggleLayer('E1210')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 聖徒たちは互いから神の栄光を得ようとはしません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1211"><a name="1211"><TD id="E1211" onclick="javascript:toggleLayer('J1211')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> but the glory which cometh from God only,"
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1211" onclick="javascript:toggleLayer('E1211')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神からの栄光のみを求めます。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1212"><a name="1212"><TD id="E1212" onclick="javascript:toggleLayer('J1212')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and they desire that God shall be praised in Himself and in all His Saints above all things, 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1212" onclick="javascript:toggleLayer('E1212')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 彼等が望むことはただ神が自分達の心の中で、そして、全ての聖徒たちの心の中で、たたえられることなのです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1213"><a name="1213"><TD id="E1213" onclick="javascript:toggleLayer('J1213')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and they are always striving for this very thing.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1213" onclick="javascript:toggleLayer('E1213')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> これが彼等の絶えざる望みなのです。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1214"><a name="1214"><TD id="E1214" onclick="javascript:toggleLayer('J1214')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> 5. Be thankful, therefore, for the least benefit 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1214" onclick="javascript:toggleLayer('E1214')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> だから、最も小さい賜物に対しても、感謝しなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1215"><a name="1215"><TD id="E1215" onclick="javascript:toggleLayer('J1215')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and thou shalt be worthy to receive greater.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1215" onclick="javascript:toggleLayer('E1215')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> そうすれば、あなたはより大きな賜物を、受けるに値するようになるでしょう。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1216"><a name="1216"><TD id="E1216" onclick="javascript:toggleLayer('J1216')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let the least be unto thee even as the greatest, and let that which is of little account be unto thee as a special gift.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1216" onclick="javascript:toggleLayer('E1216')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 最も小さい賜物を、最も大きなものと、最も取るに足らない賜物を、特別の賜物と思いなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1217"><a name="1217"><TD id="E1217" onclick="javascript:toggleLayer('J1217')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> If the majesty of the Giver be considered, nothing that is given shall seem small and of no worth, for that is not a small thing which is given by the Most High God.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1217" onclick="javascript:toggleLayer('E1217')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 与えてくださった方である神の高潔さに注意をはらえば、どんな賜物も小さすぎたり、価値の低いものにみえることはありません。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1218"><a name="1218"><TD id="E1218" onclick="javascript:toggleLayer('J1218')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Yea, though He gave punishment and stripes, we ought to be thankful,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1218" onclick="javascript:toggleLayer('E1218')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> たとえ、神があなたに罰や災いをお与えになっても、受け入れなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1219"><a name="1219"><TD id="E1219" onclick="javascript:toggleLayer('J1219')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> because He ever doth for our profit whatever He suffereth to come upon us.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1219" onclick="javascript:toggleLayer('E1219')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 私たちの身にふりかかることがなんであれ、神が私たちの為を思ってなさってくださったことなのですから。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1220"><a name="1220"><TD id="E1220" onclick="javascript:toggleLayer('J1220')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> He who seeketh to retain the favour of God, let him be thankful for the favour which is given,
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1220" onclick="javascript:toggleLayer('E1220')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神の恵みをいただき続けたいと思う人は、恵みが自分に与えられる時には、感謝の気持ちを持つべきです。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1221"><a name="1221"><TD id="E1221" onclick="javascript:toggleLayer('J1221')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> and patient in respect of that which is taken away. 
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1221" onclick="javascript:toggleLayer('E1221')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 神の恵みが取り上げられた時には、忍耐強くありなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1222"><a name="1222"><TD id="E1222" onclick="javascript:toggleLayer('J1222')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Let him pray that it may return;
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1222" onclick="javascript:toggleLayer('E1222')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恵みが自分の元へ戻されるよう、祈りを捧げなさい。
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1223"><a name="1223"><TD id="E1223" onclick="javascript:toggleLayer('J1223')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> let him be wary and humble that he lose it not.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD id="J1223" onclick="javascript:toggleLayer('E1223')" VALIGN=TOP BGCOLOR=#F0F0F0 style="visibility : visible"> 恵みが失われないよう、注意して、謙虚でありなさい。 
+ </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1224"><a name="1224"><TD ID="TAB1224" onclick="javascript:toggleLayer('J1224')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1224" onclick="javascript:toggleLayer('E1224')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1225"><a name="1225"><TD id="E1225" onclick="javascript:toggleLayer('J1225')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Eleventh Chapter
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1225" onclick="javascript:toggleLayer('E1225')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1226"><a name="1226"><TD id="E1226" onclick="javascript:toggleLayer('J1226')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> Few Love the Cross of Jesus
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1226" onclick="javascript:toggleLayer('E1226')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1227"><a name="1227"><TD id="E1227" onclick="javascript:toggleLayer('J1227')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> JESUS has always many who love His heavenly kingdom, but few who bear His cross. 
+He has many who desire consolation, but few who care for trial. 
+He finds many to share His table, but few to take part in His fasting. 
+All desire to be happy with Him; 
+few wish to suffer anything for Him. 
+Many follow Him to the breaking of bread, but few to the drinking of the chalice of His passion. 
+Many revere His miracles; 
+few approach the shame of the Cross. 
+Many love Him as long as they encounter no hardship; 
+many praise and bless Him as long as they receive some comfort from Him. 
+But if Jesus hides Himself and leaves them for a while, they fall either into complaints or into deep dejection. 
+Those, on the contrary, who love Him for His own sake and not for any comfort of their own, bless Him in all trial and anguish of heart as well as in the bliss of consolation. 
+Even if He should never give them consolation, yet they would continue to praise Him and wish always to give Him thanks. 
+What power there is in pure love for Jesus - - love that is flee from all self-interest and self-love!
+Do not those who always seek consolation deserve to be called mercenaries? 
+Do not those who always think of their own profit and gain prove that they love themselves rather than Christ? 
+Where can a man be found who desires to serve God for nothing? 
+Rarely indeed is a man so spiritual as to strip himself of all things. 
+And who shall find a man so truly poor in spirit as to be free from every creature? 
+His value is like that of things brought from the most distant lands.
+If a man give all his wealth, it is nothing; 
+if he do great penance, it is little; 
+if he gain all knowledge, he is still far afield; 
+if he have great virtue and much ardent devotion, he still lacks a great deal, and especially, the one thing that is most necessary to him. 
+What is this one thing? 
+That leaving all, he forsake himself, completely renounce himself, and give up all private affections. 
+Then, when he has done all that he knows ought to be done, let him consider it as nothing, let him make little of what may be considered great; 
+let him in all honesty call himself an unprofitable servant. 
+For truth itself has said: 
+"When you shall have done all these things that are commanded you, say: 
+'we are unprofitable servants.'"[17]
+Then he will be truly poor and stripped in spirit, and with the prophet may say: 
+"I am alone and poor."[18] 
+No one, however, is more wealthy than such a man; 
+no one is more powerful, no one freer than he who knows how to leave all things and think of himself as the least of all.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1227" onclick="javascript:toggleLayer('E1227')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1228"><a name="1228"><TD id="E1228" onclick="javascript:toggleLayer('J1228')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [17] Luke 17:10.
+[18] Ps. 24:16.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1228" onclick="javascript:toggleLayer('E1228')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<TR id="1229"><a name="1229"><TD ID="TAB1229" onclick="javascript:toggleLayer('J1229')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1229" onclick="javascript:toggleLayer('E1229')" BGCOLOR=#F0F0F0 style="visibility : visible"> <BR> </TD></a></TR>
+<!-- TRANS_PAIR BEGIN --><TR id="1230"><a name="1230"><TD id="E1230" onclick="javascript:toggleLayer('J1230')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Twelfth Chapter
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1230" onclick="javascript:toggleLayer('E1230')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1231"><a name="1231"><TD id="E1231" onclick="javascript:toggleLayer('J1231')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> The Royal Road of the Holy Cross
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1231" onclick="javascript:toggleLayer('E1231')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1232"><a name="1232"><TD id="E1232" onclick="javascript:toggleLayer('J1232')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> TO MANY the saying, 
+"Deny thyself, take up thy cross and follow Me,"[19] 
+seems hard, but it will be much harder to hear that final word: 
+"Depart from Me, ye cursed, into everlasting fire."[20] 
+Those who hear the word of the cross and follow it willingly now, need not fear that they will hear of eternal damnation on the day of judgment. 
+This sign of the cross will be in the heavens when the Lord comes to judge. 
+Then all the servants of the cross, who during life made themselves one with the Crucified, will draw near with great trust to Christ, the judge.
+Why, then, do you fear to take up the cross when through it you can win a kingdom? 
+In the cross is salvation, in the cross is life, in the cross is protection from enemies, in the cross is infusion of heavenly sweetness, in the cross is strength of mind, in the cross is joy of spirit, in the cross is highest virtue, in the cross is perfect holiness. 
+There is no salvation of soul nor hope of everlasting life but in the cross.
+Take up your cross, therefore, and follow Jesus, and you shall enter eternal life. 
+He Himself opened the way before you in carrying His cross, and upon it He died for you, that you, too, might take up your cross and long to die upon it. 
+If you die with Him, you shall also live with Him, and if you share His suffering, you shall also share His glory.
+Behold, in the cross is everything, and upon your dying on the cross everything depends. 
+There is no other way to life and to true inward peace than the way of the holy cross and daily mortification. 
+Go where you will, seek what you will, you will not find a higher way, nor a less exalted but safer way, than the way of the holy cross. 
+Arrange and order everything to suit your will and judgment, and still you will find that some suffering must always be borne, willingly or unwillingly, and thus you will always find the cross.
+Either you will experience bodily pain or you will undergo tribulation of spirit in your soul. 
+At times you will be forsaken by God, at times troubled by those about you and, what is worse, you will often grow weary of yourself. 
+You cannot escape, you cannot be relieved by any remedy or comfort but must bear with it as long as God wills. 
+For He wishes you to learn to bear trial without consolation, to submit yourself wholly to Him that you may become more humble through suffering. 
+No one understands the passion of Christ so thoroughly or heartily as the man whose lot it is to suffer the like himself.
+The cross, therefore, is always ready; 
+it awaits you everywhere. 
+No matter where you may go, you cannot escape it, for wherever you go you take yourself with you and shall always find yourself. 
+Turn where you will - - above, below, without, or within  - - you will find a cross in everything, and everywhere you must have patience if you would have peace within and merit an eternal crown.
+If you carry the cross willingly, it will carry and lead you to the desired goal where indeed there shall be no more suffering, but here there shall be. 
+If you carry it unwillingly, you create a burden for yourself and increase the load, though still you have to bear it. 
+If you cast away one cross, you will find another and perhaps a heavier one. 
+Do you expect to escape what no mortal man can ever avoid? 
+Which of the saints was without a cross or trial on this earth? 
+Not even Jesus Christ, our Lord, Whose every hour on earth knew the pain of His passion. 
+"It behooveth Christ to suffer, and to rise again from the dead, . . . and so enter into his glory."[21] 
+How is it that you look for another way than this, the royal way of the holy cross?
+The whole life of Christ was a cross and a martyrdom, and do you seek rest and enjoyment for yourself? 
+You deceive yourself, you are mistaken if you seek anything but to suffer, for this mortal life is full of miseries and marked with crosses on all sides. 
+Indeed, the more spiritual progress a person makes, so much heavier will he frequently find the cross, because as his love increases, the pain of his exile also increases.
+Yet such a man, though afflicted in many ways, is not without hope of consolation, because he knows that great reward is coming to him for bearing his cross. 
+And when he carries it willingly, every pang of tribulation is changed into hope of solace from God. 
+Besides, the more the flesh is distressed by affliction, so much the more is the spirit strengthened by inward grace. 
+Not infrequently a man is so strengthened by his love of trials and hardship in his desire to conform to the cross of Christ, that he does not wish to be without sorrow or pain, since he believes he will be the more acceptable to God if he is able to endure more and more grievous things for His sake.
+It is the grace of Christ, and not the virtue of man, which can and does bring it about that through fervor of spirit frail flesh learns to love and to gain what it naturally hates and shuns.
+To carry the cross, to love the cross, to chastise the body and bring it to subjection, to flee honors, to endure contempt gladly, to despise self and wish to be despised, to suffer any adversity and loss, to desire no prosperous days on earth - - this is not man's way. 
+If you rely upon yourself, you can do none of these things, but if you trust in the Lord, strength will be given you from heaven and the world and the flesh will be made subject to your word. 
+You will not even fear your enemy, the devil, if you are armed with faith and signed with the cross of Christ.
+Set yourself, then, like a good and faithful servant of Christ, to bear bravely the cross of your Lord, Who out of love was crucified for you. 
+Be ready to suffer many adversities and many kinds of trouble in this miserable life, for troublesome and miserable life will always be, no matter where you are; 
+and so you will find it wherever you may hide. 
+Thus it must be; 
+and there is no way to evade the trials and sorrows of life but to bear them.
+Drink the chalice of the Lord with affection it you wish to be His friend and to have part with Him. 
+Leave consolation to God; 
+let Him do as most pleases Him. 
+On your part, be ready to bear sufferings and consider them the greatest consolation, for even though you alone were to undergo them all, the sufferings of this life are not worthy to be compared with the glory to come.
+When you shall have come to the point where suffering is sweet and acceptable for the sake of Christ, then consider yourself fortunate, for you have found paradise on earth. 
+But as long as suffering irks you and you seek to escape, so long will you be unfortunate, and the tribulation you seek to evade will follow you everywhere. 
+If you put your mind to the things you ought to consider, that is, to suffering and death, you would soon be in a better state and would find peace.
+Although you were taken to the third heaven with Paul, you were not thereby insured against suffering. 
+Jesus said: 
+"I will show him how great things he must suffer for My name's sake."[22] 
+To suffer, then, remains your lot, if you mean to love Jesus and serve Him forever.
+If you were but worthy to suffer something for the name of Jesus, what great glory would be in store for you, what great joy to all the saints of God, what great edification to those about you! 
+For all men praise patience though there are few who wish to practice it.
+With good reason, then, ought you to be willing to suffer a little for Christ since many suffer much more for the world.
+Realize that you must lead a dying life; 
+the more a man dies to himself, the more he begins to live unto God.
+No man is fit to enjoy heaven unless he has resigned himself to suffer hardship for Christ. 
+Nothing is more acceptable to God, nothing more helpful for you on this earth than to suffer willingly for Christ. 
+If you had to make a choice, you ought to wish rather to suffer for Christ than to enjoy many consolations, for thus you would be more like Christ and more like all the saints. 
+Our merit and progress consist not in many pleasures and comforts but rather in enduring great afflictions and sufferings.
+If, indeed, there were anything better or more useful for man's salvation than suffering, Christ would have shown it by word and example. 
+But He clearly exhorts the disciples who follow Him and all who wish to follow Him to carry the cross, saying: 
+"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me."[23]
+When, therefore, we have read and searched all that has been written, let this be the final conclusion - - that through much suffering we must enter into the kingdom of God.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1232" onclick="javascript:toggleLayer('E1232')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+<!-- TRANS_PAIR BEGIN --><TR id="1233"><a name="1233"><TD id="E1233" onclick="javascript:toggleLayer('J1233')" BGCOLOR=#F0F0F0 style="visibility : visible" width=50% VALIGN=TOP> [19] Matt. 16:24.
+[20] Matt. 25:41.
+[21] Luke 24:46, 26.
+[22] Acts 9:16.
+[23] Luke 9:23.
+ </TD><TD VALIGN=TOP BGCOLOR=#FFFFFF><BR></TD><TD ID="TAB1233" onclick="javascript:toggleLayer('E1233')" BGCOLOR=#F0F0F0 style="visibility : visible">  </TD></a></TR><!-- TRANS_PAIR END -->
+</TABLE></span><HR>
+<a href="christ-11.htm">prev</a>
+<a href="christ-0.htm">0</a>
+<a href="christ-1.htm">1</a>
+<a href="christ-2.htm">2</a>
+<a href="christ-3.htm">3</a>
+<a href="christ-4.htm">4</a>
+<a href="christ-5.htm">5</a>
+<a href="christ-6.htm">6</a>
+<a href="christ-7.htm">7</a>
+<a href="christ-8.htm">8</a>
+<a href="christ-9.htm">9</a>
+<a href="christ-10.htm">10</a>
+<a href="christ-11.htm">11</a>
+<12>
+next
+<hr>
+
+<h2><a name="preamble">このページにある対訳文について</a></h2>このページの対訳文は，再配布可能な作品（<a href="http://www.gutenberg.org/">Project Gutenberg</a> や<a href="http://www.aozora.gr.jp/">青空文庫</a>や<a href="http://www.genpaku.org/">プロジェクト杉田玄白</a>などの作品）について，日本語文と英語文とを対応付けたものの一つです．その他の対訳作品やダウンロードや著作権などについては，<a href="../index.html">日英対訳文対応付けデータのホームページ</a>を見て下さい．また，オリジナルの日英作品の著作権についてはオリジナルの日本語文および英語文の著作権を見て下さい．なお，著作権上の問題がある作品については，情報通信研究機構自然言語グループ内山将夫（ｍｕｔｉｙａｍａ あっとまーく ｎｉｃｔ どっと ｇｏ どっと ｊｐ）まで連絡していただければ，それらについては削除します．<h3>関連ページ</h3><ul><li>オリジナルの英語文: <a href="../org/christe.txt">local copy</a> / <a href="http://www.gutenberg.net/dirs/etext99/mcrst11.txt">http://www.gutenberg.net/dirs/etext99/mcrst11.txt</a><li>オリジナルの日本語文: <a href="../org/christj.txt">local copy</a> / <a href="http://www.hyuki.com/imit/">http://www.hyuki.com/imit/</a><li><a href="../manual-alignment/christ.alm">対訳データ</a></ul><p>
+<script type="text/javascript">
+<!--
+document.F.CE.checked = false
+document.F.CJ.checked = false
+// -->
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</BODY></HTML>
+
